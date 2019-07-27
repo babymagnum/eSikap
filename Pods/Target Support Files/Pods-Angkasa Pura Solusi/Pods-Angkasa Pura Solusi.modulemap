@@ -1,0 +1,6 @@
+framework module Pods_Angkasa_Pura_Solusi {
+  umbrella header "Pods-Angkasa Pura Solusi-umbrella.h"
+
+  export *
+  module * { export * }
+}

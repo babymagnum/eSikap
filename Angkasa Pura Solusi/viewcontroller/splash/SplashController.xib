@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+            <connections>
+                <outlet property="imageBotHeight" destination="ZY7-pv-oFl" id="RJz-5K-Dxt"/>
+                <outlet property="imageBotWidth" destination="RYw-JI-d7u" id="035-cO-2xF"/>
+                <outlet property="imageTopHeight" destination="Q9Z-yX-9Ie" id="V5r-0p-FWD"/>
+                <outlet property="imageTopWidth" destination="8rE-jk-6JO" id="rrD-BK-TVX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewBotHeight" destination="bM1-N6-sy1" id="d5l-gu-ZWh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_image_splash" translatesAutoresizingMaskIntoConstraints="NO" id="A2Z-KL-hyG">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="421"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="375" id="8rE-jk-6JO"/>
+                        <constraint firstAttribute="height" constant="421" id="Q9Z-yX-9Ie"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bot_image_splash" translatesAutoresizingMaskIntoConstraints="NO" id="aLd-Vk-7VE">
+                    <rect key="frame" x="0.0" y="213" width="375" height="454"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="375" id="RYw-JI-d7u"/>
+                        <constraint firstAttribute="height" constant="454" id="ZY7-pv-oFl"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1E-Ye-8Gv">
+                    <rect key="frame" x="0.0" y="313" width="375" height="354"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="PTl-5A-SJ6">
+                            <rect key="frame" x="87.5" y="40" width="200" height="90"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="3Za-be-dyd"/>
+                                <constraint firstAttribute="height" constant="90" id="PmS-vs-zlK"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="PTl-5A-SJ6" firstAttribute="top" secondItem="k1E-Ye-8Gv" secondAttribute="top" constant="40" id="9OH-4D-W6Y"/>
+                        <constraint firstAttribute="height" constant="354" id="bM1-N6-sy1"/>
+                        <constraint firstItem="PTl-5A-SJ6" firstAttribute="centerX" secondItem="k1E-Ye-8Gv" secondAttribute="centerX" id="y1R-p8-SzQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="aLd-Vk-7VE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9yd-wi-hpQ"/>
+                <constraint firstItem="k1E-Ye-8Gv" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="aYk-Os-VTO"/>
+                <constraint firstItem="aLd-Vk-7VE" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="aoY-2T-gAL"/>
+                <constraint firstItem="A2Z-KL-hyG" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="d6N-hj-UPS"/>
+                <constraint firstItem="k1E-Ye-8Gv" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="eYG-ga-ehi"/>
+                <constraint firstItem="A2Z-KL-hyG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="s3j-sW-WhQ"/>
+                <constraint firstItem="A2Z-KL-hyG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vF7-Y5-ERV"/>
+                <constraint firstItem="aLd-Vk-7VE" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vbO-C2-YT6"/>
+                <constraint firstItem="k1E-Ye-8Gv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yxU-lv-kf6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="132" y="128.18590704647679"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bot_image_splash" width="320.5" height="387"/>
+        <image name="logo" width="175.5" height="75"/>
+        <image name="top_image_splash" width="320.5" height="360.5"/>
+    </resources>
+</document>
