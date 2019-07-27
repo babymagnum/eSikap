@@ -28,6 +28,8 @@
 		ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95909E22EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift */; };
 		ED9590A122EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED95909F22EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib */; };
 		ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A722EBFF8D00D696E5 /* Onboarding.swift */; };
+		ED9590AA22EC923A00D696E5 /* CoreNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A922EC923A00D696E5 /* CoreNetworking.swift */; };
+		ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9590AB22EC99D500D696E5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		ED9590A522EBFB9100D696E5 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		ED9590A622EBFB9100D696E5 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		ED9590A722EBFF8D00D696E5 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		ED9590A922EC923A00D696E5 /* CoreNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreNetworking.swift; sourceTree = "<group>"; };
+		ED9590AB22EC99D500D696E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +116,10 @@
 		ED95906622EBDF3300D696E5 /* Angkasa Pura Solusi */ = {
 			isa = PBXGroup;
 			children = (
+				ED95907322EBDF3500D696E5 /* Info.plist */,
+				ED9590AB22EC99D500D696E5 /* GoogleService-Info.plist */,
 				ED9590A222EBFB6300D696E5 /* fonts */,
 				ED95909C22EBF98400D696E5 /* cell */,
-				ED95907322EBDF3500D696E5 /* Info.plist */,
 				ED95907C22EBE30E00D696E5 /* helper */,
 				ED95907B22EBE2BE00D696E5 /* support */,
 				ED95907A22EBE2AC00D696E5 /* model */,
@@ -161,6 +166,7 @@
 				ED95907F22EBE77B00D696E5 /* StaticLet.swift */,
 				ED95909622EBF1C500D696E5 /* PublicFunction.swift */,
 				ED95909822EBF26E00D696E5 /* BaseViewController.swift */,
+				ED9590A922EC923A00D696E5 /* CoreNetworking.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 			files = (
 				ED95908B22EBE8DE00D696E5 /* OnboardingController.xib in Resources */,
 				ED95908722EBE8A000D696E5 /* LoginController.xib in Resources */,
+				ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */,
 				ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */,
 				ED95909022EBE90A00D696E5 /* HomeController.xib in Resources */,
 				ED95909B22EBF4DC00D696E5 /* LaunchScreen.storyboard in Resources */,
@@ -357,6 +364,7 @@
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
 				ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */,
 				ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */,
+				ED9590AA22EC923A00D696E5 /* CoreNetworking.swift in Sources */,
 				ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */,
 				ED95908022EBE77B00D696E5 /* StaticLet.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */,

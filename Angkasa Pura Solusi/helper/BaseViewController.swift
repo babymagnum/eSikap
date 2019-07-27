@@ -26,7 +26,13 @@ class BaseViewController: UIViewController {
         return mFunction
     }()
     
+    lazy var networking: CoreNetworking = {
+        let mNetworking = CoreNetworking()
+        return mNetworking
+    }()
+    
     override func viewDidLoad() {
         //do something
     }
+
 }

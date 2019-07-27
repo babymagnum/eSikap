@@ -18,4 +18,12 @@ class Preference {
         return UserDefaults.standard.bool(forKey: key)
     }
     
+    func saveString(value: String, key: String) {
+        UserDefaults.standard.set(value, forKey: key)
+    }
+    
+    func getString(key: String) -> String {
+        return UserDefaults.standard.string(forKey: key)!
+    }
+    
 }

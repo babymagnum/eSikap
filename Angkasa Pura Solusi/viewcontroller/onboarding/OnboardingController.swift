@@ -129,12 +129,14 @@ class OnboardingController: BaseViewController, UICollectionViewDelegate {
 // handle click event
 extension OnboardingController {
     @objc func buttonLewatiClick(sender: UITapGestureRecognizer) {
+        preference.saveBool(value: true, key: staticLet.IS_FIRST_TIME_OPEN)
         present(LoginController(), animated: true)
     }
     
     @objc func buttonLanjutkanClick(sender: UITapGestureRecognizer) {
         switch currentPage {
         case 3:
+            preference.saveBool(value: true, key: staticLet.IS_FIRST_TIME_OPEN)
             present(LoginController(), animated: true)
         default:
             currentPage += 1

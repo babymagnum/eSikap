@@ -28,7 +28,7 @@ class SplashController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if !self.preference.getBool(key: self.staticLet.IS_FIRST_TIME_OPEN) {
                 self.present(OnboardingController(), animated: true)
-            } else if self.preference.getBool(key: self.staticLet.IS_LOGIN) {
+            } else if !self.preference.getBool(key: self.staticLet.IS_LOGIN) {
                 self.present(LoginController(), animated: true)
             } else {
                 self.present(HomeController(), animated: true)

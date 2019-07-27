@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
     var window: UIWindow?
     var mainNavigationController : UINavigationController?
@@ -34,9 +36,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
     
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("fcm token \(fcmToken)")
+        preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        //root viewcontroller
         changeRootViewController(rootVC: SplashController())
+        
+        //keyboard manager
+        IQKeyboardManager.shared.enable = true
+        
+        //firebase
+        FirebaseApp.configure()
+        
+        //firebase messaging
+        Messaging.messaging().delegate = self
         
         return true
     }
