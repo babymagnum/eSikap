@@ -64,7 +64,7 @@ class OnboardingController: BaseViewController, UICollectionViewDelegate {
         
         let cell = onboardingCollection.dequeueReusableCell(withReuseIdentifier: "OnboardingCellCollectionViewCell", for: IndexPath(item: 0, section: 0)) as! OnboardingCellCollectionViewCell
         let layout = onboardingCollection.collectionViewLayout as! UICollectionViewFlowLayout
-        let height = (UIScreen.main.bounds.height * 0.4) + cell.titleLabel.frame.height + cell.descriptionLabel.frame.height + 115
+        let height = (UIScreen.main.bounds.height * 0.4) + cell.titleLabel.frame.height + cell.descriptionLabel.frame.height + 115 // 115 for the total constraint height
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: height)
         
         onboardingCollection.delegate = self
@@ -124,7 +124,6 @@ class OnboardingController: BaseViewController, UICollectionViewDelegate {
             }
         }
     }
-
 }
 
 // handle click event
@@ -134,16 +133,14 @@ extension OnboardingController {
     }
     
     @objc func buttonLanjutkanClick(sender: UITapGestureRecognizer) {
-        if let indexpath = onboardingCollection.indexPathForItem(at: sender.location(in: onboardingCollection)){
-            switch indexpath.item {
-            case 3:
-                present(LoginController(), animated: true)
-            default:
-                currentPage += 1
-                highlightIndicator(currentPage)
-                onboardingCollection.scrollToItem(at: IndexPath(item: currentPage, section: 0), at: .centeredHorizontally, animated: true)
-                self.changeButtonDynamically(currentPage)
-            }
+        switch currentPage {
+        case 3:
+            present(LoginController(), animated: true)
+        default:
+            currentPage += 1
+            highlightIndicator(currentPage)
+            onboardingCollection.scrollToItem(at: IndexPath(item: currentPage, section: 0), at: .centeredHorizontally, animated: true)
+            self.changeButtonDynamically(currentPage)
         }
     }
 }
