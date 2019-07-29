@@ -8,23 +8,99 @@
 
 import UIKit
 
-class HomeController: UIViewController {
+class HomeController: UITabBarController {
 
+    @IBOutlet weak var bottomNavigationBar: UITabBar!
+    
+    // properties
+    private var hasNotif = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        initBottomNavigation()
+    }
+    
+    private func initBottomNavigation() {
+        UITabBar.appearance().tintColor = UIColor.init(rgb: 0x42a5f5).withAlphaComponent(1)
+        UITabBar.appearance().backgroundColor = UIColor.init(rgb: 0xffffff)
+        tabBar.unselectedItemTintColor = UIColor.lightGray
+        
+        self.delegate = self
+        
+        self.selectedIndex = 0
+        
+        viewControllers = [BerandaController(), BeritaController(), NotifikasiController(), ProfilController()]
+        
+        tabBar.items![0].title = "Beranda"
+        setImage("icHomeActive", 0)
+        
+        tabBar.items![1].title = "Berita"
+        setImage("icBeritaActive", 1)
+        setImage("icBeritaNonActive", 1)
+        
+        tabBar.items![2].title = "Notifikasi"
+        if hasNotif {
+            setImage("icHasNotifikasiActive", 2)
+            setImage("icHasNotifikasiNonActive", 2)
+        } else {
+            setImage("icNotifikasiActive", 2)
+            setImage("icNotifikasiNonActive", 2)
+        }
+        
+        tabBar.items![3].title = "Profil"
+        setImage("icProfileActive", 3)
+        setImage("icProfileNonActive", 3)
+    }
+    
+    private func setImage(_ image: String, _ index: Int) {
+        tabBar.items![index].image = UIImage(named: image)
     }
 
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension HomeController: UITabBarControllerDelegate {
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item == (tabBar.items)![0] {
+            print("beranda")
+            setImage("icHomeActive", 0)
+            setImage("icBeritaNonActive", 1)
+            if hasNotif {
+                setImage("icHasNotifikasiNonActive", 2)
+            } else {
+                setImage("icNotifikasiNonActive", 2)
+            }
+            setImage("icProfileNonActive", 3)
+        } else if item == (tabBar.items)![1] {
+            print("berita")
+            setImage("icHomeNonActive", 0)
+            setImage("icBeritaActive", 1)
+            if hasNotif {
+                setImage("icHasNotifikasiNonActive", 2)
+            } else {
+                setImage("icNotifikasiNonActive", 2)
+            }
+            setImage("icProfileNonActive", 3)
+        } else if item == (tabBar.items)![2] {
+            print("notifikasi")
+            setImage("icHomeNonActive", 0)
+            setImage("icBeritaNonActive", 1)
+            if hasNotif {
+                setImage("icHasNotifikasiActive", 2)
+            } else {
+                setImage("icNotifikasiActive", 2)
+            }
+            setImage("icProfileNonActive", 3)
+        } else if item == (tabBar.items)![3] {
+            print("profil")
+            setImage("icHomeNonActive", 0)
+            setImage("icBeritaNonActive", 1)
+            if hasNotif {
+                setImage("icHasNotifikasiNonActive", 2)
+            } else {
+                setImage("icNotifikasiNonActive", 2)
+            }
+            setImage("icProfileActive", 3)
+        }
     }
-    */
-
 }

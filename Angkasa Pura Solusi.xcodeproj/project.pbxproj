@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		D8D432A86DE3EDD47415F16D /* Pods_Angkasa_Pura_Solusi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBC11F8DD2D9E24273410E5 /* Pods_Angkasa_Pura_Solusi.framework */; };
+		ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */; };
+		ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */; };
+		ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038C922ED639E005BCF87 /* BeritaCell.swift */; };
+		ED3038CC22ED639E005BCF87 /* BeritaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3038CA22ED639E005BCF87 /* BeritaCell.xib */; };
+		ED3038CE22ED6CDB005BCF87 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038CD22ED6CDB005BCF87 /* Menu.swift */; };
+		ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038CF22ED99CE005BCF87 /* Berita.swift */; };
+		ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E506922ED417000EED8E7 /* BerandaController.swift */; };
+		ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6E506A22ED417000EED8E7 /* BerandaController.xib */; };
+		ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E506D22ED418700EED8E7 /* BeritaController.swift */; };
+		ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6E506E22ED418700EED8E7 /* BeritaController.xib */; };
+		ED6E507322ED419500EED8E7 /* NotifikasiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E507122ED419500EED8E7 /* NotifikasiController.swift */; };
+		ED6E507422ED419500EED8E7 /* NotifikasiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6E507222ED419500EED8E7 /* NotifikasiController.xib */; };
+		ED6E507722ED41A200EED8E7 /* ProfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E507522ED41A200EED8E7 /* ProfilController.swift */; };
+		ED6E507822ED41A200EED8E7 /* ProfilController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6E507622ED41A200EED8E7 /* ProfilController.xib */; };
 		ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95906722EBDF3300D696E5 /* AppDelegate.swift */; };
 		ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95906922EBDF3300D696E5 /* ViewController.swift */; };
 		ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED95906B22EBDF3300D696E5 /* Main.storyboard */; };
@@ -36,6 +50,20 @@
 		4EBC11F8DD2D9E24273410E5 /* Pods_Angkasa_Pura_Solusi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Angkasa_Pura_Solusi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14CFE01F0097BA5643AAEA0 /* Pods-Angkasa Pura Solusi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Angkasa Pura Solusi.debug.xcconfig"; path = "Target Support Files/Pods-Angkasa Pura Solusi/Pods-Angkasa Pura Solusi.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C2FE2E010A17EC58ACBEC2 /* Pods-Angkasa Pura Solusi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Angkasa Pura Solusi.release.xcconfig"; path = "Target Support Files/Pods-Angkasa Pura Solusi/Pods-Angkasa Pura Solusi.release.xcconfig"; sourceTree = "<group>"; };
+		ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUtamaCell.swift; sourceTree = "<group>"; };
+		ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuUtamaCell.xib; sourceTree = "<group>"; };
+		ED3038C922ED639E005BCF87 /* BeritaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeritaCell.swift; sourceTree = "<group>"; };
+		ED3038CA22ED639E005BCF87 /* BeritaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeritaCell.xib; sourceTree = "<group>"; };
+		ED3038CD22ED6CDB005BCF87 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		ED3038CF22ED99CE005BCF87 /* Berita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Berita.swift; sourceTree = "<group>"; };
+		ED6E506922ED417000EED8E7 /* BerandaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerandaController.swift; sourceTree = "<group>"; };
+		ED6E506A22ED417000EED8E7 /* BerandaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BerandaController.xib; sourceTree = "<group>"; };
+		ED6E506D22ED418700EED8E7 /* BeritaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeritaController.swift; sourceTree = "<group>"; };
+		ED6E506E22ED418700EED8E7 /* BeritaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeritaController.xib; sourceTree = "<group>"; };
+		ED6E507122ED419500EED8E7 /* NotifikasiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiController.swift; sourceTree = "<group>"; };
+		ED6E507222ED419500EED8E7 /* NotifikasiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifikasiController.xib; sourceTree = "<group>"; };
+		ED6E507522ED41A200EED8E7 /* ProfilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilController.swift; sourceTree = "<group>"; };
+		ED6E507622ED41A200EED8E7 /* ProfilController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilController.xib; sourceTree = "<group>"; };
 		ED95906422EBDF3300D696E5 /* Angkasa Pura Solusi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Angkasa Pura Solusi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED95906722EBDF3300D696E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED95906922EBDF3300D696E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +123,60 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		ED3038C322ED6352005BCF87 /* menu_utama_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */,
+				ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */,
+			);
+			path = menu_utama_cell;
+			sourceTree = "<group>";
+		};
+		ED3038C422ED635A005BCF87 /* berita_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED3038C922ED639E005BCF87 /* BeritaCell.swift */,
+				ED3038CA22ED639E005BCF87 /* BeritaCell.xib */,
+			);
+			path = berita_cell;
+			sourceTree = "<group>";
+		};
+		ED6E506522ED412A00EED8E7 /* beranda */ = {
+			isa = PBXGroup;
+			children = (
+				ED6E506922ED417000EED8E7 /* BerandaController.swift */,
+				ED6E506A22ED417000EED8E7 /* BerandaController.xib */,
+			);
+			path = beranda;
+			sourceTree = "<group>";
+		};
+		ED6E506622ED413800EED8E7 /* berita */ = {
+			isa = PBXGroup;
+			children = (
+				ED6E506D22ED418700EED8E7 /* BeritaController.swift */,
+				ED6E506E22ED418700EED8E7 /* BeritaController.xib */,
+			);
+			path = berita;
+			sourceTree = "<group>";
+		};
+		ED6E506722ED413F00EED8E7 /* notifikasi */ = {
+			isa = PBXGroup;
+			children = (
+				ED6E507122ED419500EED8E7 /* NotifikasiController.swift */,
+				ED6E507222ED419500EED8E7 /* NotifikasiController.xib */,
+			);
+			path = notifikasi;
+			sourceTree = "<group>";
+		};
+		ED6E506822ED414400EED8E7 /* profil */ = {
+			isa = PBXGroup;
+			children = (
+				ED6E507522ED41A200EED8E7 /* ProfilController.swift */,
+				ED6E507622ED41A200EED8E7 /* ProfilController.xib */,
+			);
+			path = profil;
+			sourceTree = "<group>";
+		};
 		ED95905B22EBDF3300D696E5 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +213,10 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED6E506822ED414400EED8E7 /* profil */,
+				ED6E506722ED413F00EED8E7 /* notifikasi */,
+				ED6E506622ED413800EED8E7 /* berita */,
+				ED6E506522ED412A00EED8E7 /* beranda */,
 				ED95909A22EBF4DC00D696E5 /* LaunchScreen.storyboard */,
 				ED95909122EBEE8300D696E5 /* splash */,
 				ED95908C22EBE8FC00D696E5 /* home */,
@@ -146,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				ED9590A722EBFF8D00D696E5 /* Onboarding.swift */,
+				ED3038CD22ED6CDB005BCF87 /* Menu.swift */,
+				ED3038CF22ED99CE005BCF87 /* Berita.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -210,6 +298,8 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED3038C422ED635A005BCF87 /* berita_cell */,
+				ED3038C322ED6352005BCF87 /* menu_utama_cell */,
 				ED95909D22EBF98C00D696E5 /* onboarding_cell */,
 			);
 			path = cell;
@@ -295,14 +385,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED3038CC22ED639E005BCF87 /* BeritaCell.xib in Resources */,
 				ED95908B22EBE8DE00D696E5 /* OnboardingController.xib in Resources */,
 				ED95908722EBE8A000D696E5 /* LoginController.xib in Resources */,
+				ED6E507422ED419500EED8E7 /* NotifikasiController.xib in Resources */,
 				ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */,
 				ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */,
 				ED95909022EBE90A00D696E5 /* HomeController.xib in Resources */,
+				ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */,
 				ED95909B22EBF4DC00D696E5 /* LaunchScreen.storyboard in Resources */,
+				ED6E507822ED41A200EED8E7 /* ProfilController.xib in Resources */,
 				ED95909522EBEE9300D696E5 /* SplashController.xib in Resources */,
 				ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */,
+				ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */,
+				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,17 +454,25 @@
 			files = (
 				ED95909422EBEE9300D696E5 /* SplashController.swift in Sources */,
 				ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */,
+				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
 				ED95907E22EBE3C500D696E5 /* Preference.swift in Sources */,
+				ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */,
 				ED95908F22EBE90A00D696E5 /* HomeController.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
 				ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */,
 				ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */,
 				ED9590AA22EC923A00D696E5 /* CoreNetworking.swift in Sources */,
+				ED6E507322ED419500EED8E7 /* NotifikasiController.swift in Sources */,
+				ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */,
 				ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */,
+				ED3038CE22ED6CDB005BCF87 /* Menu.swift in Sources */,
+				ED6E507722ED41A200EED8E7 /* ProfilController.swift in Sources */,
 				ED95908022EBE77B00D696E5 /* StaticLet.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */,
 				ED95908622EBE8A000D696E5 /* LoginController.swift in Sources */,
+				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
+				ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

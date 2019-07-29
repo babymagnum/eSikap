@@ -26,6 +26,10 @@ class PublicFunction {
     let imageCache = NSCache<NSString, UIImage>()
     let imageCacheKey: NSString = "CachedMapSnapshot"
     
+    func setStatusBarBackgroundColor(color: UIColor) {
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.red
+    }
+    
     open func getStraightDistance(latitude: Double, longitude: Double) -> Double{
         let location = CLLocation()
         return location.distance(from: CLLocation(latitude: latitude, longitude: longitude))
@@ -533,5 +537,13 @@ public extension UIDevice {
         
         return mapToDevice(identifier: identifier)
     }()
+    
+}
+
+extension UIApplication {
+    
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
     
 }
