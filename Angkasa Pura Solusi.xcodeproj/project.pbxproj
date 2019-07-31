@@ -44,6 +44,11 @@
 		ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A722EBFF8D00D696E5 /* Onboarding.swift */; };
 		ED9590AA22EC923A00D696E5 /* CoreNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A922EC923A00D696E5 /* CoreNetworking.swift */; };
 		ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9590AB22EC99D500D696E5 /* GoogleService-Info.plist */; };
+		EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF422F08B8F0064AE57 /* PresensiController.swift */; };
+		EDCF3BF722F08B8F0064AE57 /* PresensiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCF3BF522F08B8F0064AE57 /* PresensiController.xib */; };
+		EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */; };
+		EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */; };
+		EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +97,11 @@
 		ED9590A722EBFF8D00D696E5 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		ED9590A922EC923A00D696E5 /* CoreNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreNetworking.swift; sourceTree = "<group>"; };
 		ED9590AB22EC99D500D696E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDCF3BF422F08B8F0064AE57 /* PresensiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiController.swift; sourceTree = "<group>"; };
+		EDCF3BF522F08B8F0064AE57 /* PresensiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiController.xib; sourceTree = "<group>"; };
+		EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiMapController.swift; sourceTree = "<group>"; };
+		EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiMapController.xib; sourceTree = "<group>"; };
+		EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +223,8 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				EDCF3BF822F09BE10064AE57 /* presensi_map */,
+				EDCF3BF322F08B6A0064AE57 /* presensi */,
 				ED6E506822ED414400EED8E7 /* profil */,
 				ED6E506722ED413F00EED8E7 /* notifikasi */,
 				ED6E506622ED413800EED8E7 /* berita */,
@@ -234,6 +246,7 @@
 				ED9590A722EBFF8D00D696E5 /* Onboarding.swift */,
 				ED3038CD22ED6CDB005BCF87 /* Menu.swift */,
 				ED3038CF22ED99CE005BCF87 /* Berita.swift */,
+				EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -325,6 +338,24 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		EDCF3BF322F08B6A0064AE57 /* presensi */ = {
+			isa = PBXGroup;
+			children = (
+				EDCF3BF422F08B8F0064AE57 /* PresensiController.swift */,
+				EDCF3BF522F08B8F0064AE57 /* PresensiController.xib */,
+			);
+			path = presensi;
+			sourceTree = "<group>";
+		};
+		EDCF3BF822F09BE10064AE57 /* presensi_map */ = {
+			isa = PBXGroup;
+			children = (
+				EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */,
+				EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */,
+			);
+			path = presensi_map;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -337,6 +368,7 @@
 				ED95906122EBDF3300D696E5 /* Frameworks */,
 				ED95906222EBDF3300D696E5 /* Resources */,
 				FA28E6473D00583D716157B0 /* [CP] Embed Pods Frameworks */,
+				034D780CEF4D5A052AB19506 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,8 +421,10 @@
 				ED95908B22EBE8DE00D696E5 /* OnboardingController.xib in Resources */,
 				ED95908722EBE8A000D696E5 /* LoginController.xib in Resources */,
 				ED6E507422ED419500EED8E7 /* NotifikasiController.xib in Resources */,
+				EDCF3BF722F08B8F0064AE57 /* PresensiController.xib in Resources */,
 				ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */,
 				ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */,
+				EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */,
 				ED95909022EBE90A00D696E5 /* HomeController.xib in Resources */,
 				ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */,
 				ED95909B22EBF4DC00D696E5 /* LaunchScreen.storyboard in Resources */,
@@ -406,6 +440,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		034D780CEF4D5A052AB19506 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Angkasa Pura Solusi/Pods-Angkasa Pura Solusi-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Angkasa Pura Solusi/Pods-Angkasa Pura Solusi-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Angkasa Pura Solusi/Pods-Angkasa Pura Solusi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		72CA63BF2E048E754CAB8FC2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -458,6 +509,7 @@
 				ED95907E22EBE3C500D696E5 /* Preference.swift in Sources */,
 				ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */,
 				ED95908F22EBE90A00D696E5 /* HomeController.swift in Sources */,
+				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
 				ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */,
@@ -470,9 +522,11 @@
 				ED6E507722ED41A200EED8E7 /* ProfilController.swift in Sources */,
 				ED95908022EBE77B00D696E5 /* StaticLet.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */,
+				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
 				ED95908622EBE8A000D696E5 /* LoginController.swift in Sources */,
 				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
 				ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */,
+				EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

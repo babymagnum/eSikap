@@ -31,7 +31,7 @@ class SplashController: BaseViewController {
             } else if !self.preference.getBool(key: self.staticLet.IS_LOGIN) {
                 self.present(LoginController(), animated: true)
             } else {
-                self.present(HomeController(), animated: true)
+                self.navigationController?.pushViewController(HomeController(), animated: true)
             }
         }
     }

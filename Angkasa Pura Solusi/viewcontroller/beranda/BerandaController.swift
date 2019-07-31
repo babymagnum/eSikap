@@ -32,6 +32,8 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("token \(preference.getString(key: staticLet.TOKEN))")
+        
         function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1)
         
         initView()
@@ -90,12 +92,39 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         viewContainerClock.layer.cornerRadius = 6
         viewContainerCuti.layer.cornerRadius = 6
         viewContainerPresensi.layer.cornerRadius = 6
+        imageAccount.layer.cornerRadius = imageAccount.frame.height / 2
+        
+        labelName.text = preference.getString(key: staticLet.EMP_NAME)
+        imageAccount.loadUrl(preference.getString(key: staticLet.EMP_PHOTO))
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 
+}
+
+//click event
+extension BerandaController {
+    @objc func menuClick(sender: UITapGestureRecognizer) {
+        if let indexpath = menuCollectionView.indexPathForItem(at: sender.location(in: menuCollectionView)) {
+            switch listMenu[indexpath.item].id {
+            case 1:
+                print("pengajuan cuti")
+            case 2:
+                print("pengajuan lembur")
+            case 3:
+                print("persetujuan")
+            case 4:
+                self.navigationController?.pushViewController(PresensiController(), animated: true)
+            case 5:
+                print("presensi list")
+            case 6:
+                print("lihat lainya")
+            default: break
+            }
+        }
+    }
 }
 
 extension BerandaController: UICollectionViewDataSource {
@@ -112,6 +141,7 @@ extension BerandaController: UICollectionViewDataSource {
         if collectionView == menuCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuUtamaCell", for: indexPath) as! MenuUtamaCell
             cell.data = listMenu[indexPath.item]
+            cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(menuClick(sender:))))
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as! BeritaCell

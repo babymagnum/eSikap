@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import Firebase
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
@@ -54,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         
         //firebase messaging
         Messaging.messaging().delegate = self
+        
+        //google maps
+        GMSServices.provideAPIKey("AIzaSyABb3r3kEysXc1ahNhBczZfpFbKCTcEUZY")
         
         return true
     }

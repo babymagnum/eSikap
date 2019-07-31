@@ -37,8 +37,20 @@ class CoreNetworking {
                 
             case .success(let responseSuccess):
                 let data = JSON(responseSuccess)
-                print("login success \(data)")
-                completion(nil)
+                print("login \(data)")
+                
+                if data["message"].string == "Login Berhasil" {
+                    let dataEmploye = data["data"].array![0]
+                    self.preference.saveString(value: dataEmploye["user_id"].string ?? "", key: self.staticLet.USER_ID)
+                    self.preference.saveString(value: dataEmploye["emp_photo"].string ?? "", key: self.staticLet.EMP_PHOTO)
+                    self.preference.saveString(value: dataEmploye["emp_id"].string ?? "", key: self.staticLet.EMP_ID)
+                    self.preference.saveString(value: dataEmploye["emp_number"].string ?? "", key: self.staticLet.EMP_NUMBER)
+                    self.preference.saveString(value: dataEmploye["emp_name"].string ?? "", key: self.staticLet.EMP_NAME)
+                    self.preference.saveString(value: dataEmploye["token"].string ?? "", key: self.staticLet.TOKEN)
+                    completion(nil)
+                } else {
+                    completion(data["message"].string)
+                }
                 
             case .failure(let responseError):
                 print("login error \(responseError.localizedDescription)")

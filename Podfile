@@ -1,6 +1,7 @@
 platform :ios, '9.0'
 use_frameworks!
 
+source 'https://github.com/CocoaPods/Specs.git'
 target 'Angkasa Pura Solusi' do
   pod 'Alamofire'
   pod 'SVProgressHUD'
@@ -13,4 +14,6 @@ target 'Angkasa Pura Solusi' do
   pod 'Crashlytics', '~> 3.12.0'
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 end
