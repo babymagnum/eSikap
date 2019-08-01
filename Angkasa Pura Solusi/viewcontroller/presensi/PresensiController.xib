@@ -19,6 +19,8 @@
             <connections>
                 <outlet property="labelClock" destination="nJ5-gL-6Xv" id="pUm-lo-Xf4"/>
                 <outlet property="labelDate" destination="WD4-KO-rUe" id="783-ng-6Ut"/>
+                <outlet property="labelJamMasuk" destination="vTn-EE-7Wb" id="Td3-HV-ljz"/>
+                <outlet property="labelJamPulang" destination="XuS-HI-bQE" id="PeN-Uz-qqv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewJamMasukKeluar" destination="cyq-2i-J7r" id="vZx-hC-hEs"/>
                 <outlet property="viewPresensiKeluar" destination="u30-FQ-7GZ" id="oYs-1K-Zx1"/>

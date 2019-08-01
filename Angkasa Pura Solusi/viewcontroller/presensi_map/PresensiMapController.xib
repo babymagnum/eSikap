@@ -17,7 +17,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PresensiMapController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
+                <outlet property="buttonPresence" destination="aoH-5T-yll" id="cbB-Ve-JhT"/>
                 <outlet property="labelClock" destination="DT5-rf-0wa" id="saH-uA-kbC"/>
+                <outlet property="labelJamKeluar" destination="AWu-MW-IgS" id="sKd-3K-nIl"/>
+                <outlet property="labelJamMasuk" destination="YkS-xd-atf" id="Gww-sh-JXJ"/>
                 <outlet property="mapview" destination="3YJ-RE-YdT" id="eyl-Hd-fJr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewHurryUp" destination="3J8-gh-8iJ" id="cn1-2V-Chh"/>
@@ -176,6 +179,9 @@ presence area !</string>
                                     <state key="normal" title="Pressence">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="buttonPresenceClick:" destination="-1" eventType="touchUpInside" id="w5G-9y-lEB"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -189,27 +195,27 @@ presence area !</string>
                                 <constraint firstAttribute="bottom" secondItem="aoH-5T-yll" secondAttribute="bottom" constant="7" id="xAe-9g-B2a"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DT5-rf-0wa">
-                            <rect key="frame" x="172" y="66" width="180" height="32"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DT5-rf-0wa">
+                            <rect key="frame" x="0.0" y="53" width="375" height="42"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
-                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                            <state key="normal" title="Senin, 01 Mei 2019  |  11:12:10 WIB"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="15" maxX="23" maxY="15"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="5zk-PN-h25" secondAttribute="trailing" constant="31" id="8rM-yo-6qy"/>
                         <constraint firstAttribute="trailing" secondItem="wZq-RQ-nfC" secondAttribute="trailing" id="D5R-WU-aTJ"/>
+                        <constraint firstItem="DT5-rf-0wa" firstAttribute="top" secondItem="wZq-RQ-nfC" secondAttribute="bottom" id="Hhb-01-wud"/>
                         <constraint firstAttribute="trailing" secondItem="3YJ-RE-YdT" secondAttribute="trailing" id="JMV-r7-Dol"/>
                         <constraint firstAttribute="bottom" secondItem="3YJ-RE-YdT" secondAttribute="bottom" id="LBz-WX-aAf"/>
                         <constraint firstItem="wZq-RQ-nfC" firstAttribute="top" secondItem="hCr-a2-5SK" secondAttribute="top" id="Lkq-m6-O1Y"/>
-                        <constraint firstAttribute="trailing" secondItem="DT5-rf-0wa" secondAttribute="trailing" constant="23" id="Nqx-Hn-VxS"/>
-                        <constraint firstItem="DT5-rf-0wa" firstAttribute="top" secondItem="wZq-RQ-nfC" secondAttribute="bottom" constant="13" id="RXx-g3-pDA"/>
+                        <constraint firstAttribute="trailing" secondItem="DT5-rf-0wa" secondAttribute="trailing" id="Rod-Ob-PXK"/>
                         <constraint firstItem="3J8-gh-8iJ" firstAttribute="top" secondItem="mfy-il-fgX" secondAttribute="bottom" constant="14" id="XFG-pf-BDm"/>
                         <constraint firstAttribute="trailing" secondItem="3J8-gh-8iJ" secondAttribute="trailing" constant="31" id="b4L-hb-zd7"/>
                         <constraint firstItem="3YJ-RE-YdT" firstAttribute="top" secondItem="wZq-RQ-nfC" secondAttribute="bottom" id="bbR-BI-cjY"/>
                         <constraint firstAttribute="bottom" secondItem="5zk-PN-h25" secondAttribute="bottom" constant="28" id="bze-iL-IN3"/>
+                        <constraint firstItem="DT5-rf-0wa" firstAttribute="leading" secondItem="hCr-a2-5SK" secondAttribute="leading" id="eJE-hc-688"/>
                         <constraint firstAttribute="bottom" secondItem="3J8-gh-8iJ" secondAttribute="bottom" constant="28" id="g7f-xN-c5v"/>
                         <constraint firstItem="mfy-il-fgX" firstAttribute="leading" secondItem="hCr-a2-5SK" secondAttribute="leading" constant="31" id="goA-Pv-Dch"/>
                         <constraint firstItem="3YJ-RE-YdT" firstAttribute="leading" secondItem="hCr-a2-5SK" secondAttribute="leading" id="maE-i6-b69"/>

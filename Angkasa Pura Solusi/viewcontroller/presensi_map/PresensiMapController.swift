@@ -14,29 +14,81 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager = CLLocationManager()
     var marker: GMSMarker?
-    var circle: GMSCircle?
-    var buildingLocation: CLLocation?
-
+    var firstTimeLoad = false
+    var preparePresence: PreparePresence!
+    var circles = [GMSCircle]()
+    var seconds = 0
+    var minutes = 0
+    var hours = 0
+    
     @IBOutlet weak var viewPressence: UIView!
     @IBOutlet weak var viewJamMasukPulang: UIView!
     @IBOutlet weak var mapview: GMSMapView!
     @IBOutlet weak var labelClock: UIButton!
     @IBOutlet weak var viewHurryUp: UIView!
+    @IBOutlet weak var labelJamMasuk: UILabel!
+    @IBOutlet weak var labelJamKeluar: UILabel!
+    @IBOutlet weak var buttonPresence: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
-        buildingLocation = CLLocation(latitude: -7.8061 as CLLocationDegrees, longitude: 110.3770 as CLLocationDegrees)
-        
-        initMapView()
+        initView()
         
         initLocationManager()
     }
     
-    private func initMapView() {
-        let camera = GMSCameraPosition.camera(withLatitude: (buildingLocation?.coordinate.latitude)!, longitude: (buildingLocation?.coordinate.longitude)!, zoom: 16.0)
+    private func initView() {
+        viewPressence.layer.cornerRadius = 6
+        viewPressence.layer.shadowColor = UIColor.lightGray.cgColor
+        viewPressence.layer.shadowOffset = CGSize(width: 1, height: 2)
+        viewPressence.layer.shadowRadius = 2
+        
+        viewHurryUp.layer.cornerRadius = 6
+        viewHurryUp.layer.shadowColor = UIColor.lightGray.cgColor
+        viewHurryUp.layer.shadowOffset = CGSize(width: 1, height: 2)
+        viewHurryUp.layer.shadowRadius = 2
+        
+        buttonPresence.layer.cornerRadius = buttonPresence.frame.height / 2
+        
+        viewJamMasukPulang.layer.cornerRadius = viewJamMasukPulang.frame.height / 2
+        viewJamMasukPulang.layer.borderWidth = 2
+        viewJamMasukPulang.layer.borderColor = UIColor.init(rgb: 0x42a5f5).cgColor
+        
+        labelJamMasuk.text = String((preparePresence.shift_start?.prefix(5))!)
+        labelJamKeluar.text = String((preparePresence.shift_end?.prefix(5))!)
+        
+        let timeArray = preparePresence.time?.components(separatedBy: ":")
+        
+        seconds = Int(timeArray![2])!
+        minutes = Int(timeArray![1])!
+        hours = Int(timeArray![0])!
+        
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+            
+            self.seconds += 1
+            
+            if self.seconds == 60 {
+                self.minutes += 1
+                self.seconds = 0
+            }
+            
+            if self.minutes == 60 {
+                self.hours += 1
+                self.minutes = 0
+            }
+            
+            UIView.performWithoutAnimation {
+                self.labelClock.setTitle("\(self.preparePresence.date ?? "") | \(self.hours):\(self.minutes):\(self.seconds) \(self.preparePresence.timezone ?? "")", for: .normal)
+                self.labelClock.layoutIfNeeded()
+            }
+        }
+    }
+    
+    private func initMapView(_ location: CLLocation) {
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 16.0)
         mapview.animate(to: camera)
     }
     
@@ -66,75 +118,71 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
         circle.strokeWidth = 1
     }
     
-    func addRadiusCircle(distance: CLLocationDistance){
-        let circleCenter = CLLocationCoordinate2D(latitude: -7.8061, longitude: 110.3770)
+    func addRadiusCircle(circle: GMSCircle, isInside: Bool, isUpdate: Bool){
+        //let circle = GMSCircle(position: position, radius: 100)
         
-        if let circle = circle {
-            
-            if distance < 150 {
-                circleInsideRadius(circle: circle)
-            } else {
-                circleOutsideRadius(circle: circle)
-            }
-            
+        if isInside {
+            circleInsideRadius(circle: circle)
+            self.viewJamMasukPulang.isHidden = true
+            self.viewHurryUp.isHidden = true
+            self.viewPressence.isHidden = false
         } else {
-            circle = GMSCircle(position: circleCenter, radius: 100)
-            
-            if distance < 150 {
-                circleInsideRadius(circle: circle!)
-            } else {
-                circleOutsideRadius(circle: circle!)
-            }
-            
-            circle!.map = self.mapview
+            circleOutsideRadius(circle: circle)
+            self.viewJamMasukPulang.isHidden = false
+            self.viewHurryUp.isHidden = false
+            self.viewPressence.isHidden = true
         }
         
-//        mapview.delegate = self
-//        let circle = MKCircle(center: location.coordinate, radius: 200 as CLLocationDistance)
-//        mapview.addOverlay(circle)
+        if !isUpdate {
+            circle.map = self.mapview
+        }
+        
+        //        mapview.delegate = self
+        //        let circle = MKCircle(center: location.coordinate, radius: 200 as CLLocationDistance)
+        //        mapview.addOverlay(circle)
     }
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        if !(annotation is MKPointAnnotation) {
-//            return nil
-//        }
-//
-//        let annotationIdentifier = "AnnotationIdentifier"
-//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
-//
-//        if annotationView == nil {
-//            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-//            annotationView!.canShowCallout = true
-//        }
-//        else {
-//            annotationView!.annotation = annotation
-//        }
-//
-//        let pinImage = UIImage(named: "group425")
-//        annotationView!.image = pinImage
-//
-//        return annotationView
-//    }
+    //    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    //        if !(annotation is MKPointAnnotation) {
+    //            return nil
+    //        }
+    //
+    //        let annotationIdentifier = "AnnotationIdentifier"
+    //        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+    //
+    //        if annotationView == nil {
+    //            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+    //            annotationView!.canShowCallout = true
+    //        }
+    //        else {
+    //            annotationView!.annotation = annotation
+    //        }
+    //
+    //        let pinImage = UIImage(named: "group425")
+    //        annotationView!.image = pinImage
+    //
+    //        return annotationView
+    //    }
     
-//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-//        if overlay is MKCircle {
-//            let circle = MKCircleRenderer(overlay: overlay)
-//            //circle.strokeColor = UIColor.init(rgb: 0xef5350)
-//            circle.fillColor = UIColor.init(rgb: 0xef5350).withAlphaComponent(0.5)
-//            //circle.lineWidth = 1
-//            return circle
-//        } else {
-//            return MKPolylineRenderer()
-//        }
-//    }
+    //    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    //        if overlay is MKCircle {
+    //            let circle = MKCircleRenderer(overlay: overlay)
+    //            //circle.strokeColor = UIColor.init(rgb: 0xef5350)
+    //            circle.fillColor = UIColor.init(rgb: 0xef5350).withAlphaComponent(0.5)
+    //            //circle.lineWidth = 1
+    //            return circle
+    //        } else {
+    //            return MKPolylineRenderer()
+    //        }
+    //    }
     
-//    private func setMarker(location: CLLocationCoordinate2D) {
-//        let markerImage =
-//        marker.position = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-//        marker.icon = markerImage
-//        marker.title = "My Location"
-//        marker.map = mapview
-//    }
+    //    private func setMarker(location: CLLocationCoordinate2D) {
+    //        let markerImage =
+    //        marker.position = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+    //        marker.icon = markerImage
+    //        marker.title = "My Location"
+    //        marker.map = mapview
+    //    }
     
     func updateLocationCoordinates(coordinates:CLLocationCoordinate2D) {
         if marker == nil{
@@ -151,6 +199,41 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
         }
     }
     
+    private func drawCircle() {
+        for checkpoint in preparePresence.checkpoints {
+            let buildingLat = Double(checkpoint.checkpoint_latitude!)
+            let buildingLon = Double(checkpoint.checkpoint_longitude!)
+            let circlePosition = CLLocationCoordinate2D(latitude: buildingLat!, longitude: buildingLon!)
+            let stringRadius = checkpoint.checkpoint_radius?.components(separatedBy: ".")
+            guard let nnRadius = stringRadius else {
+                return
+            }
+            let radius = Double(nnRadius[0]) as! CLLocationDistance
+            
+            let circle = GMSCircle(position: circlePosition, radius: radius)
+            self.circles.append(circle)
+            
+            self.addRadiusCircle(circle: circle, isInside: false, isUpdate: false)
+        }
+    }
+    
+    private func checkDistance(_ currentLocation: CLLocation) {
+        for circle in circles {
+            
+            let buildingLat = circle.position.latitude
+            let buildingLon = circle.position.longitude
+            let radius = circle.radius
+            
+            let distance = currentLocation.distance(from: CLLocation(latitude: buildingLat, longitude: buildingLon))
+            
+            if distance <= radius {
+                self.addRadiusCircle(circle: circle, isInside: true, isUpdate: true)
+            } else {
+                self.addRadiusCircle(circle: circle, isInside: false, isUpdate: true)
+            }
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last{
             
@@ -158,9 +241,17 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
             self.updateLocationCoordinates(coordinates: location.coordinate)
             mapview.animate(to: GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 16.0))
             
-            let distance = currentLocation.distance(from: buildingLocation!)
+            if !firstTimeLoad {
+                firstTimeLoad = true
+                initMapView(currentLocation)
+                drawCircle()
+            }
             
-            addRadiusCircle(distance: distance)
+            self.checkDistance(currentLocation)
+            
+            //let distance = currentLocation.distance(from: buildingLocation!)
+            
+            //addRadiusCircle(distance: distance)
             
             //mapview.animate(toLocation: center)
             //let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -179,5 +270,9 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
 extension PresensiMapController {
     @IBAction func backButtonClick(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func buttonPresenceClick(_ sender: Any) {
+        
     }
 }

@@ -58,4 +58,30 @@ class CoreNetworking {
             }
         }
     }
+    
+    func getPreparePresence(completion: @escaping(_ error: String?, _ prepare: PreparePresence?) -> Void) {
+        let url = "http://aps-dev.eoviz.com/ess-mobile-api/index.php/api/getPreparePresence"
+        let headers: [String: String] = [
+            "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
+        ]
+        
+        Alamofire.request(url, method: .post, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success(let responseSuccess):
+                let root = JSON(responseSuccess)
+                
+                print("prepare presence \(root)")
+                
+                if root["status"].int == 200 {
+                    var prepare = PreparePresence()
+                    completion(nil, prepare.convertJSON(root))
+                } else {
+                    completion("Failed to get response", nil)
+                }
+                
+            case .failure(let responseError):
+                completion(responseError.localizedDescription, nil)
+            }
+        }
+    }
 }

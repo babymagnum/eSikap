@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class BerandaController: BaseViewController, UICollectionViewDelegate {
 
@@ -116,7 +117,7 @@ extension BerandaController {
             case 3:
                 print("persetujuan")
             case 4:
-                self.navigationController?.pushViewController(PresensiController(), animated: true)
+                getPreparePresence()
             case 5:
                 print("presensi list")
             case 6:
@@ -124,6 +125,24 @@ extension BerandaController {
             default: break
             }
         }
+    }
+    
+    private func getPreparePresence() {
+        SVProgressHUD.show()
+        
+        networking.getPreparePresence { (error, preparePresence) in
+            SVProgressHUD.dismiss()
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Failed get Prepare Presence", error, "Understand")
+                return
+            }
+            
+            let vc = PresensiController()
+            vc.preparePresence = preparePresence
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
 }
 
