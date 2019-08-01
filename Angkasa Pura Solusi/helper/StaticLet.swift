@@ -18,4 +18,5 @@ class StaticLet {
     let TOKEN = "TOKEN"
     let EMP_NAME = "EMP_NAME"
     let EMP_NUMBER = "EMP_NUMBER"
+    let base_url = "http://aps-dev.eoviz.com/ess-mobile-api/index.php/"
 }

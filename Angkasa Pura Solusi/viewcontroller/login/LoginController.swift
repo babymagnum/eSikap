@@ -55,7 +55,7 @@ extension LoginController {
         
         SVProgressHUD.show()
         
-        networking.login((textFieldEmail.text?.trim())!, (textFieldPassword.text?.trim())!) { (message) in
+        authNetworking.login((textFieldEmail.text?.trim())!, (textFieldPassword.text?.trim())!) { (message) in
             
             SVProgressHUD.dismiss()
             

@@ -1,8 +1,8 @@
 //
-//  CoreNetworking.swift
+//  AuthenticationNetworking.swift
 //  Angkasa Pura Solusi
 //
-//  Created by Arief Zainuri on 27/07/19.
+//  Created by Arief Zainuri on 01/08/19.
 //  Copyright © 2019 Gama Techno. All rights reserved.
 //
 
@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class CoreNetworking {
+class AuthenticationNetworking {
+    
     lazy var preference: Preference = {
         let mPreference = Preference()
         return mPreference
@@ -22,7 +23,7 @@ class CoreNetworking {
     }()
     
     func login(_ email: String, _ password: String, completion: @escaping(_ message: String?) -> Void) {
-        let url = "http://aps-dev.eoviz.com/ess-mobile-api/index.php/api/login"
+        let url = "\(staticLet.base_url)api/login"
         let body: [String : String] = [
             "username": email,
             "password": password,
@@ -59,28 +60,28 @@ class CoreNetworking {
         }
     }
     
-    func getPreparePresence(completion: @escaping(_ error: String?, _ prepare: PreparePresence?) -> Void) {
-        let url = "http://aps-dev.eoviz.com/ess-mobile-api/index.php/api/getPreparePresence"
+    func changePassword(request: (new_password: String, old_password: String), completion: @escaping (_ error: String?) -> Void) {
+        let url = "\(staticLet.base_url)api/changePassword"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
         ]
+        let body: [String: String] = [
+            "new_password": request.new_password,
+            "old_password": request.old_password
+        ]
         
-        Alamofire.request(url, method: .post, headers: headers).responseJSON { (response) in
+        Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
             switch response.result {
             case .success(let responseSuccess):
                 let root = JSON(responseSuccess)
                 
-                print("prepare presence \(root)")
-                
                 if root["status"].int == 200 {
-                    var prepare = PreparePresence()
-                    completion(nil, prepare.convertJSON(root))
+                    completion(nil)
                 } else {
-                    completion("Failed to get response", nil)
+                    completion(root["message"].string)
                 }
-                
-            case .failure(let responseError):
-                completion(responseError.localizedDescription, nil)
+            case .failure(let responseFailure):
+                completion(responseFailure.localizedDescription)
             }
         }
     }

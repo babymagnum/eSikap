@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 
 class BerandaController: BaseViewController, UICollectionViewDelegate {
-
+    
     @IBOutlet weak var imageAccount: UIImageView!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var viewContainerClock: UIView!
@@ -28,7 +28,10 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     
     // properties
     private var listMenu = [Menu]()
-    private var listBerita = [Berita]()
+    private var listBerita = [News]()
+    var seconds = 0
+    var minutes = 0
+    var hours = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +44,9 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         initCollection()
         
-        loadBerita()
+        getDashboard()
+        
+        getLatestNews()
     }
     
     private func initCollection() {
@@ -77,17 +82,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         }
     }
     
-    private func loadBerita() {
-        listBerita.append(Berita(id: "1", title: "Informasi Penggajian Bulan Desember", description: "Lorem ipsum dolor sit amet consectuer bla bla bla", createdAt: function.getCurrentDate(pattern: "dd MMMM yyyy kk:mm:ss"), image: "https://www.incimages.com/uploaded_files/image/970x450/getty_509107562_2000133320009280346_351827.jpg"))
-        
-        listBerita.append(Berita(id: "2", title: "Pembukaan Bandara YIA", description: "Lorem ipsum dolor sit amet bla bla bla", createdAt: function.getCurrentDate(pattern: "dd MMMM yyyy kk:mm:ss"), image: "https://cdn2.tstatic.net/wartakota/foto/bank/images/bandara-yogyakarta.jpg"))
-        beritaCollectionView.reloadData()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.beritaCollectionViewHeight.constant = self.beritaCollectionView.contentSize.height + 40
-        }
-    }
-    
     private func initView() {
         viewContainerCapaian.layer.cornerRadius = 6
         viewContainerClock.layer.cornerRadius = 6
@@ -102,7 +96,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
 }
 
 //click event
@@ -127,10 +121,77 @@ extension BerandaController {
         }
     }
     
+    private func getDashboard() {
+        SVProgressHUD.show()
+        
+        informationNetworking.getDashboard { (error, itemDashboard) in
+            
+            SVProgressHUD.dismiss()
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Error Getting Dashboard", error, "Understand")
+                return
+            }
+            
+            guard let item = itemDashboard else { return }
+            
+            self.setDashboardView(item)
+        }
+    }
+    
+    private func setDashboardView(_ item: ItemDashboard) {
+        DispatchQueue.main.async {
+            self.labelCuti.text = item.total_leave_quota
+            self.labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 120"
+            let currentTime = self.function.getCurrentDate(pattern: "hh:mm:ss")
+            let timeArray = currentTime.components(separatedBy: ":")
+            self.seconds = Int(timeArray[2])!
+            self.minutes = Int(timeArray[1])!
+            self.hours = Int(timeArray[0])!
+            
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+                
+                self.seconds += 1
+                
+                if self.seconds == 60 {
+                    self.minutes += 1
+                    self.seconds = 0
+                }
+                
+                if self.minutes == 60 {
+                    self.hours += 1
+                    self.minutes = 0
+                }
+                
+                self.labelClock.text = "\(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)")"
+            }
+        }
+    }
+    
+    private func getLatestNews() {
+        informationNetworking.getLatestNews { (error, news) in
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Error getting news list", error, "Understand")
+                return
+            }
+            
+            guard let news = news else { return }
+            
+            self.listBerita = news
+            DispatchQueue.main.async {
+                self.beritaCollectionView.reloadData()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                self.beritaCollectionViewHeight.constant = self.beritaCollectionView.contentSize.height + 40
+            })
+        }
+    }
+    
     private func getPreparePresence() {
         SVProgressHUD.show()
         
-        networking.getPreparePresence { (error, preparePresence) in
+        presenceNetworking.getPreparePresence { (error, preparePresence) in
             SVProgressHUD.dismiss()
             
             if let error = error {
@@ -142,7 +203,6 @@ extension BerandaController {
             vc.preparePresence = preparePresence
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
 }
 

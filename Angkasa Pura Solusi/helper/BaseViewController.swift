@@ -26,9 +26,19 @@ class BaseViewController: UIViewController {
         return mFunction
     }()
     
-    lazy var networking: CoreNetworking = {
-        let mNetworking = CoreNetworking()
-        return mNetworking
+    lazy var authNetworking: AuthenticationNetworking = {
+        let mAuthNetworking = AuthenticationNetworking()
+        return mAuthNetworking
+    }()
+    
+    lazy var presenceNetworking: PresenceNetworking = {
+        let mPresenceNetworking = PresenceNetworking()
+        return mPresenceNetworking
+    }()
+    
+    lazy var informationNetworking: InformationNetworking = {
+        let mInformationNetworking = InformationNetworking()
+        return mInformationNetworking
     }()
     
     override func viewDidLoad() {

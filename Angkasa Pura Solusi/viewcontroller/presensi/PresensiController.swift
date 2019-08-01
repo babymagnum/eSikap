@@ -20,7 +20,7 @@ class PresensiController: BaseViewController {
     
     var preparePresence: PreparePresence?
     var seconds = 0
-    var minustes = 0
+    var minutes = 0
     var hours = 0
     
     override func viewDidLoad() {
@@ -54,7 +54,7 @@ class PresensiController: BaseViewController {
             let timeArray = presencePrepare.time?.components(separatedBy: ":")
             
             seconds = Int(timeArray![2])!
-            minustes = Int(timeArray![1])!
+            minutes = Int(timeArray![1])!
             hours = Int(timeArray![0])!
             
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
@@ -62,16 +62,16 @@ class PresensiController: BaseViewController {
                 self.seconds += 1
                 
                 if self.seconds == 60 {
-                    self.minustes += 1
+                    self.minutes += 1
                     self.seconds = 0
                 }
                 
-                if self.minustes == 60 {
+                if self.minutes == 60 {
                     self.hours += 1
-                    self.minustes = 0
+                    self.minutes = 0
                 }
                 
-                self.labelClock.text = "\(self.hours):\(self.minustes):\(self.seconds)"
+                self.labelClock.text = "\(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)")"
             }
         }
     }
@@ -87,7 +87,7 @@ extension PresensiController {
         if let presence = preparePresence {
             if presence.is_presence_in == "0" {
                 let vc = PresensiMapController()
-                preparePresence?.time = "\(hours):\(minustes):\(seconds)"
+                preparePresence?.time = "\(hours):\(minutes):\(seconds)"
                 vc.preparePresence = preparePresence
                 navigationController?.pushViewController(vc, animated: true)
             } else {
@@ -100,7 +100,7 @@ extension PresensiController {
         if let presence = preparePresence {
             if presence.is_presence_in == "1" {
                 let vc = PresensiMapController()
-                preparePresence?.time = "\(hours):\(minustes):\(seconds)"
+                preparePresence?.time = "\(hours):\(minutes):\(seconds)"
                 vc.preparePresence = preparePresence
                 navigationController?.pushViewController(vc, animated: true)
             } else {

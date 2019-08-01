@@ -33,12 +33,12 @@ class BeritaCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.6
     }
 
-    var data: Berita? {
+    var data: News? {
         didSet{
             if let mData = data {
-                image.loadUrl(mData.image!)
+                image.loadUrl(mData.img!)
                 labelTitle.text = mData.title
-                labelCreatedAt.text = mData.createdAt
+                labelCreatedAt.text = mData.date
             }
         }
     }
