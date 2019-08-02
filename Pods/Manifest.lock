@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.8.2)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
+  - EzPopup (1.1)
   - Fabric (1.9.0)
   - Firebase/Analytics (6.4.0):
     - Firebase/Core
@@ -39,6 +40,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 6.2)
     - GoogleUtilities/UserDefaults (~> 6.2)
     - Protobuf (~> 3.1)
+  - FittedSheets (1.4.4)
   - GoogleAppMeasurement (6.0.3):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -85,10 +87,12 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Crashlytics (~> 3.12.0)
+  - EzPopup
   - Fabric (~> 1.9.0)
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Messaging
+  - FittedSheets
   - GoogleMaps
   - GooglePlaces
   - IQKeyboardManagerSwift
@@ -101,6 +105,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Crashlytics
+    - EzPopup
     - Fabric
     - Firebase
     - FirebaseAnalytics
@@ -108,6 +113,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseInstanceID
     - FirebaseMessaging
+    - FittedSheets
     - GoogleAppMeasurement
     - GoogleMaps
     - GooglePlaces
@@ -123,6 +129,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  EzPopup: b959cfb0d70d782a28e770a96c454df0401467c7
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: 9445469655a98e9010737f4bc4720e5bda465873
   FirebaseAnalytics: 69fe25866d2ec87c6f02d72c3c9a82bce9c065a0
@@ -130,6 +137,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 7ea99e200f0024262650be56623fbe6a7bef1707
   FirebaseInstanceID: 9782fcfb89e4d7da76cc28eac4b8543dc7be4a4b
   FirebaseMessaging: 6bb0bdaf64c55fef7a219b7bb1e94e94a0855ced
+  FittedSheets: f56b96c7bd81585d9a183c2a06abe176fa0b55db
   GoogleAppMeasurement: 1e45fa601e6280c180880d57010390f6679cd971
   GoogleMaps: 5046d7edfe381c1a0b20fdaf293915a375c3122b
   GooglePlaces: 41bc2e480816b1234a48f4bec92e1c886f37cfe1
@@ -142,6 +150,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
 
-PODFILE CHECKSUM: 7bba038399cf37d4052a7feb347dbb6544d1e9de
+PODFILE CHECKSUM: 68bbf6287e7bab703cbd01aa6f72975b3ca5c237
 
 COCOAPODS: 1.7.1

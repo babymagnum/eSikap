@@ -24,6 +24,8 @@ class SplashController: BaseViewController {
         changeScreen()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     private func changeScreen() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if !self.preference.getBool(key: self.staticLet.IS_FIRST_TIME_OPEN) {

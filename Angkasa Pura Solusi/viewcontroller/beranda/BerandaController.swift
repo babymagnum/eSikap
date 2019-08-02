@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import EzPopup
 
 class BerandaController: BaseViewController, UICollectionViewDelegate {
     
@@ -42,6 +43,8 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1)
         
+        checkShowFirstDialog()
+        
         initView()
         
         initCollection()
@@ -51,6 +54,17 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         getLatestNews()
     }
     
+    private func checkShowFirstDialog() {
+        DispatchQueue.main.async {
+            if !self.preference.getBool(key: self.staticLet.IS_SHOW_FIRST_DIALOG) {
+                self.preference.saveBool(value: true, key: self.staticLet.IS_SHOW_FIRST_DIALOG)
+                
+                let vc = DialogFirstController()
+                self.showCustomDialog(vc)
+            }
+        }
+    }
+    
     private func initCollection() {
         menuCollectionView.register(UINib(nibName: "MenuUtamaCell", bundle: nil), forCellWithReuseIdentifier: "MenuUtamaCell")
         
@@ -58,7 +72,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         let menuUtamaCell = menuCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuUtamaCell", for: IndexPath(item: 0, section: 0)) as! MenuUtamaCell
         let layoutMenuCollectionView = menuCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutMenuCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width / 3) - 20, height: menuUtamaCell.viewContainer.frame.height)
+        layoutMenuCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 20, height: menuUtamaCell.viewContainer.frame.height)
         
         let beritaCell = beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
         let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -138,6 +152,8 @@ extension BerandaController {
             guard let item = itemDashboard else { return }
             
             self.setDashboardView(item)
+            
+            self.checkShowFirstDialog()
         }
     }
     
@@ -201,7 +217,9 @@ extension BerandaController {
             SVProgressHUD.dismiss()
             
             if let error = error {
-                self.function.showUnderstandDialog(self, "Failed get Prepare Presence", error, "Understand")
+                let vc = DialogPreparePresenceController()
+                vc.stringDescription = error
+                self.showCustomDialog(vc)
                 return
             }
             

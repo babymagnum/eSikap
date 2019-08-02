@@ -92,7 +92,9 @@ extension PresensiController {
                 vc.presenceType = "in"
                 navigationController?.pushViewController(vc, animated: true)
             } else {
-                self.function.showUnderstandDialog(self, "Restricted", "Anda sudah melakukan presensi masuk, sekarang anda harus melakukan presensi keluar", "Understand")
+                let vc = DialogPreparePresenceController()
+                vc.stringDescription = "Anda sudah melakukan presensi masuk, sekarang anda harus melakukan presensi keluar"
+                self.showCustomDialog(vc)
             }
         }
     }
@@ -106,7 +108,9 @@ extension PresensiController {
                 vc.presenceType = "out"
                 navigationController?.pushViewController(vc, animated: true)
             } else {
-                self.function.showUnderstandDialog(self, "Restricted", "Anda belum melakukan presensi masuk, lakukan presensi masuk terlebih dahulu", "Understand")
+                let vc = DialogPreparePresenceController()
+                vc.stringDescription = "Anda belum melakukan presensi masuk, lakukan presensi masuk terlebih dahulu"
+                self.showCustomDialog(vc)
             }
         }
     }

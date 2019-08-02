@@ -16,4 +16,6 @@ target 'Angkasa Pura Solusi' do
   pod 'Firebase/Messaging'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'EzPopup'
+  pod 'FittedSheets'
 end

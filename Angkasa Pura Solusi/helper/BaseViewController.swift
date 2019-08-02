@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import EzPopup
 
 class BaseViewController: UIViewController {
     
@@ -43,6 +44,11 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         //do something
+    }
+    
+    func showCustomDialog(_ vc: UIViewController) {
+        let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width - 21)
+        self.present(popupVc, animated: true)
     }
 
 }

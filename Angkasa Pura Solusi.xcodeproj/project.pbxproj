@@ -15,6 +15,14 @@
 		ED3038CE22ED6CDB005BCF87 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038CD22ED6CDB005BCF87 /* Menu.swift */; };
 		ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038CF22ED99CE005BCF87 /* Berita.swift */; };
 		ED52151922F452A1001C6A50 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52151822F452A1001C6A50 /* Circle.swift */; };
+		ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52151D22F46F11001C6A50 /* DialogFirstController.swift */; };
+		ED52152022F46F11001C6A50 /* DialogFirstController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52151E22F46F11001C6A50 /* DialogFirstController.xib */; };
+		ED52152422F47C0D001C6A50 /* DialogPreparePresenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52152222F47C0D001C6A50 /* DialogPreparePresenceController.swift */; };
+		ED52152522F47C0D001C6A50 /* DialogPreparePresenceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52152322F47C0D001C6A50 /* DialogPreparePresenceController.xib */; };
+		ED52152922F4846C001C6A50 /* BottomSheetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52152722F4846C001C6A50 /* BottomSheetMenuController.swift */; };
+		ED52152A22F4846C001C6A50 /* BottomSheetMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52152822F4846C001C6A50 /* BottomSheetMenuController.xib */; };
+		ED52152E22F4922A001C6A50 /* MenuEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52152C22F4922A001C6A50 /* MenuEditCell.swift */; };
+		ED52152F22F4922A001C6A50 /* MenuEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52152D22F4922A001C6A50 /* MenuEditCell.xib */; };
 		ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0322F1DB2100CD14FC /* PreparePresence.swift */; };
 		ED602F0622F1DBAB00CD14FC /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */; };
 		ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E506922ED417000EED8E7 /* BerandaController.swift */; };
@@ -70,6 +78,14 @@
 		ED3038CD22ED6CDB005BCF87 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		ED3038CF22ED99CE005BCF87 /* Berita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Berita.swift; sourceTree = "<group>"; };
 		ED52151822F452A1001C6A50 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		ED52151D22F46F11001C6A50 /* DialogFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogFirstController.swift; sourceTree = "<group>"; };
+		ED52151E22F46F11001C6A50 /* DialogFirstController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogFirstController.xib; sourceTree = "<group>"; };
+		ED52152222F47C0D001C6A50 /* DialogPreparePresenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPreparePresenceController.swift; sourceTree = "<group>"; };
+		ED52152322F47C0D001C6A50 /* DialogPreparePresenceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogPreparePresenceController.xib; sourceTree = "<group>"; };
+		ED52152722F4846C001C6A50 /* BottomSheetMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetMenuController.swift; sourceTree = "<group>"; };
+		ED52152822F4846C001C6A50 /* BottomSheetMenuController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetMenuController.xib; sourceTree = "<group>"; };
+		ED52152C22F4922A001C6A50 /* MenuEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEditCell.swift; sourceTree = "<group>"; };
+		ED52152D22F4922A001C6A50 /* MenuEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuEditCell.xib; sourceTree = "<group>"; };
 		ED602F0322F1DB2100CD14FC /* PreparePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparePresence.swift; sourceTree = "<group>"; };
 		ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		ED6E506922ED417000EED8E7 /* BerandaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerandaController.swift; sourceTree = "<group>"; };
@@ -167,18 +183,47 @@
 			path = berita_cell;
 			sourceTree = "<group>";
 		};
-		ED52151B22F46E20001C6A50 /* New Group */ = {
+		ED52151B22F46E20001C6A50 /* dialog_inform_first */ = {
 			isa = PBXGroup;
 			children = (
+				ED52151D22F46F11001C6A50 /* DialogFirstController.swift */,
+				ED52151E22F46F11001C6A50 /* DialogFirstController.xib */,
 			);
-			path = "New Group";
+			path = dialog_inform_first;
 			sourceTree = "<group>";
 		};
-		ED52151C22F46E63001C6A50 /* New Group */ = {
+		ED52151C22F46E63001C6A50 /* presence_cell */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "New Group";
+			path = presence_cell;
+			sourceTree = "<group>";
+		};
+		ED52152122F47BE2001C6A50 /* dialog_prepare_presence */ = {
+			isa = PBXGroup;
+			children = (
+				ED52152222F47C0D001C6A50 /* DialogPreparePresenceController.swift */,
+				ED52152322F47C0D001C6A50 /* DialogPreparePresenceController.xib */,
+			);
+			path = dialog_prepare_presence;
+			sourceTree = "<group>";
+		};
+		ED52152622F4825B001C6A50 /* bottom_sheet_menu */ = {
+			isa = PBXGroup;
+			children = (
+				ED52152722F4846C001C6A50 /* BottomSheetMenuController.swift */,
+				ED52152822F4846C001C6A50 /* BottomSheetMenuController.xib */,
+			);
+			path = bottom_sheet_menu;
+			sourceTree = "<group>";
+		};
+		ED52152B22F491F8001C6A50 /* menu_edit_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED52152C22F4922A001C6A50 /* MenuEditCell.swift */,
+				ED52152D22F4922A001C6A50 /* MenuEditCell.xib */,
+			);
+			path = menu_edit_cell;
 			sourceTree = "<group>";
 		};
 		ED6E506522ED412A00EED8E7 /* beranda */ = {
@@ -264,7 +309,9 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				ED52151B22F46E20001C6A50 /* New Group */,
+				ED52152622F4825B001C6A50 /* bottom_sheet_menu */,
+				ED52152122F47BE2001C6A50 /* dialog_prepare_presence */,
+				ED52151B22F46E20001C6A50 /* dialog_inform_first */,
 				EDCF3BF822F09BE10064AE57 /* presensi_map */,
 				EDCF3BF322F08B6A0064AE57 /* presensi */,
 				ED6E506822ED414400EED8E7 /* profil */,
@@ -358,7 +405,8 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				ED52151C22F46E63001C6A50 /* New Group */,
+				ED52152B22F491F8001C6A50 /* menu_edit_cell */,
+				ED52151C22F46E63001C6A50 /* presence_cell */,
 				ED3038C422ED635A005BCF87 /* berita_cell */,
 				ED3038C322ED6352005BCF87 /* menu_utama_cell */,
 				ED95909D22EBF98C00D696E5 /* onboarding_cell */,
@@ -466,8 +514,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED3038CC22ED639E005BCF87 /* BeritaCell.xib in Resources */,
+				ED52152F22F4922A001C6A50 /* MenuEditCell.xib in Resources */,
 				ED95908B22EBE8DE00D696E5 /* OnboardingController.xib in Resources */,
 				ED95908722EBE8A000D696E5 /* LoginController.xib in Resources */,
+				ED52152522F47C0D001C6A50 /* DialogPreparePresenceController.xib in Resources */,
 				ED6E507422ED419500EED8E7 /* NotifikasiController.xib in Resources */,
 				EDCF3BF722F08B8F0064AE57 /* PresensiController.xib in Resources */,
 				ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */,
@@ -479,7 +529,9 @@
 				ED6E507822ED41A200EED8E7 /* ProfilController.xib in Resources */,
 				ED95909522EBEE9300D696E5 /* SplashController.xib in Resources */,
 				ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */,
+				ED52152022F46F11001C6A50 /* DialogFirstController.xib in Resources */,
 				ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */,
+				ED52152A22F4846C001C6A50 /* BottomSheetMenuController.xib in Resources */,
 				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib in Resources */,
 			);
@@ -559,8 +611,11 @@
 				ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */,
 				ED95908F22EBE90A00D696E5 /* HomeController.swift in Sources */,
 				ED858B0422F31C8400016EAD /* Dashboard.swift in Sources */,
+				ED52152422F47C0D001C6A50 /* DialogPreparePresenceController.swift in Sources */,
+				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
 				ED602F0622F1DBAB00CD14FC /* Checkpoint.swift in Sources */,
+				ED52152E22F4922A001C6A50 /* MenuEditCell.swift in Sources */,
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
@@ -574,6 +629,7 @@
 				ED3038CE22ED6CDB005BCF87 /* Menu.swift in Sources */,
 				ED6E507722ED41A200EED8E7 /* ProfilController.swift in Sources */,
 				ED95908022EBE77B00D696E5 /* StaticLet.swift in Sources */,
+				ED52152922F4846C001C6A50 /* BottomSheetMenuController.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */,
 				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
 				ED52151922F452A1001C6A50 /* Circle.swift in Sources */,

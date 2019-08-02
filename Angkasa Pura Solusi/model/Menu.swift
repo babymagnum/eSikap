@@ -13,4 +13,5 @@ struct Menu {
     var id: Int?
     var image: UIImage?
     var title: String?
+    var action: UIImage?
 }

@@ -68,7 +68,7 @@ Cuti</string>
                 <outlet property="labelTitle" destination="SqC-18-YXV" id="Ceq-BJ-9rl"/>
                 <outlet property="viewContainer" destination="4Bi-eQ-bZ4" id="uAZ-qC-UVY"/>
             </connections>
-            <point key="canvasLocation" x="210.1449275362319" y="169.08482142857142"/>
+            <point key="canvasLocation" x="210.1449275362319" y="168.75"/>
         </collectionViewCell>
     </objects>
     <resources>
