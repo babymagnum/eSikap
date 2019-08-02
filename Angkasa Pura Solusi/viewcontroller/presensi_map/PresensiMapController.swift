@@ -16,10 +16,13 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     var marker: GMSMarker?
     var firstTimeLoad = false
     var preparePresence: PreparePresence!
-    var circles = [GMSCircle]()
+    var circles = [Circle]()
     var seconds = 0
     var minutes = 0
     var hours = 0
+    var pickedCheckpointId = ""
+    var currentLocation: CLLocation!
+    var presenceType: String!
     
     @IBOutlet weak var viewPressence: UIView!
     @IBOutlet weak var viewJamMasukPulang: UIView!
@@ -81,7 +84,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
             }
             
             UIView.performWithoutAnimation {
-                self.labelClock.setTitle("\(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)")", for: .normal)
+                self.labelClock.setTitle("\(self.preparePresence.day ?? ""), \(self.preparePresence.date ?? "") | \(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)")", for: .normal)
                 self.labelClock.layoutIfNeeded()
             }
         }
@@ -118,23 +121,23 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
         circle.strokeWidth = 1
     }
     
-    func addRadiusCircle(circle: GMSCircle, isInside: Bool, isUpdate: Bool){
-        //let circle = GMSCircle(position: position, radius: 100)
+    func addRadiusCircle(circle: Circle, isInside: Bool, isUpdate: Bool){
         
         if isInside {
-            circleInsideRadius(circle: circle)
+            self.pickedCheckpointId = circle.checkpoint_id!
+            circleInsideRadius(circle: circle.circle!)
             self.viewJamMasukPulang.isHidden = true
             self.viewHurryUp.isHidden = true
             self.viewPressence.isHidden = false
         } else {
-            circleOutsideRadius(circle: circle)
+            circleOutsideRadius(circle: circle.circle!)
             self.viewJamMasukPulang.isHidden = false
             self.viewHurryUp.isHidden = false
             self.viewPressence.isHidden = true
         }
         
         if !isUpdate {
-            circle.map = self.mapview
+            circle.circle?.map = self.mapview
         }
         
         //        mapview.delegate = self
@@ -210,7 +213,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
             }
             let radius = Double(nnRadius[0]) as! CLLocationDistance
             
-            let circle = GMSCircle(position: circlePosition, radius: radius)
+            let circle = Circle(checkpoint_id: checkpoint.checkpoint_id, circle: GMSCircle(position: circlePosition, radius: radius))
             self.circles.append(circle)
             
             self.addRadiusCircle(circle: circle, isInside: false, isUpdate: false)
@@ -220,13 +223,13 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     private func checkDistance(_ currentLocation: CLLocation) {
         for circle in circles {
             
-            let buildingLat = circle.position.latitude
-            let buildingLon = circle.position.longitude
-            let radius = circle.radius
+            let buildingLat = circle.circle?.position.latitude
+            let buildingLon = circle.circle?.position.longitude
+            let radius = circle.circle?.radius
             
-            let distance = currentLocation.distance(from: CLLocation(latitude: buildingLat, longitude: buildingLon))
+            let distance = currentLocation.distance(from: CLLocation(latitude: buildingLat!, longitude: buildingLon!))
             
-            if distance <= radius {
+            if distance <= radius! {
                 self.addRadiusCircle(circle: circle, isInside: true, isUpdate: true)
             } else {
                 self.addRadiusCircle(circle: circle, isInside: false, isUpdate: true)
@@ -237,7 +240,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last{
             
-            let currentLocation = CLLocation(latitude: location.coordinate.latitude as CLLocationDegrees, longitude: location.coordinate.longitude as CLLocationDegrees)
+            currentLocation = CLLocation(latitude: location.coordinate.latitude as CLLocationDegrees, longitude: location.coordinate.longitude as CLLocationDegrees)
             self.updateLocationCoordinates(coordinates: location.coordinate)
             mapview.animate(to: GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 16.0))
             
@@ -264,6 +267,28 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
             //mapview.addAnnotation(myAnnotation)
         }
     }
+    
+    private func addPresence() {
+        SVProgressHUD.show()
+        
+        buttonPresence.isEnabled = false
+        
+        presenceNetworking.addPresence(request: (checkpoint_id: pickedCheckpointId, presence_type: presenceType, latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))) { (error) in
+            
+            SVProgressHUD.dismiss()
+            self.buttonPresence.isEnabled = true
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Error Presence", error, "Retry", "Cancel", completionHandler: {
+                    self.addPresence()
+                })
+                return
+            }
+            
+            // TODO push to presence list controller
+            
+        }
+    }
 }
 
 //click event
@@ -273,6 +298,6 @@ extension PresensiMapController {
     }
     
     @IBAction func buttonPresenceClick(_ sender: Any) {
-        
+        addPresence()
     }
 }

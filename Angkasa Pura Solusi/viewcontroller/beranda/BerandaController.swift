@@ -25,6 +25,8 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var beritaCollectionView: UICollectionView!
     @IBOutlet weak var beritaCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelPresenceStatus: UILabel!
+    @IBOutlet weak var iconPresenceStatus: UIImageView!
     
     // properties
     private var listMenu = [Menu]()
@@ -145,6 +147,10 @@ extension BerandaController {
             self.labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 120"
             let currentTime = self.function.getCurrentDate(pattern: "hh:mm:ss")
             let timeArray = currentTime.components(separatedBy: ":")
+            if item.presence_today?.icon == "sad" {
+                self.iconPresenceStatus.image = UIImage(named: "sad")?.tinted(with: UIColor.white)
+            }
+            self.labelPresenceStatus.text = item.presence_today?.status
             self.seconds = Int(timeArray[2])!
             self.minutes = Int(timeArray[1])!
             self.hours = Int(timeArray[0])!

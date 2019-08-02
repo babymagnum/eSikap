@@ -64,7 +64,9 @@ class PresenceNetworking {
             case .success(let responseSuccess):
                 let root = JSON(responseSuccess)
                 
-                if root["status"].int == 200 {
+                print("presence \(root)")
+                
+                if root["status"].int == 201 {
                     completion(nil)
                 } else {
                     completion(root["message"].string)

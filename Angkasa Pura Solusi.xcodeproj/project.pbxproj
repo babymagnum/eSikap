@@ -14,6 +14,7 @@
 		ED3038CC22ED639E005BCF87 /* BeritaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3038CA22ED639E005BCF87 /* BeritaCell.xib */; };
 		ED3038CE22ED6CDB005BCF87 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038CD22ED6CDB005BCF87 /* Menu.swift */; };
 		ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038CF22ED99CE005BCF87 /* Berita.swift */; };
+		ED52151922F452A1001C6A50 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52151822F452A1001C6A50 /* Circle.swift */; };
 		ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0322F1DB2100CD14FC /* PreparePresence.swift */; };
 		ED602F0622F1DBAB00CD14FC /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */; };
 		ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E506922ED417000EED8E7 /* BerandaController.swift */; };
@@ -68,6 +69,7 @@
 		ED3038CA22ED639E005BCF87 /* BeritaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeritaCell.xib; sourceTree = "<group>"; };
 		ED3038CD22ED6CDB005BCF87 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		ED3038CF22ED99CE005BCF87 /* Berita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Berita.swift; sourceTree = "<group>"; };
+		ED52151822F452A1001C6A50 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		ED602F0322F1DB2100CD14FC /* PreparePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparePresence.swift; sourceTree = "<group>"; };
 		ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		ED6E506922ED417000EED8E7 /* BerandaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerandaController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,20 @@
 			path = berita_cell;
 			sourceTree = "<group>";
 		};
+		ED52151B22F46E20001C6A50 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		ED52151C22F46E63001C6A50 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		ED6E506522ED412A00EED8E7 /* beranda */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +264,7 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED52151B22F46E20001C6A50 /* New Group */,
 				EDCF3BF822F09BE10064AE57 /* presensi_map */,
 				EDCF3BF322F08B6A0064AE57 /* presensi */,
 				ED6E506822ED414400EED8E7 /* profil */,
@@ -277,6 +294,7 @@
 				ED858B0322F31C8400016EAD /* Dashboard.swift */,
 				ED858B0522F323F000016EAD /* LatestNews.swift */,
 				ED858B0722F334D700016EAD /* AllNews.swift */,
+				ED52151822F452A1001C6A50 /* Circle.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -340,6 +358,7 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED52151C22F46E63001C6A50 /* New Group */,
 				ED3038C422ED635A005BCF87 /* berita_cell */,
 				ED3038C322ED6352005BCF87 /* menu_utama_cell */,
 				ED95909D22EBF98C00D696E5 /* onboarding_cell */,
@@ -557,6 +576,7 @@
 				ED95908022EBE77B00D696E5 /* StaticLet.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */,
 				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
+				ED52151922F452A1001C6A50 /* Circle.swift in Sources */,
 				ED95908622EBE8A000D696E5 /* LoginController.swift in Sources */,
 				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
 				ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */,
