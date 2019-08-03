@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import EzPopup
+import FittedSheets
 
 class BerandaController: BaseViewController, UICollectionViewDelegate {
     
@@ -84,12 +85,12 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         beritaCollectionView.dataSource = self
         
         // populate menu utama item
-        listMenu.append(Menu(id: 1, image: UIImage(named: "briefcase"), title: "Pengajuan Cuti"))
-        listMenu.append(Menu(id: 2, image: UIImage(named: "employee"), title: "Pengajuan Lembur"))
-        listMenu.append(Menu(id: 3, image: UIImage(named: "test"), title: "Persetujuan"))
-        listMenu.append(Menu(id: 4, image: UIImage(named: "circularClock"), title: "Presensi"))
-        listMenu.append(Menu(id: 5, image: UIImage(named: "form"), title: "Presensi List"))
-        listMenu.append(Menu(id: 6, image: UIImage(named: "menuLainya"), title: "Lihat Lainya"))
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_1), action: nil))
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_2), action: nil))
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_3), action: nil))
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_4), action: nil))
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_5), action: nil))
+        listMenu.append(Menu(id: 99, image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
         
         menuCollectionView.reloadData()
         
@@ -130,11 +131,18 @@ extension BerandaController {
                 getPreparePresence()
             case 5:
                 print("presensi list")
-            case 6:
-                print("lihat lainya")
+            case 99:
+                print("menu lainya clicked")
+                openBottomSheet()
             default: break
             }
         }
+    }
+    
+    private func openBottomSheet() {
+        let sheetController = SheetViewController(controller: BottomSheetMenuController())
+        
+        self.present(sheetController, animated: false, completion: nil)
     }
     
     private func getDashboard() {

@@ -26,4 +26,12 @@ class Preference {
         return UserDefaults.standard.string(forKey: key)!
     }
     
+    func saveInt(value: Int, key: String) {
+        UserDefaults.standard.set(value, forKey: key)
+    }
+    
+    func getInt(key: String) -> Int {
+        return UserDefaults.standard.integer(forKey: key)
+    }
+    
 }

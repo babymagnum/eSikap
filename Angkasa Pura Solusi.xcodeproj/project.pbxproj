@@ -21,8 +21,10 @@
 		ED52152522F47C0D001C6A50 /* DialogPreparePresenceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52152322F47C0D001C6A50 /* DialogPreparePresenceController.xib */; };
 		ED52152922F4846C001C6A50 /* BottomSheetMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52152722F4846C001C6A50 /* BottomSheetMenuController.swift */; };
 		ED52152A22F4846C001C6A50 /* BottomSheetMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52152822F4846C001C6A50 /* BottomSheetMenuController.xib */; };
-		ED52152E22F4922A001C6A50 /* MenuEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52152C22F4922A001C6A50 /* MenuEditCell.swift */; };
-		ED52152F22F4922A001C6A50 /* MenuEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52152D22F4922A001C6A50 /* MenuEditCell.xib */; };
+		ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52153122F51DA7001C6A50 /* MenuLainyaCell.swift */; };
+		ED52153422F51DA7001C6A50 /* MenuLainyaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52153222F51DA7001C6A50 /* MenuLainyaCell.xib */; };
+		ED52153722F5201C001C6A50 /* MenuFavoritCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52153522F5201C001C6A50 /* MenuFavoritCell.swift */; };
+		ED52153822F5201C001C6A50 /* MenuFavoritCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */; };
 		ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0322F1DB2100CD14FC /* PreparePresence.swift */; };
 		ED602F0622F1DBAB00CD14FC /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */; };
 		ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E506922ED417000EED8E7 /* BerandaController.swift */; };
@@ -84,8 +86,10 @@
 		ED52152322F47C0D001C6A50 /* DialogPreparePresenceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogPreparePresenceController.xib; sourceTree = "<group>"; };
 		ED52152722F4846C001C6A50 /* BottomSheetMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetMenuController.swift; sourceTree = "<group>"; };
 		ED52152822F4846C001C6A50 /* BottomSheetMenuController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetMenuController.xib; sourceTree = "<group>"; };
-		ED52152C22F4922A001C6A50 /* MenuEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEditCell.swift; sourceTree = "<group>"; };
-		ED52152D22F4922A001C6A50 /* MenuEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuEditCell.xib; sourceTree = "<group>"; };
+		ED52153122F51DA7001C6A50 /* MenuLainyaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLainyaCell.swift; sourceTree = "<group>"; };
+		ED52153222F51DA7001C6A50 /* MenuLainyaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuLainyaCell.xib; sourceTree = "<group>"; };
+		ED52153522F5201C001C6A50 /* MenuFavoritCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFavoritCell.swift; sourceTree = "<group>"; };
+		ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuFavoritCell.xib; sourceTree = "<group>"; };
 		ED602F0322F1DB2100CD14FC /* PreparePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparePresence.swift; sourceTree = "<group>"; };
 		ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		ED6E506922ED417000EED8E7 /* BerandaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerandaController.swift; sourceTree = "<group>"; };
@@ -217,13 +221,22 @@
 			path = bottom_sheet_menu;
 			sourceTree = "<group>";
 		};
-		ED52152B22F491F8001C6A50 /* menu_edit_cell */ = {
+		ED52152B22F491F8001C6A50 /* menu_favorit_cell */ = {
 			isa = PBXGroup;
 			children = (
-				ED52152C22F4922A001C6A50 /* MenuEditCell.swift */,
-				ED52152D22F4922A001C6A50 /* MenuEditCell.xib */,
+				ED52153522F5201C001C6A50 /* MenuFavoritCell.swift */,
+				ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */,
 			);
-			path = menu_edit_cell;
+			path = menu_favorit_cell;
+			sourceTree = "<group>";
+		};
+		ED52153022F51D91001C6A50 /* menu_lainya_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED52153122F51DA7001C6A50 /* MenuLainyaCell.swift */,
+				ED52153222F51DA7001C6A50 /* MenuLainyaCell.xib */,
+			);
+			path = menu_lainya_cell;
 			sourceTree = "<group>";
 		};
 		ED6E506522ED412A00EED8E7 /* beranda */ = {
@@ -405,7 +418,8 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				ED52152B22F491F8001C6A50 /* menu_edit_cell */,
+				ED52153022F51D91001C6A50 /* menu_lainya_cell */,
+				ED52152B22F491F8001C6A50 /* menu_favorit_cell */,
 				ED52151C22F46E63001C6A50 /* presence_cell */,
 				ED3038C422ED635A005BCF87 /* berita_cell */,
 				ED3038C322ED6352005BCF87 /* menu_utama_cell */,
@@ -514,11 +528,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED3038CC22ED639E005BCF87 /* BeritaCell.xib in Resources */,
-				ED52152F22F4922A001C6A50 /* MenuEditCell.xib in Resources */,
 				ED95908B22EBE8DE00D696E5 /* OnboardingController.xib in Resources */,
 				ED95908722EBE8A000D696E5 /* LoginController.xib in Resources */,
 				ED52152522F47C0D001C6A50 /* DialogPreparePresenceController.xib in Resources */,
 				ED6E507422ED419500EED8E7 /* NotifikasiController.xib in Resources */,
+				ED52153422F51DA7001C6A50 /* MenuLainyaCell.xib in Resources */,
 				EDCF3BF722F08B8F0064AE57 /* PresensiController.xib in Resources */,
 				ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */,
 				ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */,
@@ -533,6 +547,7 @@
 				ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */,
 				ED52152A22F4846C001C6A50 /* BottomSheetMenuController.xib in Resources */,
 				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
+				ED52153822F5201C001C6A50 /* MenuFavoritCell.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,6 +621,7 @@
 				ED95909422EBEE9300D696E5 /* SplashController.swift in Sources */,
 				ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */,
 				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
+				ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */,
 				ED95907E22EBE3C500D696E5 /* Preference.swift in Sources */,
 				ED858B0222F313FD00016EAD /* InformationNetworking.swift in Sources */,
 				ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */,
@@ -615,7 +631,6 @@
 				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
 				ED602F0622F1DBAB00CD14FC /* Checkpoint.swift in Sources */,
-				ED52152E22F4922A001C6A50 /* MenuEditCell.swift in Sources */,
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
@@ -636,6 +651,7 @@
 				ED95908622EBE8A000D696E5 /* LoginController.swift in Sources */,
 				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
 				ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */,
+				ED52153722F5201C001C6A50 /* MenuFavoritCell.swift in Sources */,
 				EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */,
 				ED858B0822F334D700016EAD /* AllNews.swift in Sources */,
 				ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */,

@@ -13,9 +13,14 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var buttonUbah: UIButton!
     @IBOutlet weak var menuFavoritCollectionView: UICollectionView!
     @IBOutlet weak var menuLainyaCollectionView: UICollectionView!
+    @IBOutlet weak var menuFavoritCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var menuLainyaCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var favoritCollectionRightMargin: NSLayoutConstraint!
+    @IBOutlet weak var lainyaCollectionRightMargin: NSLayoutConstraint!
     
     var listMenuFavorit = [Menu]()
     var listMenuLainya = [Menu]()
+    var isEdit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +33,29 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func loadMenu() {
-        // TODO load menu
+        // append list menu favorit
+        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_1), action: nil))
+        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_2), action: nil))
+        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_3), action: nil))
+        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_4), action: nil))
+        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_5), action: nil))
+        listMenuFavorit.append(Menu(id: 99, image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
+        
+        // append list menu lainya
+        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_6), action: nil))
+        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_7), action: nil))
+        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_8), action: nil))
+        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_9), action: nil))
+        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_10), action: nil))
+        
+        menuFavoritCollectionView.reloadData()
+        menuLainyaCollectionView.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.menuFavoritCollectionViewHeight.constant = self.menuFavoritCollectionView.contentSize.height
+            
+            self.menuLainyaCollectionViewHeight.constant = self.menuLainyaCollectionView.contentSize.height
+        }
     }
     
     private func initView() {
@@ -36,15 +63,16 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initCollectionView() {
-        menuFavoritCollectionView.register(UINib(nibName: "MenuEditCell", bundle: nil), forCellWithReuseIdentifier: "MenuEditCell")
-        menuLainyaCollectionView.register(UINib(nibName: "MenuEditCell", bundle: nil), forCellWithReuseIdentifier: "MenuEditCell")
+        menuFavoritCollectionView.register(UINib(nibName: "MenuFavoritCell", bundle: nil), forCellWithReuseIdentifier: "MenuFavoritCell")
+        menuLainyaCollectionView.register(UINib(nibName: "MenuLainyaCell", bundle: nil), forCellWithReuseIdentifier: "MenuLainyaCell")
         
-        let menuFavoritCell = menuFavoritCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuEditCell", for: IndexPath(item: 0, section: 0)) as! MenuEditCell
+        let menuFavoritCell = menuFavoritCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuFavoritCell", for: IndexPath(item: 0, section: 0)) as! MenuFavoritCell
         let layoutMenuFavoritCollectionView = menuFavoritCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layoutMenuFavoritCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 15, height: menuFavoritCell.viewRoot.frame.height)
         
+        let menuLainyaCell = menuLainyaCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuLainyaCell", for: IndexPath(item: 0, section: 0)) as! MenuLainyaCell
         let layoutMenuLainyaCollectionView = menuLainyaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutMenuLainyaCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 15, height: menuFavoritCell.viewRoot.frame.height)
+        layoutMenuLainyaCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 15, height: menuLainyaCell.viewRoot.frame.height)
         
         menuFavoritCollectionView.delegate = self
         menuFavoritCollectionView.dataSource = self
@@ -53,6 +81,89 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         menuLainyaCollectionView.dataSource = self
     }
 
+    private func saveMenu() {
+        
+    }
+    
+    private func updateMarginCollectionView(_ constraintView: NSLayoutConstraint, _ constant: CGFloat) {
+        UIView.animate(withDuration: 0.2) {
+            constraintView.constant = constant
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func showActionInListMenuFavorit() {
+        updateMarginCollectionView(favoritCollectionRightMargin, 19)
+        
+        for (index, _) in listMenuFavorit.enumerated() {
+            if index == listMenuFavorit.count - 1 { break }
+            
+            listMenuFavorit[index].action = UIImage(named: "minus-circular")?.tinted(with: UIColor.red.withAlphaComponent(0.6))
+            menuFavoritCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+        }
+    }
+    
+    private func showActionInListMenuLainya() {
+        updateMarginCollectionView(lainyaCollectionRightMargin, 19)
+        
+        for (index, _) in listMenuLainya.enumerated() {
+            listMenuLainya[index].action = UIImage(named: "plus-circular")?.tinted(with: UIColor.green.withAlphaComponent(0.6))
+            menuLainyaCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+        }
+    }
+    
+    private func hideActionInListMenuFavorit() {
+        updateMarginCollectionView(favoritCollectionRightMargin, 9)
+        
+        for (index, _) in listMenuFavorit.enumerated() {
+            listMenuFavorit[index].action = nil
+            menuFavoritCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+        }
+    }
+    
+    private func hideActionInListMenuLainya() {
+        updateMarginCollectionView(lainyaCollectionRightMargin, 9)
+        
+        for (index, _) in listMenuLainya.enumerated() {
+            listMenuLainya[index].action = nil
+            menuLainyaCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+        }
+    }
+}
+
+extension BottomSheetMenuController {
+    @IBAction func buttonUbahClicked(_ sender: Any) {
+        if isEdit {
+            isEdit = !isEdit
+            buttonUbah.setTitle("Ubah", for: .normal)
+            saveMenu()
+            updateMarginCollectionView(favoritCollectionRightMargin, 9)
+            updateMarginCollectionView(lainyaCollectionRightMargin, 9)
+            hideActionInListMenuLainya()
+            hideActionInListMenuFavorit()
+        } else {
+            isEdit = !isEdit
+            buttonUbah.setTitle("Simpan", for: .normal)
+            showActionInListMenuFavorit()
+        }
+    }
+    
+    @objc func actionMenuFavoritClick(sender: UITapGestureRecognizer) {
+        if let indexpath = menuFavoritCollectionView.indexPathForItem(at: sender.location(in: menuFavoritCollectionView)) {
+            listMenuFavorit.remove(at: indexpath.item)
+            menuFavoritCollectionView.deleteItems(at: [indexpath])
+            self.showActionInListMenuLainya()
+        }
+    }
+    
+    @objc func actionMenuLainyaClick(sender: UITapGestureRecognizer) {
+        if let indexpath = menuLainyaCollectionView.indexPathForItem(at: sender.location(in: menuLainyaCollectionView)) {
+            listMenuLainya.remove(at: indexpath.item)
+            menuLainyaCollectionView.deleteItems(at: [indexpath])
+            
+            if listMenuFavorit.count == 6 { hideActionInListMenuFavorit() }
+        }
+    }
 }
 
 extension BottomSheetMenuController: UICollectionViewDataSource {
@@ -66,12 +177,20 @@ extension BottomSheetMenuController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == menuFavoritCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuUtamaCell", for: indexPath) as! MenuUtamaCell
-            cell.data = listMenuFavorit[indexPath.item]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuFavoritCell", for: indexPath) as! MenuFavoritCell
+            let item = listMenuFavorit[indexPath.item]
+            
+            cell.data = item
+            cell.viewRoot.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actionMenuFavoritClick(sender:))))
+            
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuUtamaCell", for: indexPath) as! MenuUtamaCell
-            cell.data = listMenuLainya[indexPath.item]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuLainyaCell", for: indexPath) as! MenuLainyaCell
+            let item = listMenuLainya[indexPath.item]
+            
+            cell.data = item
+            cell.viewRoot.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actionMenuLainyaClick(sender:))))
+            
             return cell
         }
     }

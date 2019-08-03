@@ -23,6 +23,21 @@ class LoginController: BaseViewController {
         super.viewDidLoad()
 
         initView()
+        
+        saveMenuForBerandaController()
+    }
+    
+    private func saveMenuForBerandaController() {
+        preference.saveInt(value: 1, key: staticLet.MENU_1)
+        preference.saveInt(value: 2, key: staticLet.MENU_2)
+        preference.saveInt(value: 3, key: staticLet.MENU_3)
+        preference.saveInt(value: 4, key: staticLet.MENU_4)
+        preference.saveInt(value: 5, key: staticLet.MENU_5)
+        preference.saveInt(value: 6, key: staticLet.MENU_6)
+        preference.saveInt(value: 7, key: staticLet.MENU_7)
+        preference.saveInt(value: 8, key: staticLet.MENU_8)
+        preference.saveInt(value: 9, key: staticLet.MENU_9)
+        preference.saveInt(value: 10, key: staticLet.MENU_10)
     }
 
     private func initView() {
