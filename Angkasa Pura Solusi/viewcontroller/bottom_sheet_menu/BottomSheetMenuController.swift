@@ -17,6 +17,7 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var menuLainyaCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var favoritCollectionRightMargin: NSLayoutConstraint!
     @IBOutlet weak var lainyaCollectionRightMargin: NSLayoutConstraint!
+    @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
     
     var listMenuFavorit = [Menu]()
     var listMenuLainya = [Menu]()
@@ -51,10 +52,16 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         menuFavoritCollectionView.reloadData()
         menuLainyaCollectionView.reloadData()
         
+        self.updateHeight()
+    }
+    
+    private func updateHeight() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.menuFavoritCollectionViewHeight.constant = self.menuFavoritCollectionView.contentSize.height
             
             self.menuLainyaCollectionViewHeight.constant = self.menuLainyaCollectionView.contentSize.height
+            
+            self.viewRootHeight.constant = self.menuFavoritCollectionViewHeight.constant + self.menuLainyaCollectionViewHeight.constant + 136
         }
     }
     
@@ -82,7 +89,13 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
 
     private func saveMenu() {
+        for (index, menu) in listMenuFavorit.enumerated() {
+            preference.saveInt(value: menu.id!, key: "MENU_\(index + 1)")
+        }
         
+        for (index, menu) in listMenuLainya.enumerated() {
+            preference.saveInt(value: menu.id!, key: "MENU_\(index + 6)")
+        }
     }
     
     private func updateMarginCollectionView(_ constraintView: NSLayoutConstraint, _ constant: CGFloat) {
@@ -150,18 +163,36 @@ extension BottomSheetMenuController {
     
     @objc func actionMenuFavoritClick(sender: UITapGestureRecognizer) {
         if let indexpath = menuFavoritCollectionView.indexPathForItem(at: sender.location(in: menuFavoritCollectionView)) {
+            // add deleted item from menu favorit, and append it to menu lainya
+            var item = listMenuFavorit[indexpath.item]
+            item.action = UIImage(named: "plus-circular")?.tinted(with: UIColor.green)
+            listMenuLainya.insert(item, at: listMenuLainya.count - 1)
+            menuLainyaCollectionView.insertItems(at: [IndexPath(item: listMenuLainya.count - 1, section: 0)])
+            
             listMenuFavorit.remove(at: indexpath.item)
             menuFavoritCollectionView.deleteItems(at: [indexpath])
+            
+            updateHeight()
+            
             self.showActionInListMenuLainya()
         }
     }
     
     @objc func actionMenuLainyaClick(sender: UITapGestureRecognizer) {
         if let indexpath = menuLainyaCollectionView.indexPathForItem(at: sender.location(in: menuLainyaCollectionView)) {
+            
+            // add deleted item from menu lainya, and append it to menu favorit
+            var item = listMenuLainya[indexpath.item]
+            item.action = UIImage(named: "minus-circular")?.tinted(with: UIColor.red)
+            listMenuFavorit.insert(item, at: listMenuFavorit.count - 1)
+            menuFavoritCollectionView.insertItems(at: [IndexPath(item: listMenuFavorit.count - 2, section: 0)])
+            
             listMenuLainya.remove(at: indexpath.item)
             menuLainyaCollectionView.deleteItems(at: [indexpath])
             
-            if listMenuFavorit.count == 6 { hideActionInListMenuFavorit() }
+            updateHeight()
+            
+            if listMenuFavorit.count == 6 { hideActionInListMenuLainya() }
         }
     }
 }

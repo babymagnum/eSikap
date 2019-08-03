@@ -37,6 +37,12 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     var minutes = 0
     var hours = 0
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadMenuItem()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +59,23 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         getDashboard()
         
         getLatestNews()
+    }
+    
+    private func loadMenuItem() {
+        listMenu.removeAll()
+        
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_1), action: nil))
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_2), action: nil))
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_3), action: nil))
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_4), action: nil))
+        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_5), action: nil))
+        listMenu.append(Menu(id: 99, image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
+        
+        menuCollectionView.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.menuCollectionViewHeight.constant = self.menuCollectionView.contentSize.height
+        }
     }
     
     private func checkShowFirstDialog() {
@@ -83,20 +106,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         menuCollectionView.dataSource = self
         beritaCollectionView.delegate = self
         beritaCollectionView.dataSource = self
-        
-        // populate menu utama item
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_1), action: nil))
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_2), action: nil))
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_3), action: nil))
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_4), action: nil))
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_5), action: nil))
-        listMenu.append(Menu(id: 99, image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
-        
-        menuCollectionView.reloadData()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.menuCollectionViewHeight.constant = self.menuCollectionView.contentSize.height
-        }
     }
     
     private func initView() {
@@ -140,7 +149,10 @@ extension BerandaController {
     }
     
     private func openBottomSheet() {
-        let sheetController = SheetViewController(controller: BottomSheetMenuController())
+        let sheetController = SheetViewController(controller: BottomSheetMenuController(), sizes: [SheetSize.fullScreen])
+        sheetController.didDismiss = { _ in
+            self.loadMenuItem()
+        }
         
         self.present(sheetController, animated: false, completion: nil)
     }

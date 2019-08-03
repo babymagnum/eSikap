@@ -25,102 +25,119 @@
                 <outlet property="menuLainyaCollectionView" destination="WfT-XP-Rve" id="PjQ-x6-CCf"/>
                 <outlet property="menuLainyaCollectionViewHeight" destination="7i2-ZC-GJT" id="lx0-TV-Fds"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewRootHeight" destination="GD1-sw-BSE" id="xFH-if-DkN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sfa-xU-hfe">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzT-51-Efz">
+                    <rect key="frame" x="0.0" y="20" width="375" height="880"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group482" translatesAutoresizingMaskIntoConstraints="NO" id="TLI-U0-3tY">
-                            <rect key="frame" x="174" y="4" width="27" height="6"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="27" id="j6D-D0-nFA"/>
-                                <constraint firstAttribute="height" constant="6" id="xP6-Zm-9b6"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Favorit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahv-EN-7Kj">
-                            <rect key="frame" x="19" y="30" width="70.5" height="14.5"/>
-                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWE-yH-aYg">
-                            <rect key="frame" x="315" y="28" width="41" height="22"/>
-                            <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
-                            <inset key="contentEdgeInsets" minX="11" minY="6" maxX="11" maxY="6"/>
-                            <state key="normal" title="Ubah">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="buttonUbahClicked:" destination="-1" eventType="touchUpInside" id="oUY-Ac-wQY"/>
-                            </connections>
-                        </button>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WYn-Wk-WUR">
-                            <rect key="frame" x="9" y="61.5" width="357" height="128"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sfa-xU-hfe">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="393"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group482" translatesAutoresizingMaskIntoConstraints="NO" id="TLI-U0-3tY">
+                                    <rect key="frame" x="174" y="4" width="27" height="6"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="27" id="j6D-D0-nFA"/>
+                                        <constraint firstAttribute="height" constant="6" id="xP6-Zm-9b6"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Favorit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahv-EN-7Kj">
+                                    <rect key="frame" x="19" y="30" width="70.5" height="14.5"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWE-yH-aYg">
+                                    <rect key="frame" x="315" y="28" width="41" height="22"/>
+                                    <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
+                                    <inset key="contentEdgeInsets" minX="11" minY="6" maxX="11" maxY="6"/>
+                                    <state key="normal" title="Ubah">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="buttonUbahClicked:" destination="-1" eventType="touchUpInside" id="oUY-Ac-wQY"/>
+                                    </connections>
+                                </button>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WYn-Wk-WUR">
+                                    <rect key="frame" x="9" y="61.5" width="357" height="128"/>
+                                    <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="128" id="LWP-30-yVb"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P5o-Tl-OGx">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Lainya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEX-yw-Vv7">
+                                    <rect key="frame" x="19" y="213.5" width="337" height="14.5"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WfT-XP-Rve">
+                                    <rect key="frame" x="9" y="245" width="357" height="128"/>
+                                    <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="128" id="7i2-ZC-GJT"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0j2-FG-305">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
                             <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="128" id="LWP-30-yVb"/>
+                                <constraint firstItem="TLI-U0-3tY" firstAttribute="centerX" secondItem="Sfa-xU-hfe" secondAttribute="centerX" id="6YL-5X-WUl"/>
+                                <constraint firstItem="ahv-EN-7Kj" firstAttribute="top" secondItem="TLI-U0-3tY" secondAttribute="bottom" constant="20" id="8Dd-MS-qQz"/>
+                                <constraint firstItem="gWE-yH-aYg" firstAttribute="top" secondItem="TLI-U0-3tY" secondAttribute="bottom" constant="18" id="BnF-Dd-avk"/>
+                                <constraint firstItem="WfT-XP-Rve" firstAttribute="leading" secondItem="Sfa-xU-hfe" secondAttribute="leading" constant="9" id="C61-ve-vPQ"/>
+                                <constraint firstAttribute="trailing" secondItem="WYn-Wk-WUR" secondAttribute="trailing" constant="9" id="F5B-IW-jEp"/>
+                                <constraint firstItem="TLI-U0-3tY" firstAttribute="top" secondItem="Sfa-xU-hfe" secondAttribute="top" constant="4" id="FI2-ub-y7B"/>
+                                <constraint firstAttribute="height" constant="393" id="GD1-sw-BSE"/>
+                                <constraint firstItem="TEX-yw-Vv7" firstAttribute="leading" secondItem="Sfa-xU-hfe" secondAttribute="leading" constant="19" id="QSX-GB-6XE"/>
+                                <constraint firstAttribute="trailing" secondItem="TEX-yw-Vv7" secondAttribute="trailing" constant="19" id="Uzi-BN-WNF"/>
+                                <constraint firstAttribute="bottom" secondItem="WfT-XP-Rve" secondAttribute="bottom" constant="20" id="aY9-hc-xuo"/>
+                                <constraint firstItem="TEX-yw-Vv7" firstAttribute="top" secondItem="WYn-Wk-WUR" secondAttribute="bottom" constant="24" id="eW3-AK-WAP"/>
+                                <constraint firstItem="ahv-EN-7Kj" firstAttribute="leading" secondItem="Sfa-xU-hfe" secondAttribute="leading" constant="19" id="fD3-Rc-JNH"/>
+                                <constraint firstAttribute="trailing" secondItem="gWE-yH-aYg" secondAttribute="trailing" constant="19" id="gp9-cC-ebX"/>
+                                <constraint firstAttribute="trailing" secondItem="WfT-XP-Rve" secondAttribute="trailing" constant="9" id="js3-UZ-5y6"/>
+                                <constraint firstItem="WYn-Wk-WUR" firstAttribute="leading" secondItem="Sfa-xU-hfe" secondAttribute="leading" constant="9" id="nud-91-JH7"/>
+                                <constraint firstItem="WfT-XP-Rve" firstAttribute="top" secondItem="TEX-yw-Vv7" secondAttribute="bottom" constant="17" id="o1J-Z4-mgG"/>
+                                <constraint firstItem="WYn-Wk-WUR" firstAttribute="top" secondItem="ahv-EN-7Kj" secondAttribute="bottom" constant="17" id="sBz-dk-EBc"/>
                             </constraints>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P5o-Tl-OGx">
-                                <size key="itemSize" width="50" height="50"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                        </collectionView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Lainya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEX-yw-Vv7">
-                            <rect key="frame" x="19" y="213.5" width="337" height="14.5"/>
-                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WfT-XP-Rve">
-                            <rect key="frame" x="9" y="245" width="357" height="128"/>
-                            <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="128" id="7i2-ZC-GJT"/>
-                            </constraints>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0j2-FG-305">
-                                <size key="itemSize" width="50" height="50"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                        </collectionView>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="TLI-U0-3tY" firstAttribute="centerX" secondItem="Sfa-xU-hfe" secondAttribute="centerX" id="6YL-5X-WUl"/>
-                        <constraint firstItem="ahv-EN-7Kj" firstAttribute="top" secondItem="TLI-U0-3tY" secondAttribute="bottom" constant="20" id="8Dd-MS-qQz"/>
-                        <constraint firstItem="gWE-yH-aYg" firstAttribute="top" secondItem="TLI-U0-3tY" secondAttribute="bottom" constant="18" id="BnF-Dd-avk"/>
-                        <constraint firstItem="WfT-XP-Rve" firstAttribute="leading" secondItem="Sfa-xU-hfe" secondAttribute="leading" constant="9" id="C61-ve-vPQ"/>
-                        <constraint firstAttribute="trailing" secondItem="WYn-Wk-WUR" secondAttribute="trailing" constant="9" id="F5B-IW-jEp"/>
-                        <constraint firstItem="TLI-U0-3tY" firstAttribute="top" secondItem="Sfa-xU-hfe" secondAttribute="top" constant="4" id="FI2-ub-y7B"/>
-                        <constraint firstItem="TEX-yw-Vv7" firstAttribute="leading" secondItem="Sfa-xU-hfe" secondAttribute="leading" constant="19" id="QSX-GB-6XE"/>
-                        <constraint firstAttribute="trailing" secondItem="TEX-yw-Vv7" secondAttribute="trailing" constant="19" id="Uzi-BN-WNF"/>
-                        <constraint firstItem="TEX-yw-Vv7" firstAttribute="top" secondItem="WYn-Wk-WUR" secondAttribute="bottom" constant="24" id="eW3-AK-WAP"/>
-                        <constraint firstItem="ahv-EN-7Kj" firstAttribute="leading" secondItem="Sfa-xU-hfe" secondAttribute="leading" constant="19" id="fD3-Rc-JNH"/>
-                        <constraint firstAttribute="trailing" secondItem="gWE-yH-aYg" secondAttribute="trailing" constant="19" id="gp9-cC-ebX"/>
-                        <constraint firstAttribute="trailing" secondItem="WfT-XP-Rve" secondAttribute="trailing" constant="9" id="js3-UZ-5y6"/>
-                        <constraint firstItem="WYn-Wk-WUR" firstAttribute="leading" secondItem="Sfa-xU-hfe" secondAttribute="leading" constant="9" id="nud-91-JH7"/>
-                        <constraint firstItem="WfT-XP-Rve" firstAttribute="top" secondItem="TEX-yw-Vv7" secondAttribute="bottom" constant="17" id="o1J-Z4-mgG"/>
-                        <constraint firstItem="WYn-Wk-WUR" firstAttribute="top" secondItem="ahv-EN-7Kj" secondAttribute="bottom" constant="17" id="sBz-dk-EBc"/>
+                        <constraint firstItem="Sfa-xU-hfe" firstAttribute="top" secondItem="mzT-51-Efz" secondAttribute="top" id="694-AF-MK0"/>
+                        <constraint firstAttribute="bottom" secondItem="Sfa-xU-hfe" secondAttribute="bottom" id="K6c-ZP-fpy"/>
+                        <constraint firstAttribute="trailing" secondItem="Sfa-xU-hfe" secondAttribute="trailing" id="hcZ-bW-nvU"/>
+                        <constraint firstItem="Sfa-xU-hfe" firstAttribute="width" secondItem="mzT-51-Efz" secondAttribute="width" id="pHy-wU-9O7"/>
+                        <constraint firstItem="Sfa-xU-hfe" firstAttribute="leading" secondItem="mzT-51-Efz" secondAttribute="leading" id="uvt-K7-jWT"/>
                     </constraints>
-                </view>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Sfa-xU-hfe" secondAttribute="bottom" id="AO0-oY-0Vy"/>
-                <constraint firstItem="Sfa-xU-hfe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lQS-eF-Ujz"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Sfa-xU-hfe" secondAttribute="trailing" id="wKZ-RY-gpM"/>
-                <constraint firstItem="Sfa-xU-hfe" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="wnS-Gq-5IM"/>
+                <constraint firstAttribute="bottom" secondItem="mzT-51-Efz" secondAttribute="bottom" id="g1X-mx-ynd"/>
+                <constraint firstItem="mzT-51-Efz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="js3-1m-hFD"/>
+                <constraint firstItem="mzT-51-Efz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="m3V-0j-A9G"/>
+                <constraint firstAttribute="trailing" secondItem="mzT-51-Efz" secondAttribute="trailing" id="y9B-cn-ep1"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="37.600000000000001" y="104.7976011994003"/>
         </view>
     </objects>
     <resources>
