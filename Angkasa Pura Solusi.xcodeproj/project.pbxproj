@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D8D432A86DE3EDD47415F16D /* Pods_Angkasa_Pura_Solusi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBC11F8DD2D9E24273410E5 /* Pods_Angkasa_Pura_Solusi.framework */; };
+		ED10746022F5A5BA00ADF055 /* DetailBeritaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED10745E22F5A5B900ADF055 /* DetailBeritaController.swift */; };
+		ED10746122F5A5BA00ADF055 /* DetailBeritaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED10745F22F5A5B900ADF055 /* DetailBeritaController.xib */; };
+		ED10746322F5AE6F00ADF055 /* DetailNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED10746222F5AE6F00ADF055 /* DetailNews.swift */; };
+		ED10746522F5B98A00ADF055 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED10746422F5B98A00ADF055 /* WebKit.framework */; };
+		ED10746722F5DCE900ADF055 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED10746622F5DCE900ADF055 /* Profile.swift */; };
 		ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */; };
 		ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */; };
 		ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038C922ED639E005BCF87 /* BeritaCell.swift */; };
@@ -73,6 +78,11 @@
 		4EBC11F8DD2D9E24273410E5 /* Pods_Angkasa_Pura_Solusi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Angkasa_Pura_Solusi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14CFE01F0097BA5643AAEA0 /* Pods-Angkasa Pura Solusi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Angkasa Pura Solusi.debug.xcconfig"; path = "Target Support Files/Pods-Angkasa Pura Solusi/Pods-Angkasa Pura Solusi.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C2FE2E010A17EC58ACBEC2 /* Pods-Angkasa Pura Solusi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Angkasa Pura Solusi.release.xcconfig"; path = "Target Support Files/Pods-Angkasa Pura Solusi/Pods-Angkasa Pura Solusi.release.xcconfig"; sourceTree = "<group>"; };
+		ED10745E22F5A5B900ADF055 /* DetailBeritaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBeritaController.swift; sourceTree = "<group>"; };
+		ED10745F22F5A5B900ADF055 /* DetailBeritaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBeritaController.xib; sourceTree = "<group>"; };
+		ED10746222F5AE6F00ADF055 /* DetailNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNews.swift; sourceTree = "<group>"; };
+		ED10746422F5B98A00ADF055 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		ED10746622F5DCE900ADF055 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUtamaCell.swift; sourceTree = "<group>"; };
 		ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuUtamaCell.xib; sourceTree = "<group>"; };
 		ED3038C922ED639E005BCF87 /* BeritaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeritaCell.swift; sourceTree = "<group>"; };
@@ -145,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED10746522F5B98A00ADF055 /* WebKit.framework in Frameworks */,
 				D8D432A86DE3EDD47415F16D /* Pods_Angkasa_Pura_Solusi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,6 +166,7 @@
 		20053D93BB230457F60B0615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED10746422F5B98A00ADF055 /* WebKit.framework */,
 				4EBC11F8DD2D9E24273410E5 /* Pods_Angkasa_Pura_Solusi.framework */,
 			);
 			name = Frameworks;
@@ -167,6 +179,15 @@
 				C4C2FE2E010A17EC58ACBEC2 /* Pods-Angkasa Pura Solusi.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		ED10745D22F5A58F00ADF055 /* detail_berita */ = {
+			isa = PBXGroup;
+			children = (
+				ED10745E22F5A5B900ADF055 /* DetailBeritaController.swift */,
+				ED10745F22F5A5B900ADF055 /* DetailBeritaController.xib */,
+			);
+			path = detail_berita;
 			sourceTree = "<group>";
 		};
 		ED3038C322ED6352005BCF87 /* menu_utama_cell */ = {
@@ -322,6 +343,7 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED10745D22F5A58F00ADF055 /* detail_berita */,
 				ED52152622F4825B001C6A50 /* bottom_sheet_menu */,
 				ED52152122F47BE2001C6A50 /* dialog_prepare_presence */,
 				ED52151B22F46E20001C6A50 /* dialog_inform_first */,
@@ -355,6 +377,8 @@
 				ED858B0522F323F000016EAD /* LatestNews.swift */,
 				ED858B0722F334D700016EAD /* AllNews.swift */,
 				ED52151822F452A1001C6A50 /* Circle.swift */,
+				ED10746222F5AE6F00ADF055 /* DetailNews.swift */,
+				ED10746622F5DCE900ADF055 /* Profile.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -549,6 +573,7 @@
 				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
 				ED52153822F5201C001C6A50 /* MenuFavoritCell.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib in Resources */,
+				ED10746122F5A5BA00ADF055 /* DetailBeritaController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED95909422EBEE9300D696E5 /* SplashController.swift in Sources */,
+				ED10746722F5DCE900ADF055 /* Profile.swift in Sources */,
 				ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */,
 				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
 				ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */,
@@ -647,6 +673,7 @@
 				ED52152922F4846C001C6A50 /* BottomSheetMenuController.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */,
 				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
+				ED10746022F5A5BA00ADF055 /* DetailBeritaController.swift in Sources */,
 				ED52151922F452A1001C6A50 /* Circle.swift in Sources */,
 				ED95908622EBE8A000D696E5 /* LoginController.swift in Sources */,
 				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
@@ -654,6 +681,7 @@
 				ED52153722F5201C001C6A50 /* MenuFavoritCell.swift in Sources */,
 				EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */,
 				ED858B0822F334D700016EAD /* AllNews.swift in Sources */,
+				ED10746322F5AE6F00ADF055 /* DetailNews.swift in Sources */,
 				ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

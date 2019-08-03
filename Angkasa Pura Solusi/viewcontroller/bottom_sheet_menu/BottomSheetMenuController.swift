@@ -66,7 +66,7 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initView() {
-        buttonUbah.layer.cornerRadius = buttonUbah.frame.height / 2
+        buttonUbah.layer.cornerRadius = 5
     }
     
     private func initCollectionView() {

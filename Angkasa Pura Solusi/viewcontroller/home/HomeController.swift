@@ -13,7 +13,7 @@ class HomeController: UITabBarController {
     @IBOutlet weak var bottomNavigationBar: UITabBar!
     
     // properties
-    private var hasNotif = true
+    private var hasNotif = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,9 @@ class HomeController: UITabBarController {
         
         self.selectedIndex = 0
         
-        viewControllers = [BerandaController(), BeritaController(), NotifikasiController(), ProfilController()]
+        let berandaController = BerandaController()
+        berandaController.delegate = self
+        viewControllers = [berandaController, BeritaController(), NotifikasiController(), ProfilController()]
         
         tabBar.items![0].title = "Beranda"
         setImage("icHomeActive", 0)
@@ -57,6 +59,21 @@ class HomeController: UITabBarController {
         tabBar.items![index].image = UIImage(named: image)
     }
 
+}
+
+// protocol init
+extension HomeController: BerandaControllerProtocol {
+    func buttonSelengkapnyaClick() {
+        setImage("icHomeNonActive", 0)
+        setImage("icBeritaActive", 1)
+        if hasNotif {
+            setImage("icHasNotifikasiNonActive", 2)
+        } else {
+            setImage("icNotifikasiNonActive", 2)
+        }
+        setImage("icProfileNonActive", 3)
+        self.selectedIndex = 1
+    }
 }
 
 extension HomeController: UITabBarControllerDelegate {

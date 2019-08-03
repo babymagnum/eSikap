@@ -77,6 +77,37 @@ class InformationNetworking {
             }.resume()
     }
     
+    func getNewsDetail(newsId: String, completion: @escaping (_ error: String?, _ itemDetailNews: ItemDetailNews?) -> Void) {
+        let url = "\(staticLet.base_url)api/getNewsDetail"
+        let body : [String: String] = [ "news_id": newsId ]
+        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
+        
+        Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
+                }
+                
+                do {
+                    let detailNews = try JSONDecoder().decode(DetailNews.self, from: mData)
+                    
+                    if detailNews.status == 200 {
+                        print("detail news \(detailNews.data[0])")
+                        completion(nil, detailNews.data[0])
+                    } else {
+                        completion(detailNews.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let error): completion(error.localizedDescription, nil)
+            }
+        }
+    }
+    
     func getAllNews(page: Int, completion: @escaping (_ error: String?, _ listNews: [News]?) -> Void) {
         
         let url = "\(staticLet.base_url)api/getAllNews"
@@ -105,6 +136,37 @@ class InformationNetworking {
                         completion(nil, latestNew.data?.news)
                     } else {
                         completion(latestNew.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let responseFailure):
+                completion(responseFailure.localizedDescription, nil)
+            }
+        }
+    }
+    
+    func getProfile(completion: @escaping (_ error: String?, _ profile: ItemProfile?) -> Void) {
+        let url = "\(staticLet.base_url)api/getProfile"
+        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
+        
+        Alamofire.request(url, method: .post, headers: headers).responseJSON { (response) in
+            switch response.result{
+            case .success:
+                
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
+                }
+                
+                do {
+                    let profile = try JSONDecoder().decode(Profile.self, from: mData)
+                    
+                    if profile.status == 200 {
+                        completion(nil, profile.data[0])
+                    } else {
+                        completion(profile.message, nil)
                     }
                 } catch let err { completion(err.localizedDescription, nil) }
                 

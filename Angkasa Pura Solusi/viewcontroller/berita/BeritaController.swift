@@ -72,13 +72,13 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
 extension BeritaController {
     @objc func viewContainerClick(sender: UITapGestureRecognizer){
         if let indexpath = beritaCollectionView.indexPathForItem(at: sender.location(in: beritaCollectionView)) {
-            
+            let vc = DetailBeritaController()
+            vc.news = listBerita[indexpath.item]
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    @IBAction func buttonFilterClick(_ sender: Any) {
-        
-    }
+    @IBAction func buttonFilterClick(_ sender: Any) { showInDevelopmentDialog() }
 }
 
 extension BeritaController: UICollectionViewDataSource {

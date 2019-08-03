@@ -38,7 +38,7 @@ class PresenceNetworking {
                     var prepare = PreparePresence()
                     completion(nil, prepare.convertJSON(root))
                 } else {
-                    completion("Failed to get response", nil)
+                    completion(root["message"].string, nil)
                 }
                 
             case .failure(let responseError):

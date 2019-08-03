@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotifikasiController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
@@ -20,16 +25,101 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="notifikasi controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1o-oC-Dwo">
-                    <rect key="frame" x="166" y="323" width="146" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHh-7E-3SD">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFF-0b-Fot">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifikasi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJG-Jg-ygF">
+                                    <rect key="frame" x="12" y="19.5" width="51.5" height="14.5"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGm-he-r6t">
+                                    <rect key="frame" x="322" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="ChH-eq-RSh"/>
+                                        <constraint firstAttribute="height" constant="53" id="woo-UD-2bo"/>
+                                    </constraints>
+                                    <state key="normal" image="filter"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="53" id="AXa-We-cjj"/>
+                                <constraint firstItem="JGm-he-r6t" firstAttribute="top" secondItem="mFF-0b-Fot" secondAttribute="top" id="H8Y-7W-uPL"/>
+                                <constraint firstAttribute="trailing" secondItem="JGm-he-r6t" secondAttribute="trailing" id="Nem-00-pT0"/>
+                                <constraint firstItem="vJG-Jg-ygF" firstAttribute="centerY" secondItem="mFF-0b-Fot" secondAttribute="centerY" id="TI9-Ff-KNq"/>
+                                <constraint firstAttribute="bottom" secondItem="JGm-he-r6t" secondAttribute="bottom" id="cAC-ey-qUW"/>
+                                <constraint firstItem="vJG-Jg-ygF" firstAttribute="leading" secondItem="mFF-0b-Fot" secondAttribute="leading" constant="12" id="lme-63-UxX"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TFT-83-V4f">
+                            <rect key="frame" x="0.0" y="53" width="375" height="594"/>
+                            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pgC-Pw-2nG">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vk7-oD-mrh">
+                            <rect key="frame" x="20" y="153" width="335" height="53"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icNotifikasiNonActive" translatesAutoresizingMaskIntoConstraints="NO" id="LJx-QY-vvN">
+                                    <rect key="frame" x="154.5" y="0.0" width="26" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="26" id="MB2-o5-guJ"/>
+                                        <constraint firstAttribute="height" constant="26" id="Qeq-wK-xbl"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tidak Ada Notifikasi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rx-QN-JBE">
+                                    <rect key="frame" x="113" y="37" width="109" height="15"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <color key="textColor" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="LJx-QY-vvN" firstAttribute="top" secondItem="Vk7-oD-mrh" secondAttribute="top" id="Fdk-Gl-t5X"/>
+                                <constraint firstItem="LJx-QY-vvN" firstAttribute="centerX" secondItem="Vk7-oD-mrh" secondAttribute="centerX" id="Hpd-Tx-sjo"/>
+                                <constraint firstAttribute="height" constant="53" id="mHr-Pm-nei"/>
+                                <constraint firstItem="8Rx-QN-JBE" firstAttribute="centerX" secondItem="Vk7-oD-mrh" secondAttribute="centerX" id="pfd-el-uFD"/>
+                                <constraint firstAttribute="bottom" secondItem="8Rx-QN-JBE" secondAttribute="bottom" constant="1" id="qca-s7-ybk"/>
+                                <constraint firstItem="8Rx-QN-JBE" firstAttribute="top" secondItem="LJx-QY-vvN" secondAttribute="bottom" constant="11" id="wqy-4H-7rT"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="mFF-0b-Fot" firstAttribute="top" secondItem="GHh-7E-3SD" secondAttribute="top" id="1PN-fi-2qs"/>
+                        <constraint firstAttribute="bottom" secondItem="TFT-83-V4f" secondAttribute="bottom" id="8s1-UH-Djv"/>
+                        <constraint firstAttribute="trailing" secondItem="TFT-83-V4f" secondAttribute="trailing" id="ESD-NL-rbB"/>
+                        <constraint firstAttribute="trailing" secondItem="Vk7-oD-mrh" secondAttribute="trailing" constant="20" id="Ezr-1e-kOc"/>
+                        <constraint firstItem="mFF-0b-Fot" firstAttribute="leading" secondItem="GHh-7E-3SD" secondAttribute="leading" id="SQJ-cq-uwB"/>
+                        <constraint firstItem="TFT-83-V4f" firstAttribute="leading" secondItem="GHh-7E-3SD" secondAttribute="leading" id="TBM-Zb-1bt"/>
+                        <constraint firstItem="Vk7-oD-mrh" firstAttribute="top" secondItem="mFF-0b-Fot" secondAttribute="bottom" constant="100" id="Tth-U5-aOf"/>
+                        <constraint firstAttribute="trailing" secondItem="mFF-0b-Fot" secondAttribute="trailing" id="ajb-Lo-UZk"/>
+                        <constraint firstItem="Vk7-oD-mrh" firstAttribute="leading" secondItem="GHh-7E-3SD" secondAttribute="leading" constant="20" id="gid-jA-MoZ"/>
+                        <constraint firstItem="TFT-83-V4f" firstAttribute="top" secondItem="mFF-0b-Fot" secondAttribute="bottom" id="hCk-75-S24"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="GHh-7E-3SD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="V6K-mF-rxA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GHh-7E-3SD" secondAttribute="trailing" id="ciN-99-Ph2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GHh-7E-3SD" secondAttribute="bottom" id="eYf-UV-UHF"/>
+                <constraint firstItem="GHh-7E-3SD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nsk-Bf-CWb"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="filter" width="16" height="16"/>
+        <image name="icNotifikasiNonActive" width="20" height="20"/>
+    </resources>
 </document>

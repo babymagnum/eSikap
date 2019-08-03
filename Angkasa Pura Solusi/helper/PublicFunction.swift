@@ -456,6 +456,23 @@ extension UIView {
     }
 }
 
+extension UIView {
+    func addShadow(_ offset: CGSize, _ color: UIColor, _ radius: CGFloat, _ opacity: Float) {
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+        layer.shadowPath = UIBezierPath(roundedRect: layer.bounds, cornerRadius: layer.cornerRadius).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
+        
+        let backgroundCGColor = self.backgroundColor?.cgColor
+        self.backgroundColor = nil
+        layer.backgroundColor =  backgroundCGColor
+    }
+}
+
 extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).uppercased() + self.lowercased().dropFirst()

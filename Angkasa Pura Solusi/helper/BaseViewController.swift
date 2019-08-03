@@ -51,6 +51,10 @@ class BaseViewController: UIViewController {
         self.present(popupVc, animated: true)
     }
     
+    func showInDevelopmentDialog() {
+        function.showUnderstandDialog(self, "Feature In Development", "This feature is in development, we will notify in update once this feature is ready to use", "Understand")
+    }
+    
     func generateMenu(savedMenu: Int, action: UIImage?) -> Menu {
         switch savedMenu {
         case 1:

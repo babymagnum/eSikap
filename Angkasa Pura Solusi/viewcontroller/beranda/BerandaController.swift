@@ -11,6 +11,10 @@ import SVProgressHUD
 import EzPopup
 import FittedSheets
 
+protocol BerandaControllerProtocol {
+    func buttonSelengkapnyaClick()
+}
+
 class BerandaController: BaseViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var imageAccount: UIImageView!
@@ -36,6 +40,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     var seconds = 0
     var minutes = 0
     var hours = 0
+    var delegate : BerandaControllerProtocol?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,11 +59,17 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         initView()
         
+        clickEvent()
+        
         initCollection()
         
         getDashboard()
         
         getLatestNews()
+    }
+    
+    private func clickEvent() {
+        viewContainerPresensi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewContainerPresensiClick)))
     }
     
     private func loadMenuItem() {
@@ -127,6 +138,14 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
 
 //click event
 extension BerandaController {
+    @objc func viewContainerPresensiClick() {
+        getPreparePresence()
+    }
+    
+    @IBAction func buttonSelengkapnyaClick(_ sender: Any) {
+        delegate?.buttonSelengkapnyaClick()
+    }
+    
     @objc func menuClick(sender: UITapGestureRecognizer) {
         if let indexpath = menuCollectionView.indexPathForItem(at: sender.location(in: menuCollectionView)) {
             switch listMenu[indexpath.item].id {
@@ -140,12 +159,30 @@ extension BerandaController {
                 getPreparePresence()
             case 5:
                 print("presensi list")
+            case 6:
+                print("slip gaji")
+            case 7:
+                print("peminjaman ruangan")
+            case 8:
+                print("peminjaman mobil dinas")
+            case 9:
+                print("daftar karyawan")
+            case 10:
+                print("link website aps")
             case 99:
                 print("menu lainya clicked")
                 openBottomSheet()
             default: break
             }
         }
+    }
+    
+    @objc func beritaContainerClick(sender: UITapGestureRecognizer) {
+        guard let indexpath = beritaCollectionView.indexPathForItem(at: sender.location(in: beritaCollectionView)) else { return }
+        
+        let vc = DetailBeritaController()
+        vc.news = listBerita[indexpath.item]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func openBottomSheet() {
@@ -269,6 +306,7 @@ extension BerandaController: UICollectionViewDataSource {
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as! BeritaCell
             cell.data = listBerita[indexPath.item]
+            cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(beritaContainerClick(sender:))))
             return cell
         }
         

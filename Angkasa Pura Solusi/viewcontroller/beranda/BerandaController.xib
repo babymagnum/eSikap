@@ -264,12 +264,6 @@
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selengkapnya.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vl6-lX-3WW">
-                                            <rect key="frame" x="273" y="423" width="82" height="14.5"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                            <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0ga-Oi-UWc">
                                             <rect key="frame" x="0.0" y="446.5" width="375" height="128"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -283,6 +277,14 @@
                                                 <inset key="sectionInset" minX="16" minY="5" maxX="16" maxY="5"/>
                                             </collectionViewFlowLayout>
                                         </collectionView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8U-hd-QnA">
+                                            <rect key="frame" x="270" y="414" width="86" height="27"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                            <state key="normal" title="Selengkapnya..."/>
+                                            <connections>
+                                                <action selector="buttonSelengkapnyaClick:" destination="-1" eventType="touchUpInside" id="WX0-cX-lPa"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -292,7 +294,7 @@
                                         <constraint firstAttribute="trailing" secondItem="FLC-uf-z09" secondAttribute="trailing" id="DgQ-nb-pcZ"/>
                                         <constraint firstItem="rl8-4s-Hpr" firstAttribute="leading" secondItem="bB0-nT-tr4" secondAttribute="leading" constant="16" id="F6h-F9-CXn"/>
                                         <constraint firstAttribute="height" priority="999" constant="690" id="Ith-wu-bzR"/>
-                                        <constraint firstAttribute="trailing" secondItem="vl6-lX-3WW" secondAttribute="trailing" constant="20" id="KBz-dC-ZFJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="L8U-hd-QnA" secondAttribute="trailing" constant="19" id="JJ1-zt-9CA"/>
                                         <constraint firstItem="tul-GP-DYb" firstAttribute="leading" secondItem="bB0-nT-tr4" secondAttribute="leading" constant="16" id="KpZ-m0-y8G"/>
                                         <constraint firstItem="FLC-uf-z09" firstAttribute="top" secondItem="8kn-3h-My3" secondAttribute="bottom" constant="10" id="LHW-JG-aEu"/>
                                         <constraint firstItem="0ga-Oi-UWc" firstAttribute="top" secondItem="tul-GP-DYb" secondAttribute="bottom" constant="11" id="LSX-Kz-PNh"/>
@@ -308,8 +310,8 @@
                                         <constraint firstAttribute="trailing" secondItem="RoW-DL-APf" secondAttribute="trailing" constant="16" id="j4b-S5-yOx"/>
                                         <constraint firstItem="0ga-Oi-UWc" firstAttribute="leading" secondItem="bB0-nT-tr4" secondAttribute="leading" id="lYQ-pC-0gA"/>
                                         <constraint firstItem="zm8-fH-6tr" firstAttribute="top" secondItem="KBL-dY-yUH" secondAttribute="bottom" constant="16" id="rKg-Fg-eof"/>
+                                        <constraint firstItem="L8U-hd-QnA" firstAttribute="top" secondItem="FLC-uf-z09" secondAttribute="bottom" constant="10" id="wYn-WT-V8u"/>
                                         <constraint firstItem="8kn-3h-My3" firstAttribute="leading" secondItem="bB0-nT-tr4" secondAttribute="leading" constant="16" id="xjw-8x-8Ca"/>
-                                        <constraint firstItem="vl6-lX-3WW" firstAttribute="top" secondItem="FLC-uf-z09" secondAttribute="bottom" constant="19" id="zHp-tX-qSo"/>
                                     </constraints>
                                 </view>
                             </subviews>
