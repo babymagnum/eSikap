@@ -32,11 +32,9 @@ class MenuFavoritCell: UICollectionViewCell {
                 if let action = mData.action {
                     self.iconAction.isHidden = false
                     self.iconAction.image = action
-                    self.viewRoot.isUserInteractionEnabled = true
                 } else {
                     self.iconAction.isHidden = true
                     self.iconAction.image = UIImage()
-                    self.viewRoot.isUserInteractionEnabled = false
                 }
             }
         }

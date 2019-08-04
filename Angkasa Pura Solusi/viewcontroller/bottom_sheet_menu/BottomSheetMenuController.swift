@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     
@@ -22,6 +23,7 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     var listMenuFavorit = [Menu]()
     var listMenuLainya = [Menu]()
     var isEdit = false
+    var parentNavigationController: UINavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,6 +144,71 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             menuLainyaCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
         }
     }
+    
+    private func getPreparePresence() {
+        SVProgressHUD.show()
+        
+        presenceNetworking.getPreparePresence { (error, preparePresence) in
+            SVProgressHUD.dismiss()
+            
+            if let error = error {
+                let vc = DialogPreparePresenceController()
+                vc.stringDescription = error
+                self.showCustomDialog(vc)
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                let vc = PresensiController()
+                vc.preparePresence = preparePresence
+                self.parentNavigationController?.pushViewController(vc, animated: true)
+            })
+        }
+    }
+    
+    private func clickMenu(_ itemId: Int) {
+        switch itemId {
+        case 1:
+            //pengajuan cuti
+            self.showInDevelopmentDialog()
+        case 2:
+            //pengajuan lembur
+            self.showInDevelopmentDialog()
+        case 3:
+            //persetujuan
+            self.showInDevelopmentDialog()
+        case 4:
+            //presensi
+            getPreparePresence()
+        case 5:
+            //presensi list item
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let vc = PresensiListController()
+                vc.from = .standart
+                self.parentNavigationController?.pushViewController(vc, animated: true)
+            }
+        case 6:
+            //slip gaji
+            self.showInDevelopmentDialog()
+        case 7:
+            //peminjaman ruangan
+            self.showInDevelopmentDialog()
+        case 8:
+            //peminjaman mobil dinas
+            self.showInDevelopmentDialog()
+        case 9:
+            //daftar karyawan
+            self.showInDevelopmentDialog()
+        case 10:
+            //link website aps
+            self.showInDevelopmentDialog()
+        default: break
+        }
+    }
 }
 
 extension BottomSheetMenuController {
@@ -163,6 +230,13 @@ extension BottomSheetMenuController {
     
     @objc func actionMenuFavoritClick(sender: UITapGestureRecognizer) {
         if let indexpath = menuFavoritCollectionView.indexPathForItem(at: sender.location(in: menuFavoritCollectionView)) {
+            
+            // click item if action is null (not editable)
+            guard let _ = listMenuFavorit[indexpath.item].action else {
+                clickMenu(listMenuFavorit[indexpath.item].id!)
+                return
+            }
+            
             // add deleted item from menu favorit, and append it to menu lainya
             var item = listMenuFavorit[indexpath.item]
             item.action = UIImage(named: "plus-circular")?.tinted(with: UIColor.green)
@@ -180,6 +254,12 @@ extension BottomSheetMenuController {
     
     @objc func actionMenuLainyaClick(sender: UITapGestureRecognizer) {
         if let indexpath = menuLainyaCollectionView.indexPathForItem(at: sender.location(in: menuLainyaCollectionView)) {
+            
+            // click item if action is null (not editable)
+            guard let _ = listMenuLainya[indexpath.item].action else {
+                clickMenu(listMenuLainya[indexpath.item].id!)
+                return
+            }
             
             // add deleted item from menu lainya, and append it to menu favorit
             var item = listMenuLainya[indexpath.item]

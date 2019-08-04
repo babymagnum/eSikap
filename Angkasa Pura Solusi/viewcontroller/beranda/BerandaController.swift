@@ -150,12 +150,16 @@ extension BerandaController {
         if let indexpath = menuCollectionView.indexPathForItem(at: sender.location(in: menuCollectionView)) {
             switch listMenu[indexpath.item].id {
             case 1:
-                print("pengajuan cuti")
+                //pengajuan cuti
+                self.showInDevelopmentDialog()
             case 2:
-                print("pengajuan lembur")
+                //pengajuan lembur
+                self.showInDevelopmentDialog()
             case 3:
-                print("persetujuan")
+                //persetujuan
+                self.showInDevelopmentDialog()
             case 4:
+                //presensi
                 getPreparePresence()
             case 5:
                 //presensi list item
@@ -163,15 +167,20 @@ extension BerandaController {
                 vc.from = .standart
                 self.navigationController?.pushViewController(vc, animated: true)
             case 6:
-                print("slip gaji")
+                //slip gaji
+                self.showInDevelopmentDialog()
             case 7:
-                print("peminjaman ruangan")
+                //peminjaman ruangan
+                self.showInDevelopmentDialog()
             case 8:
-                print("peminjaman mobil dinas")
+                //peminjaman mobil dinas
+                self.showInDevelopmentDialog()
             case 9:
-                print("daftar karyawan")
+                //daftar karyawan
+                self.showInDevelopmentDialog()
             case 10:
-                print("link website aps")
+                //link website aps
+                self.showInDevelopmentDialog()
             case 99:
                 //menu lainya item
                 openBottomSheet()
@@ -189,7 +198,9 @@ extension BerandaController {
     }
     
     private func openBottomSheet() {
-        let sheetController = SheetViewController(controller: BottomSheetMenuController(), sizes: [SheetSize.fullScreen])
+        let vc = BottomSheetMenuController()
+        vc.parentNavigationController = self.navigationController
+        let sheetController = SheetViewController(controller: vc, sizes: [SheetSize.fullScreen])
         sheetController.didDismiss = { _ in
             self.loadMenuItem()
         }

@@ -12,6 +12,7 @@ import SVProgressHUD
 enum PresensiListFrom {
     case presensiMapController
     case standart
+    case bottomSheetMenu
 }
 
 class PresensiListController: BaseViewController, UICollectionViewDelegate {
@@ -118,6 +119,8 @@ extension PresensiListController {
             transition.subtype = CATransitionSubtype.fromLeft
             self.navigationController?.view.layer.add(transition, forKey: kCATransition)
             self.navigationController?.pushViewController(HomeController(), animated: true)
+        case .bottomSheetMenu?:
+            self.dismiss(animated: true, completion: nil)
         default: break
         }
     }

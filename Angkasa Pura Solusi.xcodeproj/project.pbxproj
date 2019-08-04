@@ -40,6 +40,7 @@
 		ED61BF0322F67E6700776C25 /* PresensiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED61BF0122F67E6700776C25 /* PresensiCell.xib */; };
 		ED61BF0522F6837500776C25 /* Presensi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BF0422F6837500776C25 /* Presensi.swift */; };
 		ED61BF0722F696AA00776C25 /* InteractivePopRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BF0622F696AA00776C25 /* InteractivePopRecognizer.swift */; };
+		ED61BF0922F69D2F00776C25 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BF0822F69D2F00776C25 /* CardView.swift */; };
 		ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E506922ED417000EED8E7 /* BerandaController.swift */; };
 		ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6E506A22ED417000EED8E7 /* BerandaController.xib */; };
 		ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E506D22ED418700EED8E7 /* BeritaController.swift */; };
@@ -118,6 +119,7 @@
 		ED61BF0122F67E6700776C25 /* PresensiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiCell.xib; sourceTree = "<group>"; };
 		ED61BF0422F6837500776C25 /* Presensi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presensi.swift; sourceTree = "<group>"; };
 		ED61BF0622F696AA00776C25 /* InteractivePopRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopRecognizer.swift; sourceTree = "<group>"; };
+		ED61BF0822F69D2F00776C25 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		ED6E506922ED417000EED8E7 /* BerandaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerandaController.swift; sourceTree = "<group>"; };
 		ED6E506A22ED417000EED8E7 /* BerandaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BerandaController.xib; sourceTree = "<group>"; };
 		ED6E506D22ED418700EED8E7 /* BeritaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeritaController.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				ED95909622EBF1C500D696E5 /* PublicFunction.swift */,
 				ED95909822EBF26E00D696E5 /* BaseViewController.swift */,
 				ED61BF0622F696AA00776C25 /* InteractivePopRecognizer.swift */,
+				ED61BF0822F69D2F00776C25 /* CardView.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
+				ED61BF0922F69D2F00776C25 /* CardView.swift in Sources */,
 				ED61BEF922F66D7D00776C25 /* ChangePasswordController.swift in Sources */,
 				ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */,
 				ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */,

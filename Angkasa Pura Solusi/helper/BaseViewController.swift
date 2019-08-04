@@ -52,7 +52,9 @@ class BaseViewController: UIViewController {
     }
     
     func showInDevelopmentDialog() {
-        function.showUnderstandDialog(self, "Feature In Development", "This feature is in development, we will notify in update once this feature is ready to use", "Understand")
+        let vc = DialogPreparePresenceController()
+        vc.stringDescription = "Segera Hadir"
+        showCustomDialog(vc)
     }
     
     func generateMenu(savedMenu: Int, action: UIImage?) -> Menu {
