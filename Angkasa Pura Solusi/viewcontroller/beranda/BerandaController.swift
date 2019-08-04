@@ -216,7 +216,17 @@ extension BerandaController {
             SVProgressHUD.dismiss()
             
             if let error = error {
-                self.function.showUnderstandDialog(self, "Error Getting Dashboard", error, "Understand")
+                if error == "Token Salah" {
+                    self.function.showUnderstandDialog(self, "Session Expired", "Sesi anda telah berakhir, silahkan login ulang", "Login", completionHandler: {
+                        self.preference.saveBool(value: false, key: self.staticLet.IS_LOGIN)
+                        self.preference.saveBool(value: false, key: self.staticLet.IS_SHOW_FIRST_DIALOG)
+                        self.navigationController?.popToRootViewController(animated: true)
+                    })
+                } else {
+                    self.function.showUnderstandDialog(self, "Error Get Dashboard Data", error, "Retry", completionHandler: {
+                        self.getDashboard()
+                    })
+                }
                 return
             }
             
@@ -264,7 +274,18 @@ extension BerandaController {
     private func getLatestNews() {
         informationNetworking.getLatestNews { (error, news) in
             if let error = error {
-                self.function.showUnderstandDialog(self, "Error getting news list", error, "Understand")
+                if error == "Token Salah" {
+                    self.function.showUnderstandDialog(self, "Session Expired", "Sesi anda telah berakhir, silahkan login ulang", "Login", completionHandler: {
+                        self.preference.saveBool(value: false, key: self.staticLet.IS_LOGIN)
+                        self.preference.saveBool(value: false, key: self.staticLet.IS_SHOW_FIRST_DIALOG)
+                        self.preference.saveBool(value: false, key: self.staticLet.IS_FIRST_TIME_OPEN)
+                        self.navigationController?.popToRootViewController(animated: true)
+                    })
+                } else {
+                    self.function.showUnderstandDialog(self, "Error Get Latest News", error, "Retry", completionHandler: {
+                        self.getLatestNews()
+                    })
+                }
                 return
             }
             

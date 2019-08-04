@@ -16,12 +16,16 @@ class SplashController: BaseViewController {
     @IBOutlet weak var imageTopHeight: NSLayoutConstraint!
     @IBOutlet weak var imageTopWidth: NSLayoutConstraint!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         initView()
         
         changeScreen()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -29,9 +33,9 @@ class SplashController: BaseViewController {
     private func changeScreen() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if !self.preference.getBool(key: self.staticLet.IS_FIRST_TIME_OPEN) {
-                self.present(OnboardingController(), animated: true)
+                self.navigationController?.pushViewController(OnboardingController(), animated: true)
             } else if !self.preference.getBool(key: self.staticLet.IS_LOGIN) {
-                self.present(LoginController(), animated: true)
+                self.navigationController?.pushViewController(LoginController(), animated: true)
             } else {
                 self.navigationController?.pushViewController(HomeController(), animated: true)
             }

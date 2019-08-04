@@ -81,7 +81,11 @@ extension LoginController {
             } else {
                 //login success
                 self.preference.saveBool(value: true, key: self.staticLet.IS_LOGIN)
-                self.present(HomeController(), animated: true)
+                let vc = HomeController()
+                
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
             
         }

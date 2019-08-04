@@ -49,7 +49,6 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
             SVProgressHUD.dismiss()
             
             if let error = error {
-                self.function.showUnderstandDialog(self, "Error getting news", error, "Understand")
                 self.function.showUnderstandDialog(self, "Error getting news", error, "Reload", "Cancel", completionHandler: {
                     self.getAllNews()
                 })

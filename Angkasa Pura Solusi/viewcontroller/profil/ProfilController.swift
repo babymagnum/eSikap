@@ -47,18 +47,11 @@ class ProfilController: BaseViewController {
     }
     
     private func initView() {
-        
         imageAccount.clipsToBounds = true
         imageAccount.layer.cornerRadius = imageAccount.frame.height / 2
         
-        viewRootInformation.clipsToBounds = true
-        viewRootInformation.layer.cornerRadius = 5
-        
-        viewRootAction.clipsToBounds = true
-        viewRootAction.layer.cornerRadius = 5
-        
-        viewRootInformation.addShadow(CGSize(width: 0, height: 5), UIColor.lightGray, 5, 1)
-        viewRootAction.addShadow(CGSize(width: 0, height: 5), UIColor.lightGray, 5, 1)
+        viewRootInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1)
+        viewRootAction.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1)
     }
     
     private func setView(_ item: ItemProfile) {
