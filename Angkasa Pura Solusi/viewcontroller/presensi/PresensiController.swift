@@ -17,6 +17,7 @@ class PresensiController: BaseViewController {
     @IBOutlet weak var viewPresensiKeluar: UIView!
     @IBOutlet weak var labelJamMasuk: UILabel!
     @IBOutlet weak var labelJamPulang: UILabel!
+    @IBOutlet weak var iconKeluar: UIImageView!
     
     var preparePresence: PreparePresence?
     var seconds = 0
@@ -45,6 +46,7 @@ class PresensiController: BaseViewController {
     }
     
     private func initView() {
+        
         function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1.0)
         
         viewJamMasukKeluar.layer.cornerRadius = viewJamMasukKeluar.frame.height / 2

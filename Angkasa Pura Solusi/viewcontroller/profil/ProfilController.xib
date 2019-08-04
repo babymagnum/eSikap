@@ -322,7 +322,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y70-qu-2e5">
                                             <rect key="frame" x="0.0" y="31" width="347" height="30"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout1" translatesAutoresizingMaskIntoConstraints="NO" id="ajX-v4-RwG">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout" translatesAutoresizingMaskIntoConstraints="NO" id="ajX-v4-RwG">
                                                     <rect key="frame" x="16" y="9" width="12" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="12" id="ec1-6N-b6e"/>
@@ -407,6 +407,6 @@
         <image name="headway566297Unsplash" width="320" height="160"/>
         <image name="icExpandMore" width="21.5" height="21.5"/>
         <image name="lockSolid" width="12" height="13.5"/>
-        <image name="logout1" width="13.5" height="13.5"/>
+        <image name="logout" width="13.5" height="13.5"/>
     </resources>
 </document>
