@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PresensiListController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+            <connections>
+                <outlet property="presensiCollectionView" destination="0pJ-rl-KPs" id="Ibu-qc-bsa"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SkU-H2-uHg">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6LL-eK-mv4">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYy-wL-n3M">
+                                    <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="53" id="QZj-F3-8Zu"/>
+                                        <constraint firstAttribute="width" constant="53" id="zyQ-fR-MNm"/>
+                                    </constraints>
+                                    <state key="normal" image="backwardArrow"/>
+                                    <connections>
+                                        <action selector="backButtonClick:" destination="-1" eventType="touchUpInside" id="xgH-eB-I80"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presensi List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5a-O6-KkT">
+                                    <rect key="frame" x="53" y="19.5" width="70" height="14.5"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6P-Db-nCc">
+                                    <rect key="frame" x="322" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="5XN-WB-jKq"/>
+                                        <constraint firstAttribute="height" constant="53" id="86l-4X-gY4"/>
+                                    </constraints>
+                                    <state key="normal" image="filter"/>
+                                    <connections>
+                                        <action selector="filterButtonClick:" destination="-1" eventType="touchUpInside" id="aET-TA-Yf0"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="Z5a-O6-KkT" firstAttribute="centerY" secondItem="6LL-eK-mv4" secondAttribute="centerY" id="Lcs-x4-Jyx"/>
+                                <constraint firstItem="Z5a-O6-KkT" firstAttribute="leading" secondItem="dYy-wL-n3M" secondAttribute="trailing" id="OFF-qr-PJU"/>
+                                <constraint firstAttribute="height" constant="53" id="OSE-FU-mXC"/>
+                                <constraint firstItem="dYy-wL-n3M" firstAttribute="leading" secondItem="6LL-eK-mv4" secondAttribute="leading" id="hdZ-L8-Qdk"/>
+                                <constraint firstItem="r6P-Db-nCc" firstAttribute="centerY" secondItem="6LL-eK-mv4" secondAttribute="centerY" id="hm8-lF-YAl"/>
+                                <constraint firstItem="dYy-wL-n3M" firstAttribute="centerY" secondItem="6LL-eK-mv4" secondAttribute="centerY" id="sbb-z6-CNe"/>
+                                <constraint firstAttribute="trailing" secondItem="r6P-Db-nCc" secondAttribute="trailing" id="zPp-Jt-N3V"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0pJ-rl-KPs">
+                            <rect key="frame" x="0.0" y="53" width="375" height="594"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="14" minimumInteritemSpacing="0.0" id="Uom-H5-kRA">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="14" maxX="0.0" maxY="14"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="0pJ-rl-KPs" firstAttribute="leading" secondItem="SkU-H2-uHg" secondAttribute="leading" id="QbS-ON-xYA"/>
+                        <constraint firstAttribute="trailing" secondItem="6LL-eK-mv4" secondAttribute="trailing" id="Qz6-CX-q5O"/>
+                        <constraint firstAttribute="trailing" secondItem="0pJ-rl-KPs" secondAttribute="trailing" id="XYi-5u-NWn"/>
+                        <constraint firstAttribute="bottom" secondItem="0pJ-rl-KPs" secondAttribute="bottom" id="ZgT-QN-RZd"/>
+                        <constraint firstItem="6LL-eK-mv4" firstAttribute="leading" secondItem="SkU-H2-uHg" secondAttribute="leading" id="b2K-xQ-gwq"/>
+                        <constraint firstItem="0pJ-rl-KPs" firstAttribute="top" secondItem="6LL-eK-mv4" secondAttribute="bottom" id="m0W-ra-0JB"/>
+                        <constraint firstItem="6LL-eK-mv4" firstAttribute="top" secondItem="SkU-H2-uHg" secondAttribute="top" id="wDu-J9-1h7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SkU-H2-uHg" secondAttribute="trailing" id="2ga-gc-k40"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SkU-H2-uHg" secondAttribute="bottom" id="5yM-uB-J95"/>
+                <constraint firstItem="SkU-H2-uHg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="E87-qt-VgM"/>
+                <constraint firstItem="SkU-H2-uHg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fm6-X9-OI9"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backwardArrow" width="9.5" height="16"/>
+        <image name="filter" width="16" height="16"/>
+    </resources>
+</document>

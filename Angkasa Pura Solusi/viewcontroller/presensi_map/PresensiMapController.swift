@@ -36,11 +36,19 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setInteractiveRecognizer()
+        
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
         initView()
         
         initLocationManager()
+    }
+    
+    private func setInteractiveRecognizer() {
+        guard let controller = navigationController else { return }
+        let recognizer = InteractivePopRecognizer(controller: controller)
+        controller.interactivePopGestureRecognizer?.delegate = recognizer
     }
     
     private func initView() {
@@ -285,7 +293,9 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
                 return
             }
             
-            // TODO push to presence list controller
+            let vc = PresensiListController()
+            vc.from = .presensiMapController
+            self.navigationController?.pushViewController(vc, animated: true)
             
         }
     }

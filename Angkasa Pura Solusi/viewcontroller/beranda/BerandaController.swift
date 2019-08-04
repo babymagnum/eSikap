@@ -158,7 +158,10 @@ extension BerandaController {
             case 4:
                 getPreparePresence()
             case 5:
-                print("presensi list")
+                //presensi list item
+                let vc = PresensiListController()
+                vc.from = .standart
+                self.navigationController?.pushViewController(vc, animated: true)
             case 6:
                 print("slip gaji")
             case 7:
@@ -170,7 +173,7 @@ extension BerandaController {
             case 10:
                 print("link website aps")
             case 99:
-                print("menu lainya clicked")
+                //menu lainya item
                 openBottomSheet()
             default: break
             }

@@ -26,6 +26,8 @@ class PresensiController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setInteractiveRecognizer()
+        
         initView()
         
         clickEvent()
@@ -34,6 +36,12 @@ class PresensiController: BaseViewController {
     private func clickEvent() {
         viewPresensiMasuk.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewPresensiMasukClick)))
         viewPresensiKeluar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewPresensiKeluarClick)))
+    }
+    
+    private func setInteractiveRecognizer() {
+        guard let controller = navigationController else { return }
+        let recognizer = InteractivePopRecognizer(controller: controller)
+        controller.interactivePopGestureRecognizer?.delegate = recognizer
     }
     
     private func initView() {

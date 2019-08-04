@@ -77,7 +77,7 @@ class PresenceNetworking {
         }
     }
     
-    func getPresenceList(request: (month: String, year: String)) {
+    func getPresenceList(request: (month: String, year: String), completion: @escaping (_ error: String?, _ listPresensi: [ItemPresensi]?) -> Void) {
         let url = "\(staticLet.base_url)api/getPresenceList"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
@@ -89,16 +89,26 @@ class PresenceNetworking {
         
         Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success(let responseSuccess):
-                let root = JSON(responseSuccess)
+            case .success:
                 
-                if root["status"].int == 200 {
-                    // TODO do something with the list
-                } else {
-                    // TODO do something if status is not 200
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
                 }
-            case .failure(let responseFailure):
-                print(responseFailure.localizedDescription)
+                
+                do {
+                    let presensi = try JSONDecoder().decode(Presensi.self, from: mData)
+                    
+                    if presensi.status == 200 {
+                        completion(nil, presensi.data)
+                    } else {
+                        completion(presensi.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let responseFailure): completion(responseFailure.localizedDescription, nil)
             }
         }
     }

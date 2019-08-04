@@ -21,6 +21,8 @@ class DetailBeritaController: BaseViewController, WKUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+        setInteractiveRecognizer()
         
         webView.uiDelegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
@@ -28,6 +30,12 @@ class DetailBeritaController: BaseViewController, WKUIDelegate {
         setView()
         
         getDetailNews()
+    }
+    
+    private func setInteractiveRecognizer() {
+        guard let controller = navigationController else { return }
+        let recognizer = InteractivePopRecognizer(controller: controller)
+        controller.interactivePopGestureRecognizer?.delegate = recognizer
     }
     
     private func setView() {

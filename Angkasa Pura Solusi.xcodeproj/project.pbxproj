@@ -32,6 +32,14 @@
 		ED52153822F5201C001C6A50 /* MenuFavoritCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */; };
 		ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0322F1DB2100CD14FC /* PreparePresence.swift */; };
 		ED602F0622F1DBAB00CD14FC /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */; };
+		ED61BEF922F66D7D00776C25 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BEF722F66D7D00776C25 /* ChangePasswordController.swift */; };
+		ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED61BEF822F66D7D00776C25 /* ChangePasswordController.xib */; };
+		ED61BEFE22F67C9F00776C25 /* PresensiListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BEFC22F67C9F00776C25 /* PresensiListController.swift */; };
+		ED61BEFF22F67C9F00776C25 /* PresensiListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED61BEFD22F67C9F00776C25 /* PresensiListController.xib */; };
+		ED61BF0222F67E6700776C25 /* PresensiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BF0022F67E6700776C25 /* PresensiCell.swift */; };
+		ED61BF0322F67E6700776C25 /* PresensiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED61BF0122F67E6700776C25 /* PresensiCell.xib */; };
+		ED61BF0522F6837500776C25 /* Presensi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BF0422F6837500776C25 /* Presensi.swift */; };
+		ED61BF0722F696AA00776C25 /* InteractivePopRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BF0622F696AA00776C25 /* InteractivePopRecognizer.swift */; };
 		ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E506922ED417000EED8E7 /* BerandaController.swift */; };
 		ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6E506A22ED417000EED8E7 /* BerandaController.xib */; };
 		ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E506D22ED418700EED8E7 /* BeritaController.swift */; };
@@ -102,6 +110,14 @@
 		ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuFavoritCell.xib; sourceTree = "<group>"; };
 		ED602F0322F1DB2100CD14FC /* PreparePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparePresence.swift; sourceTree = "<group>"; };
 		ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
+		ED61BEF722F66D7D00776C25 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
+		ED61BEF822F66D7D00776C25 /* ChangePasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordController.xib; sourceTree = "<group>"; };
+		ED61BEFC22F67C9F00776C25 /* PresensiListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiListController.swift; sourceTree = "<group>"; };
+		ED61BEFD22F67C9F00776C25 /* PresensiListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiListController.xib; sourceTree = "<group>"; };
+		ED61BF0022F67E6700776C25 /* PresensiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiCell.swift; sourceTree = "<group>"; };
+		ED61BF0122F67E6700776C25 /* PresensiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiCell.xib; sourceTree = "<group>"; };
+		ED61BF0422F6837500776C25 /* Presensi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presensi.swift; sourceTree = "<group>"; };
+		ED61BF0622F696AA00776C25 /* InteractivePopRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopRecognizer.swift; sourceTree = "<group>"; };
 		ED6E506922ED417000EED8E7 /* BerandaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerandaController.swift; sourceTree = "<group>"; };
 		ED6E506A22ED417000EED8E7 /* BerandaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BerandaController.xib; sourceTree = "<group>"; };
 		ED6E506D22ED418700EED8E7 /* BeritaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeritaController.swift; sourceTree = "<group>"; };
@@ -217,11 +233,13 @@
 			path = dialog_inform_first;
 			sourceTree = "<group>";
 		};
-		ED52151C22F46E63001C6A50 /* presence_cell */ = {
+		ED52151C22F46E63001C6A50 /* presensi_cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED61BF0022F67E6700776C25 /* PresensiCell.swift */,
+				ED61BF0122F67E6700776C25 /* PresensiCell.xib */,
 			);
-			path = presence_cell;
+			path = presensi_cell;
 			sourceTree = "<group>";
 		};
 		ED52152122F47BE2001C6A50 /* dialog_prepare_presence */ = {
@@ -258,6 +276,24 @@
 				ED52153222F51DA7001C6A50 /* MenuLainyaCell.xib */,
 			);
 			path = menu_lainya_cell;
+			sourceTree = "<group>";
+		};
+		ED61BEF622F66D6200776C25 /* change_password */ = {
+			isa = PBXGroup;
+			children = (
+				ED61BEF722F66D7D00776C25 /* ChangePasswordController.swift */,
+				ED61BEF822F66D7D00776C25 /* ChangePasswordController.xib */,
+			);
+			path = change_password;
+			sourceTree = "<group>";
+		};
+		ED61BEFB22F67C8800776C25 /* presensi_list */ = {
+			isa = PBXGroup;
+			children = (
+				ED61BEFC22F67C9F00776C25 /* PresensiListController.swift */,
+				ED61BEFD22F67C9F00776C25 /* PresensiListController.xib */,
+			);
+			path = presensi_list;
 			sourceTree = "<group>";
 		};
 		ED6E506522ED412A00EED8E7 /* beranda */ = {
@@ -343,6 +379,8 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED61BEFB22F67C8800776C25 /* presensi_list */,
+				ED61BEF622F66D6200776C25 /* change_password */,
 				ED10745D22F5A58F00ADF055 /* detail_berita */,
 				ED52152622F4825B001C6A50 /* bottom_sheet_menu */,
 				ED52152122F47BE2001C6A50 /* dialog_prepare_presence */,
@@ -379,6 +417,7 @@
 				ED52151822F452A1001C6A50 /* Circle.swift */,
 				ED10746222F5AE6F00ADF055 /* DetailNews.swift */,
 				ED10746622F5DCE900ADF055 /* Profile.swift */,
+				ED61BF0422F6837500776C25 /* Presensi.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -399,6 +438,7 @@
 				ED95907F22EBE77B00D696E5 /* StaticLet.swift */,
 				ED95909622EBF1C500D696E5 /* PublicFunction.swift */,
 				ED95909822EBF26E00D696E5 /* BaseViewController.swift */,
+				ED61BF0622F696AA00776C25 /* InteractivePopRecognizer.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -444,7 +484,7 @@
 			children = (
 				ED52153022F51D91001C6A50 /* menu_lainya_cell */,
 				ED52152B22F491F8001C6A50 /* menu_favorit_cell */,
-				ED52151C22F46E63001C6A50 /* presence_cell */,
+				ED52151C22F46E63001C6A50 /* presensi_cell */,
 				ED3038C422ED635A005BCF87 /* berita_cell */,
 				ED3038C322ED6352005BCF87 /* menu_utama_cell */,
 				ED95909D22EBF98C00D696E5 /* onboarding_cell */,
@@ -551,9 +591,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED61BEFF22F67C9F00776C25 /* PresensiListController.xib in Resources */,
 				ED3038CC22ED639E005BCF87 /* BeritaCell.xib in Resources */,
 				ED95908B22EBE8DE00D696E5 /* OnboardingController.xib in Resources */,
 				ED95908722EBE8A000D696E5 /* LoginController.xib in Resources */,
+				ED61BF0322F67E6700776C25 /* PresensiCell.xib in Resources */,
 				ED52152522F47C0D001C6A50 /* DialogPreparePresenceController.xib in Resources */,
 				ED6E507422ED419500EED8E7 /* NotifikasiController.xib in Resources */,
 				ED52153422F51DA7001C6A50 /* MenuLainyaCell.xib in Resources */,
@@ -561,6 +603,7 @@
 				ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */,
 				ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */,
 				EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */,
+				ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */,
 				ED95909022EBE90A00D696E5 /* HomeController.xib in Resources */,
 				ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */,
 				ED95909B22EBF4DC00D696E5 /* LaunchScreen.storyboard in Resources */,
@@ -644,6 +687,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED95909422EBEE9300D696E5 /* SplashController.swift in Sources */,
+				ED61BF0722F696AA00776C25 /* InteractivePopRecognizer.swift in Sources */,
 				ED10746722F5DCE900ADF055 /* Profile.swift in Sources */,
 				ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */,
 				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
@@ -660,10 +704,12 @@
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
+				ED61BEF922F66D7D00776C25 /* ChangePasswordController.swift in Sources */,
 				ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */,
 				ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */,
 				ED9590AA22EC923A00D696E5 /* PresenceNetworking.swift in Sources */,
 				ED6E507322ED419500EED8E7 /* NotifikasiController.swift in Sources */,
+				ED61BF0522F6837500776C25 /* Presensi.swift in Sources */,
 				ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */,
 				ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */,
 				ED858B0622F323F000016EAD /* LatestNews.swift in Sources */,
@@ -676,7 +722,9 @@
 				ED10746022F5A5BA00ADF055 /* DetailBeritaController.swift in Sources */,
 				ED52151922F452A1001C6A50 /* Circle.swift in Sources */,
 				ED95908622EBE8A000D696E5 /* LoginController.swift in Sources */,
+				ED61BEFE22F67C9F00776C25 /* PresensiListController.swift in Sources */,
 				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
+				ED61BF0222F67E6700776C25 /* PresensiCell.swift in Sources */,
 				ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */,
 				ED52153722F5201C001C6A50 /* MenuFavoritCell.swift in Sources */,
 				EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */,
