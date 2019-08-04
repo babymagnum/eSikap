@@ -51,7 +51,7 @@ class PresensiCell: UICollectionViewCell {
         if time == "" {
             label.text = ""
         } else {
-            label.text = String(time.prefix(5))
+            label.text = time
         }
     }
     
