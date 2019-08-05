@@ -177,7 +177,7 @@ extension BerandaController {
                 self.showInDevelopmentDialog()
             case 9:
                 //daftar karyawan
-                self.showInDevelopmentDialog()
+                self.navigationController?.pushViewController(DaftarKaryawanController(), animated: true)
             case 10:
                 //link website aps
                 self.showInDevelopmentDialog()

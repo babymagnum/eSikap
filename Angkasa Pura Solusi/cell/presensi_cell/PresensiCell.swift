@@ -37,32 +37,37 @@ class PresensiCell: UICollectionViewCell {
         addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6)
     }
     
-    private func waktuPresensi(_ date: String, _ label: UILabel) {
-        if date == "" {
-            label.isHidden = true
-            label.text = function.getCurrentDate(pattern: "hh:mm:ss")
-        } else {
-            label.isHidden = false
-            label.text = date.components(separatedBy: " ")[1]
-        }
-    }
-    
-    private func waktuShift(_ time: String, _ label: UILabel) {
-        if time == "" {
-            label.text = ""
-        } else {
-            label.text = time
-        }
-    }
-    
     var data: ItemPresensi? {
         didSet {
             if let data = data {
                 self.labelDate.text = data.date
-                self.waktuShift(data.shift_start!, self.labelJamMasuk)
-                self.waktuShift(data.shift_end!, self.labelJamPulang)
-                self.waktuPresensi(data.date_in ?? "", self.labelPresensiMasuk)
-                self.waktuPresensi(data.date_out ?? "", self.labelPresensiPulang)
+                
+                if data.shift_start == "" {
+                    self.labelJamMasuk.text = "-"
+                } else {
+                    self.labelJamMasuk.text = data.shift_start
+                }
+                
+                if data.shift_end == "" {
+                    self.labelJamPulang.text = "-"
+                } else {
+                    self.labelJamPulang.text = data.shift_end
+                }
+                
+                if data.date_in == "" {
+                    self.labelPresensiMasuk.text = "-" // only for make the text not empty
+                } else {
+                    let fullString = (data.date_in?.contains(" "))! ? "\(data.date_in?.components(separatedBy: " ")[0] ?? "")      \(data.date_in?.components(separatedBy: " ")[1] ?? "")" : data.date_in
+                    self.labelPresensiMasuk.attributedText = function.coloredString(color: "9ccc65", mainString: fullString!, stringNotColored: String((data.date_in?.prefix(9))!))
+                }
+                
+                if data.date_out == "" {
+                    self.labelPresensiPulang.text = "-" // only for make the text not empty
+                } else {
+                    let fullString = (data.date_out?.contains(" "))! ? "\(data.date_out?.components(separatedBy: " ")[0] ?? "")      \(data.date_out?.components(separatedBy: " ")[1] ?? "")" : data.date_out
+                    self.labelPresensiPulang.attributedText = function.coloredString(color: "ef5350", mainString: fullString!, stringNotColored: String((data.date_in?.prefix(9))!))
+                }
+                
                 buttonStatusPresensi.setTitle(data.presence_status, for: .normal)
                 buttonStatusPresensi.backgroundColor = UIColor(hexString: data.presence_status_bg_color!)
             }

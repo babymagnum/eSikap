@@ -23,6 +23,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfilController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
+                <outlet property="buttonBackWidth" destination="5Wj-kX-tuU" id="j4f-QM-97U"/>
                 <outlet property="imageAccount" destination="8fU-fh-k9j" id="O03-NI-eeP"/>
                 <outlet property="labelDivisi" destination="PxJ-uS-5YR" id="eYd-fR-e1g"/>
                 <outlet property="labelEmail" destination="jDn-Qq-9X9" id="yU3-fP-eHk"/>
@@ -31,6 +32,8 @@
                 <outlet property="labelNIKValue" destination="xa7-K0-yaS" id="j9V-Pn-ehu"/>
                 <outlet property="labelNama" destination="GMu-Jm-K31" id="UcE-zR-GBd"/>
                 <outlet property="labelTelepon" destination="gef-DZ-tpP" id="Blx-U5-Avu"/>
+                <outlet property="labelTitle" destination="gZw-tU-7Ta" id="yPL-04-Zb1"/>
+                <outlet property="labelTitleMarginStart" destination="2Da-pF-X74" id="FBd-C2-5wQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewContainerAction" destination="Emz-J6-Je2" id="8Ku-gC-MNq"/>
                 <outlet property="viewContainerInformation" destination="bcc-Va-PNn" id="c2s-9J-6LY"/>
@@ -52,17 +55,32 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZw-tU-7Ta">
-                                    <rect key="frame" x="12" y="19.5" width="29" height="14.5"/>
+                                    <rect key="frame" x="53" y="19.5" width="29" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0XS-yU-TtD">
+                                    <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="5Wj-kX-tuU"/>
+                                        <constraint firstAttribute="height" constant="53" id="GpY-Ce-AGs"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" image="backwardArrow"/>
+                                    <connections>
+                                        <action selector="buttonBackClick:" destination="-1" eventType="touchUpInside" id="9Fp-hY-cGn"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="gZw-tU-7Ta" firstAttribute="leading" secondItem="4ZP-m6-iSM" secondAttribute="leading" constant="12" id="QDd-xS-XdG"/>
-                                <constraint firstItem="gZw-tU-7Ta" firstAttribute="centerY" secondItem="4ZP-m6-iSM" secondAttribute="centerY" id="Scj-dy-maP"/>
+                                <constraint firstItem="gZw-tU-7Ta" firstAttribute="leading" secondItem="0XS-yU-TtD" secondAttribute="trailing" id="2Da-pF-X74"/>
+                                <constraint firstItem="0XS-yU-TtD" firstAttribute="leading" secondItem="4ZP-m6-iSM" secondAttribute="leading" id="7Q5-yk-tXG"/>
+                                <constraint firstItem="gZw-tU-7Ta" firstAttribute="centerY" secondItem="4ZP-m6-iSM" secondAttribute="centerY" id="8yy-Pa-0Jv"/>
+                                <constraint firstAttribute="bottom" secondItem="0XS-yU-TtD" secondAttribute="bottom" id="EVB-yQ-LAo"/>
                                 <constraint firstAttribute="height" constant="53" id="XMx-Mt-al0"/>
+                                <constraint firstItem="0XS-yU-TtD" firstAttribute="top" secondItem="4ZP-m6-iSM" secondAttribute="top" id="jJ5-KF-cqe"/>
                             </constraints>
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headway566297Unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="RGz-gd-ayw">
@@ -81,20 +99,20 @@
                                         <constraint firstAttribute="width" constant="85" id="dLY-XA-uqG"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arief Zainuri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMu-Jm-K31">
-                                    <rect key="frame" x="162.5" y="117" width="50.5" height="11"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMu-Jm-K31">
+                                    <rect key="frame" x="186" y="117" width="3.5" height="11"/>
                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="9"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Director" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hci-oI-UR1">
-                                    <rect key="frame" x="171.5" y="132" width="32" height="11"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hci-oI-UR1">
+                                    <rect key="frame" x="186.5" y="132" width="2.5" height="11"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marketing Division" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxJ-uS-5YR">
-                                    <rect key="frame" x="150" y="147" width="75" height="11"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxJ-uS-5YR">
+                                    <rect key="frame" x="186" y="147" width="3" height="11"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                     <color key="textColor" red="0.25882352941176467" green="0.6470588235294118" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -131,7 +149,7 @@
                                                         <color key="titleColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34041234567891011001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa7-K0-yaS">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa7-K0-yaS">
                                                     <rect key="frame" x="173.5" y="0.0" width="173.5" height="30"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                     <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -160,7 +178,7 @@
                                                         <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bandara Adisutjipto - YOG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6D-op-fBv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6D-op-fBv">
                                                     <rect key="frame" x="173.5" y="0.0" width="173.5" height="30"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                     <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -189,7 +207,7 @@
                                                         <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wayan.wijaya@email.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDn-Qq-9X9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDn-Qq-9X9">
                                                     <rect key="frame" x="173.5" y="0.0" width="173.5" height="30"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                     <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -218,7 +236,7 @@
                                                         <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="085123456789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gef-DZ-tpP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gef-DZ-tpP">
                                                     <rect key="frame" x="173.5" y="0.0" width="173.5" height="30"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                     <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -404,6 +422,7 @@
     </objects>
     <resources>
         <image name="1" width="25" height="25"/>
+        <image name="backwardArrow" width="9.5" height="16"/>
         <image name="headway566297Unsplash" width="320" height="160"/>
         <image name="icExpandMore" width="21.5" height="21.5"/>
         <image name="lockSolid" width="12" height="13.5"/>

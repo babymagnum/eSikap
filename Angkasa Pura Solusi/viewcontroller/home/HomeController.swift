@@ -32,7 +32,9 @@ class HomeController: UITabBarController {
         
         let berandaController = BerandaController()
         berandaController.delegate = self
-        viewControllers = [berandaController, BeritaController(), NotifikasiController(), ProfilController()]
+        let profilController = ProfilController()
+        profilController.open = .myProfile
+        viewControllers = [berandaController, BeritaController(), NotifikasiController(), profilController]
         
         tabBar.items![0].title = "Beranda"
         setImage("icHomeActive", 0)

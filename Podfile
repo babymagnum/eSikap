@@ -18,4 +18,5 @@ target 'Angkasa Pura Solusi' do
   pod 'GooglePlaces'
   pod 'EzPopup'
   pod 'FittedSheets'
+  pod 'iOSDropDown'
 end

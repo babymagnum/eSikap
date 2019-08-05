@@ -23,7 +23,7 @@ class Preference {
     }
     
     func getString(key: String) -> String {
-        return UserDefaults.standard.string(forKey: key)!
+        return UserDefaults.standard.string(forKey: key) ?? ""
     }
     
     func saveInt(value: Int, key: String) {

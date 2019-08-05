@@ -38,13 +38,14 @@
                                         <constraint firstAttribute="height" constant="53" id="QZj-F3-8Zu"/>
                                         <constraint firstAttribute="width" constant="53" id="zyQ-fR-MNm"/>
                                     </constraints>
+                                    <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="backwardArrow"/>
                                     <connections>
                                         <action selector="backButtonClick:" destination="-1" eventType="touchUpInside" id="xgH-eB-I80"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presensi List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5a-O6-KkT">
-                                    <rect key="frame" x="53" y="19.5" width="70" height="14.5"/>
+                                    <rect key="frame" x="41" y="19.5" width="70" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -55,6 +56,7 @@
                                         <constraint firstAttribute="width" constant="53" id="5XN-WB-jKq"/>
                                         <constraint firstAttribute="height" constant="53" id="86l-4X-gY4"/>
                                     </constraints>
+                                    <inset key="imageEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="filter"/>
                                     <connections>
                                         <action selector="filterButtonClick:" destination="-1" eventType="touchUpInside" id="aET-TA-Yf0"/>
@@ -64,7 +66,7 @@
                             <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="Z5a-O6-KkT" firstAttribute="centerY" secondItem="6LL-eK-mv4" secondAttribute="centerY" id="Lcs-x4-Jyx"/>
-                                <constraint firstItem="Z5a-O6-KkT" firstAttribute="leading" secondItem="dYy-wL-n3M" secondAttribute="trailing" id="OFF-qr-PJU"/>
+                                <constraint firstItem="Z5a-O6-KkT" firstAttribute="leading" secondItem="dYy-wL-n3M" secondAttribute="trailing" constant="-12" id="OFF-qr-PJU"/>
                                 <constraint firstAttribute="height" constant="53" id="OSE-FU-mXC"/>
                                 <constraint firstItem="dYy-wL-n3M" firstAttribute="leading" secondItem="6LL-eK-mv4" secondAttribute="leading" id="hdZ-L8-Qdk"/>
                                 <constraint firstItem="r6P-Db-nCc" firstAttribute="centerY" secondItem="6LL-eK-mv4" secondAttribute="centerY" id="hm8-lF-YAl"/>

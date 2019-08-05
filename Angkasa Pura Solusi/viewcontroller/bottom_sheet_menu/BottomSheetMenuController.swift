@@ -202,7 +202,11 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             self.showInDevelopmentDialog()
         case 9:
             //daftar karyawan
-            self.showInDevelopmentDialog()
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.parentNavigationController?.pushViewController(DaftarKaryawanController(), animated: true)
+            }
         case 10:
             //link website aps
             self.showInDevelopmentDialog()

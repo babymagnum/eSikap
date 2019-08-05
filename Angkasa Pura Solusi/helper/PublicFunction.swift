@@ -256,6 +256,13 @@ class PublicFunction {
         viewController.present(alert, animated: true)
     }
     
+    func coloredString(color: String, mainString: String, stringNotColored: String) -> NSMutableAttributedString {
+        let range = "{\(mainString.count-stringNotColored.count), \(stringNotColored.count)}"
+        let coloredString = NSMutableAttributedString.init(string: mainString)
+        coloredString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(hexString: color) , range: NSRange(range)!)
+        return coloredString
+    }
+    
     open func showUnderstandDialog(_ viewController: UIViewController, _ title: String, _ message: String, _ actionTitle: String, _ actionTitle2: String, completionHandler: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action) in
@@ -459,6 +466,13 @@ extension UICollectionView {
 }
 
 extension UIView {
+    
+    func giveBorder(_ cornerRadius: CGFloat, _ borderWidth: CGFloat, _ borderColor: String) {
+        clipsToBounds = true
+        layer.cornerRadius = cornerRadius
+        layer.borderWidth = borderWidth
+        layer.borderColor = UIColor(hexString: borderColor).cgColor
+    }
     
     public class func fromNib() -> Self {
         return fromNib(nibName: nil)

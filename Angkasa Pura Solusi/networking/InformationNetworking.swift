@@ -175,4 +175,189 @@ class InformationNetworking {
             }
         }
     }
+    
+    func getProfileByEmpId(empId: String, completion: @escaping (_ error: String?, _ itemDetailKaryawan: ItemDetailKaryawan?) -> Void) {
+        
+        let url = "\(staticLet.base_url)api/getProfileByEmpId"
+        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
+        let body: [String: String] = [ "emp_id": empId ]
+        
+        Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
+                }
+                
+                do {
+                    let detailKaryawan = try JSONDecoder().decode(DetailKaryawan.self, from: mData)
+                    
+                    if detailKaryawan.status == 200 {
+                        completion(nil, detailKaryawan.data[0])
+                    } else {
+                        completion(detailKaryawan.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let error):
+                completion(error.localizedDescription, nil)
+            }
+        }
+    }
+    
+    func getEmpList(_ request: (emp_name: String, unit_id: String, workarea_id: String, gender: String, page: String), completion: @escaping (_ error: String?, _ listKaryawan: Karyawan?) -> Void) {
+        
+        let url = "\(staticLet.base_url)api/getEmpList"
+        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
+        let body: [String: String] = [
+            "order": "a_to_z",
+            "emp_name": request.emp_name,
+            "unit_id": request.unit_id,
+            "workarea_id": request.workarea_id,
+            "gender": request.gender,
+            "page": request.page
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
+                }
+                
+                do {
+                    let listKaryawan = try JSONDecoder().decode(ListKaryawan.self, from: mData)
+                    
+                    if listKaryawan.status == 200 {
+                        completion(nil, listKaryawan.data)
+                    } else {
+                        completion(listKaryawan.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let error): completion(error.localizedDescription, nil)
+            }
+        }
+    }
+    
+    func getUnit(completion: @escaping (_ error: String?, _ listUnit: [ItemUnit]?) -> Void) {
+        let url = "\(staticLet.base_url)api/getUnit"
+        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
+        
+        Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
+                }
+                
+                do {
+                    let unit = try JSONDecoder().decode(Unit.self, from: mData)
+                    
+                    if unit.status == 200 {
+                        completion(nil, unit.data)
+                    } else {
+                        completion(unit.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+            case .failure(let error): completion(error.localizedDescription, nil)
+            }
+        }
+    }
+    
+    func getWorkarea(completion: @escaping (_ error: String?, _ listUnit: [ItemWorkarea]?) -> Void) {
+        let url = "\(staticLet.base_url)api/getWorkarea"
+        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
+        
+        Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
+                }
+                
+                do {
+                    let workarea = try JSONDecoder().decode(Workarea.self, from: mData)
+                    
+                    if workarea.status == 200 {
+                        completion(nil, workarea.data)
+                    } else {
+                        completion(workarea.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let error): completion(error.localizedDescription, nil)
+            }
+        }
+    }
+    
+    func getGender(completion: @escaping (_ error: String?, _ listUnit: [ItemGender]?) -> Void) {
+        let url = "\(staticLet.base_url)api/getGender"
+        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
+        
+        Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
+                }
+                
+                do {
+                    let gender = try JSONDecoder().decode(Gender.self, from: mData)
+                    
+                    if gender.status == 200 {
+                        completion(nil, gender.data)
+                    } else {
+                        completion(gender.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let error): completion(error.localizedDescription, nil)
+            }
+        }
+    }
+    
+    func getOrder(completion: @escaping (_ error: String?, _ listUnit: [ItemOrder]?) -> Void) {
+        let url = "\(staticLet.base_url)api/getOrder"
+        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
+        
+        Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
+                }
+                
+                do {
+                    let order = try JSONDecoder().decode(Order.self, from: mData)
+                    
+                    if order.status == 200 {
+                        completion(nil, order.data)
+                    } else {
+                        completion(order.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let error): completion(error.localizedDescription, nil)
+            }
+        }
+    }
 }
