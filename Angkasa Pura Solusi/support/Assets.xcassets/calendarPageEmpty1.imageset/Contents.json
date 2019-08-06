@@ -1,18 +1,18 @@
 {
   "images" : [
     {
+      "filename" : "calendarPageEmpty1.png",
       "scale" : "1x",
-      "idiom" : "universal",
-      "filename" : "calendarPageEmpty1.png"
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
+      "filename" : "calendarPageEmpty1@2x.png",
       "scale" : "2x",
-      "filename" : "calendarPageEmpty1@2x.png"
+      "idiom" : "universal"
     },
     {
-      "scale" : "3x",
       "idiom" : "universal",
+      "scale" : "3x",
       "filename" : "calendarPageEmpty1@3x.png"
     }
   ],

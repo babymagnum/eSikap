@@ -9,9 +9,20 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogFirstController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
+                <outlet property="imageAnnouncement" destination="MSI-rb-Tk6" id="oeb-zd-hgb"/>
+                <outlet property="labelDescription" destination="eQP-Iz-FBj" id="Ir0-hC-Ftt"/>
+                <outlet property="labelTitle" destination="zyT-h0-7cW" id="Lea-gq-ia5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewContainer" destination="1e0-WU-Z22" id="erj-0J-m8m"/>
             </connections>
@@ -25,7 +36,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1e0-WU-Z22">
-                            <rect key="frame" x="21" y="183" width="333" height="301"/>
+                            <rect key="frame" x="21" y="163.5" width="333" height="340"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a13D6A7E8D0F41B8Be9157B849558Eab" translatesAutoresizingMaskIntoConstraints="NO" id="MSI-rb-Tk6">
                                     <rect key="frame" x="0.0" y="0.0" width="333" height="231"/>
@@ -34,10 +45,10 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-h0-7cW">
-                                    <rect key="frame" x="80.5" y="243" width="172.5" height="31.5"/>
+                                    <rect key="frame" x="87" y="243" width="159" height="30.5"/>
                                     <string key="text">Speeda Application Testing
 Challenge</string>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -52,13 +63,22 @@ Challenge</string>
                                         <action selector="iconCancelClick:" destination="-1" eventType="touchUpInside" id="7Xb-Xf-64Y"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description testing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQP-Iz-FBj">
+                                    <rect key="frame" x="10" y="283.5" width="313" height="14.5"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="IoP-Ua-2Hm" firstAttribute="top" secondItem="1e0-WU-Z22" secondAttribute="top" constant="-12" id="8sT-C2-AHf"/>
                                 <constraint firstItem="zyT-h0-7cW" firstAttribute="top" secondItem="MSI-rb-Tk6" secondAttribute="bottom" constant="12" id="Ang-3g-6Ug"/>
                                 <constraint firstItem="MSI-rb-Tk6" firstAttribute="top" secondItem="1e0-WU-Z22" secondAttribute="top" id="Ehf-pq-b0M"/>
-                                <constraint firstAttribute="height" constant="301" id="Yyh-Dq-hLo"/>
+                                <constraint firstItem="eQP-Iz-FBj" firstAttribute="top" secondItem="zyT-h0-7cW" secondAttribute="bottom" constant="10" id="FUi-1x-C2I"/>
+                                <constraint firstAttribute="height" constant="340" id="Yyh-Dq-hLo"/>
+                                <constraint firstAttribute="trailing" secondItem="eQP-Iz-FBj" secondAttribute="trailing" constant="10" id="ckZ-7s-Qjm"/>
+                                <constraint firstItem="eQP-Iz-FBj" firstAttribute="leading" secondItem="1e0-WU-Z22" secondAttribute="leading" constant="10" id="fbm-z7-QwE"/>
                                 <constraint firstItem="zyT-h0-7cW" firstAttribute="centerX" secondItem="1e0-WU-Z22" secondAttribute="centerX" id="gcw-JL-GB2"/>
                                 <constraint firstAttribute="trailing" secondItem="IoP-Ua-2Hm" secondAttribute="trailing" constant="-12" id="k6Q-pR-Bki"/>
                                 <constraint firstAttribute="trailing" secondItem="MSI-rb-Tk6" secondAttribute="trailing" id="pcr-9w-qzT"/>

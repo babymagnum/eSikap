@@ -360,4 +360,33 @@ class InformationNetworking {
             }
         }
     }
+    
+    func getAnnouncement(completion: @escaping (_ error: String?, _ itemAnnouncement: ItemAnnouncement?) -> Void) {
+        let url = "\(staticLet.base_url)api/getAnnouncement"
+        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
+        
+        Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                let data = response.data
+                
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
+                }
+                
+                do {
+                    let announcement = try JSONDecoder().decode(Announcement.self, from: mData)
+                    
+                    if announcement.status == 200 {
+                        completion(nil, announcement.data[0])
+                    } else {
+                        completion(announcement.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let error): completion(error.localizedDescription, nil)
+            }
+        }
+    }
 }

@@ -33,9 +33,18 @@ class ProfilController: BaseViewController {
     @IBOutlet weak var viewRootInformation: UIView!
     @IBOutlet weak var buttonBackWidth: NSLayoutConstraint!
     @IBOutlet weak var labelTitleMarginStart: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var open: WhichKaryawan?
     var empId: String?
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.blue
+        
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +77,8 @@ class ProfilController: BaseViewController {
     }
     
     private func initView() {
+        scrollView.addSubview(refreshControl)
+        
         imageAccount.clipsToBounds = true
         imageAccount.layer.cornerRadius = imageAccount.frame.height / 2
         
@@ -126,8 +137,9 @@ class ProfilController: BaseViewController {
         informationNetworking.getProfile { (error, itemProfile) in
             SVProgressHUD.dismiss()
             if let error = error {
-                self.function.showUnderstandDialog(self, "Error Geting Profile Data", error, "Retry", completionHandler: {
-                    self.getProfile()
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Profil", error, "Reload", "Cancel", completionHandler: {
+                    if self.open == .myProfile { self.getProfile() }
+                    else { self.getKaryawanProfil() }
                 })
                 return
             }
@@ -141,12 +153,20 @@ class ProfilController: BaseViewController {
 }
 
 extension ProfilController {
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        getProfile()
+    }
+    
     @IBAction func buttonBackClick(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     
     @objc func viewKeluarClick() {
-        
+        function.showUnderstandDialog(self, "Keluar dari ESS APS", "Yakin ingin keluar?", "KELUAR", "BATAL") {
+            self.resetData()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     @objc func viewUbahKataSandiClick() {

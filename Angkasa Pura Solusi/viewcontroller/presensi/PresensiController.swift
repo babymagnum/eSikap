@@ -19,7 +19,7 @@ class PresensiController: BaseViewController {
     @IBOutlet weak var labelJamPulang: UILabel!
     @IBOutlet weak var iconKeluar: UIImageView!
     
-    var preparePresence: PreparePresence?
+    var preparePresence: ItemPreparePresence?
     var seconds = 0
     var minutes = 0
     var hours = 0
@@ -57,7 +57,7 @@ class PresensiController: BaseViewController {
         labelDate.text = "\(dateArr[0])\n\(dateArr[1]) \(dateArr[2]) \(dateArr[3])"
         
         if let presencePrepare = self.preparePresence {
-            labelDate.text = "\(presencePrepare.day ?? "")\n\(presencePrepare.date ?? "")"
+            labelDate.text = "\(presencePrepare.day ?? "")\n\(presencePrepare.date_formated ?? "")"
             labelJamMasuk.text = String((presencePrepare.shift_start?.prefix(5))!)
             labelJamPulang.text = String((presencePrepare.shift_end?.prefix(5))!)
             
@@ -81,7 +81,7 @@ class PresensiController: BaseViewController {
                     self.minutes = 0
                 }
                 
-                self.labelClock.text = "\(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)")"
+                self.labelClock.text = "\(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)") \(self.preparePresence?.timezone ?? "")"
             }
         }
     }
@@ -92,6 +92,11 @@ class PresensiController: BaseViewController {
 }
 
 extension PresensiController {
+    @IBAction func buttonPresenceListClick(_ sender: Any) {
+        let vc = PresensiListController()
+        vc.from = .standart
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc func viewPresensiMasukClick() {
         if let presence = preparePresence {
@@ -100,6 +105,7 @@ extension PresensiController {
                 preparePresence?.time = "\(hours):\(minutes):\(seconds)"
                 vc.preparePresence = preparePresence
                 vc.presenceType = "in"
+                vc.titleString = "Presensi Masuk"
                 navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = DialogPreparePresenceController()
@@ -116,6 +122,7 @@ extension PresensiController {
                 preparePresence?.time = "\(hours):\(minutes):\(seconds)"
                 vc.preparePresence = preparePresence
                 vc.presenceType = "out"
+                vc.titleString = "Presensi Pulang"
                 navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = DialogPreparePresenceController()

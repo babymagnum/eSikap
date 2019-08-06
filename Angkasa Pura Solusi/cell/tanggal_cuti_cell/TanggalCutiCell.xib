@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TanggalCutiCell" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="292" height="34"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="292" height="34"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tc4-Uh-EXg">
+                        <rect key="frame" x="0.0" y="0.0" width="292" height="34"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03-06-2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9A-gU-PWg">
+                                <rect key="frame" x="0.0" y="6" width="255" height="15"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3d-VW-UfX">
+                                <rect key="frame" x="265" y="0.0" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="Ybv-dQ-Rwg"/>
+                                    <constraint firstAttribute="width" constant="27" id="x6w-Al-hNj"/>
+                                </constraints>
+                                <state key="normal" image="group382"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vb-Zs-ERB">
+                                <rect key="frame" x="0.0" y="33" width="292" height="1"/>
+                                <color key="backgroundColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Aj3-3w-3tr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4Vb-Zs-ERB" firstAttribute="top" secondItem="C3d-VW-UfX" secondAttribute="bottom" constant="6" id="BfY-dX-2Pm"/>
+                            <constraint firstItem="J9A-gU-PWg" firstAttribute="top" secondItem="Tc4-Uh-EXg" secondAttribute="top" constant="6" id="IzT-BW-RrC"/>
+                            <constraint firstItem="J9A-gU-PWg" firstAttribute="leading" secondItem="Tc4-Uh-EXg" secondAttribute="leading" id="XfF-lW-dYM"/>
+                            <constraint firstAttribute="trailing" secondItem="4Vb-Zs-ERB" secondAttribute="trailing" id="Zvd-El-62C"/>
+                            <constraint firstAttribute="trailing" secondItem="C3d-VW-UfX" secondAttribute="trailing" id="hBp-li-1IL"/>
+                            <constraint firstAttribute="bottom" secondItem="4Vb-Zs-ERB" secondAttribute="bottom" id="kGy-Mv-KHg"/>
+                            <constraint firstItem="C3d-VW-UfX" firstAttribute="leading" secondItem="J9A-gU-PWg" secondAttribute="trailing" constant="10" id="lL6-un-rmd"/>
+                            <constraint firstItem="C3d-VW-UfX" firstAttribute="top" secondItem="Tc4-Uh-EXg" secondAttribute="top" id="naj-2h-7OS"/>
+                            <constraint firstItem="4Vb-Zs-ERB" firstAttribute="leading" secondItem="Tc4-Uh-EXg" secondAttribute="leading" id="sLi-cG-s5l"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Tc4-Uh-EXg" secondAttribute="trailing" id="FiV-yA-xlp"/>
+                <constraint firstItem="Tc4-Uh-EXg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="P0S-2i-iby"/>
+                <constraint firstItem="Tc4-Uh-EXg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Rtc-MO-AB1"/>
+                <constraint firstAttribute="bottom" secondItem="Tc4-Uh-EXg" secondAttribute="bottom" id="S5B-DV-Kwx"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="buttonDeleteTanggal" destination="C3d-VW-UfX" id="KMl-Rd-0Rc"/>
+                <outlet property="labelTanggal" destination="J9A-gU-PWg" id="DAZ-Pq-Xn7"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="124.88839285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="group382" width="27" height="27"/>
+    </resources>
+</document>

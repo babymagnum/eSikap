@@ -17,6 +17,7 @@ protocol BerandaControllerProtocol {
 
 class BerandaController: BaseViewController, UICollectionViewDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageAccount: UIImageView!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var viewContainerClock: UIView!
@@ -37,10 +38,15 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     // properties
     private var listMenu = [Menu]()
     private var listBerita = [News]()
-    var seconds = 0
-    var minutes = 0
-    var hours = 0
     var delegate : BerandaControllerProtocol?
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.blue
+        
+        return refreshControl
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -90,13 +96,26 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func checkShowFirstDialog() {
-        DispatchQueue.main.async {
-            if !self.preference.getBool(key: self.staticLet.IS_SHOW_FIRST_DIALOG) {
-                self.preference.saveBool(value: true, key: self.staticLet.IS_SHOW_FIRST_DIALOG)
-                
-                let vc = DialogFirstController()
-                self.showCustomDialog(vc)
+        if !self.preference.getBool(key: self.staticLet.IS_SHOW_FIRST_DIALOG) {
+            self.getAnnouncement()
+        }
+    }
+    
+    private func getAnnouncement() {
+        informationNetworking.getAnnouncement { (error, itemAnnouncement) in
+            if let _ = error {
+                return
             }
+            
+            guard let item = itemAnnouncement else { return }
+            
+            self.preference.saveBool(value: true, key: self.staticLet.IS_SHOW_FIRST_DIALOG)
+            
+            let cleanContent = item.content?.replacingOccurrences(of: "<p>", with: "").replacingOccurrences(of: "</p>", with: "")
+            
+            let vc = DialogFirstController()
+            vc.resources = (image: item.img, title: item.title, description: cleanContent) as? (image: String, title: String, description: String)
+            self.showCustomDialog(vc)
         }
     }
     
@@ -120,6 +139,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initView() {
+        scrollView.addSubview(refreshControl)
         viewContainerCapaian.layer.cornerRadius = 6
         viewContainerClock.layer.cornerRadius = 6
         viewContainerCuti.layer.cornerRadius = 6
@@ -151,7 +171,7 @@ extension BerandaController {
             switch listMenu[indexpath.item].id {
             case 1:
                 //pengajuan cuti
-                self.showInDevelopmentDialog()
+                self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             case 2:
                 //pengajuan lembur
                 self.showInDevelopmentDialog()
@@ -189,6 +209,13 @@ extension BerandaController {
         }
     }
     
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        listBerita.removeAll()
+        getDashboard()
+        getLatestNews()
+    }
+    
     @objc func beritaContainerClick(sender: UITapGestureRecognizer) {
         guard let indexpath = beritaCollectionView.indexPathForItem(at: sender.location(in: beritaCollectionView)) else { return }
         
@@ -217,13 +244,16 @@ extension BerandaController {
             
             if let error = error {
                 if error == "Token Salah" {
-                    self.function.showUnderstandDialog(self, "Session Expired", "Sesi anda telah berakhir, silahkan login ulang", "Login", completionHandler: {
-                        self.preference.saveBool(value: false, key: self.staticLet.IS_LOGIN)
-                        self.preference.saveBool(value: false, key: self.staticLet.IS_SHOW_FIRST_DIALOG)
+                    let vc = DialogPreparePresenceController()
+                    vc.title = "Session anda berakhir, silahkan login kembali untuk melanjutkan."
+                    self.showCustomDialog(vc)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                        self.resetData()
                         self.navigationController?.popToRootViewController(animated: true)
                     })
                 } else {
-                    self.function.showUnderstandDialog(self, "Error Get Dashboard Data", error, "Retry", completionHandler: {
+                    self.function.showUnderstandDialog(self, "Dashboard Error", error, "Reload", "Cancel", completionHandler: {
                         self.getDashboard()
                     })
                 }
@@ -242,32 +272,11 @@ extension BerandaController {
         DispatchQueue.main.async {
             self.labelCuti.text = item.total_leave_quota
             self.labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 120"
-            let currentTime = self.function.getCurrentDate(pattern: "hh:mm:ss")
-            let timeArray = currentTime.components(separatedBy: ":")
             if item.presence_today?.icon == "sad" {
                 self.iconPresenceStatus.image = UIImage(named: "sad")?.tinted(with: UIColor.white)
             }
             self.labelPresenceStatus.text = item.presence_today?.status
-            self.seconds = Int(timeArray[2])!
-            self.minutes = Int(timeArray[1])!
-            self.hours = Int(timeArray[0])!
-            
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
-                
-                self.seconds += 1
-                
-                if self.seconds == 60 {
-                    self.minutes += 1
-                    self.seconds = 0
-                }
-                
-                if self.minutes == 60 {
-                    self.hours += 1
-                    self.minutes = 0
-                }
-                
-                self.labelClock.text = "\(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)")"
-            }
+            self.labelClock.text = item.presence_today?.time
         }
     }
     

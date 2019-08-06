@@ -21,6 +21,7 @@
                 <outlet property="labelClock" destination="DT5-rf-0wa" id="saH-uA-kbC"/>
                 <outlet property="labelJamKeluar" destination="AWu-MW-IgS" id="sKd-3K-nIl"/>
                 <outlet property="labelJamMasuk" destination="YkS-xd-atf" id="Gww-sh-JXJ"/>
+                <outlet property="labelTitle" destination="SiX-XW-NPo" id="oot-FR-Kpc"/>
                 <outlet property="mapview" destination="3YJ-RE-YdT" id="eyl-Hd-fJr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewHurryUp" destination="3J8-gh-8iJ" id="cn1-2V-Chh"/>
@@ -63,6 +64,9 @@
                                         <constraint firstAttribute="height" constant="53" id="XZo-55-OBv"/>
                                     </constraints>
                                     <state key="normal" image="history"/>
+                                    <connections>
+                                        <action selector="buttonPresenceListClick:" destination="-1" eventType="touchUpInside" id="aXO-vh-AFr"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -92,8 +96,8 @@
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSn-sg-jpD">
                                     <rect key="frame" x="77" y="17.5" width="227" height="23.5"/>
-                                    <string key="text">Hurry up, you're outside
-presence area !</string>
+                                    <string key="text">Cepat, Anda berada di luar
+area presensi !</string>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>

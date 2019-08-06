@@ -19,6 +19,14 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
     var totalPage = 0
     var currentPage = 0
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.blue
+        
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +40,8 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initCollectionView() {
+        beritaCollectionView.addSubview(refreshControl)
+        
         beritaCollectionView.register(UINib(nibName: "BeritaCell", bundle: nil), forCellWithReuseIdentifier: "BeritaCell")
         
         let beritaCell = beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
@@ -69,6 +79,13 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
 }
 
 extension BeritaController {
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        listBerita.removeAll()
+        currentPage = 0
+        getAllNews()
+    }
+    
     @objc func viewContainerClick(sender: UITapGestureRecognizer){
         if let indexpath = beritaCollectionView.indexPathForItem(at: sender.location(in: beritaCollectionView)) {
             let vc = DetailBeritaController()

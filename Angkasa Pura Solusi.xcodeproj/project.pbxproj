@@ -32,8 +32,12 @@
 		ED52153822F5201C001C6A50 /* MenuFavoritCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */; };
 		ED57FE3122F84F87007B62A0 /* PengajuanCutiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE2F22F84F87007B62A0 /* PengajuanCutiController.swift */; };
 		ED57FE3222F84F87007B62A0 /* PengajuanCutiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED57FE3022F84F87007B62A0 /* PengajuanCutiController.xib */; };
+		ED57FE4322F8F633007B62A0 /* JatahCutiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE4122F8F632007B62A0 /* JatahCutiCell.swift */; };
+		ED57FE4422F8F633007B62A0 /* JatahCutiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED57FE4222F8F633007B62A0 /* JatahCutiCell.xib */; };
+		ED57FE4722F8F645007B62A0 /* TanggalCutiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE4522F8F645007B62A0 /* TanggalCutiCell.swift */; };
+		ED57FE4822F8F645007B62A0 /* TanggalCutiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED57FE4622F8F645007B62A0 /* TanggalCutiCell.xib */; };
+		ED57FE4A22F9D0D2007B62A0 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE4922F9D0D2007B62A0 /* Announcement.swift */; };
 		ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0322F1DB2100CD14FC /* PreparePresence.swift */; };
-		ED602F0622F1DBAB00CD14FC /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */; };
 		ED61BEF922F66D7D00776C25 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BEF722F66D7D00776C25 /* ChangePasswordController.swift */; };
 		ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED61BEF822F66D7D00776C25 /* ChangePasswordController.xib */; };
 		ED61BEFE22F67C9F00776C25 /* PresensiListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BEFC22F67C9F00776C25 /* PresensiListController.swift */; };
@@ -126,8 +130,12 @@
 		ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuFavoritCell.xib; sourceTree = "<group>"; };
 		ED57FE2F22F84F87007B62A0 /* PengajuanCutiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengajuanCutiController.swift; sourceTree = "<group>"; };
 		ED57FE3022F84F87007B62A0 /* PengajuanCutiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PengajuanCutiController.xib; sourceTree = "<group>"; };
+		ED57FE4122F8F632007B62A0 /* JatahCutiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JatahCutiCell.swift; sourceTree = "<group>"; };
+		ED57FE4222F8F633007B62A0 /* JatahCutiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JatahCutiCell.xib; sourceTree = "<group>"; };
+		ED57FE4522F8F645007B62A0 /* TanggalCutiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanggalCutiCell.swift; sourceTree = "<group>"; };
+		ED57FE4622F8F645007B62A0 /* TanggalCutiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TanggalCutiCell.xib; sourceTree = "<group>"; };
+		ED57FE4922F9D0D2007B62A0 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		ED602F0322F1DB2100CD14FC /* PreparePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparePresence.swift; sourceTree = "<group>"; };
-		ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		ED61BEF722F66D7D00776C25 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		ED61BEF822F66D7D00776C25 /* ChangePasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordController.xib; sourceTree = "<group>"; };
 		ED61BEFC22F67C9F00776C25 /* PresensiListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiListController.swift; sourceTree = "<group>"; };
@@ -321,6 +329,24 @@
 			path = pengajuan_cuti;
 			sourceTree = "<group>";
 		};
+		ED57FE3F22F8F606007B62A0 /* jatah_cuti_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED57FE4122F8F632007B62A0 /* JatahCutiCell.swift */,
+				ED57FE4222F8F633007B62A0 /* JatahCutiCell.xib */,
+			);
+			path = jatah_cuti_cell;
+			sourceTree = "<group>";
+		};
+		ED57FE4022F8F614007B62A0 /* tanggal_cuti_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED57FE4522F8F645007B62A0 /* TanggalCutiCell.swift */,
+				ED57FE4622F8F645007B62A0 /* TanggalCutiCell.xib */,
+			);
+			path = tanggal_cuti_cell;
+			sourceTree = "<group>";
+		};
 		ED61BEF622F66D6200776C25 /* change_password */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,7 +509,6 @@
 				ED3038CF22ED99CE005BCF87 /* Berita.swift */,
 				EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */,
 				ED602F0322F1DB2100CD14FC /* PreparePresence.swift */,
-				ED602F0522F1DBAB00CD14FC /* Checkpoint.swift */,
 				ED858B0322F31C8400016EAD /* Dashboard.swift */,
 				ED858B0522F323F000016EAD /* LatestNews.swift */,
 				ED858B0722F334D700016EAD /* AllNews.swift */,
@@ -497,6 +522,7 @@
 				ED61BF2622F7E17000776C25 /* Workarea.swift */,
 				ED61BF2822F7E20600776C25 /* Gender.swift */,
 				ED61BF2A22F7E27900776C25 /* Order.swift */,
+				ED57FE4922F9D0D2007B62A0 /* Announcement.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -562,6 +588,8 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED57FE4022F8F614007B62A0 /* tanggal_cuti_cell */,
+				ED57FE3F22F8F606007B62A0 /* jatah_cuti_cell */,
 				ED61BF0F22F7A4D500776C25 /* karyawan_cell */,
 				ED52153022F51D91001C6A50 /* menu_lainya_cell */,
 				ED52152B22F491F8001C6A50 /* menu_favorit_cell */,
@@ -695,7 +723,9 @@
 				ED6E507822ED41A200EED8E7 /* ProfilController.xib in Resources */,
 				ED95909522EBEE9300D696E5 /* SplashController.xib in Resources */,
 				ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */,
+				ED57FE4822F8F645007B62A0 /* TanggalCutiCell.xib in Resources */,
 				ED52152022F46F11001C6A50 /* DialogFirstController.xib in Resources */,
+				ED57FE4422F8F633007B62A0 /* JatahCutiCell.xib in Resources */,
 				ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */,
 				ED52152A22F4846C001C6A50 /* BottomSheetMenuController.xib in Resources */,
 				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
@@ -772,6 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED95909422EBEE9300D696E5 /* SplashController.swift in Sources */,
+				ED57FE4722F8F645007B62A0 /* TanggalCutiCell.swift in Sources */,
 				ED61BF0722F696AA00776C25 /* InteractivePopRecognizer.swift in Sources */,
 				ED10746722F5DCE900ADF055 /* Profile.swift in Sources */,
 				ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */,
@@ -785,16 +816,17 @@
 				ED95908F22EBE90A00D696E5 /* HomeController.swift in Sources */,
 				ED858B0422F31C8400016EAD /* Dashboard.swift in Sources */,
 				ED52152422F47C0D001C6A50 /* DialogPreparePresenceController.swift in Sources */,
+				ED57FE4322F8F633007B62A0 /* JatahCutiCell.swift in Sources */,
 				ED61BF2522F7E0B600776C25 /* Unit.swift in Sources */,
 				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
-				ED602F0622F1DBAB00CD14FC /* Checkpoint.swift in Sources */,
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED61BF2722F7E17000776C25 /* Workarea.swift in Sources */,
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
 				ED61BF0922F69D2F00776C25 /* CardView.swift in Sources */,
 				ED61BEF922F66D7D00776C25 /* ChangePasswordController.swift in Sources */,
+				ED57FE4A22F9D0D2007B62A0 /* Announcement.swift in Sources */,
 				ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */,
 				ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */,
 				ED9590AA22EC923A00D696E5 /* PresenceNetworking.swift in Sources */,

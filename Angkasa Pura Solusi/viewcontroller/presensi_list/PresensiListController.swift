@@ -82,7 +82,18 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
             
             self.listPresensi = list
             
-            DispatchQueue.main.async { self.presensiCollectionView.reloadData() }
+            DispatchQueue.main.async {
+                self.presensiCollectionView.reloadData()
+                var index = 0
+                let currentDateInMonth = self.function.getCurrentDate(pattern: "dd")
+                if currentDateInMonth.first == "0" {
+                    index = Int(String(currentDateInMonth.dropFirst()))! - 1
+                } else {
+                    index = Int(currentDateInMonth)! - 1
+                }
+                
+                self.presensiCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: UICollectionView.ScrollPosition.centeredVertically, animated: true)
+            }
         }
     }
 }

@@ -34,6 +34,7 @@
                 <outlet property="labelPresenceStatus" destination="jaJ-v0-Kbw" id="drf-bp-FQE"/>
                 <outlet property="menuCollectionView" destination="8kn-3h-My3" id="tCM-Ve-xKd"/>
                 <outlet property="menuCollectionViewHeight" destination="YAJ-RW-bgt" id="wyN-8a-EFA"/>
+                <outlet property="scrollView" destination="yIZ-qV-zTc" id="LTw-mg-XNe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewContainerCapaian" destination="YTt-ab-42E" id="jRB-ZN-wGs"/>
                 <outlet property="viewContainerClock" destination="Dd9-m5-EB7" id="znY-NE-cvS"/>
@@ -55,6 +56,7 @@
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="jBV-aC-LNq">
                                     <rect key="frame" x="16" y="14" width="25" height="25"/>
+                                    <color key="backgroundColor" white="0.83011379851598166" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="TS3-WZ-aWc"/>
                                         <constraint firstAttribute="width" constant="25" id="byk-nV-dkj"/>

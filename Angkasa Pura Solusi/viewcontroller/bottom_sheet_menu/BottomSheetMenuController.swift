@@ -252,6 +252,8 @@ extension BottomSheetMenuController {
             
             updateHeight()
             
+            self.buttonUbah.isHidden = true
+            
             self.showActionInListMenuLainya()
         }
     }
@@ -276,7 +278,10 @@ extension BottomSheetMenuController {
             
             updateHeight()
             
-            if listMenuFavorit.count == 6 { hideActionInListMenuLainya() }
+            if listMenuFavorit.count == 6 {
+                hideActionInListMenuLainya()
+                self.buttonUbah.isHidden = false
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ class PresenceNetworking {
         return mStaticLet
     }()
     
-    func getPreparePresence(completion: @escaping(_ error: String?, _ prepare: PreparePresence?) -> Void) {
+    func getPreparePresence(completion: @escaping(_ error: String?, _ prepare: ItemPreparePresence?) -> Void) {
         let url = "\(staticLet.base_url)api/getPreparePresence"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
@@ -29,20 +29,26 @@ class PresenceNetworking {
         
         Alamofire.request(url, method: .post, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success(let responseSuccess):
-                let root = JSON(responseSuccess)
+            case .success:
                 
-                print("prepare presence \(root)")
+                let data = response.data
                 
-                if root["status"].int == 200 {
-                    var prepare = PreparePresence()
-                    completion(nil, prepare.convertJSON(root))
-                } else {
-                    completion(root["message"].string, nil)
+                guard let mData = data else {
+                    completion("Error null data, please try again later", nil)
+                    return
                 }
                 
-            case .failure(let responseError):
-                completion(responseError.localizedDescription, nil)
+                do {
+                    let preparePresence = try JSONDecoder().decode(PreparePresence.self, from: mData)
+                    
+                    if preparePresence.status == 200 {
+                        completion(nil, preparePresence.data)
+                    } else {
+                        completion(preparePresence.message, nil)
+                    }
+                } catch let err { completion(err.localizedDescription, nil) }
+                
+            case .failure(let responseFailure): completion(responseFailure.localizedDescription, nil)
             }
         }
     }

@@ -15,7 +15,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager = CLLocationManager()
     var marker: GMSMarker?
     var firstTimeLoad = false
-    var preparePresence: PreparePresence!
+    var preparePresence: ItemPreparePresence!
     var circles = [Circle]()
     var seconds = 0
     var minutes = 0
@@ -23,7 +23,9 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     var pickedCheckpointId = ""
     var currentLocation: CLLocation!
     var presenceType: String!
+    var titleString: String?
     
+    @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var viewPressence: UIView!
     @IBOutlet weak var viewJamMasukPulang: UIView!
     @IBOutlet weak var mapview: GMSMapView!
@@ -40,6 +42,8 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
         
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
+        drawCircle()
+        
         initView()
         
         initLocationManager()
@@ -52,6 +56,8 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     }
     
     private func initView() {
+        labelTitle.text = titleString
+        
         viewPressence.layer.cornerRadius = 6
         viewPressence.layer.shadowColor = UIColor.lightGray.cgColor
         viewPressence.layer.shadowOffset = CGSize(width: 1, height: 2)
@@ -96,11 +102,6 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
                 self.labelClock.layoutIfNeeded()
             }
         }
-    }
-    
-    private func initMapView(_ location: CLLocation) {
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 16.0)
-        mapview.animate(to: camera)
     }
     
     private func initLocationManager() {
@@ -211,7 +212,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     }
     
     private func drawCircle() {
-        for checkpoint in preparePresence.checkpoints {
+        for checkpoint in preparePresence.data_checkpoint {
             let buildingLat = Double(checkpoint.checkpoint_latitude!)
             let buildingLon = Double(checkpoint.checkpoint_longitude!)
             let circlePosition = CLLocationCoordinate2D(latitude: buildingLat!, longitude: buildingLon!)
@@ -233,11 +234,11 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
             
             let buildingLat = circle.circle?.position.latitude
             let buildingLon = circle.circle?.position.longitude
-            let radius = circle.circle?.radius
+            let radius = circle.circle!.radius + 5 // to make it bigger and realistic
             
             let distance = currentLocation.distance(from: CLLocation(latitude: buildingLat!, longitude: buildingLon!))
             
-            if distance <= radius! {
+            if distance <= radius {
                 self.addRadiusCircle(circle: circle, isInside: true, isUpdate: true)
             } else {
                 self.addRadiusCircle(circle: circle, isInside: false, isUpdate: true)
@@ -250,13 +251,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
             
             currentLocation = CLLocation(latitude: location.coordinate.latitude as CLLocationDegrees, longitude: location.coordinate.longitude as CLLocationDegrees)
             self.updateLocationCoordinates(coordinates: location.coordinate)
-            mapview.animate(to: GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 16.0))
-            
-            if !firstTimeLoad {
-                firstTimeLoad = true
-                initMapView(currentLocation)
-                drawCircle()
-            }
+            mapview.animate(to: GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: Float(self.preparePresence.zoom_maps!) as! Float))
             
             self.checkDistance(currentLocation)
             
@@ -303,6 +298,12 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
 
 //click event
 extension PresensiMapController {
+    @IBAction func buttonPresenceListClick(_ sender: Any) {
+        let vc = PresensiListController()
+        vc.from = .standart
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func backButtonClick(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }

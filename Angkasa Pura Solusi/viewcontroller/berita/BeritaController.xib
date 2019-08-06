@@ -38,29 +38,15 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2M-1o-Zd9">
-                                    <rect key="frame" x="322" y="0.0" width="53" height="53"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="53" id="XVO-3a-h6T"/>
-                                        <constraint firstAttribute="width" constant="53" id="iCp-vX-vtD"/>
-                                    </constraints>
-                                    <state key="normal" image="filter"/>
-                                    <connections>
-                                        <action selector="buttonFilterClick:" destination="-1" eventType="touchUpInside" id="wc6-bS-a6p"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="qUC-XU-f6G" firstAttribute="centerY" secondItem="QZ2-ox-rb7" secondAttribute="centerY" id="3Ga-rW-6Dq"/>
-                                <constraint firstItem="W2M-1o-Zd9" firstAttribute="top" secondItem="QZ2-ox-rb7" secondAttribute="top" id="D4c-d4-ktQ"/>
-                                <constraint firstAttribute="bottom" secondItem="W2M-1o-Zd9" secondAttribute="bottom" id="MHP-XF-hyB"/>
-                                <constraint firstAttribute="trailing" secondItem="W2M-1o-Zd9" secondAttribute="trailing" id="PUK-MV-Ynd"/>
                                 <constraint firstItem="qUC-XU-f6G" firstAttribute="leading" secondItem="QZ2-ox-rb7" secondAttribute="leading" constant="12" id="lSa-3q-NJs"/>
                                 <constraint firstAttribute="height" constant="53" id="yNY-m7-LRp"/>
                             </constraints>
                         </view>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Btr-ll-J21">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Btr-ll-J21">
                             <rect key="frame" x="0.0" y="53" width="375" height="594"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="14" minimumInteritemSpacing="0.0" id="zK8-xc-bTn">
@@ -93,7 +79,4 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
-    <resources>
-        <image name="filter" width="16" height="16"/>
-    </resources>
 </document>

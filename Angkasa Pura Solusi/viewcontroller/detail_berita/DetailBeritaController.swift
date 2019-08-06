@@ -10,12 +10,22 @@ import UIKit
 import WebKit
 import SVProgressHUD
 
-class DetailBeritaController: BaseViewController, WKUIDelegate {
+class DetailBeritaController: BaseViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageBerita: UIImageView!
     @IBOutlet weak var labelTitleBerita: UILabel!
     @IBOutlet weak var labelDateBerita: UILabel!
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var labelDescriptionBerita: UILabel!
+    @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.blue
+        
+        return refreshControl
+    }()
     
     var news: News?
     
@@ -23,9 +33,6 @@ class DetailBeritaController: BaseViewController, WKUIDelegate {
         super.viewDidLoad()
      
         setInteractiveRecognizer()
-        
-        webView.uiDelegate = self
-        webView.scrollView.showsVerticalScrollIndicator = false
         
         setView()
         
@@ -39,11 +46,21 @@ class DetailBeritaController: BaseViewController, WKUIDelegate {
     }
     
     private func setView() {
+        scrollView.addSubview(refreshControl)
+        
         guard let news = news else { return }
         
         imageBerita.loadUrl(news.img!)
         labelTitleBerita.text = news.title
         labelDateBerita.text = news.date
+        
+        self.labelTitleBerita.font = UIFont.systemFont(ofSize: 12)
+        let width = UIScreen.main.bounds.width - 42
+        let height = self.labelTitleBerita.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height
+        UIView.animate(withDuration: 0.2) {
+            self.viewRootHeight.constant += height
+            self.view.layoutIfNeeded()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .default }
@@ -63,18 +80,31 @@ class DetailBeritaController: BaseViewController, WKUIDelegate {
             
             guard let item = itemDetailNews else { return }
             
-            self.setWebviewContent(item.content!)
+            if (item.content?.contains("<p>"))! {
+                let cleanContent = item.content?.replacingOccurrences(of: "<p>", with: "").replacingOccurrences(of: "</p>", with: "").replacingOccurrences(of: "<div>", with: "").replacingOccurrences(of: "<br />", with: "\n").replacingOccurrences(of: "<strong>", with: "").replacingOccurrences(of: "</strong>", with: "")
+                self.labelDescriptionBerita.text = cleanContent
+            } else {
+                self.labelDescriptionBerita.text = item.content
+            }
+            
+            self.labelDescriptionBerita.font = UIFont.systemFont(ofSize: 12)
+            let width = UIScreen.main.bounds.width - 42
+            let height = self.labelDescriptionBerita.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height
+            UIView.animate(withDuration: 0.2, animations: {
+                self.viewRootHeight.constant += height
+                self.view.layoutIfNeeded()
+            })
+            
         }
-    }
-    
-    private func setWebviewContent(_ content: String) {
-        let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>"
-        webView.loadHTMLString(headerString + content, baseURL: nil)
     }
 
 }
 
 extension DetailBeritaController {
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        getDetailNews()
+    }
     @IBAction func buttonBackClick(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }

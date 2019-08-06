@@ -57,6 +57,12 @@ class BaseViewController: UIViewController {
         showCustomDialog(vc)
     }
     
+    func resetData() {
+        preference.saveBool(value: false, key: staticLet.IS_LOGIN)
+        preference.saveBool(value: false, key: staticLet.IS_SHOW_FIRST_DIALOG)
+        preference.saveString(value: "", key: staticLet.TOKEN)
+    }
+    
     func generateMenu(savedMenu: Int, action: UIImage?) -> Menu {
         switch savedMenu {
         case 1:
@@ -68,7 +74,7 @@ class BaseViewController: UIViewController {
         case 4:
             return Menu(id: 4, image: UIImage(named: "circularClock"), title: "Presensi", action: action)
         case 5:
-            return Menu(id: 5, image: UIImage(named: "form"), title: "Presensi List", action: action)
+            return Menu(id: 5, image: UIImage(named: "form"), title: "Daftar Presensi", action: action)
         case 6:
             return Menu(id: 6, image: UIImage(named: "salary"), title: "Slip Gaji", action: action)
         case 7:
