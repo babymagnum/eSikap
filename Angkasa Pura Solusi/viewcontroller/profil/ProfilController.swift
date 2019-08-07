@@ -41,7 +41,7 @@ class ProfilController: BaseViewController {
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.blue
+        refreshControl.tintColor = UIColor(hexString: "42a5f5")
         
         return refreshControl
     }()

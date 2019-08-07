@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import FittedSheets
 
 enum PresensiListFrom {
     case presensiMapController
@@ -17,10 +18,21 @@ enum PresensiListFrom {
 
 class PresensiListController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var labelPresensiKosong: UILabel!
     @IBOutlet weak var presensiCollectionView: UICollectionView!
     
     var listPresensi = [ItemPresensi]()
     var from: PresensiListFrom?
+    var filteredMonth = ""
+    var filteredYear = ""
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor(hexString: "42a5f5")
+        
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +47,7 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
         
         initCollectionView()
         
-        getPresenceList()
+        getPresenceList(filteredMonth, filteredYear)
     }
     
     private func initView() {
@@ -53,6 +65,8 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initCollectionView() {
+        presensiCollectionView.addSubview(refreshControl)
+        
         presensiCollectionView.register(UINib(nibName: "PresensiCell", bundle: nil), forCellWithReuseIdentifier: "PresensiCell")
         
         let presensiCell = presensiCollectionView.dequeueReusableCell(withReuseIdentifier: "PresensiCell", for: IndexPath(item: 0, section: 0)) as! PresensiCell
@@ -63,36 +77,44 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
         presensiCollectionView.dataSource = self
     }
     
-    private func getPresenceList() {
+    private func getPresenceList(_ month: String, _ year: String) {
         SVProgressHUD.show()
         
-        let date = function.getCurrentDate(pattern: "MM-yyyy").components(separatedBy: "-")
-        presenceNetworking.getPresenceList(request: (month: date[0], year: date[1])) { (error, listPresensi) in
+        presenceNetworking.getPresenceList(request: (month: month, year: year)) { (error, listPresensi) in
             
             SVProgressHUD.dismiss()
             
             if let error = error {
-                self.function.showUnderstandDialog(self, "Error Fetch Presensi List", error, "Retry", completionHandler: {
-                    self.getPresenceList()
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Presensi", error, "Reload", "Cancel", completionHandler: {
+                    self.getPresenceList(month, year)
                 })
                 return
             }
             
             guard let list = listPresensi else { return }
             
+            if list.count == 0 {
+                self.labelPresensiKosong.isHidden = false
+            } else {
+                self.labelPresensiKosong.isHidden = true
+            }
+            
             self.listPresensi = list
             
             DispatchQueue.main.async {
                 self.presensiCollectionView.reloadData()
-                var index = 0
-                let currentDateInMonth = self.function.getCurrentDate(pattern: "dd")
-                if currentDateInMonth.first == "0" {
-                    index = Int(String(currentDateInMonth.dropFirst()))! - 1
-                } else {
-                    index = Int(currentDateInMonth)! - 1
-                }
                 
-                self.presensiCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: UICollectionView.ScrollPosition.centeredVertically, animated: true)
+                if self.listPresensi.count > 0 {
+                    var index = 0
+                    let currentDateInMonth = self.function.getCurrentDate(pattern: "dd")
+                    if currentDateInMonth.first == "0" {
+                        index = Int(String(currentDateInMonth.dropFirst()))! - 1
+                    } else {
+                        index = Int(currentDateInMonth)! - 1
+                    }
+                    
+                    self.presensiCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: UICollectionView.ScrollPosition.centeredVertically, animated: true)
+                }
             }
         }
     }
@@ -105,18 +127,33 @@ extension PresensiListController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PresensiCell", for: indexPath) as! PresensiCell
-        cell.data = listPresensi[indexPath.item]
+        cell.data = listPresensi[indexPath.row]
         return cell
     }
 }
 
 //click event
-extension PresensiListController {
+extension PresensiListController: BottomSheetFilterPresensiProtocol {
+    func filterPicked(_ month: String, _ year: String) {
+        self.filteredMonth = month
+        self.filteredYear = year
+        self.getPresenceList(month, year)
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        getPresenceList(filteredMonth, filteredYear)
+        refreshControl.endRefreshing()
+    }
+    
     @objc func swipeGestureRecognnizer() { popviewcontroller() }
     
     @IBAction func backButtonClick(_ sender: Any) { popviewcontroller() }
     
     @IBAction func filterButtonClick(_ sender: Any) {
+        let vc = BottomSheetFilterPresensi()
+        vc.delegate = self
+        let sheetController = SheetViewController(controller: vc)
+        self.present(sheetController, animated: false, completion: nil)
     }
     
     private func popviewcontroller() {

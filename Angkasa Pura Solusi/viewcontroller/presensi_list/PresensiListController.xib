@@ -17,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PresensiListController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
+                <outlet property="labelPresensiKosong" destination="HY9-CS-9Eb" id="bei-LC-6T4"/>
                 <outlet property="presensiCollectionView" destination="0pJ-rl-KPs" id="Ibu-qc-bsa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -84,14 +85,23 @@
                                 <inset key="sectionInset" minX="0.0" minY="14" maxX="0.0" maxY="14"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data presensi kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HY9-CS-9Eb">
+                            <rect key="frame" x="20" y="73" width="335" height="15.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="HY9-CS-9Eb" secondAttribute="trailing" constant="20" id="EUr-cE-yjW"/>
+                        <constraint firstItem="HY9-CS-9Eb" firstAttribute="leading" secondItem="SkU-H2-uHg" secondAttribute="leading" constant="20" id="Eyk-NH-uVS"/>
                         <constraint firstItem="0pJ-rl-KPs" firstAttribute="leading" secondItem="SkU-H2-uHg" secondAttribute="leading" id="QbS-ON-xYA"/>
                         <constraint firstAttribute="trailing" secondItem="6LL-eK-mv4" secondAttribute="trailing" id="Qz6-CX-q5O"/>
                         <constraint firstAttribute="trailing" secondItem="0pJ-rl-KPs" secondAttribute="trailing" id="XYi-5u-NWn"/>
                         <constraint firstAttribute="bottom" secondItem="0pJ-rl-KPs" secondAttribute="bottom" id="ZgT-QN-RZd"/>
                         <constraint firstItem="6LL-eK-mv4" firstAttribute="leading" secondItem="SkU-H2-uHg" secondAttribute="leading" id="b2K-xQ-gwq"/>
+                        <constraint firstItem="HY9-CS-9Eb" firstAttribute="top" secondItem="6LL-eK-mv4" secondAttribute="bottom" constant="20" id="ct7-ry-3Mc"/>
                         <constraint firstItem="0pJ-rl-KPs" firstAttribute="top" secondItem="6LL-eK-mv4" secondAttribute="bottom" id="m0W-ra-0JB"/>
                         <constraint firstItem="6LL-eK-mv4" firstAttribute="top" secondItem="SkU-H2-uHg" secondAttribute="top" id="wDu-J9-1h7"/>
                     </constraints>

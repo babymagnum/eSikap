@@ -37,6 +37,9 @@
 		ED57FE4722F8F645007B62A0 /* TanggalCutiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE4522F8F645007B62A0 /* TanggalCutiCell.swift */; };
 		ED57FE4822F8F645007B62A0 /* TanggalCutiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED57FE4622F8F645007B62A0 /* TanggalCutiCell.xib */; };
 		ED57FE4A22F9D0D2007B62A0 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE4922F9D0D2007B62A0 /* Announcement.swift */; };
+		ED57FE4E22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE4C22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift */; };
+		ED57FE4F22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED57FE4D22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib */; };
+		ED57FE5122FA46F7007B62A0 /* Bulan.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE5022FA46F7007B62A0 /* Bulan.swift */; };
 		ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0322F1DB2100CD14FC /* PreparePresence.swift */; };
 		ED61BEF922F66D7D00776C25 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BEF722F66D7D00776C25 /* ChangePasswordController.swift */; };
 		ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED61BEF822F66D7D00776C25 /* ChangePasswordController.xib */; };
@@ -135,6 +138,9 @@
 		ED57FE4522F8F645007B62A0 /* TanggalCutiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanggalCutiCell.swift; sourceTree = "<group>"; };
 		ED57FE4622F8F645007B62A0 /* TanggalCutiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TanggalCutiCell.xib; sourceTree = "<group>"; };
 		ED57FE4922F9D0D2007B62A0 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		ED57FE4C22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetFilterPresensi.swift; sourceTree = "<group>"; };
+		ED57FE4D22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetFilterPresensi.xib; sourceTree = "<group>"; };
+		ED57FE5022FA46F7007B62A0 /* Bulan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulan.swift; sourceTree = "<group>"; };
 		ED602F0322F1DB2100CD14FC /* PreparePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparePresence.swift; sourceTree = "<group>"; };
 		ED61BEF722F66D7D00776C25 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		ED61BEF822F66D7D00776C25 /* ChangePasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordController.xib; sourceTree = "<group>"; };
@@ -347,6 +353,15 @@
 			path = tanggal_cuti_cell;
 			sourceTree = "<group>";
 		};
+		ED57FE4B22FA4491007B62A0 /* bottom_sheet_filter_presensi */ = {
+			isa = PBXGroup;
+			children = (
+				ED57FE4C22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift */,
+				ED57FE4D22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib */,
+			);
+			path = bottom_sheet_filter_presensi;
+			sourceTree = "<group>";
+		};
 		ED61BEF622F66D6200776C25 /* change_password */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +490,7 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED57FE4B22FA4491007B62A0 /* bottom_sheet_filter_presensi */,
 				ED57FE2E22F84F6B007B62A0 /* pengajuan_cuti */,
 				ED61BF1D22F7CF0C00776C25 /* filter_karyawan */,
 				ED61BF0A22F7A2D700776C25 /* daftar_karyawan */,
@@ -523,6 +539,7 @@
 				ED61BF2822F7E20600776C25 /* Gender.swift */,
 				ED61BF2A22F7E27900776C25 /* Order.swift */,
 				ED57FE4922F9D0D2007B62A0 /* Announcement.swift */,
+				ED57FE5022FA46F7007B62A0 /* Bulan.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -731,6 +748,7 @@
 				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
 				ED52153822F5201C001C6A50 /* MenuFavoritCell.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib in Resources */,
+				ED57FE4F22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib in Resources */,
 				ED10746122F5A5BA00ADF055 /* DetailBeritaController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,6 +820,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED95909422EBEE9300D696E5 /* SplashController.swift in Sources */,
+				ED57FE4E22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift in Sources */,
 				ED57FE4722F8F645007B62A0 /* TanggalCutiCell.swift in Sources */,
 				ED61BF0722F696AA00776C25 /* InteractivePopRecognizer.swift in Sources */,
 				ED10746722F5DCE900ADF055 /* Profile.swift in Sources */,
@@ -840,6 +859,7 @@
 				ED3038CE22ED6CDB005BCF87 /* Menu.swift in Sources */,
 				ED6E507722ED41A200EED8E7 /* ProfilController.swift in Sources */,
 				ED95908022EBE77B00D696E5 /* StaticLet.swift in Sources */,
+				ED57FE5122FA46F7007B62A0 /* Bulan.swift in Sources */,
 				ED61BF2B22F7E27900776C25 /* Order.swift in Sources */,
 				ED52152922F4846C001C6A50 /* BottomSheetMenuController.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */,
