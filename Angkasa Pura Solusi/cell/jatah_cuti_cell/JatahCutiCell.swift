@@ -21,7 +21,7 @@ class JatahCutiCell: UICollectionViewCell {
         giveBorder(3, 1, "dedede")
     }
     
-    var data: (periode: String, sisaCuti: String, kadaluarsa: String)? {
+    var data: JatahCuti? {
         didSet {
             if let item = data {
                 labelPeriode.text = item.periode

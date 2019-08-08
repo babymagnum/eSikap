@@ -103,6 +103,7 @@
 		EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */; };
 		EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */; };
 		EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */; };
+		EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -210,6 +211,7 @@
 		EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiMapController.swift; sourceTree = "<group>"; };
 		EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiMapController.xib; sourceTree = "<group>"; };
 		EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JatahCuti.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -540,6 +542,7 @@
 				ED61BF2A22F7E27900776C25 /* Order.swift */,
 				ED57FE4922F9D0D2007B62A0 /* Announcement.swift */,
 				ED57FE5022FA46F7007B62A0 /* Bulan.swift */,
+				EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				ED61BF2522F7E0B600776C25 /* Unit.swift in Sources */,
 				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
+				EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */,
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED61BF2722F7E17000776C25 /* Workarea.swift in Sources */,

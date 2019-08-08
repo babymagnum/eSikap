@@ -10,6 +10,7 @@ import UIKit
 
 class TanggalCutiCell: UICollectionViewCell {
 
+    @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var labelTanggal: UILabel!
     @IBOutlet weak var buttonDeleteTanggal: UIButton!
     

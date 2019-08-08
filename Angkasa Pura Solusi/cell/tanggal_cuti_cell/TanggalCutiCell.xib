@@ -74,6 +74,7 @@
             <connections>
                 <outlet property="buttonDeleteTanggal" destination="C3d-VW-UfX" id="KMl-Rd-0Rc"/>
                 <outlet property="labelTanggal" destination="J9A-gU-PWg" id="DAZ-Pq-Xn7"/>
+                <outlet property="viewContainer" destination="Tc4-Uh-EXg" id="nLN-dV-Ms8"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="124.88839285714285"/>
         </collectionViewCell>
