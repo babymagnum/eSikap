@@ -51,6 +51,18 @@ class BaseViewController: UIViewController {
         self.present(popupVc, animated: true)
     }
     
+    func forceLogout(_ navigationController: UINavigationController) {
+        let vc = DialogPreparePresenceController()
+        vc.stringDescription = "Session anda berakhir, silahkan login kembali untuk melanjutkan."
+        
+        DispatchQueue.main.async { self.showCustomDialog(vc) }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.resetData()
+            navigationController.popToRootViewController(animated: true)
+        })
+    }
+    
     func showInDevelopmentDialog() {
         let vc = DialogPreparePresenceController()
         vc.stringDescription = "Segera Hadir"

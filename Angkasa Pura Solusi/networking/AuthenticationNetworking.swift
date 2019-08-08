@@ -60,7 +60,7 @@ class AuthenticationNetworking {
         }
     }
     
-    func changePassword(request: (new_password: String, old_password: String), completion: @escaping (_ error: String?) -> Void) {
+    func changePassword(request: (new_password: String, old_password: String), completion: @escaping (_ error: String?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/changePassword"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
@@ -76,12 +76,14 @@ class AuthenticationNetworking {
                 let root = JSON(responseSuccess)
                 
                 if root["status"].int == 200 {
-                    completion(nil)
+                    completion(nil, nil)
+                } else if root["status"].int == 401 {
+                    completion(nil, true)
                 } else {
-                    completion(root["message"].string)
+                    completion(root["message"].string, nil)
                 }
             case .failure(let responseFailure):
-                completion(responseFailure.localizedDescription)
+                completion(responseFailure.localizedDescription, nil)
             }
         }
     }

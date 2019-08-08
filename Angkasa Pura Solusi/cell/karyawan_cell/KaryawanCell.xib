@@ -48,6 +48,7 @@
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="AON-h0-zqV">
                                 <rect key="frame" x="154" y="16" width="67" height="67"/>
+                                <color key="backgroundColor" white="0.91000000000000003" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="AHn-AF-YWj"/>
                                     <constraint firstAttribute="width" constant="67" id="Zvu-Iv-pSs"/>

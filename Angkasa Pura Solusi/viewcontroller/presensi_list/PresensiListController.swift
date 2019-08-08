@@ -80,9 +80,14 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
     private func getPresenceList(_ month: String, _ year: String) {
         SVProgressHUD.show()
         
-        presenceNetworking.getPresenceList(request: (month: month, year: year)) { (error, listPresensi) in
+        presenceNetworking.getPresenceList(request: (month: month, year: year)) { (error, listPresensi, isExpired) in
             
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let error = error {
                 self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Presensi", error, "Reload", "Cancel", completionHandler: {
@@ -157,19 +162,11 @@ extension PresensiListController: BottomSheetFilterPresensiProtocol {
     }
     
     private func popviewcontroller() {
-        switch from {
-        case .standart?:
-            self.navigationController?.popViewController(animated: true)
-        case .presensiMapController?:
-            let transition = CATransition()
-            transition.duration = 0.4
-            transition.type = CATransitionType.push
-            transition.subtype = CATransitionSubtype.fromLeft
-            self.navigationController?.view.layer.add(transition, forKey: kCATransition)
-            self.navigationController?.pushViewController(HomeController(), animated: true)
-        case .bottomSheetMenu?:
-            self.dismiss(animated: true, completion: nil)
-        default: break
-        }
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(HomeController(), animated: true)
     }
 }

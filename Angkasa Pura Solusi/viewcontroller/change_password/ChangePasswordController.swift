@@ -65,9 +65,15 @@ class ChangePasswordController: BaseViewController {
         
         SVProgressHUD.show()
         
-        authNetworking.changePassword(request: (new_password: fieldKataSandiBaru.trim(), old_password: fieldKataSandiBaru.trim())) { (error) in
+        authNetworking.changePassword(request: (new_password: fieldKataSandiBaru.trim(), old_password: fieldKataSandiBaru.trim())) { (error, isExpired) in
             
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
             if let error = error {
                 self.function.showUnderstandDialog(self, "Error Ganti Password", error, "Understand")
                 return

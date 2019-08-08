@@ -45,31 +45,31 @@ Cuti</string>
                                         <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus-circular" translatesAutoresizingMaskIntoConstraints="NO" id="DzW-S4-9AZ">
-                                        <rect key="frame" x="80" y="-7" width="14" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="e0r-3X-tPG"/>
-                                            <constraint firstAttribute="width" constant="14" id="vSz-ET-g0B"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="so4-sE-OR8" secondAttribute="trailing" constant="10" id="4WW-CH-KEX"/>
-                                    <constraint firstAttribute="trailing" secondItem="DzW-S4-9AZ" secondAttribute="trailing" constant="-7" id="HxT-mu-TMg"/>
                                     <constraint firstItem="so4-sE-OR8" firstAttribute="top" secondItem="Lzc-FK-Iqp" secondAttribute="bottom" constant="7" id="LaQ-tv-TVZ"/>
                                     <constraint firstItem="Lzc-FK-Iqp" firstAttribute="centerX" secondItem="tg0-3V-ZWc" secondAttribute="centerX" id="dqT-iF-uoo"/>
                                     <constraint firstItem="so4-sE-OR8" firstAttribute="leading" secondItem="tg0-3V-ZWc" secondAttribute="leading" constant="10" id="j6A-lu-88g"/>
                                     <constraint firstAttribute="bottom" secondItem="so4-sE-OR8" secondAttribute="bottom" constant="7" id="jQV-Nd-9D4"/>
-                                    <constraint firstItem="DzW-S4-9AZ" firstAttribute="top" secondItem="tg0-3V-ZWc" secondAttribute="top" constant="-7" id="vV3-zf-eUQ"/>
                                     <constraint firstItem="Lzc-FK-Iqp" firstAttribute="top" secondItem="tg0-3V-ZWc" secondAttribute="top" constant="10" id="yb8-u9-bdB"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus-circular" translatesAutoresizingMaskIntoConstraints="NO" id="lG7-59-yVs">
+                                <rect key="frame" x="84" y="3" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="14" id="2mI-l0-fQz"/>
+                                    <constraint firstAttribute="height" constant="14" id="Wp3-gK-25E"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tg0-3V-ZWc" firstAttribute="leading" secondItem="5Sp-R5-jP9" secondAttribute="leading" constant="7" id="05j-le-Pe2"/>
+                            <constraint firstAttribute="trailing" secondItem="lG7-59-yVs" secondAttribute="trailing" constant="3" id="ASr-wt-aq7"/>
                             <constraint firstAttribute="trailing" secondItem="tg0-3V-ZWc" secondAttribute="trailing" constant="7" id="QHo-Iq-mwl"/>
+                            <constraint firstItem="lG7-59-yVs" firstAttribute="top" secondItem="5Sp-R5-jP9" secondAttribute="top" constant="3" id="QHv-6q-A9m"/>
                             <constraint firstAttribute="bottom" secondItem="tg0-3V-ZWc" secondAttribute="bottom" constant="7" id="T9c-a4-RuU"/>
                             <constraint firstItem="tg0-3V-ZWc" firstAttribute="top" secondItem="5Sp-R5-jP9" secondAttribute="top" constant="7" id="WSw-fh-P9X"/>
                         </constraints>
@@ -84,7 +84,7 @@ Cuti</string>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
-                <outlet property="iconAction" destination="DzW-S4-9AZ" id="kPo-7R-Jof"/>
+                <outlet property="iconAction" destination="lG7-59-yVs" id="h9u-P1-plG"/>
                 <outlet property="iconMenu" destination="Lzc-FK-Iqp" id="dyf-l8-KZA"/>
                 <outlet property="labelTitle" destination="so4-sE-OR8" id="6Gi-xg-Dxb"/>
                 <outlet property="viewContainer" destination="tg0-3V-ZWc" id="XLX-u6-XOw"/>

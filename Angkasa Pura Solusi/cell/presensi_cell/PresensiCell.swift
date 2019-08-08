@@ -34,7 +34,7 @@ class PresensiCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6)
+        addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 5)
     }
     
     var data: ItemPresensi? {

@@ -70,8 +70,13 @@ class DetailBeritaController: BaseViewController {
         
         guard let news = news else { return }
         
-        informationNetworking.getNewsDetail(newsId: news.id!) { (error, itemDetailNews) in
+        informationNetworking.getNewsDetail(newsId: news.id!) { (error, itemDetailNews, isExpired) in
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let error = error {
                 self.function.showUnderstandDialog(self, "Error Get Detail News", error, "Retry", completionHandler: { self.getDetailNews() })

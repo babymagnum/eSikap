@@ -25,12 +25,10 @@ class ProfilController: BaseViewController {
     @IBOutlet weak var labelLokasiKerja: UILabel!
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var labelTelepon: UILabel!
-    @IBOutlet weak var viewContainerInformation: UIView!
-    @IBOutlet weak var viewContainerAction: UIView!
     @IBOutlet weak var viewUbahKataSandi: UIView!
     @IBOutlet weak var viewKeluar: UIView!
-    @IBOutlet weak var viewRootAction: UIView!
-    @IBOutlet weak var viewRootInformation: UIView!
+    @IBOutlet weak var viewAction: UIView!
+    @IBOutlet weak var viewInformation: UIView!
     @IBOutlet weak var buttonBackWidth: NSLayoutConstraint!
     @IBOutlet weak var labelTitleMarginStart: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -61,9 +59,9 @@ class ProfilController: BaseViewController {
             labelTitle.text = "Profil"
             getProfile()
         } else {
-            viewRootAction.isHidden = true
+            viewAction.isHidden = true
             labelTitleMarginStart.constant = -12
-            labelTitle.text = "Karyawan"
+            labelTitle.text = "Detail Karyawan"
             getKaryawanProfil()
         }
     }
@@ -82,14 +80,8 @@ class ProfilController: BaseViewController {
         imageAccount.clipsToBounds = true
         imageAccount.layer.cornerRadius = imageAccount.frame.height / 2
         
-        viewContainerInformation.clipsToBounds = true
-        viewContainerInformation.layer.cornerRadius = 5
-        
-        viewContainerAction.clipsToBounds = true
-        viewContainerAction.layer.cornerRadius = 5
-        
-        viewRootInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1)
-        viewRootAction.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1)
+        viewInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
+        viewAction.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
     }
     
     private func setView(_ item: ItemProfile) {
@@ -116,9 +108,14 @@ class ProfilController: BaseViewController {
     
     private func getKaryawanProfil() {
         SVProgressHUD.show()
-        informationNetworking.getProfileByEmpId(empId: empId ?? "") { (error, itemDetailKaryawan) in
+        informationNetworking.getProfileByEmpId(empId: empId ?? "") { (error, itemDetailKaryawan, isExpired) in
             
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let error = error {
                 self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Karyawan", error, "Reload", "Cancel", completionHandler: {
@@ -134,8 +131,14 @@ class ProfilController: BaseViewController {
     
     private func getProfile() {
         SVProgressHUD.show()
-        informationNetworking.getProfile { (error, itemProfile) in
+        informationNetworking.getProfile { (error, itemProfile, isExpired) in
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
             if let error = error {
                 self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Profil", error, "Reload", "Cancel", completionHandler: {
                     if self.open == .myProfile { self.getProfile() }

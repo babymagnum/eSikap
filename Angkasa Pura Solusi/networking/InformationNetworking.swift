@@ -21,19 +21,19 @@ class InformationNetworking {
         return mStaticLet
     }()
     
-    func getDashboard(completion: @escaping(_ error: String?, _ dashboard: ItemDashboard?) -> Void) {
+    func getDashboard(completion: @escaping(_ error: String?, _ dashboard: ItemDashboard?, _ isExpired: Bool?) -> Void) {
         guard let url = URL(string: "\(staticLet.base_url)api/getDashboard") else { return }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(preference.getString(key: staticLet.TOKEN))", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                completion(error.localizedDescription, nil)
+                completion(error.localizedDescription, nil, nil)
                 return
             }
             
             guard let data = data else {
-                completion("error", nil)
+                completion("error", nil, nil)
                 return
             }
             
@@ -41,27 +41,29 @@ class InformationNetworking {
                 let dashboard = try JSONDecoder().decode(Dashboard.self, from: data)
                 
                 if dashboard.status == 200 {
-                    completion(nil, dashboard.data[0])
+                    completion(nil, dashboard.data[0], nil)
+                } else if dashboard.status == 401 {
+                    completion(nil, nil, true)
                 } else {
-                    completion(dashboard.message, nil)
+                    completion(dashboard.message, nil, nil)
                 }
-            } catch let err { completion(err.localizedDescription, nil) }
+            } catch let err { completion(err.localizedDescription, nil, nil) }
             }.resume()
     }
     
-    func getLatestNews(completion: @escaping (_ error: String?, _ listNews: [News]?) -> Void) {
+    func getLatestNews(completion: @escaping (_ error: String?, _ listNews: [News]?, _ isExpired: Bool?) -> Void) {
         guard let url = URL(string: "\(staticLet.base_url)api/getLatestNews") else { return }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(preference.getString(key: staticLet.TOKEN))", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                completion(error.localizedDescription, nil)
+                completion(error.localizedDescription, nil, nil)
                 return
             }
             
             guard let data = data else {
-                completion("Error null data, please try again later", nil)
+                completion("Error null data, please try again later", nil, nil)
                 return
             }
             
@@ -69,15 +71,17 @@ class InformationNetworking {
                 let latestNew = try JSONDecoder().decode(LatestNews.self, from: data)
                 
                 if latestNew.status == 200 {
-                    completion(nil, latestNew.data)
+                    completion(nil, latestNew.data, nil)
+                } else if latestNew.status == 401 {
+                    completion(nil, nil, true)
                 } else {
-                    completion(latestNew.message, nil)
+                    completion(latestNew.message, nil, nil)
                 }
-            } catch let err { completion(err.localizedDescription, nil) }
+            } catch let err { completion(err.localizedDescription, nil, nil) }
             }.resume()
     }
     
-    func getNewsDetail(newsId: String, completion: @escaping (_ error: String?, _ itemDetailNews: ItemDetailNews?) -> Void) {
+    func getNewsDetail(newsId: String, completion: @escaping (_ error: String?, _ itemDetailNews: ItemDetailNews?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getNewsDetail"
         let body : [String: String] = [ "news_id": newsId ]
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
@@ -88,7 +92,7 @@ class InformationNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -96,19 +100,20 @@ class InformationNetworking {
                     let detailNews = try JSONDecoder().decode(DetailNews.self, from: mData)
                     
                     if detailNews.status == 200 {
-                        print("detail news \(detailNews.data[0])")
-                        completion(nil, detailNews.data[0])
+                        completion(nil, detailNews.data[0], nil)
+                    } else if detailNews.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(detailNews.message, nil)
+                        completion(detailNews.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
-            case .failure(let error): completion(error.localizedDescription, nil)
+            case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
         }
     }
     
-    func getAllNews(page: Int, completion: @escaping (_ error: String?, _ listNews: [News]?) -> Void) {
+    func getAllNews(page: Int, completion: @escaping (_ error: String?, _ listNews: [News]?, _ isExpired: Bool?) -> Void) {
         
         let url = "\(staticLet.base_url)api/getAllNews"
         let body : [String: String] = [
@@ -125,7 +130,7 @@ class InformationNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -133,19 +138,21 @@ class InformationNetworking {
                     let latestNew = try JSONDecoder().decode(AllNews.self, from: mData)
                 
                     if latestNew.status == 200 {
-                        completion(nil, latestNew.data?.news)
+                        completion(nil, latestNew.data?.news, nil)
+                    } else if latestNew.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(latestNew.message, nil)
+                        completion(latestNew.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
             case .failure(let responseFailure):
-                completion(responseFailure.localizedDescription, nil)
+                completion(responseFailure.localizedDescription, nil, nil)
             }
         }
     }
     
-    func getProfile(completion: @escaping (_ error: String?, _ profile: ItemProfile?) -> Void) {
+    func getProfile(completion: @escaping (_ error: String?, _ profile: ItemProfile?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getProfile"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
@@ -156,7 +163,7 @@ class InformationNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -164,19 +171,21 @@ class InformationNetworking {
                     let profile = try JSONDecoder().decode(Profile.self, from: mData)
                     
                     if profile.status == 200 {
-                        completion(nil, profile.data[0])
+                        completion(nil, profile.data[0], nil)
+                    } else if profile.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(profile.message, nil)
+                        completion(profile.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
             case .failure(let responseFailure):
-                completion(responseFailure.localizedDescription, nil)
+                completion(responseFailure.localizedDescription, nil, nil)
             }
         }
     }
     
-    func getProfileByEmpId(empId: String, completion: @escaping (_ error: String?, _ itemDetailKaryawan: ItemDetailKaryawan?) -> Void) {
+    func getProfileByEmpId(empId: String, completion: @escaping (_ error: String?, _ itemDetailKaryawan: ItemDetailKaryawan?, _ isExpired: Bool?) -> Void) {
         
         let url = "\(staticLet.base_url)api/getProfileByEmpId"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
@@ -188,7 +197,7 @@ class InformationNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -196,24 +205,26 @@ class InformationNetworking {
                     let detailKaryawan = try JSONDecoder().decode(DetailKaryawan.self, from: mData)
                     
                     if detailKaryawan.status == 200 {
-                        completion(nil, detailKaryawan.data[0])
+                        completion(nil, detailKaryawan.data[0], nil)
+                    } else if detailKaryawan.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(detailKaryawan.message, nil)
+                        completion(detailKaryawan.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
             case .failure(let error):
-                completion(error.localizedDescription, nil)
+                completion(error.localizedDescription, nil, nil)
             }
         }
     }
     
-    func getEmpList(_ request: (emp_name: String, unit_id: String, workarea_id: String, gender: String, page: String), completion: @escaping (_ error: String?, _ listKaryawan: Karyawan?) -> Void) {
+    func getEmpList(_ request: (emp_name: String, unit_id: String, workarea_id: String, gender: String, page: String, order_id: String), completion: @escaping (_ error: String?, _ listKaryawan: Karyawan?, _ isExpired: Bool?) -> Void) {
         
         let url = "\(staticLet.base_url)api/getEmpList"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         let body: [String: String] = [
-            "order": "a_to_z",
+            "order": request.order_id,
             "emp_name": request.emp_name,
             "unit_id": request.unit_id,
             "workarea_id": request.workarea_id,
@@ -227,7 +238,7 @@ class InformationNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -235,18 +246,20 @@ class InformationNetworking {
                     let listKaryawan = try JSONDecoder().decode(ListKaryawan.self, from: mData)
                     
                     if listKaryawan.status == 200 {
-                        completion(nil, listKaryawan.data)
+                        completion(nil, listKaryawan.data, nil)
+                    } else if listKaryawan.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(listKaryawan.message, nil)
+                        completion(listKaryawan.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
-            case .failure(let error): completion(error.localizedDescription, nil)
+            case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
         }
     }
     
-    func getUnit(completion: @escaping (_ error: String?, _ listUnit: [ItemUnit]?) -> Void) {
+    func getUnit(completion: @escaping (_ error: String?, _ listUnit: [ItemUnit]?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getUnit"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
@@ -256,7 +269,7 @@ class InformationNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -264,17 +277,19 @@ class InformationNetworking {
                     let unit = try JSONDecoder().decode(Unit.self, from: mData)
                     
                     if unit.status == 200 {
-                        completion(nil, unit.data)
+                        completion(nil, unit.data, nil)
+                    } else if unit.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(unit.message, nil)
+                        completion(unit.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
-            case .failure(let error): completion(error.localizedDescription, nil)
+                } catch let err { completion(err.localizedDescription, nil, nil) }
+            case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
         }
     }
     
-    func getWorkarea(completion: @escaping (_ error: String?, _ listUnit: [ItemWorkarea]?) -> Void) {
+    func getWorkarea(completion: @escaping (_ error: String?, _ listUnit: [ItemWorkarea]?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getWorkarea"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
@@ -284,7 +299,7 @@ class InformationNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -292,18 +307,20 @@ class InformationNetworking {
                     let workarea = try JSONDecoder().decode(Workarea.self, from: mData)
                     
                     if workarea.status == 200 {
-                        completion(nil, workarea.data)
+                        completion(nil, workarea.data, nil)
+                    } else if workarea.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(workarea.message, nil)
+                        completion(workarea.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
-            case .failure(let error): completion(error.localizedDescription, nil)
+            case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
         }
     }
     
-    func getGender(completion: @escaping (_ error: String?, _ listUnit: [ItemGender]?) -> Void) {
+    func getGender(completion: @escaping (_ error: String?, _ listUnit: [ItemGender]?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getGender"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
@@ -313,7 +330,7 @@ class InformationNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -321,18 +338,20 @@ class InformationNetworking {
                     let gender = try JSONDecoder().decode(Gender.self, from: mData)
                     
                     if gender.status == 200 {
-                        completion(nil, gender.data)
+                        completion(nil, gender.data, nil)
+                    } else if gender.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(gender.message, nil)
+                        completion(gender.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
-            case .failure(let error): completion(error.localizedDescription, nil)
+            case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
         }
     }
     
-    func getOrder(completion: @escaping (_ error: String?, _ listUnit: [ItemOrder]?) -> Void) {
+    func getOrder(completion: @escaping (_ error: String?, _ listUnit: [ItemOrder]?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getOrder"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
@@ -342,7 +361,7 @@ class InformationNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -350,13 +369,15 @@ class InformationNetworking {
                     let order = try JSONDecoder().decode(Order.self, from: mData)
                     
                     if order.status == 200 {
-                        completion(nil, order.data)
+                        completion(nil, order.data, nil)
+                    } else if order.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(order.message, nil)
+                        completion(order.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
-            case .failure(let error): completion(error.localizedDescription, nil)
+            case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
         }
     }

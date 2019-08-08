@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var labelKaryawanKosong: UILabel!
     @IBOutlet weak var daftarKaryawanCollectionView: UICollectionView!
     
     var lastVelocityYSign = 0
@@ -18,12 +19,12 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
     var listKaryawan = [ItemKaryawan]()
     var totalPage = 0
     var currentPage = 0
-    var request: (emp_name: String, unit_id: String, workarea_id: String, gender: String)?
+    var request: (emp_name: String, unit_id: String, workarea_id: String, gender: String, order_id: String)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        request = (emp_name: "", unit_id: preference.getString(key: staticLet.UNIT), workarea_id: preference.getString(key: staticLet.WORKAREA), gender: preference.getString(key: staticLet.GENDER))
+        request = (emp_name: "", unit_id: "", workarea_id: "", gender: "", order_id: "")
         
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
@@ -48,9 +49,14 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
     private func getEmpList() {
         SVProgressHUD.show()
         
-        informationNetworking.getEmpList((emp_name: request!.emp_name, unit_id: request!.unit_id, workarea_id: request!.workarea_id, gender: request!.gender, page: String(currentPage))) { (error, karyawan) in
+        informationNetworking.getEmpList((emp_name: request!.emp_name, unit_id: request!.unit_id, workarea_id: request!.workarea_id, gender: request!.gender, page: String(currentPage), order_id: request!.order_id)) { (error, karyawan, isExpired) in
         
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let error = error {
                 self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Karyawan", error, "Reload", "Cancel", completionHandler: {
@@ -59,6 +65,12 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
             }
             
             guard let karyawan = karyawan else { return }
+            
+            if karyawan.emp.count == 0 {
+                self.labelKaryawanKosong.isHidden = false
+            } else {
+                self.labelKaryawanKosong.isHidden = true
+            }
             
             self.totalPage = karyawan.total_page!
             self.currentPage += 1
@@ -111,9 +123,8 @@ extension DaftarKaryawanController: UICollectionViewDataSource {
 
 //click event
 extension DaftarKaryawanController: FilterKaryawanControllerProtocol {
-    func reloadKaryawan(empName: String) {
-        print("reload karyawan")
-        request = (emp_name: empName, unit_id: preference.getString(key: staticLet.UNIT), workarea_id: preference.getString(key: staticLet.WORKAREA), gender: preference.getString(key: staticLet.GENDER))
+    func reloadKaryawan(empName: String, unit_id: String, workarea_id: String, gender: String, order_id: String) {
+        request = (emp_name: empName, unit_id: unit_id, workarea_id: workarea_id, gender: gender, order_id: order_id)
         
         listKaryawan.removeAll()
         currentPage = 0

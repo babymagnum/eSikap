@@ -21,7 +21,7 @@ class PresenceNetworking {
         return mStaticLet
     }()
     
-    func getPreparePresence(completion: @escaping(_ error: String?, _ prepare: ItemPreparePresence?) -> Void) {
+    func getPreparePresence(completion: @escaping(_ error: String?, _ prepare: ItemPreparePresence?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getPreparePresence"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
@@ -34,7 +34,7 @@ class PresenceNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -42,18 +42,20 @@ class PresenceNetworking {
                     let preparePresence = try JSONDecoder().decode(PreparePresence.self, from: mData)
                     
                     if preparePresence.status == 200 {
-                        completion(nil, preparePresence.data)
+                        completion(nil, preparePresence.data, nil)
+                    } else if preparePresence.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(preparePresence.message, nil)
+                        completion(preparePresence.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
-            case .failure(let responseFailure): completion(responseFailure.localizedDescription, nil)
+            case .failure(let responseFailure): completion(responseFailure.localizedDescription, nil, nil)
             }
         }
     }
     
-    func addPresence(request: (checkpoint_id: String, presence_type: String, latitude: String, longitude: String), completion: @escaping(_ error: String?) -> Void) {
+    func addPresence(request: (checkpoint_id: String, presence_type: String, latitude: String, longitude: String), completion: @escaping(_ error: String?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/addPresence"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
@@ -73,17 +75,19 @@ class PresenceNetworking {
                 print("presence \(root)")
                 
                 if root["status"].int == 201 {
-                    completion(nil)
+                    completion(nil, nil)
+                } else if root["status"].int == 401 {
+                    completion(nil, true)
                 } else {
-                    completion(root["message"].string)
+                    completion(root["message"].string, nil)
                 }
             case .failure(let responseFailure):
-                completion(responseFailure.localizedDescription)
+                completion(responseFailure.localizedDescription, nil)
             }
         }
     }
     
-    func getPresenceList(request: (month: String, year: String), completion: @escaping (_ error: String?, _ listPresensi: [ItemPresensi]?) -> Void) {
+    func getPresenceList(request: (month: String, year: String), completion: @escaping (_ error: String?, _ listPresensi: [ItemPresensi]?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getPresenceList"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
@@ -100,7 +104,7 @@ class PresenceNetworking {
                 let data = response.data
                 
                 guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
+                    completion("Error null data, please try again later", nil, nil)
                     return
                 }
                 
@@ -108,13 +112,15 @@ class PresenceNetworking {
                     let presensi = try JSONDecoder().decode(Presensi.self, from: mData)
                     
                     if presensi.status == 200 {
-                        completion(nil, presensi.data)
+                        completion(nil, presensi.data, nil)
+                    } else if presensi.status == 401 {
+                        completion(nil, nil, true)
                     } else {
-                        completion(presensi.message, nil)
+                        completion(presensi.message, nil, nil)
                     }
-                } catch let err { completion(err.localizedDescription, nil) }
+                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
-            case .failure(let responseFailure): completion(responseFailure.localizedDescription, nil)
+            case .failure(let responseFailure): completion(responseFailure.localizedDescription, nil, nil)
             }
         }
     }

@@ -32,7 +32,7 @@ class KaryawanCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6)
+        self.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 5)
     }
     
     var data: ItemKaryawan? {

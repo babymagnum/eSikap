@@ -18,6 +18,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DaftarKaryawanController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
                 <outlet property="daftarKaryawanCollectionView" destination="ZEc-Th-lFo" id="rOu-DA-8ob"/>
+                <outlet property="labelKaryawanKosong" destination="9S1-Pf-waH" id="JGT-N5-tqj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,8 +45,8 @@
                                         <action selector="buttonBackClick:" destination="-1" eventType="touchUpInside" id="Xml-WT-j6h"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presensi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBQ-AL-6cq">
-                                    <rect key="frame" x="41" y="19.5" width="47" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daftar Karyawan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBQ-AL-6cq">
+                                    <rect key="frame" x="41" y="19.5" width="89" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -84,14 +85,23 @@
                                 <inset key="sectionInset" minX="0.0" minY="13" maxX="0.0" maxY="13"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data karyawan kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9S1-Pf-waH">
+                            <rect key="frame" x="20" y="73" width="335" height="15.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="9S1-Pf-waH" secondAttribute="trailing" constant="20" id="4qy-hN-u7P"/>
                         <constraint firstAttribute="bottom" secondItem="ZEc-Th-lFo" secondAttribute="bottom" id="7La-dp-5Gv"/>
                         <constraint firstItem="ZEc-Th-lFo" firstAttribute="top" secondItem="QIA-WV-DMg" secondAttribute="bottom" id="Dm7-fp-og2"/>
+                        <constraint firstItem="9S1-Pf-waH" firstAttribute="top" secondItem="QIA-WV-DMg" secondAttribute="bottom" constant="20" id="Tcl-A9-1UU"/>
                         <constraint firstItem="QIA-WV-DMg" firstAttribute="leading" secondItem="1DE-hV-wiM" secondAttribute="leading" id="TkT-Ch-Tk6"/>
                         <constraint firstAttribute="trailing" secondItem="ZEc-Th-lFo" secondAttribute="trailing" id="Y90-dx-HZP"/>
                         <constraint firstAttribute="trailing" secondItem="QIA-WV-DMg" secondAttribute="trailing" id="d4F-v8-2Oh"/>
+                        <constraint firstItem="9S1-Pf-waH" firstAttribute="leading" secondItem="1DE-hV-wiM" secondAttribute="leading" constant="20" id="jbS-0v-Jl9"/>
                         <constraint firstItem="QIA-WV-DMg" firstAttribute="top" secondItem="1DE-hV-wiM" secondAttribute="top" id="qOu-do-gqG"/>
                         <constraint firstItem="ZEc-Th-lFo" firstAttribute="leading" secondItem="1DE-hV-wiM" secondAttribute="leading" id="uMz-GM-HBw"/>
                     </constraints>

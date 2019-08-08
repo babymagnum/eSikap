@@ -25,12 +25,16 @@
             <connections>
                 <outlet property="beritaCollectionView" destination="0ga-Oi-UWc" id="m5v-ph-9cG"/>
                 <outlet property="beritaCollectionViewHeight" destination="LhC-Kq-GOz" id="WhH-l5-Ivl"/>
+                <outlet property="buttonSelengkapnya" destination="L8U-hd-QnA" id="qby-br-JEg"/>
                 <outlet property="iconPresenceStatus" destination="739-S5-9a2" id="RrN-Lo-PdS"/>
                 <outlet property="imageAccount" destination="jBV-aC-LNq" id="Liq-55-JcF"/>
+                <outlet property="labelBeritaPengumuman" destination="tul-GP-DYb" id="D9N-pg-slk"/>
                 <outlet property="labelCapaian" destination="F4W-AI-z41" id="vDd-Hm-z8w"/>
                 <outlet property="labelClock" destination="Xcg-Dt-CYb" id="Jaa-6d-L8Z"/>
                 <outlet property="labelCuti" destination="SjX-Xs-r8m" id="b4s-9f-6hu"/>
+                <outlet property="labelMenuUtama" destination="zm8-fH-6tr" id="Nao-RA-qJ7"/>
                 <outlet property="labelName" destination="5dL-Jl-KeX" id="Zzz-b9-7RQ"/>
+                <outlet property="labelOverview" destination="rl8-4s-Hpr" id="6O9-io-hdh"/>
                 <outlet property="labelPresenceStatus" destination="jaJ-v0-Kbw" id="drf-bp-FQE"/>
                 <outlet property="menuCollectionView" destination="8kn-3h-My3" id="tCM-Ve-xKd"/>
                 <outlet property="menuCollectionViewHeight" destination="YAJ-RW-bgt" id="wyN-8a-EFA"/>

@@ -11,7 +11,7 @@ import iOSDropDown
 import SVProgressHUD
 
 protocol FilterKaryawanControllerProtocol {
-    func reloadKaryawan(empName: String)
+    func reloadKaryawan(empName: String, unit_id: String, workarea_id: String, gender: String, order_id: String)
 }
 
 class FilterKaryawanController: BaseViewController {
@@ -57,8 +57,13 @@ class FilterKaryawanController: BaseViewController {
     
     private func getUnit() {
         SVProgressHUD.show()
-        informationNetworking.getUnit { (error, listUnit) in
+        informationNetworking.getUnit { (error, listUnit, isExpired) in
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let _ = error {
                 return
@@ -88,8 +93,13 @@ class FilterKaryawanController: BaseViewController {
     
     private func getWorkArea() {
         SVProgressHUD.show()
-        informationNetworking.getWorkarea { (error, listWorkarea) in
+        informationNetworking.getWorkarea { (error, listWorkarea, isExpired) in
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let _ = error {
                 return
@@ -119,8 +129,13 @@ class FilterKaryawanController: BaseViewController {
     
     private func getGender() {
         SVProgressHUD.show()
-        informationNetworking.getGender { (error, listGender) in
+        informationNetworking.getGender { (error, listGender, isExpired) in
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let _ = error {
                 return
@@ -142,8 +157,13 @@ class FilterKaryawanController: BaseViewController {
     
     private func getOrder() {
         SVProgressHUD.show()
-        informationNetworking.getOrder { (error, listOrder) in
+        informationNetworking.getOrder { (error, listOrder, isExpired) in
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let _ = error {
                 return
@@ -213,15 +233,6 @@ class FilterKaryawanController: BaseViewController {
         buttonReset.layer.borderWidth = 1
         buttonReset.layer.borderColor = UIColor.init(rgb: 0x42a5f5).cgColor
         buttonTerapkan.layer.cornerRadius = buttonTerapkan.frame.height / 2
-        
-        selectedGender = preference.getString(key: staticLet.GENDER)
-        selectedOrder = preference.getString(key: staticLet.ORDER)
-        selectedWorkarea = preference.getString(key: staticLet.WORKAREA)
-        selectedUnit = preference.getString(key: staticLet.UNIT)
-        fieldDivisi.text = preference.getString(key: staticLet.VALUE_UNIT)
-        fieldLokasiKerja.text = preference.getString(key: staticLet.VALUE_WORKAREA)
-        fieldGender.text = preference.getString(key: staticLet.VALUE_GENDER)
-        fieldOrderBy.text = preference.getString(key: staticLet.VALUE_ORDER)
     }
 
 }
@@ -229,34 +240,15 @@ class FilterKaryawanController: BaseViewController {
 //click event
 extension FilterKaryawanController {
     @IBAction func buttonTerapkanClick(_ sender: Any) {
-        
-        preference.saveString(value: selectedUnit, key: staticLet.UNIT)
-        preference.saveString(value: selectedWorkarea, key: staticLet.WORKAREA)
-        preference.saveString(value: selectedGender, key: staticLet.GENDER)
-        preference.saveString(value: selectedOrder, key: staticLet.ORDER)
-        preference.saveString(value: fieldDivisi.trim(), key: staticLet.VALUE_UNIT)
-        preference.saveString(value: fieldLokasiKerja.trim(), key: staticLet.VALUE_WORKAREA)
-        preference.saveString(value: fieldGender.trim(), key: staticLet.VALUE_GENDER)
-        preference.saveString(value: fieldOrderBy.trim(), key: staticLet.VALUE_ORDER)
-        
         navigationController?.popViewController(animated: true)
         
-        delegate?.reloadKaryawan(empName: fieldNamaKaryawan.trim())
+        delegate?.reloadKaryawan(empName: fieldNamaKaryawan.trim(), unit_id: selectedUnit, workarea_id: selectedWorkarea, gender: selectedGender, order_id: selectedOrder)
     }
     
     @IBAction func buttonResetClick(_ sender: Any) {
-        preference.saveString(value: "", key: staticLet.UNIT)
-        preference.saveString(value: "", key: staticLet.WORKAREA)
-        preference.saveString(value: "", key: staticLet.GENDER)
-        preference.saveString(value: "", key: staticLet.ORDER)
-        preference.saveString(value: "", key: staticLet.VALUE_UNIT)
-        preference.saveString(value: "", key: staticLet.VALUE_WORKAREA)
-        preference.saveString(value: "", key: staticLet.VALUE_GENDER)
-        preference.saveString(value: "", key: staticLet.VALUE_ORDER)
-        
         navigationController?.popViewController(animated: true)
         
-        delegate?.reloadKaryawan(empName: fieldNamaKaryawan.trim())
+        delegate?.reloadKaryawan(empName: "", unit_id: "", workarea_id: "", gender: "", order_id: "")
     }
     
     @IBAction func buttonBackClick(_ sender: Any) { navigationController?.popViewController(animated: true) }

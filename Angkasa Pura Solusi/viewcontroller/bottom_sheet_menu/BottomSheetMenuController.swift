@@ -113,7 +113,7 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         for (index, _) in listMenuFavorit.enumerated() {
             if index == listMenuFavorit.count - 1 { break }
             
-            listMenuFavorit[index].action = UIImage(named: "minus-circular")?.tinted(with: UIColor.red.withAlphaComponent(0.6))
+            listMenuFavorit[index].action = UIImage(named: "minusSymbolInsideACircle")
             menuFavoritCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
         }
     }
@@ -122,7 +122,7 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         updateMarginCollectionView(lainyaCollectionRightMargin, 19)
         
         for (index, _) in listMenuLainya.enumerated() {
-            listMenuLainya[index].action = UIImage(named: "plus-circular")?.tinted(with: UIColor.green.withAlphaComponent(0.6))
+            listMenuLainya[index].action = UIImage(named: "addButtonInsideBlackCircle")
             menuLainyaCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
         }
     }
@@ -148,8 +148,13 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     private func getPreparePresence() {
         SVProgressHUD.show()
         
-        presenceNetworking.getPreparePresence { (error, preparePresence) in
+        presenceNetworking.getPreparePresence { (error, preparePresence, isExpired) in
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let error = error {
                 let vc = DialogPreparePresenceController()
@@ -243,7 +248,7 @@ extension BottomSheetMenuController {
             
             // add deleted item from menu favorit, and append it to menu lainya
             var item = listMenuFavorit[indexpath.item]
-            item.action = UIImage(named: "plus-circular")?.tinted(with: UIColor.green)
+            item.action = UIImage(named: "addButtonInsideBlackCircle")
             listMenuLainya.insert(item, at: listMenuLainya.count - 1)
             menuLainyaCollectionView.insertItems(at: [IndexPath(item: listMenuLainya.count - 1, section: 0)])
             
@@ -269,7 +274,7 @@ extension BottomSheetMenuController {
             
             // add deleted item from menu lainya, and append it to menu favorit
             var item = listMenuLainya[indexpath.item]
-            item.action = UIImage(named: "minus-circular")?.tinted(with: UIColor.red)
+            item.action = UIImage(named: "minusSymbolInsideACircle")
             listMenuFavorit.insert(item, at: listMenuFavorit.count - 1)
             menuFavoritCollectionView.insertItems(at: [IndexPath(item: listMenuFavorit.count - 2, section: 0)])
             

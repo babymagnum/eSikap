@@ -55,8 +55,13 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
     private func getAllNews() {
         SVProgressHUD.show()
         
-        informationNetworking.getAllNews(page: currentPage) { (error, allNews) in
+        informationNetworking.getAllNews(page: currentPage) { (error, allNews, isExpired) in
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let error = error {
                 self.function.showUnderstandDialog(self, "Error getting news", error, "Reload", "Cancel", completionHandler: {

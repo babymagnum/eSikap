@@ -25,6 +25,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     var presenceType: String!
     var titleString: String?
     
+    @IBOutlet weak var viewJamMasukKeluarBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var viewPressence: UIView!
     @IBOutlet weak var viewJamMasukPulang: UIView!
@@ -58,17 +59,21 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     private func initView() {
         labelTitle.text = titleString
         
-        viewPressence.layer.cornerRadius = 6
+        viewPressence.layer.cornerRadius = 5
+        viewPressence.clipsToBounds = false
         viewPressence.layer.shadowColor = UIColor.lightGray.cgColor
         viewPressence.layer.shadowOffset = CGSize(width: 1, height: 2)
         viewPressence.layer.shadowRadius = 2
+        viewPressence.layer.shadowOpacity = 1.0
         
-        viewHurryUp.layer.cornerRadius = 6
+        viewHurryUp.layer.cornerRadius = 5
+        viewHurryUp.clipsToBounds = false
         viewHurryUp.layer.shadowColor = UIColor.lightGray.cgColor
         viewHurryUp.layer.shadowOffset = CGSize(width: 1, height: 2)
         viewHurryUp.layer.shadowRadius = 2
+        viewHurryUp.layer.shadowOpacity = 1.0
         
-        buttonPresence.layer.cornerRadius = buttonPresence.frame.height / 2
+        buttonPresence.layer.cornerRadius = 5
         
         viewJamMasukPulang.layer.cornerRadius = viewJamMasukPulang.frame.height / 2
         viewJamMasukPulang.layer.borderWidth = 2
@@ -98,7 +103,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
             }
             
             UIView.performWithoutAnimation {
-                self.labelClock.setTitle("\(self.preparePresence.day ?? ""), \(self.preparePresence.date ?? "") | \(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)")", for: .normal)
+                self.labelClock.setTitle("\(self.preparePresence.day ?? ""), \(self.preparePresence.date_formated ?? "") | \(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)")", for: .normal)
                 self.labelClock.layoutIfNeeded()
             }
         }
@@ -130,19 +135,33 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
         circle.strokeWidth = 1
     }
     
+    private func showPressence() {
+        self.viewJamMasukPulang.isHidden = false
+        self.viewHurryUp.isHidden = true
+        self.viewPressence.isHidden = false
+        UIView.animate(withDuration: 0.2) {
+            self.viewJamMasukKeluarBottomMargin.constant = 32
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func hidePressence() {
+        self.viewJamMasukPulang.isHidden = false
+        self.viewHurryUp.isHidden = false
+        self.viewPressence.isHidden = true
+        UIView.animate(withDuration: 0.2) {
+            self.viewJamMasukKeluarBottomMargin.constant = 14
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     func addRadiusCircle(circle: Circle, isInside: Bool, isUpdate: Bool){
         
         if isInside {
             self.pickedCheckpointId = circle.checkpoint_id!
             circleInsideRadius(circle: circle.circle!)
-            self.viewJamMasukPulang.isHidden = true
-            self.viewHurryUp.isHidden = true
-            self.viewPressence.isHidden = false
         } else {
             circleOutsideRadius(circle: circle.circle!)
-            self.viewJamMasukPulang.isHidden = false
-            self.viewHurryUp.isHidden = false
-            self.viewPressence.isHidden = true
         }
         
         if !isUpdate {
@@ -239,8 +258,11 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
             let distance = currentLocation.distance(from: CLLocation(latitude: buildingLat!, longitude: buildingLon!))
             
             if distance <= radius {
+                self.showPressence()
                 self.addRadiusCircle(circle: circle, isInside: true, isUpdate: true)
+                break
             } else {
+                self.hidePressence()
                 self.addRadiusCircle(circle: circle, isInside: false, isUpdate: true)
             }
         }
@@ -276,10 +298,15 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
         
         buttonPresence.isEnabled = false
         
-        presenceNetworking.addPresence(request: (checkpoint_id: pickedCheckpointId, presence_type: presenceType, latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))) { (error) in
+        presenceNetworking.addPresence(request: (checkpoint_id: pickedCheckpointId, presence_type: presenceType, latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))) { (error, isExpired) in
             
             SVProgressHUD.dismiss()
             self.buttonPresence.isEnabled = true
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let error = error {
                 self.function.showUnderstandDialog(self, "Error Presence", error, "Retry", "Cancel", completionHandler: {

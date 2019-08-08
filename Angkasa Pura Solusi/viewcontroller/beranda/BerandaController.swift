@@ -17,6 +17,10 @@ protocol BerandaControllerProtocol {
 
 class BerandaController: BaseViewController, UICollectionViewDelegate {
     
+    @IBOutlet weak var buttonSelengkapnya: UIButton!
+    @IBOutlet weak var labelBeritaPengumuman: UILabel!
+    @IBOutlet weak var labelMenuUtama: UILabel!
+    @IBOutlet weak var labelOverview: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageAccount: UIImageView!
     @IBOutlet weak var labelName: UILabel!
@@ -39,6 +43,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     private var listMenu = [Menu]()
     private var listBerita = [News]()
     var delegate : BerandaControllerProtocol?
+    var isWasLoaded = false
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -171,7 +176,8 @@ extension BerandaController {
             switch listMenu[indexpath.item].id {
             case 1:
                 //pengajuan cuti
-                self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
+                self.showInDevelopmentDialog()
+                //self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             case 2:
                 //pengajuan lembur
                 self.showInDevelopmentDialog()
@@ -238,25 +244,19 @@ extension BerandaController {
     private func getDashboard() {
         SVProgressHUD.show()
         
-        informationNetworking.getDashboard { (error, itemDashboard) in
+        informationNetworking.getDashboard { (error, itemDashboard, isExpired) in
             
             SVProgressHUD.dismiss()
             
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
             if let error = error {
-                if error == "Token Salah" {
-                    let vc = DialogPreparePresenceController()
-                    vc.title = "Session anda berakhir, silahkan login kembali untuk melanjutkan."
-                    self.showCustomDialog(vc)
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                        self.resetData()
-                        self.navigationController?.popToRootViewController(animated: true)
-                    })
-                } else {
-                    self.function.showUnderstandDialog(self, "Dashboard Error", error, "Reload", "Cancel", completionHandler: {
-                        self.getDashboard()
-                    })
-                }
+                self.function.showUnderstandDialog(self, "Dashboard Error", error, "Reload", "Cancel", completionHandler: {
+                    self.getDashboard()
+                })
                 return
             }
             
@@ -281,20 +281,16 @@ extension BerandaController {
     }
     
     private func getLatestNews() {
-        informationNetworking.getLatestNews { (error, news) in
+        informationNetworking.getLatestNews { (error, news, isExpired) in
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
             if let error = error {
-                if error == "Token Salah" {
-                    self.function.showUnderstandDialog(self, "Session Expired", "Sesi anda telah berakhir, silahkan login ulang", "Login", completionHandler: {
-                        self.preference.saveBool(value: false, key: self.staticLet.IS_LOGIN)
-                        self.preference.saveBool(value: false, key: self.staticLet.IS_SHOW_FIRST_DIALOG)
-                        self.preference.saveBool(value: false, key: self.staticLet.IS_FIRST_TIME_OPEN)
-                        self.navigationController?.popToRootViewController(animated: true)
-                    })
-                } else {
-                    self.function.showUnderstandDialog(self, "Error Get Latest News", error, "Retry", completionHandler: {
-                        self.getLatestNews()
-                    })
-                }
+                self.function.showUnderstandDialog(self, "Error Mendapatkan Berita Terbaru", error, "Reload", "Cancel", completionHandler: {
+                    self.getLatestNews()
+                })
                 return
             }
             
@@ -306,7 +302,10 @@ extension BerandaController {
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                self.beritaCollectionViewHeight.constant = self.beritaCollectionView.contentSize.height + 40
+                if !self.isWasLoaded {
+                    self.isWasLoaded = true
+                    self.beritaCollectionViewHeight.constant = self.beritaCollectionView.contentSize.height + 40
+                }
             })
         }
     }
@@ -314,8 +313,13 @@ extension BerandaController {
     private func getPreparePresence() {
         SVProgressHUD.show()
         
-        presenceNetworking.getPreparePresence { (error, preparePresence) in
+        presenceNetworking.getPreparePresence { (error, preparePresence, isExpired) in
             SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
             
             if let error = error {
                 let vc = DialogPreparePresenceController()
