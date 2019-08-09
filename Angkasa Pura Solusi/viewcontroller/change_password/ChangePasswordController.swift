@@ -65,7 +65,7 @@ class ChangePasswordController: BaseViewController {
         
         SVProgressHUD.show()
         
-        authNetworking.changePassword(request: (new_password: fieldKataSandiBaru.trim(), old_password: fieldKataSandiBaru.trim())) { (error, isExpired) in
+        authNetworking.changePassword(request: (new_password: fieldKataSandiBaru.trim(), old_password: fieldKataSandiLama.trim())) { (error, isExpired) in
             
             SVProgressHUD.dismiss()
             
@@ -75,11 +75,13 @@ class ChangePasswordController: BaseViewController {
             }
             
             if let error = error {
-                self.function.showUnderstandDialog(self, "Error Ganti Password", error, "Understand")
+                let vc = DialogPreparePresenceController()
+                vc.stringDescription = error
+                self.showCustomDialog(vc)
                 return
             }
             
-            self.function.showUnderstandDialog(self, "Sukses Ganti Password", "Password anda telah diganti menjadi \(self.fieldKataSandiBaru.trim())", "Understand")
+            self.function.showUnderstandDialog(self, "Sukses Ganti Password", "", "Understand")
             
             self.fieldKataSandiLama.text = ""
             self.fieldKataSandiBaru.text = ""

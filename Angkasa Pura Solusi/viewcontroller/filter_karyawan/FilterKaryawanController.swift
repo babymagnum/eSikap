@@ -66,6 +66,7 @@ class FilterKaryawanController: BaseViewController {
             }
             
             if let _ = error {
+                self.getUnit()
                 return
             }
             
@@ -78,10 +79,8 @@ class FilterKaryawanController: BaseViewController {
                 nameList.append(unit.unit_name!)
                 
                 if unit.unit_id == "" {
-                    continue
-                }
-                
-                idList.append(Int(unit.unit_id!)!)
+                    idList.append(123456789)
+                } else { idList.append(Int(unit.unit_id!)!) }
             }
             
             DispatchQueue.main.async {
@@ -102,6 +101,7 @@ class FilterKaryawanController: BaseViewController {
             }
             
             if let _ = error {
+                self.getWorkArea()
                 return
             }
             
@@ -113,11 +113,8 @@ class FilterKaryawanController: BaseViewController {
             for workarea in list {
                 nameList.append(workarea.workarea_name!)
                 
-                if workarea.workarea_id == "" {
-                    continue
-                }
-                
-                idList.append(Int(workarea.workarea_id!)!)
+                if workarea.workarea_id == "" { idList.append(1234567890)}
+                else { idList.append(Int(workarea.workarea_id!)!) }
             }
             
             DispatchQueue.main.async {
@@ -138,6 +135,7 @@ class FilterKaryawanController: BaseViewController {
             }
             
             if let _ = error {
+                self.getGender()
                 return
             }
             
@@ -166,6 +164,7 @@ class FilterKaryawanController: BaseViewController {
             }
             
             if let _ = error {
+                self.getOrder()
                 return
             }
             
@@ -203,21 +202,43 @@ class FilterKaryawanController: BaseViewController {
     
     private func dropDownListener() {
         fieldDivisi.didSelect { (text, index, id) in
+            if text == "-- Semua --" {
+                self.selectedUnit = ""
+                return
+            }
+            
             self.selectedUnit = "\(id)"
+            print("selected unit \(self.selectedUnit)")
             self.fieldDivisi.text = text
         }
         
         fieldGender.didSelect { (text, index, id) in
+            if text == "-- Semua --" {
+                self.selectedUnit = ""
+                return
+            }
+            
             self.selectedGender = self.getSelectedGender(gender: text)
             self.fieldGender.text = text
         }
         
         fieldLokasiKerja.didSelect { (text, index, id) in
+            if text == "-- Semua --" {
+                self.selectedUnit = ""
+                return
+            }
+            
             self.selectedWorkarea = "\(id)"
             self.fieldLokasiKerja.text = text
+            print("selected workarea \(self.selectedWorkarea)")
         }
         
         fieldOrderBy.didSelect { (text, index, id) in
+            if text == "-- Semua --" {
+                self.selectedUnit = ""
+                return
+            }
+            
             self.selectedOrder = self.getSelectedOrder(order: text)
             self.fieldOrderBy.text = text
         }

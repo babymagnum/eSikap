@@ -75,6 +75,8 @@ class AuthenticationNetworking {
             case .success(let responseSuccess):
                 let root = JSON(responseSuccess)
                 
+                print("change password \(root)")
+                
                 if root["status"].int == 200 {
                     completion(nil, nil)
                 } else if root["status"].int == 401 {

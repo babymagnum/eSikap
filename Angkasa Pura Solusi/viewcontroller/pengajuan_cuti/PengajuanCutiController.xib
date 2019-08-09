@@ -484,7 +484,7 @@
                                                     <rect key="frame" x="14" y="137" width="347" height="71"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpf-TN-4IX">
-                                                            <rect key="frame" x="140.5" y="24.5" width="66" height="22"/>
+                                                            <rect key="frame" x="165.5" y="24.5" width="16" height="22"/>
                                                             <state key="normal" image="group448"/>
                                                         </button>
                                                     </subviews>
@@ -1014,7 +1014,7 @@
                     <rect key="frame" x="14" y="137" width="347" height="71"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-AL-JpX">
-                            <rect key="frame" x="140.5" y="24.5" width="66" height="22"/>
+                            <rect key="frame" x="165.5" y="24.5" width="16" height="22"/>
                             <state key="normal" image="group448"/>
                         </button>
                     </subviews>
@@ -1066,7 +1066,7 @@
                     <rect key="frame" x="14" y="29" width="347" height="37"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8tb-5v-iKQ">
-                            <rect key="frame" x="10" y="11" width="299" height="15"/>
+                            <rect key="frame" x="10" y="11.5" width="299" height="14"/>
                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                             <textInputTraits key="textInputTraits"/>
@@ -1104,7 +1104,7 @@
                     <rect key="frame" x="14" y="96" width="347" height="37"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FKK-Nb-OSb">
-                            <rect key="frame" x="10" y="11" width="299" height="15"/>
+                            <rect key="frame" x="10" y="11.5" width="299" height="14"/>
                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                             <textInputTraits key="textInputTraits"/>
@@ -1133,7 +1133,7 @@
                     <rect key="frame" x="14" y="139" width="347" height="37"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O1b-Y8-rk2">
-                            <rect key="frame" x="10" y="11" width="299" height="15"/>
+                            <rect key="frame" x="10" y="11.5" width="299" height="14"/>
                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                             <textInputTraits key="textInputTraits"/>

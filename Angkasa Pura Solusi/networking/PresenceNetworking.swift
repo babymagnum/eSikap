@@ -29,26 +29,22 @@ class PresenceNetworking {
         
         Alamofire.request(url, method: .post, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
+            case .success(let success):
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                let data = response.data
-                
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let preparePresence = try JSONDecoder().decode(PreparePresence.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if preparePresence.status == 200 {
+                    do {
+                        let preparePresence = try JSONDecoder().decode(PreparePresence.self, from: mData)
                         completion(nil, preparePresence.data, nil)
-                    } else if preparePresence.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(preparePresence.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
                 
             case .failure(let responseFailure): completion(responseFailure.localizedDescription, nil, nil)
             }
@@ -71,8 +67,6 @@ class PresenceNetworking {
             switch response.result {
             case .success(let responseSuccess):
                 let root = JSON(responseSuccess)
-                
-                print("presence \(root)")
                 
                 if root["status"].int == 201 {
                     completion(nil, nil)
@@ -99,26 +93,23 @@ class PresenceNetworking {
         
         Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
+            case .success(let success):
                 
-                let data = response.data
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let presensi = try JSONDecoder().decode(Presensi.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if presensi.status == 200 {
+                    do {
+                        let presensi = try JSONDecoder().decode(Presensi.self, from: mData)
                         completion(nil, presensi.data, nil)
-                    } else if presensi.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(presensi.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
                 
             case .failure(let responseFailure): completion(responseFailure.localizedDescription, nil, nil)
             }

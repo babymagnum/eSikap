@@ -12,7 +12,7 @@ protocol BottomSheetFilterPresensiProtocol {
     func filterPicked(_ month: String, _ year: String)
 }
 
-class BottomSheetFilterPresensi: UIViewController, UIPickerViewDelegate {
+class BottomSheetFilterPresensi: BaseViewController, UIPickerViewDelegate {
 
     @IBOutlet weak var pickerViewBulan: UIPickerView!
     @IBOutlet weak var pickerViewTahun: UIPickerView!
@@ -22,8 +22,8 @@ class BottomSheetFilterPresensi: UIViewController, UIPickerViewDelegate {
     var listBulan = [Bulan]()
     var listTahun = [String]()
     
-    var pickedBulan = "01"
-    var pickedTahun = "2000"
+    var pickedBulan = ""
+    var pickedTahun = ""
     
     var delegate: BottomSheetFilterPresensiProtocol?
     
@@ -36,6 +36,11 @@ class BottomSheetFilterPresensi: UIViewController, UIPickerViewDelegate {
     }
     
     private func initView() {
+        pickedBulan = function.getCurrentDate(pattern: "MM")
+        pickedTahun = function.getCurrentDate(pattern: "yyyy")
+        print("picked bulan \(pickedBulan)")
+        print("picked tahun \(pickedTahun)")
+        
         buttonTerapkan.layer.cornerRadius = 5
         buttonKembali.giveBorder(5, 1, "42a5f5")
     }
@@ -61,9 +66,12 @@ class BottomSheetFilterPresensi: UIViewController, UIPickerViewDelegate {
         listBulan.append(Bulan(id: "12", name: "Desember"))
         
         // populate tahun
-        for year in 2000...2019 {
+        for year in 2000...Int(function.getCurrentDate(pattern: "yyyy"))! {
             listTahun.append("\(year)")
         }
+        
+        pickerViewTahun.selectRow(listTahun.count - 1, inComponent: 0, animated: true)
+        pickerViewBulan.selectRow(Int(function.getCurrentDate(pattern: "M"))! - 1, inComponent: 0, animated: true)
     }
 
 }

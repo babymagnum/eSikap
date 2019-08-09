@@ -103,7 +103,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
             }
             
             UIView.performWithoutAnimation {
-                self.labelClock.setTitle("\(self.preparePresence.day ?? ""), \(self.preparePresence.date_formated ?? "") | \(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)")", for: .normal)
+                self.labelClock.setTitle("\(self.preparePresence.day ?? ""), \(self.preparePresence.date_formated ?? "") | \(String(self.hours).count == 1 ? "0\(self.hours)" : "\(self.hours)"):\(String(self.minutes).count == 1 ? "0\(self.minutes)" : "\(self.minutes)"):\(String(self.seconds).count == 1 ? "0\(self.seconds)" : "\(self.seconds)") \(self.preparePresence.timezone ?? "")", for: .normal)
                 self.labelClock.layoutIfNeeded()
             }
         }

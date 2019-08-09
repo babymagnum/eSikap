@@ -21,6 +21,14 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
     var currentPage = 0
     var request: (emp_name: String, unit_id: String, workarea_id: String, gender: String, order_id: String)?
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor(hexString: "42a5f5")
+        
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +52,7 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
         
         daftarKaryawanCollectionView.delegate = self
         daftarKaryawanCollectionView.dataSource = self
+        daftarKaryawanCollectionView.addSubview(refreshControl)
     }
     
     private func getEmpList() {
@@ -71,6 +80,8 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
             } else {
                 self.labelKaryawanKosong.isHidden = true
             }
+            
+            if self.currentPage == 0 { self.listKaryawan.removeAll() }
             
             self.totalPage = karyawan.total_page!
             self.currentPage += 1
@@ -125,8 +136,12 @@ extension DaftarKaryawanController: UICollectionViewDataSource {
 extension DaftarKaryawanController: FilterKaryawanControllerProtocol {
     func reloadKaryawan(empName: String, unit_id: String, workarea_id: String, gender: String, order_id: String) {
         request = (emp_name: empName, unit_id: unit_id, workarea_id: workarea_id, gender: gender, order_id: order_id)
-        
-        listKaryawan.removeAll()
+        currentPage = 0
+        getEmpList()
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
         currentPage = 0
         getEmpList()
     }

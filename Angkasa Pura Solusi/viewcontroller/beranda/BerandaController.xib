@@ -82,7 +82,7 @@
                                 <constraint firstAttribute="height" constant="53" id="fE7-al-CTZ"/>
                             </constraints>
                         </view>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIZ-qV-zTc">
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIZ-qV-zTc">
                             <rect key="frame" x="0.0" y="53" width="375" height="927"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bB0-nT-tr4">

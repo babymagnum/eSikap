@@ -88,25 +88,23 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
-                let data = response.data
+            case .success(let success):
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let detailNews = try JSONDecoder().decode(DetailNews.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if detailNews.status == 200 {
+                    do {
+                        let detailNews = try JSONDecoder().decode(DetailNews.self, from: mData)
                         completion(nil, detailNews.data[0], nil)
-                    } else if detailNews.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(detailNews.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
                 
             case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
@@ -125,26 +123,24 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
             switch response.result{
-            case .success:
+            case .success(let success):
                 
-                let data = response.data
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
+                if status == 200 {
+                    guard let mData = response.data else { return}
+                    
+                    do {
+                        let allNews = try JSONDecoder().decode(AllNews.self, from: mData)
+                        completion(nil, allNews.data?.news, nil)
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
                 }
-                
-                do {
-                    let latestNew = try JSONDecoder().decode(AllNews.self, from: mData)
-                
-                    if latestNew.status == 200 {
-                        completion(nil, latestNew.data?.news, nil)
-                    } else if latestNew.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(latestNew.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
                 
             case .failure(let responseFailure):
                 completion(responseFailure.localizedDescription, nil, nil)
@@ -158,26 +154,24 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .post, headers: headers).responseJSON { (response) in
             switch response.result{
-            case .success:
+            case .success(let success):
                 
-                let data = response.data
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let profile = try JSONDecoder().decode(Profile.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if profile.status == 200 {
+                    do {
+                        let profile = try JSONDecoder().decode(Profile.self, from: mData)
                         completion(nil, profile.data[0], nil)
-                    } else if profile.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(profile.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
                 
             case .failure(let responseFailure):
                 completion(responseFailure.localizedDescription, nil, nil)
@@ -193,25 +187,23 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
-                let data = response.data
+            case .success(let success):
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let detailKaryawan = try JSONDecoder().decode(DetailKaryawan.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if detailKaryawan.status == 200 {
+                    do {
+                        let detailKaryawan = try JSONDecoder().decode(DetailKaryawan.self, from: mData)
                         completion(nil, detailKaryawan.data[0], nil)
-                    } else if detailKaryawan.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(detailKaryawan.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
                 
             case .failure(let error):
                 completion(error.localizedDescription, nil, nil)
@@ -234,25 +226,23 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
-                let data = response.data
+            case .success(let success):
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let listKaryawan = try JSONDecoder().decode(ListKaryawan.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if listKaryawan.status == 200 {
+                    do {
+                        let listKaryawan = try JSONDecoder().decode(ListKaryawan.self, from: mData)
                         completion(nil, listKaryawan.data, nil)
-                    } else if listKaryawan.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(listKaryawan.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
                 
             case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
@@ -265,25 +255,23 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
-                let data = response.data
+            case .success(let success):
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let unit = try JSONDecoder().decode(Unit.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if unit.status == 200 {
+                    do {
+                        let unit = try JSONDecoder().decode(Unit.self, from: mData)
                         completion(nil, unit.data, nil)
-                    } else if unit.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(unit.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
             case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
         }
@@ -295,25 +283,23 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
-                let data = response.data
+            case .success(let success):
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let workarea = try JSONDecoder().decode(Workarea.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if workarea.status == 200 {
+                    do {
+                        let workarea = try JSONDecoder().decode(Workarea.self, from: mData)
                         completion(nil, workarea.data, nil)
-                    } else if workarea.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(workarea.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
                 
             case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
@@ -326,25 +312,23 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
-                let data = response.data
+            case .success(let success):
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let gender = try JSONDecoder().decode(Gender.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if gender.status == 200 {
+                    do {
+                        let gender = try JSONDecoder().decode(Gender.self, from: mData)
                         completion(nil, gender.data, nil)
-                    } else if gender.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(gender.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
                 
             case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
@@ -357,25 +341,23 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
-                let data = response.data
+            case .success(let success):
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil, nil)
-                    return
-                }
-                
-                do {
-                    let order = try JSONDecoder().decode(Order.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if order.status == 200 {
+                    do {
+                        let order = try JSONDecoder().decode(Order.self, from: mData)
                         completion(nil, order.data, nil)
-                    } else if order.status == 401 {
-                        completion(nil, nil, true)
-                    } else {
-                        completion(order.message, nil, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil, true)
+                } else {
+                    completion(message, nil, nil)
+                }
                 
             case .failure(let error): completion(error.localizedDescription, nil, nil)
             }
@@ -388,23 +370,23 @@ class InformationNetworking {
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
             switch response.result {
-            case .success:
-                let data = response.data
+            case .success(let success):
+                let status = JSON(success)["status"].int
+                let message = JSON(success)["message"].string
                 
-                guard let mData = data else {
-                    completion("Error null data, please try again later", nil)
-                    return
-                }
-                
-                do {
-                    let announcement = try JSONDecoder().decode(Announcement.self, from: mData)
+                if status == 200 {
+                    guard let mData = response.data else { return}
                     
-                    if announcement.status == 200 {
-                        completion(nil, announcement.data[0])
-                    } else {
-                        completion(announcement.message, nil)
-                    }
-                } catch let err { completion(err.localizedDescription, nil) }
+                    do {
+                        let annoucement = try JSONDecoder().decode(Announcement.self, from: mData)
+                        completion(nil, annoucement.data[0])
+                    } catch let err { completion(err.localizedDescription, nil) }
+                    
+                } else if status == 401 {
+                    completion(nil, nil)
+                } else {
+                    completion(message, nil)
+                }
                 
             case .failure(let error): completion(error.localizedDescription, nil)
             }

@@ -273,7 +273,9 @@ extension BerandaController {
             self.labelCuti.text = item.total_leave_quota
             self.labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 120"
             if item.presence_today?.icon == "sad" {
-                self.iconPresenceStatus.image = UIImage(named: "sad")?.tinted(with: UIColor.white)
+                self.iconPresenceStatus.image = UIImage(named: "sad")
+            } else if item.presence_today?.icon == "emotionless" {
+                self.iconPresenceStatus.image = UIImage(named: "surprised")
             }
             self.labelPresenceStatus.text = item.presence_today?.status
             self.labelClock.text = item.presence_today?.time
@@ -287,10 +289,8 @@ extension BerandaController {
                 return
             }
             
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Error Mendapatkan Berita Terbaru", error, "Reload", "Cancel", completionHandler: {
-                    self.getLatestNews()
-                })
+            if let _ = error {
+                self.getLatestNews()
                 return
             }
             

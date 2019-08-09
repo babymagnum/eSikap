@@ -109,7 +109,7 @@ extension PresensiController {
                 navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = DialogPreparePresenceController()
-                vc.stringDescription = "Anda sudah melakukan presensi masuk, sekarang anda harus melakukan presensi keluar"
+                vc.stringDescription = "Anda sudah melakukan presensi masuk, sekarang anda harus melakukan presensi pulang."
                 self.showCustomDialog(vc)
             }
         }
@@ -126,7 +126,7 @@ extension PresensiController {
                 navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = DialogPreparePresenceController()
-                vc.stringDescription = "Anda belum melakukan presensi masuk, lakukan presensi masuk terlebih dahulu"
+                vc.stringDescription = "Anda belum melakukan presensi masuk, lakukan presensi masuk terlebih dahulu."
                 self.showCustomDialog(vc)
             }
         }

@@ -57,7 +57,7 @@ class BaseViewController: UIViewController {
         
         DispatchQueue.main.async { self.showCustomDialog(vc) }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.resetData()
             navigationController.popToRootViewController(animated: true)
         })

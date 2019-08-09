@@ -75,7 +75,7 @@
                                 <constraint firstItem="aBQ-AL-6cq" firstAttribute="centerY" secondItem="QIA-WV-DMg" secondAttribute="centerY" id="pwS-iA-Ldv"/>
                             </constraints>
                         </view>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZEc-Th-lFo">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZEc-Th-lFo">
                             <rect key="frame" x="0.0" y="53" width="375" height="594"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="13" minimumInteritemSpacing="0.0" id="d4X-Wz-st1">
