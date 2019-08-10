@@ -183,7 +183,7 @@ extension BerandaController {
                 self.showInDevelopmentDialog()
             case 3:
                 //persetujuan
-                self.showInDevelopmentDialog()
+                self.navigationController?.pushViewController(TabPersetujuanController(), animated: true)
             case 4:
                 //presensi
                 getPreparePresence()

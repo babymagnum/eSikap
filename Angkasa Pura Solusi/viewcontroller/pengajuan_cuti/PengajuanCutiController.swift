@@ -206,6 +206,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     }
 }
 
+//function for view cuti sementara
 extension PengajuanCutiController {
     private func showViewCutiSementara() {
         UIView.animate(withDuration: 0.2) {

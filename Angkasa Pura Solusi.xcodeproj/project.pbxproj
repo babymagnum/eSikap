@@ -98,12 +98,31 @@
 		ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A722EBFF8D00D696E5 /* Onboarding.swift */; };
 		ED9590AA22EC923A00D696E5 /* PresenceNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A922EC923A00D696E5 /* PresenceNetworking.swift */; };
 		ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9590AB22EC99D500D696E5 /* GoogleService-Info.plist */; };
+		EDBF219F22FE465B003F5DAF /* StatusPersetujuanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF219D22FE465B003F5DAF /* StatusPersetujuanCell.swift */; };
+		EDBF21A022FE465B003F5DAF /* StatusPersetujuanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDBF219E22FE465B003F5DAF /* StatusPersetujuanCell.xib */; };
+		EDBF21A222FE4C65003F5DAF /* StatusPersetujuan.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21A122FE4C65003F5DAF /* StatusPersetujuan.swift */; };
+		EDBF21A522FE5502003F5DAF /* StatusActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21A322FE5502003F5DAF /* StatusActionCell.swift */; };
+		EDBF21A622FE5502003F5DAF /* StatusActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDBF21A422FE5502003F5DAF /* StatusActionCell.xib */; };
+		EDBF21A822FE575F003F5DAF /* StatusAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21A722FE575F003F5DAF /* StatusAction.swift */; };
 		EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF422F08B8F0064AE57 /* PresensiController.swift */; };
 		EDCF3BF722F08B8F0064AE57 /* PresensiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCF3BF522F08B8F0064AE57 /* PresensiController.xib */; };
 		EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */; };
 		EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */; };
 		EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */; };
 		EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */; };
+		EDFC1F4722FDB80D00AAA93B /* TabPersetujuanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F4522FDB80D00AAA93B /* TabPersetujuanController.swift */; };
+		EDFC1F4822FDB80D00AAA93B /* TabPersetujuanController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F4622FDB80D00AAA93B /* TabPersetujuanController.xib */; };
+		EDFC1F4E22FDBAEC00AAA93B /* CutiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F4C22FDBAEC00AAA93B /* CutiController.swift */; };
+		EDFC1F4F22FDBAEC00AAA93B /* CutiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F4D22FDBAEC00AAA93B /* CutiController.xib */; };
+		EDFC1F5222FDBB0400AAA93B /* LemburController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F5022FDBB0400AAA93B /* LemburController.swift */; };
+		EDFC1F5322FDBB0400AAA93B /* LemburController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F5122FDBB0400AAA93B /* LemburController.xib */; };
+		EDFC1F5622FDBB1700AAA93B /* RealisasiLemburController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F5422FDBB1700AAA93B /* RealisasiLemburController.swift */; };
+		EDFC1F5722FDBB1700AAA93B /* RealisasiLemburController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F5522FDBB1700AAA93B /* RealisasiLemburController.xib */; };
+		EDFC1F5B22FE297D00AAA93B /* CutiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F5922FE297D00AAA93B /* CutiCell.swift */; };
+		EDFC1F5C22FE297D00AAA93B /* CutiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F5A22FE297D00AAA93B /* CutiCell.xib */; };
+		EDFC1F5E22FE2DE500AAA93B /* Cuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F5D22FE2DE500AAA93B /* Cuti.swift */; };
+		EDFC1F6222FE347300AAA93B /* DetailPersetujuanCutiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F6022FE347300AAA93B /* DetailPersetujuanCutiController.swift */; };
+		EDFC1F6322FE347300AAA93B /* DetailPersetujuanCutiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F6122FE347300AAA93B /* DetailPersetujuanCutiController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -206,12 +225,31 @@
 		ED9590A722EBFF8D00D696E5 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		ED9590A922EC923A00D696E5 /* PresenceNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceNetworking.swift; sourceTree = "<group>"; };
 		ED9590AB22EC99D500D696E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDBF219D22FE465B003F5DAF /* StatusPersetujuanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPersetujuanCell.swift; sourceTree = "<group>"; };
+		EDBF219E22FE465B003F5DAF /* StatusPersetujuanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusPersetujuanCell.xib; sourceTree = "<group>"; };
+		EDBF21A122FE4C65003F5DAF /* StatusPersetujuan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPersetujuan.swift; sourceTree = "<group>"; };
+		EDBF21A322FE5502003F5DAF /* StatusActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusActionCell.swift; sourceTree = "<group>"; };
+		EDBF21A422FE5502003F5DAF /* StatusActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusActionCell.xib; sourceTree = "<group>"; };
+		EDBF21A722FE575F003F5DAF /* StatusAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAction.swift; sourceTree = "<group>"; };
 		EDCF3BF422F08B8F0064AE57 /* PresensiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiController.swift; sourceTree = "<group>"; };
 		EDCF3BF522F08B8F0064AE57 /* PresensiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiController.xib; sourceTree = "<group>"; };
 		EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiMapController.swift; sourceTree = "<group>"; };
 		EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiMapController.xib; sourceTree = "<group>"; };
 		EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JatahCuti.swift; sourceTree = "<group>"; };
+		EDFC1F4522FDB80D00AAA93B /* TabPersetujuanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPersetujuanController.swift; sourceTree = "<group>"; };
+		EDFC1F4622FDB80D00AAA93B /* TabPersetujuanController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabPersetujuanController.xib; sourceTree = "<group>"; };
+		EDFC1F4C22FDBAEC00AAA93B /* CutiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutiController.swift; sourceTree = "<group>"; };
+		EDFC1F4D22FDBAEC00AAA93B /* CutiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CutiController.xib; sourceTree = "<group>"; };
+		EDFC1F5022FDBB0400AAA93B /* LemburController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemburController.swift; sourceTree = "<group>"; };
+		EDFC1F5122FDBB0400AAA93B /* LemburController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LemburController.xib; sourceTree = "<group>"; };
+		EDFC1F5422FDBB1700AAA93B /* RealisasiLemburController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisasiLemburController.swift; sourceTree = "<group>"; };
+		EDFC1F5522FDBB1700AAA93B /* RealisasiLemburController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealisasiLemburController.xib; sourceTree = "<group>"; };
+		EDFC1F5922FE297D00AAA93B /* CutiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutiCell.swift; sourceTree = "<group>"; };
+		EDFC1F5A22FE297D00AAA93B /* CutiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CutiCell.xib; sourceTree = "<group>"; };
+		EDFC1F5D22FE2DE500AAA93B /* Cuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuti.swift; sourceTree = "<group>"; };
+		EDFC1F6022FE347300AAA93B /* DetailPersetujuanCutiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersetujuanCutiController.swift; sourceTree = "<group>"; };
+		EDFC1F6122FE347300AAA93B /* DetailPersetujuanCutiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPersetujuanCutiController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +530,11 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				EDFC1F5F22FE344B00AAA93B /* detail_persetujuan_cuti */,
+				EDFC1F4B22FDBAD400AAA93B /* realisasi_lembur */,
+				EDFC1F4A22FDBACC00AAA93B /* lembur */,
+				EDFC1F4922FDBAC500AAA93B /* cuti */,
+				EDFC1F4422FDB7E100AAA93B /* tab_persetujuan */,
 				ED57FE4B22FA4491007B62A0 /* bottom_sheet_filter_presensi */,
 				ED57FE2E22F84F6B007B62A0 /* pengajuan_cuti */,
 				ED61BF1D22F7CF0C00776C25 /* filter_karyawan */,
@@ -543,6 +586,9 @@
 				ED57FE4922F9D0D2007B62A0 /* Announcement.swift */,
 				ED57FE5022FA46F7007B62A0 /* Bulan.swift */,
 				EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */,
+				EDFC1F5D22FE2DE500AAA93B /* Cuti.swift */,
+				EDBF21A122FE4C65003F5DAF /* StatusPersetujuan.swift */,
+				EDBF21A722FE575F003F5DAF /* StatusAction.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -608,6 +654,9 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				EDBF219C22FE4625003F5DAF /* status_action_cell */,
+				EDBF219B22FE4615003F5DAF /* status_persetujuan_cell */,
+				EDFC1F5822FE295F00AAA93B /* persetujuan_cuti_cell */,
 				ED57FE4022F8F614007B62A0 /* tanggal_cuti_cell */,
 				ED57FE3F22F8F606007B62A0 /* jatah_cuti_cell */,
 				ED61BF0F22F7A4D500776C25 /* karyawan_cell */,
@@ -641,6 +690,24 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		EDBF219B22FE4615003F5DAF /* status_persetujuan_cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDBF219D22FE465B003F5DAF /* StatusPersetujuanCell.swift */,
+				EDBF219E22FE465B003F5DAF /* StatusPersetujuanCell.xib */,
+			);
+			path = status_persetujuan_cell;
+			sourceTree = "<group>";
+		};
+		EDBF219C22FE4625003F5DAF /* status_action_cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDBF21A322FE5502003F5DAF /* StatusActionCell.swift */,
+				EDBF21A422FE5502003F5DAF /* StatusActionCell.xib */,
+			);
+			path = status_action_cell;
+			sourceTree = "<group>";
+		};
 		EDCF3BF322F08B6A0064AE57 /* presensi */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,6 +724,60 @@
 				EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */,
 			);
 			path = presensi_map;
+			sourceTree = "<group>";
+		};
+		EDFC1F4422FDB7E100AAA93B /* tab_persetujuan */ = {
+			isa = PBXGroup;
+			children = (
+				EDFC1F4522FDB80D00AAA93B /* TabPersetujuanController.swift */,
+				EDFC1F4622FDB80D00AAA93B /* TabPersetujuanController.xib */,
+			);
+			path = tab_persetujuan;
+			sourceTree = "<group>";
+		};
+		EDFC1F4922FDBAC500AAA93B /* cuti */ = {
+			isa = PBXGroup;
+			children = (
+				EDFC1F4C22FDBAEC00AAA93B /* CutiController.swift */,
+				EDFC1F4D22FDBAEC00AAA93B /* CutiController.xib */,
+			);
+			path = cuti;
+			sourceTree = "<group>";
+		};
+		EDFC1F4A22FDBACC00AAA93B /* lembur */ = {
+			isa = PBXGroup;
+			children = (
+				EDFC1F5022FDBB0400AAA93B /* LemburController.swift */,
+				EDFC1F5122FDBB0400AAA93B /* LemburController.xib */,
+			);
+			path = lembur;
+			sourceTree = "<group>";
+		};
+		EDFC1F4B22FDBAD400AAA93B /* realisasi_lembur */ = {
+			isa = PBXGroup;
+			children = (
+				EDFC1F5422FDBB1700AAA93B /* RealisasiLemburController.swift */,
+				EDFC1F5522FDBB1700AAA93B /* RealisasiLemburController.xib */,
+			);
+			path = realisasi_lembur;
+			sourceTree = "<group>";
+		};
+		EDFC1F5822FE295F00AAA93B /* persetujuan_cuti_cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDFC1F5922FE297D00AAA93B /* CutiCell.swift */,
+				EDFC1F5A22FE297D00AAA93B /* CutiCell.xib */,
+			);
+			path = persetujuan_cuti_cell;
+			sourceTree = "<group>";
+		};
+		EDFC1F5F22FE344B00AAA93B /* detail_persetujuan_cuti */ = {
+			isa = PBXGroup;
+			children = (
+				EDFC1F6022FE347300AAA93B /* DetailPersetujuanCutiController.swift */,
+				EDFC1F6122FE347300AAA93B /* DetailPersetujuanCutiController.xib */,
+			);
+			path = detail_persetujuan_cuti;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -723,13 +844,19 @@
 				ED61BEFF22F67C9F00776C25 /* PresensiListController.xib in Resources */,
 				ED3038CC22ED639E005BCF87 /* BeritaCell.xib in Resources */,
 				ED95908B22EBE8DE00D696E5 /* OnboardingController.xib in Resources */,
+				EDFC1F6322FE347300AAA93B /* DetailPersetujuanCutiController.xib in Resources */,
 				ED95908722EBE8A000D696E5 /* LoginController.xib in Resources */,
 				ED57FE3222F84F87007B62A0 /* PengajuanCutiController.xib in Resources */,
 				ED61BF0322F67E6700776C25 /* PresensiCell.xib in Resources */,
 				ED52152522F47C0D001C6A50 /* DialogPreparePresenceController.xib in Resources */,
 				ED6E507422ED419500EED8E7 /* NotifikasiController.xib in Resources */,
+				EDFC1F5322FDBB0400AAA93B /* LemburController.xib in Resources */,
+				EDFC1F4F22FDBAEC00AAA93B /* CutiController.xib in Resources */,
+				EDFC1F5C22FE297D00AAA93B /* CutiCell.xib in Resources */,
+				EDFC1F4822FDB80D00AAA93B /* TabPersetujuanController.xib in Resources */,
 				ED52153422F51DA7001C6A50 /* MenuLainyaCell.xib in Resources */,
 				EDCF3BF722F08B8F0064AE57 /* PresensiController.xib in Resources */,
+				EDFC1F5722FDBB1700AAA93B /* RealisasiLemburController.xib in Resources */,
 				ED9590AC22EC99D500D696E5 /* GoogleService-Info.plist in Resources */,
 				ED61BF0E22F7A30600776C25 /* DaftarKaryawanController.xib in Resources */,
 				ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */,
@@ -749,7 +876,9 @@
 				ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */,
 				ED52152A22F4846C001C6A50 /* BottomSheetMenuController.xib in Resources */,
 				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
+				EDBF21A622FE5502003F5DAF /* StatusActionCell.xib in Resources */,
 				ED52153822F5201C001C6A50 /* MenuFavoritCell.xib in Resources */,
+				EDBF21A022FE465B003F5DAF /* StatusPersetujuanCell.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib in Resources */,
 				ED57FE4F22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib in Resources */,
 				ED10746122F5A5BA00ADF055 /* DetailBeritaController.xib in Resources */,
@@ -829,6 +958,7 @@
 				ED10746722F5DCE900ADF055 /* Profile.swift in Sources */,
 				ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */,
 				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
+				EDBF21A522FE5502003F5DAF /* StatusActionCell.swift in Sources */,
 				ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */,
 				ED61BF2922F7E20600776C25 /* Gender.swift in Sources */,
 				ED95907E22EBE3C500D696E5 /* Preference.swift in Sources */,
@@ -840,10 +970,13 @@
 				ED52152422F47C0D001C6A50 /* DialogPreparePresenceController.swift in Sources */,
 				ED57FE4322F8F633007B62A0 /* JatahCutiCell.swift in Sources */,
 				ED61BF2522F7E0B600776C25 /* Unit.swift in Sources */,
+				EDFC1F5B22FE297D00AAA93B /* CutiCell.swift in Sources */,
 				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
 				EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */,
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,
+				EDBF219F22FE465B003F5DAF /* StatusPersetujuanCell.swift in Sources */,
+				EDFC1F4722FDB80D00AAA93B /* TabPersetujuanController.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED61BF2722F7E17000776C25 /* Workarea.swift in Sources */,
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
@@ -854,6 +987,7 @@
 				ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */,
 				ED9590AA22EC923A00D696E5 /* PresenceNetworking.swift in Sources */,
 				ED6E507322ED419500EED8E7 /* NotifikasiController.swift in Sources */,
+				EDFC1F6222FE347300AAA93B /* DetailPersetujuanCutiController.swift in Sources */,
 				ED61BF0522F6837500776C25 /* Presensi.swift in Sources */,
 				ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */,
 				ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */,
@@ -867,19 +1001,25 @@
 				ED61BF2B22F7E27900776C25 /* Order.swift in Sources */,
 				ED52152922F4846C001C6A50 /* BottomSheetMenuController.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */,
+				EDFC1F5622FDBB1700AAA93B /* RealisasiLemburController.swift in Sources */,
 				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
 				ED10746022F5A5BA00ADF055 /* DetailBeritaController.swift in Sources */,
 				ED52151922F452A1001C6A50 /* Circle.swift in Sources */,
 				ED95908622EBE8A000D696E5 /* LoginController.swift in Sources */,
 				ED61BEFE22F67C9F00776C25 /* PresensiListController.swift in Sources */,
+				EDFC1F5E22FE2DE500AAA93B /* Cuti.swift in Sources */,
 				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
 				ED61BF0222F67E6700776C25 /* PresensiCell.swift in Sources */,
 				ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */,
 				ED52153722F5201C001C6A50 /* MenuFavoritCell.swift in Sources */,
+				EDBF21A222FE4C65003F5DAF /* StatusPersetujuan.swift in Sources */,
 				EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */,
+				EDBF21A822FE575F003F5DAF /* StatusAction.swift in Sources */,
+				EDFC1F4E22FDBAEC00AAA93B /* CutiController.swift in Sources */,
 				ED57FE3122F84F87007B62A0 /* PengajuanCutiController.swift in Sources */,
 				ED858B0822F334D700016EAD /* AllNews.swift in Sources */,
 				ED10746322F5AE6F00ADF055 /* DetailNews.swift in Sources */,
+				EDFC1F5222FDBB0400AAA93B /* LemburController.swift in Sources */,
 				ED61BF0D22F7A30600776C25 /* DaftarKaryawanController.swift in Sources */,
 				ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */,
 				ED61BF1722F7B5D700776C25 /* ListKaryawan.swift in Sources */,

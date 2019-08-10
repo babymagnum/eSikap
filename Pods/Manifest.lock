@@ -101,7 +101,7 @@ DEPENDENCIES:
   - Kingfisher
   - SVProgressHUD
   - SwiftyJSON (~> 4.0)
-  - XLPagerTabStrip (~> 8.1)
+  - XLPagerTabStrip
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -154,6 +154,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
 
-PODFILE CHECKSUM: 4eccaac9e2117becbac38e95347d4d955e1b3aa7
+PODFILE CHECKSUM: 361a155aaaa139ed76da322897c3017c579bbd49
 
 COCOAPODS: 1.7.1
