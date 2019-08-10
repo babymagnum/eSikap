@@ -176,8 +176,8 @@ extension BerandaController {
             switch listMenu[indexpath.item].id {
             case 1:
                 //pengajuan cuti
-                self.showInDevelopmentDialog()
-                //self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
+                //self.showInDevelopmentDialog()
+                self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             case 2:
                 //pengajuan lembur
                 self.showInDevelopmentDialog()

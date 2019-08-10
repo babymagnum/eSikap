@@ -102,7 +102,7 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
         statusActionCollectionView.dataSource = self
     }
     
-    private func initView() {        
+    private func initView() {
         viewImage.giveBorder(3, 1, "dedede")
         imageAccount.clipsToBounds = true
         imageAccount.layer.cornerRadius = 3
@@ -141,5 +141,7 @@ extension DetailPersetujuanCutiController : UICollectionViewDataSource {
 }
 
 extension DetailPersetujuanCutiController {
+    @IBAction func buttonBackClick(_ sender: Any) { navigationController?.popViewController(animated: true) }
+    
     @IBAction func buttonProsesClick(_ sender: Any) { navigationController?.popViewController(animated: true) }
 }

@@ -298,6 +298,9 @@ extension PengajuanCutiController {
 
 //click event
 extension PengajuanCutiController {
+    @IBAction func buttonRiwayatCutiClick(_ sender: Any) {
+        navigationController?.pushViewController(RiwayatCutiController(), animated: true)
+    }
     @IBAction func buttonCloseViewSisaJatahCutiClick(_ sender: Any) {
         hideViewSisaJatahCuti()
     }
