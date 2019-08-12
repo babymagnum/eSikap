@@ -37,6 +37,8 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         getStatusPersetujuan()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     private func initView() {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         

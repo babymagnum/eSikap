@@ -27,40 +27,38 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rD-Ut-gog">
                         <rect key="frame" x="0.0" y="0.0" width="292" height="46"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9P-ky-2oL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9P-ky-2oL" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                 <rect key="frame" x="10" y="8" width="16" height="16"/>
                                 <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="P4k-5I-jke"/>
-                                    <constraint firstAttribute="width" constant="16" id="Vyc-Gl-Jo4"/>
+                                    <constraint firstAttribute="width" secondItem="u9P-ky-2oL" secondAttribute="height" multiplier="1:1" id="akD-Mv-MxE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="7"/>
                                 <state key="normal" title="1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WAYAN SANJAYA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Fws-rA-wBj">
-                                <rect key="frame" x="42" y="8" width="208" height="15"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="WAYAN SANJAYA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Fws-rA-wBj" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <rect key="frame" x="42" y="8" width="208" height="19"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pengaju" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="mJ4-VG-fL6">
-                                <rect key="frame" x="42" y="25" width="187" height="15"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pengaju" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="mJ4-VG-fL6" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <rect key="frame" x="42" y="29" width="200" height="11"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                 <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="T0i-p0-jRY">
                                 <rect key="frame" x="260" y="5" width="22" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="U2X-3m-YKG"/>
-                                    <constraint firstAttribute="height" constant="22" id="xrf-2r-dsc"/>
+                                    <constraint firstAttribute="width" secondItem="T0i-p0-jRY" secondAttribute="height" multiplier="1:1" id="wyd-R9-9EE"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Submited" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="SSW-0i-ZqS">
-                                <rect key="frame" x="239" y="29" width="43" height="12"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Submited" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="SSW-0i-ZqS" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <rect key="frame" x="252" y="29" width="30" height="12"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="7"/>
                                 <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -77,9 +75,11 @@
                             <constraint firstItem="u9P-ky-2oL" firstAttribute="leading" secondItem="1rD-Ut-gog" secondAttribute="leading" constant="10" id="MfX-yh-xcA"/>
                             <constraint firstItem="SSW-0i-ZqS" firstAttribute="leading" secondItem="mJ4-VG-fL6" secondAttribute="trailing" constant="10" id="R1e-go-BdI"/>
                             <constraint firstAttribute="bottom" secondItem="mJ4-VG-fL6" secondAttribute="bottom" constant="6" id="Si0-9b-0xW"/>
+                            <constraint firstItem="u9P-ky-2oL" firstAttribute="width" secondItem="1rD-Ut-gog" secondAttribute="width" multiplier="0.055" id="ZZi-TJ-Iba"/>
                             <constraint firstItem="Fws-rA-wBj" firstAttribute="leading" secondItem="u9P-ky-2oL" secondAttribute="trailing" constant="16" id="f2U-Wo-5Xu"/>
                             <constraint firstItem="SSW-0i-ZqS" firstAttribute="top" secondItem="T0i-p0-jRY" secondAttribute="bottom" constant="2" id="jch-0u-O1Y"/>
                             <constraint firstAttribute="bottom" secondItem="SSW-0i-ZqS" secondAttribute="bottom" constant="5" id="qt7-TN-63Z"/>
+                            <constraint firstItem="T0i-p0-jRY" firstAttribute="width" secondItem="1rD-Ut-gog" secondAttribute="width" multiplier="0.075" id="w1z-jN-g3L"/>
                             <constraint firstItem="Fws-rA-wBj" firstAttribute="top" secondItem="1rD-Ut-gog" secondAttribute="top" constant="8" id="yCp-jO-5T1"/>
                         </constraints>
                     </view>

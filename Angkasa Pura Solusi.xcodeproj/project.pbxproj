@@ -111,6 +111,10 @@
 		EDBF21B622FE7335003F5DAF /* RiwayatCutiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21B422FE7335003F5DAF /* RiwayatCutiCell.swift */; };
 		EDBF21B722FE7335003F5DAF /* RiwayatCutiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDBF21B522FE7335003F5DAF /* RiwayatCutiCell.xib */; };
 		EDBF21B922FE7875003F5DAF /* RiwayatCuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21B822FE7875003F5DAF /* RiwayatCuti.swift */; };
+		EDBF21BB23005BDD003F5DAF /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21BA23005BDD003F5DAF /* CustomLabel.swift */; };
+		EDBF21BD2300DBA6003F5DAF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21BC2300DBA6003F5DAF /* CustomButton.swift */; };
+		EDBF21BF2300DCEE003F5DAF /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21BE2300DCEE003F5DAF /* CustomImage.swift */; };
+		EDBF21C12301086A003F5DAF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21C02301086A003F5DAF /* CustomTextField.swift */; };
 		EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF422F08B8F0064AE57 /* PresensiController.swift */; };
 		EDCF3BF722F08B8F0064AE57 /* PresensiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCF3BF522F08B8F0064AE57 /* PresensiController.xib */; };
 		EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */; };
@@ -245,6 +249,10 @@
 		EDBF21B422FE7335003F5DAF /* RiwayatCutiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiwayatCutiCell.swift; sourceTree = "<group>"; };
 		EDBF21B522FE7335003F5DAF /* RiwayatCutiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RiwayatCutiCell.xib; sourceTree = "<group>"; };
 		EDBF21B822FE7875003F5DAF /* RiwayatCuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiwayatCuti.swift; sourceTree = "<group>"; };
+		EDBF21BA23005BDD003F5DAF /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		EDBF21BC2300DBA6003F5DAF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		EDBF21BE2300DCEE003F5DAF /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
+		EDBF21C02301086A003F5DAF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		EDCF3BF422F08B8F0064AE57 /* PresensiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiController.swift; sourceTree = "<group>"; };
 		EDCF3BF522F08B8F0064AE57 /* PresensiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiController.xib; sourceTree = "<group>"; };
 		EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiMapController.swift; sourceTree = "<group>"; };
@@ -628,6 +636,10 @@
 				ED95909822EBF26E00D696E5 /* BaseViewController.swift */,
 				ED61BF0622F696AA00776C25 /* InteractivePopRecognizer.swift */,
 				ED61BF0822F69D2F00776C25 /* CardView.swift */,
+				EDBF21BA23005BDD003F5DAF /* CustomLabel.swift */,
+				EDBF21BC2300DBA6003F5DAF /* CustomButton.swift */,
+				EDBF21BE2300DCEE003F5DAF /* CustomImage.swift */,
+				EDBF21C02301086A003F5DAF /* CustomTextField.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -1003,6 +1015,7 @@
 				ED57FE4E22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift in Sources */,
 				ED57FE4722F8F645007B62A0 /* TanggalCutiCell.swift in Sources */,
 				ED61BF0722F696AA00776C25 /* InteractivePopRecognizer.swift in Sources */,
+				EDBF21C12301086A003F5DAF /* CustomTextField.swift in Sources */,
 				ED10746722F5DCE900ADF055 /* Profile.swift in Sources */,
 				ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */,
 				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
@@ -1023,7 +1036,9 @@
 				EDFC1F5B22FE297D00AAA93B /* CutiCell.swift in Sources */,
 				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
+				EDBF21BB23005BDD003F5DAF /* CustomLabel.swift in Sources */,
 				EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */,
+				EDBF21BD2300DBA6003F5DAF /* CustomButton.swift in Sources */,
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,
 				EDBF219F22FE465B003F5DAF /* StatusPersetujuanCell.swift in Sources */,
 				EDFC1F4722FDB80D00AAA93B /* TabPersetujuanController.swift in Sources */,
@@ -1032,6 +1047,7 @@
 				ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */,
 				ED61BF0922F69D2F00776C25 /* CardView.swift in Sources */,
 				ED61BEF922F66D7D00776C25 /* ChangePasswordController.swift in Sources */,
+				EDBF21BF2300DCEE003F5DAF /* CustomImage.swift in Sources */,
 				ED57FE4A22F9D0D2007B62A0 /* Announcement.swift in Sources */,
 				ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */,
 				ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */,

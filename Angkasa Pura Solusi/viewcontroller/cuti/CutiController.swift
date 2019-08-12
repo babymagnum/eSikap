@@ -40,7 +40,7 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
         
         let cutiCell = cutiCollectionView.dequeueReusableCell(withReuseIdentifier: "CutiCell", for: IndexPath(item: 0, section: 0)) as! CutiCell
         let cutiLayout = cutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiCell.viewContainer.frame.height)
+        cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiCell.viewContainer.frame.height + 10)
         
         cutiCollectionView.delegate = self
         cutiCollectionView.dataSource = self

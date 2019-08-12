@@ -44,6 +44,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     private var listBerita = [News]()
     var delegate : BerandaControllerProtocol?
     var isWasLoaded = false
+    var isMenuLoaded = false
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -53,12 +54,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         return refreshControl
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        loadMenuItem()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,17 +61,25 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1)
         
-        checkShowFirstDialog()
-        
         initView()
+        
+        checkShowFirstDialog()
         
         clickEvent()
         
         initCollection()
         
+        loadMenuItem()
+        
         getDashboard()
         
         getLatestNews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        imageAccount.layer.cornerRadius = imageAccount.frame.height / 2
     }
     
     private func clickEvent() {
@@ -96,7 +99,14 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         menuCollectionView.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.menuCollectionViewHeight.constant = self.menuCollectionView.contentSize.height
+            if !self.isMenuLoaded {
+                self.isMenuLoaded = true
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.menuCollectionViewHeight.constant = self.menuCollectionView.contentSize.height
+                    self.viewRootHeight.constant += self.menuCollectionViewHeight.constant
+                    self.view.layoutIfNeeded()
+                })
+            }
         }
     }
     
@@ -144,12 +154,15 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initView() {
+        viewRootHeight.constant -= menuCollectionViewHeight.constant + beritaCollectionViewHeight.constant
+        menuCollectionViewHeight.constant = 0
+        beritaCollectionViewHeight.constant = 0
+        
         scrollView.addSubview(refreshControl)
         viewContainerCapaian.layer.cornerRadius = 6
         viewContainerClock.layer.cornerRadius = 6
         viewContainerCuti.layer.cornerRadius = 6
         viewContainerPresensi.layer.cornerRadius = 6
-        imageAccount.layer.cornerRadius = imageAccount.frame.height / 2
         
         labelName.text = preference.getString(key: staticLet.EMP_NAME)
         imageAccount.loadUrl(preference.getString(key: staticLet.EMP_PHOTO))
@@ -176,14 +189,15 @@ extension BerandaController {
             switch listMenu[indexpath.item].id {
             case 1:
                 //pengajuan cuti
-                //self.showInDevelopmentDialog()
-                self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
+                self.showInDevelopmentDialog()
+                //self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             case 2:
                 //pengajuan lembur
                 self.showInDevelopmentDialog()
             case 3:
                 //persetujuan
-                self.navigationController?.pushViewController(TabPersetujuanController(), animated: true)
+                self.showInDevelopmentDialog()
+                //self.navigationController?.pushViewController(TabPersetujuanController(), animated: true)
             case 4:
                 //presensi
                 getPreparePresence()
@@ -277,7 +291,7 @@ extension BerandaController {
             } else if item.presence_today?.icon == "emotionless" {
                 self.iconPresenceStatus.image = UIImage(named: "surprised")
             }
-            self.labelPresenceStatus.text = item.presence_today?.status
+            self.labelPresenceStatus.text = item.presence_today?.status?.uppercased()
             self.labelClock.text = item.presence_today?.time
         }
     }
@@ -304,7 +318,12 @@ extension BerandaController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                 if !self.isWasLoaded {
                     self.isWasLoaded = true
-                    self.beritaCollectionViewHeight.constant = self.beritaCollectionView.contentSize.height + 40
+                    
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.beritaCollectionViewHeight.constant = self.beritaCollectionView.contentSize.height + 50
+                        self.viewRootHeight.constant += self.beritaCollectionViewHeight.constant
+                        self.view.layoutIfNeeded()
+                    })
                 }
             })
         }

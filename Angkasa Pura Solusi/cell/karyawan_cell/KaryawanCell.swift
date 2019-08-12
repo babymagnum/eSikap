@@ -18,8 +18,6 @@ class KaryawanCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        initView()
     }
     
     private func initView() {
@@ -31,6 +29,8 @@ class KaryawanCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        initView()
         
         self.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 5)
     }

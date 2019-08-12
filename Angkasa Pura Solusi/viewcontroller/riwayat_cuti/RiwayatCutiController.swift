@@ -96,8 +96,8 @@ extension RiwayatCutiController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RiwayatCutiCell", for: indexPath) as! RiwayatCutiCell
         
-        let originalHeight = cell.labelDate.frame.height + 14 + cell.viewInformation.frame.height
-        let withoutDateHeight = cell.viewInformation.frame.height + 12
+        let originalHeight = cell.labelDate.frame.height + 20 + cell.viewInformation.frame.height
+        let withoutDateHeight = cell.viewInformation.frame.height + 18
         
         if indexPath.row > 0 {
             //let millis = PublicFunction.instance.dateStringToInt(stringDate: listHistory[indexPath.row].trans_date!, pattern: "yyyy-MM-dd kk:mm:ss")

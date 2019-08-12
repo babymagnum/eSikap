@@ -37,7 +37,7 @@
                                             <constraint firstAttribute="width" constant="37" id="zsf-je-8ry"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBg-Ts-dAW">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YBg-Ts-dAW" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                         <rect key="frame" x="10" y="54" width="67" height="26"/>
                                         <string key="text">Pengajuan
 Cuti</string>

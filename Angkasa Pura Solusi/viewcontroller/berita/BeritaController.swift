@@ -46,7 +46,7 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
         
         let beritaCell = beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
         let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: beritaCell.viewContainer.frame.height)
+        layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: beritaCell.viewContainer.frame.height + 4)
         
         beritaCollectionView.delegate = self
         beritaCollectionView.dataSource = self

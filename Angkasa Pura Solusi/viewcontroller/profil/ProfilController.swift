@@ -44,12 +44,16 @@ class ProfilController: BaseViewController {
         return refreshControl
     }()
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        initView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
-        
-        initView()
         
         clickEvent()
         
@@ -77,11 +81,9 @@ class ProfilController: BaseViewController {
     private func initView() {
         scrollView.addSubview(refreshControl)
         
-        imageAccount.clipsToBounds = true
-        imageAccount.layer.cornerRadius = imageAccount.frame.height / 2
-        
-        viewInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
-        viewAction.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
+        self.imageAccount.layer.cornerRadius = self.imageAccount.frame.width / 2
+        self.viewInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
+        self.viewAction.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
     }
     
     private func setView(_ item: ItemProfile) {

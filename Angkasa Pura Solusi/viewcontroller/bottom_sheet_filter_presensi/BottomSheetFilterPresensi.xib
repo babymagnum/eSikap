@@ -28,24 +28,24 @@
                     <rect key="frame" x="14" y="16" width="347" height="213"/>
                     <subviews>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncD-1C-s2N">
-                            <rect key="frame" x="0.0" y="0.0" width="169" height="213"/>
+                            <rect key="frame" x="0.0" y="0.0" width="168.5" height="213"/>
                         </pickerView>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjd-OR-unm">
-                            <rect key="frame" x="179" y="0.0" width="168" height="213"/>
+                            <rect key="frame" x="178.5" y="0.0" width="168.5" height="213"/>
                         </pickerView>
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="I6V-vx-UkB">
                     <rect key="frame" x="14" y="249" width="347" height="37"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tga-mF-sbf">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tga-mF-sbf" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="168.5" height="37"/>
                             <state key="normal" title="Kembali"/>
                             <connections>
                                 <action selector="buttonKembaliClick:" destination="-1" eventType="touchUpInside" id="cN6-nV-V6j"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ciZ-d8-VxL">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ciZ-d8-VxL" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                             <rect key="frame" x="178.5" y="0.0" width="168.5" height="37"/>
                             <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Terapkan">

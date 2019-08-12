@@ -44,31 +44,31 @@
                                         <constraint firstAttribute="height" constant="226" id="wF2-az-HXn"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Informasi Penggajian Desember 2018" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iR-oU-VBc">
-                                    <rect key="frame" x="21" y="242" width="333" height="14"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iR-oU-VBc" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                    <rect key="frame" x="21" y="242" width="333" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3EA-9X-tWC">
-                                    <rect key="frame" x="16" y="264" width="343" height="20"/>
+                                    <rect key="frame" x="16" y="264.5" width="343" height="20"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 Desember 2018 08:41:47 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sf5-ub-xMX">
-                                            <rect key="frame" x="106.5" y="4" width="130" height="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sf5-ub-xMX" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="170" y="4" width="3.5" height="12"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarPageEmpty1" translatesAutoresizingMaskIntoConstraints="NO" id="p0R-Se-uH9">
-                                            <rect key="frame" x="91.5" y="5" width="10" height="10"/>
+                                            <rect key="frame" x="154.5" y="5" width="10.5" height="10"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="10" id="8yy-bh-uT4"/>
-                                                <constraint firstAttribute="height" constant="10" id="eYf-4B-Xbn"/>
+                                                <constraint firstAttribute="width" secondItem="p0R-Se-uH9" secondAttribute="height" multiplier="1:1" id="Ivs-pd-8NX"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="p0R-Se-uH9" firstAttribute="width" secondItem="3EA-9X-tWC" secondAttribute="width" multiplier="0.03" id="4iS-5g-CDP"/>
                                         <constraint firstItem="sf5-ub-xMX" firstAttribute="leading" secondItem="p0R-Se-uH9" secondAttribute="trailing" constant="5" id="BWh-cI-STo"/>
                                         <constraint firstItem="p0R-Se-uH9" firstAttribute="centerY" secondItem="3EA-9X-tWC" secondAttribute="centerY" id="C31-Rd-7Zm"/>
                                         <constraint firstAttribute="height" constant="20" id="X8e-9x-huS"/>
@@ -76,8 +76,8 @@
                                         <constraint firstItem="sf5-ub-xMX" firstAttribute="centerX" secondItem="3EA-9X-tWC" secondAttribute="centerX" id="uI8-4D-eh1"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N44-Jn-NbW">
-                                    <rect key="frame" x="21" y="295" width="333" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N44-Jn-NbW" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                    <rect key="frame" x="21" y="295.5" width="333" height="14"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
