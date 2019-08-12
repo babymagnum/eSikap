@@ -77,11 +77,11 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         
         let menuFavoritCell = menuFavoritCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuFavoritCell", for: IndexPath(item: 0, section: 0)) as! MenuFavoritCell
         let layoutMenuFavoritCollectionView = menuFavoritCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutMenuFavoritCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 15, height: menuFavoritCell.viewRoot.frame.height)
+        layoutMenuFavoritCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 5, height: menuFavoritCell.viewRoot.frame.height)
         
         let menuLainyaCell = menuLainyaCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuLainyaCell", for: IndexPath(item: 0, section: 0)) as! MenuLainyaCell
         let layoutMenuLainyaCollectionView = menuLainyaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutMenuLainyaCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 15, height: menuLainyaCell.viewRoot.frame.height)
+        layoutMenuLainyaCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 5, height: menuLainyaCell.viewRoot.frame.height)
         
         menuFavoritCollectionView.delegate = self
         menuFavoritCollectionView.dataSource = self
@@ -108,7 +108,6 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func showActionInListMenuFavorit() {
-        updateMarginCollectionView(favoritCollectionRightMargin, 19)
         
         for (index, _) in listMenuFavorit.enumerated() {
             if index == listMenuFavorit.count - 1 { break }
@@ -119,7 +118,6 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func showActionInListMenuLainya() {
-        updateMarginCollectionView(lainyaCollectionRightMargin, 19)
         
         for (index, _) in listMenuLainya.enumerated() {
             listMenuLainya[index].action = UIImage(named: "addButtonInsideBlackCircle")
@@ -226,8 +224,6 @@ extension BottomSheetMenuController {
             isEdit = !isEdit
             buttonUbah.setTitle("Ubah", for: .normal)
             saveMenu()
-            updateMarginCollectionView(favoritCollectionRightMargin, 9)
-            updateMarginCollectionView(lainyaCollectionRightMargin, 9)
             hideActionInListMenuLainya()
             hideActionInListMenuFavorit()
         } else {
