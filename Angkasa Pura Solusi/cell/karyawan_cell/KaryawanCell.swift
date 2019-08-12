@@ -18,19 +18,21 @@ class KaryawanCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        initView()
     }
     
     private func initView() {
-        imageAccount.layer.cornerRadius = imageAccount.frame.height / 2
-        
         viewContainer.clipsToBounds = true
         viewContainer.layer.cornerRadius = 5
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2
+        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        initView()
         
         self.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 5)
     }

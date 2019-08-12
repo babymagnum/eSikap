@@ -38,16 +38,22 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtd-Ia-uXB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="AON-h0-zqV">
+                                        <rect key="frame" x="145" y="11" width="85" height="85"/>
+                                        <color key="backgroundColor" white="0.91000000000000003" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="AON-h0-zqV" secondAttribute="height" multiplier="1:1" id="k8V-72-Wt2"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="AON-h0-zqV">
-                                <rect key="frame" x="154" y="16" width="67" height="67"/>
-                                <color key="backgroundColor" white="0.91000000000000003" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="AHn-AF-YWj"/>
-                                    <constraint firstAttribute="width" constant="67" id="Zvu-Iv-pSs"/>
+                                    <constraint firstItem="AON-h0-zqV" firstAttribute="centerY" secondItem="dtd-Ia-uXB" secondAttribute="centerY" id="Dwo-66-E60"/>
+                                    <constraint firstItem="AON-h0-zqV" firstAttribute="centerX" secondItem="dtd-Ia-uXB" secondAttribute="centerX" id="Ukx-1A-40J"/>
+                                    <constraint firstItem="AON-h0-zqV" firstAttribute="width" secondItem="dtd-Ia-uXB" secondAttribute="width" multiplier="0.227" id="dgh-Y2-43I"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arief Zainuri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ut7-0t-HUL" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                 <rect key="frame" x="10" y="115" width="355" height="11"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="9"/>
@@ -70,11 +76,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dDg-l1-qwu" firstAttribute="top" secondItem="ut7-0t-HUL" secondAttribute="bottom" constant="4" id="2Au-aa-fvc"/>
-                            <constraint firstItem="AON-h0-zqV" firstAttribute="centerX" secondItem="mhc-uF-OZR" secondAttribute="centerX" id="2XS-fv-RyT"/>
                             <constraint firstItem="ut7-0t-HUL" firstAttribute="leading" secondItem="mhc-uF-OZR" secondAttribute="leading" constant="10" id="5Ql-9a-03l"/>
                             <constraint firstAttribute="trailing" secondItem="Cs6-UI-Cdf" secondAttribute="trailing" id="5mh-TR-Vnr"/>
                             <constraint firstItem="Cs6-UI-Cdf" firstAttribute="leading" secondItem="mhc-uF-OZR" secondAttribute="leading" id="7oL-d7-Rha"/>
-                            <constraint firstItem="AON-h0-zqV" firstAttribute="top" secondItem="mhc-uF-OZR" secondAttribute="top" constant="16" id="ADf-WU-VAj"/>
                             <constraint firstItem="Cs6-UI-Cdf" firstAttribute="top" secondItem="mhc-uF-OZR" secondAttribute="top" id="EK8-8L-bW8"/>
                             <constraint firstItem="dtd-Ia-uXB" firstAttribute="height" secondItem="mhc-uF-OZR" secondAttribute="height" multiplier="0.63" id="GnZ-8g-6hP"/>
                             <constraint firstItem="dtd-Ia-uXB" firstAttribute="leading" secondItem="mhc-uF-OZR" secondAttribute="leading" id="H8Z-cg-rcy"/>
