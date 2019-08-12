@@ -48,44 +48,46 @@
                                     <constraint firstAttribute="width" constant="67" id="Zvu-Iv-pSs"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arief Zainuri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ut7-0t-HUL" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="162.5" y="115" width="50.5" height="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arief Zainuri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ut7-0t-HUL" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <rect key="frame" x="10" y="115" width="355" height="11"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="9"/>
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Director" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDg-l1-qwu" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="171.5" y="132" width="32" height="11"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Director" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDg-l1-qwu" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <rect key="frame" x="10" y="130" width="355" height="11"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                 <color key="textColor" red="0.54509803921568623" green="0.57647058823529407" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="Marketing Division" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0p-h0-fgX" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="150" y="147" width="75" height="11"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="Marketing Division" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0p-h0-fgX" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <rect key="frame" x="10" y="147" width="355" height="9.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
                                 <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dDg-l1-qwu" firstAttribute="top" secondItem="ut7-0t-HUL" secondAttribute="bottom" constant="4" id="2Au-aa-fvc"/>
                             <constraint firstItem="AON-h0-zqV" firstAttribute="centerX" secondItem="mhc-uF-OZR" secondAttribute="centerX" id="2XS-fv-RyT"/>
-                            <constraint firstItem="ut7-0t-HUL" firstAttribute="centerX" secondItem="mhc-uF-OZR" secondAttribute="centerX" id="3vx-GU-blm"/>
+                            <constraint firstItem="ut7-0t-HUL" firstAttribute="leading" secondItem="mhc-uF-OZR" secondAttribute="leading" constant="10" id="5Ql-9a-03l"/>
                             <constraint firstAttribute="trailing" secondItem="Cs6-UI-Cdf" secondAttribute="trailing" id="5mh-TR-Vnr"/>
                             <constraint firstItem="Cs6-UI-Cdf" firstAttribute="leading" secondItem="mhc-uF-OZR" secondAttribute="leading" id="7oL-d7-Rha"/>
                             <constraint firstItem="AON-h0-zqV" firstAttribute="top" secondItem="mhc-uF-OZR" secondAttribute="top" constant="16" id="ADf-WU-VAj"/>
                             <constraint firstItem="Cs6-UI-Cdf" firstAttribute="top" secondItem="mhc-uF-OZR" secondAttribute="top" id="EK8-8L-bW8"/>
                             <constraint firstItem="dtd-Ia-uXB" firstAttribute="height" secondItem="mhc-uF-OZR" secondAttribute="height" multiplier="0.63" id="GnZ-8g-6hP"/>
                             <constraint firstItem="dtd-Ia-uXB" firstAttribute="leading" secondItem="mhc-uF-OZR" secondAttribute="leading" id="H8Z-cg-rcy"/>
-                            <constraint firstAttribute="bottom" secondItem="m0p-h0-fgX" secondAttribute="bottom" constant="12" id="IC4-oG-mwp"/>
-                            <constraint firstItem="m0p-h0-fgX" firstAttribute="top" secondItem="dDg-l1-qwu" secondAttribute="bottom" constant="4" id="JoZ-rR-50S"/>
+                            <constraint firstItem="dDg-l1-qwu" firstAttribute="leading" secondItem="mhc-uF-OZR" secondAttribute="leading" constant="10" id="Pbc-lh-m2J"/>
                             <constraint firstItem="dtd-Ia-uXB" firstAttribute="top" secondItem="mhc-uF-OZR" secondAttribute="top" id="QJy-s2-clb"/>
+                            <constraint firstAttribute="trailing" secondItem="dDg-l1-qwu" secondAttribute="trailing" constant="10" id="SOQ-Gw-KMa"/>
                             <constraint firstAttribute="trailing" secondItem="dtd-Ia-uXB" secondAttribute="trailing" id="aRu-iS-VgA"/>
-                            <constraint firstItem="dDg-l1-qwu" firstAttribute="top" secondItem="ut7-0t-HUL" secondAttribute="bottom" constant="4" id="j0S-vO-gY5"/>
                             <constraint firstItem="Cs6-UI-Cdf" firstAttribute="height" secondItem="dtd-Ia-uXB" secondAttribute="height" id="kfY-tS-4Xv"/>
-                            <constraint firstItem="dDg-l1-qwu" firstAttribute="centerX" secondItem="mhc-uF-OZR" secondAttribute="centerX" id="spY-81-Wj3"/>
-                            <constraint firstItem="m0p-h0-fgX" firstAttribute="centerX" secondItem="mhc-uF-OZR" secondAttribute="centerX" id="thD-DW-0Dq"/>
-                            <constraint firstItem="ut7-0t-HUL" firstAttribute="top" secondItem="Cs6-UI-Cdf" secondAttribute="bottom" constant="8" id="xJy-I6-vX5"/>
+                            <constraint firstAttribute="trailing" secondItem="ut7-0t-HUL" secondAttribute="trailing" constant="10" id="lfj-Ff-uo0"/>
+                            <constraint firstItem="ut7-0t-HUL" firstAttribute="top" secondItem="Cs6-UI-Cdf" secondAttribute="bottom" constant="8" id="opN-tu-Lpp"/>
+                            <constraint firstItem="m0p-h0-fgX" firstAttribute="leading" secondItem="mhc-uF-OZR" secondAttribute="leading" constant="10" id="phl-gY-H89"/>
+                            <constraint firstItem="m0p-h0-fgX" firstAttribute="top" secondItem="dDg-l1-qwu" secondAttribute="bottom" constant="6" id="ras-uL-KVb"/>
+                            <constraint firstAttribute="trailing" secondItem="m0p-h0-fgX" secondAttribute="trailing" constant="10" id="rtp-hI-dBv"/>
                         </constraints>
                     </view>
                 </subviews>
