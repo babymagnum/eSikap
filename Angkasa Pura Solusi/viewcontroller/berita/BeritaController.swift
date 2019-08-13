@@ -12,6 +12,7 @@ import SVProgressHUD
 class BeritaController: BaseViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var beritaCollectionView: UICollectionView!
+    @IBOutlet weak var labelBeritaKosong: CustomLabel!
     
     var listBerita = [News]()
     var lastVelocityYSign = 0
@@ -45,8 +46,9 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
         beritaCollectionView.register(UINib(nibName: "BeritaCell", bundle: nil), forCellWithReuseIdentifier: "BeritaCell")
         
         let beritaCell = beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
+        let beritaHeight = ((UIScreen.main.bounds.width - 26) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.height) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.height) + 29.5
         let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: beritaCell.viewContainer.frame.height + 4)
+        layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: beritaHeight)
         
         beritaCollectionView.delegate = self
         beritaCollectionView.dataSource = self
@@ -71,6 +73,12 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
             }
             
             guard let allNews = allNews else { return }
+            
+            if allNews.count == 0 && self.listBerita.count == 0 {
+                self.labelBeritaKosong.isHidden = false
+            } else {
+                self.labelBeritaKosong.isHidden = true
+            }
             
             self.currentPage += 1
             

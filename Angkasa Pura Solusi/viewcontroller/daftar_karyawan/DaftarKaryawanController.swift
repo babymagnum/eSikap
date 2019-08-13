@@ -75,7 +75,7 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
             
             guard let karyawan = karyawan else { return }
             
-            if karyawan.emp.count == 0 {
+            if karyawan.emp.count == 0 && self.listKaryawan.count == 0 {
                 self.labelKaryawanKosong.isHidden = false
             } else {
                 self.labelKaryawanKosong.isHidden = true

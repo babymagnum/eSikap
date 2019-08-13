@@ -647,6 +647,11 @@ fileprivate extension String {
 extension UILabel {
     /// Will auto resize the contained text to a font size which fits the frames bounds
     /// Uses the pre-set font to dynamicly determine the proper sizing
+    
+    func getHeight(width: CGFloat) -> CGFloat {
+        return self.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height
+    }
+    
     func fitTextToBounds() {
         guard let text = text, let currentFont = font else { return }
         if let dynamicFontSize = UIFont.bestFitFontSize(for: text, in: bounds, fontName: currentFont.fontName) {

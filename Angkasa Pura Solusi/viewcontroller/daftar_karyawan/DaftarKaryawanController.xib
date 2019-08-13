@@ -85,8 +85,8 @@
                                 <inset key="sectionInset" minX="0.0" minY="13" maxX="0.0" maxY="13"/>
                             </collectionViewFlowLayout>
                         </collectionView>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data karyawan kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9S1-Pf-waH">
-                            <rect key="frame" x="20" y="73" width="335" height="15.5"/>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data karyawan kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9S1-Pf-waH" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                            <rect key="frame" x="20" y="316" width="335" height="15.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -96,8 +96,8 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="9S1-Pf-waH" secondAttribute="trailing" constant="20" id="4qy-hN-u7P"/>
                         <constraint firstAttribute="bottom" secondItem="ZEc-Th-lFo" secondAttribute="bottom" id="7La-dp-5Gv"/>
+                        <constraint firstItem="9S1-Pf-waH" firstAttribute="centerY" secondItem="1DE-hV-wiM" secondAttribute="centerY" id="DNa-Mk-WNF"/>
                         <constraint firstItem="ZEc-Th-lFo" firstAttribute="top" secondItem="QIA-WV-DMg" secondAttribute="bottom" id="Dm7-fp-og2"/>
-                        <constraint firstItem="9S1-Pf-waH" firstAttribute="top" secondItem="QIA-WV-DMg" secondAttribute="bottom" constant="20" id="Tcl-A9-1UU"/>
                         <constraint firstItem="QIA-WV-DMg" firstAttribute="leading" secondItem="1DE-hV-wiM" secondAttribute="leading" id="TkT-Ch-Tk6"/>
                         <constraint firstAttribute="trailing" secondItem="ZEc-Th-lFo" secondAttribute="trailing" id="Y90-dx-HZP"/>
                         <constraint firstAttribute="trailing" secondItem="QIA-WV-DMg" secondAttribute="trailing" id="d4F-v8-2Oh"/>

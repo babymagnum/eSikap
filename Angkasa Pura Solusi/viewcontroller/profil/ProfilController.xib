@@ -39,6 +39,8 @@
                 <outlet property="viewAction" destination="7Uz-AE-tKW" id="KlD-3R-UVx"/>
                 <outlet property="viewInformation" destination="YUn-HV-bhc" id="Vd1-tO-A0a"/>
                 <outlet property="viewKeluar" destination="J1Z-Mh-f2M" id="OxV-ut-36L"/>
+                <outlet property="viewTop" destination="DDK-K9-U62" id="VjD-DI-OZX"/>
+                <outlet property="viewTopHeight" destination="7tZ-15-as1" id="9yt-dO-vik"/>
                 <outlet property="viewUbahKataSandi" destination="neK-ZW-gue" id="pIt-sy-7qf"/>
             </connections>
         </placeholder>
@@ -86,13 +88,13 @@
                             <rect key="frame" x="0.0" y="53" width="375" height="594"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dke-Fm-Tjt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="418"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="472"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headway566297Unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="RGz-gd-ayw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDK-K9-U62">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="8fU-fh-k9j">
                                                     <rect key="frame" x="145" y="16" width="85.5" height="85.5"/>
@@ -101,20 +103,20 @@
                                                         <constraint firstAttribute="width" secondItem="8fU-fh-k9j" secondAttribute="height" multiplier="1:1" id="C3z-ie-Cdy"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMu-Jm-K31" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="186" y="117.5" width="3.5" height="11"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMu-Jm-K31" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                    <rect key="frame" x="14" y="117.5" width="347" height="11"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="9"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hci-oI-UR1" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="186.5" y="132.5" width="2.5" height="11"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hci-oI-UR1" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="132.5" width="343" height="11"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxJ-uS-5YR" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="186" y="147.5" width="3" height="11"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxJ-uS-5YR" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="147.5" width="343" height="11"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                                     <color key="textColor" red="0.25882352941176467" green="0.6470588235294118" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -122,25 +124,30 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="178" id="7tZ-15-as1"/>
                                                 <constraint firstItem="8fU-fh-k9j" firstAttribute="top" secondItem="DDK-K9-U62" secondAttribute="top" constant="16" id="8xH-BE-nJc"/>
-                                                <constraint firstItem="hci-oI-UR1" firstAttribute="centerX" secondItem="DDK-K9-U62" secondAttribute="centerX" id="Ihj-D9-IVK"/>
-                                                <constraint firstItem="PxJ-uS-5YR" firstAttribute="centerX" secondItem="DDK-K9-U62" secondAttribute="centerX" id="Nvb-O0-EvG"/>
-                                                <constraint firstItem="GMu-Jm-K31" firstAttribute="top" secondItem="8fU-fh-k9j" secondAttribute="bottom" constant="16" id="V6E-bD-Kao"/>
+                                                <constraint firstItem="GMu-Jm-K31" firstAttribute="leading" secondItem="DDK-K9-U62" secondAttribute="leading" constant="14" id="C6d-hq-R5O"/>
+                                                <constraint firstItem="GMu-Jm-K31" firstAttribute="top" secondItem="8fU-fh-k9j" secondAttribute="bottom" constant="16" id="Kjk-wP-YV0"/>
+                                                <constraint firstItem="hci-oI-UR1" firstAttribute="top" secondItem="GMu-Jm-K31" secondAttribute="bottom" constant="4" id="MIh-T5-bEN"/>
+                                                <constraint firstItem="PxJ-uS-5YR" firstAttribute="top" secondItem="hci-oI-UR1" secondAttribute="bottom" constant="4" id="Mlk-Wq-eDK"/>
                                                 <constraint firstItem="8fU-fh-k9j" firstAttribute="width" secondItem="DDK-K9-U62" secondAttribute="width" multiplier="0.228" id="Xp9-Dc-5GI"/>
-                                                <constraint firstItem="hci-oI-UR1" firstAttribute="top" secondItem="GMu-Jm-K31" secondAttribute="bottom" constant="4" id="aZR-1L-7uM"/>
                                                 <constraint firstItem="8fU-fh-k9j" firstAttribute="centerX" secondItem="DDK-K9-U62" secondAttribute="centerX" id="ihx-Kl-3G3"/>
-                                                <constraint firstItem="GMu-Jm-K31" firstAttribute="centerX" secondItem="DDK-K9-U62" secondAttribute="centerX" id="mse-RV-Nes"/>
-                                                <constraint firstItem="PxJ-uS-5YR" firstAttribute="top" secondItem="hci-oI-UR1" secondAttribute="bottom" constant="4" id="rwF-Nd-uCh"/>
+                                                <constraint firstAttribute="trailing" secondItem="hci-oI-UR1" secondAttribute="trailing" constant="16" id="qhC-jW-4hd"/>
+                                                <constraint firstItem="PxJ-uS-5YR" firstAttribute="leading" secondItem="DDK-K9-U62" secondAttribute="leading" constant="16" id="rNq-QC-4It"/>
+                                                <constraint firstItem="hci-oI-UR1" firstAttribute="leading" secondItem="DDK-K9-U62" secondAttribute="leading" constant="16" id="smy-n1-036"/>
+                                                <constraint firstAttribute="trailing" secondItem="PxJ-uS-5YR" secondAttribute="trailing" constant="16" id="unt-Yl-dai"/>
+                                                <constraint firstAttribute="trailing" secondItem="GMu-Jm-K31" secondAttribute="trailing" constant="14" id="vx8-bq-Q39"/>
+                                                <constraint firstAttribute="bottom" secondItem="PxJ-uS-5YR" secondAttribute="bottom" constant="19.5" id="wTp-ej-RpL"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-HV-bhc">
-                                            <rect key="frame" x="14" y="200" width="347" height="123"/>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-HV-bhc">
+                                            <rect key="frame" x="14" y="194" width="347" height="163"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tAH-Pj-IZ2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="347" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="347" height="40"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5c1-sX-l1l" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="173.5" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="173.5" height="40"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
                                                             <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="NIK">
@@ -148,28 +155,28 @@
                                                             </state>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ar9-5h-x2O" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="173.5" y="0.0" width="173.5" height="30"/>
+                                                            <rect key="frame" x="173.5" y="0.0" width="173.5" height="40"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="NbN-Zl-dUB"/>
+                                                        <constraint firstAttribute="height" constant="40" id="NbN-Zl-dUB"/>
                                                     </constraints>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kns-sE-cqo">
-                                                    <rect key="frame" x="0.0" y="30" width="347" height="1"/>
+                                                    <rect key="frame" x="0.0" y="40" width="347" height="1"/>
                                                     <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="JuZ-iO-HbJ"/>
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Y8s-2P-zx7">
-                                                    <rect key="frame" x="0.0" y="31" width="347" height="30"/>
+                                                    <rect key="frame" x="0.0" y="41" width="347" height="40"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1b-eM-rgO" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="173.5" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="173.5" height="40"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
                                                             <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Lokasi Kerja">
@@ -177,28 +184,28 @@
                                                             </state>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c45-jZ-jBI" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="173.5" y="0.0" width="173.5" height="30"/>
+                                                            <rect key="frame" x="173.5" y="0.0" width="173.5" height="40"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="ZBs-Og-I1t"/>
+                                                        <constraint firstAttribute="height" constant="40" id="ZBs-Og-I1t"/>
                                                     </constraints>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xaW-KR-nrd">
-                                                    <rect key="frame" x="0.0" y="61" width="347" height="1"/>
+                                                    <rect key="frame" x="0.0" y="81" width="347" height="1"/>
                                                     <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="P3L-0N-RXE"/>
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vc8-pR-4vj">
-                                                    <rect key="frame" x="0.0" y="62" width="347" height="30"/>
+                                                    <rect key="frame" x="0.0" y="82" width="347" height="40"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hej-co-uOY" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="173.5" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="173.5" height="40"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
                                                             <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Email">
@@ -206,28 +213,28 @@
                                                             </state>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wC-IH-0iX" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="173.5" y="0.0" width="173.5" height="30"/>
+                                                            <rect key="frame" x="173.5" y="0.0" width="173.5" height="40"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="wn1-7k-j1j"/>
+                                                        <constraint firstAttribute="height" constant="40" id="wn1-7k-j1j"/>
                                                     </constraints>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sya-rO-UrU">
-                                                    <rect key="frame" x="0.0" y="92" width="347" height="1"/>
+                                                    <rect key="frame" x="0.0" y="122" width="347" height="1"/>
                                                     <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="grf-bE-KXw"/>
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Cgr-VV-ZLI">
-                                                    <rect key="frame" x="0.0" y="93" width="347" height="30"/>
+                                                    <rect key="frame" x="0.0" y="123" width="347" height="40"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5j-5U-EAE" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="173.5" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="173.5" height="40"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
                                                             <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Telepon">
@@ -235,14 +242,14 @@
                                                             </state>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7e-SW-WhS" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="173.5" y="0.0" width="173.5" height="30"/>
+                                                            <rect key="frame" x="173.5" y="0.0" width="173.5" height="40"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="VW1-5W-3wX"/>
+                                                        <constraint firstAttribute="height" constant="40" id="VW1-5W-3wX"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
@@ -273,29 +280,29 @@
                                                 <constraint firstItem="Kns-sE-cqo" firstAttribute="leading" secondItem="YUn-HV-bhc" secondAttribute="leading" id="vYK-ey-fRT"/>
                                                 <constraint firstItem="Y8s-2P-zx7" firstAttribute="top" secondItem="Kns-sE-cqo" secondAttribute="bottom" id="weU-jp-zif"/>
                                                 <constraint firstItem="Sya-rO-UrU" firstAttribute="top" secondItem="Vc8-pR-4vj" secondAttribute="bottom" id="yU5-Lm-lKI"/>
-                                                <constraint firstAttribute="height" constant="123" id="zsW-cF-pxY"/>
+                                                <constraint firstAttribute="height" constant="163" id="zsW-cF-pxY"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Uz-AE-tKW">
-                                            <rect key="frame" x="14" y="341" width="347" height="61"/>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Uz-AE-tKW">
+                                            <rect key="frame" x="14" y="375" width="347" height="81"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="neK-ZW-gue">
-                                                    <rect key="frame" x="0.0" y="0.0" width="347" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="347" height="40"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lockSolid" translatesAutoresizingMaskIntoConstraints="NO" id="iWk-jx-QTD">
-                                                            <rect key="frame" x="16" y="9" width="12" height="12"/>
+                                                            <rect key="frame" x="16" y="14" width="12" height="12"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="iWk-jx-QTD" secondAttribute="height" multiplier="1:1" id="nnZ-Kw-b9t"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ubah Kata Sandi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KwK-Ul-48w" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="35" y="9" width="74" height="12"/>
+                                                            <rect key="frame" x="35" y="14" width="74" height="12"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDm-Vj-4Jj">
-                                                            <rect key="frame" x="311" y="3.5" width="23" height="23"/>
+                                                            <rect key="frame" x="311" y="8.5" width="23" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="23" id="hoG-wf-wLz"/>
                                                                 <constraint firstAttribute="width" constant="23" id="l1d-kK-21m"/>
@@ -308,7 +315,7 @@
                                                         <constraint firstItem="iWk-jx-QTD" firstAttribute="leading" secondItem="neK-ZW-gue" secondAttribute="leading" constant="16" id="0b2-BI-gdr"/>
                                                         <constraint firstItem="KwK-Ul-48w" firstAttribute="centerY" secondItem="neK-ZW-gue" secondAttribute="centerY" id="BNY-jv-UNn"/>
                                                         <constraint firstAttribute="trailing" secondItem="TDm-Vj-4Jj" secondAttribute="trailing" constant="13" id="E7U-vc-2re"/>
-                                                        <constraint firstAttribute="height" constant="30" id="EC2-0c-HIX"/>
+                                                        <constraint firstAttribute="height" constant="40" id="EC2-0c-HIX"/>
                                                         <constraint firstItem="iWk-jx-QTD" firstAttribute="width" secondItem="neK-ZW-gue" secondAttribute="width" multiplier="0.035" id="UjB-AL-zLL"/>
                                                         <constraint firstItem="TDm-Vj-4Jj" firstAttribute="centerY" secondItem="neK-ZW-gue" secondAttribute="centerY" id="XrJ-1u-l3r"/>
                                                         <constraint firstItem="iWk-jx-QTD" firstAttribute="centerY" secondItem="neK-ZW-gue" secondAttribute="centerY" id="pyy-cU-HIr"/>
@@ -316,23 +323,23 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAr-3h-383">
-                                                    <rect key="frame" x="0.0" y="30" width="347" height="1"/>
+                                                    <rect key="frame" x="0.0" y="40" width="347" height="1"/>
                                                     <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="tQI-C5-nT0"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1Z-Mh-f2M">
-                                                    <rect key="frame" x="0.0" y="31" width="347" height="30"/>
+                                                    <rect key="frame" x="0.0" y="41" width="347" height="40"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout" translatesAutoresizingMaskIntoConstraints="NO" id="a2X-2L-XvF">
-                                                            <rect key="frame" x="16" y="9" width="12" height="12"/>
+                                                            <rect key="frame" x="16" y="14" width="12" height="12"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="a2X-2L-XvF" secondAttribute="height" multiplier="1:1" id="bJw-x6-lnZ"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keluar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4D-qI-g4c" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="35" y="9" width="29" height="12"/>
+                                                            <rect key="frame" x="35" y="14" width="29" height="12"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -340,7 +347,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="3xI-0x-yfc"/>
+                                                        <constraint firstAttribute="height" constant="40" id="3xI-0x-yfc"/>
                                                         <constraint firstItem="a2X-2L-XvF" firstAttribute="width" secondItem="J1Z-Mh-f2M" secondAttribute="width" multiplier="0.035" id="90j-Rp-dqi"/>
                                                         <constraint firstItem="a2X-2L-XvF" firstAttribute="leading" secondItem="J1Z-Mh-f2M" secondAttribute="leading" constant="16" id="CrW-gt-Squ"/>
                                                         <constraint firstItem="Q4D-qI-g4c" firstAttribute="leading" secondItem="a2X-2L-XvF" secondAttribute="trailing" constant="7" id="PRi-NX-rt7"/>
@@ -359,7 +366,7 @@
                                                 <constraint firstItem="neK-ZW-gue" firstAttribute="top" secondItem="7Uz-AE-tKW" secondAttribute="top" id="QYd-Q9-trv"/>
                                                 <constraint firstItem="bAr-3h-383" firstAttribute="leading" secondItem="7Uz-AE-tKW" secondAttribute="leading" id="RNg-Uk-gFh"/>
                                                 <constraint firstItem="J1Z-Mh-f2M" firstAttribute="leading" secondItem="7Uz-AE-tKW" secondAttribute="leading" id="dH4-6g-lmZ"/>
-                                                <constraint firstAttribute="height" constant="61" id="j6j-6H-dNd"/>
+                                                <constraint firstAttribute="height" constant="81" id="j6j-6H-dNd"/>
                                                 <constraint firstItem="neK-ZW-gue" firstAttribute="leading" secondItem="7Uz-AE-tKW" secondAttribute="leading" id="jQS-g3-d4s"/>
                                                 <constraint firstAttribute="bottom" secondItem="J1Z-Mh-f2M" secondAttribute="bottom" id="tat-Db-ODy"/>
                                             </constraints>
@@ -367,22 +374,21 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="YUn-HV-bhc" firstAttribute="top" secondItem="RGz-gd-ayw" secondAttribute="bottom" constant="16" id="1PI-Y9-8kP"/>
                                         <constraint firstAttribute="trailing" secondItem="RGz-gd-ayw" secondAttribute="trailing" id="1bu-q9-Pcz"/>
                                         <constraint firstItem="RGz-gd-ayw" firstAttribute="leading" secondItem="dke-Fm-Tjt" secondAttribute="leading" id="2Sm-XC-KLy"/>
-                                        <constraint firstItem="DDK-K9-U62" firstAttribute="height" secondItem="dke-Fm-Tjt" secondAttribute="height" multiplier="0.44" id="2T7-Y4-HDR"/>
                                         <constraint firstItem="DDK-K9-U62" firstAttribute="leading" secondItem="dke-Fm-Tjt" secondAttribute="leading" id="4Lb-6h-GJv"/>
                                         <constraint firstAttribute="trailing" secondItem="YUn-HV-bhc" secondAttribute="trailing" constant="14" id="6tu-PY-uca"/>
                                         <constraint firstItem="YUn-HV-bhc" firstAttribute="leading" secondItem="dke-Fm-Tjt" secondAttribute="leading" constant="14" id="BHq-eq-0hw"/>
                                         <constraint firstAttribute="bottom" secondItem="7Uz-AE-tKW" secondAttribute="bottom" constant="16" id="EMH-j1-T9m"/>
                                         <constraint firstItem="7Uz-AE-tKW" firstAttribute="leading" secondItem="dke-Fm-Tjt" secondAttribute="leading" constant="14" id="K0q-fF-NFL"/>
                                         <constraint firstAttribute="trailing" secondItem="7Uz-AE-tKW" secondAttribute="trailing" constant="14" id="MrD-yS-1fa"/>
+                                        <constraint firstItem="YUn-HV-bhc" firstAttribute="top" secondItem="DDK-K9-U62" secondAttribute="bottom" constant="16" id="NNo-ja-Uno"/>
                                         <constraint firstItem="7Uz-AE-tKW" firstAttribute="top" secondItem="YUn-HV-bhc" secondAttribute="bottom" constant="18" id="Nr7-iS-dza"/>
                                         <constraint firstItem="DDK-K9-U62" firstAttribute="top" secondItem="dke-Fm-Tjt" secondAttribute="top" id="Q7y-ZN-kkr"/>
                                         <constraint firstItem="RGz-gd-ayw" firstAttribute="top" secondItem="dke-Fm-Tjt" secondAttribute="top" id="XYV-ke-g7C"/>
-                                        <constraint firstItem="RGz-gd-ayw" firstAttribute="height" secondItem="DDK-K9-U62" secondAttribute="height" id="ZWU-Pe-JUW"/>
                                         <constraint firstAttribute="trailing" secondItem="DDK-K9-U62" secondAttribute="trailing" id="cL3-3z-xH8"/>
                                         <constraint firstAttribute="height" priority="999" constant="412" id="gTx-eA-Z4a"/>
+                                        <constraint firstItem="RGz-gd-ayw" firstAttribute="height" secondItem="DDK-K9-U62" secondAttribute="height" id="iFG-2h-g5W"/>
                                     </constraints>
                                 </view>
                             </subviews>

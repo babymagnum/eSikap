@@ -18,6 +18,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BeritaController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
                 <outlet property="beritaCollectionView" destination="Btr-ll-J21" id="ppL-Il-sPb"/>
+                <outlet property="labelBeritaKosong" destination="i6I-Ma-Coe" id="Og2-aK-0aC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -56,15 +57,24 @@
                                 <inset key="sectionInset" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data berita kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6I-Ma-Coe" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                            <rect key="frame" x="12" y="316" width="351" height="15.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Btr-ll-J21" firstAttribute="leading" secondItem="RLe-H1-Ydc" secondAttribute="leading" id="1wr-qv-Cxf"/>
                         <constraint firstAttribute="trailing" secondItem="Btr-ll-J21" secondAttribute="trailing" id="OS1-rH-JKN"/>
                         <constraint firstItem="QZ2-ox-rb7" firstAttribute="top" secondItem="RLe-H1-Ydc" secondAttribute="top" id="Q72-CZ-tur"/>
+                        <constraint firstAttribute="trailing" secondItem="i6I-Ma-Coe" secondAttribute="trailing" constant="12" id="VuN-OV-BgK"/>
                         <constraint firstItem="QZ2-ox-rb7" firstAttribute="leading" secondItem="RLe-H1-Ydc" secondAttribute="leading" id="Xnk-2A-DRa"/>
                         <constraint firstAttribute="bottom" secondItem="Btr-ll-J21" secondAttribute="bottom" id="ap9-mo-22K"/>
+                        <constraint firstItem="i6I-Ma-Coe" firstAttribute="centerY" secondItem="RLe-H1-Ydc" secondAttribute="centerY" id="juk-3i-8ue"/>
                         <constraint firstAttribute="trailing" secondItem="QZ2-ox-rb7" secondAttribute="trailing" id="rIA-Pe-nLq"/>
+                        <constraint firstItem="i6I-Ma-Coe" firstAttribute="leading" secondItem="RLe-H1-Ydc" secondAttribute="leading" constant="12" id="sb6-eZ-yG3"/>
                         <constraint firstItem="Btr-ll-J21" firstAttribute="top" secondItem="QZ2-ox-rb7" secondAttribute="bottom" id="xbl-Gf-dZs"/>
                     </constraints>
                 </view>

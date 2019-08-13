@@ -11,26 +11,24 @@ import Kingfisher
 
 class BeritaCell: UICollectionViewCell {
 
+    @IBOutlet weak var viewContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelCreatedAt: UILabel!
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         viewContainer.clipsToBounds = true
-        viewContainer.layer.cornerRadius = 6
+        viewContainer.layer.cornerRadius = 5
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.clipsToBounds = false
-        self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 1, height: 2)
-        self.layer.shadowRadius = 2
-        self.layer.shadowOpacity = 0.6
+        self.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 5)
     }
 
     var data: News? {

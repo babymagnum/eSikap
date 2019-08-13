@@ -16,6 +16,7 @@ enum WhichKaryawan {
 
 class ProfilController: BaseViewController {
 
+    @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var imageAccount: UIImageView!
     @IBOutlet weak var labelNama: UILabel!
@@ -32,6 +33,7 @@ class ProfilController: BaseViewController {
     @IBOutlet weak var buttonBackWidth: NSLayoutConstraint!
     @IBOutlet weak var labelTitleMarginStart: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var viewTopHeight: NSLayoutConstraint!
     
     var open: WhichKaryawan?
     var empId: String?
@@ -48,6 +50,12 @@ class ProfilController: BaseViewController {
         super.viewDidAppear(animated)
         
         initView()
+        
+        UIView.animate(withDuration: 0.2) {
+            self.viewTopHeight.constant = self.labelNama.getHeight(width: self.labelNama.frame.width) + self.labelJabatan.getHeight(width: self.labelJabatan.frame.width) + self.labelDivisi.getHeight(width: self.labelDivisi.frame.width) + self.imageAccount.frame.height + 60
+            self.view.layoutIfNeeded()
+        }
+        
     }
     
     override func viewDidLoad() {

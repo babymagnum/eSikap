@@ -57,26 +57,26 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vk7-oD-mrh">
-                            <rect key="frame" x="20" y="153" width="335" height="53"/>
+                            <rect key="frame" x="20" y="297" width="335" height="53"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icNotifikasiNonActive" translatesAutoresizingMaskIntoConstraints="NO" id="LJx-QY-vvN">
-                                    <rect key="frame" x="154.5" y="0.0" width="26" height="26"/>
+                                    <rect key="frame" x="154" y="0.0" width="27" height="26.5"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="26" id="MB2-o5-guJ"/>
-                                        <constraint firstAttribute="height" constant="26" id="Qeq-wK-xbl"/>
+                                        <constraint firstAttribute="width" secondItem="LJx-QY-vvN" secondAttribute="height" multiplier="1:1" id="TYe-MW-6QI"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tidak Ada Notifikasi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rx-QN-JBE">
-                                    <rect key="frame" x="113" y="37" width="109" height="15"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tidak Ada Notifikasi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rx-QN-JBE" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                    <rect key="frame" x="113" y="37.5" width="109" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="LJx-QY-vvN" firstAttribute="width" secondItem="Vk7-oD-mrh" secondAttribute="width" multiplier="0.08" id="Aga-ZR-P38"/>
                                 <constraint firstItem="LJx-QY-vvN" firstAttribute="top" secondItem="Vk7-oD-mrh" secondAttribute="top" id="Fdk-Gl-t5X"/>
                                 <constraint firstItem="LJx-QY-vvN" firstAttribute="centerX" secondItem="Vk7-oD-mrh" secondAttribute="centerX" id="Hpd-Tx-sjo"/>
-                                <constraint firstAttribute="height" constant="53" id="mHr-Pm-nei"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="53" id="mHr-Pm-nei"/>
                                 <constraint firstItem="8Rx-QN-JBE" firstAttribute="centerX" secondItem="Vk7-oD-mrh" secondAttribute="centerX" id="pfd-el-uFD"/>
                                 <constraint firstAttribute="bottom" secondItem="8Rx-QN-JBE" secondAttribute="bottom" constant="1" id="qca-s7-ybk"/>
                                 <constraint firstItem="8Rx-QN-JBE" firstAttribute="top" secondItem="LJx-QY-vvN" secondAttribute="bottom" constant="11" id="wqy-4H-7rT"/>
@@ -91,7 +91,7 @@
                         <constraint firstAttribute="trailing" secondItem="Vk7-oD-mrh" secondAttribute="trailing" constant="20" id="Ezr-1e-kOc"/>
                         <constraint firstItem="mFF-0b-Fot" firstAttribute="leading" secondItem="GHh-7E-3SD" secondAttribute="leading" id="SQJ-cq-uwB"/>
                         <constraint firstItem="TFT-83-V4f" firstAttribute="leading" secondItem="GHh-7E-3SD" secondAttribute="leading" id="TBM-Zb-1bt"/>
-                        <constraint firstItem="Vk7-oD-mrh" firstAttribute="top" secondItem="mFF-0b-Fot" secondAttribute="bottom" constant="100" id="Tth-U5-aOf"/>
+                        <constraint firstItem="Vk7-oD-mrh" firstAttribute="centerY" secondItem="GHh-7E-3SD" secondAttribute="centerY" id="Unl-qf-BjV"/>
                         <constraint firstAttribute="trailing" secondItem="mFF-0b-Fot" secondAttribute="trailing" id="ajb-Lo-UZk"/>
                         <constraint firstItem="Vk7-oD-mrh" firstAttribute="leading" secondItem="GHh-7E-3SD" secondAttribute="leading" constant="20" id="gid-jA-MoZ"/>
                         <constraint firstItem="TFT-83-V4f" firstAttribute="top" secondItem="mFF-0b-Fot" secondAttribute="bottom" id="hCk-75-S24"/>

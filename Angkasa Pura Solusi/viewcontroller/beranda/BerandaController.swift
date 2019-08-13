@@ -38,6 +38,9 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
     @IBOutlet weak var labelPresenceStatus: UILabel!
     @IBOutlet weak var iconPresenceStatus: UIImageView!
+    @IBOutlet weak var stackTopHeight: NSLayoutConstraint!
+    @IBOutlet weak var stackBottomHeight: NSLayoutConstraint!
+    @IBOutlet weak var imagePlaceholder: UIImageView!
     
     // properties
     private var listMenu = [Menu]()
@@ -79,7 +82,16 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        imageAccount.layer.cornerRadius = imageAccount.frame.height / 2
+        let estimatedStackHeight = iconPresenceStatus.frame.height + 30.1 + labelClock.getHeight(width: labelClock.frame.height) + labelPresenceStatus.getHeight(width: labelPresenceStatus.frame.height)
+        
+        UIView.animate(withDuration: 0.2) {
+            self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2
+            
+            self.stackTopHeight.constant = estimatedStackHeight
+            self.stackBottomHeight.constant = estimatedStackHeight
+            self.viewRootHeight.constant += self.stackTopHeight.constant + self.stackBottomHeight.constant
+            self.view.layoutIfNeeded()
+        }
     }
     
     private func clickEvent() {
@@ -139,13 +151,14 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         beritaCollectionView.register(UINib(nibName: "BeritaCell", bundle: nil), forCellWithReuseIdentifier: "BeritaCell")
         
-        let menuUtamaCell = menuCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuUtamaCell", for: IndexPath(item: 0, section: 0)) as! MenuUtamaCell
+        let menuSize = (UIScreen.main.bounds.width * 0.33) - 15
         let layoutMenuCollectionView = menuCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutMenuCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 20, height: menuUtamaCell.viewContainer.frame.height)
-        
+        layoutMenuCollectionView.itemSize = CGSize(width: menuSize, height: menuSize)
+
         let beritaCell = beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
+        let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.height) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.height) + 29.5
         let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.7, height: beritaCell.viewContainer.frame.height)
+        layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.8, height: beritaHeight)
         
         menuCollectionView.delegate = self
         menuCollectionView.dataSource = self
@@ -154,9 +167,11 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initView() {
-        viewRootHeight.constant -= menuCollectionViewHeight.constant + beritaCollectionViewHeight.constant
+        viewRootHeight.constant -= menuCollectionViewHeight.constant + beritaCollectionViewHeight.constant + stackTopHeight.constant + stackBottomHeight.constant
         menuCollectionViewHeight.constant = 0
         beritaCollectionViewHeight.constant = 0
+        stackTopHeight.constant = 0
+        stackBottomHeight.constant = 0
         
         scrollView.addSubview(refreshControl)
         viewContainerCapaian.layer.cornerRadius = 6
@@ -320,8 +335,10 @@ extension BerandaController {
                     self.isWasLoaded = true
                     
                     UIView.animate(withDuration: 0.2, animations: {
-                        self.beritaCollectionViewHeight.constant = self.beritaCollectionView.contentSize.height + 50
-                        self.viewRootHeight.constant += self.beritaCollectionViewHeight.constant
+                        let beritaCell = self.beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
+                        let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.height) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.height) + 29.5 + 5
+                        self.beritaCollectionViewHeight.constant = beritaHeight
+                        self.viewRootHeight.constant += beritaHeight
                         self.view.layoutIfNeeded()
                     })
                 }
@@ -354,7 +371,24 @@ extension BerandaController {
     }
 }
 
-extension BerandaController: UICollectionViewDataSource {
+extension BerandaController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if collectionView == menuCollectionView {
+//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuUtamaCell", for: indexPath) as? MenuUtamaCell else { return CGSize(width: (UIScreen.main.bounds.width * 0.33) - 20, height: menuCollectionViewHeight.constant) }
+//            cell.data = listMenu[indexPath.item]
+//            return CGSize(width: (UIScreen.main.bounds.width * 0.33) - 20, height: cell.viewContainer.frame.height)
+//        } else {
+//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as? BeritaCell else {
+//                return CGSize(width: UIScreen.main.bounds.width * 0.8, height: beritaCollectionViewHeight.cons)
+//            }
+//            cell.data = listBerita[indexPath.item]
+//            cell.layoutIfNeeded()
+//            let targetSize = CGSize(width: UIScreen.main.bounds.width * 0.8, height: cell.viewContainerHeight.constant)
+//            let estimated = cell.systemLayoutSizeFitting(targetSize)
+//            return CGSize(width: targetSize.width, height: estimated.height)
+//        }
+//    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == menuCollectionView {
             return listMenu.count
@@ -373,6 +407,8 @@ extension BerandaController: UICollectionViewDataSource {
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as! BeritaCell
             cell.data = listBerita[indexPath.item]
+            //cell.widthConstraint.constant = UIScreen.main.bounds.width * 0.8
+            //cell.viewContainerHeight.constant = cell.labelCreatedAt.getHeight(width: cell.labelCreatedAt.frame.height) + cell.labelTitle.getHeight(width: cell.labelTitle.frame.height) + 29.5 + ((UIScreen.main.bounds.width * 0.8) / 0.4)
             cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(beritaContainerClick(sender:))))
             return cell
         }

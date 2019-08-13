@@ -75,13 +75,13 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         menuFavoritCollectionView.register(UINib(nibName: "MenuFavoritCell", bundle: nil), forCellWithReuseIdentifier: "MenuFavoritCell")
         menuLainyaCollectionView.register(UINib(nibName: "MenuLainyaCell", bundle: nil), forCellWithReuseIdentifier: "MenuLainyaCell")
         
-        let menuFavoritCell = menuFavoritCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuFavoritCell", for: IndexPath(item: 0, section: 0)) as! MenuFavoritCell
-        let layoutMenuFavoritCollectionView = menuFavoritCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutMenuFavoritCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 5, height: menuFavoritCell.viewRoot.frame.height)
+        let menuSize = (UIScreen.main.bounds.width * 0.33) - 5
         
-        let menuLainyaCell = menuLainyaCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuLainyaCell", for: IndexPath(item: 0, section: 0)) as! MenuLainyaCell
+        let layoutMenuFavoritCollectionView = menuFavoritCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layoutMenuFavoritCollectionView.itemSize = CGSize(width: menuSize, height: menuSize)
+        
         let layoutMenuLainyaCollectionView = menuLainyaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutMenuLainyaCollectionView.itemSize = CGSize(width: (UIScreen.main.bounds.width * 0.33) - 5, height: menuLainyaCell.viewRoot.frame.height)
+        layoutMenuLainyaCollectionView.itemSize = CGSize(width: menuSize, height: menuSize)
         
         menuFavoritCollectionView.delegate = self
         menuFavoritCollectionView.dataSource = self
