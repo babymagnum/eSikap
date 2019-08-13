@@ -11,12 +11,22 @@ import Foundation
 
 class DialogFirstController: UIViewController {
 
+    @IBOutlet weak var viewContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var imageAnnouncement: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelDescription: UILabel!
     
     var resources: (image: String, title: String, description: String)?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 0.2) {
+            self.viewContainerHeight.constant = self.imageAnnouncement.frame.height + self.labelTitle.getHeight(width: self.labelTitle.frame.width) + self.labelDescription.getHeight(width: self.labelDescription.frame.width) + 34
+            self.view.layoutIfNeeded()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

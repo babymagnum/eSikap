@@ -82,16 +82,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let estimatedStackHeight = iconPresenceStatus.frame.height + 30.1 + labelClock.getHeight(width: labelClock.frame.height) + labelPresenceStatus.getHeight(width: labelPresenceStatus.frame.height)
-        
-        UIView.animate(withDuration: 0.2) {
-            self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2
-            
-            self.stackTopHeight.constant = estimatedStackHeight
-            self.stackBottomHeight.constant = estimatedStackHeight
-            self.viewRootHeight.constant += self.stackTopHeight.constant + self.stackBottomHeight.constant
-            self.view.layoutIfNeeded()
-        }
+        self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2
     }
     
     private func clickEvent() {
@@ -151,7 +142,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         beritaCollectionView.register(UINib(nibName: "BeritaCell", bundle: nil), forCellWithReuseIdentifier: "BeritaCell")
         
-        let menuSize = (UIScreen.main.bounds.width * 0.33) - 15
+        let menuSize = (UIScreen.main.bounds.width * 0.33) - 20
         let layoutMenuCollectionView = menuCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layoutMenuCollectionView.itemSize = CGSize(width: menuSize, height: menuSize)
 
@@ -174,10 +165,19 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         stackBottomHeight.constant = 0
         
         scrollView.addSubview(refreshControl)
-        viewContainerCapaian.layer.cornerRadius = 6
-        viewContainerClock.layer.cornerRadius = 6
-        viewContainerCuti.layer.cornerRadius = 6
-        viewContainerPresensi.layer.cornerRadius = 6
+        viewContainerCapaian.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 6)
+        viewContainerClock.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 6)
+        viewContainerCuti.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 6)
+        viewContainerPresensi.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 6)
+        
+        let estimatedStackHeight = iconPresenceStatus.frame.height + labelClock.getHeight(width: labelClock.frame.width) + labelPresenceStatus.getHeight(width: labelPresenceStatus.frame.width) + 12.4 + 3.6 + 2.3 + 10.7
+        
+        UIView.animate(withDuration: 0.2) {
+            self.stackTopHeight.constant = estimatedStackHeight
+            self.stackBottomHeight.constant = estimatedStackHeight
+            self.viewRootHeight.constant += self.stackTopHeight.constant + self.stackBottomHeight.constant
+            self.view.layoutIfNeeded()
+        }
         
         labelName.text = preference.getString(key: staticLet.EMP_NAME)
         imageAccount.loadUrl(preference.getString(key: staticLet.EMP_PHOTO))
@@ -292,8 +292,6 @@ extension BerandaController {
             guard let item = itemDashboard else { return }
             
             self.setDashboardView(item)
-            
-            self.checkShowFirstDialog()
         }
     }
     

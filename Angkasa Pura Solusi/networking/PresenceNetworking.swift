@@ -38,6 +38,7 @@ class PresenceNetworking {
                     
                     do {
                         let preparePresence = try JSONDecoder().decode(PreparePresence.self, from: mData)
+                        print("prepare presence \(preparePresence)")
                         completion(nil, preparePresence.data, nil)
                     } catch let err { completion(err.localizedDescription, nil, nil) }
                 } else if status == 401 {

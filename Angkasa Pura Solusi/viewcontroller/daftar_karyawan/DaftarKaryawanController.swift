@@ -48,7 +48,8 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
         
         let karyawanCell = daftarKaryawanCollectionView.dequeueReusableCell(withReuseIdentifier: "KaryawanCell", for: IndexPath(item: 0, section: 0)) as! KaryawanCell
         let karyawanCellLayout = daftarKaryawanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        karyawanCellLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: karyawanCell.viewContainer.frame.height + 12)
+        let karyawanCellHeight = ((UIScreen.main.bounds.width - 28) * 0.27) + karyawanCell.labelName.getHeight(width: karyawanCell.labelName.frame.width) + karyawanCell.labelJabatan.getHeight(width: karyawanCell.labelJabatan.frame.width) + karyawanCell.labelPosition.getHeight(width: karyawanCell.labelPosition.frame.width) + 8.2 + 4.1 + 4.1 + 12.9
+        karyawanCellLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: karyawanCellHeight)
         
         daftarKaryawanCollectionView.delegate = self
         daftarKaryawanCollectionView.dataSource = self

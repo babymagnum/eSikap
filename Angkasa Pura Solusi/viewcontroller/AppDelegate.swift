@@ -57,7 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         Messaging.messaging().delegate = self
         
         //google maps
-        GMSServices.provideAPIKey("AIzaSyABb3r3kEysXc1ahNhBczZfpFbKCTcEUZY")
+        let _ = "AIzaSyAoelL9ZpnUozmhFGvY94xRVmsVGPAOkZw"
+        let oldMapsKey = "AIzaSyABb3r3kEysXc1ahNhBczZfpFbKCTcEUZY"
+        GMSServices.provideAPIKey(oldMapsKey)
         
         return true
     }

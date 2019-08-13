@@ -22,14 +22,18 @@
             <connections>
                 <outlet property="buttonPresence" destination="aoH-5T-yll" id="cbB-Ve-JhT"/>
                 <outlet property="labelClock" destination="DT5-rf-0wa" id="saH-uA-kbC"/>
+                <outlet property="labelDescriptionPresence" destination="SNg-cr-KPI" id="1ng-OM-Jhb"/>
                 <outlet property="labelJamKeluar" destination="AWu-MW-IgS" id="sKd-3K-nIl"/>
                 <outlet property="labelJamMasuk" destination="YkS-xd-atf" id="Gww-sh-JXJ"/>
+                <outlet property="labelJamMasukMini" destination="tZo-Cy-dqS" id="sqn-8q-vYa"/>
                 <outlet property="labelTitle" destination="SiX-XW-NPo" id="oot-FR-Kpc"/>
                 <outlet property="mapview" destination="3YJ-RE-YdT" id="eyl-Hd-fJr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewHurryUp" destination="3J8-gh-8iJ" id="cn1-2V-Chh"/>
                 <outlet property="viewJamMasukKeluarBottomMargin" destination="XFG-pf-BDm" id="ff6-oL-Z34"/>
+                <outlet property="viewJamMasukKeluarHeight" destination="xJ2-jY-h7U" id="dA4-dI-8zt"/>
                 <outlet property="viewJamMasukPulang" destination="mfy-il-fgX" id="h2O-qU-Gbk"/>
+                <outlet property="viewPresenceHeight" destination="n0D-Mv-yiS" id="425-Z6-8Sx"/>
                 <outlet property="viewPressence" destination="5zk-PN-h25" id="1Q6-OO-1E2"/>
             </connections>
         </placeholder>
@@ -127,16 +131,15 @@ area presensi !</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkS-xd-atf" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                    <rect key="frame" x="29" y="12" width="30.5" height="16"/>
-                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <rect key="frame" x="29" y="12.5" width="28" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                     <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circularClock" translatesAutoresizingMaskIntoConstraints="NO" id="U56-as-7dU">
-                                    <rect key="frame" x="138" y="-1" width="37" height="37"/>
+                                    <rect key="frame" x="137.5" y="-1.5" width="38" height="38"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="37" id="65L-tM-MPj"/>
-                                        <constraint firstAttribute="height" constant="37" id="hZf-qT-xFS"/>
+                                        <constraint firstAttribute="width" secondItem="U56-as-7dU" secondAttribute="height" multiplier="1:1" id="CEs-Ei-LjU"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="jam pulang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J00-Hh-ugF" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
@@ -146,28 +149,26 @@ area presensi !</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-MW-IgS" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                    <rect key="frame" x="254.5" y="12" width="30.5" height="16"/>
-                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <rect key="frame" x="256" y="12.5" width="28" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                     <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="AWu-MW-IgS" secondAttribute="trailing" constant="28" id="9c8-LZ-pJk"/>
+                                <constraint firstItem="YkS-xd-atf" firstAttribute="leading" secondItem="mfy-il-fgX" secondAttribute="leading" constant="29" id="0mz-Vj-ofG"/>
+                                <constraint firstItem="YkS-xd-atf" firstAttribute="top" secondItem="tZo-Cy-dqS" secondAttribute="bottom" constant="1.5" id="48A-12-pPc"/>
                                 <constraint firstItem="U56-as-7dU" firstAttribute="centerX" secondItem="mfy-il-fgX" secondAttribute="centerX" id="IvN-9v-R9u"/>
-                                <constraint firstAttribute="bottom" secondItem="AWu-MW-IgS" secondAttribute="bottom" constant="7" id="Pvx-Bl-aa0"/>
-                                <constraint firstItem="AWu-MW-IgS" firstAttribute="top" secondItem="J00-Hh-ugF" secondAttribute="bottom" constant="1" id="VWw-wg-qdN"/>
-                                <constraint firstItem="AWu-MW-IgS" firstAttribute="top" secondItem="J00-Hh-ugF" secondAttribute="bottom" constant="1" id="XDR-Xg-6vc"/>
                                 <constraint firstItem="tZo-Cy-dqS" firstAttribute="top" secondItem="mfy-il-fgX" secondAttribute="top" constant="4" id="XQK-aN-pLW"/>
                                 <constraint firstItem="J00-Hh-ugF" firstAttribute="top" secondItem="mfy-il-fgX" secondAttribute="top" constant="4" id="ZcO-02-XRH"/>
-                                <constraint firstItem="YkS-xd-atf" firstAttribute="leading" secondItem="mfy-il-fgX" secondAttribute="leading" constant="29" id="c80-n4-dWj"/>
+                                <constraint firstItem="U56-as-7dU" firstAttribute="width" secondItem="mfy-il-fgX" secondAttribute="width" multiplier="0.12" id="d4s-tV-Bcc"/>
                                 <constraint firstAttribute="trailing" secondItem="J00-Hh-ugF" secondAttribute="trailing" constant="28" id="eSv-0F-soy"/>
-                                <constraint firstAttribute="bottom" secondItem="YkS-xd-atf" secondAttribute="bottom" constant="7" id="oUz-RA-hAb"/>
                                 <constraint firstItem="U56-as-7dU" firstAttribute="centerY" secondItem="mfy-il-fgX" secondAttribute="centerY" id="rTN-9N-KPH"/>
-                                <constraint firstItem="YkS-xd-atf" firstAttribute="top" secondItem="tZo-Cy-dqS" secondAttribute="bottom" constant="1" id="rl1-eZ-fdS"/>
+                                <constraint firstItem="AWu-MW-IgS" firstAttribute="top" secondItem="J00-Hh-ugF" secondAttribute="bottom" constant="1.5" id="sdy-UJ-Wb3"/>
                                 <constraint firstItem="tZo-Cy-dqS" firstAttribute="leading" secondItem="mfy-il-fgX" secondAttribute="leading" constant="28" id="udT-AU-jFs"/>
                                 <constraint firstAttribute="height" constant="35" id="xJ2-jY-h7U"/>
+                                <constraint firstAttribute="trailing" secondItem="AWu-MW-IgS" secondAttribute="trailing" constant="29" id="y8H-7V-Q56"/>
                             </constraints>
                         </view>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zk-PN-h25" userLabel="ViewPressence">
@@ -199,7 +200,6 @@ area presensi !</string>
                                 <constraint firstAttribute="trailing" secondItem="aoH-5T-yll" secondAttribute="trailing" constant="12" id="Vgc-rW-MJA"/>
                                 <constraint firstItem="SNg-cr-KPI" firstAttribute="top" secondItem="5zk-PN-h25" secondAttribute="top" constant="10" id="gZY-23-RWM"/>
                                 <constraint firstAttribute="height" constant="76" id="n0D-Mv-yiS"/>
-                                <constraint firstAttribute="bottom" secondItem="aoH-5T-yll" secondAttribute="bottom" constant="13.5" id="v6P-cP-ITD"/>
                                 <constraint firstItem="aoH-5T-yll" firstAttribute="top" secondItem="SNg-cr-KPI" secondAttribute="bottom" constant="9" id="yIg-w2-lkM"/>
                             </constraints>
                         </view>

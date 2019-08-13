@@ -18,6 +18,11 @@ class PresensiController: BaseViewController {
     @IBOutlet weak var labelJamMasuk: UILabel!
     @IBOutlet weak var labelJamPulang: UILabel!
     @IBOutlet weak var iconKeluar: UIImageView!
+    @IBOutlet weak var viewJamMasukKeluarHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelJamPulangMini: CustomLabel!
+    @IBOutlet weak var labelPresensiPulang: CustomLabel!
+    @IBOutlet weak var imagePresensiPulang: UIImageView!
+    @IBOutlet weak var stackViewPresensiHeight: NSLayoutConstraint!
     
     var preparePresence: ItemPreparePresence?
     var seconds = 0
@@ -46,15 +51,20 @@ class PresensiController: BaseViewController {
     }
     
     private func initView() {
-        
         function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1.0)
         
-        viewJamMasukKeluar.layer.cornerRadius = viewJamMasukKeluar.frame.height / 2
         viewPresensiMasuk.layer.cornerRadius = 6
         viewPresensiKeluar.layer.cornerRadius = 6
         
         let dateArr = function.getCurrentDate(pattern: "EEEE dd MMMM yyyy").components(separatedBy: " ")
         labelDate.text = "\(dateArr[0])\n\(dateArr[1]) \(dateArr[2]) \(dateArr[3])"
+        
+        UIView.animate(withDuration: 0.2) {
+            self.viewJamMasukKeluarHeight.constant = self.labelJamPulangMini.getHeight(width: self.labelJamPulangMini.frame.width) + self.labelJamPulang.getHeight(width: self.labelJamPulang.frame.width) + 11.5
+            self.stackViewPresensiHeight.constant = self.labelPresensiPulang.getHeight(width: self.labelPresensiPulang.frame.width) + self.imagePresensiPulang.frame.height + 28.4 + 6.2 + 20.1
+            self.viewJamMasukKeluar.layer.cornerRadius = self.viewJamMasukKeluarHeight.constant / 2
+            self.view.layoutIfNeeded()
+        }
         
         if let presencePrepare = self.preparePresence {
             labelDate.text = "\(presencePrepare.day ?? "")\n\(presencePrepare.date_formated ?? "")"

@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1097904581864-j0srsm6b3s8a1choofuh2ses971rovfs.apps.googleusercontent.com</string>
+	<string>1097904581864-ifggi2jr4hbp60fhdppebk7sf5749g4s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1097904581864-j0srsm6b3s8a1choofuh2ses971rovfs</string>
+	<string>com.googleusercontent.apps.1097904581864-ifggi2jr4hbp60fhdppebk7sf5749g4s</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1097904581864-7r8av5mqivu6841ejnnm3hck45q55in4.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCctOKxN0skJyNPZ5NumFVCao5Nc9p9tmg</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.gt.Angkasa-Pura-Solusi</string>
+	<string>com.angkasapurasolusi.ess</string>
 	<key>PROJECT_ID</key>
 	<string>ess-aps-ios</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1097904581864:ios:96e44be0c682ed15</string>
+	<string>1:1097904581864:ios:defd4c1e390366ec</string>
 	<key>DATABASE_URL</key>
 	<string>https://ess-aps-ios.firebaseio.com</string>
 </dict>

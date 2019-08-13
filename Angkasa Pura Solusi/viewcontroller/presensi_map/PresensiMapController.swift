@@ -35,6 +35,10 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     @IBOutlet weak var labelJamMasuk: UILabel!
     @IBOutlet weak var labelJamKeluar: UILabel!
     @IBOutlet weak var buttonPresence: UIButton!
+    @IBOutlet weak var labelJamMasukMini: CustomLabel!
+    @IBOutlet weak var viewJamMasukKeluarHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewPresenceHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelDescriptionPresence: CustomLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,31 +63,22 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     private func initView() {
         labelTitle.text = titleString
         
-        viewPressence.layer.cornerRadius = 5
-        viewPressence.clipsToBounds = false
-        viewPressence.layer.shadowColor = UIColor.lightGray.cgColor
-        viewPressence.layer.shadowOffset = CGSize(width: 1, height: 2)
-        viewPressence.layer.shadowRadius = 2
-        viewPressence.layer.shadowOpacity = 1.0
-        
-        viewHurryUp.layer.cornerRadius = 5
-        viewHurryUp.clipsToBounds = false
-        viewHurryUp.layer.shadowColor = UIColor.lightGray.cgColor
-        viewHurryUp.layer.shadowOffset = CGSize(width: 1, height: 2)
-        viewHurryUp.layer.shadowRadius = 2
-        viewHurryUp.layer.shadowOpacity = 1.0
+        viewPressence.addShadow(CGSize(width: 2, height: 3), UIColor.lightGray, 3, 0.6, 5)
+        viewHurryUp.addShadow(CGSize(width: 2, height: 3), UIColor.lightGray, 3, 0.6, 5)
         
         buttonPresence.layer.cornerRadius = 5
-        
-        viewJamMasukPulang.layer.cornerRadius = viewJamMasukPulang.frame.height / 2
-        viewJamMasukPulang.layer.borderWidth = 2
-        viewJamMasukPulang.layer.borderColor = UIColor.init(rgb: 0x42a5f5).cgColor
         
         labelJamMasuk.text = String((preparePresence.shift_start?.prefix(5))!)
         labelJamKeluar.text = String((preparePresence.shift_end?.prefix(5))!)
         
-        let timeArray = preparePresence.time?.components(separatedBy: ":")
+        UIView.animate(withDuration: 0.2) {
+            self.viewJamMasukKeluarHeight.constant = self.labelJamMasukMini.getHeight(width: self.labelJamMasukMini.frame.width) + self.labelJamMasuk.getHeight(width: self.labelJamMasuk.frame.width) + 4.3 + 7.1 + 1.5
+            self.viewPresenceHeight.constant = self.labelDescriptionPresence.getHeight(width: self.labelDescriptionPresence.frame.width) + self.buttonPresence.frame.height + 10 + 9 + 13.5
+            self.viewJamMasukPulang.giveBorder(self.viewJamMasukKeluarHeight.constant / 2, 2, "42a5f5")
+            self.view.layoutIfNeeded()
+        }
         
+        let timeArray = preparePresence.time?.components(separatedBy: ":")
         seconds = Int(timeArray![2])!
         minutes = Int(timeArray![1])!
         hours = Int(timeArray![0])!

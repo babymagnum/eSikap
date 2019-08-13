@@ -10,9 +10,11 @@ import UIKit
 
 class DialogPreparePresenceController: UIViewController {
 
+    @IBOutlet weak var viewContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var buttonOke: UIButton!
+    @IBOutlet weak var imageX: UIImageView!
     
     var stringDescription: String?
     
@@ -27,6 +29,11 @@ class DialogPreparePresenceController: UIViewController {
         viewContainer.layer.cornerRadius = 4
         
         labelDescription.text = stringDescription
+        
+        UIView.animate(withDuration: 0.2) {
+            self.viewContainerHeight.constant = self.imageX.frame.height + self.labelDescription.getHeight(width: self.labelDescription.frame.width) + self.buttonOke.frame.height + 62.1 + 47 + 39 + 23
+            self.view.layoutIfNeeded()
+        }
     }
 
     @IBAction func buttonOkeClick(_ sender: Any) {
