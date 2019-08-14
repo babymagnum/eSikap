@@ -13,6 +13,8 @@ class MenuUtamaCell: UICollectionViewCell {
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var viewContaineInsideHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewContainerInside: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

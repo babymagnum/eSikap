@@ -72,7 +72,7 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initCollectionView() {
-        menuFavoritCollectionView.register(UINib(nibName: "MenuFavoritCell", bundle: nil), forCellWithReuseIdentifier: "MenuFavoritCell")
+        menuFavoritCollectionView.register(UINib(nibName: "MenuLainyaCell", bundle: nil), forCellWithReuseIdentifier: "MenuLainyaCell")
         menuLainyaCollectionView.register(UINib(nibName: "MenuLainyaCell", bundle: nil), forCellWithReuseIdentifier: "MenuLainyaCell")
         
         let menuSize = (UIScreen.main.bounds.width * 0.33) - 5
@@ -298,7 +298,12 @@ extension BottomSheetMenuController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == menuFavoritCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuFavoritCell", for: indexPath) as! MenuFavoritCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuLainyaCell", for: indexPath) as! MenuLainyaCell
+            
+            DispatchQueue.main.async {
+                cell.viewContainerInsideHeight.constant = cell.iconMenu.frame.height + 7.2 + cell.labelTitle.getHeight(width: cell.labelTitle.frame.width)
+            }
+            
             let item = listMenuFavorit[indexPath.item]
             
             cell.data = item
@@ -307,6 +312,11 @@ extension BottomSheetMenuController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuLainyaCell", for: indexPath) as! MenuLainyaCell
+            
+            DispatchQueue.main.async {
+                cell.viewContainerInsideHeight.constant = cell.iconMenu.frame.height + 7.2 + cell.labelTitle.getHeight(width: cell.labelTitle.frame.width)
+            }
+            
             let item = listMenuLainya[indexPath.item]
             
             cell.data = item

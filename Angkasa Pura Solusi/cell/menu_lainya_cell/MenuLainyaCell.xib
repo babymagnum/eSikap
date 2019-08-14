@@ -30,43 +30,54 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg0-3V-ZWc">
                                 <rect key="frame" x="7" y="7" width="87" height="87"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="briefcase" translatesAutoresizingMaskIntoConstraints="NO" id="Lzc-FK-Iqp">
-                                        <rect key="frame" x="25" y="10" width="37" height="37"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="qgb-Rm-0NA"/>
-                                            <constraint firstAttribute="width" constant="37" id="wgY-TD-asG"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="so4-sE-OR8" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="54" width="67" height="26"/>
-                                        <string key="text">Pengajuan
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jiy-Ea-LkP">
+                                        <rect key="frame" x="7" y="7" width="73" height="73"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="briefcase" translatesAutoresizingMaskIntoConstraints="NO" id="Lzc-FK-Iqp">
+                                                <rect key="frame" x="18" y="0.0" width="37" height="37"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Lzc-FK-Iqp" secondAttribute="height" multiplier="1:1" id="90l-rm-U4L"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="so4-sE-OR8" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                <rect key="frame" x="7" y="44" width="59" height="21.5"/>
+                                                <string key="text">Pengajuan
 Cuti</string>
-                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
-                                        <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
+                                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Lzc-FK-Iqp" firstAttribute="top" secondItem="jiy-Ea-LkP" secondAttribute="top" id="2Wf-d0-9Gg"/>
+                                            <constraint firstItem="Lzc-FK-Iqp" firstAttribute="width" secondItem="jiy-Ea-LkP" secondAttribute="width" multiplier="0.51" id="BEe-DI-S7H"/>
+                                            <constraint firstItem="so4-sE-OR8" firstAttribute="top" secondItem="Lzc-FK-Iqp" secondAttribute="bottom" constant="7" id="DrR-Nd-B1R"/>
+                                            <constraint firstItem="so4-sE-OR8" firstAttribute="leading" secondItem="jiy-Ea-LkP" secondAttribute="leading" constant="7" id="Rl9-xe-Y1X"/>
+                                            <constraint firstItem="Lzc-FK-Iqp" firstAttribute="centerX" secondItem="jiy-Ea-LkP" secondAttribute="centerX" id="e7p-kf-2mE"/>
+                                            <constraint firstAttribute="height" constant="73" id="hNm-g7-dCr"/>
+                                            <constraint firstAttribute="trailing" secondItem="so4-sE-OR8" secondAttribute="trailing" constant="7" id="vLR-Ah-1Mt"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="so4-sE-OR8" secondAttribute="trailing" constant="10" id="4WW-CH-KEX"/>
-                                    <constraint firstItem="so4-sE-OR8" firstAttribute="top" secondItem="Lzc-FK-Iqp" secondAttribute="bottom" constant="7" id="LaQ-tv-TVZ"/>
-                                    <constraint firstItem="Lzc-FK-Iqp" firstAttribute="centerX" secondItem="tg0-3V-ZWc" secondAttribute="centerX" id="dqT-iF-uoo"/>
-                                    <constraint firstItem="so4-sE-OR8" firstAttribute="leading" secondItem="tg0-3V-ZWc" secondAttribute="leading" constant="10" id="j6A-lu-88g"/>
-                                    <constraint firstAttribute="bottom" secondItem="so4-sE-OR8" secondAttribute="bottom" constant="7" id="jQV-Nd-9D4"/>
-                                    <constraint firstItem="Lzc-FK-Iqp" firstAttribute="top" secondItem="tg0-3V-ZWc" secondAttribute="top" constant="10" id="yb8-u9-bdB"/>
+                                    <constraint firstItem="jiy-Ea-LkP" firstAttribute="leading" secondItem="tg0-3V-ZWc" secondAttribute="leading" constant="7" id="CNH-Mf-gaW"/>
+                                    <constraint firstAttribute="trailing" secondItem="jiy-Ea-LkP" secondAttribute="trailing" constant="7" id="Vha-Al-fr5"/>
+                                    <constraint firstItem="jiy-Ea-LkP" firstAttribute="centerY" secondItem="tg0-3V-ZWc" secondAttribute="centerY" id="rCz-xP-tCg"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus-circular" translatesAutoresizingMaskIntoConstraints="NO" id="lG7-59-yVs">
-                                <rect key="frame" x="84" y="3" width="14" height="14"/>
+                                <rect key="frame" x="83" y="3" width="15" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="14" id="2mI-l0-fQz"/>
-                                    <constraint firstAttribute="height" constant="14" id="Wp3-gK-25E"/>
+                                    <constraint firstAttribute="width" secondItem="lG7-59-yVs" secondAttribute="height" multiplier="1:1" id="Lhz-xd-7K7"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tg0-3V-ZWc" firstAttribute="leading" secondItem="5Sp-R5-jP9" secondAttribute="leading" constant="7" id="05j-le-Pe2"/>
+                            <constraint firstItem="lG7-59-yVs" firstAttribute="width" secondItem="5Sp-R5-jP9" secondAttribute="width" multiplier="0.15" id="9Bm-yu-ecF"/>
                             <constraint firstAttribute="trailing" secondItem="lG7-59-yVs" secondAttribute="trailing" constant="3" id="ASr-wt-aq7"/>
                             <constraint firstAttribute="trailing" secondItem="tg0-3V-ZWc" secondAttribute="trailing" constant="7" id="QHo-Iq-mwl"/>
                             <constraint firstItem="lG7-59-yVs" firstAttribute="top" secondItem="5Sp-R5-jP9" secondAttribute="top" constant="3" id="QHv-6q-A9m"/>
@@ -88,6 +99,7 @@ Cuti</string>
                 <outlet property="iconMenu" destination="Lzc-FK-Iqp" id="dyf-l8-KZA"/>
                 <outlet property="labelTitle" destination="so4-sE-OR8" id="6Gi-xg-Dxb"/>
                 <outlet property="viewContainer" destination="tg0-3V-ZWc" id="XLX-u6-XOw"/>
+                <outlet property="viewContainerInsideHeight" destination="hNm-g7-dCr" id="9TO-tQ-PGu"/>
                 <outlet property="viewRoot" destination="5Sp-R5-jP9" id="e9a-On-lvG"/>
             </connections>
             <point key="canvasLocation" x="122.46376811594205" y="39.84375"/>

@@ -19,15 +19,6 @@ class DialogFirstController: UIViewController {
     
     var resources: (image: String, title: String, description: String)?
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        UIView.animate(withDuration: 0.2) {
-            self.viewContainerHeight.constant = self.imageAnnouncement.frame.height + self.labelTitle.getHeight(width: self.labelTitle.frame.width) + self.labelDescription.getHeight(width: self.labelDescription.frame.width) + 34
-            self.view.layoutIfNeeded()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +32,13 @@ class DialogFirstController: UIViewController {
             imageAnnouncement.loadUrl(data.image)
             labelTitle.text = data.title
             labelDescription.text = data.description
+        }
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2) {
+                self.viewContainerHeight.constant = self.imageAnnouncement.frame.height + self.labelTitle.getHeight(width: self.labelTitle.frame.width) + self.labelDescription.getHeight(width: self.labelDescription.frame.width) + 34
+                self.view.layoutIfNeeded()
+            }
         }
     }
     

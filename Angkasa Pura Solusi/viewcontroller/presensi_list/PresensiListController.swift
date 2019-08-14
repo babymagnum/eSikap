@@ -71,7 +71,8 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
         
         let presensiCell = presensiCollectionView.dequeueReusableCell(withReuseIdentifier: "PresensiCell", for: IndexPath(item: 0, section: 0)) as! PresensiCell
         let presensiLayout = presensiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        presensiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: presensiCell.viewContainer.frame.height)
+        let presensiCellHeight = presensiCell.buttonStatusPresensi.frame.height + presensiCell.labelMasuk.getHeight(width: presensiCell.labelMasuk.frame.width) + presensiCell.labelPulang.getHeight(width: presensiCell.labelPulang.frame.width) + presensiCell.labelPresensiMasuk.getHeight(width: presensiCell.labelPresensiMasuk.frame.width) + presensiCell.labelPresensiPulang.getHeight(width: presensiCell.labelPresensiPulang.frame.width) + 8.9 + 13.3 + 5.1 + 8.7 + 5.1 + 26.4
+        presensiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: presensiCellHeight)
         
         presensiCollectionView.delegate = self
         presensiCollectionView.dataSource = self

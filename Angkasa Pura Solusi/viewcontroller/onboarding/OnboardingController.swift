@@ -56,16 +56,13 @@ class OnboardingController: BaseViewController, UICollectionViewDelegate {
         
         listOnboarding.append(Onboarding(title: "Monitor Performa Anda Melalui Data Presensi", image: UIImage(named: "onboarding4"), description: "Seberapa rajinkah anda, berapa presentase kehadiran anda di kantor, semua termonitor di dalan ESS APS Mobile"))
         
-        onboardingCollection.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.onboardingCollection.reloadData()
+        }
     }
     
     private func initCollection() {
-        onboardingCollection.register(UINib(nibName: "OnboardingCellCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OnboardingCellCollectionViewCell")
-        
-        let cell = onboardingCollection.dequeueReusableCell(withReuseIdentifier: "OnboardingCellCollectionViewCell", for: IndexPath(item: 0, section: 0)) as! OnboardingCellCollectionViewCell
-        let layout = onboardingCollection.collectionViewLayout as! UICollectionViewFlowLayout
-        let height = (UIScreen.main.bounds.height * 0.4) + cell.titleLabel.frame.height + cell.descriptionLabel.frame.height + 115 // 115 for the total constraint height
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: height)
+        onboardingCollection.register(UINib(nibName: "OnboardingCell", bundle: nil), forCellWithReuseIdentifier: "OnboardingCell")
         
         onboardingCollection.delegate = self
         onboardingCollection.dataSource = self
@@ -95,7 +92,11 @@ class OnboardingController: BaseViewController, UICollectionViewDelegate {
             unfocusIndicator(indicator2)
             unfocusIndicator(indicator3)
             focusIndicator(indicator4)
-        default: break
+        default:
+            unfocusIndicator(indicator1)
+            unfocusIndicator(indicator2)
+            unfocusIndicator(indicator3)
+            focusIndicator(indicator4)
         }
     }
     
@@ -147,7 +148,15 @@ extension OnboardingController {
     }
 }
 
-extension OnboardingController: UICollectionViewDataSource {
+extension OnboardingController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if listOnboarding.count > 1 {
+            return CGSize(width: UIScreen.main.bounds.width, height: self.onboardingCollection.frame.height)
+        } else {
+            return CGSize(width: 0, height: 0)
+        }
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x
         let w = scrollView.bounds.size.width
@@ -162,7 +171,7 @@ extension OnboardingController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCellCollectionViewCell", for: indexPath) as! OnboardingCellCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCell", for: indexPath) as! OnboardingCell
         cell.onboarding = listOnboarding[indexPath.item]
         return cell
     }

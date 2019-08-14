@@ -46,7 +46,7 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
         beritaCollectionView.register(UINib(nibName: "BeritaCell", bundle: nil), forCellWithReuseIdentifier: "BeritaCell")
         
         let beritaCell = beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
-        let beritaHeight = ((UIScreen.main.bounds.width - 26) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.height) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.height) + 29.5
+        let beritaHeight = ((UIScreen.main.bounds.width - 26) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.width) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.width) + 29.5
         let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: beritaHeight)
         

@@ -10,6 +10,7 @@ import UIKit
 
 class PresensiController: BaseViewController {
 
+    @IBOutlet weak var viewContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var labelClock: UILabel!
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var viewJamMasukKeluar: UIView!
@@ -59,11 +60,16 @@ class PresensiController: BaseViewController {
         let dateArr = function.getCurrentDate(pattern: "EEEE dd MMMM yyyy").components(separatedBy: " ")
         labelDate.text = "\(dateArr[0])\n\(dateArr[1]) \(dateArr[2]) \(dateArr[3])"
         
-        UIView.animate(withDuration: 0.2) {
-            self.viewJamMasukKeluarHeight.constant = self.labelJamPulangMini.getHeight(width: self.labelJamPulangMini.frame.width) + self.labelJamPulang.getHeight(width: self.labelJamPulang.frame.width) + 11.5
-            self.stackViewPresensiHeight.constant = self.labelPresensiPulang.getHeight(width: self.labelPresensiPulang.frame.width) + self.imagePresensiPulang.frame.height + 28.4 + 6.2 + 20.1
-            self.viewJamMasukKeluar.layer.cornerRadius = self.viewJamMasukKeluarHeight.constant / 2
-            self.view.layoutIfNeeded()
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2) {
+                self.viewJamMasukKeluarHeight.constant = self.labelJamPulangMini.getHeight(width: self.labelJamPulangMini.frame.width) + self.labelJamPulang.getHeight(width: self.labelJamPulang.frame.width) + 11.5
+                self.stackViewPresensiHeight.constant = self.labelPresensiPulang.getHeight(width: self.labelPresensiPulang.frame.width) + self.imagePresensiPulang.frame.height + 28.4 + 6.2 + 20.1
+                self.viewJamMasukKeluar.layer.cornerRadius = self.viewJamMasukKeluarHeight.constant / 2
+                
+                self.viewContainerHeight.constant = self.labelClock.getHeight(width: self.labelClock.frame.width) + self.labelDate.getHeight(width: self.labelDate.frame.width) + self.viewJamMasukKeluarHeight.constant + self.stackViewPresensiHeight.constant + 16.2 + 23.3 + 24
+                
+                self.view.layoutIfNeeded()
+            }
         }
         
         if let presencePrepare = self.preparePresence {

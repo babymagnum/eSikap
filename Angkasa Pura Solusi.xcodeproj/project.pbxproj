@@ -31,8 +31,6 @@
 		ED52152A22F4846C001C6A50 /* BottomSheetMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52152822F4846C001C6A50 /* BottomSheetMenuController.xib */; };
 		ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52153122F51DA7001C6A50 /* MenuLainyaCell.swift */; };
 		ED52153422F51DA7001C6A50 /* MenuLainyaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52153222F51DA7001C6A50 /* MenuLainyaCell.xib */; };
-		ED52153722F5201C001C6A50 /* MenuFavoritCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52153522F5201C001C6A50 /* MenuFavoritCell.swift */; };
-		ED52153822F5201C001C6A50 /* MenuFavoritCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */; };
 		ED57FE3122F84F87007B62A0 /* PengajuanCutiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE2F22F84F87007B62A0 /* PengajuanCutiController.swift */; };
 		ED57FE3222F84F87007B62A0 /* PengajuanCutiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED57FE3022F84F87007B62A0 /* PengajuanCutiController.xib */; };
 		ED57FE4322F8F633007B62A0 /* JatahCutiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE4122F8F632007B62A0 /* JatahCutiCell.swift */; };
@@ -96,8 +94,8 @@
 		ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95909622EBF1C500D696E5 /* PublicFunction.swift */; };
 		ED95909922EBF26E00D696E5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95909822EBF26E00D696E5 /* BaseViewController.swift */; };
 		ED95909B22EBF4DC00D696E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED95909A22EBF4DC00D696E5 /* LaunchScreen.storyboard */; };
-		ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95909E22EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift */; };
-		ED9590A122EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED95909F22EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib */; };
+		ED9590A022EBF9B500D696E5 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95909E22EBF9B500D696E5 /* OnboardingCell.swift */; };
+		ED9590A122EBF9B500D696E5 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED95909F22EBF9B500D696E5 /* OnboardingCell.xib */; };
 		ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A722EBFF8D00D696E5 /* Onboarding.swift */; };
 		ED9590AA22EC923A00D696E5 /* PresenceNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A922EC923A00D696E5 /* PresenceNetworking.swift */; };
 		EDBF219F22FE465B003F5DAF /* StatusPersetujuanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF219D22FE465B003F5DAF /* StatusPersetujuanCell.swift */; };
@@ -165,8 +163,6 @@
 		ED52152822F4846C001C6A50 /* BottomSheetMenuController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetMenuController.xib; sourceTree = "<group>"; };
 		ED52153122F51DA7001C6A50 /* MenuLainyaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLainyaCell.swift; sourceTree = "<group>"; };
 		ED52153222F51DA7001C6A50 /* MenuLainyaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuLainyaCell.xib; sourceTree = "<group>"; };
-		ED52153522F5201C001C6A50 /* MenuFavoritCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFavoritCell.swift; sourceTree = "<group>"; };
-		ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuFavoritCell.xib; sourceTree = "<group>"; };
 		ED57FE2F22F84F87007B62A0 /* PengajuanCutiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengajuanCutiController.swift; sourceTree = "<group>"; };
 		ED57FE3022F84F87007B62A0 /* PengajuanCutiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PengajuanCutiController.xib; sourceTree = "<group>"; };
 		ED57FE4122F8F632007B62A0 /* JatahCutiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JatahCutiCell.swift; sourceTree = "<group>"; };
@@ -232,8 +228,8 @@
 		ED95909622EBF1C500D696E5 /* PublicFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFunction.swift; sourceTree = "<group>"; };
 		ED95909822EBF26E00D696E5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		ED95909A22EBF4DC00D696E5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		ED95909E22EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCellCollectionViewCell.swift; sourceTree = "<group>"; };
-		ED95909F22EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCellCollectionViewCell.xib; sourceTree = "<group>"; };
+		ED95909E22EBF9B500D696E5 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		ED95909F22EBF9B500D696E5 /* OnboardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
 		ED9590A322EBFB9000D696E5 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		ED9590A422EBFB9000D696E5 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ED9590A522EBFB9100D696E5 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -372,15 +368,6 @@
 				ED52152822F4846C001C6A50 /* BottomSheetMenuController.xib */,
 			);
 			path = bottom_sheet_menu;
-			sourceTree = "<group>";
-		};
-		ED52152B22F491F8001C6A50 /* menu_favorit_cell */ = {
-			isa = PBXGroup;
-			children = (
-				ED52153522F5201C001C6A50 /* MenuFavoritCell.swift */,
-				ED52153622F5201C001C6A50 /* MenuFavoritCell.xib */,
-			);
-			path = menu_favorit_cell;
 			sourceTree = "<group>";
 		};
 		ED52153022F51D91001C6A50 /* menu_lainya_cell */ = {
@@ -697,7 +684,6 @@
 				ED57FE3F22F8F606007B62A0 /* jatah_cuti_cell */,
 				ED61BF0F22F7A4D500776C25 /* karyawan_cell */,
 				ED52153022F51D91001C6A50 /* menu_lainya_cell */,
-				ED52152B22F491F8001C6A50 /* menu_favorit_cell */,
 				ED52151C22F46E63001C6A50 /* presensi_cell */,
 				ED3038C422ED635A005BCF87 /* berita_cell */,
 				ED3038C322ED6352005BCF87 /* menu_utama_cell */,
@@ -709,8 +695,8 @@
 		ED95909D22EBF98C00D696E5 /* onboarding_cell */ = {
 			isa = PBXGroup;
 			children = (
-				ED95909E22EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift */,
-				ED95909F22EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib */,
+				ED95909E22EBF9B500D696E5 /* OnboardingCell.swift */,
+				ED95909F22EBF9B500D696E5 /* OnboardingCell.xib */,
 			);
 			path = onboarding_cell;
 			sourceTree = "<group>";
@@ -941,9 +927,8 @@
 				ED52152A22F4846C001C6A50 /* BottomSheetMenuController.xib in Resources */,
 				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
 				EDBF21A622FE5502003F5DAF /* StatusActionCell.xib in Resources */,
-				ED52153822F5201C001C6A50 /* MenuFavoritCell.xib in Resources */,
 				EDBF21A022FE465B003F5DAF /* StatusPersetujuanCell.xib in Resources */,
-				ED9590A122EBF9B500D696E5 /* OnboardingCellCollectionViewCell.xib in Resources */,
+				ED9590A122EBF9B500D696E5 /* OnboardingCell.xib in Resources */,
 				ED57FE4F22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib in Resources */,
 				ED139BBE2302F2B500B854BC /* GoogleService-Info.plist in Resources */,
 				ED10746122F5A5BA00ADF055 /* DetailBeritaController.xib in Resources */,
@@ -1073,7 +1058,7 @@
 				ED57FE5122FA46F7007B62A0 /* Bulan.swift in Sources */,
 				ED61BF2B22F7E27900776C25 /* Order.swift in Sources */,
 				ED52152922F4846C001C6A50 /* BottomSheetMenuController.swift in Sources */,
-				ED9590A022EBF9B500D696E5 /* OnboardingCellCollectionViewCell.swift in Sources */,
+				ED9590A022EBF9B500D696E5 /* OnboardingCell.swift in Sources */,
 				EDFC1F5622FDBB1700AAA93B /* RealisasiLemburController.swift in Sources */,
 				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
 				EDBF21B622FE7335003F5DAF /* RiwayatCutiCell.swift in Sources */,
@@ -1086,7 +1071,6 @@
 				ED139BB82302EC9000B854BC /* CustomTextView.swift in Sources */,
 				ED61BF0222F67E6700776C25 /* PresensiCell.swift in Sources */,
 				ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */,
-				ED52153722F5201C001C6A50 /* MenuFavoritCell.swift in Sources */,
 				EDBF21A222FE4C65003F5DAF /* StatusPersetujuan.swift in Sources */,
 				EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */,
 				EDBF21B922FE7875003F5DAF /* RiwayatCuti.swift in Sources */,

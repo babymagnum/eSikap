@@ -15,6 +15,8 @@ class PresensiCell: UICollectionViewCell {
         return mFunction
     }()
 
+    @IBOutlet weak var labelPulang: CustomLabel!
+    @IBOutlet weak var labelMasuk: CustomLabel!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelJamMasuk: UILabel!
@@ -28,7 +30,9 @@ class PresensiCell: UICollectionViewCell {
         
         viewContainer.layer.cornerRadius = 5
         
-        buttonStatusPresensi.layer.cornerRadius = buttonStatusPresensi.frame.height / 2
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.buttonStatusPresensi.layer.cornerRadius = self.buttonStatusPresensi.frame.height / 2
+        }
     }
     
     override func layoutSubviews() {
@@ -55,14 +59,14 @@ class PresensiCell: UICollectionViewCell {
                 }
                 
                 if data.date_in == "" {
-                    self.labelPresensiMasuk.text = "-" // only for make the text not empty
+                    self.labelPresensiMasuk.text = "-"
                 } else {
                     let fullString = (data.date_in?.contains(" "))! ? "\(data.date_in?.components(separatedBy: " ")[0] ?? "")      \(data.date_in?.components(separatedBy: " ")[1] ?? "")" : data.date_in
                     self.labelPresensiMasuk.attributedText = function.coloredString(color: "9ccc65", mainString: fullString!, stringNotColored: String((data.date_in?.prefix(9))!))
                 }
                 
                 if data.date_out == "" {
-                    self.labelPresensiPulang.text = "-" // only for make the text not empty
+                    self.labelPresensiPulang.text = "-"
                 } else {
                     let fullString = (data.date_out?.contains(" "))! ? "\(data.date_out?.components(separatedBy: " ")[0] ?? "")      \(data.date_out?.components(separatedBy: " ")[1] ?? "")" : data.date_out
                     self.labelPresensiPulang.attributedText = function.coloredString(color: "ef5350", mainString: fullString!, stringNotColored: String((data.date_in?.prefix(9))!))

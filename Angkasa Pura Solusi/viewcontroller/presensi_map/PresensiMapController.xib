@@ -137,7 +137,7 @@ area presensi !</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circularClock" translatesAutoresizingMaskIntoConstraints="NO" id="U56-as-7dU">
-                                    <rect key="frame" x="137.5" y="-1.5" width="38" height="38"/>
+                                    <rect key="frame" x="136" y="-3" width="41" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="U56-as-7dU" secondAttribute="height" multiplier="1:1" id="CEs-Ei-LjU"/>
                                     </constraints>
@@ -162,7 +162,7 @@ area presensi !</string>
                                 <constraint firstItem="U56-as-7dU" firstAttribute="centerX" secondItem="mfy-il-fgX" secondAttribute="centerX" id="IvN-9v-R9u"/>
                                 <constraint firstItem="tZo-Cy-dqS" firstAttribute="top" secondItem="mfy-il-fgX" secondAttribute="top" constant="4" id="XQK-aN-pLW"/>
                                 <constraint firstItem="J00-Hh-ugF" firstAttribute="top" secondItem="mfy-il-fgX" secondAttribute="top" constant="4" id="ZcO-02-XRH"/>
-                                <constraint firstItem="U56-as-7dU" firstAttribute="width" secondItem="mfy-il-fgX" secondAttribute="width" multiplier="0.12" id="d4s-tV-Bcc"/>
+                                <constraint firstItem="U56-as-7dU" firstAttribute="width" secondItem="mfy-il-fgX" secondAttribute="width" multiplier="0.13" id="d4s-tV-Bcc"/>
                                 <constraint firstAttribute="trailing" secondItem="J00-Hh-ugF" secondAttribute="trailing" constant="28" id="eSv-0F-soy"/>
                                 <constraint firstItem="U56-as-7dU" firstAttribute="centerY" secondItem="mfy-il-fgX" secondAttribute="centerY" id="rTN-9N-KPH"/>
                                 <constraint firstItem="AWu-MW-IgS" firstAttribute="top" secondItem="J00-Hh-ugF" secondAttribute="bottom" constant="1.5" id="sdy-UJ-Wb3"/>

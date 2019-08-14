@@ -15,13 +15,12 @@ class MenuLainyaCell: UICollectionViewCell {
     @IBOutlet weak var iconMenu: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var iconAction: UIImageView!
+    @IBOutlet weak var viewContainerInsideHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        viewContainer.layer.cornerRadius = 6
-        viewContainer.layer.borderWidth = 1
-        viewContainer.layer.borderColor = UIColor.init(rgb: 0xe9e9e9).cgColor
+        viewContainer.giveBorder(6, 1, "e9e9e9")                
     }
     
     var data: Menu? {
@@ -34,7 +33,7 @@ class MenuLainyaCell: UICollectionViewCell {
                     self.iconAction.image = action
                 } else {
                     self.iconAction.isHidden = true
-                    self.iconAction.image = UIImage()
+                    self.iconAction.image = UIImage(named: "plus-circular")
                 }
             }
         }

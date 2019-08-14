@@ -140,8 +140,10 @@
                 <outlet property="labelDate" destination="G5K-L3-6S4" id="Ofx-rw-IWR"/>
                 <outlet property="labelJamMasuk" destination="FMv-R6-AAb" id="rt3-Wh-1SI"/>
                 <outlet property="labelJamPulang" destination="iAL-Se-sdG" id="Uwg-6Y-LN5"/>
+                <outlet property="labelMasuk" destination="kui-Rg-u2L" id="G3U-j3-jLt"/>
                 <outlet property="labelPresensiMasuk" destination="Hbu-jq-xM9" id="WOa-ux-dPG"/>
                 <outlet property="labelPresensiPulang" destination="cKG-ZJ-1Zt" id="MKQ-G1-9xr"/>
+                <outlet property="labelPulang" destination="8pu-B4-9yJ" id="Uam-TC-4d4"/>
                 <outlet property="viewContainer" destination="IgV-Rw-9qe" id="I6p-ap-xeo"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="125.89285714285714"/>

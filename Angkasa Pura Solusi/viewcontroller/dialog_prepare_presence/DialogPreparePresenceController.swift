@@ -24,15 +24,21 @@ class DialogPreparePresenceController: UIViewController {
         initView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     private func initView() {
         buttonOke.layer.cornerRadius = 5
         viewContainer.layer.cornerRadius = 4
         
         labelDescription.text = stringDescription
         
-        UIView.animate(withDuration: 0.2) {
-            self.viewContainerHeight.constant = self.imageX.frame.height + self.labelDescription.getHeight(width: self.labelDescription.frame.width) + self.buttonOke.frame.height + 62.1 + 47 + 39 + 23
-            self.view.layoutIfNeeded()
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2) {
+                self.viewContainerHeight.constant = self.imageX.frame.height + self.labelDescription.getHeight(width: self.labelDescription.frame.width) + self.buttonOke.frame.height + 62.1 + 47 + 39 + 23
+                self.view.layoutIfNeeded()
+            }
         }
     }
 

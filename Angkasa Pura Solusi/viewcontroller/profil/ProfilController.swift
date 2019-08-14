@@ -46,22 +46,12 @@ class ProfilController: BaseViewController {
         return refreshControl
     }()
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        initView()
-        
-        UIView.animate(withDuration: 0.2) {
-            self.viewTopHeight.constant = self.labelNama.getHeight(width: self.labelNama.frame.width) + self.labelJabatan.getHeight(width: self.labelJabatan.frame.width) + self.labelDivisi.getHeight(width: self.labelDivisi.frame.width) + self.imageAccount.frame.height + 60
-            self.view.layoutIfNeeded()
-        }
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
+        
+        initView()
         
         clickEvent()
         
@@ -92,6 +82,13 @@ class ProfilController: BaseViewController {
         self.imageAccount.layer.cornerRadius = self.imageAccount.frame.width / 2
         self.viewInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
         self.viewAction.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2) {
+                self.viewTopHeight.constant = self.labelNama.getHeight(width: self.labelNama.frame.width) + self.labelJabatan.getHeight(width: self.labelJabatan.frame.width) + self.labelDivisi.getHeight(width: self.labelDivisi.frame.width) + self.imageAccount.frame.height + 60
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
     private func setView(_ item: ItemProfile) {

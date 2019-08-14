@@ -48,6 +48,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     var delegate : BerandaControllerProtocol?
     var isWasLoaded = false
     var isMenuLoaded = false
+    var isAlreadyCalculateBeritaHeight = false
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -79,12 +80,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         getLatestNews()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2
-    }
-    
     private func clickEvent() {
         viewContainerPresensi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewContainerPresensiClick)))
     }
@@ -114,7 +109,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func checkShowFirstDialog() {
-        if !self.preference.getBool(key: self.staticLet.IS_SHOW_FIRST_DIALOG) {
+        if !preference.getBool(key: self.staticLet.IS_SHOW_FIRST_DIALOG) {
             self.getAnnouncement()
         }
     }
@@ -145,11 +140,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         let menuSize = (UIScreen.main.bounds.width * 0.33) - 20
         let layoutMenuCollectionView = menuCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layoutMenuCollectionView.itemSize = CGSize(width: menuSize, height: menuSize)
-
-        let beritaCell = beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
-        let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.height) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.height) + 29.5
-        let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.8, height: beritaHeight)
         
         menuCollectionView.delegate = self
         menuCollectionView.dataSource = self
@@ -170,17 +160,20 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         viewContainerCuti.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 6)
         viewContainerPresensi.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 6)
         
-        let estimatedStackHeight = iconPresenceStatus.frame.height + labelClock.getHeight(width: labelClock.frame.width) + labelPresenceStatus.getHeight(width: labelPresenceStatus.frame.width) + 12.4 + 3.6 + 2.3 + 10.7
-        
-        UIView.animate(withDuration: 0.2) {
-            self.stackTopHeight.constant = estimatedStackHeight
-            self.stackBottomHeight.constant = estimatedStackHeight
-            self.viewRootHeight.constant += self.stackTopHeight.constant + self.stackBottomHeight.constant
-            self.view.layoutIfNeeded()
-        }
-        
         labelName.text = preference.getString(key: staticLet.EMP_NAME)
         imageAccount.loadUrl(preference.getString(key: staticLet.EMP_PHOTO))
+        
+        let estimatedStackHeight = iconPresenceStatus.frame.height + labelClock.getHeight(width: labelClock.frame.width) + labelPresenceStatus.getHeight(width: labelPresenceStatus.frame.width) + 12.4 + 3.6 + 2.3 + 10.7
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2) {
+                self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2
+                self.stackTopHeight.constant = estimatedStackHeight
+                self.stackBottomHeight.constant = estimatedStackHeight
+                self.viewRootHeight.constant += self.stackTopHeight.constant + self.stackBottomHeight.constant
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -204,8 +197,8 @@ extension BerandaController {
             switch listMenu[indexpath.item].id {
             case 1:
                 //pengajuan cuti
-                self.showInDevelopmentDialog()
-                //self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
+                //self.showInDevelopmentDialog()
+                self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             case 2:
                 //pengajuan lembur
                 self.showInDevelopmentDialog()
@@ -369,23 +362,7 @@ extension BerandaController {
     }
 }
 
-extension BerandaController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView == menuCollectionView {
-//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuUtamaCell", for: indexPath) as? MenuUtamaCell else { return CGSize(width: (UIScreen.main.bounds.width * 0.33) - 20, height: menuCollectionViewHeight.constant) }
-//            cell.data = listMenu[indexPath.item]
-//            return CGSize(width: (UIScreen.main.bounds.width * 0.33) - 20, height: cell.viewContainer.frame.height)
-//        } else {
-//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as? BeritaCell else {
-//                return CGSize(width: UIScreen.main.bounds.width * 0.8, height: beritaCollectionViewHeight.cons)
-//            }
-//            cell.data = listBerita[indexPath.item]
-//            cell.layoutIfNeeded()
-//            let targetSize = CGSize(width: UIScreen.main.bounds.width * 0.8, height: cell.viewContainerHeight.constant)
-//            let estimated = cell.systemLayoutSizeFitting(targetSize)
-//            return CGSize(width: targetSize.width, height: estimated.height)
-//        }
-//    }
+extension BerandaController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == menuCollectionView {
@@ -399,16 +376,28 @@ extension BerandaController: UICollectionViewDataSource, UICollectionViewDelegat
         
         if collectionView == menuCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuUtamaCell", for: indexPath) as! MenuUtamaCell
+            
+            DispatchQueue.main.async {
+                cell.viewContaineInsideHeight.constant = cell.icon.frame.height + cell.labelTitle.getHeight(width: cell.labelTitle.frame.width) + 7.2
+            }
+            
             cell.data = listMenu[indexPath.item]
             cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(menuClick(sender:))))
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as! BeritaCell
-            cell.data = listBerita[indexPath.item]
-            //cell.widthConstraint.constant = UIScreen.main.bounds.width * 0.8
-            //cell.viewContainerHeight.constant = cell.labelCreatedAt.getHeight(width: cell.labelCreatedAt.frame.height) + cell.labelTitle.getHeight(width: cell.labelTitle.frame.height) + 29.5 + ((UIScreen.main.bounds.width * 0.8) / 0.4)
-            cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(beritaContainerClick(sender:))))
-            return cell
+            let beritaCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as! BeritaCell
+            
+            if !isAlreadyCalculateBeritaHeight {
+                isAlreadyCalculateBeritaHeight = true
+                let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.width) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.width) + 29.5
+                let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.8, height: beritaHeight)
+            }
+            
+            beritaCell.data = listBerita[indexPath.item]
+            beritaCell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(beritaContainerClick(sender:))))
+            
+            return beritaCell
         }
         
     }

@@ -71,11 +71,13 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
         labelJamMasuk.text = String((preparePresence.shift_start?.prefix(5))!)
         labelJamKeluar.text = String((preparePresence.shift_end?.prefix(5))!)
         
-        UIView.animate(withDuration: 0.2) {
-            self.viewJamMasukKeluarHeight.constant = self.labelJamMasukMini.getHeight(width: self.labelJamMasukMini.frame.width) + self.labelJamMasuk.getHeight(width: self.labelJamMasuk.frame.width) + 4.3 + 7.1 + 1.5
-            self.viewPresenceHeight.constant = self.labelDescriptionPresence.getHeight(width: self.labelDescriptionPresence.frame.width) + self.buttonPresence.frame.height + 10 + 9 + 13.5
-            self.viewJamMasukPulang.giveBorder(self.viewJamMasukKeluarHeight.constant / 2, 2, "42a5f5")
-            self.view.layoutIfNeeded()
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2) {
+                self.viewJamMasukKeluarHeight.constant = self.labelJamMasukMini.getHeight(width: self.labelJamMasukMini.frame.width) + self.labelJamMasuk.getHeight(width: self.labelJamMasuk.frame.width) + 4.3 + 7.1 + 1.5
+                self.viewPresenceHeight.constant = self.labelDescriptionPresence.getHeight(width: self.labelDescriptionPresence.frame.width) + self.buttonPresence.frame.height + 10 + 9 + 13.5
+                self.viewJamMasukPulang.giveBorder(self.viewJamMasukKeluarHeight.constant / 2, 2, "42a5f5")
+                self.view.layoutIfNeeded()
+            }
         }
         
         let timeArray = preparePresence.time?.components(separatedBy: ":")

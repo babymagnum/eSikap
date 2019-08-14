@@ -26,7 +26,7 @@ class KaryawanCell: UICollectionViewCell {
         viewContainer.clipsToBounds = true
         viewContainer.layer.cornerRadius = 5
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.async {
             self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2
         }
     }
