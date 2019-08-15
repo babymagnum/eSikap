@@ -75,18 +75,19 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
             
             guard let karyawan = karyawan else { return }
             
-            if karyawan.emp.count == 0 && self.listKaryawan.count == 0 {
+            if self.currentPage == 0 { self.listKaryawan.removeAll() }
+            
+            if karyawan.data!.emp.count == 0 && self.listKaryawan.count == 0 {
+                self.labelKaryawanKosong.text = karyawan.message
                 self.labelKaryawanKosong.isHidden = false
             } else {
                 self.labelKaryawanKosong.isHidden = true
             }
             
-            if self.currentPage == 0 { self.listKaryawan.removeAll() }
-            
-            self.totalPage = karyawan.total_page!
+            self.totalPage = (karyawan.data?.total_page!)!
             self.currentPage += 1
             
-            for itemKaryawan in karyawan.emp {
+            for itemKaryawan in karyawan.data!.emp {
                 self.listKaryawan.append(itemKaryawan)
             }
             

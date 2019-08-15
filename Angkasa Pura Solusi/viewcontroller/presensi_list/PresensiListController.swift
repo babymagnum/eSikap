@@ -80,7 +80,7 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
     private func getPresenceList(_ month: String, _ year: String) {
         SVProgressHUD.show()
         
-        presenceNetworking.getPresenceList(request: (month: month, year: year)) { (error, listPresensi, isExpired) in
+        presenceNetworking.getPresenceList(request: (month: month, year: year)) { (error, presensi, isExpired) in
             
             SVProgressHUD.dismiss()
             
@@ -96,15 +96,16 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
                 return
             }
             
-            guard let list = listPresensi else { return }
+            guard let presensi = presensi else { return }
             
-            if list.count == 0 {
+            if presensi.data.count == 0 {
+                self.labelPresensiKosong.text = presensi.message
                 self.labelPresensiKosong.isHidden = false
             } else {
                 self.labelPresensiKosong.isHidden = true
             }
             
-            self.listPresensi = list
+            self.listPresensi = presensi.data
             
             DispatchQueue.main.async { self.presensiCollectionView.reloadData() }
         }

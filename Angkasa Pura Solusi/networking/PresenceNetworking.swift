@@ -82,7 +82,7 @@ class PresenceNetworking {
         }
     }
     
-    func getPresenceList(request: (month: String, year: String), completion: @escaping (_ error: String?, _ listPresensi: [ItemPresensi]?, _ isExpired: Bool?) -> Void) {
+    func getPresenceList(request: (month: String, year: String), completion: @escaping (_ error: String?, _ presensi: Presensi?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getPresenceList"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
@@ -104,7 +104,7 @@ class PresenceNetworking {
                     
                     do {
                         let presensi = try JSONDecoder().decode(Presensi.self, from: mData)
-                        completion(nil, presensi.data, nil)
+                        completion(nil, presensi, nil)
                     } catch let err { completion(err.localizedDescription, nil, nil) }
                 } else if status == 401 {
                     completion(nil, nil, true)

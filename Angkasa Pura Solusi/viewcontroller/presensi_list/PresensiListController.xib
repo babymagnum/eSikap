@@ -87,7 +87,7 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data presensi kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HY9-CS-9Eb" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                            <rect key="frame" x="20" y="73" width="335" height="15.5"/>
+                            <rect key="frame" x="20" y="316" width="335" height="15.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -102,8 +102,8 @@
                         <constraint firstAttribute="trailing" secondItem="0pJ-rl-KPs" secondAttribute="trailing" id="XYi-5u-NWn"/>
                         <constraint firstAttribute="bottom" secondItem="0pJ-rl-KPs" secondAttribute="bottom" id="ZgT-QN-RZd"/>
                         <constraint firstItem="6LL-eK-mv4" firstAttribute="leading" secondItem="SkU-H2-uHg" secondAttribute="leading" id="b2K-xQ-gwq"/>
-                        <constraint firstItem="HY9-CS-9Eb" firstAttribute="top" secondItem="6LL-eK-mv4" secondAttribute="bottom" constant="20" id="ct7-ry-3Mc"/>
                         <constraint firstItem="0pJ-rl-KPs" firstAttribute="top" secondItem="6LL-eK-mv4" secondAttribute="bottom" id="m0W-ra-0JB"/>
+                        <constraint firstItem="HY9-CS-9Eb" firstAttribute="centerY" secondItem="SkU-H2-uHg" secondAttribute="centerY" id="qXO-g2-2LT"/>
                         <constraint firstItem="6LL-eK-mv4" firstAttribute="top" secondItem="SkU-H2-uHg" secondAttribute="top" id="wDu-J9-1h7"/>
                     </constraints>
                 </view>

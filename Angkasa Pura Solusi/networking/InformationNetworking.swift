@@ -211,7 +211,7 @@ class InformationNetworking {
         }
     }
     
-    func getEmpList(_ request: (emp_name: String, unit_id: String, workarea_id: String, gender: String, page: String, order_id: String), completion: @escaping (_ error: String?, _ listKaryawan: Karyawan?, _ isExpired: Bool?) -> Void) {
+    func getEmpList(_ request: (emp_name: String, unit_id: String, workarea_id: String, gender: String, page: String, order_id: String), completion: @escaping (_ error: String?, _ listKaryawan: ListKaryawan?, _ isExpired: Bool?) -> Void) {
         
         let url = "\(staticLet.base_url)api/getEmpList"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
@@ -235,7 +235,7 @@ class InformationNetworking {
                     
                     do {
                         let listKaryawan = try JSONDecoder().decode(ListKaryawan.self, from: mData)
-                        completion(nil, listKaryawan.data, nil)
+                        completion(nil, listKaryawan, nil)
                     } catch let err { completion(err.localizedDescription, nil, nil) }
                     
                 } else if status == 401 {
