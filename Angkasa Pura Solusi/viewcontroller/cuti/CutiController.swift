@@ -28,6 +28,11 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
         getCuti()
     }
     
+    // use this function to call protocol to notify the tablayout that page is change
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     private func getCuti() {
         listCuti.append(Cuti(id: "1", image: "", name: "Wayan", kode: "LVE.2019.05.000410", typeCuti: "Sakit Dengan Surat Dokter", tanggalCuti: "31 Mei 2019 - 01 Juni 2019", timeSubmitted: "14:25"))
         listCuti.append(Cuti(id: "2", image: "", name: "Hendra", kode: "LVE.2019.05.039210", typeCuti: "Izin Meninggalkan Pekerjaan Sementara", tanggalCuti: "31 Mei 2019", timeSubmitted: "14:10"))
