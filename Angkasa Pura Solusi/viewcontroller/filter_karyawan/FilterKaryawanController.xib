@@ -30,6 +30,7 @@
                 <outlet property="viewLokasiKerja" destination="Ibr-3U-Ati" id="X19-sy-0cF"/>
                 <outlet property="viewNamaKaryawan" destination="MTM-e7-moV" id="Uwg-rC-fvw"/>
                 <outlet property="viewOrderBy" destination="Y7I-8Q-FfV" id="Moz-dT-n5M"/>
+                <outlet property="viewRootTopMargin" destination="FZw-rm-4ds" id="YOZ-bU-8hh"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

@@ -155,7 +155,7 @@
                 <outlet property="viewContainerHeight" destination="bo8-Jh-cLX" id="BXc-Uz-OT8"/>
                 <outlet property="viewInformation" destination="iG2-pk-b8Q" id="q75-XD-MEp"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="127.23214285714285"/>
+            <point key="canvasLocation" x="131.8840579710145" y="126.89732142857142"/>
         </collectionViewCell>
     </objects>
     <resources>

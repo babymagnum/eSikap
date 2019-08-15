@@ -14,6 +14,7 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
     @IBOutlet weak var cutiCollectionView: UICollectionView!
     
     var listCuti = [Cuti]()
+    var isCalculateCutiHeight = false
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "CUTI")
@@ -38,10 +39,6 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
     private func initCollectionView() {
         cutiCollectionView.register(UINib(nibName: "CutiCell", bundle: nil), forCellWithReuseIdentifier: "CutiCell")
         
-        let cutiCell = cutiCollectionView.dequeueReusableCell(withReuseIdentifier: "CutiCell", for: IndexPath(item: 0, section: 0)) as! CutiCell
-        let cutiLayout = cutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiCell.viewContainer.frame.height + 10)
-        
         cutiCollectionView.delegate = self
         cutiCollectionView.dataSource = self
     }
@@ -62,9 +59,18 @@ extension CutiController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CutiCell", for: indexPath) as! CutiCell
-        cell.data = listCuti[indexPath.item]
-        cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cutiContainerClick(sender:))))
-        return cell
+        let cutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CutiCell", for: indexPath) as! CutiCell
+        
+        if !isCalculateCutiHeight {
+            self.isCalculateCutiHeight = true
+            DispatchQueue.main.async {
+                let cutiLayout = self.cutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiCell.viewContainer.frame.height + 10)
+            }
+        }
+        
+        cutiCell.data = listCuti[indexPath.item]
+        cutiCell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cutiContainerClick(sender:))))
+        return cutiCell
     }
 }

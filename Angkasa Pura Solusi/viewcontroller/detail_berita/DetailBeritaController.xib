@@ -23,7 +23,8 @@
                 <outlet property="labelTitleBerita" destination="8iR-oU-VBc" id="TxZ-5m-Ic0"/>
                 <outlet property="scrollView" destination="GEO-ZA-yXp" id="VRh-mS-lX5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="viewRootHeight" destination="Mn0-gE-eFc" id="vXx-7b-L6X"/>
+                <outlet property="viewRootHeight" destination="Mn0-gE-eFc" id="TU8-id-kbQ"/>
+                <outlet property="viewTopMargin" destination="m4N-7q-rpO" id="huO-6h-tr7"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

@@ -40,6 +40,7 @@
                 <outlet property="viewFieldCatatan" destination="zk4-Qd-NyJ" id="aTz-rV-ZBc"/>
                 <outlet property="viewImage" destination="R6w-QA-AnW" id="rJF-Af-1il"/>
                 <outlet property="viewRootHeight" destination="umB-3d-2lI" id="zKU-TZ-cWb"/>
+                <outlet property="viewRootTopMargin" destination="Zr0-OJ-iOM" id="adZ-eI-1QM"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

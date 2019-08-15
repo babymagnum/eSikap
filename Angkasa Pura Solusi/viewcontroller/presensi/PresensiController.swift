@@ -10,6 +10,7 @@ import UIKit
 
 class PresensiController: BaseViewController {
 
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var viewContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var labelClock: UILabel!
     @IBOutlet weak var labelDate: UILabel!
@@ -52,6 +53,7 @@ class PresensiController: BaseViewController {
     }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1.0)
         
         viewPresensiMasuk.layer.cornerRadius = 6

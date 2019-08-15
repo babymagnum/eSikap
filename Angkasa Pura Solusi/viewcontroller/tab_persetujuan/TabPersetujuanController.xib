@@ -20,6 +20,7 @@
                 <outlet property="buttonBarView" destination="aIo-bO-ncm" id="CvC-SS-D2k"/>
                 <outlet property="containerView" destination="oje-Ph-9Ok" id="xnP-XK-U6U"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewRootTopMargin" destination="rgy-hL-cus" id="zTL-Ik-Wl4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

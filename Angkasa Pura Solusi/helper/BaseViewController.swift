@@ -46,6 +46,22 @@ class BaseViewController: UIViewController {
         //do something
     }
     
+    func checkTopMargin(viewRootTopMargin: NSLayoutConstraint) {
+        if #available(iOS 11, *) {
+            viewRootTopMargin.constant = 0
+        } else {
+            viewRootTopMargin.constant = UIApplication.shared.statusBarFrame.height
+        }
+    }
+    
+    func checkRootHeight(viewRootHeight: NSLayoutConstraint) {
+        if #available(iOS 11, *) {
+            viewRootHeight.constant += 0
+        } else {
+            viewRootHeight.constant += 45
+        }
+    }
+    
     func showCustomDialog(_ vc: UIViewController) {
         let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width - 21)
         self.present(popupVc, animated: true)

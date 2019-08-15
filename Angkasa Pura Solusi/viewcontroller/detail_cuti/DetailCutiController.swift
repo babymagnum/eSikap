@@ -10,6 +10,7 @@ import UIKit
 
 class DetailCutiController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var labelKodeCuti: UILabel!
     @IBOutlet weak var labelDateSubmitted: UILabel!
     @IBOutlet weak var viewImage: UIView!
@@ -26,6 +27,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
     
     var listStatusPersetujuan = [StatusPersetujuan]()
+    var isCalculatePesertujuanHeight = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,8 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
         viewRootHeight.constant -= statusPersetujuanCollectionHeight.constant
@@ -68,10 +72,6 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     private func initCollectionView() {
         statusPersetujuanCollectionView.register(UINib(nibName: "StatusPersetujuanCell", bundle: nil), forCellWithReuseIdentifier: "StatusPersetujuanCell")
         
-        let statusPersetujuanCell = statusPersetujuanCollectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: IndexPath(item: 0, section: 0)) as! StatusPersetujuanCell
-        let statusPersetujuanLayout = statusPersetujuanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanCell.viewContainer.frame.height)
-        
         statusPersetujuanCollectionView.delegate = self
         statusPersetujuanCollectionView.dataSource = self
     }
@@ -84,9 +84,18 @@ extension DetailCutiController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
-        cell.data = listStatusPersetujuan[indexPath.item]
-        return cell
+        let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
+        
+        if !isCalculatePesertujuanHeight {
+            self.isCalculatePesertujuanHeight = true
+            DispatchQueue.main.async {
+                let statusPersetujuanLayout = self.statusPersetujuanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanCell.viewContainer.frame.height)
+            }
+        }
+        
+        statusPersetujuanCell.data = listStatusPersetujuan[indexPath.item]
+        return statusPersetujuanCell
     }
 }
 

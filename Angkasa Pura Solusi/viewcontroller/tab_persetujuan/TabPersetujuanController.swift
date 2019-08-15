@@ -11,6 +11,8 @@ import XLPagerTabStrip
 
 class TabPersetujuanController: ButtonBarPagerTabStripViewController {
 
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
+    
     lazy var function: PublicFunction = {
         let mFunction = PublicFunction()
         return mFunction
@@ -28,6 +30,12 @@ class TabPersetujuanController: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
         
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
+        
+        if #available(iOS 11, *) {
+            self.viewRootTopMargin.constant = 0
+        } else {
+            self.viewRootTopMargin.constant = UIApplication.shared.statusBarFrame.height
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }

@@ -12,6 +12,7 @@ import SVProgressHUD
 
 class DetailBeritaController: BaseViewController {
 
+    @IBOutlet weak var viewTopMargin: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageBerita: UIImageView!
     @IBOutlet weak var labelTitleBerita: UILabel!
@@ -32,6 +33,9 @@ class DetailBeritaController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        checkTopMargin(viewRootTopMargin: viewTopMargin)
+        checkRootHeight(viewRootHeight: viewRootHeight)
+        
         setInteractiveRecognizer()
         
         setView()

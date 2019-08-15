@@ -11,12 +11,14 @@ import SVProgressHUD
 
 class BeritaController: BaseViewController, UICollectionViewDelegate {
     
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var beritaCollectionView: UICollectionView!
     @IBOutlet weak var labelBeritaKosong: CustomLabel!
     
     var listBerita = [News]()
     var lastVelocityYSign = 0
     var allowLoadMore = false
+    var isCalculateBeritaHeight = false
     var totalPage = 0
     var currentPage = 0
     
@@ -31,6 +33,8 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        
         function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1)
 
         initCollectionView()
@@ -44,11 +48,6 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
         beritaCollectionView.addSubview(refreshControl)
         
         beritaCollectionView.register(UINib(nibName: "BeritaCell", bundle: nil), forCellWithReuseIdentifier: "BeritaCell")
-        
-        let beritaCell = beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
-        let beritaHeight = ((UIScreen.main.bounds.width - 26) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.width) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.width) + 29.5
-        let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: beritaHeight)
         
         beritaCollectionView.delegate = self
         beritaCollectionView.dataSource = self
@@ -140,10 +139,18 @@ extension BeritaController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as! BeritaCell
-        cell.data = listBerita[indexPath.item]
-        cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewContainerClick(sender:))))
-        return cell
+        let beritaCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as! BeritaCell
+        
+        if !isCalculateBeritaHeight {
+            self.isCalculateBeritaHeight = true
+            let beritaHeight = ((UIScreen.main.bounds.width - 26) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.width) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.width) + 29.5
+            let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+            layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: beritaHeight)
+        }
+        
+        beritaCell.data = listBerita[indexPath.item]
+        beritaCell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewContainerClick(sender:))))
+        return beritaCell
     }
     
 }

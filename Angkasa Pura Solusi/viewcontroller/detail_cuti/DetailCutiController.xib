@@ -32,6 +32,7 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewImage" destination="0lc-Bb-wBb" id="9OZ-0n-0fk"/>
                 <outlet property="viewRootHeight" destination="kbO-SL-ziC" id="UdC-H0-h1T"/>
+                <outlet property="viewRootTopMargin" destination="zgG-FC-WoS" id="Lm3-0g-9yE"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

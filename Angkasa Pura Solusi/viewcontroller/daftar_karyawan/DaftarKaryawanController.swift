@@ -11,11 +11,13 @@ import SVProgressHUD
 
 class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var labelKaryawanKosong: UILabel!
     @IBOutlet weak var daftarKaryawanCollectionView: UICollectionView!
     
     var lastVelocityYSign = 0
     var allowLoadMore = false
+    var isCalculateKaryawanHeight = false
     var listKaryawan = [ItemKaryawan]()
     var totalPage = 0
     var currentPage = 0
@@ -36,6 +38,8 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
         
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        
         initCollectionView()
         
         getEmpList()
@@ -45,11 +49,6 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
 
     private func initCollectionView() {
         daftarKaryawanCollectionView.register(UINib(nibName: "KaryawanCell", bundle: nil), forCellWithReuseIdentifier: "KaryawanCell")
-        
-        let karyawanCell = daftarKaryawanCollectionView.dequeueReusableCell(withReuseIdentifier: "KaryawanCell", for: IndexPath(item: 0, section: 0)) as! KaryawanCell
-        let karyawanCellLayout = daftarKaryawanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        let karyawanCellHeight = ((UIScreen.main.bounds.width - 28) * 0.27) + karyawanCell.labelName.getHeight(width: karyawanCell.labelName.frame.width) + karyawanCell.labelJabatan.getHeight(width: karyawanCell.labelJabatan.frame.width) + karyawanCell.labelPosition.getHeight(width: karyawanCell.labelPosition.frame.width) + 8.2 + 4.1 + 4.1 + 12.9
-        karyawanCellLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: karyawanCellHeight)
         
         daftarKaryawanCollectionView.delegate = self
         daftarKaryawanCollectionView.dataSource = self
@@ -126,10 +125,20 @@ extension DaftarKaryawanController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KaryawanCell", for: indexPath) as! KaryawanCell
-        cell.data = listKaryawan[indexPath.item]
-        cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(karyawanContainerClick(sender:))))
-        return cell
+        let karyawanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "KaryawanCell", for: indexPath) as! KaryawanCell
+        
+        if !isCalculateKaryawanHeight {
+            self.isCalculateKaryawanHeight = true
+            DispatchQueue.main.async {
+                let karyawanCellLayout = self.daftarKaryawanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                let karyawanCellHeight = ((UIScreen.main.bounds.width - 28) * 0.27) + karyawanCell.labelName.getHeight(width: karyawanCell.labelName.frame.width) + karyawanCell.labelJabatan.getHeight(width: karyawanCell.labelJabatan.frame.width) + karyawanCell.labelPosition.getHeight(width: karyawanCell.labelPosition.frame.width) + 8.2 + 4.1 + 4.1 + 12.9
+                karyawanCellLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: karyawanCellHeight)
+            }
+        }
+        
+        karyawanCell.data = listKaryawan[indexPath.item]
+        karyawanCell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(karyawanContainerClick(sender:))))
+        return karyawanCell
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 
 class NotifikasiController: BaseViewController {
 
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var notifikasiCollectionView: UICollectionView!
     
     lazy var refreshControl: UIRefreshControl = {
@@ -23,6 +24,8 @@ class NotifikasiController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
         initCollectionView()

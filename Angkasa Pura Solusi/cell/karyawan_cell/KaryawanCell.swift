@@ -27,7 +27,7 @@ class KaryawanCell: UICollectionViewCell {
         viewContainer.layer.cornerRadius = 5
         
         DispatchQueue.main.async {
-            self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2
+            self.imageAccount.layer.cornerRadius = ((UIScreen.main.bounds.width - 28.4) * 0.18 ) / 2
         }
     }
     

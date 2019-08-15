@@ -18,6 +18,7 @@ enum PresensiListFrom {
 
 class PresensiListController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var labelPresensiKosong: UILabel!
     @IBOutlet weak var presensiCollectionView: UICollectionView!
     
@@ -25,6 +26,7 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
     var from: PresensiListFrom?
     var filteredMonth = ""
     var filteredYear = ""
+    var isCalculatePresensiHeight = false
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -51,6 +53,8 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestureRecognnizer))
         swipeGesture.direction = .right
         view.addGestureRecognizer(swipeGesture)
@@ -68,11 +72,6 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
         presensiCollectionView.addSubview(refreshControl)
         
         presensiCollectionView.register(UINib(nibName: "PresensiCell", bundle: nil), forCellWithReuseIdentifier: "PresensiCell")
-        
-        let presensiCell = presensiCollectionView.dequeueReusableCell(withReuseIdentifier: "PresensiCell", for: IndexPath(item: 0, section: 0)) as! PresensiCell
-        let presensiLayout = presensiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        let presensiCellHeight = presensiCell.buttonStatusPresensi.frame.height + presensiCell.labelMasuk.getHeight(width: presensiCell.labelMasuk.frame.width) + presensiCell.labelPulang.getHeight(width: presensiCell.labelPulang.frame.width) + presensiCell.labelPresensiMasuk.getHeight(width: presensiCell.labelPresensiMasuk.frame.width) + presensiCell.labelPresensiPulang.getHeight(width: presensiCell.labelPresensiPulang.frame.width) + 8.9 + 13.3 + 5.1 + 8.7 + 5.1 + 26.4
-        presensiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: presensiCellHeight)
         
         presensiCollectionView.delegate = self
         presensiCollectionView.dataSource = self
@@ -132,9 +131,20 @@ extension PresensiListController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PresensiCell", for: indexPath) as! PresensiCell
-        cell.data = listPresensi[indexPath.row]
-        return cell
+        let presensiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PresensiCell", for: indexPath) as! PresensiCell
+        
+        if !isCalculatePresensiHeight {
+            self.isCalculatePresensiHeight = true
+            
+            DispatchQueue.main.async {
+                let presensiLayout = self.presensiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                let presensiCellHeight = presensiCell.buttonStatusPresensi.frame.height + presensiCell.labelMasuk.getHeight(width: presensiCell.labelMasuk.frame.width) + presensiCell.labelPulang.getHeight(width: presensiCell.labelPulang.frame.width) + presensiCell.labelPresensiMasuk.getHeight(width: presensiCell.labelPresensiMasuk.frame.width) + presensiCell.labelPresensiPulang.getHeight(width: presensiCell.labelPresensiPulang.frame.width) + 8.9 + 13.3 + 5.1 + 8.7 + 5.1 + 26.4
+                presensiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: presensiCellHeight)
+            }
+        }
+        
+        presensiCell.data = listPresensi[indexPath.row]
+        return presensiCell
     }
 }
 

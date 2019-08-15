@@ -20,6 +20,7 @@
                 <outlet property="daftarKaryawanCollectionView" destination="ZEc-Th-lFo" id="rOu-DA-8ob"/>
                 <outlet property="labelKaryawanKosong" destination="9S1-Pf-waH" id="JGT-N5-tqj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewRootTopMargin" destination="umi-Fg-O2o" id="HhL-d6-nHP"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

@@ -17,6 +17,7 @@ protocol BerandaControllerProtocol {
 
 class BerandaController: BaseViewController, UICollectionViewDelegate {
     
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var buttonSelengkapnya: UIButton!
     @IBOutlet weak var labelBeritaPengumuman: UILabel!
     @IBOutlet weak var labelMenuUtama: UILabel!
@@ -112,6 +113,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         if !preference.getBool(key: self.staticLet.IS_SHOW_FIRST_DIALOG) {
             self.getAnnouncement()
         }
+        self.getAnnouncement()
     }
     
     private func getAnnouncement() {
@@ -148,6 +150,9 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        checkRootHeight(viewRootHeight: viewRootHeight)
+        
         viewRootHeight.constant -= menuCollectionViewHeight.constant + beritaCollectionViewHeight.constant + stackTopHeight.constant + stackBottomHeight.constant
         menuCollectionViewHeight.constant = 0
         beritaCollectionViewHeight.constant = 0
@@ -197,8 +202,8 @@ extension BerandaController {
             switch listMenu[indexpath.item].id {
             case 1:
                 //pengajuan cuti
-                //self.showInDevelopmentDialog()
-                self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
+                self.showInDevelopmentDialog()
+                //self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             case 2:
                 //pengajuan lembur
                 self.showInDevelopmentDialog()
@@ -304,10 +309,10 @@ extension BerandaController {
     
     private func getLatestNews() {
         informationNetworking.getLatestNews { (error, news, isExpired) in
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
+//            if let _ = isExpired {
+//                self.forceLogout(self.navigationController!)
+//                return
+//            }
             
             if let _ = error {
                 self.getLatestNews()
@@ -389,9 +394,11 @@ extension BerandaController: UICollectionViewDataSource {
             
             if !isAlreadyCalculateBeritaHeight {
                 isAlreadyCalculateBeritaHeight = true
-                let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.width) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.width) + 29.5
-                let layoutBeritaCollectionView = beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.8, height: beritaHeight)
+                DispatchQueue.main.async {
+                    let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.width) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.width) + 29.5
+                    let layoutBeritaCollectionView = self.beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                    layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.8, height: beritaHeight)
+                }
             }
             
             beritaCell.data = listBerita[indexPath.item]

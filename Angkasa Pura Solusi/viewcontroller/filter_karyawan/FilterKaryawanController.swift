@@ -16,6 +16,7 @@ protocol FilterKaryawanControllerProtocol {
 
 class FilterKaryawanController: BaseViewController {
 
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var viewNamaKaryawan: UIView!
     @IBOutlet weak var viewDivisi: UIView!
     @IBOutlet weak var viewLokasiKerja: UIView!
@@ -245,6 +246,7 @@ class FilterKaryawanController: BaseViewController {
     }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         viewNamaKaryawan.giveBorder(3, 1, "dedede")
         viewDivisi.giveBorder(3, 1, "dedede")
         viewLokasiKerja.giveBorder(3, 1, "dedede")

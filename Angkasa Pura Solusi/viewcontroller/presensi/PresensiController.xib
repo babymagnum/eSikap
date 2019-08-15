@@ -32,6 +32,7 @@
                 <outlet property="viewJamMasukKeluarHeight" destination="L7y-qo-pEW" id="Tyo-Qs-tEu"/>
                 <outlet property="viewPresensiKeluar" destination="u30-FQ-7GZ" id="oYs-1K-Zx1"/>
                 <outlet property="viewPresensiMasuk" destination="T3y-Mk-OpV" id="qhm-jU-4NW"/>
+                <outlet property="viewRootTopMargin" destination="ZDZ-Xz-ouz" id="rqS-jT-v5G"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -166,7 +167,7 @@
                                                         <constraint firstAttribute="width" secondItem="dkt-TW-NHg" secondAttribute="height" multiplier="1:1" id="ab5-Bh-t5w"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presensi Masuk" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNK-M9-rYG" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presensi Masuk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZNK-M9-rYG" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="78" width="122" height="13"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                                     <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -192,7 +193,7 @@
                                                         <constraint firstAttribute="width" secondItem="ANE-DA-yQR" secondAttribute="height" multiplier="1:1" id="JK6-xF-nRX"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presensi Pulang" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHu-J8-ioQ" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presensi Pulang" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XHu-J8-ioQ" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="78" width="122" height="13"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                                     <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

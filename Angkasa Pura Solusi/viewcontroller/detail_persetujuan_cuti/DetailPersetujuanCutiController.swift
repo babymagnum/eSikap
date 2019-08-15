@@ -10,6 +10,7 @@ import UIKit
 
 class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var labelKodeCuti: UILabel!
     @IBOutlet weak var labelDateSubmitted: UILabel!
     @IBOutlet weak var viewImage: UIView!
@@ -32,6 +33,8 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     
     var listStatusPersetujuan = [StatusPersetujuan]()
     var listStatusAction = [StatusAction]()
+    var isCalculateStatusAction = false
+    var isCalculateStatusPersetujuan = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,14 +90,6 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
         
         statusActionCollectionView.register(UINib(nibName: "StatusActionCell", bundle: nil), forCellWithReuseIdentifier: "StatusActionCell")
         
-        let statusPersetujuanCell = statusPersetujuanCollectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: IndexPath(item: 0, section: 0)) as! StatusPersetujuanCell
-        let statusPersetujuanLayout = statusPersetujuanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanCell.viewContainer.frame.height)
-        
-        let statusActionCell = statusActionCollectionView.dequeueReusableCell(withReuseIdentifier: "StatusActionCell", for: IndexPath(item: 0, section: 0)) as! StatusActionCell
-        let statusActionLayout = statusActionCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        statusActionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusActionCell.viewContainer.frame.height)
-        
         statusPersetujuanCollectionView.delegate = self
         statusPersetujuanCollectionView.dataSource = self
         
@@ -103,6 +98,7 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         viewImage.giveBorder(3, 1, "dedede")
         imageAccount.clipsToBounds = true
         imageAccount.layer.cornerRadius = 3
@@ -129,13 +125,31 @@ extension DetailPersetujuanCutiController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == statusPersetujuanCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
-            cell.data = listStatusPersetujuan[indexPath.item]
-            return cell
+            let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
+            
+            if !isCalculateStatusPersetujuan {
+                self.isCalculateStatusPersetujuan = true
+                DispatchQueue.main.async {
+                    let statusPersetujuanLayout = self.statusPersetujuanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                    statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanCell.viewContainer.frame.height)
+                }
+            }
+            
+            statusPersetujuanCell.data = listStatusPersetujuan[indexPath.item]
+            return statusPersetujuanCell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusActionCell", for: indexPath) as! StatusActionCell
-            cell.data = listStatusAction[indexPath.item]
-            return cell
+            let statusActionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusActionCell", for: indexPath) as! StatusActionCell
+            
+            if !isCalculateStatusAction {
+                self.isCalculateStatusAction = true
+                DispatchQueue.main.async {
+                    let statusActionLayout = self.statusActionCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                    statusActionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusActionCell.viewContainer.frame.height)
+                }
+            }
+            
+            statusActionCell.data = listStatusAction[indexPath.item]
+            return statusActionCell
         }
     }
 }

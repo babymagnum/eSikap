@@ -16,6 +16,8 @@ enum WhichKaryawan {
 
 class ProfilController: BaseViewController {
 
+    @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var imageAccount: UIImageView!
@@ -77,15 +79,17 @@ class ProfilController: BaseViewController {
     }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         scrollView.addSubview(refreshControl)
         
-        self.imageAccount.layer.cornerRadius = self.imageAccount.frame.width / 2
         self.viewInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
         self.viewAction.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
         
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2) {
+                self.imageAccount.layer.cornerRadius = self.imageAccount.frame.width / 2
                 self.viewTopHeight.constant = self.labelNama.getHeight(width: self.labelNama.frame.width) + self.labelJabatan.getHeight(width: self.labelJabatan.frame.width) + self.labelDivisi.getHeight(width: self.labelDivisi.frame.width) + self.imageAccount.frame.height + 60
+                self.checkRootHeight(viewRootHeight: self.viewRootHeight)
                 self.view.layoutIfNeeded()
             }
         }

@@ -39,6 +39,8 @@
                 <outlet property="viewAction" destination="7Uz-AE-tKW" id="KlD-3R-UVx"/>
                 <outlet property="viewInformation" destination="YUn-HV-bhc" id="Vd1-tO-A0a"/>
                 <outlet property="viewKeluar" destination="J1Z-Mh-f2M" id="OxV-ut-36L"/>
+                <outlet property="viewRootHeight" destination="gTx-eA-Z4a" id="ehv-Bj-Dz7"/>
+                <outlet property="viewRootTopMargin" destination="Duc-eN-M9g" id="svo-EO-QKZ"/>
                 <outlet property="viewTop" destination="DDK-K9-U62" id="VjD-DI-OZX"/>
                 <outlet property="viewTopHeight" destination="7tZ-15-as1" id="9yt-dO-vik"/>
                 <outlet property="viewUbahKataSandi" destination="neK-ZW-gue" id="pIt-sy-7qf"/>

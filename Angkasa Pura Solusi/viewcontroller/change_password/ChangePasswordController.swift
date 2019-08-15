@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class ChangePasswordController: BaseViewController {
 
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var viewKataSandiLama: UIView!
     @IBOutlet weak var viewKataSandiBaru: UIView!
     @IBOutlet weak var viewUlangiKataSandiBaru: UIView!
@@ -31,6 +32,7 @@ class ChangePasswordController: BaseViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         viewKataSandiLama.layer.borderWidth = 1
         viewKataSandiLama.layer.borderColor = UIColor.init(rgb: 0xdedede).cgColor
         viewKataSandiLama.layer.cornerRadius = 3

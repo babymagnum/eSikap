@@ -25,6 +25,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     var presenceType: String!
     var titleString: String?
     
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var viewJamMasukKeluarBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var viewPressence: UIView!
@@ -61,6 +62,7 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         labelTitle.text = titleString
         
         viewPressence.addShadow(CGSize(width: 2, height: 3), UIColor.lightGray, 3, 0.6, 5)

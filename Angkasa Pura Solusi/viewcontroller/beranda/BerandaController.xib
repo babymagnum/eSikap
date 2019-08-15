@@ -48,6 +48,7 @@
                 <outlet property="viewContainerCuti" destination="rTo-h9-a9B" id="d3R-1u-Lov"/>
                 <outlet property="viewContainerPresensi" destination="OwZ-vE-aFV" id="Tj5-ye-MTQ"/>
                 <outlet property="viewRootHeight" destination="Ith-wu-bzR" id="92g-3c-r2n"/>
+                <outlet property="viewRootTopMargin" destination="D4h-3F-FN6" id="BSA-gD-SjV"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

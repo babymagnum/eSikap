@@ -51,6 +51,7 @@
                 <outlet property="viewRentangTanggalAkhir" destination="LNQ-QD-HXD" id="Opc-5j-ys7"/>
                 <outlet property="viewRentangTanggalAwal" destination="0zv-Rb-ptc" id="b3X-q2-h9y"/>
                 <outlet property="viewRootHeight" destination="sh4-9b-cvR" id="hzv-39-1JF"/>
+                <outlet property="viewRootTopMargin" destination="lOZ-It-Nsl" id="WK2-Ar-rv2"/>
                 <outlet property="viewSisaJatahCuti" destination="gxc-Bv-OfT" id="TFH-TF-e0r"/>
                 <outlet property="viewSisaJatahCutiHeight" destination="qdP-So-vRh" id="JJp-3q-kVe"/>
                 <outlet property="viewTanggalCutiAkademik" destination="8iz-p4-t7V" id="wxd-pd-jV6"/>
@@ -892,7 +893,7 @@
                     <rect key="frame" x="14" y="29" width="347" height="37"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p32-4A-DSa">
-                            <rect key="frame" x="10" y="11.5" width="299" height="14"/>
+                            <rect key="frame" x="10" y="11" width="299" height="15"/>
                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                             <textInputTraits key="textInputTraits"/>

@@ -12,6 +12,7 @@ import iOSDropDown
 class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
 
     //outlet root
+    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var labelNama: UILabel!
     @IBOutlet weak var labelUnit: UIButton!
     @IBOutlet weak var fieldJenisCuti: DropDown!
@@ -62,6 +63,8 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     
     var listJatahCuti = [JatahCuti]()
     var listTanggalCuti = [TanggalCuti]()
+    var isCalculateTanggalCutiHeight = false
+    var isCalculateJatahCutiHeight = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -84,16 +87,6 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     private func initCollectionView() {
         jatahCutiCollectionView.register(UINib(nibName: "JatahCutiCell", bundle: nil), forCellWithReuseIdentifier: "JatahCutiCell")
         tanggalCutiCollectionView.register(UINib(nibName: "TanggalCutiCell", bundle: nil), forCellWithReuseIdentifier: "TanggalCutiCell")
-        
-        // init jatah cuti
-        let jatahCutiCell = jatahCutiCollectionView.dequeueReusableCell(withReuseIdentifier: "JatahCutiCell", for: IndexPath(item: 0, section: 0)) as! JatahCutiCell
-        let jatahCutiLayout = jatahCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiCell.viewContainer.frame.height)
-        
-        // init tanggal cuti
-        let tanggalCutiCell = tanggalCutiCollectionView.dequeueReusableCell(withReuseIdentifier: "TanggalCutiCell", for: IndexPath(item: 0, section: 0)) as! TanggalCutiCell
-        let tanggalCutiLayout = tanggalCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        tanggalCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: tanggalCutiCell.viewContainer.frame.height)
         
         // set delegate
         tanggalCutiCollectionView.delegate = self
@@ -158,6 +151,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         
         labelUnit.layer.cornerRadius = 5
         
@@ -325,13 +319,31 @@ extension PengajuanCutiController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == jatahCutiCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JatahCutiCell", for: indexPath) as! JatahCutiCell
-            cell.data = listJatahCuti[indexPath.item]
-            return cell
+            let jatahCutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "JatahCutiCell", for: indexPath) as! JatahCutiCell
+            
+            if !isCalculateJatahCutiHeight {
+                self.isCalculateJatahCutiHeight = true
+                DispatchQueue.main.async {
+                    let jatahCutiLayout = self.jatahCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                    jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiCell.viewContainer.frame.height)
+                }
+            }
+            
+            jatahCutiCell.data = listJatahCuti[indexPath.item]
+            return jatahCutiCell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TanggalCutiCell", for: indexPath) as! TanggalCutiCell
-            cell.data = listTanggalCuti[indexPath.item].tanggal
-            return cell
+            let tanggalCutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TanggalCutiCell", for: indexPath) as! TanggalCutiCell
+            
+            if !isCalculateTanggalCutiHeight {
+                self.isCalculateTanggalCutiHeight = true
+                DispatchQueue.main.async {
+                    let tanggalCutiLayout = self.tanggalCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                    tanggalCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: tanggalCutiCell.viewContainer.frame.height)
+                }
+            }
+            
+            tanggalCutiCell.data = listTanggalCuti[indexPath.item].tanggal
+            return tanggalCutiCell
         }
     }
 }
