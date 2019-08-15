@@ -12,6 +12,7 @@ import SVProgressHUD
 
 class DetailBeritaController: BaseViewController {
 
+    @IBOutlet weak var buttonBackTopMargin: NSLayoutConstraint!
     @IBOutlet weak var viewTopMargin: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageBerita: UIImageView!
@@ -19,6 +20,7 @@ class DetailBeritaController: BaseViewController {
     @IBOutlet weak var labelDateBerita: UILabel!
     @IBOutlet weak var labelDescriptionBerita: UILabel!
     @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
+    @IBOutlet weak var buttonBack: UIButton!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -33,8 +35,10 @@ class DetailBeritaController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        checkTopMargin(viewRootTopMargin: viewTopMargin)
-        checkRootHeight(viewRootHeight: viewRootHeight)
+        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
+        
+        checkTopMargin(viewRootTopMargin: buttonBackTopMargin)
+        checkRootHeight(viewRootHeight: viewRootHeight, 0)
         
         setInteractiveRecognizer()
         
@@ -50,6 +54,10 @@ class DetailBeritaController: BaseViewController {
     }
     
     private func setView() {
+        buttonBack.layer.cornerRadius = buttonBack.frame.height / 2
+        
+        viewRootHeight.constant -= labelTitleBerita.getHeight(width: labelTitleBerita.frame.width) + labelDescriptionBerita.getHeight(width: labelDescriptionBerita.frame.width) + labelDateBerita.getHeight(width: labelDateBerita.frame.width)
+        
         scrollView.addSubview(refreshControl)
         
         guard let news = news else { return }
@@ -58,16 +66,15 @@ class DetailBeritaController: BaseViewController {
         labelTitleBerita.text = news.title
         labelDateBerita.text = news.date
         
-        self.labelTitleBerita.font = UIFont.systemFont(ofSize: 12)
-        let width = UIScreen.main.bounds.width - 42
-        let height = self.labelTitleBerita.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height
-        UIView.animate(withDuration: 0.2) {
-            self.viewRootHeight.constant += height
-            self.view.layoutIfNeeded()
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2) {
+                self.viewRootHeight.constant += self.labelTitleBerita.getHeight(width: self.labelTitleBerita.frame.width) + self.labelDateBerita.getHeight(width: self.labelDateBerita.frame.width)
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .default }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func getDetailNews() {
         SVProgressHUD.show()
@@ -96,13 +103,12 @@ class DetailBeritaController: BaseViewController {
                 self.labelDescriptionBerita.text = item.content
             }
             
-            self.labelDescriptionBerita.font = UIFont.systemFont(ofSize: 12)
-            let width = UIScreen.main.bounds.width - 42
-            let height = self.labelDescriptionBerita.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height
-            UIView.animate(withDuration: 0.2, animations: {
-                self.viewRootHeight.constant += height
-                self.view.layoutIfNeeded()
-            })
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.viewRootHeight.constant += self.labelDescriptionBerita.getHeight(width: self.labelDescriptionBerita.frame.width)
+                    self.view.layoutIfNeeded()
+                })
+            }
             
         }
     }

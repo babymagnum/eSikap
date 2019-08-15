@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import SafariServices
 
 class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     
@@ -212,7 +213,8 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             }
         case 10:
             //link website aps
-            self.showInDevelopmentDialog()
+            let safariVc = SFSafariViewController(url: URL(string: "https://angkasapurasolusi.co.id")!)
+            self.present(safariVc, animated: true)
         default: break
         }
     }

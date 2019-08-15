@@ -48,17 +48,17 @@ class BaseViewController: UIViewController {
     
     func checkTopMargin(viewRootTopMargin: NSLayoutConstraint) {
         if #available(iOS 11, *) {
-            viewRootTopMargin.constant = 0
+            viewRootTopMargin.constant += 0
         } else {
-            viewRootTopMargin.constant = UIApplication.shared.statusBarFrame.height
+            viewRootTopMargin.constant += UIApplication.shared.statusBarFrame.height
         }
     }
     
-    func checkRootHeight(viewRootHeight: NSLayoutConstraint) {
+    func checkRootHeight(viewRootHeight: NSLayoutConstraint, _ additionHeight: CGFloat) {
         if #available(iOS 11, *) {
             viewRootHeight.constant += 0
         } else {
-            viewRootHeight.constant += 45
+            viewRootHeight.constant += 45 + additionHeight
         }
     }
     

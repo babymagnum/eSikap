@@ -90,7 +90,7 @@
                             <rect key="frame" x="0.0" y="53" width="375" height="594"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dke-Fm-Tjt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="472"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="476"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headway566297Unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="RGz-gd-ayw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
@@ -139,7 +139,6 @@
                                                 <constraint firstItem="hci-oI-UR1" firstAttribute="leading" secondItem="DDK-K9-U62" secondAttribute="leading" constant="16" id="smy-n1-036"/>
                                                 <constraint firstAttribute="trailing" secondItem="PxJ-uS-5YR" secondAttribute="trailing" constant="16" id="unt-Yl-dai"/>
                                                 <constraint firstAttribute="trailing" secondItem="GMu-Jm-K31" secondAttribute="trailing" constant="14" id="vx8-bq-Q39"/>
-                                                <constraint firstAttribute="bottom" secondItem="PxJ-uS-5YR" secondAttribute="bottom" constant="19.5" id="wTp-ej-RpL"/>
                                             </constraints>
                                         </view>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-HV-bhc">
@@ -381,7 +380,6 @@
                                         <constraint firstItem="DDK-K9-U62" firstAttribute="leading" secondItem="dke-Fm-Tjt" secondAttribute="leading" id="4Lb-6h-GJv"/>
                                         <constraint firstAttribute="trailing" secondItem="YUn-HV-bhc" secondAttribute="trailing" constant="14" id="6tu-PY-uca"/>
                                         <constraint firstItem="YUn-HV-bhc" firstAttribute="leading" secondItem="dke-Fm-Tjt" secondAttribute="leading" constant="14" id="BHq-eq-0hw"/>
-                                        <constraint firstAttribute="bottom" secondItem="7Uz-AE-tKW" secondAttribute="bottom" constant="16" id="EMH-j1-T9m"/>
                                         <constraint firstItem="7Uz-AE-tKW" firstAttribute="leading" secondItem="dke-Fm-Tjt" secondAttribute="leading" constant="14" id="K0q-fF-NFL"/>
                                         <constraint firstAttribute="trailing" secondItem="7Uz-AE-tKW" secondAttribute="trailing" constant="14" id="MrD-yS-1fa"/>
                                         <constraint firstItem="YUn-HV-bhc" firstAttribute="top" secondItem="DDK-K9-U62" secondAttribute="bottom" constant="16" id="NNo-ja-Uno"/>
@@ -389,7 +387,7 @@
                                         <constraint firstItem="DDK-K9-U62" firstAttribute="top" secondItem="dke-Fm-Tjt" secondAttribute="top" id="Q7y-ZN-kkr"/>
                                         <constraint firstItem="RGz-gd-ayw" firstAttribute="top" secondItem="dke-Fm-Tjt" secondAttribute="top" id="XYV-ke-g7C"/>
                                         <constraint firstAttribute="trailing" secondItem="DDK-K9-U62" secondAttribute="trailing" id="cL3-3z-xH8"/>
-                                        <constraint firstAttribute="height" priority="999" constant="412" id="gTx-eA-Z4a"/>
+                                        <constraint firstAttribute="height" priority="999" constant="476" id="gTx-eA-Z4a"/>
                                         <constraint firstItem="RGz-gd-ayw" firstAttribute="height" secondItem="DDK-K9-U62" secondAttribute="height" id="iFG-2h-g5W"/>
                                     </constraints>
                                 </view>

@@ -79,7 +79,11 @@ class ProfilController: BaseViewController {
     }
     
     private func initView() {
+        viewRootHeight.constant -= viewTopHeight.constant
+        viewTopHeight.constant = 0
+        
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        checkRootHeight(viewRootHeight: viewRootHeight, 0)
         scrollView.addSubview(refreshControl)
         
         self.viewInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
@@ -89,7 +93,7 @@ class ProfilController: BaseViewController {
             UIView.animate(withDuration: 0.2) {
                 self.imageAccount.layer.cornerRadius = self.imageAccount.frame.width / 2
                 self.viewTopHeight.constant = self.labelNama.getHeight(width: self.labelNama.frame.width) + self.labelJabatan.getHeight(width: self.labelJabatan.frame.width) + self.labelDivisi.getHeight(width: self.labelDivisi.frame.width) + self.imageAccount.frame.height + 60
-                self.checkRootHeight(viewRootHeight: self.viewRootHeight)
+                self.viewRootHeight.constant += self.viewTopHeight.constant
                 self.view.layoutIfNeeded()
             }
         }

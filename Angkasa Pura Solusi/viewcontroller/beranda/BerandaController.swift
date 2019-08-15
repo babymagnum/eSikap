@@ -10,6 +10,7 @@ import UIKit
 import SVProgressHUD
 import EzPopup
 import FittedSheets
+import SafariServices
 
 protocol BerandaControllerProtocol {
     func buttonSelengkapnyaClick()
@@ -113,7 +114,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         if !preference.getBool(key: self.staticLet.IS_SHOW_FIRST_DIALOG) {
             self.getAnnouncement()
         }
-        self.getAnnouncement()
     }
     
     private func getAnnouncement() {
@@ -151,7 +151,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     
     private func initView() {
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
-        checkRootHeight(viewRootHeight: viewRootHeight)
+        checkRootHeight(viewRootHeight: viewRootHeight, 0)
         
         viewRootHeight.constant -= menuCollectionViewHeight.constant + beritaCollectionViewHeight.constant + stackTopHeight.constant + stackBottomHeight.constant
         menuCollectionViewHeight.constant = 0
@@ -233,7 +233,8 @@ extension BerandaController {
                 self.navigationController?.pushViewController(DaftarKaryawanController(), animated: true)
             case 10:
                 //link website aps
-                self.showInDevelopmentDialog()
+                let safariVc = SFSafariViewController(url: URL(string: "https://angkasapurasolusi.co.id")!)
+                self.present(safariVc, animated: true)
             case 99:
                 //menu lainya item
                 openBottomSheet()

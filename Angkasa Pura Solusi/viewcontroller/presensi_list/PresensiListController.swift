@@ -106,21 +106,7 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
             
             self.listPresensi = list
             
-            DispatchQueue.main.async {
-                self.presensiCollectionView.reloadData()
-                
-                if self.listPresensi.count > 0 {
-                    var index = 0
-                    let currentDateInMonth = self.function.getCurrentDate(pattern: "dd")
-                    if currentDateInMonth.first == "0" {
-                        index = Int(String(currentDateInMonth.dropFirst()))! - 1
-                    } else {
-                        index = Int(currentDateInMonth)! - 1
-                    }
-                    
-                    self.presensiCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: UICollectionView.ScrollPosition.centeredVertically, animated: true)
-                }
-            }
+            DispatchQueue.main.async { self.presensiCollectionView.reloadData() }
         }
     }
 }
@@ -140,6 +126,18 @@ extension PresensiListController: UICollectionViewDataSource {
                 let presensiLayout = self.presensiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
                 let presensiCellHeight = presensiCell.buttonStatusPresensi.frame.height + presensiCell.labelMasuk.getHeight(width: presensiCell.labelMasuk.frame.width) + presensiCell.labelPulang.getHeight(width: presensiCell.labelPulang.frame.width) + presensiCell.labelPresensiMasuk.getHeight(width: presensiCell.labelPresensiMasuk.frame.width) + presensiCell.labelPresensiPulang.getHeight(width: presensiCell.labelPresensiPulang.frame.width) + 8.9 + 13.3 + 5.1 + 8.7 + 5.1 + 26.4
                 presensiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: presensiCellHeight)
+                
+                if self.listPresensi.count > 0 {
+                    var index = 0
+                    let currentDateInMonth = self.function.getCurrentDate(pattern: "dd")
+                    if currentDateInMonth.first == "0" {
+                        index = Int(String(currentDateInMonth.dropFirst()))! - 1
+                    } else {
+                        index = Int(currentDateInMonth)! - 1
+                    }
+                    
+                    self.presensiCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: UICollectionView.ScrollPosition.centeredVertically, animated: true)
+                }
             }
         }
         
