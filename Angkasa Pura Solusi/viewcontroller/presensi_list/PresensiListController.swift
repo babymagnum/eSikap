@@ -156,6 +156,7 @@ extension PresensiListController: BottomSheetFilterPresensiProtocol {
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        isCalculatePresensiHeight = false
         getPresenceList(filteredMonth, filteredYear)
         refreshControl.endRefreshing()
     }
