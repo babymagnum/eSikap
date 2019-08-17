@@ -67,10 +67,8 @@
                         <color key="backgroundColor" red="0.9137254901960784" green="0.92549019607843142" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nqw-eb-Nv8" firstAttribute="top" secondItem="Oxb-H0-clq" secondAttribute="bottom" constant="6" id="9zY-rs-5ZM"/>
-                            <constraint firstAttribute="bottom" secondItem="lGe-dS-nmO" secondAttribute="bottom" constant="12" id="EWw-sj-gh0"/>
                             <constraint firstItem="de3-Xw-Ja3" firstAttribute="leading" secondItem="lGe-dS-nmO" secondAttribute="trailing" constant="13" id="IJq-lU-y91"/>
                             <constraint firstItem="Oxb-H0-clq" firstAttribute="leading" secondItem="Tmy-eq-Jfz" secondAttribute="leading" constant="6" id="Qjx-si-06R"/>
-                            <constraint firstAttribute="bottom" secondItem="aHH-P7-iqO" secondAttribute="bottom" constant="12" id="SG1-cF-5H9"/>
                             <constraint firstItem="de3-Xw-Ja3" firstAttribute="top" secondItem="ZkD-iW-swH" secondAttribute="bottom" constant="6" id="U4c-0b-Pce"/>
                             <constraint firstItem="aHH-P7-iqO" firstAttribute="leading" secondItem="lGe-dS-nmO" secondAttribute="trailing" constant="13" id="Usc-M1-nt8"/>
                             <constraint firstItem="nqw-eb-Nv8" firstAttribute="leading" secondItem="Tmy-eq-Jfz" secondAttribute="leading" constant="6" id="YL2-9i-hJj"/>

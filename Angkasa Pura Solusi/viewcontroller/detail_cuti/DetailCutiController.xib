@@ -78,36 +78,36 @@
                             <rect key="frame" x="0.0" y="53" width="375" height="594"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4R-bc-FSu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="443"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="416"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="LVE.2019.05.000410" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="FL3-ef-FJT" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="239.5" y="16" width="121.5" height="40.5"/>
+                                            <rect key="frame" x="239.5" y="16" width="121.5" height="15.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                                             <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Flm-yu-2r9">
-                                            <rect key="frame" x="14" y="65.5" width="347" height="1"/>
+                                            <rect key="frame" x="14" y="40.5" width="347" height="1"/>
                                             <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="eRg-GS-OkB"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submited on 30 Mei 2019 | 14:48:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="pUE-xI-XjG" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="247.5" y="71.5" width="113.5" height="8.5"/>
+                                            <rect key="frame" x="247.5" y="46.5" width="113.5" height="8.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="7"/>
                                             <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSz-zV-RN9">
-                                            <rect key="frame" x="14" y="85" width="347" height="1"/>
+                                            <rect key="frame" x="14" y="60" width="347" height="1"/>
                                             <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="yBr-83-QOC"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lc-Bb-wBb">
-                                            <rect key="frame" x="14" y="100" width="77" height="92"/>
+                                            <rect key="frame" x="14" y="75" width="77" height="92"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HYq-jU-Ju0">
                                                     <rect key="frame" x="4" y="4" width="69" height="84"/>
@@ -124,73 +124,73 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Unit Kerja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI5-9I-Hi8" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="100" y="100" width="39.5" height="11"/>
+                                            <rect key="frame" x="100" y="75" width="39.5" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": Corporate Business Solution" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="8Gh-uo-1mL" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="160.5" y="100" width="200.5" height="11"/>
+                                            <rect key="frame" x="160.5" y="75" width="200.5" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Jenis Ijin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDX-XC-YBL" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="100" y="120" width="36.5" height="11"/>
+                                            <rect key="frame" x="100" y="95" width="36.5" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": Sakit Dengan Surat Dokter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="uLh-v7-JKj" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="160.5" y="120" width="200.5" height="11"/>
+                                            <rect key="frame" x="160.5" y="95" width="200.5" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Alasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfo-FG-NUZ" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="100" y="140" width="28" height="11"/>
+                                            <rect key="frame" x="100" y="115" width="28" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": Sakit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="Hnh-AG-2bZ" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="160.5" y="140" width="200.5" height="11"/>
+                                            <rect key="frame" x="160.5" y="115" width="200.5" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Tanggal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8Y-Jq-nwy" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="100" y="160" width="32" height="11"/>
+                                            <rect key="frame" x="100" y="135" width="32" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": 31 Mei 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="e9u-1t-wTg" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="160.5" y="160" width="200.5" height="11"/>
+                                            <rect key="frame" x="160.5" y="135" width="200.5" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Arief Zainuri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="RQo-zj-lCg" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="195" width="50" height="11"/>
+                                            <rect key="frame" x="14" y="170" width="50" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ux2-iO-1It">
-                                            <rect key="frame" x="14" y="222" width="347" height="1"/>
+                                            <rect key="frame" x="14" y="197" width="347" height="1"/>
                                             <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="lKG-yh-VYE"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Informasi Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="05m-ZM-WoY" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="231" width="67" height="11"/>
+                                            <rect key="frame" x="14" y="206" width="67" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="weT-a9-FuQ" userLabel="statusPersetujuanCollectionView">
-                                            <rect key="frame" x="0.0" y="242" width="375" height="100"/>
+                                            <rect key="frame" x="0.0" y="217" width="375" height="100"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="klb-BY-gzw"/>
@@ -203,30 +203,30 @@
                                             </collectionViewFlowLayout>
                                         </collectionView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNR-0L-IWI">
-                                            <rect key="frame" x="14" y="342" width="347" height="1"/>
+                                            <rect key="frame" x="14" y="317" width="347" height="1"/>
                                             <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="ORD-JV-4pS"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Awal Input" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="LVu-Wt-glh" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="349" width="43" height="11"/>
+                                            <rect key="frame" x="14" y="324" width="43" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="WAYAN WIJAYA, 31 Mei 2019 14:48:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Ymb-Ef-vCH" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="370" width="347" height="11"/>
+                                            <rect key="frame" x="14" y="345" width="347" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Info Pembatalan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SLX-1o-b3G" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="391" width="66.5" height="11"/>
+                                            <rect key="frame" x="14" y="366" width="66.5" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="WAYAN WIJAYA, 31 Mei 2019 15:00:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="dzD-jP-kUG" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="412" width="347" height="11"/>
+                                            <rect key="frame" x="14" y="387" width="347" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -277,9 +277,8 @@
                                         <constraint firstItem="QDX-XC-YBL" firstAttribute="leading" secondItem="0lc-Bb-wBb" secondAttribute="trailing" constant="9" id="iiO-aq-95t"/>
                                         <constraint firstItem="LVu-Wt-glh" firstAttribute="leading" secondItem="v4R-bc-FSu" secondAttribute="leading" constant="14" id="jJE-EY-MJj"/>
                                         <constraint firstItem="Ux2-iO-1It" firstAttribute="top" secondItem="RQo-zj-lCg" secondAttribute="bottom" constant="16" id="jV3-WU-k6T"/>
-                                        <constraint firstAttribute="height" priority="999" constant="443" id="kbO-SL-ziC"/>
+                                        <constraint firstAttribute="height" priority="999" constant="416" id="kbO-SL-ziC"/>
                                         <constraint firstItem="aNR-0L-IWI" firstAttribute="top" secondItem="weT-a9-FuQ" secondAttribute="bottom" id="m6M-PO-eP3"/>
-                                        <constraint firstAttribute="bottom" secondItem="dzD-jP-kUG" secondAttribute="bottom" constant="20" id="nu6-uv-K8x"/>
                                         <constraint firstItem="CSz-zV-RN9" firstAttribute="top" secondItem="pUE-xI-XjG" secondAttribute="bottom" constant="5" id="oQM-mg-iFO"/>
                                         <constraint firstItem="05m-ZM-WoY" firstAttribute="top" secondItem="Ux2-iO-1It" secondAttribute="bottom" constant="8" id="qWc-aL-Wct"/>
                                         <constraint firstItem="Hnh-AG-2bZ" firstAttribute="top" secondItem="uLh-v7-JKj" secondAttribute="bottom" constant="9" id="qcX-iQ-WMW"/>

@@ -35,6 +35,8 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     var listStatusAction = [StatusAction]()
     var isCalculateStatusAction = false
     var isCalculateStatusPersetujuan = false
+    var isSetStatusActionHeight = false
+    var isSetStatusPersetujuanHeight = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +58,6 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
         listStatusAction.append(StatusAction(date: "02-06-2019", isApproved: false))
         
         statusActionCollectionView.reloadData()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.statusActionCollectionHeight.constant = self.statusActionCollectionView.contentSize.height
-                self.viewRootHeight.constant += self.statusActionCollectionView.contentSize.height
-                self.view.layoutIfNeeded()
-            })
-        }
     }
     
     private func getStatusPersetujuan() {
@@ -73,14 +67,6 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
         listStatusPersetujuan.append(StatusPersetujuan(index: "4", nama: "FEBRIANA PUTRI KUSUMA", type: "-", status: "Submited"))
         
         statusPersetujuanCollectionView.reloadData()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
-                self.viewRootHeight.constant += self.statusPersetujuanCollectionView.contentSize.height
-                self.view.layoutIfNeeded()
-            })
-        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -99,15 +85,14 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     
     private func initView() {
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        checkRootHeight(viewRootHeight: viewRootHeight, 15, addHeightFor11Above: true, addHeightFor11Below: false)
+        
         viewImage.giveBorder(3, 1, "dedede")
         imageAccount.clipsToBounds = true
         imageAccount.layer.cornerRadius = 3
         viewFieldCatatan.giveBorder(3, 1, "dedede")
         
         viewRootHeight.constant -= statusPersetujuanCollectionHeight.constant + statusActionCollectionHeight.constant
-        
-        statusPersetujuanCollectionHeight.constant = 0
-        statusActionCollectionHeight.constant = 0
         
         buttonProses.layer.cornerRadius = 5
     }
@@ -127,18 +112,35 @@ extension DetailPersetujuanCutiController : UICollectionViewDataSource {
         if collectionView == statusPersetujuanCollectionView {
             let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
             
+            statusPersetujuanCell.data = listStatusPersetujuan[indexPath.item]
+            
             if !isCalculateStatusPersetujuan {
                 self.isCalculateStatusPersetujuan = true
                 DispatchQueue.main.async {
+                    let statusPersetujuanHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 5.3 + 2.7 + 5.2 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width)
                     let statusPersetujuanLayout = self.statusPersetujuanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanCell.viewContainer.frame.height)
+                    statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanHeight)
                 }
             }
             
-            statusPersetujuanCell.data = listStatusPersetujuan[indexPath.item]
+            if indexPath.item == listStatusPersetujuan.count - 1 {
+                if !self.isSetStatusPersetujuanHeight {
+                    self.isSetStatusPersetujuanHeight = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        UIView.animate(withDuration: 0.2, animations: {
+                            self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
+                            self.viewRootHeight.constant += self.statusPersetujuanCollectionView.contentSize.height
+                            self.view.layoutIfNeeded()
+                        })
+                    }
+                }
+            }
+            
             return statusPersetujuanCell
         } else {
             let statusActionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusActionCell", for: indexPath) as! StatusActionCell
+            
+            statusActionCell.data = listStatusAction[indexPath.item]
             
             if !isCalculateStatusAction {
                 self.isCalculateStatusAction = true
@@ -148,7 +150,16 @@ extension DetailPersetujuanCutiController : UICollectionViewDataSource {
                 }
             }
             
-            statusActionCell.data = listStatusAction[indexPath.item]
+            if indexPath.item == listStatusAction.count - 1 {
+                if !self.isSetStatusActionHeight {
+                    self.isSetStatusActionHeight = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        self.statusActionCollectionHeight.constant = self.statusActionCollectionView.contentSize.height
+                        self.viewRootHeight.constant += self.statusActionCollectionView.contentSize.height
+                    }
+                }
+            }
+            
             return statusActionCell
         }
     }

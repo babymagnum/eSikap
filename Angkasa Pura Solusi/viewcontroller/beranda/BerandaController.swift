@@ -151,7 +151,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     
     private func initView() {
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
-        checkRootHeight(viewRootHeight: viewRootHeight, 0)
+        checkRootHeight(viewRootHeight: viewRootHeight, 0, addHeightFor11Above: false, addHeightFor11Below: false)
         
         viewRootHeight.constant -= menuCollectionViewHeight.constant + beritaCollectionViewHeight.constant + stackTopHeight.constant + stackBottomHeight.constant
         menuCollectionViewHeight.constant = 0
@@ -202,15 +202,15 @@ extension BerandaController {
             switch listMenu[indexpath.item].id {
             case 1:
                 //pengajuan cuti
-                self.showInDevelopmentDialog()
-                //self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
+                //self.showInDevelopmentDialog()
+                self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             case 2:
                 //pengajuan lembur
                 self.showInDevelopmentDialog()
             case 3:
                 //persetujuan
-                self.showInDevelopmentDialog()
-                //self.navigationController?.pushViewController(TabPersetujuanController(), animated: true)
+                //self.showInDevelopmentDialog()
+                self.navigationController?.pushViewController(TabPersetujuanController(), animated: true)
             case 4:
                 //presensi
                 getPreparePresence()

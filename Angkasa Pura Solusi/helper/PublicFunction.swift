@@ -248,6 +248,18 @@ class PublicFunction {
         viewController.present(alert, animated: true)
     }
     
+    func getGlobalHeight() -> CGFloat {
+        if (UIScreen.main.bounds.width == 320) {
+            return 3
+        } else if (UIScreen.main.bounds.width == 375) {
+            return 4
+        } else if (UIScreen.main.bounds.width == 414) {
+            return 5
+        } else {
+            return 6
+        }
+    }
+    
     open func showUnderstandDialog(_ viewController: UIViewController, _ title: String, _ message: String, _ actionTitle: String, completionHandler: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action) in

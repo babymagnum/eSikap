@@ -22,13 +22,13 @@ class CustomTextView: UITextView {
     
     func commonInit(){
         if (UIScreen.main.bounds.width == 320) {
-            self.font = UIFont(name: self.font!.fontName, size: self.font!.pointSize + 2.5)
+            self.font = UIFont(name: self.font!.fontName, size: self.font!.pointSize + 2)
         } else if (UIScreen.main.bounds.width == 375) {
-            self.font = UIFont(name: self.font!.fontName, size: self.font!.pointSize + 3.5)
+            self.font = UIFont(name: self.font!.fontName, size: self.font!.pointSize + 3)
         } else if (UIScreen.main.bounds.width == 414) {
-            self.font = UIFont(name: self.font!.fontName, size: self.font!.pointSize + 4.5)
+            self.font = UIFont(name: self.font!.fontName, size: self.font!.pointSize + 4)
         } else {
-            self.font = UIFont(name: self.font!.fontName, size: self.font!.pointSize + 5.5)
+            self.font = UIFont(name: self.font!.fontName, size: self.font!.pointSize + 5)
         }
     }
 }

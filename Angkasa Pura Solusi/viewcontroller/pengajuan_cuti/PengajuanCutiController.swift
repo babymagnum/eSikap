@@ -59,12 +59,31 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var viewWaktuAwalCutiSementara: UIView!
     @IBOutlet weak var viewWaktuAkhirCutiSementara: UIView!
     
+    @IBOutlet weak var labelPegawai: CustomLabel!
+    @IBOutlet weak var labelPegawaiHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelNamaHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelUnitKerjaHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelJenisCutiHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelJatahCutiHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelTanggalCutiTahunanHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelTanggalTahunanHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelTanggalAkademikHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelRentangTanggalSakitHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelLampirkanHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelTanggalSementaraHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelWaktuSementaraHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelAlasanHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelDelegasiHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelAtasanHeight: NSLayoutConstraint!
+    
     var defaultViewCutiTahunanHeight: CGFloat = 0
     
     var listJatahCuti = [JatahCuti]()
     var listTanggalCuti = [TanggalCuti]()
     var isCalculateTanggalCutiHeight = false
     var isCalculateJatahCutiHeight = false
+    var isSetJatahCutiHeight = false
+    var isSetTanggalCutiHeight = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -106,13 +125,6 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
         
         tanggalCutiCollectionView.reloadData()
         jatahCutiCollectionView.reloadData()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.jatahCutiCollectionHeight.constant = self.jatahCutiCollectionView.contentSize.height
-            self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
-            
-            self.defaultViewCutiTahunanHeight = 109 + self.jatahCutiCollectionHeight.constant + self.tanggalCutiCollectionHeight.constant + 11 // 109 adalah nilai dasar dari total height - jatah dan tanggal collectionview + 11 for margin
-        }
     }
     
     private func dropdownListener() {
@@ -163,6 +175,12 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
         buttonSimpan.layer.cornerRadius = 5
         buttonSubmit.layer.cornerRadius = 5
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.setHeightLabel()
+        }
+        
+        viewRootHeight.constant -= viewCutiTahunanHeight.constant + viewCutiAkademikHeight.constant + viewCutiSakitHeight.constant + viewCutiSementaraHeight.constant
+        
         //outlet cuti tahunan
         viewCutiTahunanTanggal.giveBorder(3, 1, "dedede")
         viewCutiTahunanHeight.constant = 0
@@ -188,10 +206,30 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
         viewCutiSementara.isHidden = true
     }
     
+    private func setHeightLabel() {
+        let height = labelPegawai.getHeight(width: labelPegawai.frame.width) + function.getGlobalHeight()
+        labelNamaHeight.constant = height
+        labelPegawaiHeight.constant = height
+        labelUnitKerjaHeight.constant = height
+        labelJenisCutiHeight.constant = height
+        labelJatahCutiHeight.constant = height
+        labelTanggalCutiTahunanHeight.constant = height
+        labelTanggalTahunanHeight.constant = height
+        labelTanggalAkademikHeight.constant = height
+        labelRentangTanggalSakitHeight.constant = height
+        labelLampirkanHeight.constant = height
+        labelTanggalSementaraHeight.constant = height
+        labelWaktuSementaraHeight.constant = height
+        labelAlasanHeight.constant = height
+        labelDelegasiHeight.constant = height
+        labelAtasanHeight.constant = height
+    }
+    
     private func hideViewSisaJatahCuti() {
         if !viewSisaJatahCuti.isHidden {
             UIView.animate(withDuration: 0.2) {
-                self.viewRootHeight.constant -= 48
+                let sisaJatahCutiHeight = self.labelSisaJatahCuti.getHeight(width: self.labelSisaJatahCuti.frame.width) + self.labelKadaluarsaTop.getHeight(width: self.labelKadaluarsaTop.frame.width) + 8.9 + 12.8 + 4
+                self.viewRootHeight.constant -= sisaJatahCutiHeight
                 self.viewSisaJatahCutiHeight.constant = 0
                 self.viewSisaJatahCuti.isHidden = true
                 self.view.layoutIfNeeded()
@@ -225,10 +263,11 @@ extension PengajuanCutiController {
 extension PengajuanCutiController {
     private func showViewCutiTahunan() {
         UIView.animate(withDuration: 0.2, animations: {
-            self.viewRootHeight.constant += self.defaultViewCutiTahunanHeight
+            let sisaJatahCutiHeight = self.labelSisaJatahCuti.getHeight(width: self.labelSisaJatahCuti.frame.width) + self.labelKadaluarsaTop.getHeight(width: self.labelKadaluarsaTop.frame.width) + 8.9 + 12.8 + 4
+            self.viewRootHeight.constant += self.defaultViewCutiTahunanHeight + sisaJatahCutiHeight
             self.viewCutiTahunanHeight.constant = self.defaultViewCutiTahunanHeight
             self.viewCutiTahunan.isHidden = false
-            self.viewSisaJatahCutiHeight.constant = 48
+            self.viewSisaJatahCutiHeight.constant = sisaJatahCutiHeight
             self.viewSisaJatahCuti.isHidden = false
             self.view.layoutIfNeeded()
         })
@@ -324,8 +363,19 @@ extension PengajuanCutiController: UICollectionViewDataSource {
             if !isCalculateJatahCutiHeight {
                 self.isCalculateJatahCutiHeight = true
                 DispatchQueue.main.async {
+                    let jatahCutiHeight = jatahCutiCell.labelKadaluarsa.getHeight(width: jatahCutiCell.labelKadaluarsa.frame.width) + jatahCutiCell.labelSisaCuti.getHeight(width: jatahCutiCell.labelSisaCuti.frame.width) + jatahCutiCell.labelPeriode.getHeight(width: jatahCutiCell.labelPeriode.frame.width) + 9.8 + 6.2 + 6.2 + 12.5
                     let jatahCutiLayout = self.jatahCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiCell.viewContainer.frame.height)
+                    jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiHeight)
+                }
+            }
+            
+            if indexPath.item == listJatahCuti.count - 1{
+                if !self.isSetJatahCutiHeight {
+                    self.isSetJatahCutiHeight = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        self.jatahCutiCollectionHeight.constant = self.jatahCutiCollectionView.contentSize.height
+                        self.defaultViewCutiTahunanHeight += 54.5 + self.jatahCutiCollectionHeight.constant
+                    }
                 }
             }
             
@@ -337,8 +387,19 @@ extension PengajuanCutiController: UICollectionViewDataSource {
             if !isCalculateTanggalCutiHeight {
                 self.isCalculateTanggalCutiHeight = true
                 DispatchQueue.main.async {
+                    let tanggalCutiHeight = ((UIScreen.main.bounds.width - 28) * 0.09) + 6.7
                     let tanggalCutiLayout = self.tanggalCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    tanggalCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: tanggalCutiCell.viewContainer.frame.height)
+                    tanggalCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: tanggalCutiHeight)
+                }
+            }
+            
+            if indexPath.item == listTanggalCuti.count - 1 {
+                if !self.isSetTanggalCutiHeight {
+                    self.isSetTanggalCutiHeight = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
+                        self.defaultViewCutiTahunanHeight += 54.5 + self.tanggalCutiCollectionHeight.constant
+                    }
                 }
             }
             

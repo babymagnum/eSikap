@@ -21,6 +21,7 @@ class RiwayatCutiCell: UICollectionViewCell {
     @IBOutlet weak var labelTimeSubmited: UILabel!
     @IBOutlet weak var viewContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var labelDateHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewInformationHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,16 +44,17 @@ class RiwayatCutiCell: UICollectionViewCell {
     }
     
     private func checkIsSameDate(_ isSameDate: Bool) {
+        let informationHeight = labelKodeCuti.getHeight(width: labelKodeCuti.frame.width) + labelTypeIjin.getHeight(width: labelTypeIjin.frame.width) + labelTanggalIjin.getHeight(width: labelTanggalIjin.frame.width) + 6.2 + 7.8 + 1.6 + 7.8
+        let originalHeight = 22 + informationHeight
         
-        let originalHeight = labelDate.frame.height + 7 + viewInformation.frame.height
-        let withoutDateHeight = viewInformation.frame.height
+        viewInformationHeight.constant = informationHeight
         
         if isSameDate {
             self.labelDateHeight.constant = 0
             self.labelDate.isHidden = true
-            self.viewContainerHeight.constant = withoutDateHeight
+            self.viewContainerHeight.constant = informationHeight
         } else {
-            self.labelDateHeight.constant = 13
+            self.labelDateHeight.constant = 15
             self.labelDate.isHidden = false
             self.viewContainerHeight.constant = originalHeight
         }

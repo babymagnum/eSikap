@@ -27,7 +27,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwF-F8-U80">
                         <rect key="frame" x="0.0" y="0.0" width="292" height="73"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Mei 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="UaU-WV-6LN" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Mei 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="UaU-WV-6LN" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                 <rect key="frame" x="2" y="0.0" width="288" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="qfG-yX-2V5"/>
@@ -93,7 +93,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="14:48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="2Li-WQ-g9c" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                        <rect key="frame" x="264.5" y="6" width="15.5" height="7.5"/>
+                                        <rect key="frame" x="264.5" y="6" width="15.5" height="7"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="6"/>
                                         <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -109,6 +109,7 @@
                                     <constraint firstItem="IKy-kg-cvY" firstAttribute="top" secondItem="iG2-pk-b8Q" secondAttribute="top" id="FfQ-4U-H0h"/>
                                     <constraint firstItem="R39-AK-x3m" firstAttribute="top" secondItem="Zf1-oR-WxI" secondAttribute="bottom" constant="1" id="HVy-ZF-HrB"/>
                                     <constraint firstAttribute="bottom" secondItem="IKy-kg-cvY" secondAttribute="bottom" id="K8B-XU-EF7"/>
+                                    <constraint firstAttribute="height" constant="51" id="LDp-5b-H4I"/>
                                     <constraint firstAttribute="trailing" secondItem="Zf1-oR-WxI" secondAttribute="trailing" constant="10" id="MA0-Tv-mlF"/>
                                     <constraint firstItem="fiW-Kz-Id7" firstAttribute="leading" secondItem="IKy-kg-cvY" secondAttribute="trailing" id="R7H-ng-q6I"/>
                                     <constraint firstItem="Zf1-oR-WxI" firstAttribute="leading" secondItem="fiW-Kz-Id7" secondAttribute="trailing" constant="10" id="RWB-Tt-yxJ"/>
@@ -129,7 +130,6 @@
                             <constraint firstItem="iG2-pk-b8Q" firstAttribute="top" secondItem="UaU-WV-6LN" secondAttribute="bottom" constant="7" id="TAy-V4-Zqe"/>
                             <constraint firstAttribute="height" constant="73" id="bo8-Jh-cLX"/>
                             <constraint firstItem="UaU-WV-6LN" firstAttribute="leading" secondItem="JwF-F8-U80" secondAttribute="leading" constant="2" id="nPl-oH-pJg"/>
-                            <constraint firstAttribute="bottom" secondItem="iG2-pk-b8Q" secondAttribute="bottom" constant="2" id="pnS-9Z-UlK"/>
                             <constraint firstItem="UaU-WV-6LN" firstAttribute="top" secondItem="JwF-F8-U80" secondAttribute="top" id="uD0-ce-hWX"/>
                         </constraints>
                     </view>
@@ -154,6 +154,7 @@
                 <outlet property="viewContainer" destination="JwF-F8-U80" id="EgK-3H-BgH"/>
                 <outlet property="viewContainerHeight" destination="bo8-Jh-cLX" id="BXc-Uz-OT8"/>
                 <outlet property="viewInformation" destination="iG2-pk-b8Q" id="q75-XD-MEp"/>
+                <outlet property="viewInformationHeight" destination="LDp-5b-H4I" id="s8k-Ha-1kL"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="126.89732142857142"/>
         </collectionViewCell>

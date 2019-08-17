@@ -74,58 +74,29 @@ extension RiwayatCutiController: UICollectionViewDataSource, UICollectionViewDel
         var item = listRiwayatCuti[indexPath.item]
         
         DispatchQueue.main.async {
-            let originalHeight = cell.labelDate.getHeight(width: cell.labelDate.frame.width) + cell.labelKodeCuti.getHeight(width: cell.labelKodeCuti.frame.width) + cell.labelTypeIjin.getHeight(width: cell.labelTypeIjin.frame.width) + cell.labelTanggalIjin.getHeight(width: cell.labelTanggalIjin.frame.width) + 7.1 + 6.2 + 7.8 + 1.6 + 7.8
-            let withoutDateHeight = cell.labelKodeCuti.getHeight(width: cell.labelKodeCuti.frame.width) + cell.labelTypeIjin.getHeight(width: cell.labelTypeIjin.frame.width) + cell.labelTanggalIjin.getHeight(width: cell.labelTanggalIjin.frame.width) + 6.2 + 7.8 + 1.6 + 7.8
-            let riwayatCutiLayout = self.riwayatCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-            
-            if indexPath.row > 0 {
-                
-                let before = self.listRiwayatCuti[indexPath.item - 1]
-                
-                let dateBefore = before.date
-                let dateItem = item.date
-                
-                if dateBefore == dateItem {
-                    item.isSameDate = true
-                    riwayatCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 24, height: withoutDateHeight)
-                } else {
-                    item.isSameDate = false
-                    riwayatCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 24, height: originalHeight)
-                }
-            } else {
-                item.isSameDate = false
-                riwayatCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 24, height: originalHeight)
+            if !self.isCalculatRiwayatCutiHeight {
+                self.isCalculatRiwayatCutiHeight = true
+                let originalHeight = cell.labelDate.getHeight(width: cell.labelDate.frame.width) + cell.labelKodeCuti.getHeight(width: cell.labelKodeCuti.frame.width) + cell.labelTypeIjin.getHeight(width: cell.labelTypeIjin.frame.width) + cell.labelTanggalIjin.getHeight(width: cell.labelTanggalIjin.frame.width) + 7.1 + 6.2 + 7.8 + 1.6 + 7.8
+                let riwayatCutiLayout = self.riwayatCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                riwayatCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 24, height: originalHeight + 2)
             }
         }
+        
+        if indexPath.item > 0 {
+            let before = self.listRiwayatCuti[indexPath.item - 1]
+            let dateBefore = before.date
+            let dateItem = item.date
+            
+            if dateItem == dateBefore {
+                
+                item.isSameDate = true
+            }
+            else { item.isSameDate = false }
+        } else { item.isSameDate = false }
         
         cell.data = item
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RiwayatCutiCell", for: indexPath) as! RiwayatCutiCell
-//
-//        let originalHeight = cell.labelDate.frame.height + 20 + cell.viewInformation.frame.height
-//        let withoutDateHeight = cell.viewInformation.frame.height + 18
-//
-//        if indexPath.row > 0 {
-//            //let millis = PublicFunction.instance.dateStringToInt(stringDate: listHistory[indexPath.row].trans_date!, pattern: "yyyy-MM-dd kk:mm:ss")
-//            //let date = PublicFunction.instance.dateLongToString(dateInMillis: millis, pattern: "dd MMMM yyyy")
-//            //let millisBefore = PublicFunction.instance.dateStringToInt(stringDate: listHistory[indexPath.row - 1].trans_date!, pattern: "yyyy-MM-dd kk:mm:ss")
-//            //let dateBefore = PublicFunction.instance.dateLongToString(dateInMillis: millisBefore, pattern: "dd MMMM yyyy")
-//
-//            let dateBefore = listRiwayatCuti[indexPath.item - 1].date
-//            let dateItem = listRiwayatCuti[indexPath.item].date
-//
-//            if dateBefore == dateItem {
-//                return CGSize(width: UIScreen.main.bounds.width - 24, height: withoutDateHeight)
-//            } else {
-//                return CGSize(width: UIScreen.main.bounds.width - 24, height: originalHeight)
-//            }
-//        } else {
-//            return CGSize(width: UIScreen.main.bounds.width - 24, height: originalHeight)
-//        }
-//    }
 }
 
 extension RiwayatCutiController {

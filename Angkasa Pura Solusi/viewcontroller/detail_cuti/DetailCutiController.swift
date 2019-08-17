@@ -28,6 +28,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     
     var listStatusPersetujuan = [StatusPersetujuan]()
     var isCalculatePesertujuanHeight = false
+    var isSetStatusPersetujuanHeight = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +44,11 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     
     private func initView() {
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        checkRootHeight(viewRootHeight: viewRootHeight, 15, addHeightFor11Above: true, addHeightFor11Below: false)
         
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
         viewRootHeight.constant -= statusPersetujuanCollectionHeight.constant
-        statusPersetujuanCollectionHeight.constant = 0
         
         viewImage.giveBorder(3, 1, "dedede")
     }
@@ -58,15 +59,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         listStatusPersetujuan.append(StatusPersetujuan(index: "3", nama: "A. TOTO PRIYONO", type: "-", status: "Approved"))
         listStatusPersetujuan.append(StatusPersetujuan(index: "4", nama: "FEBRIANA PUTRI KUSUMA", type: "-", status: "Submited"))
         
-        statusPersetujuanCollectionView.reloadData()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
-                self.viewRootHeight.constant += self.statusPersetujuanCollectionView.contentSize.height
-                self.view.layoutIfNeeded()
-            })
-        }
+        DispatchQueue.main.async { self.statusPersetujuanCollectionView.reloadData() }
     }
     
     private func initCollectionView() {
@@ -86,15 +79,29 @@ extension DetailCutiController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
         
+        statusPersetujuanCell.data = listStatusPersetujuan[indexPath.item]
+        
         if !isCalculatePesertujuanHeight {
             self.isCalculatePesertujuanHeight = true
             DispatchQueue.main.async {
                 let statusPersetujuanLayout = self.statusPersetujuanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanCell.viewContainer.frame.height)
+                let statusPersetujuanHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 5.3 + 2.7 + 5.2 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width)
+                statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanHeight)
             }
         }
         
-        statusPersetujuanCell.data = listStatusPersetujuan[indexPath.item]
+        if indexPath.item == listStatusPersetujuan.count - 1 {
+            if !self.isSetStatusPersetujuanHeight {
+                self.isSetStatusPersetujuanHeight = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
+                        self.viewRootHeight.constant += self.statusPersetujuanCollectionHeight.constant
+                        self.view.layoutIfNeeded()
+                    })
+                }
+            }
+        }
         return statusPersetujuanCell
     }
 }

@@ -12,7 +12,7 @@ class TanggalCutiCell: UICollectionViewCell {
 
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var labelTanggal: UILabel!
-    @IBOutlet weak var buttonDeleteTanggal: UIButton!
+    @IBOutlet weak var buttonDeleteTanggal: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

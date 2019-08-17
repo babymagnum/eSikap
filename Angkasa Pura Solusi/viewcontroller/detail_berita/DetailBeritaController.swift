@@ -38,7 +38,7 @@ class DetailBeritaController: BaseViewController {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
         checkTopMargin(viewRootTopMargin: buttonBackTopMargin)
-        checkRootHeight(viewRootHeight: viewRootHeight, 0)
+        checkRootHeight(viewRootHeight: viewRootHeight, 0, addHeightFor11Above: false, addHeightFor11Below: false)
         
         setInteractiveRecognizer()
         

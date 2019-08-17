@@ -54,11 +54,23 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func checkRootHeight(viewRootHeight: NSLayoutConstraint, _ additionHeight: CGFloat) {
+    func checkRootHeight(viewRootHeight: NSLayoutConstraint, _ additionHeight: CGFloat, addHeightFor11Above: Bool, addHeightFor11Below: Bool) {
         if #available(iOS 11, *) {
-            viewRootHeight.constant += 0
+            viewRootHeight.constant += addHeightFor11Above ? additionHeight : 0
         } else {
-            viewRootHeight.constant += 45 + additionHeight
+            viewRootHeight.constant += addHeightFor11Below ? 45 + additionHeight : additionHeight
+        }
+    }
+    
+    func addMoreRootHeight(viewRootHeight: NSLayoutConstraint, _ additionHeight: CGFloat) {
+        if (UIScreen.main.bounds.width == 320) {
+            viewRootHeight.constant += additionHeight + 5
+        } else if (UIScreen.main.bounds.width == 375) {
+            viewRootHeight.constant += additionHeight + 6
+        } else if (UIScreen.main.bounds.width == 414) {
+            viewRootHeight.constant += additionHeight + 7
+        } else {
+            viewRootHeight.constant += additionHeight + 8
         }
     }
     

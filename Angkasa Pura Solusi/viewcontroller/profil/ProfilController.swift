@@ -83,7 +83,7 @@ class ProfilController: BaseViewController {
         viewTopHeight.constant = 0
         
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
-        checkRootHeight(viewRootHeight: viewRootHeight, 0)
+        checkRootHeight(viewRootHeight: viewRootHeight, 0, addHeightFor11Above: false, addHeightFor11Below: false)
         scrollView.addSubview(refreshControl)
         
         self.viewInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)

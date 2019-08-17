@@ -69,8 +69,9 @@ extension CutiController : UICollectionViewDataSource {
         if !isCalculateCutiHeight {
             self.isCalculateCutiHeight = true
             DispatchQueue.main.async {
+                let cutiHeight = cutiCell.labelKodeCuti.getHeight(width: cutiCell.labelKodeCuti.frame.width) + cutiCell.labelTypeCuti.getHeight(width: cutiCell.labelTypeCuti.frame.width) + cutiCell.labelTanggalCuti.getHeight(width: cutiCell.labelTanggalCuti.frame.width) + 6.2 + 7.8 + 1.6 + 7.8
                 let cutiLayout = self.cutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiCell.viewContainer.frame.height + 10)
+                cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiHeight)
             }
         }
         

@@ -19,9 +19,12 @@ class StatusPersetujuanCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        labelIndex.layer.cornerRadius = labelIndex.frame.height / 2
+                
         viewContainer.layer.cornerRadius = 3
+        
+        DispatchQueue.main.async {
+            self.labelIndex.layer.cornerRadius = ((UIScreen.main.bounds.width - 28) * 0.055) / 2
+        }
     }
     
     var data: StatusPersetujuan? {
