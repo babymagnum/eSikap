@@ -8,6 +8,7 @@
 
 import UIKit
 import iOSDropDown
+import SVProgressHUD
 
 class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
 
@@ -77,8 +78,9 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var labelAtasanHeight: NSLayoutConstraint!
     
     var defaultViewCutiTahunanHeight: CGFloat = 0
+    var idPilih = 99999999
     
-    var listJatahCuti = [JatahCuti]()
+    var listJatahCuti = [ItemQuota]()
     var listTanggalCuti = [TanggalCuti]()
     var isCalculateTanggalCutiHeight = false
     var isCalculateJatahCutiHeight = false
@@ -98,9 +100,118 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
         
         initView()
         
+        initEvent()
+        
         initCollectionView()
         
         dropdownListener()
+        
+        getLeaveQuota()
+        
+        getProfile()
+        
+        getLeaveType()
+    }
+    
+    private func initEvent() {
+        viewCutiTahunanTanggal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewCutiTahunanTanggalClick)))
+        
+        viewTanggalCutiAkademik.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTanggalCutiAkademiClick)))
+        
+        viewRentangTanggalAwal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangTanggalAwalClick)))
+        
+        viewRentangTanggalAkhir.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangTanggalAkhirClick)))
+        
+        viewLampirkanFile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewLampirkanFileClick)))
+        
+        viewTanggalCutiSementara.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTanggalCutiSementaraClick)))
+        
+        viewWaktuAwalCutiSementara.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewWaktuAwalCutiSementaraClick)))
+        
+        viewWaktuAkhirCutiSementara.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(viewWaktuAkhirCutiSementaraClick)))
+    }
+    
+    private func getLeaveType() {
+        SVProgressHUD.dismiss()
+        
+        perizinanNetworking.getLeaveType { (error, leaveType, isExpired) in
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let _ = error {
+                self.getLeaveType()
+                return
+            }
+            
+            guard let leaveType = leaveType else { return }
+            
+            var listName = [String]()
+            var listId = [Int]()
+            for (index, type) in leaveType.data.enumerated() {
+                listName.append(type.name ?? "")
+                
+                if index == 0 {
+                    listId.append(self.idPilih)
+                } else {
+                    listId.append(Int(type.id!)!)
+                }
+            }
+            
+            self.fieldJenisCuti.optionArray = listName
+            self.fieldJenisCuti.optionIds = listId
+        }
+    }
+    
+    private func getProfile() {
+        informationNetworking.getProfile { (error, itemProfile, isExpired) in
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Error", error, "Reload", "Cancel", completionHandler: {
+                    self.getProfile()
+                })
+                return
+            }
+            
+            guard let itemProfile = itemProfile else { return }
+            
+            self.setProfileView(item: itemProfile)
+        }
+    }
+    
+    private func setProfileView(item: ItemProfile) {
+        
+    }
+    
+    private func getLeaveQuota() {
+        SVProgressHUD.show()
+        
+        perizinanNetworking.getLeaveQuota { (error, leaveQuota, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Error", error, "Reload", "Cancel", completionHandler: {
+                    self.getLeaveQuota()
+                })
+                return
+            }
+            
+            guard let leaveQuota = leaveQuota else { return }
+            
+            self.listJatahCuti = leaveQuota.data
+            
+            DispatchQueue.main.async { self.jatahCutiCollectionView.reloadData() }
+        }
     }
     
     private func initCollectionView() {
@@ -119,17 +230,15 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
         listTanggalCuti.append(TanggalCuti(tanggal: "03-06-2019"))
         listTanggalCuti.append(TanggalCuti(tanggal: "10-06-2019"))
         
-        listJatahCuti.append(JatahCuti(periode: ": 21/07/2018 - 21/07/2019", sisaCuti: ": 15 Hari", kadaluarsa: ": 10 Desember 2019"))
-        listJatahCuti.append(JatahCuti(periode: ": 21/07/2018 - 21/07/2019", sisaCuti: ": 7 Hari", kadaluarsa: ": 10 Desember 2019"))
-        listJatahCuti.append(JatahCuti(periode: ": 21/07/2018 - 21/07/2019", sisaCuti: ": 20 Hari", kadaluarsa: ": 10 Desember 2019"))
-        
-        tanggalCutiCollectionView.reloadData()
+//        listJatahCuti.append(JatahCuti(periode: ": 21/07/2018 - 21/07/2019", sisaCuti: ": 15 Hari", kadaluarsa: ": 10 Desember 2019"))
+//        listJatahCuti.append(JatahCuti(periode: ": 21/07/2018 - 21/07/2019", sisaCuti: ": 7 Hari", kadaluarsa: ": 10 Desember 2019"))
+//        listJatahCuti.append(JatahCuti(periode: ": 21/07/2018 - 21/07/2019", sisaCuti: ": 20 Hari", kadaluarsa: ": 10 Desember 2019"))
+//
+//        tanggalCutiCollectionView.reloadData()
         jatahCutiCollectionView.reloadData()
     }
     
     private func dropdownListener() {
-        fieldJenisCuti.optionArray = ["-- Pilh --", "Cuti Sakit", "Cuti Tahunan", "Cuti Akademik", "Izin Meninggalkan Pekerjaan Sementara"]
-        
         fieldJenisCuti.didSelect { (text, index, id) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                 if text == "Cuti Tahunan" {
@@ -331,6 +440,38 @@ extension PengajuanCutiController {
 
 //click event
 extension PengajuanCutiController {
+    @objc func viewCutiTahunanTanggalClick() {
+        
+    }
+    
+    @objc func viewTanggalCutiAkademiClick() {
+        
+    }
+    
+    @objc func viewRentangTanggalAwalClick() {
+        
+    }
+    
+    @objc func viewRentangTanggalAkhirClick() {
+        
+    }
+    
+    @objc func viewLampirkanFileClick() {
+        
+    }
+    
+    @objc func viewTanggalCutiSementaraClick() {
+        
+    }
+    
+    @objc func viewWaktuAwalCutiSementaraClick() {
+        
+    }
+    
+    @objc func viewWaktuAkhirCutiSementaraClick() {
+        
+    }
+    
     @IBAction func buttonRiwayatCutiClick(_ sender: Any) {
         navigationController?.pushViewController(RiwayatCutiController(), animated: true)
     }

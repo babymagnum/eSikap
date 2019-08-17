@@ -21,12 +21,12 @@ class JatahCutiCell: UICollectionViewCell {
         giveBorder(3, 1, "dedede")
     }
     
-    var data: JatahCuti? {
+    var data: ItemQuota? {
         didSet {
             if let item = data {
-                labelPeriode.text = item.periode
-                labelSisaCuti.text = item.sisaCuti
-                labelKadaluarsa.text = item.kadaluarsa
+                labelPeriode.text = "\(item.start ?? "") / \(item.end ?? "")"
+                labelSisaCuti.text = item.quota
+                labelKadaluarsa.text = item.expired
             }
         }
     }

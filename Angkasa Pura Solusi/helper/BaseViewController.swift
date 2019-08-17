@@ -42,6 +42,11 @@ class BaseViewController: UIViewController {
         return mInformationNetworking
     }()
     
+    lazy var perizinanNetworking: PerizinanNetworking = {
+        let mPerizinanNetworking = PerizinanNetworking()
+        return mPerizinanNetworking
+    }()
+    
     override func viewDidLoad() {
         //do something
     }
