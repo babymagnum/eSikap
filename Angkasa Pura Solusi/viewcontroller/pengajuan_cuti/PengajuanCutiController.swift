@@ -13,6 +13,7 @@ import SVProgressHUD
 class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
 
     //outlet root
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var labelNama: UILabel!
     @IBOutlet weak var labelUnit: UIButton!
@@ -80,6 +81,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     var defaultViewCutiTahunanHeight: CGFloat = 0
     var idPilih = 99999999
     
+    var listLeaveType = [ItemType]()
     var listJatahCuti = [ItemQuota]()
     var listTanggalCuti = [TanggalCuti]()
     var isCalculateTanggalCutiHeight = false
@@ -95,8 +97,6 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
         initView()
         
@@ -147,6 +147,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
             
             guard let leaveType = leaveType else { return }
             
+            self.listLeaveType = leaveType.data
             var listName = [String]()
             var listId = [Int]()
             for (index, type) in leaveType.data.enumerated() {
@@ -229,42 +230,40 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
         // populate dummy data
         listTanggalCuti.append(TanggalCuti(tanggal: "03-06-2019"))
         listTanggalCuti.append(TanggalCuti(tanggal: "10-06-2019"))
-        
-//        listJatahCuti.append(JatahCuti(periode: ": 21/07/2018 - 21/07/2019", sisaCuti: ": 15 Hari", kadaluarsa: ": 10 Desember 2019"))
-//        listJatahCuti.append(JatahCuti(periode: ": 21/07/2018 - 21/07/2019", sisaCuti: ": 7 Hari", kadaluarsa: ": 10 Desember 2019"))
-//        listJatahCuti.append(JatahCuti(periode: ": 21/07/2018 - 21/07/2019", sisaCuti: ": 20 Hari", kadaluarsa: ": 10 Desember 2019"))
-//
-//        tanggalCutiCollectionView.reloadData()
-        jatahCutiCollectionView.reloadData()
     }
     
     private func dropdownListener() {
         fieldJenisCuti.didSelect { (text, index, id) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                if text == "Cuti Tahunan" {
-                    self.showViewCutiTahunan()
-                    self.hideViewCutiAkademik()
-                    self.hideViewCutiSakit()
-                    self.hideViewCutiSementara()
-                } else if text == "Cuti Akademik" {
-                    self.showViewCutiAkademik()
-                    self.hideViewCutiTahunan()
-                    self.hideViewCutiSakit()
-                    self.hideViewCutiSementara()
-                    self.hideViewSisaJatahCuti()
-                } else if text == "Cuti Sakit" {
-                    self.showViewCutiSakit()
-                    self.hideViewCutiTahunan()
-                    self.hideViewCutiAkademik()
-                    self.hideViewCutiSementara()
-                    self.hideViewSisaJatahCuti()
-                } else if text == "Izin Meninggalkan Pekerjaan Sementara" {
-                    self.showViewCutiSementara()
-                    self.hideViewCutiTahunan()
-                    self.hideViewCutiAkademik()
-                    self.hideViewCutiSakit()
-                    self.hideViewSisaJatahCuti()
-                }
+                
+                let selectedItem = self.listLeaveType[index]
+                
+                
+                
+//                if text == "Cuti Tahunan" {
+//                    self.showViewCutiTahunan()
+//                    self.hideViewCutiAkademik()
+//                    self.hideViewCutiSakit()
+//                    self.hideViewCutiSementara()
+//                } else if text == "Cuti Akademik" {
+//                    self.showViewCutiAkademik()
+//                    self.hideViewCutiTahunan()
+//                    self.hideViewCutiSakit()
+//                    self.hideViewCutiSementara()
+//                    self.hideViewSisaJatahCuti()
+//                } else if text == "Cuti Sakit" {
+//                    self.showViewCutiSakit()
+//                    self.hideViewCutiTahunan()
+//                    self.hideViewCutiAkademik()
+//                    self.hideViewCutiSementara()
+//                    self.hideViewSisaJatahCuti()
+//                } else if text == "Izin Meninggalkan Pekerjaan Sementara" {
+//                    self.showViewCutiSementara()
+//                    self.hideViewCutiTahunan()
+//                    self.hideViewCutiAkademik()
+//                    self.hideViewCutiSakit()
+//                    self.hideViewSisaJatahCuti()
+//                }
             })
         }
     }
@@ -272,6 +271,8 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initView() {
+        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
+        
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         
         labelUnit.layer.cornerRadius = 5

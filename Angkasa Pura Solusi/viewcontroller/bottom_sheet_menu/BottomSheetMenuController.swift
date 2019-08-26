@@ -127,7 +127,6 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func hideActionInListMenuFavorit() {
-        updateMarginCollectionView(favoritCollectionRightMargin, 9)
         
         for (index, _) in listMenuFavorit.enumerated() {
             listMenuFavorit[index].action = nil
@@ -136,7 +135,6 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func hideActionInListMenuLainya() {
-        updateMarginCollectionView(lainyaCollectionRightMargin, 9)
         
         for (index, _) in listMenuLainya.enumerated() {
             listMenuLainya[index].action = nil

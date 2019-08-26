@@ -35,7 +35,7 @@ class PerizinanNetworking {
                 let message = JSON(success)["message"].string
                 
                 if status == 200 {
-                    guard let mData = response.data else { return}
+                    guard let mData = response.data else { return }
                     
                     do {
                         let leaveType = try JSONDecoder().decode(LeaveType.self, from: mData)
