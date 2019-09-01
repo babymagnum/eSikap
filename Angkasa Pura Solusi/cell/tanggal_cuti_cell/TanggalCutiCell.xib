@@ -36,7 +36,7 @@
                                         <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group382" translatesAutoresizingMaskIntoConstraints="NO" id="ouI-V5-WsP">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group382" translatesAutoresizingMaskIntoConstraints="NO" id="ouI-V5-WsP">
                                         <rect key="frame" x="265.5" y="1" width="26.5" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ouI-V5-WsP" secondAttribute="height" multiplier="1:1" id="V7k-Hw-kNG"/>

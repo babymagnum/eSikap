@@ -206,6 +206,18 @@ class PublicFunction {
         return Double((formatter.date(from: getCurrentDate(pattern: pattern))?.timeIntervalSince1970)! * 1000.0)
     }
     
+    func dateToString(_ date: Date, _ pattern: String) -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = pattern
+        return dateformatter.string(from: date)
+    }
+    
+    func stringToDate(_ stringDate: String, _ pattern: String) -> Date {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = pattern
+        return dateformatter.date(from: stringDate)!
+    }
+    
     open func dateLongToString(dateInMillis: Double, pattern: String) -> String {
         let date = Date(timeIntervalSince1970: (dateInMillis / 1000.0))
         let dateFormatter = DateFormatter()
@@ -395,6 +407,18 @@ extension UIColor {
 }
 
 extension String{
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        return ceil(boundingBox.height)
+    }
+    
+    func width(withConstraintedHeight height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        return ceil(boundingBox.width)
+    }
+    
     func trim() -> String{
         return self.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
     }
@@ -523,6 +547,17 @@ extension UIView {
         self.layer.shadowRadius = shadowRadius
         self.layer.shadowOpacity = opacity
     }
+    
+    func getHeight() -> CGFloat {
+        
+        var contentRect = CGRect.zero
+        
+        for view in self.subviews {
+            contentRect = contentRect.union(view.frame)
+        }
+        
+        return contentRect.height
+    }
 }
 
 extension String {
@@ -643,19 +678,6 @@ extension UIFont {
     }
 }
 
-fileprivate extension String {
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
-        return ceil(boundingBox.height)
-    }
-    func width(withConstraintedHeight height: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
-        return ceil(boundingBox.width)
-    }
-}
-
 extension UILabel {
     /// Will auto resize the contained text to a font size which fits the frames bounds
     /// Uses the pre-set font to dynamicly determine the proper sizing
@@ -673,6 +695,9 @@ extension UILabel {
 }
 
 extension UIScrollView {
+    func scrollTo(y: CGFloat) {
+        self.setContentOffset(CGPoint(x: 0, y: y), animated: true)
+    }
     
     func resizeScrollViewContentSize() {
         

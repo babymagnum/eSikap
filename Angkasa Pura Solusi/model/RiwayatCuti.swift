@@ -9,11 +9,22 @@
 import Foundation
 
 struct RiwayatCuti: Decodable {
+    var status: Int?
+    var message: String?
+    var data: DataRiwayatCuti?
+}
+
+struct DataRiwayatCuti: Decodable {
+    var total_page: Int?
+    var leave = [ItemRiwayatCuti]()
+}
+
+struct ItemRiwayatCuti: Decodable {
+    var id: String?
     var date: String?
-    var kode: String?
+    var number: String?
+    var type_name: String?
     var status: String?
-    var type: String?
-    var tanggal: String?
-    var time: String?
-    var isSameDate: Bool?
+    var status_icon: String?
+    var dates: String?
 }

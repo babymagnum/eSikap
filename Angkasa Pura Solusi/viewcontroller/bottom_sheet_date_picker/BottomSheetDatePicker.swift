@@ -10,40 +10,66 @@ import UIKit
 
 protocol BottomSheetDatePickerProtocol {
     func pickDate(pickedDate: String)
+    func pickTime(pickedTime: String)
+}
+
+enum PickerTypeEnum {
+    case date
+    case time
 }
 
 class BottomSheetDatePicker: BaseViewController {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var buttonPilih: UIButton!
+    @IBOutlet weak var viewContainer: UIView!
     
     var pickedDate = ""
+    var pickedTime = ""
     var delegate: BottomSheetDatePickerProtocol?
+    var picker: PickerTypeEnum!
+    var isBackDate: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickedDate = function.getCurrentDate(pattern: "dd/MM/yyyy")
+        pickedDate = function.getCurrentDate(pattern: "yyyy-MM-dd")
         
-        initEvent()
+        initView()
     }
     
-    private func initEvent() {
-        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+    private func initView() {
+        buttonPilih.layer.cornerRadius = 5
+        
+        switch picker {
+            case .date?: datePicker.datePickerMode = .date
+            default: datePicker.datePickerMode = .time
+        }
+        
+        if !isBackDate {
+            datePicker.minimumDate = function.stringToDate(function.getCurrentDate(pattern: "yyyy-MM-dd"), "yyyy-MM-dd")
+        }
     }
     
 }
 
 extension BottomSheetDatePicker {
     @IBAction func buttonPilihClick(_ sender: Any) {
-        delegate?.pickDate(pickedDate: pickedDate)
+        switch picker {
+            case .date?: delegate?.pickDate(pickedDate: pickedDate)
+            case .time?: delegate?.pickTime(pickedTime: pickedTime)
+            default: break
+        }
         dismiss(animated: true, completion: nil)
     }
     
-    @objc func dateChanged(_ sender: UIDatePicker) {
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: sender.date)
-        if let day = components.day, let month = components.month, let year = components.year {
-            self.pickedDate = "\(day)/\(month)/\(year)"
+    @IBAction func datePickerChange(_ sender: Any) {
+        switch picker {
+        case .date?:
+            self.pickedDate = function.dateToString(datePicker.date, "yyyy-MM-dd")
+        case .time?:
+            self.pickedTime = function.dateToString(datePicker.date, "hh:mm")
+        default: break
         }
     }
 }

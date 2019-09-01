@@ -10,17 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class InformationNetworking {
-    lazy var preference: Preference = {
-        let mPreference = Preference()
-        return mPreference
-    }()
-    
-    lazy var staticLet: StaticLet = {
-        let mStaticLet = StaticLet()
-        return mStaticLet
-    }()
-    
+class InformationNetworking: BaseNetworking {
     func getDashboard(completion: @escaping(_ error: String?, _ dashboard: ItemDashboard?, _ isExpired: Bool?) -> Void) {
         guard let url = URL(string: "\(staticLet.base_url)api/getDashboard") else { return }
         var request = URLRequest(url: url)
@@ -125,6 +115,7 @@ class InformationNetworking {
             switch response.result{
             case .success(let success):
                 
+                print(JSON(success))
                 let status = JSON(success)["status"].int
                 let message = JSON(success)["message"].string
                 
@@ -393,5 +384,51 @@ class InformationNetworking {
         }
     }
     
+    func getEmpListFilter(completion: @escaping(_ error: String?, _ listEmpFilter: ListEmpFilter?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getEmpListFiter"
+        let body: [String: String] = [ "keyword": "" ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
     
+    func postLeaveRequest(imageData: Data, body: [String: String], completion : @escaping(_ error: String?, _ callback: String?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/addLeaveRequest"
+        alamofirePostImage(imageData: imageData, url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getLeaveHistoryList(page: Int, year: String, leave_type_id: String, status: String, completion: @escaping(_ error: String?, _ riwayatCuti: RiwayatCuti?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getLeaveHistoryList"
+        let body: [String: String] = [
+            "page": "\(page)",
+            "year": year,
+            "leave_type_id": leave_type_id,
+            "status": status
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getDetailLeaveById(id: String, completion: @escaping(_ error: String?, _ detailRiwayatCuti: DetailRiwayatCuti?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getDetailLeaveById"
+        let body: [String: String] = [
+            "leave_id": id
+        ]
+        
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func cancelLeave(id: String, cancelNotes: String, completion: @escaping(_ error: String?, _ baseResponse: BaseResponse?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/cancelLeave"
+        let body: [String: String] = [
+            "leave_id": id,
+            "cancel_notes": cancelNotes
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getEditDetailLeaveById(id: String, completion: @escaping(_ error: String?, _ detailLeaveById: DetailLeaveById?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getEditDetailLeaveById"
+        let body: [String: String] = [
+            "leave_id": id
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

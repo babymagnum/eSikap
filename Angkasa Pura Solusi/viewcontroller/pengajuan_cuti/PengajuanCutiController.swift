@@ -9,10 +9,20 @@
 import UIKit
 import iOSDropDown
 import SVProgressHUD
+import FittedSheets
 
-class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
+enum DatePickerEnum {
+    case date
+    case dateStart
+    case dateEnd
+    case timeStart
+    case timeEnd
+}
+
+class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UITextFieldDelegate {
 
     //outlet root
+    @IBOutlet weak var imageFile: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var labelNama: UILabel!
@@ -20,79 +30,92 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var fieldJenisCuti: DropDown!
     @IBOutlet weak var viewJenisCuti: UIView!
     @IBOutlet weak var viewAlasan: UIView!
-    @IBOutlet weak var fieldAlasan: UITextField!
+    @IBOutlet weak var fieldAlasan: CustomTextView!
     @IBOutlet weak var viewDelegasi: UIView!
-    @IBOutlet weak var fieldDelegasi: UITextField!
+    @IBOutlet weak var fieldDelegasi: CustomDropDownField!
     @IBOutlet weak var viewAtasan: UIView!
-    @IBOutlet weak var fieldAtasan: UITextField!
+    @IBOutlet weak var fieldAtasan: CustomDropDownField!
     @IBOutlet weak var buttonSimpan: UIButton!
     @IBOutlet weak var buttonSubmit: UIButton!
-    @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelSisaJatahCuti: UILabel!
-    @IBOutlet weak var labelKadaluarsaTop: UILabel!
-    @IBOutlet weak var viewSisaJatahCutiHeight: NSLayoutConstraint!
-    @IBOutlet weak var viewSisaJatahCuti: UIView!
+    @IBOutlet weak var labelMaksimalCuti: CustomLabel!
+    @IBOutlet weak var labelMaksimalCutiHeight: NSLayoutConstraint!
     
-    //outlet view cuti tahunan
-    @IBOutlet weak var viewCutiTahunanHeight: NSLayoutConstraint!
-    @IBOutlet weak var viewCutiTahunanTanggal: UIView!
-    @IBOutlet weak var viewCutiTahunan: UIView!
+    //view jatah cuti
+    @IBOutlet weak var viewJatahCuti: UIView!
+    @IBOutlet weak var viewJatahCutiHeight: NSLayoutConstraint!
     @IBOutlet weak var jatahCutiCollectionView: UICollectionView!
-    @IBOutlet weak var tanggalCutiCollectionView: UICollectionView!
-    @IBOutlet weak var tanggalCutiCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var jatahCutiCollectionHeight: NSLayoutConstraint!
     
-    //outlet view cuti akademik
-    @IBOutlet weak var viewCutiAkademik: UIView!
-    @IBOutlet weak var viewCutiAkademikHeight: NSLayoutConstraint!
-    @IBOutlet weak var viewTanggalCutiAkademik: UIView!
+    //view tanggal cuti picked
+    @IBOutlet weak var viewTanggalCutiPicked: UIView!
+    @IBOutlet weak var viewTanggalPickedHeight: NSLayoutConstraint!
+    @IBOutlet weak var tanggalCutiCollectionView: UICollectionView!
+    @IBOutlet weak var tanggalCutiCollectionHeight: NSLayoutConstraint!
     
-    //outlet view cuti sakit
-    @IBOutlet weak var viewCutiSakit: UIView!
-    @IBOutlet weak var viewCutiSakitHeight: NSLayoutConstraint!
+    //view pick tanggal
+    @IBOutlet weak var viewRootPickTanggal: UIView!
+    @IBOutlet weak var viewPickTanggalHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewPickTanggal: UIView!
+    @IBOutlet weak var fieldPickTanggal: CustomTextField!
+    
+    //view rentang tanggal
+    @IBOutlet weak var viewRentangTanggal: UIView!
+    @IBOutlet weak var viewRentangTanggalHeight: NSLayoutConstraint!
     @IBOutlet weak var viewRentangTanggalAwal: UIView!
     @IBOutlet weak var viewRentangTanggalAkhir: UIView!
+    @IBOutlet weak var fieldRentangTanggalAwal: CustomTextField!
+    @IBOutlet weak var fieldRentangTanggalAkhir: CustomTextField!
+    
+    //view lampirkan file
+    @IBOutlet weak var viewRootLampirkanFile: UIView!
+    @IBOutlet weak var viewLampirkanHeight: NSLayoutConstraint!
     @IBOutlet weak var viewLampirkanFile: UIView!
     
-    //outlet view cuti sementara
-    @IBOutlet weak var viewCutiSementara: UIView!
-    @IBOutlet weak var viewCutiSementaraHeight: NSLayoutConstraint!
-    @IBOutlet weak var viewTanggalCutiSementara: UIView!
-    @IBOutlet weak var viewWaktuAwalCutiSementara: UIView!
-    @IBOutlet weak var viewWaktuAkhirCutiSementara: UIView!
+    //view rentang waktu
+    @IBOutlet weak var viewRangeWaktu: UIView!
+    @IBOutlet weak var viewRentangWaktuHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewRentangWaktuAkhir: UIView!
+    @IBOutlet weak var viewRentangWaktuAwal: UIView!
+    @IBOutlet weak var fieldRentangWaktuAwal: CustomTextField!
+    @IBOutlet weak var fieldRentangWaktuAkhir: CustomTextField!
     
-    @IBOutlet weak var labelPegawai: CustomLabel!
-    @IBOutlet weak var labelPegawaiHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelNamaHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelUnitKerjaHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelJenisCutiHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelJatahCutiHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelTanggalCutiTahunanHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelTanggalTahunanHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelTanggalAkademikHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelRentangTanggalSakitHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelLampirkanHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelTanggalSementaraHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelWaktuSementaraHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelAlasanHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelDelegasiHeight: NSLayoutConstraint!
-    @IBOutlet weak var labelAtasanHeight: NSLayoutConstraint!
+    private var datePicker: DatePickerEnum!
+    private var defaultJatahCutiHeight: CGFloat = 0
+    private var defaultPickTanggalHeight: CGFloat = 0
+    private var defaultRentangTanggalHeight: CGFloat = 0
+    private var defaultLampirkanHeight: CGFloat = 0
+    private var defaultRentangWaktuHeight: CGFloat = 0
+    private var defaultTanggalPickedHeight: CGFloat = 0
+    private var defaultLabelMaksimalCutiHeight: CGFloat = 0
+    private var isDay = ""
+    private var isRange = ""
+    private var leave_type_id = ""
+    private var delegation_emp_id = ""
+    private var supervisor_emp_id = ""
+    private var idPilih = 99999999
     
-    var defaultViewCutiTahunanHeight: CGFloat = 0
-    var idPilih = 99999999
+    private var listLeaveType = [ItemType]()
+    private var listJatahCuti = [ItemQuota]()
+    private var listTanggalCuti = [TanggalCuti]()
+    private var isCalculateTanggalCutiHeight = false
+    private var isCalculateJatahCutiHeight = false
+    private var isSetJatahCutiHeight = false
+    private var isSetTanggalCutiHeight = false
+    private var isBackDate = true
+    private var isTanggalCutiVisible = false
     
-    var listLeaveType = [ItemType]()
-    var listJatahCuti = [ItemQuota]()
-    var listTanggalCuti = [TanggalCuti]()
-    var isCalculateTanggalCutiHeight = false
-    var isCalculateJatahCutiHeight = false
-    var isSetJatahCutiHeight = false
-    var isSetTanggalCutiHeight = false
+    var leave_id: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        defaultViewCutiTahunanHeight = viewCutiTahunanHeight.constant
+        defaultJatahCutiHeight = viewJatahCuti.getHeight() - jatahCutiCollectionHeight.constant + 100
+        defaultPickTanggalHeight = 150
+        defaultRentangTanggalHeight = viewRentangTanggal.getHeight() + 100
+        defaultLampirkanHeight = viewRootLampirkanFile.getHeight() + 100
+        defaultRentangWaktuHeight = viewRangeWaktu.getHeight() + 100
+        defaultTanggalPickedHeight = 0
+        defaultLabelMaksimalCutiHeight = (labelMaksimalCuti.text?.height(withConstrainedWidth: labelMaksimalCuti.frame.width, font: UIFont(name: labelMaksimalCuti.font.fontName, size: labelMaksimalCuti.font.pointSize)!))!
     }
     
     override func viewDidLoad() {
@@ -106,17 +129,110 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
         
         dropdownListener()
         
-        getLeaveQuota()
-        
         getProfile()
+        
+        getEmpListFilter()
+        
+        if let leave_id = leave_id {
+            self.getEditDetailLeaveById(id: leave_id)
+        } else {
+            getLeaveType()
+        }
+    }
+    
+    private func getEditDetailLeaveById(id: String) {
+        SVProgressHUD.show()
+        
+        informationNetworking.getEditDetailLeaveById(id: id) { (error, detailLeaveById, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Edit Cuti", error, "Reload", "Cancel", completionHandler: {
+                    self.getEditDetailLeaveById(id: id)
+                })
+                return
+            }
+            
+            guard let detailLeave = detailLeaveById else { return }
+            
+            self.setViewContent(detailLeave)
+        }
+    }
+    
+    private func setViewContent(_ detailLeave: DetailLeaveById) {
+        let item = detailLeave.data
+        
+        if (item?.dates.count)! > 0 {
+            self.isTanggalCutiVisible = true
+            
+            for date in item!.dates {
+                self.listTanggalCuti.append(TanggalCuti(tanggal: date))
+            }
+            
+            self.tanggalCutiCollectionView.reloadData()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
+                self.viewTanggalPickedHeight.constant = self.tanggalCutiCollectionHeight.constant
+                self.scrollView.resizeScrollViewContentSize()
+            }
+        }
+        
+        leave_type_id = (item?.type_id)!
+        fieldAlasan.text = item?.reason
+        fieldRentangWaktuAwal.text = item?.start_time
+        fieldRentangWaktuAkhir.text = item?.end_time
+        fieldRentangTanggalAwal.text = item?.leave_start
+        fieldRentangTanggalAkhir.text = item?.leave_end
+        fieldPickTanggal.text = item?.date?.components(separatedBy: " ")[0]
+        imageFile.loadUrl((item?.url_file)!)
         
         getLeaveType()
     }
     
-    private func initEvent() {
-        viewCutiTahunanTanggal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewCutiTahunanTanggalClick)))
+    private func getEmpListFilter() {
+        SVProgressHUD.show()
         
-        viewTanggalCutiAkademik.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTanggalCutiAkademiClick)))
+        informationNetworking.getEmpListFilter { (error, listEmpFilter, isExpired) in
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Employment Data", error, "Reload", "Cancel", completionHandler: {
+                    self.getEmpListFilter()
+                    return
+                })
+            }
+            
+            guard let listEmpFilter = listEmpFilter else { return }
+            
+            var stringArray = [String]()
+            var idArray = [Int]()
+            
+            for emp in listEmpFilter.data {
+                stringArray.append(emp.emp_name!)
+                idArray.append(Int(emp.emp_id!)!)
+            }
+            
+            self.fieldDelegasi.optionArray = stringArray
+            self.fieldDelegasi.optionIds = idArray
+            
+            self.fieldAtasan.optionArray = stringArray
+            self.fieldAtasan.optionIds = idArray
+        }
+    }
+    
+    private func initEvent() {
+        imageFile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageFileClick)))
+        
+        viewPickTanggal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewPickTanggalClick)))
         
         viewRentangTanggalAwal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangTanggalAwalClick)))
         
@@ -124,24 +240,26 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
         
         viewLampirkanFile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewLampirkanFileClick)))
         
-        viewTanggalCutiSementara.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTanggalCutiSementaraClick)))
+        viewRentangWaktuAwal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangWaktuAwalClick)))
         
-        viewWaktuAwalCutiSementara.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewWaktuAwalCutiSementaraClick)))
-        
-        viewWaktuAkhirCutiSementara.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(viewWaktuAkhirCutiSementaraClick)))
+        viewRentangWaktuAkhir.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangWaktuAkhirClick)))
     }
     
     private func getLeaveType() {
-        SVProgressHUD.dismiss()
+        SVProgressHUD.show()
         
         perizinanNetworking.getLeaveType { (error, leaveType, isExpired) in
+            SVProgressHUD.dismiss()
+            
             if let _ = isExpired {
                 self.forceLogout(self.navigationController!)
                 return
             }
             
-            if let _ = error {
-                self.getLeaveType()
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Tipe Cuti", error, "Reload", "Cancel", completionHandler: {
+                    self.getLeaveType()
+                })
                 return
             }
             
@@ -151,7 +269,14 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
             var listName = [String]()
             var listId = [Int]()
             for (index, type) in leaveType.data.enumerated() {
+                
                 listName.append(type.name ?? "")
+                
+                if self.leave_type_id != "" {
+                    if type.id == self.leave_type_id {
+                        self.checkSelectedLeaveType(type)
+                    }
+                }
                 
                 if index == 0 {
                     listId.append(self.idPilih)
@@ -159,6 +284,8 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
                     listId.append(Int(type.id!)!)
                 }
             }
+            
+            
             
             self.fieldJenisCuti.optionArray = listName
             self.fieldJenisCuti.optionIds = listId
@@ -173,7 +300,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
             }
             
             if let error = error {
-                self.function.showUnderstandDialog(self, "Error", error, "Reload", "Cancel", completionHandler: {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Profile", error, "Reload", "Cancel", completionHandler: {
                     self.getProfile()
                 })
                 return
@@ -186,7 +313,8 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func setProfileView(item: ItemProfile) {
-        
+        labelNama.text = item.emp_name
+        labelUnit.setTitle(item.unit, for: .normal)
     }
     
     private func getLeaveQuota() {
@@ -226,265 +354,347 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate {
         // set datasource
         tanggalCutiCollectionView.dataSource = self
         jatahCutiCollectionView.dataSource = self
-        
-        // populate dummy data
-        listTanggalCuti.append(TanggalCuti(tanggal: "03-06-2019"))
-        listTanggalCuti.append(TanggalCuti(tanggal: "10-06-2019"))
+    }
+    
+    private func hideLabelMaksimalCuti() {
+        labelMaksimalCutiHeight.constant = 0
+        scrollView.resizeScrollViewContentSize()
+    }
+    
+    private func showLabelMaksimalCuti() {
+        labelMaksimalCutiHeight.constant = defaultLabelMaksimalCutiHeight
+        scrollView.resizeScrollViewContentSize()
+    }
+    
+    private func resetPengajuanCuti() {
+        hideLabelMaksimalCuti()
+        hidePickTanggal()
+        hideJatahCuti()
+        hideRentangTanggal()
+        hideLampirkan()
+        hideRentangWaktu()
+        hideTanggalPicked()
     }
     
     private func dropdownListener() {
-        fieldJenisCuti.didSelect { (text, index, id) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                
-                let selectedItem = self.listLeaveType[index]
-                
-                
-                
-//                if text == "Cuti Tahunan" {
-//                    self.showViewCutiTahunan()
-//                    self.hideViewCutiAkademik()
-//                    self.hideViewCutiSakit()
-//                    self.hideViewCutiSementara()
-//                } else if text == "Cuti Akademik" {
-//                    self.showViewCutiAkademik()
-//                    self.hideViewCutiTahunan()
-//                    self.hideViewCutiSakit()
-//                    self.hideViewCutiSementara()
-//                    self.hideViewSisaJatahCuti()
-//                } else if text == "Cuti Sakit" {
-//                    self.showViewCutiSakit()
-//                    self.hideViewCutiTahunan()
-//                    self.hideViewCutiAkademik()
-//                    self.hideViewCutiSementara()
-//                    self.hideViewSisaJatahCuti()
-//                } else if text == "Izin Meninggalkan Pekerjaan Sementara" {
-//                    self.showViewCutiSementara()
-//                    self.hideViewCutiTahunan()
-//                    self.hideViewCutiAkademik()
-//                    self.hideViewCutiSakit()
-//                    self.hideViewSisaJatahCuti()
-//                }
-            })
+        fieldDelegasi.didSelect { (text, index, id) in
+            self.delegation_emp_id = String(id)
+            self.fieldDelegasi.text = text
         }
+        
+        fieldAtasan.didSelect { (text, index, id) in
+            self.supervisor_emp_id = String(id)
+            self.fieldAtasan.text = text
+        }
+        
+        fieldJenisCuti.didSelect { (text, index, id) in
+            let selectedLeaveType = self.listLeaveType[index]
+            
+            self.listTanggalCuti.removeAll()
+            self.tanggalCutiCollectionHeight.constant = 0
+            self.fieldPickTanggal.text = ""
+            
+            self.checkSelectedLeaveType(selectedLeaveType)
+        }
+    }
+    
+    private func checkSelectedLeaveType(_ selectedItem: ItemType) {
+        labelMaksimalCuti.text = "Maksimal Cuti: \(selectedItem.days_count ?? "") Hari"
+        
+        leave_type_id = String(selectedItem.id!)
+        isRange = selectedItem.is_range!
+        isDay = selectedItem.is_day!
+        fieldJenisCuti.text = selectedItem.name
+        
+        if Int(selectedItem.id!) == idPilih {
+            self.resetPengajuanCuti()
+            return
+        }
+        
+        showPickTanggal()
+        
+        if selectedItem.is_day == "0" {
+            self.showRentangWaktu()
+            self.hideTanggalPicked()
+        }
+        
+        if selectedItem.is_range == "0" && selectedItem.is_day == "1" {
+            self.isTanggalCutiVisible = true
+            self.showTanggalPicked()
+            self.hideRentangTanggal()
+            self.hideRentangWaktu()
+        } else if selectedItem.is_range == "1" && selectedItem.is_day == "1" {
+            self.isTanggalCutiVisible = false
+            self.showRentangTanggal()
+            self.hidePickTanggal()
+            self.hideTanggalPicked()
+            self.hideRentangWaktu()
+        } else {
+            self.hideRentangTanggal()
+        }
+        
+        if selectedItem.days_count != "0" { self.showLabelMaksimalCuti() } else { self.hideLabelMaksimalCuti() }
+        
+        if selectedItem.is_reduced == "1" {
+            if !self.isSetJatahCutiHeight {
+                self.getLeaveQuota()
+            }
+            
+            self.showJatahCuti()
+        } else {
+            self.hideJatahCuti()
+        }
+        
+        if selectedItem.is_backdated == "0" { self.isBackDate = false } else { self.isBackDate = true }
+        
+        if selectedItem.is_lampiran == "1" { self.showLampirkan() } else { self.hideLampirkan() }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initView() {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
-        
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         
+        fieldJenisCuti.delegate = self
         labelUnit.layer.cornerRadius = 5
-        
         viewJenisCuti.giveBorder(3, 1, "dedede")
         viewAlasan.giveBorder(3, 1, "dedede")
         viewDelegasi.giveBorder(3, 1, "dedede")
         viewAtasan.giveBorder(3, 1, "dedede")
-        
         buttonSimpan.layer.cornerRadius = 5
         buttonSubmit.layer.cornerRadius = 5
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.setHeightLabel()
-        }
-        
-        viewRootHeight.constant -= viewCutiTahunanHeight.constant + viewCutiAkademikHeight.constant + viewCutiSakitHeight.constant + viewCutiSementaraHeight.constant
-        
-        //outlet cuti tahunan
-        viewCutiTahunanTanggal.giveBorder(3, 1, "dedede")
-        viewCutiTahunanHeight.constant = 0
-        viewCutiTahunan.isHidden = true
-        
-        //outlet cuti akademik
-        viewTanggalCutiAkademik.giveBorder(3, 1, "dedede")
-        viewCutiAkademikHeight.constant = 0
-        viewCutiAkademik.isHidden = true
-        
-        //outlet cuti sakit
+        viewPickTanggal.giveBorder(3, 1, "dedede")
         viewRentangTanggalAwal.giveBorder(3, 1, "dedede")
         viewRentangTanggalAkhir.giveBorder(3, 1, "dedede")
         viewLampirkanFile.giveBorder(3, 1, "dedede")
-        viewCutiSakitHeight.constant = 0
-        viewCutiSakit.isHidden = true
+        viewRentangWaktuAwal.giveBorder(3, 1, "dedede")
+        viewRentangWaktuAkhir.giveBorder(3, 1, "dedede")
         
-        //outlet cuti sementara
-        viewTanggalCutiSementara.giveBorder(3, 1, "dedede")
-        viewWaktuAwalCutiSementara.giveBorder(3, 1, "dedede")
-        viewWaktuAkhirCutiSementara.giveBorder(3, 1, "dedede")
-        viewCutiSementaraHeight.constant = 0
-        viewCutiSementara.isHidden = true
+        resetPengajuanCuti()
+        scrollView.resizeScrollViewContentSize()
     }
     
-    private func setHeightLabel() {
-        let height = labelPegawai.getHeight(width: labelPegawai.frame.width) + function.getGlobalHeight()
-        labelNamaHeight.constant = height
-        labelPegawaiHeight.constant = height
-        labelUnitKerjaHeight.constant = height
-        labelJenisCutiHeight.constant = height
-        labelJatahCutiHeight.constant = height
-        labelTanggalCutiTahunanHeight.constant = height
-        labelTanggalTahunanHeight.constant = height
-        labelTanggalAkademikHeight.constant = height
-        labelRentangTanggalSakitHeight.constant = height
-        labelLampirkanHeight.constant = height
-        labelTanggalSementaraHeight.constant = height
-        labelWaktuSementaraHeight.constant = height
-        labelAlasanHeight.constant = height
-        labelDelegasiHeight.constant = height
-        labelAtasanHeight.constant = height
-    }
-    
-    private func hideViewSisaJatahCuti() {
-        if !viewSisaJatahCuti.isHidden {
-            UIView.animate(withDuration: 0.2) {
-                let sisaJatahCutiHeight = self.labelSisaJatahCuti.getHeight(width: self.labelSisaJatahCuti.frame.width) + self.labelKadaluarsaTop.getHeight(width: self.labelKadaluarsaTop.frame.width) + 8.9 + 12.8 + 4
-                self.viewRootHeight.constant -= sisaJatahCutiHeight
-                self.viewSisaJatahCutiHeight.constant = 0
-                self.viewSisaJatahCuti.isHidden = true
-                self.view.layoutIfNeeded()
-            }
+    private func showView(_ viewRootHeight: NSLayoutConstraint, _ viewRoot: UIView, _ height: CGFloat) {
+        UIView.animate(withDuration: 0.2) {
+            viewRootHeight.constant = height
+            self.scrollView.resizeScrollViewContentSize()
+            viewRoot.isHidden = false
+            self.view.layoutIfNeeded()
         }
     }
+    
+    private func hideView(_ viewRootHeight: NSLayoutConstraint, _ viewRoot: UIView) {
+        UIView.animate(withDuration: 0.2) {
+            viewRootHeight.constant = 0
+            self.scrollView.resizeScrollViewContentSize()
+            viewRoot.isHidden = true
+            self.view.layoutIfNeeded()
+        }
+    }
+
 }
 
-//function for view cuti sementara
+//function show hide hidden view
 extension PengajuanCutiController {
-    private func showViewCutiSementara() {
-        UIView.animate(withDuration: 0.2) {
-            self.viewRootHeight.constant += 176
-            self.viewCutiSementaraHeight.constant = 176
-            self.viewCutiSementara.isHidden = false
-            self.view.layoutIfNeeded()
-        }
-    }
+    private func showPickTanggal() { showView(viewPickTanggalHeight, viewRootPickTanggal, defaultPickTanggalHeight) }
     
-    private func hideViewCutiSementara() {
-        UIView.animate(withDuration: 0.2) {
-            self.viewRootHeight.constant -= 176
-            self.viewCutiSementaraHeight.constant = 0
-            self.viewCutiSementara.isHidden = true
-            self.view.layoutIfNeeded()
-        }
-    }
+    private func hidePickTanggal() { hideView(viewPickTanggalHeight, viewRootPickTanggal) }
+    
+    private func showJatahCuti() { showView(viewJatahCutiHeight, viewJatahCuti, defaultJatahCutiHeight) }
+    
+    private func hideJatahCuti() { hideView(viewJatahCutiHeight, viewJatahCuti) }
+    
+    private func showRentangTanggal() { showView(viewRentangTanggalHeight, viewRentangTanggal, defaultRentangTanggalHeight) }
+    
+    private func hideRentangTanggal() { hideView(viewRentangTanggalHeight, viewRentangTanggal) }
+    
+    private func showLampirkan() { showView(viewLampirkanHeight, viewRootLampirkanFile, defaultLampirkanHeight) }
+    
+    private func hideLampirkan() { hideView(viewLampirkanHeight, viewRootLampirkanFile) }
+    
+    private func showRentangWaktu() { showView(viewRentangWaktuHeight, viewRangeWaktu, defaultRentangWaktuHeight) }
+    
+    private func hideRentangWaktu() { hideView(viewRentangWaktuHeight, viewRangeWaktu) }
+    
+    private func showTanggalPicked() { showView(viewTanggalPickedHeight, viewTanggalCutiPicked, defaultTanggalPickedHeight) }
+    
+    private func hideTanggalPicked() { hideView(viewTanggalPickedHeight, viewTanggalCutiPicked) }
 }
 
-//function for view cuti tahunan
-extension PengajuanCutiController {
-    private func showViewCutiTahunan() {
-        UIView.animate(withDuration: 0.2, animations: {
-            let sisaJatahCutiHeight = self.labelSisaJatahCuti.getHeight(width: self.labelSisaJatahCuti.frame.width) + self.labelKadaluarsaTop.getHeight(width: self.labelKadaluarsaTop.frame.width) + 8.9 + 12.8 + 4
-            self.viewRootHeight.constant += self.defaultViewCutiTahunanHeight + sisaJatahCutiHeight
-            self.viewCutiTahunanHeight.constant = self.defaultViewCutiTahunanHeight
-            self.viewCutiTahunan.isHidden = false
-            self.viewSisaJatahCutiHeight.constant = sisaJatahCutiHeight
-            self.viewSisaJatahCuti.isHidden = false
-            self.view.layoutIfNeeded()
-        })
-    }
-    
-    private func getViewCutiTahunanHeight() {
-        
-    }
-    
-    private func hideViewCutiTahunan() {
-        UIView.animate(withDuration: 0.2, animations: {
-            self.viewRootHeight.constant -= self.defaultViewCutiTahunanHeight
-            self.viewCutiTahunanHeight.constant = 0
-            self.viewCutiTahunan.isHidden = true
-            self.view.layoutIfNeeded()
-        })
-    }
-}
-
-//function for view cuti sakit
-extension PengajuanCutiController {
-    private func showViewCutiSakit() {
-        UIView.animate(withDuration: 0.2) {
-            self.viewRootHeight.constant += 208
-            self.viewCutiSakitHeight.constant = 208
-            self.viewCutiSakit.isHidden = false
-            self.view.layoutIfNeeded()
+//date picker protocol
+extension PengajuanCutiController: BottomSheetDatePickerProtocol {
+    func pickDate(pickedDate: String) {
+        print("picked date \(pickedDate)")
+        switch datePicker {
+            case .date?:
+                fieldPickTanggal.text = pickedDate
+            
+                if self.isTanggalCutiVisible {
+                    listTanggalCuti.append(TanggalCuti(tanggal: pickedDate))
+                    self.tanggalCutiCollectionView.reloadData()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
+                        self.viewTanggalPickedHeight.constant = self.tanggalCutiCollectionHeight.constant
+                        self.scrollView.resizeScrollViewContentSize()
+                    }
+                }
+            
+            case .dateStart?: fieldRentangTanggalAwal.text = pickedDate
+            case .dateEnd?: fieldRentangTanggalAkhir.text = pickedDate
+            default: break
         }
     }
     
-    private func hideViewCutiSakit() {
-        UIView.animate(withDuration: 0.2) {
-            self.viewRootHeight.constant -= 208
-            self.viewCutiSakitHeight.constant = 0
-            self.viewCutiSakit.isHidden = true
-            self.view.layoutIfNeeded()
-        }
-    }
-}
-
-//function for view cuti akademik
-extension PengajuanCutiController {
-    private func showViewCutiAkademik() {
-        UIView.animate(withDuration: 0.2) {
-            self.viewRootHeight.constant += 66
-            self.viewCutiAkademikHeight.constant = 66
-            self.viewCutiAkademik.isHidden = false
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    private func hideViewCutiAkademik() {
-        UIView.animate(withDuration: 0.2) {
-            self.viewRootHeight.constant -= 66
-            self.viewCutiAkademikHeight.constant = 0
-            self.viewCutiAkademik.isHidden = true
-            self.view.layoutIfNeeded()
+    func pickTime(pickedTime: String) {
+        print("picked time \(pickedTime)")
+        switch datePicker {
+            case .timeStart?: fieldRentangWaktuAwal.text = pickedTime
+            case .timeEnd?: fieldRentangWaktuAkhir.text = pickedTime
+            default: break
         }
     }
 }
 
 //click event
 extension PengajuanCutiController {
-    @objc func viewCutiTahunanTanggalClick() {
-        
+    private func openDateTimePicker(_ datePicker: DatePickerEnum, _ picker: PickerTypeEnum) {
+        self.datePicker = datePicker
+        let vc = BottomSheetDatePicker()
+        vc.delegate = self
+        vc.picker = picker
+        vc.isBackDate = isBackDate
+        present(SheetViewController(controller: vc), animated: false, completion: nil)
     }
     
-    @objc func viewTanggalCutiAkademiClick() {
+    private func addLeaveRequest(body: [String: String]) {
+        let imageData = imageFile.image?.jpegData(compressionQuality: 0.5)
         
+        SVProgressHUD.show()
+        informationNetworking.postLeaveRequest(imageData: imageData!, body: body) { (error, message, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                if error.contains("<li>") {
+                    let vc = DialogPengajuanCutiController()
+                    vc.exception = error
+                    self.showCustomDialog(vc)
+                } else {
+                    self.function.showUnderstandDialog(self, "Error", error, "Mengerti")
+                }
+                return
+            }
+            
+            self.navigationController?.pushViewController(RiwayatCutiController(), animated: true)
+        }
     }
     
-    @objc func viewRentangTanggalAwalClick() {
+    private func getRequestBody(post_type: String) -> [String: String] {
+        var body: [String: String] = [
+            "leave_type_id": self.leave_type_id,
+            "reason": self.fieldAlasan.text!,
+            "delegation_emp_id": self.delegation_emp_id,
+            "supervisor_emp_id": self.supervisor_emp_id,
+            "post_type": post_type,
+            "leave_id": "",
+            "attachment_old": ""
+        ]
         
+        if isDay == "0" && isRange == "0" {
+            body.updateValue(self.fieldPickTanggal.text!, forKey: "date")
+            body.updateValue(self.fieldRentangWaktuAwal.text!, forKey: "time_start")
+            body.updateValue(self.fieldRentangWaktuAkhir.text!, forKey: "time_end")
+            print(body)
+            return body
+        }
+        else if isDay == "1" && isRange == "0" {
+            for (index, date) in self.listTanggalCuti.enumerated() {
+                body.updateValue(date.tanggal!, forKey: "dates[\(index)]")
+            }
+            print(body)
+            return body
+        }
+        else {
+            body.updateValue(self.fieldRentangTanggalAwal.text!, forKey: "range_start")
+            body.updateValue(self.fieldRentangTanggalAkhir.text!, forKey: "range_end")
+            print(body)
+            return body
+        }
     }
     
-    @objc func viewRentangTanggalAkhirClick() {
-        
+    @objc func imageFileClick() {
+        imagePicker.pickImage(self) { (image) in
+            self.imageFile.image = image
+        }
     }
+    
+    @objc func viewPickTanggalClick() { openDateTimePicker(.date, .date) }
+    
+    @objc func viewRentangTanggalAwalClick() { openDateTimePicker(.dateStart, .date) }
+    
+    @objc func viewRentangTanggalAkhirClick() { openDateTimePicker(.dateEnd, .date) }
     
     @objc func viewLampirkanFileClick() {
         
     }
     
-    @objc func viewTanggalCutiSementaraClick() {
-        
-    }
+    @objc func viewRentangWaktuAwalClick() { openDateTimePicker(.timeStart, .time) }
     
-    @objc func viewWaktuAwalCutiSementaraClick() {
-        
-    }
-    
-    @objc func viewWaktuAkhirCutiSementaraClick() {
-        
+    @objc func viewRentangWaktuAkhirClick() {
+        print("rentant waktu akhir")
+        openDateTimePicker(.timeEnd, .time)
     }
     
     @IBAction func buttonRiwayatCutiClick(_ sender: Any) {
         navigationController?.pushViewController(RiwayatCutiController(), animated: true)
     }
-    @IBAction func buttonCloseViewSisaJatahCutiClick(_ sender: Any) {
-        hideViewSisaJatahCuti()
-    }
+    
     @IBAction func buttonSubmitClick(_ sender: Any) {
+        if leave_type_id == "" {
+            self.function.showUnderstandDialog(self, "Anda Belum Menentukan Tipe Cuti", "", "Mengerti") {
+                self.scrollView.scrollTo(y: self.fieldJenisCuti.frame.origin.y)
+            }
+            return
+        }
+        
+        addLeaveRequest(body: getRequestBody(post_type: "submit"))
     }
+    
     @IBAction func buttonSimpanClick(_ sender: Any) {
+        if leave_type_id == "" {
+            self.function.showUnderstandDialog(self, "Anda Belum Menentukan Tipe Cuti", "", "Mengerti") {
+                self.scrollView.scrollTo(y: self.fieldJenisCuti.frame.origin.y)
+            }
+            return
+        }
+        
+        addLeaveRequest(body: getRequestBody(post_type: "save"))
     }
-    @IBAction func buttonBackClick(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+    
+    @IBAction func buttonBackClick(_ sender: Any) { navigationController?.popViewController(animated: true) }
+    
+    @objc func deleteTanggalClick(sender: UITapGestureRecognizer) {
+        guard let indexpath = tanggalCutiCollectionView.indexPathForItem(at: sender.location(in: tanggalCutiCollectionView)) else { return }
+        
+        listTanggalCuti.remove(at: indexpath.item)
+        tanggalCutiCollectionView.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            UIView.animate(withDuration: 0.2, animations: {
+                if self.listTanggalCuti.count > 0 {
+                    self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
+                    self.viewTanggalPickedHeight.constant = self.tanggalCutiCollectionHeight.constant
+                } else {
+                    self.viewTanggalPickedHeight.constant = 0
+                }
+                self.scrollView.resizeScrollViewContentSize()
+            })
+        }
     }
 }
 
@@ -505,18 +715,18 @@ extension PengajuanCutiController: UICollectionViewDataSource {
             if !isCalculateJatahCutiHeight {
                 self.isCalculateJatahCutiHeight = true
                 DispatchQueue.main.async {
-                    let jatahCutiHeight = jatahCutiCell.labelKadaluarsa.getHeight(width: jatahCutiCell.labelKadaluarsa.frame.width) + jatahCutiCell.labelSisaCuti.getHeight(width: jatahCutiCell.labelSisaCuti.frame.width) + jatahCutiCell.labelPeriode.getHeight(width: jatahCutiCell.labelPeriode.frame.width) + 9.8 + 6.2 + 6.2 + 12.5
                     let jatahCutiLayout = self.jatahCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiHeight)
+                    jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiCell.viewContainer.getHeight() + 12) // 12 is bottom constraint
                 }
             }
             
-            if indexPath.item == listJatahCuti.count - 1{
+            if indexPath.item == listJatahCuti.count - 1 {
                 if !self.isSetJatahCutiHeight {
                     self.isSetJatahCutiHeight = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                         self.jatahCutiCollectionHeight.constant = self.jatahCutiCollectionView.contentSize.height
-                        self.defaultViewCutiTahunanHeight += 54.5 + self.jatahCutiCollectionHeight.constant
+                        self.defaultJatahCutiHeight = self.defaultJatahCutiHeight + self.jatahCutiCollectionView.contentSize.height
+                        self.showJatahCuti()
                     }
                 }
             }
@@ -535,18 +745,28 @@ extension PengajuanCutiController: UICollectionViewDataSource {
                 }
             }
             
-            if indexPath.item == listTanggalCuti.count - 1 {
-                if !self.isSetTanggalCutiHeight {
-                    self.isSetTanggalCutiHeight = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
-                        self.defaultViewCutiTahunanHeight += 54.5 + self.tanggalCutiCollectionHeight.constant
-                    }
-                }
-            }
+//            if indexPath.item == listTanggalCuti.count - 1 {
+//                if !self.isSetTanggalCutiHeight {
+//                    self.isSetTanggalCutiHeight = true
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+//                        self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
+//                        self.defaultJatahCutiHeight += 54.5 + self.tanggalCutiCollectionHeight.constant
+//                    }
+//                }
+//            }
             
             tanggalCutiCell.data = listTanggalCuti[indexPath.item].tanggal
+            tanggalCutiCell.buttonDeleteTanggal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(deleteTanggalClick(sender:))))
             return tanggalCutiCell
         }
+    }
+}
+
+extension PengajuanCutiController {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == fieldJenisCuti {
+            return false
+        }
+        return true
     }
 }

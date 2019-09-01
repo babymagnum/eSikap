@@ -22,68 +22,58 @@
             <connections>
                 <outlet property="buttonSimpan" destination="ykK-ON-Xk9" id="RVr-RT-aHe"/>
                 <outlet property="buttonSubmit" destination="0qk-lJ-oYb" id="IMD-g7-nkc"/>
+                <outlet property="fieldAlasan" destination="Sdd-BK-tMO" id="ck5-PE-BEc"/>
                 <outlet property="fieldAtasan" destination="Gad-KX-mxP" id="7uT-oS-Raq"/>
                 <outlet property="fieldDelegasi" destination="LAY-6m-k8b" id="jXH-Au-Scv"/>
                 <outlet property="fieldJenisCuti" destination="mNi-K2-1Ho" id="GEB-Os-ALS"/>
+                <outlet property="fieldPickTanggal" destination="che-M7-wB7" id="T2B-bk-IJW"/>
+                <outlet property="fieldRentangTanggalAkhir" destination="V8s-fn-sFS" id="8qE-Bf-tiE"/>
+                <outlet property="fieldRentangTanggalAwal" destination="C2S-ub-sCF" id="Acv-oy-a8A"/>
+                <outlet property="fieldRentangWaktuAkhir" destination="fiu-QW-btX" id="tcE-D8-MZH"/>
+                <outlet property="fieldRentangWaktuAwal" destination="JQu-pm-6IJ" id="mlq-wI-ykn"/>
+                <outlet property="imageFile" destination="11q-r7-Nfc" id="KNe-e2-mwt"/>
                 <outlet property="jatahCutiCollectionHeight" destination="znR-Pd-sZf" id="Epg-JO-OVc"/>
                 <outlet property="jatahCutiCollectionView" destination="tTe-PS-Rer" id="Rfy-zw-IA0"/>
-                <outlet property="labelAlasanHeight" destination="kfu-pq-6io" id="aTu-WJ-482"/>
-                <outlet property="labelAtasanHeight" destination="myT-Ou-XUl" id="i4c-Hc-Rw9"/>
-                <outlet property="labelDelegasiHeight" destination="oAh-HX-Ot5" id="x8W-e1-U0g"/>
-                <outlet property="labelJatahCutiHeight" destination="lDn-WP-sxs" id="5ns-lz-KSN"/>
-                <outlet property="labelJenisCutiHeight" destination="F7u-j9-pbr" id="R48-Bj-vl9"/>
-                <outlet property="labelKadaluarsaTop" destination="bmt-UQ-zWT" id="dEn-jv-xYZ"/>
-                <outlet property="labelLampirkanHeight" destination="lBz-jI-bv4" id="Vlc-zH-lMb"/>
+                <outlet property="labelMaksimalCuti" destination="exW-5y-MLu" id="eKA-Am-FHT"/>
+                <outlet property="labelMaksimalCutiHeight" destination="6LO-zo-kv8" id="QBl-Zz-ISo"/>
                 <outlet property="labelNama" destination="u2e-Dn-jTn" id="gzp-x6-Afg"/>
-                <outlet property="labelNamaHeight" destination="ZAM-N9-Dc1" id="1e0-0b-6iu"/>
-                <outlet property="labelPegawai" destination="Gzn-Rl-YOX" id="XuQ-K1-Bej"/>
-                <outlet property="labelPegawaiHeight" destination="Mni-7H-dHU" id="2Ku-Gh-Ibm"/>
-                <outlet property="labelRentangTanggalSakitHeight" destination="2cZ-VA-hHt" id="Kpp-mP-KNN"/>
-                <outlet property="labelSisaJatahCuti" destination="pHS-rB-6aP" id="NxT-xD-CdX"/>
-                <outlet property="labelTanggalAkademikHeight" destination="vmd-Ah-qHd" id="6ji-Eu-1hK"/>
-                <outlet property="labelTanggalCutiTahunanHeight" destination="iMa-u6-Ziz" id="PVA-Zg-AtN"/>
-                <outlet property="labelTanggalSementaraHeight" destination="d1W-CK-XHh" id="QtU-6S-sUv"/>
-                <outlet property="labelTanggalTahunanHeight" destination="1VY-dC-Dlf" id="QBU-iX-YJh"/>
                 <outlet property="labelUnit" destination="xg0-af-Eth" id="ES3-mA-w2L"/>
-                <outlet property="labelUnitKerjaHeight" destination="GpB-z5-8dY" id="g5R-Vp-xYW"/>
-                <outlet property="labelWaktuSementaraHeight" destination="pqP-Dw-vfM" id="gY4-pp-FBK"/>
                 <outlet property="scrollView" destination="Mze-8F-cdk" id="UNg-hf-x5h"/>
-                <outlet property="tanggalCutiCollectionHeight" destination="0os-wY-72P" id="9Oz-qG-GyW"/>
-                <outlet property="tanggalCutiCollectionView" destination="rJ6-Od-odc" id="W67-nO-mUh"/>
+                <outlet property="tanggalCutiCollectionHeight" destination="Z8r-ht-2UR" id="Qzg-7q-aE8"/>
+                <outlet property="tanggalCutiCollectionView" destination="BeU-zv-R5y" id="eWQ-Uk-aB8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewAlasan" destination="Km8-Il-SHf" id="fGN-aN-M3y"/>
                 <outlet property="viewAtasan" destination="Smb-bk-OWC" id="Qah-bw-6kK"/>
-                <outlet property="viewCutiAkademik" destination="Ggh-Bc-UgU" id="4Ru-oW-pdC"/>
-                <outlet property="viewCutiAkademikHeight" destination="80p-Bo-FlY" id="DMy-uc-gxH"/>
-                <outlet property="viewCutiSakit" destination="OvC-E8-kM5" id="98c-OO-TQj"/>
-                <outlet property="viewCutiSakitHeight" destination="iDV-vd-tHF" id="3JJ-F9-l22"/>
-                <outlet property="viewCutiSementara" destination="DDQ-oK-XQe" id="awi-VD-PE1"/>
-                <outlet property="viewCutiSementaraHeight" destination="XIZ-4n-U0D" id="Vbt-iZ-35K"/>
-                <outlet property="viewCutiTahunan" destination="qNB-Ai-iJN" id="R03-gx-zwe"/>
-                <outlet property="viewCutiTahunanHeight" destination="aQ2-Om-9aB" id="8Os-3o-oo1"/>
-                <outlet property="viewCutiTahunanTanggal" destination="FUr-bb-t4Y" id="mlx-Ok-2zs"/>
                 <outlet property="viewDelegasi" destination="Fix-3O-wWz" id="1ru-Q0-dOE"/>
+                <outlet property="viewJatahCuti" destination="qNB-Ai-iJN" id="VfZ-EU-wHO"/>
+                <outlet property="viewJatahCutiHeight" destination="aQ2-Om-9aB" id="dBH-Hz-K9m"/>
                 <outlet property="viewJenisCuti" destination="Use-5g-iB0" id="C5S-5L-EtB"/>
-                <outlet property="viewLampirkanFile" destination="Pu9-te-nQc" id="dJZ-4b-UBF"/>
+                <outlet property="viewLampirkanFile" destination="D68-Bk-Cv9" id="wic-MF-I6w"/>
+                <outlet property="viewLampirkanHeight" destination="wXy-lx-Dil" id="SMy-bT-48X"/>
+                <outlet property="viewPickTanggal" destination="8iz-p4-t7V" id="FV7-8H-j6J"/>
+                <outlet property="viewPickTanggalHeight" destination="80p-Bo-FlY" id="44M-TT-fxb"/>
+                <outlet property="viewRangeWaktu" destination="DDQ-oK-XQe" id="TIM-Tm-BuG"/>
+                <outlet property="viewRentangTanggal" destination="OvC-E8-kM5" id="fFa-Kd-fNZ"/>
                 <outlet property="viewRentangTanggalAkhir" destination="LNQ-QD-HXD" id="Opc-5j-ys7"/>
                 <outlet property="viewRentangTanggalAwal" destination="0zv-Rb-ptc" id="b3X-q2-h9y"/>
-                <outlet property="viewRootHeight" destination="sh4-9b-cvR" id="hzv-39-1JF"/>
+                <outlet property="viewRentangTanggalHeight" destination="iDV-vd-tHF" id="9vY-WC-3pu"/>
+                <outlet property="viewRentangWaktuAkhir" destination="Wiz-4r-iIE" id="SnN-VO-2V6"/>
+                <outlet property="viewRentangWaktuAwal" destination="Lon-Yr-FjZ" id="RwP-BI-9o2"/>
+                <outlet property="viewRentangWaktuHeight" destination="XIZ-4n-U0D" id="ccQ-Px-mKa"/>
+                <outlet property="viewRootLampirkanFile" destination="7PF-ug-zJF" id="Qj7-wr-xnA"/>
+                <outlet property="viewRootPickTanggal" destination="Ggh-Bc-UgU" id="J0P-dh-tVK"/>
                 <outlet property="viewRootTopMargin" destination="lOZ-It-Nsl" id="WK2-Ar-rv2"/>
-                <outlet property="viewSisaJatahCuti" destination="gxc-Bv-OfT" id="TFH-TF-e0r"/>
-                <outlet property="viewSisaJatahCutiHeight" destination="qdP-So-vRh" id="JJp-3q-kVe"/>
-                <outlet property="viewTanggalCutiAkademik" destination="8iz-p4-t7V" id="wxd-pd-jV6"/>
-                <outlet property="viewTanggalCutiSementara" destination="GRr-RB-aEG" id="YCM-hP-X8T"/>
-                <outlet property="viewWaktuAkhirCutiSementara" destination="Wiz-4r-iIE" id="5IG-4G-UTY"/>
-                <outlet property="viewWaktuAwalCutiSementara" destination="Lon-Yr-FjZ" id="Bxc-SA-etG"/>
+                <outlet property="viewTanggalCutiPicked" destination="CLc-SZ-47f" id="oug-zd-yPf"/>
+                <outlet property="viewTanggalPickedHeight" destination="24B-iv-A5L" id="X3f-Sj-kwI"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="viewPengajuanCuti">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="1207"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYE-fQ-Ebq">
-                    <rect key="frame" x="0.0" y="20" width="375" height="1480"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="1187"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nku-wd-pFr">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
@@ -130,76 +120,31 @@
                             </constraints>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mze-8F-cdk">
-                            <rect key="frame" x="0.0" y="53" width="375" height="1427"/>
+                            <rect key="frame" x="0.0" y="53" width="375" height="1134"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCP-hd-s6w">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1261"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1130.5"/>
                                     <subviews>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxc-Bv-OfT" userLabel="viewSisaJatahCuti">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCC-pk-Nax" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="335" y="0.0" width="30" height="30"/>
-                                                    <state key="normal" title="x">
-                                                        <color key="titleColor" red="0.082352941176470587" green="0.3411764705882353" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="buttonCloseViewSisaJatahCutiClick:" destination="-1" eventType="touchUpInside" id="Pgz-fl-pMA"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sisa jatah cuti anda: 9 hari" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHS-rB-6aP" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="8" width="131" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                                    <color key="textColor" red="0.08235294118" green="0.3411764706" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kadaluarsa pada: 9 Desember 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmt-UQ-zWT" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="24" width="175.5" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                                    <color key="textColor" red="0.08235294118" green="0.3411764706" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.83137254901960778" green="0.92941176470588238" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="bmt-UQ-zWT" firstAttribute="top" secondItem="pHS-rB-6aP" secondAttribute="bottom" constant="4" id="071-E2-oZG"/>
-                                                <constraint firstItem="bmt-UQ-zWT" firstAttribute="leading" secondItem="gxc-Bv-OfT" secondAttribute="leading" constant="14" id="888-GF-skB"/>
-                                                <constraint firstItem="pHS-rB-6aP" firstAttribute="top" secondItem="gxc-Bv-OfT" secondAttribute="top" constant="8" id="9fq-Vi-tKA"/>
-                                                <constraint firstItem="qCC-pk-Nax" firstAttribute="top" secondItem="gxc-Bv-OfT" secondAttribute="top" id="at3-cC-reR"/>
-                                                <constraint firstItem="pHS-rB-6aP" firstAttribute="leading" secondItem="gxc-Bv-OfT" secondAttribute="leading" constant="14" id="o5c-bs-HDu"/>
-                                                <constraint firstAttribute="height" id="qdP-So-vRh"/>
-                                                <constraint firstAttribute="trailing" secondItem="qCC-pk-Nax" secondAttribute="trailing" constant="10" id="sQK-Ze-Liw"/>
-                                            </constraints>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pegawai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gzn-Rl-YOX" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="14" width="46" height="16"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="16" id="Mni-7H-dHU"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Pegawai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gzn-Rl-YOX" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="17" width="46" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARIEF ZAINURI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="u2e-Dn-jTn" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="44" width="81.5" height="16"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="16" id="ZAM-N9-Dc1"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="ARIEF ZAINURI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="u2e-Dn-jTn" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="45.5" width="81.5" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit Kerja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bIL-1J-h38" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="80" width="52.5" height="16"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="16" id="GpB-z5-8dY"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Unit Kerja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bIL-1J-h38" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="80" width="52.5" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xg0-af-Eth" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="102" width="347" height="35"/>
+                                            <rect key="frame" x="14" y="100.5" width="347" height="35"/>
                                             <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="JAu-uO-gXA"/>
@@ -210,20 +155,17 @@
                                                 <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jenis Cuti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BwN-XH-cvd" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="144" width="54" height="15"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="15" id="F7u-j9-pbr"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Jenis Cuti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BwN-XH-cvd" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="142.5" width="54" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Use-5g-iB0">
-                                            <rect key="frame" x="14" y="165" width="347" height="37"/>
+                                            <rect key="frame" x="14" y="163" width="347" height="37"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="-- Pilh --" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNi-K2-1Ho" customClass="CustomDropDownField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="11" width="315" height="15"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="-- Pilih --" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNi-K2-1Ho" customClass="CustomDropDownField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="0.0" width="317" height="37"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -231,7 +173,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="selectedRowColor">
                                                             <color key="value" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSearchEnable" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSearchEnable" value="NO"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
@@ -252,26 +194,33 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="mNi-K2-1Ho" firstAttribute="centerY" secondItem="Use-5g-iB0" secondAttribute="centerY" id="4oJ-kA-pFK"/>
-                                                <constraint firstItem="mNi-K2-1Ho" firstAttribute="leading" secondItem="Use-5g-iB0" secondAttribute="leading" constant="16" id="7Uh-vx-Es5"/>
+                                                <constraint firstItem="mNi-K2-1Ho" firstAttribute="leading" secondItem="Use-5g-iB0" secondAttribute="leading" constant="15" id="CGN-V1-hJo"/>
+                                                <constraint firstAttribute="bottom" secondItem="mNi-K2-1Ho" secondAttribute="bottom" id="HSS-Eh-3wS"/>
                                                 <constraint firstAttribute="height" constant="37" id="KNp-Zd-dKq"/>
-                                                <constraint firstAttribute="trailing" secondItem="mNi-K2-1Ho" secondAttribute="trailing" constant="16" id="MrQ-v2-PfL"/>
+                                                <constraint firstAttribute="trailing" secondItem="mNi-K2-1Ho" secondAttribute="trailing" constant="15" id="lUF-Fp-LmL"/>
+                                                <constraint firstItem="mNi-K2-1Ho" firstAttribute="top" secondItem="Use-5g-iB0" secondAttribute="top" id="vb6-eE-UBU"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNB-Ai-iJN" userLabel="viewCutiTahunan">
-                                            <rect key="frame" x="0.0" y="202" width="375" height="273"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Maksimal Cuti: 90 Hari" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="exW-5y-MLu" userLabel="maksimalCuti" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="209" width="122.5" height="14.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="14.5" id="6LO-zo-kv8"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                            <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNB-Ai-iJN" userLabel="viewJatahCuti">
+                                            <rect key="frame" x="0.0" y="223.5" width="375" height="123.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jatah Cuti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uPj-lJ-J7S" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="9" width="55" height="14"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="14" id="lDn-WP-sxs"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="14" y="9" width="55" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tTe-PS-Rer">
-                                                    <rect key="frame" x="14" y="23" width="347" height="100"/>
+                                                    <rect key="frame" x="14" y="23.5" width="347" height="100"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="znR-Pd-sZf"/>
@@ -283,104 +232,32 @@
                                                         <inset key="sectionInset" minX="0.0" minY="6" maxX="0.0" maxY="10"/>
                                                     </collectionViewFlowLayout>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tanggal Cuti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-95-ym9" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="133" width="67.5" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="iMa-u6-Ziz"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUr-bb-t4Y">
-                                                    <rect key="frame" x="14" y="155" width="347" height="37"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Cu-Vr-u3C">
-                                                            <rect key="frame" x="10" y="11" width="299" height="15"/>
-                                                            <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzR-PW-4dp">
-                                                            <rect key="frame" x="319" y="8" width="21" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="8I3-3B-RCU"/>
-                                                                <constraint firstAttribute="width" constant="21" id="sPc-Mi-hcd"/>
-                                                            </constraints>
-                                                            <state key="normal" image="calendarWithSpringBinderAndDateBlocks"/>
-                                                        </button>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstItem="6Cu-Vr-u3C" firstAttribute="centerY" secondItem="FUr-bb-t4Y" secondAttribute="centerY" id="3Cy-wW-Xuy"/>
-                                                        <constraint firstItem="SzR-PW-4dp" firstAttribute="centerY" secondItem="FUr-bb-t4Y" secondAttribute="centerY" id="4FV-mJ-U23"/>
-                                                        <constraint firstItem="SzR-PW-4dp" firstAttribute="leading" secondItem="6Cu-Vr-u3C" secondAttribute="trailing" constant="10" id="5O6-dO-3e4"/>
-                                                        <constraint firstAttribute="height" constant="37" id="9pk-qu-Dgk"/>
-                                                        <constraint firstAttribute="width" constant="347" id="ATC-hT-uFV"/>
-                                                        <constraint firstItem="6Cu-Vr-u3C" firstAttribute="leading" secondItem="FUr-bb-t4Y" secondAttribute="leading" constant="10" id="W50-2q-13Y"/>
-                                                        <constraint firstAttribute="trailing" secondItem="SzR-PW-4dp" secondAttribute="trailing" constant="7" id="fBC-ye-mb3"/>
-                                                    </constraints>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Tanggal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="t1J-UP-rYh" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="195" width="43" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="1VY-dC-Dlf"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rJ6-Od-odc">
-                                                    <rect key="frame" x="14" y="211" width="347" height="62"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="62" id="0os-wY-72P"/>
-                                                    </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="7" minimumInteritemSpacing="0.0" id="0uv-ma-hBV">
-                                                        <size key="itemSize" width="50" height="50"/>
-                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
-                                                    </collectionViewFlowLayout>
-                                                </collectionView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="rJ6-Od-odc" firstAttribute="top" secondItem="t1J-UP-rYh" secondAttribute="bottom" id="0T2-mp-Bcn"/>
-                                                <constraint firstItem="t1J-UP-rYh" firstAttribute="leading" secondItem="qNB-Ai-iJN" secondAttribute="leading" constant="14" id="5fz-zI-eLR"/>
-                                                <constraint firstItem="FUr-bb-t4Y" firstAttribute="top" secondItem="Ezp-95-ym9" secondAttribute="bottom" constant="6" id="5rl-bc-SYD"/>
                                                 <constraint firstItem="tTe-PS-Rer" firstAttribute="top" secondItem="uPj-lJ-J7S" secondAttribute="bottom" id="F0P-Uf-udP"/>
-                                                <constraint firstItem="Ezp-95-ym9" firstAttribute="leading" secondItem="qNB-Ai-iJN" secondAttribute="leading" constant="14" id="GUu-M5-xkE"/>
                                                 <constraint firstAttribute="trailing" secondItem="tTe-PS-Rer" secondAttribute="trailing" constant="14" id="Hqm-gg-4rx"/>
                                                 <constraint firstItem="uPj-lJ-J7S" firstAttribute="top" secondItem="qNB-Ai-iJN" secondAttribute="top" constant="9" id="Nhp-Pp-D2X"/>
-                                                <constraint firstItem="Ezp-95-ym9" firstAttribute="top" secondItem="tTe-PS-Rer" secondAttribute="bottom" constant="10" id="VJR-d1-9Bv"/>
-                                                <constraint firstItem="rJ6-Od-odc" firstAttribute="leading" secondItem="qNB-Ai-iJN" secondAttribute="leading" constant="14" id="Ynx-gF-GHJ"/>
-                                                <constraint firstAttribute="height" constant="273" id="aQ2-Om-9aB"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="124" id="aQ2-Om-9aB"/>
                                                 <constraint firstItem="tTe-PS-Rer" firstAttribute="leading" secondItem="qNB-Ai-iJN" secondAttribute="leading" constant="14" id="au2-sL-YSE"/>
-                                                <constraint firstAttribute="trailing" secondItem="rJ6-Od-odc" secondAttribute="trailing" constant="14" id="bk0-3p-8y6"/>
-                                                <constraint firstAttribute="trailing" secondItem="FUr-bb-t4Y" secondAttribute="trailing" constant="14" id="jsi-ej-Lkn"/>
-                                                <constraint firstItem="t1J-UP-rYh" firstAttribute="top" secondItem="FUr-bb-t4Y" secondAttribute="bottom" constant="3" id="lAw-44-bfA"/>
+                                                <constraint firstAttribute="bottom" secondItem="tTe-PS-Rer" secondAttribute="bottom" id="h2M-cl-0B6"/>
                                                 <constraint firstItem="uPj-lJ-J7S" firstAttribute="leading" secondItem="qNB-Ai-iJN" secondAttribute="leading" constant="14" id="sN4-p8-aj9"/>
-                                                <constraint firstItem="FUr-bb-t4Y" firstAttribute="leading" secondItem="qNB-Ai-iJN" secondAttribute="leading" constant="14" id="wvV-2W-f8y"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggh-Bc-UgU" userLabel="viewCutiAkademik">
-                                            <rect key="frame" x="0.0" y="475" width="375" height="68"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggh-Bc-UgU" userLabel="viewPickTanggal">
+                                            <rect key="frame" x="0.0" y="347" width="375" height="66.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tanggal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MLk-7n-rpa" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="9" width="43" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="vmd-Ah-qHd"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="14" y="9" width="43" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8iz-p4-t7V">
-                                                    <rect key="frame" x="14" y="31" width="347" height="37"/>
+                                                    <rect key="frame" x="14" y="29.5" width="347" height="37"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="che-M7-wB7" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="11" width="299" height="15"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PIlih tanggal..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="che-M7-wB7" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                            <rect key="frame" x="10" y="0.0" width="299" height="37"/>
                                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -397,18 +274,18 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="7Fu-MP-dj1"/>
+                                                        <constraint firstItem="H7c-Cv-nMm" firstAttribute="leading" secondItem="che-M7-wB7" secondAttribute="trailing" constant="10" id="HkX-eA-Uxa"/>
                                                         <constraint firstAttribute="trailing" secondItem="H7c-Cv-nMm" secondAttribute="trailing" constant="7" id="IzW-aW-fMe"/>
-                                                        <constraint firstItem="che-M7-wB7" firstAttribute="leading" secondItem="8iz-p4-t7V" secondAttribute="leading" constant="10" id="Q39-MZ-khr"/>
-                                                        <constraint firstItem="H7c-Cv-nMm" firstAttribute="leading" secondItem="che-M7-wB7" secondAttribute="trailing" constant="10" id="TsO-N8-Acg"/>
-                                                        <constraint firstAttribute="width" constant="347" id="cW5-54-GgK"/>
+                                                        <constraint firstItem="che-M7-wB7" firstAttribute="leading" secondItem="8iz-p4-t7V" secondAttribute="leading" constant="10" id="UnD-Dp-RsT"/>
                                                         <constraint firstItem="H7c-Cv-nMm" firstAttribute="centerY" secondItem="8iz-p4-t7V" secondAttribute="centerY" id="d4Z-k4-geh"/>
-                                                        <constraint firstItem="che-M7-wB7" firstAttribute="centerY" secondItem="8iz-p4-t7V" secondAttribute="centerY" id="gja-sz-CaQ"/>
+                                                        <constraint firstItem="che-M7-wB7" firstAttribute="top" secondItem="8iz-p4-t7V" secondAttribute="top" id="l3Y-QC-muk"/>
+                                                        <constraint firstAttribute="bottom" secondItem="che-M7-wB7" secondAttribute="bottom" id="r5z-yV-rTU"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="68" id="80p-Bo-FlY"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="68" id="80p-Bo-FlY"/>
                                                 <constraint firstItem="8iz-p4-t7V" firstAttribute="bottom" secondItem="iUs-8G-BwK" secondAttribute="bottom" id="8Il-WT-UWt"/>
                                                 <constraint firstItem="MLk-7n-rpa" firstAttribute="top" secondItem="iUs-8G-BwK" secondAttribute="top" constant="9" id="E37-Fa-jbD"/>
                                                 <constraint firstItem="MLk-7n-rpa" firstAttribute="leading" secondItem="Ggh-Bc-UgU" secondAttribute="leading" constant="14" id="GRH-Uq-oan"/>
@@ -418,23 +295,23 @@
                                             </constraints>
                                             <viewLayoutGuide key="safeArea" id="iUs-8G-BwK"/>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OvC-E8-kM5" userLabel="viewCutiSakit">
-                                            <rect key="frame" x="0.0" y="543" width="375" height="208"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OvC-E8-kM5" userLabel="viewRentangTanggal">
+                                            <rect key="frame" x="0.0" y="413.5" width="375" height="109.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rentang Tanggal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VRw-3j-H6c" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="9" width="90" height="16"/>
+                                                    <rect key="frame" x="14" y="9" width="90" height="14.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="2cZ-VA-hHt"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="25" id="Uay-ua-yJf"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zv-Rb-ptc">
-                                                    <rect key="frame" x="14" y="31" width="347" height="37"/>
+                                                    <rect key="frame" x="14" y="29.5" width="347" height="37"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C2S-ub-sCF" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="11" width="299" height="15"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pilih tanggal mulai." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C2S-ub-sCF" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                            <rect key="frame" x="10" y="0.0" width="299" height="37"/>
                                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -450,19 +327,20 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="C2S-ub-sCF" firstAttribute="leading" secondItem="0zv-Rb-ptc" secondAttribute="leading" constant="10" id="0y3-Ve-xfL"/>
                                                         <constraint firstAttribute="height" constant="37" id="Gh6-Aq-bll"/>
-                                                        <constraint firstItem="rSM-eJ-M8r" firstAttribute="leading" secondItem="C2S-ub-sCF" secondAttribute="trailing" constant="10" id="YVr-nF-R5z"/>
+                                                        <constraint firstAttribute="bottom" secondItem="C2S-ub-sCF" secondAttribute="bottom" id="QLm-96-j6M"/>
+                                                        <constraint firstItem="C2S-ub-sCF" firstAttribute="top" secondItem="0zv-Rb-ptc" secondAttribute="top" id="S76-lA-5QW"/>
                                                         <constraint firstItem="rSM-eJ-M8r" firstAttribute="centerY" secondItem="0zv-Rb-ptc" secondAttribute="centerY" id="Ycs-nW-aFp"/>
                                                         <constraint firstAttribute="trailing" secondItem="rSM-eJ-M8r" secondAttribute="trailing" constant="7" id="ab9-iC-okL"/>
-                                                        <constraint firstItem="C2S-ub-sCF" firstAttribute="centerY" secondItem="0zv-Rb-ptc" secondAttribute="centerY" id="r0n-Wb-RpZ"/>
+                                                        <constraint firstItem="C2S-ub-sCF" firstAttribute="leading" secondItem="0zv-Rb-ptc" secondAttribute="leading" constant="10" id="f0U-9h-5Z9"/>
+                                                        <constraint firstItem="rSM-eJ-M8r" firstAttribute="leading" secondItem="C2S-ub-sCF" secondAttribute="trailing" constant="10" id="pNf-BK-HjU"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNQ-QD-HXD">
-                                                    <rect key="frame" x="14" y="74" width="347" height="37"/>
+                                                    <rect key="frame" x="14" y="72.5" width="347" height="37"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V8s-fn-sFS" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="11" width="299" height="15"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pilih tanggal selesai." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V8s-fn-sFS" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                            <rect key="frame" x="10" y="0.0" width="299" height="37"/>
                                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -478,113 +356,87 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="8fO-Nk-y3q" firstAttribute="leading" secondItem="V8s-fn-sFS" secondAttribute="trailing" constant="10" id="Hbc-Uw-dzz"/>
-                                                        <constraint firstItem="V8s-fn-sFS" firstAttribute="leading" secondItem="LNQ-QD-HXD" secondAttribute="leading" constant="10" id="MqT-8J-HRr"/>
+                                                        <constraint firstItem="V8s-fn-sFS" firstAttribute="top" secondItem="LNQ-QD-HXD" secondAttribute="top" id="5eH-Ny-w5e"/>
                                                         <constraint firstItem="8fO-Nk-y3q" firstAttribute="centerY" secondItem="LNQ-QD-HXD" secondAttribute="centerY" id="Pcj-Pt-6Vl"/>
+                                                        <constraint firstItem="8fO-Nk-y3q" firstAttribute="leading" secondItem="V8s-fn-sFS" secondAttribute="trailing" constant="10" id="SJp-Aw-i1l"/>
                                                         <constraint firstAttribute="trailing" secondItem="8fO-Nk-y3q" secondAttribute="trailing" constant="7" id="Ucj-WZ-FWX"/>
-                                                        <constraint firstItem="V8s-fn-sFS" firstAttribute="centerY" secondItem="LNQ-QD-HXD" secondAttribute="centerY" id="erh-Es-JUR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="V8s-fn-sFS" secondAttribute="bottom" id="VY5-N9-TIW"/>
                                                         <constraint firstAttribute="height" constant="37" id="ypj-07-qqb"/>
-                                                    </constraints>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lampirkan File (.pdf/.jpg)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dnK-XE-hCr" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="119" width="136.5" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="lBz-jI-bv4"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pu9-te-nQc">
-                                                    <rect key="frame" x="14" y="141" width="347" height="71"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpf-TN-4IX">
-                                                            <rect key="frame" x="140.5" y="24.5" width="66" height="22"/>
-                                                            <state key="normal" image="group448"/>
-                                                        </button>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="71" id="Qf1-IQ-9qD"/>
-                                                        <constraint firstItem="cpf-TN-4IX" firstAttribute="centerY" secondItem="Pu9-te-nQc" secondAttribute="centerY" id="dbq-DD-Sta"/>
-                                                        <constraint firstItem="cpf-TN-4IX" firstAttribute="centerX" secondItem="Pu9-te-nQc" secondAttribute="centerX" id="jS0-sf-oZL"/>
+                                                        <constraint firstItem="V8s-fn-sFS" firstAttribute="leading" secondItem="LNQ-QD-HXD" secondAttribute="leading" constant="10" id="yq5-qz-0eJ"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="5WT-Rq-q1a" firstAttribute="trailing" secondItem="Pu9-te-nQc" secondAttribute="trailing" constant="14" id="3d6-bN-rZv"/>
                                                 <constraint firstItem="LNQ-QD-HXD" firstAttribute="top" secondItem="0zv-Rb-ptc" secondAttribute="bottom" constant="6" id="Cvz-wH-5Vv"/>
                                                 <constraint firstItem="0zv-Rb-ptc" firstAttribute="leading" secondItem="5WT-Rq-q1a" secondAttribute="leading" constant="14" id="DIQ-6P-yzt"/>
                                                 <constraint firstAttribute="trailing" secondItem="0zv-Rb-ptc" secondAttribute="trailing" constant="14" id="E00-gC-N5J"/>
-                                                <constraint firstItem="dnK-XE-hCr" firstAttribute="top" secondItem="LNQ-QD-HXD" secondAttribute="bottom" constant="8" id="ITF-UB-Fna"/>
                                                 <constraint firstItem="5WT-Rq-q1a" firstAttribute="trailing" secondItem="LNQ-QD-HXD" secondAttribute="trailing" constant="14" id="bDJ-IE-WQ0"/>
                                                 <constraint firstItem="LNQ-QD-HXD" firstAttribute="leading" secondItem="OvC-E8-kM5" secondAttribute="leading" constant="14" id="bdM-cH-zKU"/>
-                                                <constraint firstItem="dnK-XE-hCr" firstAttribute="leading" secondItem="5WT-Rq-q1a" secondAttribute="leading" constant="14" id="cjZ-ug-yQg"/>
-                                                <constraint firstAttribute="height" constant="208" id="iDV-vd-tHF"/>
-                                                <constraint firstItem="Pu9-te-nQc" firstAttribute="top" secondItem="dnK-XE-hCr" secondAttribute="bottom" constant="6" id="lTQ-fo-i7e"/>
+                                                <constraint firstItem="5WT-Rq-q1a" firstAttribute="bottom" secondItem="LNQ-QD-HXD" secondAttribute="bottom" id="fHu-Ew-099"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="110" id="iDV-vd-tHF"/>
                                                 <constraint firstItem="0zv-Rb-ptc" firstAttribute="top" secondItem="VRw-3j-H6c" secondAttribute="bottom" constant="6" id="nET-f5-6Ra"/>
-                                                <constraint firstItem="Pu9-te-nQc" firstAttribute="leading" secondItem="5WT-Rq-q1a" secondAttribute="leading" constant="14" id="scg-KS-OTH"/>
                                                 <constraint firstItem="VRw-3j-H6c" firstAttribute="top" secondItem="5WT-Rq-q1a" secondAttribute="top" constant="9" id="v7n-ik-Gmf"/>
                                                 <constraint firstItem="VRw-3j-H6c" firstAttribute="leading" secondItem="5WT-Rq-q1a" secondAttribute="leading" constant="14" id="y2N-k9-Rp0"/>
                                             </constraints>
                                             <viewLayoutGuide key="safeArea" id="5WT-Rq-q1a"/>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDQ-oK-XQe" userLabel="viewCutiSementara">
-                                            <rect key="frame" x="0.0" y="751" width="375" height="178"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PF-ug-zJF" userLabel="viewLampirkan">
+                                            <rect key="frame" x="0.0" y="523" width="375" height="101.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tanggal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Z59-ll-Aen">
-                                                    <rect key="frame" x="14" y="9" width="43" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lampirkan File (.pdf/.jpg)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VW0-UQ-tmI" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="10" width="136.5" height="14.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="d1W-CK-XHh"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="25" id="eRM-Nr-YZu"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRr-RB-aEG">
-                                                    <rect key="frame" x="14" y="31" width="347" height="37"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D68-Bk-Cv9">
+                                                    <rect key="frame" x="15" y="30.5" width="345" height="71"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cC-ax-T4n" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="11" width="299" height="15"/>
-                                                            <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmg-xJ-vWl">
-                                                            <rect key="frame" x="319" y="8" width="21" height="21"/>
+                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group448" translatesAutoresizingMaskIntoConstraints="NO" id="11q-r7-Nfc">
+                                                            <rect key="frame" x="142" y="5" width="61" height="61"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="OPA-Xd-dqU"/>
-                                                                <constraint firstAttribute="width" constant="21" id="erH-ND-3vL"/>
+                                                                <constraint firstAttribute="width" constant="61" id="Dp1-ge-8yD"/>
                                                             </constraints>
-                                                            <state key="normal" image="calendarWithSpringBinderAndDateBlocks"/>
-                                                        </button>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="347" id="BLJ-md-qWB"/>
-                                                        <constraint firstItem="Jmg-xJ-vWl" firstAttribute="leading" secondItem="2cC-ax-T4n" secondAttribute="trailing" constant="10" id="Phq-qT-WVb"/>
-                                                        <constraint firstItem="Jmg-xJ-vWl" firstAttribute="centerY" secondItem="GRr-RB-aEG" secondAttribute="centerY" id="cEx-aX-Ifj"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Jmg-xJ-vWl" secondAttribute="trailing" constant="7" id="fZ5-se-1Sw"/>
-                                                        <constraint firstItem="2cC-ax-T4n" firstAttribute="leading" secondItem="GRr-RB-aEG" secondAttribute="leading" constant="10" id="qu9-XS-jXp"/>
-                                                        <constraint firstItem="2cC-ax-T4n" firstAttribute="centerY" secondItem="GRr-RB-aEG" secondAttribute="centerY" id="uSJ-E5-018"/>
-                                                        <constraint firstAttribute="height" constant="37" id="uUa-hx-DYO"/>
+                                                        <constraint firstItem="11q-r7-Nfc" firstAttribute="centerX" secondItem="D68-Bk-Cv9" secondAttribute="centerX" id="CmF-zq-zVS"/>
+                                                        <constraint firstAttribute="height" constant="71" id="XY8-r8-NYX"/>
+                                                        <constraint firstItem="11q-r7-Nfc" firstAttribute="top" secondItem="D68-Bk-Cv9" secondAttribute="top" constant="5" id="aXK-6f-Xdr"/>
+                                                        <constraint firstAttribute="bottom" secondItem="11q-r7-Nfc" secondAttribute="bottom" constant="5" id="mNg-aT-63Y"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waktu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lZU-o9-wvh">
-                                                    <rect key="frame" x="14" y="78" width="34" height="14"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="14" id="pqP-Dw-vfM"/>
-                                                    </constraints>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="VW0-UQ-tmI" firstAttribute="leading" secondItem="7PF-ug-zJF" secondAttribute="leading" constant="15" id="1jb-f4-pvu"/>
+                                                <constraint firstAttribute="trailing" secondItem="D68-Bk-Cv9" secondAttribute="trailing" constant="15" id="Fuv-2K-gf9"/>
+                                                <constraint firstItem="D68-Bk-Cv9" firstAttribute="leading" secondItem="7PF-ug-zJF" secondAttribute="leading" constant="15" id="Okn-CC-653"/>
+                                                <constraint firstAttribute="bottom" secondItem="D68-Bk-Cv9" secondAttribute="bottom" id="SEU-ff-vxa"/>
+                                                <constraint firstItem="D68-Bk-Cv9" firstAttribute="top" secondItem="VW0-UQ-tmI" secondAttribute="bottom" constant="6" id="fwj-Xy-hNe"/>
+                                                <constraint firstItem="VW0-UQ-tmI" firstAttribute="top" secondItem="7PF-ug-zJF" secondAttribute="top" constant="10" id="fyZ-O3-oC8"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="102" id="wXy-lx-Dil"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDQ-oK-XQe" userLabel="viewRangeWaktu">
+                                            <rect key="frame" x="0.0" y="624.5" width="375" height="110.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waktu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lZU-o9-wvh" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                    <rect key="frame" x="14" y="10" width="34" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lon-Yr-FjZ">
-                                                    <rect key="frame" x="14" y="98" width="347" height="37"/>
+                                                    <rect key="frame" x="14" y="30.5" width="347" height="37"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQu-pm-6IJ" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="11" width="299" height="15"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PIlih waktu mulai." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQu-pm-6IJ" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                            <rect key="frame" x="10" y="0.0" width="299" height="37"/>
                                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -600,20 +452,20 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="1vD-UW-PcI" firstAttribute="leading" secondItem="JQu-pm-6IJ" secondAttribute="trailing" constant="10" id="JIf-4I-PcZ"/>
-                                                        <constraint firstItem="JQu-pm-6IJ" firstAttribute="leading" secondItem="Lon-Yr-FjZ" secondAttribute="leading" constant="10" id="SaM-ar-WtZ"/>
+                                                        <constraint firstItem="1vD-UW-PcI" firstAttribute="leading" secondItem="JQu-pm-6IJ" secondAttribute="trailing" constant="10" id="9eV-BR-x0e"/>
+                                                        <constraint firstAttribute="bottom" secondItem="JQu-pm-6IJ" secondAttribute="bottom" id="A4U-wf-TnP"/>
+                                                        <constraint firstItem="JQu-pm-6IJ" firstAttribute="leading" secondItem="Lon-Yr-FjZ" secondAttribute="leading" constant="10" id="H2c-Yy-lXX"/>
                                                         <constraint firstItem="1vD-UW-PcI" firstAttribute="centerY" secondItem="Lon-Yr-FjZ" secondAttribute="centerY" id="YMj-FA-dsh"/>
+                                                        <constraint firstItem="JQu-pm-6IJ" firstAttribute="top" secondItem="Lon-Yr-FjZ" secondAttribute="top" id="kPy-eJ-kd1"/>
                                                         <constraint firstAttribute="height" constant="37" id="m0e-Tx-kf2"/>
                                                         <constraint firstAttribute="trailing" secondItem="1vD-UW-PcI" secondAttribute="trailing" constant="7" id="vuh-fH-XD7"/>
-                                                        <constraint firstAttribute="width" constant="347" id="zDZ-bn-Moa"/>
-                                                        <constraint firstItem="JQu-pm-6IJ" firstAttribute="centerY" secondItem="Lon-Yr-FjZ" secondAttribute="centerY" id="zoo-ue-L0k"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wiz-4r-iIE">
-                                                    <rect key="frame" x="14" y="141" width="347" height="37"/>
+                                                    <rect key="frame" x="14" y="73.5" width="347" height="37"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiu-QW-btX" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="11" width="299" height="15"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PIlih waktu selesai." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiu-QW-btX" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                            <rect key="frame" x="10" y="0.0" width="299" height="37"/>
                                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -629,54 +481,72 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="347" id="Ifr-qQ-fvK"/>
-                                                        <constraint firstItem="fiu-QW-btX" firstAttribute="centerY" secondItem="Wiz-4r-iIE" secondAttribute="centerY" id="YGg-e2-PMq"/>
+                                                        <constraint firstItem="fiu-QW-btX" firstAttribute="top" secondItem="Wiz-4r-iIE" secondAttribute="top" id="U2L-yk-dB8"/>
                                                         <constraint firstAttribute="trailing" secondItem="OZu-e3-ZKb" secondAttribute="trailing" constant="7" id="bMt-de-Ku3"/>
-                                                        <constraint firstItem="fiu-QW-btX" firstAttribute="leading" secondItem="Wiz-4r-iIE" secondAttribute="leading" constant="10" id="ebz-Kz-5QB"/>
+                                                        <constraint firstAttribute="bottom" secondItem="fiu-QW-btX" secondAttribute="bottom" id="ivS-6Y-kH0"/>
+                                                        <constraint firstItem="OZu-e3-ZKb" firstAttribute="leading" secondItem="fiu-QW-btX" secondAttribute="trailing" constant="10" id="kyB-YL-Nd0"/>
                                                         <constraint firstItem="OZu-e3-ZKb" firstAttribute="centerY" secondItem="Wiz-4r-iIE" secondAttribute="centerY" id="o3T-B5-VQw"/>
                                                         <constraint firstAttribute="height" constant="37" id="p77-Je-LdT"/>
-                                                        <constraint firstItem="OZu-e3-ZKb" firstAttribute="leading" secondItem="fiu-QW-btX" secondAttribute="trailing" constant="10" id="pFq-XM-oyP"/>
+                                                        <constraint firstItem="fiu-QW-btX" firstAttribute="leading" secondItem="Wiz-4r-iIE" secondAttribute="leading" constant="10" id="zth-bF-rzd"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="GRr-RB-aEG" firstAttribute="leading" secondItem="DDQ-oK-XQe" secondAttribute="leading" constant="14" id="14P-bN-evE"/>
                                                 <constraint firstItem="lZU-o9-wvh" firstAttribute="leading" secondItem="DDQ-oK-XQe" secondAttribute="leading" constant="14" id="3QX-pO-9QM"/>
-                                                <constraint firstItem="lZU-o9-wvh" firstAttribute="top" secondItem="GRr-RB-aEG" secondAttribute="bottom" constant="10" id="EJ7-lt-mtA"/>
                                                 <constraint firstItem="Wiz-4r-iIE" firstAttribute="top" secondItem="Lon-Yr-FjZ" secondAttribute="bottom" constant="6" id="KcG-fD-wno"/>
                                                 <constraint firstItem="Lon-Yr-FjZ" firstAttribute="top" secondItem="lZU-o9-wvh" secondAttribute="bottom" constant="6" id="KuM-KU-wIg"/>
                                                 <constraint firstItem="frg-fW-MmB" firstAttribute="trailing" secondItem="Wiz-4r-iIE" secondAttribute="trailing" constant="14" id="R3g-3A-YKe"/>
-                                                <constraint firstItem="Wiz-4r-iIE" firstAttribute="bottom" secondItem="frg-fW-MmB" secondAttribute="bottom" id="TYb-5F-rjT"/>
-                                                <constraint firstAttribute="height" constant="178" id="XIZ-4n-U0D"/>
+                                                <constraint firstItem="lZU-o9-wvh" firstAttribute="top" secondItem="frg-fW-MmB" secondAttribute="top" constant="10" id="RaD-fb-HuN"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="111" id="XIZ-4n-U0D"/>
+                                                <constraint firstItem="frg-fW-MmB" firstAttribute="bottom" secondItem="Wiz-4r-iIE" secondAttribute="bottom" id="Xh8-BI-jB1"/>
                                                 <constraint firstItem="Wiz-4r-iIE" firstAttribute="leading" secondItem="DDQ-oK-XQe" secondAttribute="leading" constant="14" id="ZCc-7P-4ev"/>
                                                 <constraint firstItem="frg-fW-MmB" firstAttribute="trailing" secondItem="Lon-Yr-FjZ" secondAttribute="trailing" constant="14" id="aek-lX-BJr"/>
-                                                <constraint firstItem="GRr-RB-aEG" firstAttribute="top" secondItem="Z59-ll-Aen" secondAttribute="bottom" constant="6" id="cqv-9g-knt"/>
                                                 <constraint firstItem="Lon-Yr-FjZ" firstAttribute="leading" secondItem="DDQ-oK-XQe" secondAttribute="leading" constant="14" id="fiI-pU-lXb"/>
-                                                <constraint firstItem="Z59-ll-Aen" firstAttribute="top" secondItem="frg-fW-MmB" secondAttribute="top" constant="9" id="jn4-Vj-fdg"/>
-                                                <constraint firstItem="Z59-ll-Aen" firstAttribute="leading" secondItem="DDQ-oK-XQe" secondAttribute="leading" constant="14" id="qvN-eV-ZNa"/>
-                                                <constraint firstItem="frg-fW-MmB" firstAttribute="trailing" secondItem="GRr-RB-aEG" secondAttribute="trailing" constant="14" id="znY-8A-1wX"/>
                                             </constraints>
                                             <viewLayoutGuide key="safeArea" id="frg-fW-MmB"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vE8-d7-Xqo" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="943" width="37" height="14.5"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLc-SZ-47f" userLabel="viewCollectionTanggalPicked">
+                                            <rect key="frame" x="0.0" y="735" width="375" height="62"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BeU-zv-R5y">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="62"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="62" id="Z8r-ht-2UR"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="7" minimumInteritemSpacing="0.0" id="gbc-hV-u2B">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                                    </collectionViewFlowLayout>
+                                                </collectionView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="14.5" id="kfu-pq-6io"/>
+                                                <constraint firstAttribute="height" constant="62" id="24B-iv-A5L"/>
+                                                <constraint firstAttribute="trailing" secondItem="BeU-zv-R5y" secondAttribute="trailing" constant="15" id="Fff-B1-1vO"/>
+                                                <constraint firstAttribute="bottom" secondItem="BeU-zv-R5y" secondAttribute="bottom" id="OMl-PB-ley"/>
+                                                <constraint firstItem="BeU-zv-R5y" firstAttribute="top" secondItem="CLc-SZ-47f" secondAttribute="top" id="USE-LD-FrV"/>
+                                                <constraint firstItem="BeU-zv-R5y" firstAttribute="leading" secondItem="CLc-SZ-47f" secondAttribute="leading" constant="15" id="ggx-wC-abD"/>
                                             </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vE8-d7-Xqo" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="807" width="37" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Km8-Il-SHf">
-                                            <rect key="frame" x="14" y="963.5" width="347" height="88"/>
+                                            <rect key="frame" x="14" y="827.5" width="347" height="88"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sdd-BK-tMO" customClass="CustomTextView" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="347" height="88"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                 </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -688,23 +558,26 @@
                                                 <constraint firstItem="Sdd-BK-tMO" firstAttribute="leading" secondItem="Km8-Il-SHf" secondAttribute="leading" id="bi3-Jv-mHd"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delegasi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KOV-rL-NYK" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="1060.5" width="46.5" height="15"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="15" id="oAh-HX-Ot5"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Delegasi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KOV-rL-NYK" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="924.5" width="46.5" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fix-3O-wWz">
-                                            <rect key="frame" x="14" y="1081.5" width="347" height="37"/>
+                                            <rect key="frame" x="14" y="945" width="347" height="37"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Cari..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAY-6m-k8b" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="11" width="299" height="15"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cari delegasi..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAY-6m-k8b" customClass="CustomDropDownField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="0.0" width="299" height="37"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="arrowSize">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSearchEnable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IW5-cH-Xz3">
                                                     <rect key="frame" x="319" y="8" width="21" height="21"/>
@@ -717,31 +590,35 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="IW5-cH-Xz3" firstAttribute="leading" secondItem="LAY-6m-k8b" secondAttribute="trailing" constant="10" id="3zf-E1-mwh"/>
                                                 <constraint firstItem="IW5-cH-Xz3" firstAttribute="centerY" secondItem="Fix-3O-wWz" secondAttribute="centerY" id="5ux-Yu-L0K"/>
                                                 <constraint firstAttribute="height" constant="37" id="I24-Nb-I6l"/>
-                                                <constraint firstItem="LAY-6m-k8b" firstAttribute="centerY" secondItem="Fix-3O-wWz" secondAttribute="centerY" id="Vzw-QN-BQk"/>
-                                                <constraint firstItem="LAY-6m-k8b" firstAttribute="leading" secondItem="Fix-3O-wWz" secondAttribute="leading" constant="10" id="j2O-ic-wol"/>
+                                                <constraint firstItem="LAY-6m-k8b" firstAttribute="leading" secondItem="Fix-3O-wWz" secondAttribute="leading" constant="10" id="N6Y-HC-RqC"/>
+                                                <constraint firstItem="LAY-6m-k8b" firstAttribute="top" secondItem="Fix-3O-wWz" secondAttribute="top" id="f2E-ZH-mmf"/>
                                                 <constraint firstAttribute="trailing" secondItem="IW5-cH-Xz3" secondAttribute="trailing" constant="7" id="nuI-QD-ITs"/>
+                                                <constraint firstAttribute="bottom" secondItem="LAY-6m-k8b" secondAttribute="bottom" id="oTQ-DO-A6e"/>
+                                                <constraint firstItem="IW5-cH-Xz3" firstAttribute="leading" secondItem="LAY-6m-k8b" secondAttribute="trailing" constant="10" id="vq1-xy-BNd"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qSi-Ss-W8B" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="1130.5" width="38" height="14.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="14.5" id="myT-Ou-XUl"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Atasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qSi-Ss-W8B" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="994" width="38" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smb-bk-OWC">
-                                            <rect key="frame" x="14" y="1151" width="347" height="37"/>
+                                            <rect key="frame" x="14" y="1014.5" width="347" height="37"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Cari..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gad-KX-mxP" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="11" width="299" height="15"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cari atasan..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gad-KX-mxP" customClass="CustomDropDownField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="0.0" width="299" height="37"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSearchEnable" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="arrowSize">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G19-6P-BOF">
                                                     <rect key="frame" x="319" y="8" width="21" height="21"/>
@@ -754,16 +631,17 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="Gad-KX-mxP" firstAttribute="centerY" secondItem="Smb-bk-OWC" secondAttribute="centerY" id="HoN-q0-qG3"/>
-                                                <constraint firstItem="Gad-KX-mxP" firstAttribute="leading" secondItem="Smb-bk-OWC" secondAttribute="leading" constant="10" id="ShV-7c-hdM"/>
-                                                <constraint firstItem="G19-6P-BOF" firstAttribute="leading" secondItem="Gad-KX-mxP" secondAttribute="trailing" constant="10" id="dh4-vb-YQK"/>
+                                                <constraint firstItem="Gad-KX-mxP" firstAttribute="leading" secondItem="Smb-bk-OWC" secondAttribute="leading" constant="10" id="HXf-tK-0Dr"/>
+                                                <constraint firstItem="Gad-KX-mxP" firstAttribute="top" secondItem="Smb-bk-OWC" secondAttribute="top" id="IfK-mZ-3Kw"/>
+                                                <constraint firstItem="G19-6P-BOF" firstAttribute="leading" secondItem="Gad-KX-mxP" secondAttribute="trailing" constant="10" id="aY3-Or-Ztp"/>
+                                                <constraint firstAttribute="bottom" secondItem="Gad-KX-mxP" secondAttribute="bottom" id="bSG-5G-V9h"/>
                                                 <constraint firstItem="G19-6P-BOF" firstAttribute="centerY" secondItem="Smb-bk-OWC" secondAttribute="centerY" id="vtl-So-cKo"/>
                                                 <constraint firstAttribute="trailing" secondItem="G19-6P-BOF" secondAttribute="trailing" constant="7" id="wER-n7-XfI"/>
                                                 <constraint firstAttribute="height" constant="37" id="yBS-0s-xcj"/>
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="au0-d6-w42">
-                                            <rect key="frame" x="14" y="1205" width="347" height="42"/>
+                                            <rect key="frame" x="14" y="1068.5" width="347" height="42"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykK-ON-Xk9" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="169" height="42"/>
@@ -799,49 +677,53 @@
                                         <constraint firstAttribute="trailing" secondItem="au0-d6-w42" secondAttribute="trailing" constant="14" id="0sz-EP-yaA"/>
                                         <constraint firstAttribute="trailing" secondItem="Smb-bk-OWC" secondAttribute="trailing" constant="14" id="17f-jK-9yZ"/>
                                         <constraint firstItem="BwN-XH-cvd" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="3b4-L1-vBq"/>
+                                        <constraint firstItem="7PF-ug-zJF" firstAttribute="top" secondItem="OvC-E8-kM5" secondAttribute="bottom" id="482-g3-qQG"/>
+                                        <constraint firstItem="7PF-ug-zJF" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" id="55c-cQ-XPd"/>
                                         <constraint firstItem="Smb-bk-OWC" firstAttribute="top" secondItem="qSi-Ss-W8B" secondAttribute="bottom" constant="6" id="5VT-V5-6wU"/>
                                         <constraint firstItem="qSi-Ss-W8B" firstAttribute="top" secondItem="Fix-3O-wWz" secondAttribute="bottom" constant="12" id="8l7-Gd-KMR"/>
                                         <constraint firstItem="Gzn-Rl-YOX" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="BvD-50-b9G"/>
+                                        <constraint firstItem="exW-5y-MLu" firstAttribute="top" secondItem="Use-5g-iB0" secondAttribute="bottom" constant="9" id="CK9-qn-XwQ"/>
                                         <constraint firstAttribute="trailing" secondItem="Use-5g-iB0" secondAttribute="trailing" constant="14" id="DrL-y1-7Id"/>
                                         <constraint firstItem="Use-5g-iB0" firstAttribute="top" secondItem="BwN-XH-cvd" secondAttribute="bottom" constant="6" id="EJ3-jk-pDx"/>
+                                        <constraint firstItem="CLc-SZ-47f" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" id="EZH-YI-O6c"/>
                                         <constraint firstItem="qSi-Ss-W8B" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="GOP-xx-8h6"/>
                                         <constraint firstItem="Km8-Il-SHf" firstAttribute="top" secondItem="vE8-d7-Xqo" secondAttribute="bottom" constant="6" id="IGg-a3-FlG"/>
                                         <constraint firstItem="bIL-1J-h38" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="Iuw-A9-Kq8"/>
                                         <constraint firstAttribute="trailing" secondItem="OvC-E8-kM5" secondAttribute="trailing" id="IxM-Qh-asW"/>
+                                        <constraint firstItem="exW-5y-MLu" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="JIc-Cg-aDw"/>
+                                        <constraint firstItem="CLc-SZ-47f" firstAttribute="top" secondItem="DDQ-oK-XQe" secondAttribute="bottom" id="K3U-lt-7kh"/>
                                         <constraint firstItem="au0-d6-w42" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="KBw-gA-s8m"/>
-                                        <constraint firstItem="gxc-Bv-OfT" firstAttribute="top" secondItem="FCP-hd-s6w" secondAttribute="top" id="KnK-ra-nyo"/>
                                         <constraint firstItem="qNB-Ai-iJN" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" id="MH4-gP-xsV"/>
-                                        <constraint firstAttribute="bottom" secondItem="au0-d6-w42" secondAttribute="bottom" constant="14" id="NGL-CD-u4J"/>
                                         <constraint firstItem="Fix-3O-wWz" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="NR3-pX-8Az"/>
                                         <constraint firstItem="u2e-Dn-jTn" firstAttribute="top" secondItem="Gzn-Rl-YOX" secondAttribute="bottom" constant="14" id="Nfn-1K-tIW"/>
-                                        <constraint firstAttribute="trailing" secondItem="gxc-Bv-OfT" secondAttribute="trailing" id="Niy-mo-LfT"/>
+                                        <constraint firstItem="qNB-Ai-iJN" firstAttribute="top" secondItem="exW-5y-MLu" secondAttribute="bottom" id="PfX-LP-oG2"/>
                                         <constraint firstAttribute="trailing" secondItem="xg0-af-Eth" secondAttribute="trailing" constant="14" id="R3x-cY-WjX"/>
                                         <constraint firstItem="Km8-Il-SHf" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="Uiz-AS-ydL"/>
                                         <constraint firstItem="OvC-E8-kM5" firstAttribute="top" secondItem="Ggh-Bc-UgU" secondAttribute="bottom" id="Vtw-oY-noW"/>
                                         <constraint firstItem="Ggh-Bc-UgU" firstAttribute="top" secondItem="qNB-Ai-iJN" secondAttribute="bottom" id="WVM-64-M8r"/>
-                                        <constraint firstItem="DDQ-oK-XQe" firstAttribute="top" secondItem="OvC-E8-kM5" secondAttribute="bottom" id="X1X-H3-xgh"/>
                                         <constraint firstAttribute="trailing" secondItem="Km8-Il-SHf" secondAttribute="trailing" constant="14" id="XgZ-q9-vFP"/>
                                         <constraint firstItem="KOV-rL-NYK" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="Xvg-Tr-L3f"/>
                                         <constraint firstItem="DDQ-oK-XQe" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" id="aWD-oT-gG9"/>
                                         <constraint firstItem="xg0-af-Eth" firstAttribute="top" secondItem="bIL-1J-h38" secondAttribute="bottom" constant="6" id="ah8-Ht-D4x"/>
                                         <constraint firstItem="Smb-bk-OWC" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="cGh-Yc-jvK"/>
+                                        <constraint firstAttribute="trailing" secondItem="CLc-SZ-47f" secondAttribute="trailing" id="cNT-Ow-JrP"/>
+                                        <constraint firstItem="vE8-d7-Xqo" firstAttribute="top" secondItem="CLc-SZ-47f" secondAttribute="bottom" constant="10" id="dFv-je-9n3"/>
                                         <constraint firstAttribute="trailing" secondItem="DDQ-oK-XQe" secondAttribute="trailing" id="eol-UN-2Qu"/>
                                         <constraint firstItem="OvC-E8-kM5" firstAttribute="leading" secondItem="Ggh-Bc-UgU" secondAttribute="leading" id="gX8-Gt-kx7"/>
                                         <constraint firstItem="KOV-rL-NYK" firstAttribute="top" secondItem="Km8-Il-SHf" secondAttribute="bottom" constant="9" id="gkF-js-c0d"/>
-                                        <constraint firstItem="qNB-Ai-iJN" firstAttribute="top" secondItem="Use-5g-iB0" secondAttribute="bottom" id="hTK-T9-r0k"/>
                                         <constraint firstAttribute="trailing" secondItem="qNB-Ai-iJN" secondAttribute="trailing" id="ieo-Ms-syu"/>
-                                        <constraint firstItem="vE8-d7-Xqo" firstAttribute="top" secondItem="DDQ-oK-XQe" secondAttribute="bottom" constant="14" id="j0N-qz-ghs"/>
+                                        <constraint firstItem="Gzn-Rl-YOX" firstAttribute="top" secondItem="FCP-hd-s6w" secondAttribute="top" constant="17" id="j6t-In-RUE"/>
                                         <constraint firstItem="vE8-d7-Xqo" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="kSB-O4-Lel"/>
                                         <constraint firstItem="Use-5g-iB0" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="lxM-2h-1Is"/>
                                         <constraint firstItem="bIL-1J-h38" firstAttribute="top" secondItem="u2e-Dn-jTn" secondAttribute="bottom" constant="20" id="ovN-pi-4U9"/>
                                         <constraint firstItem="Ggh-Bc-UgU" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" id="p72-Aa-SZs"/>
+                                        <constraint firstItem="DDQ-oK-XQe" firstAttribute="top" secondItem="7PF-ug-zJF" secondAttribute="bottom" id="puj-Jf-QPX"/>
                                         <constraint firstAttribute="trailing" secondItem="Ggh-Bc-UgU" secondAttribute="trailing" id="qG1-GR-fua"/>
+                                        <constraint firstAttribute="trailing" secondItem="7PF-ug-zJF" secondAttribute="trailing" id="rHp-Qv-qme"/>
                                         <constraint firstItem="BwN-XH-cvd" firstAttribute="top" secondItem="xg0-af-Eth" secondAttribute="bottom" constant="7" id="rXx-fq-O8I"/>
-                                        <constraint firstAttribute="height" priority="999" constant="1261" id="sh4-9b-cvR"/>
-                                        <constraint firstItem="gxc-Bv-OfT" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" id="tgh-tb-j9v"/>
-                                        <constraint firstItem="Gzn-Rl-YOX" firstAttribute="top" secondItem="gxc-Bv-OfT" secondAttribute="bottom" constant="14" id="uaj-6D-XwR"/>
                                         <constraint firstItem="au0-d6-w42" firstAttribute="top" secondItem="Smb-bk-OWC" secondAttribute="bottom" constant="17" id="udl-LC-SzF"/>
                                         <constraint firstItem="Fix-3O-wWz" firstAttribute="top" secondItem="KOV-rL-NYK" secondAttribute="bottom" constant="6" id="uzP-gA-52b"/>
+                                        <constraint firstAttribute="bottom" secondItem="au0-d6-w42" secondAttribute="bottom" constant="20" id="wnC-bC-K4W"/>
                                         <constraint firstItem="u2e-Dn-jTn" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="xzr-2L-Un3"/>
                                         <constraint firstItem="xg0-af-Eth" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="y6F-OI-kx5"/>
                                     </constraints>
@@ -852,6 +734,7 @@
                                 <constraint firstItem="FCP-hd-s6w" firstAttribute="width" secondItem="Mze-8F-cdk" secondAttribute="width" id="80O-8u-Sd4"/>
                                 <constraint firstAttribute="trailing" secondItem="FCP-hd-s6w" secondAttribute="trailing" id="Lcw-iF-HTY"/>
                                 <constraint firstItem="FCP-hd-s6w" firstAttribute="top" secondItem="Mze-8F-cdk" secondAttribute="top" id="hJO-8Q-nfI"/>
+                                <constraint firstItem="FCP-hd-s6w" firstAttribute="height" secondItem="Mze-8F-cdk" secondAttribute="height" priority="250" id="v0R-49-wY4"/>
                                 <constraint firstItem="FCP-hd-s6w" firstAttribute="leading" secondItem="Mze-8F-cdk" secondAttribute="leading" id="wr6-gR-1pV"/>
                             </constraints>
                         </scrollView>

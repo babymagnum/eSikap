@@ -12,6 +12,8 @@ import EzPopup
 
 class BaseViewController: UIViewController {
     
+    lazy var imagePicker: ImagePickerManager = { return ImagePickerManager() }()
+    
     lazy var preference: Preference = {
         let mPreference = Preference()
         return mPreference
@@ -80,7 +82,12 @@ class BaseViewController: UIViewController {
     }
     
     func showCustomDialog(_ vc: UIViewController) {
-        let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width - 21)
+        let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width)
+        self.present(popupVc, animated: true)
+    }
+    
+    func showCustomDialog(_ vc: UIViewController, _ height: CGFloat) {
+        let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width, popupHeight: height)
         self.present(popupVc, animated: true)
     }
     

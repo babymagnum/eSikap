@@ -10,17 +10,12 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class AuthenticationNetworking {
-    
-    lazy var preference: Preference = {
-        let mPreference = Preference()
-        return mPreference
-    }()
-    
-    lazy var staticLet: StaticLet = {
-        let mStaticLet = StaticLet()
-        return mStaticLet
-    }()
+class AuthenticationNetworking: BaseNetworking {
+        
+    func logout(completion: @escaping(_ error: String?, _ logout: Logout?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/logout"
+        alamofirePost(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
     
     func login(_ email: String, _ password: String, completion: @escaping(_ message: String?) -> Void) {
         let url = "\(staticLet.base_url)api/login"

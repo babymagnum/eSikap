@@ -182,8 +182,22 @@ extension ProfilController {
     
     @objc func viewKeluarClick() {
         function.showUnderstandDialog(self, "Keluar dari ESS APS", "Yakin ingin keluar?", "KELUAR", "BATAL") {
-            self.resetData()
-            self.navigationController?.popToRootViewController(animated: true)
+            
+            self.authNetworking.logout(completion: { (error, logout, isExpired) in
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Logout", error, "Mengerti")
+                    return
+                }
+                
+                self.resetData()
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+            
         }
     }
     

@@ -27,20 +27,29 @@ class StatusPersetujuanCell: UICollectionViewCell {
         }
     }
     
-    var data: StatusPersetujuan? {
+    var data: ItemApproval? {
         didSet {
             if let item = data {
-                labelIndex.setTitle(item.index, for: .normal)
-                labelNama.text = item.nama
-                labelType.text = item.type
-                labelStatus.text = item.status
+                labelIndex.setTitle(item.no, for: .normal)
+                labelNama.text = item.emp_name
+                labelType.text = item.status_notes
+                labelStatus.text = item.status_name
+                setIcon(item.status!)
             }
+        }
+    }
+    
+    private func setIcon(_ status: String) {
+        switch status {
+        case "0": imageStatus.image = UIImage(named: "onProgress")
+        case "1": imageStatus.image = UIImage(named: "approved")
+        default: imageStatus.image = UIImage(named: "rejected")
         }
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 3)
+        self.addShadow(CGSize(width: 2, height: 3), UIColor.lightGray, 3, 0.3, 3)
     }
 }

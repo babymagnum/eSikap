@@ -37,16 +37,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1e0-WU-Z22">
-                            <rect key="frame" x="21" y="83.5" width="333" height="500"/>
+                            <rect key="frame" x="21" y="126" width="333" height="415"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MSI-rb-Tk6">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MSI-rb-Tk6">
                                     <rect key="frame" x="0.0" y="0.0" width="333" height="336.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="MSI-rb-Tk6" secondAttribute="height" multiplier="1:1.01" id="XOl-9b-N3z"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-h0-7cW" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                    <rect key="frame" x="87.5" y="348.5" width="158.5" height="30.5"/>
+                                    <rect key="frame" x="87" y="348.5" width="159" height="30.5"/>
                                     <string key="text">Speeda Application Testing
 Challenge</string>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
@@ -65,7 +65,7 @@ Challenge</string>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description testing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQP-Iz-FBj" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                    <rect key="frame" x="10" y="389" width="313" height="14"/>
+                                    <rect key="frame" x="10" y="389" width="313" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -78,7 +78,7 @@ Challenge</string>
                                 <constraint firstItem="zyT-h0-7cW" firstAttribute="top" secondItem="MSI-rb-Tk6" secondAttribute="bottom" constant="12" id="Ang-3g-6Ug"/>
                                 <constraint firstItem="MSI-rb-Tk6" firstAttribute="top" secondItem="1e0-WU-Z22" secondAttribute="top" id="Ehf-pq-b0M"/>
                                 <constraint firstItem="eQP-Iz-FBj" firstAttribute="top" secondItem="zyT-h0-7cW" secondAttribute="bottom" constant="10" id="FUi-1x-C2I"/>
-                                <constraint firstAttribute="height" constant="500" id="Yyh-Dq-hLo"/>
+                                <constraint firstAttribute="height" constant="415" id="Yyh-Dq-hLo"/>
                                 <constraint firstAttribute="trailing" secondItem="eQP-Iz-FBj" secondAttribute="trailing" constant="10" id="ckZ-7s-Qjm"/>
                                 <constraint firstItem="eQP-Iz-FBj" firstAttribute="leading" secondItem="1e0-WU-Z22" secondAttribute="leading" constant="10" id="fbm-z7-QwE"/>
                                 <constraint firstItem="zyT-h0-7cW" firstAttribute="centerX" secondItem="1e0-WU-Z22" secondAttribute="centerX" id="gcw-JL-GB2"/>

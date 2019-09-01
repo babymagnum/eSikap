@@ -31,7 +31,7 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     @IBOutlet weak var buttonProses: UIButton!
     @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
     
-    var listStatusPersetujuan = [StatusPersetujuan]()
+    var listStatusPersetujuan = [ItemApproval]()
     var listStatusAction = [StatusAction]()
     var isCalculateStatusAction = false
     var isCalculateStatusPersetujuan = false
@@ -61,10 +61,6 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     }
     
     private func getStatusPersetujuan() {
-        listStatusPersetujuan.append(StatusPersetujuan(index: "1", nama: "Wayan Wijaya", type: "Pengaju", status: "Submited"))
-        listStatusPersetujuan.append(StatusPersetujuan(index: "2", nama: "RIYAN TRISNA WIBOWO", type: "-", status: "On Progress"))
-        listStatusPersetujuan.append(StatusPersetujuan(index: "3", nama: "A. TOTO PRIYONO", type: "-", status: "Approved"))
-        listStatusPersetujuan.append(StatusPersetujuan(index: "4", nama: "FEBRIANA PUTRI KUSUMA", type: "-", status: "Submited"))
         
         statusPersetujuanCollectionView.reloadData()
     }

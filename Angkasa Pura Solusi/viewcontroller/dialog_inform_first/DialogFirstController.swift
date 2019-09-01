@@ -25,13 +25,6 @@ class DialogFirstController: UIViewController {
         initView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {                
-        UIView.animate(withDuration: 0.2) {
-            self.viewContainerHeight.constant = self.imageAnnouncement.frame.height + self.labelTitle.getHeight(width: self.labelTitle.frame.width) + self.labelDescription.getHeight(width: self.labelDescription.frame.width) + 34
-            self.view.layoutIfNeeded()
-        }
-    }
-    
     private func initView() {
         viewContainer.layer.cornerRadius = 4
         
@@ -39,6 +32,11 @@ class DialogFirstController: UIViewController {
             imageAnnouncement.loadUrl(data.image)
             labelTitle.text = data.title
             labelDescription.text = data.description
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.viewContainerHeight.constant = self.viewContainer.getHeight() + 12
+            self.view.layoutIfNeeded()
         }
     }
     

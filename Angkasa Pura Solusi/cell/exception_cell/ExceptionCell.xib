@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ExceptionCell" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="228" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="228" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1Y-Er-NxC" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="228" height="50"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="z1Y-Er-NxC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HKS-K6-XkW"/>
+                <constraint firstAttribute="trailing" secondItem="z1Y-Er-NxC" secondAttribute="trailing" id="M2Y-0o-onq"/>
+                <constraint firstItem="z1Y-Er-NxC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Pfs-CX-314"/>
+                <constraint firstAttribute="bottom" secondItem="z1Y-Er-NxC" secondAttribute="bottom" id="oR4-sd-iLF"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="228" height="50"/>
+            <connections>
+                <outlet property="labelException" destination="z1Y-Er-NxC" id="IQn-tm-YD8"/>
+            </connections>
+            <point key="canvasLocation" x="260.86956521739131" y="124.55357142857142"/>
+        </collectionViewCell>
+    </objects>
+</document>

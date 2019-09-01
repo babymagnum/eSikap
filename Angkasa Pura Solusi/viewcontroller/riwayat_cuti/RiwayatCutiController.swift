@@ -7,14 +7,30 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
 
     @IBOutlet weak var riwayatCutiCollectionView: UICollectionView!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     
-    var listRiwayatCuti = [RiwayatCuti]()
+    var lastVelocityYSign = 0
+    var allowLoadMore = false
+    var listRiwayatCuti = [ItemRiwayatCuti]()
     var isCalculatRiwayatCutiHeight = false
+    var totalPage = 0
+    var currentPage = 0
+    var status = ""
+    var leave_type_id = ""
+    var current_year = ""
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor(hexString: "42a5f5")
+        
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +45,33 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func getRiwayatCuti() {
-        listRiwayatCuti.append(RiwayatCuti(date: "15 Mei 2019", kode: "LVE.2019.05.123410", status: "Saved", type: "Cuti Tahunan", tanggal: "20 Mei 2019 - 30 Mei 2019", time: "14:48", isSameDate: false))
-        listRiwayatCuti.append(RiwayatCuti(date: "15 Mei 2019", kode: "LVE.2019.05.000410", status: "Submited", type: "Sakit Dengan Surat Dokter", tanggal: "31 Mei 2019 - 01 Juni 2019", time: "14:48", isSameDate: false))
-        listRiwayatCuti.append(RiwayatCuti(date: "14 Mei 2019", kode: "LVE.2019.05.000410", status: "Submited", type: "Sakit Dengan Surat Dokter", tanggal: "31 Mei 2019 - 01 Juni 2019", time: "14:48", isSameDate: false))
+        current_year = function.getCurrentDate(pattern: "yyyy")
+            
+        SVProgressHUD.show()
         
-        DispatchQueue.main.async {
+        informationNetworking.getLeaveHistoryList(page: currentPage, year: current_year, leave_type_id: leave_type_id, status: status) { (error, riwayatCuti, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Riwayat Cuti", error, "Reload", "Understand", completionHandler: {
+                    self.getRiwayatCuti()
+                })
+                return
+            }
+            
+            guard let riwayatCuti = riwayatCuti else { return }
+            self.totalPage = (riwayatCuti.data?.total_page)!
+            
+            for riwayat in riwayatCuti.data!.leave {
+                self.listRiwayatCuti.append(riwayat)
+            }
+            
+            self.currentPage += 1
             self.riwayatCutiCollectionView.reloadData()
         }
     }
@@ -49,9 +87,9 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
     private func initCollectionView() {
         riwayatCutiCollectionView.register(UINib(nibName: "RiwayatCutiCell", bundle: nil), forCellWithReuseIdentifier: "RiwayatCutiCell")
         
+        riwayatCutiCollectionView.addSubview(refreshControl)
         riwayatCutiCollectionView.delegate = self
         riwayatCutiCollectionView.dataSource = self
-        riwayatCutiCollectionView.isPrefetchingEnabled = false
     }
     
     private func initView() {
@@ -63,6 +101,30 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
 }
 
 extension RiwayatCutiController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == listRiwayatCuti.count - 1 {
+            if self.allowLoadMore && currentPage + 1 < totalPage {
+                self.getRiwayatCuti()
+            }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentVelocityY =  scrollView.panGestureRecognizer.velocity(in: scrollView.superview).y
+        let currentVelocityYSign = Int(currentVelocityY).signum()
+        
+        if currentVelocityYSign != lastVelocityYSign &&
+            currentVelocityYSign != 0 {
+            lastVelocityYSign = currentVelocityYSign
+        }
+        
+        if lastVelocityYSign < 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.allowLoadMore = true
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listRiwayatCuti.count
     }
@@ -71,28 +133,16 @@ extension RiwayatCutiController: UICollectionViewDataSource, UICollectionViewDel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RiwayatCutiCell", for: indexPath) as! RiwayatCutiCell
         cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cutiContainerClick(sender:))))
         
-        var item = listRiwayatCuti[indexPath.item]
+        let item = listRiwayatCuti[indexPath.item]
         
         DispatchQueue.main.async {
             if !self.isCalculatRiwayatCutiHeight {
                 self.isCalculatRiwayatCutiHeight = true
-                let originalHeight = cell.labelDate.getHeight(width: cell.labelDate.frame.width) + cell.labelKodeCuti.getHeight(width: cell.labelKodeCuti.frame.width) + cell.labelTypeIjin.getHeight(width: cell.labelTypeIjin.frame.width) + cell.labelTanggalIjin.getHeight(width: cell.labelTanggalIjin.frame.width) + 7.1 + 6.2 + 7.8 + 1.6 + 7.8
+                let originalHeight = cell.viewContainer.getHeight()
                 let riwayatCutiLayout = self.riwayatCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                riwayatCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 24, height: originalHeight + 2)
+                riwayatCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 24, height: originalHeight + 7.9)
             }
         }
-        
-        if indexPath.item > 0 {
-            let before = self.listRiwayatCuti[indexPath.item - 1]
-            let dateBefore = before.date
-            let dateItem = item.date
-            
-            if dateItem == dateBefore {
-                
-                item.isSameDate = true
-            }
-            else { item.isSameDate = false }
-        } else { item.isSameDate = false }
         
         cell.data = item
         return cell
@@ -100,11 +150,27 @@ extension RiwayatCutiController: UICollectionViewDataSource, UICollectionViewDel
 }
 
 extension RiwayatCutiController {
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        listRiwayatCuti.removeAll()
+        currentPage = 0
+        getRiwayatCuti()
+    }
+    
     @objc func cutiContainerClick(sender: UITapGestureRecognizer) {
         guard let indexpath = riwayatCutiCollectionView.indexPathForItem(at: sender.location(in: riwayatCutiCollectionView)) else { return }
         
-        let vc = DetailCutiController()
-        navigationController?.pushViewController(vc, animated: true)
+        let item = listRiwayatCuti[indexpath.item]
+        
+        if item.status == "Save" {
+            let vc = PengajuanCutiController()
+            vc.leave_id = item.id
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = DetailCutiController()
+            vc.cuti = item
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
