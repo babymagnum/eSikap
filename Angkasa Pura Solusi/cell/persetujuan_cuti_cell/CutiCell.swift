@@ -27,14 +27,14 @@ class CutiCell: UICollectionViewCell {
         viewContainer.layer.cornerRadius = 3
     }
     
-    var data: Cuti? {
+    var data: ItemDelegation? {
         didSet {
             if let item = data {
-                imageAccount.loadUrl(item.image!)
-                labelNama.text = item.name
-                labelKodeCuti.text = item.kode
-                labelTypeCuti.text = item.typeCuti
-                labelTanggalCuti.text = item.tanggalCuti
+                imageAccount.loadUrl(item.photo!)
+                labelNama.text = item.emp_name
+                labelKodeCuti.text = item.number
+                labelTypeCuti.text = item.type_name
+                labelTanggalCuti.text = item.dates
             }
         }
     }
@@ -42,6 +42,6 @@ class CutiCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 3)
+        self.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.4, 3)
     }
 }

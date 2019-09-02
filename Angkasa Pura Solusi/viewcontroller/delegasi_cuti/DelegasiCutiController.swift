@@ -1,8 +1,8 @@
 //
-//  CutiController.swift
+//  DelegasiCutiController.swift
 //  Angkasa Pura Solusi
 //
-//  Created by Arief Zainuri on 09/08/19.
+//  Created by Arief Zainuri on 02/09/19.
 //  Copyright © 2019 Gama Techno. All rights reserved.
 //
 
@@ -10,11 +10,11 @@ import UIKit
 import XLPagerTabStrip
 import SVProgressHUD
 
-class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionViewDelegate {
+class DelegasiCutiController: BaseViewController, IndicatorInfoProvider, UICollectionViewDelegate {
     
-    @IBOutlet weak var cutiCollectionView: UICollectionView!
+    @IBOutlet weak var collectionDelegasiCuti: UICollectionView!
     
-    var listCuti = [ItemDelegation]()
+    var listDelegasiCuti = [ItemDelegation]()
     var isCalculateCutiHeight = false
     var currentPage = 0
     var totalPage = 0
@@ -29,27 +29,30 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
         return refreshControl
     }()
     
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "CUTI")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initCollectionView()
+        initCollection()
         
-        getLeaveApprovalList()
+        getLeaveDelegationList()
     }
     
-    // use this function to call protocol to notify the tablayout that page is change
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    private func initCollection() {
+        collectionDelegasiCuti.register(UINib(nibName: "CutiCell", bundle: nil), forCellWithReuseIdentifier: "CutiCell")
+        
+        collectionDelegasiCuti.addSubview(refreshControl)
+        collectionDelegasiCuti.delegate = self
+        collectionDelegasiCuti.dataSource = self
     }
     
-    private func getLeaveApprovalList() {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "DELEGASI CUTI")
+    }
+
+    func getLeaveDelegationList() {
         SVProgressHUD.show()
         
-        informationNetworking.getLeaveApprovalList(page: currentPage) { (error, delegationList, isExpired) in
+        informationNetworking.getLeaveDelegationList(page: currentPage) { (error, delegationList, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -58,8 +61,8 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
             }
             
             if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Daftar List", error, "Reload", "Cancel", completionHandler: {
-                    self.getLeaveApprovalList()
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Delegasi Cuti", error, "Reload", "Cancel", completionHandler: {
+                    self.getLeaveDelegationList()
                 })
                 return
             }
@@ -68,45 +71,37 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
             self.totalPage = (delegationList.data?.total_page)!
             
             for cuti in delegationList.data!.leave {
-                self.listCuti.append(cuti)
+                self.listDelegasiCuti.append(cuti)
             }
             
             self.currentPage += 1
-            self.cutiCollectionView.reloadData()
+            self.collectionDelegasiCuti.reloadData()
         }
-    }
-    
-    private func initCollectionView() {
-        cutiCollectionView.register(UINib(nibName: "CutiCell", bundle: nil), forCellWithReuseIdentifier: "CutiCell")
-        
-        cutiCollectionView.addSubview(refreshControl)
-        cutiCollectionView.delegate = self
-        cutiCollectionView.dataSource = self
     }
 }
 
-extension CutiController {
+extension DelegasiCutiController {
     @objc func cutiContainerClick(sender: UITapGestureRecognizer) {
-        guard let indexpath = cutiCollectionView.indexPathForItem(at: sender.location(in: cutiCollectionView)) else { return }
+        guard let indexpath = collectionDelegasiCuti.indexPathForItem(at: sender.location(in: collectionDelegasiCuti)) else { return }
         
-        let vc = DetailPersetujuanCutiController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = DetailCutiController()
+        vc.delegasi = listDelegasiCuti[indexpath.item]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
-        listCuti.removeAll()
         currentPage = 0
-        getLeaveApprovalList()
+        listDelegasiCuti.removeAll()
+        getLeaveDelegationList()
     }
 }
 
-extension CutiController : UICollectionViewDataSource {
-    
+extension DelegasiCutiController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.item == listCuti.count - 1 {
+        if indexPath.item == listDelegasiCuti.count - 1 {
             if self.allowLoadMore && currentPage + 1 < totalPage {
-                self.getLeaveApprovalList()
+                self.getLeaveDelegationList()
             }
         }
     }
@@ -128,7 +123,7 @@ extension CutiController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listCuti.count
+        return listDelegasiCuti.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -137,13 +132,12 @@ extension CutiController : UICollectionViewDataSource {
         if !isCalculateCutiHeight {
             self.isCalculateCutiHeight = true
             DispatchQueue.main.async {
-//                let cutiHeight = cutiCell.labelKodeCuti.getHeight(width: cutiCell.labelKodeCuti.frame.width) + cutiCell.labelTypeCuti.getHeight(width: cutiCell.labelTypeCuti.frame.width) + cutiCell.labelTanggalCuti.getHeight(width: cutiCell.labelTanggalCuti.frame.width) + 6.2 + 7.8 + 1.6 + 7.8
-                let cutiLayout = self.cutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                let cutiLayout = self.collectionDelegasiCuti.collectionViewLayout as! UICollectionViewFlowLayout
                 cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiCell.viewContainer.getHeight() + 8.9)
             }
         }
         
-        cutiCell.data = listCuti[indexPath.item]
+        cutiCell.data = listDelegasiCuti[indexPath.item]
         cutiCell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cutiContainerClick(sender:))))
         return cutiCell
     }

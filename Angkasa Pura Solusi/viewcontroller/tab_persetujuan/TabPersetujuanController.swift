@@ -62,9 +62,9 @@ class TabPersetujuanController: ButtonBarPagerTabStripViewController {
     
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        pages.append(DelegasiCutiController())
         pages.append(CutiController())
         pages.append(LemburController())
-        pages.append(RealisasiLemburController())
         return pages
     }
 }

@@ -41,7 +41,7 @@ class StatusPersetujuanCell: UICollectionViewCell {
     
     private func setIcon(_ status: String) {
         switch status {
-        case "0": imageStatus.image = UIImage(named: "onProgress")
+        case "0": imageStatus.image = UIImage(named: "waiting")
         case "1": imageStatus.image = UIImage(named: "approved")
         default: imageStatus.image = UIImage(named: "rejected")
         }

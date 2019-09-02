@@ -745,16 +745,6 @@ extension PengajuanCutiController: UICollectionViewDataSource {
                 }
             }
             
-//            if indexPath.item == listTanggalCuti.count - 1 {
-//                if !self.isSetTanggalCutiHeight {
-//                    self.isSetTanggalCutiHeight = true
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-//                        self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
-//                        self.defaultJatahCutiHeight += 54.5 + self.tanggalCutiCollectionHeight.constant
-//                    }
-//                }
-//            }
-            
             tanggalCutiCell.data = listTanggalCuti[indexPath.item].tanggal
             tanggalCutiCell.buttonDeleteTanggal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(deleteTanggalClick(sender:))))
             return tanggalCutiCell

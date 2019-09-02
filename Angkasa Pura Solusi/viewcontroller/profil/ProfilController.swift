@@ -183,7 +183,11 @@ extension ProfilController {
     @objc func viewKeluarClick() {
         function.showUnderstandDialog(self, "Keluar dari ESS APS", "Yakin ingin keluar?", "KELUAR", "BATAL") {
             
+            SVProgressHUD.show()
+            
             self.authNetworking.logout(completion: { (error, logout, isExpired) in
+                SVProgressHUD.dismiss()
+                
                 if let _ = isExpired {
                     self.forceLogout(self.navigationController!)
                     return

@@ -12,6 +12,7 @@ import EzPopup
 
 class DetailCutiController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var labelTitleTop: CustomLabel!
     @IBOutlet weak var labelStatusTop: CustomButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
@@ -32,13 +33,15 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var collectionTanggalCutiHeight: NSLayoutConstraint!
     @IBOutlet weak var labelUbahanTerakhir: CustomLabel!
     
-    var listStatusPersetujuan = [ItemApproval]()
-    var listTanggalCuti = [ItemDateShow]()
-    var isCalculatePesertujuanHeight = false
-    var isSetStatusPersetujuanHeight = false
-    var isCalculateTanggalCutiHeight = false
-    var isSetTanggalCutiHeight = false
-    var cuti: ItemRiwayatCuti!
+    private var listStatusPersetujuan = [ItemApproval]()
+    private var listTanggalCuti = [ItemDateShow]()
+    private var isCalculatePesertujuanHeight = false
+    private var isSetStatusPersetujuanHeight = false
+    private var isCalculateTanggalCutiHeight = false
+    private var isSetTanggalCutiHeight = false
+    
+    var cuti: ItemRiwayatCuti?
+    var delegasi: ItemDelegation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +50,69 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         
         initCollectionView()
         
-        getDetailLeave()
+        getData()
+    }
+    
+    private func getData() {
+        if let _ = cuti {
+            labelTitleTop.text = "Detail Cuti"
+            getDetailLeave()
+        }
+        
+        if let _ = delegasi {
+            labelTitleTop.text = "Detail Delegasi Cuti"
+            getDetailLeaveDelegationById()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
+    private func getDetailLeaveDelegationById() {
+        SVProgressHUD.show()
+        
+        informationNetworking.getDetailLeaveDelegationById(leave_id: delegasi!.id!) { (error, detailDelegationList, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Delegasi", error, "Reload", "Cancel", completionHandler: {
+                    self.getDetailLeaveDelegationById()
+                })
+                return
+            }
+            
+            guard let detailDelegationList = detailDelegationList else { return }
+            
+            self.setViewDelegasi(detailDelegationList)
+        }
+    }
+    
+    private func setViewDelegasi(_ detailDelegation: DetailDelegationList) {
+        let item = detailDelegation.data?.leave[0]
+        
+        labelStatusTop.setTitle(item?.status, for: .normal)
+        labelStatusTop.backgroundColor = UIColor(hexString: String((item?.status_color?.dropFirst())!))
+        imageAccount.loadUrl((item?.photo)!)
+        labelNama.text = ": \(item?.emp_name ?? "")"
+        labelUnitKerja.text = ": \(item?.unit_name ?? "")"
+        labelJenisIjin.text = ": \(item?.type_name ?? "")"
+        labelAlasan.text = ": \(item?.reason ?? "")"
+        labelTanggal.text = (item?.date_show.count)! > 0 ? ": -" : ": \(item?.dates ?? "")"
+        labelInfoPembatalan.text = item?.cancel_notes
+        labelAwalInput.text = item?.last_insert
+        labelUbahanTerakhir.text = item?.last_update
+        listTanggalCuti = item!.date_show
+        listStatusPersetujuan = item!.approval
+        
+        DispatchQueue.main.async {
+            self.collectionTanggalCuti.reloadData()
+            self.statusPersetujuanCollectionView.reloadData()
+        }
+    }
     
     private func initView() {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
@@ -66,7 +128,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     private func getDetailLeave() {
         SVProgressHUD.show()
         
-        informationNetworking.getDetailLeaveById(id: cuti.id!) { (error, detailRiwayatCuti, isExpired) in
+        informationNetworking.getDetailLeaveById(id: (cuti?.id!)!) { (error, detailRiwayatCuti, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -95,7 +157,6 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
             labelInfoPembatalan.text = ""
         } else {
             buttonBatalkan.isHidden = true
-            labelInfoPembatalan.text = item?.cancel_notes
         }
         
         labelStatusTop.setTitle(item?.status, for: .normal)
@@ -159,7 +220,7 @@ extension DetailCutiController: UICollectionViewDataSource {
             if indexPath.item == listStatusPersetujuan.count - 1 {
                 if !self.isSetStatusPersetujuanHeight {
                     self.isSetStatusPersetujuanHeight = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                         self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
                         self.scrollView.resizeScrollViewContentSize()
                     }
@@ -182,7 +243,7 @@ extension DetailCutiController: UICollectionViewDataSource {
             if indexPath.item == listTanggalCuti.count - 1 {
                 if !self.isSetTanggalCutiHeight {
                     self.isSetTanggalCutiHeight = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                         self.collectionTanggalCutiHeight.constant = self.collectionTanggalCuti.contentSize.height
                         self.scrollView.resizeScrollViewContentSize()
                     }

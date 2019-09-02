@@ -431,4 +431,28 @@ class InformationNetworking: BaseNetworking {
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func getLeaveApprovalList(page: Int, completion: @escaping(_ error: String?, _ delegationList: DelegationList?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getLeaveApprovalList"
+        let body: [String: String] = [ "page": "\(page)" ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getDetailLeaveApprovalById(leave_id: String, completion: @escaping(_ error: String?, _ detailLeaveApproval: DetailLeaveApproval?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getDetailLeaveApprovalById"
+        let body: [String: String] = [ "leave_id": leave_id ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getLeaveDelegationList(page: Int, completion: @escaping(_ error: String?, _ delegationList: DelegationList?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getLeaveDelegationList"
+        let body: [String: String] = [ "page": "\(page)" ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getDetailLeaveDelegationById(leave_id: String, completion: @escaping(_ error: String?, _ detailDelegationList: DetailDelegationList?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getDetailLeaveDelegationById"
+        let body: [String: String] = [ "leave_id": leave_id ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

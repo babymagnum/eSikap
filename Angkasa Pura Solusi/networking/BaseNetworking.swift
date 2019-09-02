@@ -75,7 +75,7 @@ class BaseNetworking {
                         let status = JSON(success)["status"].int
                         let message = JSON(success)["message"].string
                         
-                        if status == 200 {
+                        if status == 200 || status == 201 {
                             guard let mData = response.data else { return}
                             
                             do {
@@ -107,7 +107,7 @@ class BaseNetworking {
                 let status = JSON(success)["status"].int
                 let message = JSON(success)["message"].string
                 
-                if status == 200 {
+                if status == 200 || status == 201 {
                     guard let mData = response.data else { return}
                     
                     do {
@@ -138,7 +138,7 @@ class BaseNetworking {
                 let status = JSON(success)["status"].int
                 let message = JSON(success)["message"].string
                 
-                if status == 200 {
+                if status == 200 || status == 201 {
                     guard let mData = response.data else { return}
                     
                     do {
@@ -169,7 +169,7 @@ class BaseNetworking {
                 let status = JSON(success)["status"].int
                 let message = JSON(success)["message"].string
                 
-                if status == 200 {
+                if status == 200 || status == 201 {
                     guard let mData = response.data else { return}
                     
                     do {
@@ -201,7 +201,7 @@ class BaseNetworking {
                 let status = JSON(success)["status"].int
                 let message = JSON(success)["message"].string
                 
-                if status == 200 {
+                if status == 200 || status == 201 {
                     guard let mData = response.data else { return}
                     
                     do {

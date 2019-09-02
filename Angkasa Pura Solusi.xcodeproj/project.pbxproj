@@ -34,6 +34,11 @@
 		ED308CF7231B520500F5C43C /* ExceptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED308CF5231B520500F5C43C /* ExceptionCell.xib */; };
 		ED308CF9231B562F00F5C43C /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED308CF8231B562F00F5C43C /* Logout.swift */; };
 		ED308CFB231B84FD00F5C43C /* DetailRiwayatCuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED308CFA231B84FD00F5C43C /* DetailRiwayatCuti.swift */; };
+		ED40AB4D231CB497007C0ADC /* DelegasiCutiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40AB4B231CB497007C0ADC /* DelegasiCutiController.swift */; };
+		ED40AB4E231CB497007C0ADC /* DelegasiCutiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED40AB4C231CB497007C0ADC /* DelegasiCutiController.xib */; };
+		ED40AB50231CB5FC007C0ADC /* DelegationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40AB4F231CB5FC007C0ADC /* DelegationList.swift */; };
+		ED40AB52231CBB5A007C0ADC /* DetailDelegationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40AB51231CBB59007C0ADC /* DetailDelegationList.swift */; };
+		ED40AB54231CBD6A007C0ADC /* DetailLeaveApproval.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40AB53231CBD6A007C0ADC /* DetailLeaveApproval.swift */; };
 		ED52151922F452A1001C6A50 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52151822F452A1001C6A50 /* Circle.swift */; };
 		ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52151D22F46F11001C6A50 /* DialogFirstController.swift */; };
 		ED52152022F46F11001C6A50 /* DialogFirstController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52151E22F46F11001C6A50 /* DialogFirstController.xib */; };
@@ -146,11 +151,8 @@
 		EDFC1F4F22FDBAEC00AAA93B /* CutiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F4D22FDBAEC00AAA93B /* CutiController.xib */; };
 		EDFC1F5222FDBB0400AAA93B /* LemburController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F5022FDBB0400AAA93B /* LemburController.swift */; };
 		EDFC1F5322FDBB0400AAA93B /* LemburController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F5122FDBB0400AAA93B /* LemburController.xib */; };
-		EDFC1F5622FDBB1700AAA93B /* RealisasiLemburController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F5422FDBB1700AAA93B /* RealisasiLemburController.swift */; };
-		EDFC1F5722FDBB1700AAA93B /* RealisasiLemburController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F5522FDBB1700AAA93B /* RealisasiLemburController.xib */; };
 		EDFC1F5B22FE297D00AAA93B /* CutiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F5922FE297D00AAA93B /* CutiCell.swift */; };
 		EDFC1F5C22FE297D00AAA93B /* CutiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F5A22FE297D00AAA93B /* CutiCell.xib */; };
-		EDFC1F5E22FE2DE500AAA93B /* Cuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F5D22FE2DE500AAA93B /* Cuti.swift */; };
 		EDFC1F6222FE347300AAA93B /* DetailPersetujuanCutiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F6022FE347300AAA93B /* DetailPersetujuanCutiController.swift */; };
 		EDFC1F6322FE347300AAA93B /* DetailPersetujuanCutiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F6122FE347300AAA93B /* DetailPersetujuanCutiController.xib */; };
 /* End PBXBuildFile section */
@@ -185,6 +187,11 @@
 		ED308CF5231B520500F5C43C /* ExceptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExceptionCell.xib; sourceTree = "<group>"; };
 		ED308CF8231B562F00F5C43C /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		ED308CFA231B84FD00F5C43C /* DetailRiwayatCuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRiwayatCuti.swift; sourceTree = "<group>"; };
+		ED40AB4B231CB497007C0ADC /* DelegasiCutiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegasiCutiController.swift; sourceTree = "<group>"; };
+		ED40AB4C231CB497007C0ADC /* DelegasiCutiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DelegasiCutiController.xib; sourceTree = "<group>"; };
+		ED40AB4F231CB5FC007C0ADC /* DelegationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegationList.swift; sourceTree = "<group>"; };
+		ED40AB51231CBB59007C0ADC /* DetailDelegationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDelegationList.swift; sourceTree = "<group>"; };
+		ED40AB53231CBD6A007C0ADC /* DetailLeaveApproval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLeaveApproval.swift; sourceTree = "<group>"; };
 		ED52151822F452A1001C6A50 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		ED52151D22F46F11001C6A50 /* DialogFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogFirstController.swift; sourceTree = "<group>"; };
 		ED52151E22F46F11001C6A50 /* DialogFirstController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogFirstController.xib; sourceTree = "<group>"; };
@@ -303,11 +310,8 @@
 		EDFC1F4D22FDBAEC00AAA93B /* CutiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CutiController.xib; sourceTree = "<group>"; };
 		EDFC1F5022FDBB0400AAA93B /* LemburController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemburController.swift; sourceTree = "<group>"; };
 		EDFC1F5122FDBB0400AAA93B /* LemburController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LemburController.xib; sourceTree = "<group>"; };
-		EDFC1F5422FDBB1700AAA93B /* RealisasiLemburController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisasiLemburController.swift; sourceTree = "<group>"; };
-		EDFC1F5522FDBB1700AAA93B /* RealisasiLemburController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealisasiLemburController.xib; sourceTree = "<group>"; };
 		EDFC1F5922FE297D00AAA93B /* CutiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutiCell.swift; sourceTree = "<group>"; };
 		EDFC1F5A22FE297D00AAA93B /* CutiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CutiCell.xib; sourceTree = "<group>"; };
-		EDFC1F5D22FE2DE500AAA93B /* Cuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuti.swift; sourceTree = "<group>"; };
 		EDFC1F6022FE347300AAA93B /* DetailPersetujuanCutiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersetujuanCutiController.swift; sourceTree = "<group>"; };
 		EDFC1F6122FE347300AAA93B /* DetailPersetujuanCutiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPersetujuanCutiController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -625,7 +629,7 @@
 				EDBF21AE22FE71E8003F5DAF /* riwayat_cuti */,
 				EDBF21A922FE6C5D003F5DAF /* detail_cuti */,
 				EDFC1F5F22FE344B00AAA93B /* detail_persetujuan_cuti */,
-				EDFC1F4B22FDBAD400AAA93B /* realisasi_lembur */,
+				EDFC1F4B22FDBAD400AAA93B /* delegasi_cuti */,
 				EDFC1F4A22FDBACC00AAA93B /* lembur */,
 				EDFC1F4922FDBAC500AAA93B /* cuti */,
 				EDFC1F4422FDB7E100AAA93B /* tab_persetujuan */,
@@ -680,7 +684,6 @@
 				ED57FE4922F9D0D2007B62A0 /* Announcement.swift */,
 				ED57FE5022FA46F7007B62A0 /* Bulan.swift */,
 				EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */,
-				EDFC1F5D22FE2DE500AAA93B /* Cuti.swift */,
 				EDBF21A722FE575F003F5DAF /* StatusAction.swift */,
 				EDBF21B822FE7875003F5DAF /* RiwayatCuti.swift */,
 				ED0E0736230802AE00260783 /* LeaveQuota.swift */,
@@ -690,6 +693,9 @@
 				ED308CFA231B84FD00F5C43C /* DetailRiwayatCuti.swift */,
 				ED8A914A231C0D7C00C6834C /* BaseResponse.swift */,
 				ED8A914C231C236700C6834C /* DetailLeaveById.swift */,
+				ED40AB4F231CB5FC007C0ADC /* DelegationList.swift */,
+				ED40AB51231CBB59007C0ADC /* DetailDelegationList.swift */,
+				ED40AB53231CBD6A007C0ADC /* DetailLeaveApproval.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -899,13 +905,13 @@
 			path = lembur;
 			sourceTree = "<group>";
 		};
-		EDFC1F4B22FDBAD400AAA93B /* realisasi_lembur */ = {
+		EDFC1F4B22FDBAD400AAA93B /* delegasi_cuti */ = {
 			isa = PBXGroup;
 			children = (
-				EDFC1F5422FDBB1700AAA93B /* RealisasiLemburController.swift */,
-				EDFC1F5522FDBB1700AAA93B /* RealisasiLemburController.xib */,
+				ED40AB4B231CB497007C0ADC /* DelegasiCutiController.swift */,
+				ED40AB4C231CB497007C0ADC /* DelegasiCutiController.xib */,
 			);
-			path = realisasi_lembur;
+			path = delegasi_cuti;
 			sourceTree = "<group>";
 		};
 		EDFC1F5822FE295F00AAA93B /* persetujuan_cuti_cell */ = {
@@ -1007,7 +1013,6 @@
 				EDC71BC0231BEEB5007FBBD9 /* DetailTanggalCutiCell.xib in Resources */,
 				ED308CF2231B50ED00F5C43C /* DialogPengajuanCutiController.xib in Resources */,
 				EDCF3BF722F08B8F0064AE57 /* PresensiController.xib in Resources */,
-				EDFC1F5722FDBB1700AAA93B /* RealisasiLemburController.xib in Resources */,
 				ED61BF0E22F7A30600776C25 /* DaftarKaryawanController.xib in Resources */,
 				ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */,
 				EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */,
@@ -1022,6 +1027,7 @@
 				ED95909522EBEE9300D696E5 /* SplashController.xib in Resources */,
 				ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */,
 				ED57FE4822F8F645007B62A0 /* TanggalCutiCell.xib in Resources */,
+				ED40AB4E231CB497007C0ADC /* DelegasiCutiController.xib in Resources */,
 				ED52152022F46F11001C6A50 /* DialogFirstController.xib in Resources */,
 				ED57FE4422F8F633007B62A0 /* JatahCutiCell.xib in Resources */,
 				ED308CF7231B520500F5C43C /* ExceptionCell.xib in Resources */,
@@ -1104,6 +1110,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED40AB52231CBB5A007C0ADC /* DetailDelegationList.swift in Sources */,
 				ED95909422EBEE9300D696E5 /* SplashController.swift in Sources */,
 				ED57FE4E22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift in Sources */,
 				ED57FE4722F8F645007B62A0 /* TanggalCutiCell.swift in Sources */,
@@ -1116,6 +1123,7 @@
 				EDBF21A522FE5502003F5DAF /* StatusActionCell.swift in Sources */,
 				ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */,
 				EDBF21AC22FE6C7D003F5DAF /* DetailCutiController.swift in Sources */,
+				ED40AB54231CBD6A007C0ADC /* DetailLeaveApproval.swift in Sources */,
 				ED61BF2922F7E20600776C25 /* Gender.swift in Sources */,
 				ED95907E22EBE3C500D696E5 /* Preference.swift in Sources */,
 				ED858B0222F313FD00016EAD /* InformationNetworking.swift in Sources */,
@@ -1127,6 +1135,7 @@
 				ED52152422F47C0D001C6A50 /* DialogPreparePresenceController.swift in Sources */,
 				ED57FE4322F8F633007B62A0 /* JatahCutiCell.swift in Sources */,
 				ED61BF2522F7E0B600776C25 /* Unit.swift in Sources */,
+				ED40AB4D231CB497007C0ADC /* DelegasiCutiController.swift in Sources */,
 				EDFC1F5B22FE297D00AAA93B /* CutiCell.swift in Sources */,
 				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
@@ -1168,16 +1177,15 @@
 				ED8F239A23136B34005D700C /* BaseNetworking.swift in Sources */,
 				ED52152922F4846C001C6A50 /* BottomSheetMenuController.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCell.swift in Sources */,
-				EDFC1F5622FDBB1700AAA93B /* RealisasiLemburController.swift in Sources */,
 				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
 				EDBF21B622FE7335003F5DAF /* RiwayatCutiCell.swift in Sources */,
 				ED10746022F5A5BA00ADF055 /* DetailBeritaController.swift in Sources */,
 				ED0E07392308039500260783 /* PerizinanNetworking.swift in Sources */,
 				ED52151922F452A1001C6A50 /* Circle.swift in Sources */,
 				ED0E0737230802AE00260783 /* LeaveQuota.swift in Sources */,
+				ED40AB50231CB5FC007C0ADC /* DelegationList.swift in Sources */,
 				ED95908622EBE8A000D696E5 /* LoginController.swift in Sources */,
 				ED61BEFE22F67C9F00776C25 /* PresensiListController.swift in Sources */,
-				EDFC1F5E22FE2DE500AAA93B /* Cuti.swift in Sources */,
 				ED8A9148231C088000C6834C /* DialogBatalkanCutiController.swift in Sources */,
 				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
 				ED139BB82302EC9000B854BC /* CustomTextView.swift in Sources */,

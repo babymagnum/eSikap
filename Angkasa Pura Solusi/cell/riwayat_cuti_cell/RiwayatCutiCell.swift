@@ -30,7 +30,7 @@ class RiwayatCutiCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.addShadow(CGSize(width: 2, height: 3), UIColor.lightGray, 3, 0.3, 5)
+        self.addShadow(CGSize(width: 2, height: 3), UIColor.lightGray, 3, 0.4, 5)
     }
     
     var data: ItemRiwayatCuti? {
