@@ -107,11 +107,11 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         labelUbahanTerakhir.text = item?.last_update
         listTanggalCuti = item!.date_show
         listStatusPersetujuan = item!.approval
+        labelDateSubmitted.text = "Diajukan pada \(item?.date ?? "")"
+        labelKodeCuti.text = item?.number
         
-        DispatchQueue.main.async {
-            self.collectionTanggalCuti.reloadData()
-            self.statusPersetujuanCollectionView.reloadData()
-        }
+        self.collectionTanggalCuti.reloadData()
+        self.statusPersetujuanCollectionView.reloadData()
     }
     
     private func initView() {
@@ -172,11 +172,11 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         labelUbahanTerakhir.text = item?.last_update
         listTanggalCuti = item!.date_show
         listStatusPersetujuan = item!.approval
+        labelDateSubmitted.text = "Diajukan pada \(item?.date ?? "")"
+        labelKodeCuti.text = item?.number
         
-        DispatchQueue.main.async {
-            self.collectionTanggalCuti.reloadData()
-            self.statusPersetujuanCollectionView.reloadData()
-        }
+        self.collectionTanggalCuti.reloadData()
+        self.statusPersetujuanCollectionView.reloadData()
     }
     
     private func initCollectionView() {
