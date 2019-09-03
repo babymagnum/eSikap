@@ -72,6 +72,7 @@ class BaseNetworking {
                     switch response.result {
                     case .success(let success):
                         print(JSON(success))
+                        
                         let status = JSON(success)["status"].int
                         let message = JSON(success)["message"].string
                         

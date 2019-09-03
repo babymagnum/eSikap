@@ -407,6 +407,24 @@ extension UIColor {
 }
 
 extension String{
+    private func dynamicCustomDevice() -> CGFloat {
+        if (UIScreen.main.bounds.width == 320) {
+            return 2
+        } else if (UIScreen.main.bounds.width == 375) {
+            return 3
+        } else if (UIScreen.main.bounds.width == 414) {
+            return 4
+        } else {
+            return 5
+        }
+    }
+    
+    func getHeight(withConstrainedWidth width: CGFloat, font_size: CGFloat) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: font_size + dynamicCustomDevice())], context: nil)
+        return ceil(boundingBox.height)
+    }
+    
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)

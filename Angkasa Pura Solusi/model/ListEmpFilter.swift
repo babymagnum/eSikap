@@ -11,12 +11,18 @@ import Foundation
 struct ListEmpFilter: Decodable {
     var status: Int?
     var message: String?
-    var data = [ItemEmp]()
+    var data: DataEmpFilter?
+}
+
+struct DataEmpFilter: Decodable {
+    var total_page: Int?
+    var emp = [ItemEmp]()
 }
 
 struct ItemEmp: Decodable {
     var emp_id: String?
     var emp_nik: String?
     var emp_name: String?
+    var unit_name: String?
     var value: String?
 }

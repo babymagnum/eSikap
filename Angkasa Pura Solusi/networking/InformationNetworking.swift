@@ -384,13 +384,16 @@ class InformationNetworking: BaseNetworking {
         }
     }
     
-    func getEmpListFilter(completion: @escaping(_ error: String?, _ listEmpFilter: ListEmpFilter?, _ isExpired: Bool?) -> Void) {
+    func getEmpListFilter(page: Int, keyword: String, completion: @escaping(_ error: String?, _ listEmpFilter: ListEmpFilter?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getEmpListFiter"
-        let body: [String: String] = [ "keyword": "" ]
+        let body: [String: String] = [
+            "page": "\(page)",
+            "keyword": keyword
+        ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
-    func postLeaveRequest(imageData: Data, body: [String: String], completion : @escaping(_ error: String?, _ callback: String?, _ isExpired: Bool?) -> Void) {
+    func postLeaveRequest(imageData: Data, body: [String: String], completion : @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/addLeaveRequest"
         alamofirePostImage(imageData: imageData, url: url, headers: getHeaders(), body: body, completion: completion)
     }
@@ -453,6 +456,41 @@ class InformationNetworking: BaseNetworking {
     func getDetailLeaveDelegationById(leave_id: String, completion: @escaping(_ error: String?, _ detailDelegationList: DetailDelegationList?, _ isExpired: Bool?) -> Void) {
         let url = "\(staticLet.base_url)api/getDetailLeaveDelegationById"
         let body: [String: String] = [ "leave_id": leave_id ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func approvalLeaveByDate(leave_id: String, approval_notes: String, listStatusAction: [StatusAction], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/approvalLeave"
+        var body: [String: String] = [
+            "leave_id": leave_id,
+            "approval_notes": approval_notes
+        ]
+        
+        //appen the dictionary
+        for (index, status) in listStatusAction.enumerated() {
+            body.updateValue(status.isApproved!, forKey: "status_date[\(index)]")
+            body.updateValue(status.date!, forKey: "dates[\(index)]")
+        }
+        
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func approvalLeaveOneDayAndRange(leave_id: String, approval_notes: String, status_date: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/approvalLeave"
+        let body: [String: String] = [
+            "leave_id": leave_id,
+            "approval_notes": approval_notes,
+            "status_date": status_date
+        ]
+        
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getNotificationList(page: Int, completion: @escaping(_ error: String?, _ listNotification: ListNotification?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getNotificationList"
+        let body: [String: String] = [
+            "page": "\(page)"
+        ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
 }

@@ -22,6 +22,14 @@
 		ED139BB82302EC9000B854BC /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED139BB72302EC9000B854BC /* CustomTextView.swift */; };
 		ED139BBA2302ED0700B854BC /* CustomDropDownField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED139BB92302ED0700B854BC /* CustomDropDownField.swift */; };
 		ED139BBE2302F2B500B854BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED139BBD2302F2B300B854BC /* GoogleService-Info.plist */; };
+		ED14CA70231DD92200D5C7F0 /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA6F231DD92200D5C7F0 /* Success.swift */; };
+		ED14CA74231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA72231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.swift */; };
+		ED14CA75231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED14CA73231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib */; };
+		ED14CA78231DFCB100D5C7F0 /* EmpFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA76231DFCB100D5C7F0 /* EmpFilterCell.swift */; };
+		ED14CA79231DFCB100D5C7F0 /* EmpFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED14CA77231DFCB100D5C7F0 /* EmpFilterCell.xib */; };
+		ED14CA7D231E17D600D5C7F0 /* NotifikasiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA7B231E17D600D5C7F0 /* NotifikasiCell.swift */; };
+		ED14CA7E231E17D600D5C7F0 /* NotifikasiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED14CA7C231E17D600D5C7F0 /* NotifikasiCell.xib */; };
+		ED14CA80231E198B00D5C7F0 /* ListNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA7F231E198B00D5C7F0 /* ListNotification.swift */; };
 		ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */; };
 		ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */; };
 		ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038C922ED639E005BCF87 /* BeritaCell.swift */; };
@@ -175,6 +183,14 @@
 		ED139BB72302EC9000B854BC /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		ED139BB92302ED0700B854BC /* CustomDropDownField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownField.swift; sourceTree = "<group>"; };
 		ED139BBD2302F2B300B854BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED14CA6F231DD92200D5C7F0 /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
+		ED14CA72231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelegasiOrAtasanController.swift; sourceTree = "<group>"; };
+		ED14CA73231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDelegasiOrAtasanController.xib; sourceTree = "<group>"; };
+		ED14CA76231DFCB100D5C7F0 /* EmpFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpFilterCell.swift; sourceTree = "<group>"; };
+		ED14CA77231DFCB100D5C7F0 /* EmpFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmpFilterCell.xib; sourceTree = "<group>"; };
+		ED14CA7B231E17D600D5C7F0 /* NotifikasiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiCell.swift; sourceTree = "<group>"; };
+		ED14CA7C231E17D600D5C7F0 /* NotifikasiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifikasiCell.xib; sourceTree = "<group>"; };
+		ED14CA7F231E198B00D5C7F0 /* ListNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNotification.swift; sourceTree = "<group>"; };
 		ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUtamaCell.swift; sourceTree = "<group>"; };
 		ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuUtamaCell.xib; sourceTree = "<group>"; };
 		ED3038C922ED639E005BCF87 /* BeritaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeritaCell.swift; sourceTree = "<group>"; };
@@ -365,6 +381,24 @@
 				ED10745F22F5A5B900ADF055 /* DetailBeritaController.xib */,
 			);
 			path = detail_berita;
+			sourceTree = "<group>";
+		};
+		ED14CA71231DF36B00D5C7F0 /* search_delegasi_or_atasan */ = {
+			isa = PBXGroup;
+			children = (
+				ED14CA72231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.swift */,
+				ED14CA73231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib */,
+			);
+			path = search_delegasi_or_atasan;
+			sourceTree = "<group>";
+		};
+		ED14CA7A231E16AB00D5C7F0 /* notifikasi_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED14CA7B231E17D600D5C7F0 /* NotifikasiCell.swift */,
+				ED14CA7C231E17D600D5C7F0 /* NotifikasiCell.xib */,
+			);
+			path = notifikasi_cell;
 			sourceTree = "<group>";
 		};
 		ED3038C322ED6352005BCF87 /* menu_utama_cell */ = {
@@ -623,6 +657,7 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED14CA71231DF36B00D5C7F0 /* search_delegasi_or_atasan */,
 				ED8A9145231C07C400C6834C /* dialog_batalkan_detail_cuti */,
 				ED308CEE231B50CC00F5C43C /* dialog_pengajuan_exception */,
 				ED0E073C230834B200260783 /* bottom_sheet_date_picker */,
@@ -696,6 +731,8 @@
 				ED40AB4F231CB5FC007C0ADC /* DelegationList.swift */,
 				ED40AB51231CBB59007C0ADC /* DetailDelegationList.swift */,
 				ED40AB53231CBD6A007C0ADC /* DetailLeaveApproval.swift */,
+				ED14CA6F231DD92200D5C7F0 /* Success.swift */,
+				ED14CA7F231E198B00D5C7F0 /* ListNotification.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -768,6 +805,7 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED14CA7A231E16AB00D5C7F0 /* notifikasi_cell */,
 				EDC71BBC231BEE86007FBBD9 /* detail_tanggal_cuti_cell */,
 				ED308CF3231B51EC00F5C43C /* exception_cell */,
 				EDBF21B322FE731C003F5DAF /* riwayat_cuti_cell */,
@@ -782,6 +820,8 @@
 				ED3038C422ED635A005BCF87 /* berita_cell */,
 				ED3038C322ED6352005BCF87 /* menu_utama_cell */,
 				ED95909D22EBF98C00D696E5 /* onboarding_cell */,
+				ED14CA76231DFCB100D5C7F0 /* EmpFilterCell.swift */,
+				ED14CA77231DFCB100D5C7F0 /* EmpFilterCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1019,11 +1059,13 @@
 				ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */,
 				EDBF21B722FE7335003F5DAF /* RiwayatCutiCell.xib in Resources */,
 				ED95909022EBE90A00D696E5 /* HomeController.xib in Resources */,
+				ED14CA79231DFCB100D5C7F0 /* EmpFilterCell.xib in Resources */,
 				ED61BF1322F7A4ED00776C25 /* KaryawanCell.xib in Resources */,
 				ED61BF2122F7CF2500776C25 /* FilterKaryawanController.xib in Resources */,
 				ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */,
 				ED95909B22EBF4DC00D696E5 /* LaunchScreen.storyboard in Resources */,
 				ED6E507822ED41A200EED8E7 /* ProfilController.xib in Resources */,
+				ED14CA7E231E17D600D5C7F0 /* NotifikasiCell.xib in Resources */,
 				ED95909522EBEE9300D696E5 /* SplashController.xib in Resources */,
 				ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */,
 				ED57FE4822F8F645007B62A0 /* TanggalCutiCell.xib in Resources */,
@@ -1037,6 +1079,7 @@
 				EDBF21A622FE5502003F5DAF /* StatusActionCell.xib in Resources */,
 				EDBF21A022FE465B003F5DAF /* StatusPersetujuanCell.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCell.xib in Resources */,
+				ED14CA75231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib in Resources */,
 				ED57FE4F22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib in Resources */,
 				ED139BBE2302F2B500B854BC /* GoogleService-Info.plist in Resources */,
 				ED10746122F5A5BA00ADF055 /* DetailBeritaController.xib in Resources */,
@@ -1154,6 +1197,7 @@
 				ED61BEF922F66D7D00776C25 /* ChangePasswordController.swift in Sources */,
 				EDBF21BF2300DCEE003F5DAF /* CustomImage.swift in Sources */,
 				ED57FE4A22F9D0D2007B62A0 /* Announcement.swift in Sources */,
+				ED14CA74231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.swift in Sources */,
 				ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */,
 				ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */,
 				ED9590AA22EC923A00D696E5 /* PresenceNetworking.swift in Sources */,
@@ -1163,6 +1207,7 @@
 				ED139BBA2302ED0700B854BC /* CustomDropDownField.swift in Sources */,
 				ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */,
 				ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */,
+				ED14CA78231DFCB100D5C7F0 /* EmpFilterCell.swift in Sources */,
 				ED61BF1222F7A4ED00776C25 /* KaryawanCell.swift in Sources */,
 				ED61BF2022F7CF2500776C25 /* FilterKaryawanController.swift in Sources */,
 				ED858B0622F323F000016EAD /* LatestNews.swift in Sources */,
@@ -1179,6 +1224,7 @@
 				ED9590A022EBF9B500D696E5 /* OnboardingCell.swift in Sources */,
 				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
 				EDBF21B622FE7335003F5DAF /* RiwayatCutiCell.swift in Sources */,
+				ED14CA7D231E17D600D5C7F0 /* NotifikasiCell.swift in Sources */,
 				ED10746022F5A5BA00ADF055 /* DetailBeritaController.swift in Sources */,
 				ED0E07392308039500260783 /* PerizinanNetworking.swift in Sources */,
 				ED52151922F452A1001C6A50 /* Circle.swift in Sources */,
@@ -1191,9 +1237,11 @@
 				ED139BB82302EC9000B854BC /* CustomTextView.swift in Sources */,
 				ED61BF0222F67E6700776C25 /* PresensiCell.swift in Sources */,
 				ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */,
+				ED14CA70231DD92200D5C7F0 /* Success.swift in Sources */,
 				EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */,
 				EDBF21B922FE7875003F5DAF /* RiwayatCuti.swift in Sources */,
 				EDBF21A822FE575F003F5DAF /* StatusAction.swift in Sources */,
+				ED14CA80231E198B00D5C7F0 /* ListNotification.swift in Sources */,
 				EDFC1F4E22FDBAEC00AAA93B /* CutiController.swift in Sources */,
 				ED57FE3122F84F87007B62A0 /* PengajuanCutiController.swift in Sources */,
 				ED0E073B2308191800260783 /* LeaveType.swift in Sources */,

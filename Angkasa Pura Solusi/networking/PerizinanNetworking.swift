@@ -10,16 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class PerizinanNetworking {
-    lazy var preference: Preference = {
-        let mPreference = Preference()
-        return mPreference
-    }()
-    
-    lazy var staticLet: StaticLet = {
-        let mStaticLet = StaticLet()
-        return mStaticLet
-    }()
+class PerizinanNetworking: BaseNetworking {
     
     func getLeaveType(completion: @escaping(_ error: String?, _ leaveQuota: LeaveType?, _ isExpired: Bool?) -> Void) {
         let headers : [String: String] = [

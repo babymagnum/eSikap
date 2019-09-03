@@ -37,7 +37,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var menuCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var beritaCollectionView: UICollectionView!
     @IBOutlet weak var beritaCollectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
     @IBOutlet weak var labelPresenceStatus: UILabel!
     @IBOutlet weak var iconPresenceStatus: UIImageView!
     @IBOutlet weak var stackTopHeight: NSLayoutConstraint!
@@ -64,8 +63,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         
         print("token \(preference.getString(key: staticLet.TOKEN))")
-        
-        function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1)
         
         initView()
         
@@ -98,15 +95,11 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         menuCollectionView.reloadData()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            if !self.isMenuLoaded {
-                self.isMenuLoaded = true
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.menuCollectionViewHeight.constant = self.menuCollectionView.contentSize.height
-                    self.viewRootHeight.constant += self.menuCollectionViewHeight.constant
-                    self.view.layoutIfNeeded()
-                })
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.menuCollectionViewHeight.constant = self.menuCollectionView.contentSize.height
+                self.scrollView.resizeScrollViewContentSize()
+            })
         }
     }
     
@@ -151,14 +144,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     
     private func initView() {
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
-        checkRootHeight(viewRootHeight: viewRootHeight, 0, addHeightFor11Above: false, addHeightFor11Below: false)
-        
-        viewRootHeight.constant -= menuCollectionViewHeight.constant + beritaCollectionViewHeight.constant + stackTopHeight.constant + stackBottomHeight.constant
-        menuCollectionViewHeight.constant = 0
-        beritaCollectionViewHeight.constant = 0
-        stackTopHeight.constant = 0
-        stackBottomHeight.constant = 0
-        
+        function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1)
         scrollView.addSubview(refreshControl)
         viewContainerCapaian.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 6)
         viewContainerClock.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 0.6, 6)
@@ -170,14 +156,13 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         let estimatedStackHeight = iconPresenceStatus.frame.height + labelClock.getHeight(width: labelClock.frame.width) + labelPresenceStatus.getHeight(width: labelPresenceStatus.frame.width) + 12.4 + 3.6 + 2.3 + 10.7
         
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.2) {
-                self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2
-                self.stackTopHeight.constant = estimatedStackHeight
-                self.stackBottomHeight.constant = estimatedStackHeight
-                self.viewRootHeight.constant += self.stackTopHeight.constant + self.stackBottomHeight.constant
-                self.view.layoutIfNeeded()
-            }
+        DispatchQueue.main.async { self.imageAccount.layer.cornerRadius = self.imageAccount.frame.height / 2 }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.stackTopHeight.constant = estimatedStackHeight
+            self.stackBottomHeight.constant = estimatedStackHeight
+            self.scrollView.resizeScrollViewContentSize()
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -202,14 +187,12 @@ extension BerandaController {
             switch listMenu[indexpath.item].id {
             case 1:
                 //pengajuan cuti
-                //self.showInDevelopmentDialog()
                 self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             case 2:
                 //pengajuan lembur
                 self.showInDevelopmentDialog()
             case 3:
                 //persetujuan
-                //self.showInDevelopmentDialog()
                 self.navigationController?.pushViewController(TabPersetujuanController(), animated: true)
             case 4:
                 //presensi
@@ -323,22 +306,17 @@ extension BerandaController {
             guard let news = news else { return }
             
             self.listBerita = news
-            DispatchQueue.main.async {
-                self.beritaCollectionView.reloadData()
-            }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                if !self.isWasLoaded {
-                    self.isWasLoaded = true
-                    
-                    UIView.animate(withDuration: 0.2, animations: {
-                        let beritaCell = self.beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
-                        let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.height) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.height) + 29.5 + 5
-                        self.beritaCollectionViewHeight.constant = beritaHeight
-                        self.viewRootHeight.constant += beritaHeight
-                        self.view.layoutIfNeeded()
-                    })
-                }
+            DispatchQueue.main.async { self.beritaCollectionView.reloadData() }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+                UIView.animate(withDuration: 0.2, animations: {
+                    let beritaCell = self.beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
+                    let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.height) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.height) + 29.5 + 5
+                    self.beritaCollectionViewHeight.constant = beritaHeight
+                    self.scrollView.resizeScrollViewContentSize()
+                    self.view.layoutIfNeeded()
+                })
             })
         }
     }

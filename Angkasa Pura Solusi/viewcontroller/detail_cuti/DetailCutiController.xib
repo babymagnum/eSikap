@@ -219,8 +219,8 @@
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Alasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePx-vO-RdR" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="102" width="28" height="11"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Nama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePx-vO-RdR" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="14" y="102" width="24" height="11"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>

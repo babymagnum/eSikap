@@ -90,6 +90,7 @@ extension CutiController {
         guard let indexpath = cutiCollectionView.indexPathForItem(at: sender.location(in: cutiCollectionView)) else { return }
         
         let vc = DetailPersetujuanCutiController()
+        vc.delegasi = listCuti[indexpath.item]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

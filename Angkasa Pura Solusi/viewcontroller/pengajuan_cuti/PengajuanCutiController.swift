@@ -131,8 +131,6 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         
         getProfile()
         
-        getEmpListFilter()
-        
         if let leave_id = leave_id {
             self.getEditDetailLeaveById(id: leave_id)
         } else {
@@ -176,7 +174,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
             
             self.tanggalCutiCollectionView.reloadData()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
                 self.viewTanggalPickedHeight.constant = self.tanggalCutiCollectionHeight.constant
                 self.scrollView.resizeScrollViewContentSize()
@@ -195,40 +193,6 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         getLeaveType()
     }
     
-    private func getEmpListFilter() {
-        SVProgressHUD.show()
-        
-        informationNetworking.getEmpListFilter { (error, listEmpFilter, isExpired) in
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Employment Data", error, "Reload", "Cancel", completionHandler: {
-                    self.getEmpListFilter()
-                    return
-                })
-            }
-            
-            guard let listEmpFilter = listEmpFilter else { return }
-            
-            var stringArray = [String]()
-            var idArray = [Int]()
-            
-            for emp in listEmpFilter.data {
-                stringArray.append(emp.emp_name!)
-                idArray.append(Int(emp.emp_id!)!)
-            }
-            
-            self.fieldDelegasi.optionArray = stringArray
-            self.fieldDelegasi.optionIds = idArray
-            
-            self.fieldAtasan.optionArray = stringArray
-            self.fieldAtasan.optionIds = idArray
-        }
-    }
-    
     private func initEvent() {
         imageFile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageFileClick)))
         
@@ -238,11 +202,13 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         
         viewRentangTanggalAkhir.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangTanggalAkhirClick)))
         
-        viewLampirkanFile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewLampirkanFileClick)))
-        
         viewRentangWaktuAwal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangWaktuAwalClick)))
         
         viewRentangWaktuAkhir.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangWaktuAkhirClick)))
+        
+        viewDelegasi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewDelegasiClick)))
+        
+        viewAtasan.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewAtasanClick)))
     }
     
     private func getLeaveType() {
@@ -268,15 +234,14 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
             self.listLeaveType = leaveType.data
             var listName = [String]()
             var listId = [Int]()
+            
             for (index, type) in leaveType.data.enumerated() {
                 
-                listName.append(type.name ?? "")
-                
-                if self.leave_type_id != "" {
-                    if type.id == self.leave_type_id {
-                        self.checkSelectedLeaveType(type)
-                    }
+                if self.leave_type_id != "" && type.id == self.leave_type_id {
+                    self.checkSelectedLeaveType(type, index)
                 }
+                
+                listName.append(type.name ?? "")
                 
                 if index == 0 {
                     listId.append(self.idPilih)
@@ -284,8 +249,6 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
                     listId.append(Int(type.id!)!)
                 }
             }
-            
-            
             
             self.fieldJenisCuti.optionArray = listName
             self.fieldJenisCuti.optionIds = listId
@@ -339,7 +302,16 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
             
             self.listJatahCuti = leaveQuota.data
             
-            DispatchQueue.main.async { self.jatahCutiCollectionView.reloadData() }
+            self.jatahCutiCollectionView.reloadData()
+            
+            if !self.isSetJatahCutiHeight {
+                self.isSetJatahCutiHeight = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self.jatahCutiCollectionHeight.constant = self.jatahCutiCollectionView.contentSize.height
+                    self.defaultJatahCutiHeight = self.defaultJatahCutiHeight + self.jatahCutiCollectionView.contentSize.height
+                    self.showJatahCuti()
+                }
+            }
         }
     }
     
@@ -394,22 +366,24 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
             self.tanggalCutiCollectionHeight.constant = 0
             self.fieldPickTanggal.text = ""
             
-            self.checkSelectedLeaveType(selectedLeaveType)
+            self.checkSelectedLeaveType(selectedLeaveType, index)
         }
     }
     
-    private func checkSelectedLeaveType(_ selectedItem: ItemType) {
+    private func checkSelectedLeaveType(_ selectedItem: ItemType, _ index: Int) {
+        if index == 0 && fieldJenisCuti.trim() == "" {
+            return
+        } else if index == 0 {
+            self.resetPengajuanCuti()
+            return
+        }
+        
         labelMaksimalCuti.text = "Maksimal Cuti: \(selectedItem.days_count ?? "") Hari"
         
         leave_type_id = String(selectedItem.id!)
         isRange = selectedItem.is_range!
         isDay = selectedItem.is_day!
         fieldJenisCuti.text = selectedItem.name
-        
-        if Int(selectedItem.id!) == idPilih {
-            self.resetPengajuanCuti()
-            return
-        }
         
         showPickTanggal()
         
@@ -472,7 +446,6 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         viewRentangWaktuAkhir.giveBorder(3, 1, "dedede")
         
         resetPengajuanCuti()
-        scrollView.resizeScrollViewContentSize()
     }
     
     private func showView(_ viewRootHeight: NSLayoutConstraint, _ viewRoot: UIView, _ height: CGFloat) {
@@ -557,7 +530,17 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
 }
 
 //click event
-extension PengajuanCutiController {
+extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
+    func namePicked(itemEmp: ItemEmp, type: String) {
+        if type == "Delegasi" {
+            fieldDelegasi.text = itemEmp.emp_name
+            delegation_emp_id = itemEmp.emp_id!
+        } else {
+            fieldAtasan.text = itemEmp.emp_name
+            supervisor_emp_id = itemEmp.emp_id!
+        }
+    }
+    
     private func openDateTimePicker(_ datePicker: DatePickerEnum, _ picker: PickerTypeEnum) {
         self.datePicker = datePicker
         let vc = BottomSheetDatePicker()
@@ -580,7 +563,7 @@ extension PengajuanCutiController {
             }
             
             if let error = error {
-                if error.contains("<li>") {
+                if error.contains("</ul>") || error.contains("</li>") || error.contains("</span>") {
                     let vc = DialogPengajuanCutiController()
                     vc.exception = error
                     self.showCustomDialog(vc)
@@ -633,22 +616,29 @@ extension PengajuanCutiController {
         }
     }
     
+    @objc func viewDelegasiClick() {
+        let vc = SearchDelegasiOrAtasanController()
+        vc.type = "Delegasi"
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func viewAtasanClick() {
+        let vc = SearchDelegasiOrAtasanController()
+        vc.type = "Atasan"
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc func viewPickTanggalClick() { openDateTimePicker(.date, .date) }
     
     @objc func viewRentangTanggalAwalClick() { openDateTimePicker(.dateStart, .date) }
     
     @objc func viewRentangTanggalAkhirClick() { openDateTimePicker(.dateEnd, .date) }
     
-    @objc func viewLampirkanFileClick() {
-        
-    }
-    
     @objc func viewRentangWaktuAwalClick() { openDateTimePicker(.timeStart, .time) }
     
-    @objc func viewRentangWaktuAkhirClick() {
-        print("rentant waktu akhir")
-        openDateTimePicker(.timeEnd, .time)
-    }
+    @objc func viewRentangWaktuAkhirClick() { openDateTimePicker(.timeEnd, .time) }
     
     @IBAction func buttonRiwayatCutiClick(_ sender: Any) {
         navigationController?.pushViewController(RiwayatCutiController(), animated: true)
@@ -717,17 +707,6 @@ extension PengajuanCutiController: UICollectionViewDataSource {
                 DispatchQueue.main.async {
                     let jatahCutiLayout = self.jatahCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
                     jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiCell.viewContainer.getHeight() + 12) // 12 is bottom constraint
-                }
-            }
-            
-            if indexPath.item == listJatahCuti.count - 1 {
-                if !self.isSetJatahCutiHeight {
-                    self.isSetJatahCutiHeight = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        self.jatahCutiCollectionHeight.constant = self.jatahCutiCollectionView.contentSize.height
-                        self.defaultJatahCutiHeight = self.defaultJatahCutiHeight + self.jatahCutiCollectionView.contentSize.height
-                        self.showJatahCuti()
-                    }
                 }
             }
             

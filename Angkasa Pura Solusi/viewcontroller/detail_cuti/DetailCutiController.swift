@@ -112,9 +112,26 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         
         self.collectionTanggalCuti.reloadData()
         self.statusPersetujuanCollectionView.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            })
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.collectionTanggalCutiHeight.constant = self.collectionTanggalCuti.contentSize.height
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     
     private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
         labelStatusTop.layer.cornerRadius = labelStatusTop.frame.height / 2
@@ -177,6 +194,22 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         
         self.collectionTanggalCuti.reloadData()
         self.statusPersetujuanCollectionView.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            })
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.collectionTanggalCutiHeight.constant = self.collectionTanggalCuti.contentSize.height
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     
     private func initCollectionView() {
@@ -217,15 +250,18 @@ extension DetailCutiController: UICollectionViewDataSource {
                 }
             }
             
-            if indexPath.item == listStatusPersetujuan.count - 1 {
-                if !self.isSetStatusPersetujuanHeight {
-                    self.isSetStatusPersetujuanHeight = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
-                        self.scrollView.resizeScrollViewContentSize()
-                    }
-                }
-            }
+//            if indexPath.item == listStatusPersetujuan.count - 1 {
+//                if !self.isSetStatusPersetujuanHeight {
+//                    self.isSetStatusPersetujuanHeight = true
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+//                        UIView.animate(withDuration: 0.2, animations: {
+//                            self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
+//                            self.scrollView.resizeScrollViewContentSize()
+//                            self.view.layoutIfNeeded()
+//                        })
+//                    }
+//                }
+//            }
             
             return statusPersetujuanCell
         } else {
@@ -240,15 +276,18 @@ extension DetailCutiController: UICollectionViewDataSource {
                 }
             }
             
-            if indexPath.item == listTanggalCuti.count - 1 {
-                if !self.isSetTanggalCutiHeight {
-                    self.isSetTanggalCutiHeight = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        self.collectionTanggalCutiHeight.constant = self.collectionTanggalCuti.contentSize.height
-                        self.scrollView.resizeScrollViewContentSize()
-                    }
-                }
-            }
+//            if indexPath.item == listTanggalCuti.count - 1 {
+//                if !self.isSetTanggalCutiHeight {
+//                    self.isSetTanggalCutiHeight = true
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+//                        UIView.animate(withDuration: 0.2, animations: {
+//                            self.collectionTanggalCutiHeight.constant = self.collectionTanggalCuti.contentSize.height
+//                            self.scrollView.resizeScrollViewContentSize()
+//                            self.view.layoutIfNeeded()
+//                        })
+//                    }
+//                }
+//            }
             
             return tanggalCutiCell
         }

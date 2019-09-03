@@ -10,5 +10,5 @@ import Foundation
 
 struct StatusAction: Decodable {
     var date: String?
-    var isApproved: Bool?
+    var isApproved: String?
 }

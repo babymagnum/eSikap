@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="EmpFilterCell" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gej-1d-PkX">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cto-Ug-We4">
+                                <rect key="frame" x="10" y="8" width="280" height="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                                <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnR-TL-Z7Q">
+                                <rect key="frame" x="10" y="29" width="280" height="14.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="YnR-TL-Z7Q" secondAttribute="trailing" constant="10" id="AWV-TP-CBh"/>
+                            <constraint firstItem="YnR-TL-Z7Q" firstAttribute="top" secondItem="Cto-Ug-We4" secondAttribute="bottom" constant="5" id="IqN-7V-3cz"/>
+                            <constraint firstItem="Cto-Ug-We4" firstAttribute="top" secondItem="gej-1d-PkX" secondAttribute="top" constant="8" id="mBo-xZ-qU0"/>
+                            <constraint firstItem="Cto-Ug-We4" firstAttribute="leading" secondItem="gej-1d-PkX" secondAttribute="leading" constant="10" id="oQb-Dq-McM"/>
+                            <constraint firstAttribute="trailing" secondItem="Cto-Ug-We4" secondAttribute="trailing" constant="10" id="tgr-ZG-UJQ"/>
+                            <constraint firstItem="YnR-TL-Z7Q" firstAttribute="leading" secondItem="gej-1d-PkX" secondAttribute="leading" constant="10" id="vZo-gO-rdZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gej-1d-PkX" secondAttribute="bottom" id="e8N-DE-nk0"/>
+                <constraint firstItem="gej-1d-PkX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gCi-SV-Obq"/>
+                <constraint firstItem="gej-1d-PkX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="h21-yg-XKR"/>
+                <constraint firstAttribute="trailing" secondItem="gej-1d-PkX" secondAttribute="trailing" id="lOO-9e-O9m"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="labelNama" destination="Cto-Ug-We4" id="H5n-6L-8Vi"/>
+                <outlet property="labelUnitName" destination="YnR-TL-Z7Q" id="OZs-DC-64f"/>
+                <outlet property="viewContainer" destination="gej-1d-PkX" id="Wc6-3z-EYd"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -42,12 +42,10 @@ class DialogPengajuanCutiController: UIViewController, UICollectionViewDelegate 
         
         guard let exception = exception else { return }
         
-        let cleanException = exception.replacingOccurrences(of: "<li>", with: "").replacingOccurrences(of: "<ul>", with: "").replacingOccurrences(of: "</ul>", with: "")
-        listException = cleanException.components(separatedBy: "</li>")
+        let cleanException = exception.replacingOccurrences(of: "<li>", with: "").replacingOccurrences(of: "<ul>", with: "").replacingOccurrences(of: "</ul>", with: "").replacingOccurrences(of: "<span>", with: "").replacingOccurrences(of: "<br>", with: "").replacingOccurrences(of: "&#8226;", with: "")
+        listException = cleanException.components(separatedBy: exception.contains("span") ? "</span>" : "</li>")
         
-        DispatchQueue.main.async {
-            self.collectionException.reloadData()
-        }
+        self.collectionException.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             UIView.animate(withDuration: 0.2, animations: {
@@ -62,13 +60,13 @@ class DialogPengajuanCutiController: UIViewController, UICollectionViewDelegate 
 extension DialogPengajuanCutiController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExceptionCell", for: indexPath) as! ExceptionCell
+        let item = listException[indexPath.item]
         
         return CGSize(
             width: collectionException.frame.width,
-            height: listException[indexPath.row].height(
+            height: item.height(
                 withConstrainedWidth: collectionException.frame.width,
-                font: cell.labelException.font
+                font: UIFont.systemFont(ofSize: 14)
             )
         )
     }

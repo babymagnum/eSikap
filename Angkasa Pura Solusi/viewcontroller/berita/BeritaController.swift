@@ -16,9 +16,9 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var labelBeritaKosong: CustomLabel!
     
     var listBerita = [News]()
+    var isCalculateBeritaHeight = false
     var lastVelocityYSign = 0
     var allowLoadMore = false
-    var isCalculateBeritaHeight = false
     var totalPage = 0
     var currentPage = 0
     
