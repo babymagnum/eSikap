@@ -19,9 +19,12 @@
             <connections>
                 <outlet property="collectionName" destination="X5B-Lu-7lB" id="tpr-rj-etc"/>
                 <outlet property="fieldSearch" destination="HJM-p6-dGu" id="1sK-ek-E2J"/>
+                <outlet property="imageCancelSearch" destination="7rL-mZ-CNI" id="R1a-Qd-Tmu"/>
+                <outlet property="imageSearchTop" destination="QTF-jH-ZB2" id="6Lb-to-axQ"/>
                 <outlet property="labelTitleTop" destination="QKb-NB-1UW" id="Cum-Sh-ihR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewRootTopMargin" destination="9Ns-RJ-nGN" id="DkO-Db-l09"/>
+                <outlet property="viewSearch" destination="A7B-TJ-3f9" id="0Yc-Fh-9qi"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -50,55 +53,62 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Delegasi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKb-NB-1UW" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                     <rect key="frame" x="41" y="19.5" width="87" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                    <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icSearchWhite" translatesAutoresizingMaskIntoConstraints="NO" id="QTF-jH-ZB2">
+                                    <rect key="frame" x="337" y="13.5" width="26" height="26"/>
+                                </imageView>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7B-TJ-3f9">
+                                    <rect key="frame" x="41" y="0.0" width="334" height="53"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search name here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HJM-p6-dGu" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="53"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                        </textField>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group489" translatesAutoresizingMaskIntoConstraints="NO" id="7rL-mZ-CNI">
+                                            <rect key="frame" x="296" y="13.5" width="26" height="26"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="7rL-mZ-CNI" firstAttribute="leading" secondItem="HJM-p6-dGu" secondAttribute="trailing" constant="10" id="H0z-3U-BTG"/>
+                                        <constraint firstItem="7rL-mZ-CNI" firstAttribute="centerY" secondItem="A7B-TJ-3f9" secondAttribute="centerY" id="HJ2-cd-dSJ"/>
+                                        <constraint firstItem="HJM-p6-dGu" firstAttribute="top" secondItem="A7B-TJ-3f9" secondAttribute="top" id="I9B-Gi-pve"/>
+                                        <constraint firstItem="7rL-mZ-CNI" firstAttribute="width" secondItem="7rL-mZ-CNI" secondAttribute="height" multiplier="1:1" id="gTo-pt-JwM"/>
+                                        <constraint firstItem="HJM-p6-dGu" firstAttribute="leading" secondItem="A7B-TJ-3f9" secondAttribute="leading" id="i7E-xi-JXH"/>
+                                        <constraint firstAttribute="trailing" secondItem="7rL-mZ-CNI" secondAttribute="trailing" constant="12" id="lA4-0c-Gfe"/>
+                                        <constraint firstAttribute="bottom" secondItem="HJM-p6-dGu" secondAttribute="bottom" id="zTX-tb-NJn"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="53" id="5ZS-gm-1k6"/>
                                 <constraint firstItem="QKb-NB-1UW" firstAttribute="centerY" secondItem="2a8-jp-5fo" secondAttribute="centerY" id="E8c-V7-io5"/>
+                                <constraint firstItem="QTF-jH-ZB2" firstAttribute="width" secondItem="QTF-jH-ZB2" secondAttribute="height" multiplier="1:1" id="Hbr-AR-IEZ"/>
+                                <constraint firstAttribute="bottom" secondItem="A7B-TJ-3f9" secondAttribute="bottom" id="MAe-66-awP"/>
+                                <constraint firstAttribute="trailing" secondItem="QTF-jH-ZB2" secondAttribute="trailing" constant="12" id="MB5-Or-j1D"/>
                                 <constraint firstItem="Acs-lz-3OB" firstAttribute="centerY" secondItem="2a8-jp-5fo" secondAttribute="centerY" id="RLh-0L-IMs"/>
                                 <constraint firstItem="Acs-lz-3OB" firstAttribute="leading" secondItem="2a8-jp-5fo" secondAttribute="leading" id="Sty-Nq-OnO"/>
                                 <constraint firstItem="QKb-NB-1UW" firstAttribute="leading" secondItem="Acs-lz-3OB" secondAttribute="trailing" constant="-12" id="Xzy-FW-gKJ"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7B-TJ-3f9">
-                            <rect key="frame" x="0.0" y="53" width="375" height="50"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icSearchWhite" translatesAutoresizingMaskIntoConstraints="NO" id="3Ih-Th-9KM">
-                                    <rect key="frame" x="10" y="14" width="22.5" height="22.5"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="3Ih-Th-9KM" secondAttribute="height" multiplier="1:1" id="Dd0-yE-QGY"/>
-                                    </constraints>
-                                </imageView>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search name here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HJM-p6-dGu" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                    <rect key="frame" x="42.5" y="0.0" width="322.5" height="50"/>
-                                    <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="3Ih-Th-9KM" firstAttribute="centerY" secondItem="A7B-TJ-3f9" secondAttribute="centerY" id="4R5-NF-kx2"/>
-                                <constraint firstAttribute="trailing" secondItem="HJM-p6-dGu" secondAttribute="trailing" constant="10" id="E2E-AD-WYj"/>
-                                <constraint firstItem="HJM-p6-dGu" firstAttribute="top" secondItem="A7B-TJ-3f9" secondAttribute="top" id="I9B-Gi-pve"/>
-                                <constraint firstItem="HJM-p6-dGu" firstAttribute="leading" secondItem="3Ih-Th-9KM" secondAttribute="trailing" constant="10" id="aDa-we-PW3"/>
-                                <constraint firstItem="3Ih-Th-9KM" firstAttribute="width" secondItem="A7B-TJ-3f9" secondAttribute="width" multiplier="0.06" id="dYz-LS-TB9"/>
-                                <constraint firstAttribute="height" constant="50" id="g2C-QG-nFv"/>
-                                <constraint firstItem="3Ih-Th-9KM" firstAttribute="leading" secondItem="A7B-TJ-3f9" secondAttribute="leading" constant="10" id="r3F-6p-UtQ"/>
-                                <constraint firstAttribute="bottom" secondItem="HJM-p6-dGu" secondAttribute="bottom" id="zTX-tb-NJn"/>
+                                <constraint firstItem="QTF-jH-ZB2" firstAttribute="width" secondItem="2a8-jp-5fo" secondAttribute="width" multiplier="0.07" id="fS3-4N-9pK"/>
+                                <constraint firstItem="A7B-TJ-3f9" firstAttribute="top" secondItem="2a8-jp-5fo" secondAttribute="top" id="puF-TE-gqA"/>
+                                <constraint firstItem="7rL-mZ-CNI" firstAttribute="width" secondItem="2a8-jp-5fo" secondAttribute="width" multiplier="0.07" id="qTV-dX-67u"/>
+                                <constraint firstAttribute="trailing" secondItem="A7B-TJ-3f9" secondAttribute="trailing" id="rkM-ec-aIR"/>
+                                <constraint firstItem="QTF-jH-ZB2" firstAttribute="centerY" secondItem="2a8-jp-5fo" secondAttribute="centerY" id="t1u-VS-yio"/>
+                                <constraint firstItem="A7B-TJ-3f9" firstAttribute="leading" secondItem="Acs-lz-3OB" secondAttribute="trailing" constant="-12" id="zAc-aK-luN"/>
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="X5B-Lu-7lB">
-                            <rect key="frame" x="0.0" y="103" width="375" height="544"/>
+                            <rect key="frame" x="0.0" y="53" width="375" height="594"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yxH-v2-0y4">
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="yxH-v2-0y4">
                                 <size key="itemSize" width="50" height="50"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                             </collectionViewFlowLayout>
                         </collectionView>
                     </subviews>
@@ -107,13 +117,10 @@
                         <constraint firstItem="2a8-jp-5fo" firstAttribute="leading" secondItem="PfA-VT-lZE" secondAttribute="leading" id="FFP-VB-o7I"/>
                         <constraint firstItem="2a8-jp-5fo" firstAttribute="top" secondItem="PfA-VT-lZE" secondAttribute="top" id="MeW-hO-iX9"/>
                         <constraint firstAttribute="trailing" secondItem="2a8-jp-5fo" secondAttribute="trailing" id="Q6f-Un-lDQ"/>
-                        <constraint firstAttribute="trailing" secondItem="A7B-TJ-3f9" secondAttribute="trailing" id="WcG-xZ-jrG"/>
-                        <constraint firstItem="A7B-TJ-3f9" firstAttribute="top" secondItem="2a8-jp-5fo" secondAttribute="bottom" id="Xie-PL-rhc"/>
+                        <constraint firstItem="X5B-Lu-7lB" firstAttribute="top" secondItem="2a8-jp-5fo" secondAttribute="bottom" id="Wka-9A-LkL"/>
                         <constraint firstItem="X5B-Lu-7lB" firstAttribute="leading" secondItem="PfA-VT-lZE" secondAttribute="leading" id="jIS-8D-HfI"/>
                         <constraint firstAttribute="trailing" secondItem="X5B-Lu-7lB" secondAttribute="trailing" id="mue-Op-qOJ"/>
-                        <constraint firstItem="A7B-TJ-3f9" firstAttribute="leading" secondItem="PfA-VT-lZE" secondAttribute="leading" id="s9w-vQ-mbr"/>
                         <constraint firstAttribute="bottom" secondItem="X5B-Lu-7lB" secondAttribute="bottom" id="wA0-h8-gbe"/>
-                        <constraint firstItem="X5B-Lu-7lB" firstAttribute="top" secondItem="A7B-TJ-3f9" secondAttribute="bottom" id="ziX-fz-kem"/>
                     </constraints>
                 </view>
             </subviews>
@@ -129,6 +136,7 @@
     </objects>
     <resources>
         <image name="backwardArrow" width="9.5" height="16"/>
+        <image name="group489" width="22.5" height="22.5"/>
         <image name="icSearchWhite" width="21.5" height="21.5"/>
     </resources>
 </document>

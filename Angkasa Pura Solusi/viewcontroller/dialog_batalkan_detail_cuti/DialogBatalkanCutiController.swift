@@ -18,8 +18,9 @@ class DialogBatalkanCutiController: BaseViewController {
     @IBOutlet weak var viewTextView: UIView!
     @IBOutlet weak var fieldAlasan: CustomTextView!
     @IBOutlet weak var buttonProses: CustomButton!
+    @IBOutlet weak var buttonKeluar: CustomButton!
     
-    var cuti: ItemRiwayatCuti!
+    var leave_id: String!
     var delegate: DialogBatalkanProtocol!
     
     override func viewDidLoad() {
@@ -31,22 +32,14 @@ class DialogBatalkanCutiController: BaseViewController {
     private func initView() {
         buttonProses.layer.cornerRadius = 5
         buttonProses.giveBorder(5, 1, "7eb73d")
+        buttonKeluar.giveBorder(5, 1, "ea1c18")
         viewTextView.giveBorder(5, 1, "dedede")
-    }
-
-    @IBAction func buttonProsesClick(_ sender: Any) {
-        if fieldAlasan.text.trim() == "" {
-            self.function.showUnderstandDialog(self, "Alasan Tidak Boleh Kosong", "Anda harus menyertakan alasan yang jelas untuk pembatalan cuti", "Understand")
-            return
-        }
-        
-        cancelLeave()
     }
     
     private func cancelLeave() {
         SVProgressHUD.show()
         
-        informationNetworking.cancelLeave(id: cuti.id!, cancelNotes: fieldAlasan.text.trim()) { (error, baseResponse, isExpired) in
+        informationNetworking.cancelLeave(id: leave_id, cancelNotes: fieldAlasan.text.trim()) { (error, baseResponse, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -65,5 +58,20 @@ class DialogBatalkanCutiController: BaseViewController {
             
             self.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+extension DialogBatalkanCutiController {
+    @IBAction func buttonKeluarClick(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func buttonProsesClick(_ sender: Any) {
+        if fieldAlasan.text.trim() == "" {
+            self.function.showUnderstandDialog(self, "Alasan Tidak Boleh Kosong", "Anda harus menyertakan alasan yang jelas untuk pembatalan cuti", "Understand")
+            return
+        }
+        
+        cancelLeave()
     }
 }

@@ -15,10 +15,13 @@ protocol SearchDelegasiOrAtasanProtocol {
 
 class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var viewSearch: UIView!
+    @IBOutlet weak var imageSearchTop: UIImageView!
     @IBOutlet weak var labelTitleTop: CustomLabel!
     @IBOutlet weak var fieldSearch: CustomTextField!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var collectionName: UICollectionView!
+    @IBOutlet weak var imageCancelSearch: UIImageView!
     
     private var lastVelocityYSign = 0
     private var allowLoadMore = false
@@ -43,14 +46,24 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
         
         initView()
         
+        initEvent()
+        
         initCollection()
         
         getEmpFilter()
     }
     
+    private func initEvent() {
+        imageSearchTop.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageSearchTopClick)))
+        
+        imageCancelSearch.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageCancelSearchClick)))
+    }
+    
     private func initView() {
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
-        labelTitleTop.text = "Search \(type ?? "")"
+        fieldSearch.attributedPlaceholder = NSAttributedString(string: "Tekan di sini untuk mencari \(type ?? "")...",attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12 + function.dynamicCustomDevice())])
+        imageSearchTop.image = UIImage(named: "icSearchWhite")?.tinted(with: UIColor.white)
+        labelTitleTop.text = "Cari \(type ?? "")"
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         fieldSearch.delegate = self
     }
@@ -134,7 +147,7 @@ extension SearchDelegasiOrAtasanController: UICollectionViewDataSource {
             self.isSetCollectionNameHeight = true
             DispatchQueue.main.async {
                 let nameLayout = self.collectionName.collectionViewLayout as! UICollectionViewFlowLayout
-                nameLayout.itemSize = CGSize(width: self.collectionName.frame.width, height: cell.viewContainer.getHeight() + 10)
+                nameLayout.itemSize = CGSize(width: self.collectionName.frame.width - 26, height: cell.viewContainer.getHeight() + 8)
             }
         }
         
@@ -153,6 +166,31 @@ extension SearchDelegasiOrAtasanController {
         }
         
         return true
+    }
+    
+    @objc func imageSearchTopClick() {
+        UIView.animate(withDuration: 0.2) {
+            self.labelTitleTop.isHidden = true
+            self.imageSearchTop.isHidden = true
+            self.viewSearch.isHidden = false
+            self.viewSearch.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func imageCancelSearchClick() {
+        fieldSearch.text = ""
+        listEmpFilter.removeAll()
+        currentPage = 0
+        getEmpFilter()
+        
+        UIView.animate(withDuration: 0.2) {
+            self.labelTitleTop.isHidden = false
+            self.imageSearchTop.isHidden = false
+            self.viewSearch.isHidden = true
+            self.viewSearch.alpha = 0
+            self.view.layoutIfNeeded()
+        }
     }
     
     @objc func containerNameClick(sender: UITapGestureRecognizer) {

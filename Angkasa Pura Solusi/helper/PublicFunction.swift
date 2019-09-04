@@ -325,6 +325,18 @@ class PublicFunction {
         return dateFormatter.date(from: stringDate) // replace Date String
     }
     
+    func dynamicCustomDevice() -> CGFloat {
+        if (UIScreen.main.bounds.width == 320) {
+            return 2
+        } else if (UIScreen.main.bounds.width == 375) {
+            return 3
+        } else if (UIScreen.main.bounds.width == 414) {
+            return 4
+        } else {
+            return 5
+        }
+    }
+    
     open func prettyRupiah(_ money: String) -> String {
         var result = money
         
@@ -407,7 +419,7 @@ extension UIColor {
 }
 
 extension String{
-    private func dynamicCustomDevice() -> CGFloat {
+    func dynamicCustomDevice() -> CGFloat {
         if (UIScreen.main.bounds.width == 320) {
             return 2
         } else if (UIScreen.main.bounds.width == 375) {

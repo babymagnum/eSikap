@@ -9,10 +9,16 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CutiController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
                 <outlet property="cutiCollectionView" destination="yff-1I-Iec" id="QWz-dM-OZL"/>
+                <outlet property="labelDataKosong" destination="aso-Oi-vRb" id="6hl-Ay-DPM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,13 +37,22 @@
                         <inset key="sectionInset" minX="0.0" minY="16" maxX="0.0" maxY="16"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aso-Oi-vRb" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                    <rect key="frame" x="14" y="326" width="347" height="15.5"/>
+                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="aso-Oi-vRb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="7zS-9y-0fh"/>
                 <constraint firstItem="yff-1I-Iec" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="B5X-Il-VLP"/>
+                <constraint firstItem="aso-Oi-vRb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="14" id="BWA-5U-2yW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yff-1I-Iec" secondAttribute="bottom" id="BYC-7f-53s"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yff-1I-Iec" secondAttribute="trailing" id="E57-sT-0AG"/>
                 <constraint firstItem="yff-1I-Iec" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="fMJ-9J-0yC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aso-Oi-vRb" secondAttribute="trailing" constant="14" id="wsf-iU-gbd"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

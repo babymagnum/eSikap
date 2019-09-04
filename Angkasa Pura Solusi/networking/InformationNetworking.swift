@@ -493,4 +493,27 @@ class InformationNetworking: BaseNetworking {
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func getLeaveTypeFilter(completion: @escaping(_ error: String?, _ leaveTypeFilter: LeaveTypeFilter?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getLeaveTypeFilter"
+        alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
+    
+    func getYearsFilter(completion: @escaping(_ error: String?, _ yearsFilter: YearsFilter?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getYearsFilter"
+        alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
+    
+    func getLeaveStatusFilter(completion: @escaping(_ error: String?, _ leaveStatusFilter: LeaveStatusFilter?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getLeaveStatusFilter"
+        alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
+    
+    func updateIsReadNotification(notification_id: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/updateIsReadNotification"
+        let body: [String: String] = [
+            "notification_id": notification_id
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

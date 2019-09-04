@@ -22,6 +22,8 @@ enum DatePickerEnum {
 class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UITextFieldDelegate {
 
     //outlet root
+    @IBOutlet weak var imageAtasan: UIImageView!
+    @IBOutlet weak var imageDelegasi: UIImageView!
     @IBOutlet weak var imageFile: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
@@ -188,12 +190,16 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         fieldRentangTanggalAwal.text = item?.leave_start
         fieldRentangTanggalAkhir.text = item?.leave_end
         fieldPickTanggal.text = item?.date?.components(separatedBy: " ")[0]
-        imageFile.loadUrl((item?.url_file)!)
+        if item?.url_file != "" { imageFile.loadUrl((item?.url_file)!) }
         
         getLeaveType()
     }
     
     private func initEvent() {
+        imageDelegasi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageDelegasiClick)))
+        
+        imageAtasan.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageAtasanClick)))
+        
         imageFile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageFileClick)))
         
         viewPickTanggal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewPickTanggalClick)))
@@ -533,9 +539,11 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
 extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     func namePicked(itemEmp: ItemEmp, type: String) {
         if type == "Delegasi" {
+            imageDelegasi.image = UIImage(named: "group489")
             fieldDelegasi.text = itemEmp.emp_name
             delegation_emp_id = itemEmp.emp_id!
         } else {
+            imageAtasan.image = UIImage(named: "group489")
             fieldAtasan.text = itemEmp.emp_name
             supervisor_emp_id = itemEmp.emp_id!
         }
@@ -573,7 +581,9 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
                 return
             }
             
-            self.navigationController?.pushViewController(RiwayatCutiController(), animated: true)
+            let vc = RiwayatCutiController()
+            vc.isFromAddLeaveRequest = true
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -608,6 +618,18 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
             print(body)
             return body
         }
+    }
+    
+    @objc func imageDelegasiClick() {
+        delegation_emp_id = ""
+        fieldDelegasi.text = ""
+        imageDelegasi.image = UIImage(named: "icSearchWhite")
+    }
+    
+    @objc func imageAtasanClick() {
+        supervisor_emp_id = ""
+        fieldAtasan.text = ""
+        imageAtasan.image = UIImage(named: "icSearchWhite")
     }
     
     @objc func imageFileClick() {

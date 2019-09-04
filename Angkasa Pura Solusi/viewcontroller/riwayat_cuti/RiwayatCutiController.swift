@@ -11,18 +11,21 @@ import SVProgressHUD
 
 class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
 
-    @IBOutlet weak var riwayatCutiCollectionView: UICollectionView!
+    @IBOutlet weak var labelDataKosong: CustomLabel!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
+    @IBOutlet weak var riwayatCutiCollectionView: UICollectionView!
     
-    var lastVelocityYSign = 0
-    var allowLoadMore = false
-    var listRiwayatCuti = [ItemRiwayatCuti]()
-    var isCalculatRiwayatCutiHeight = false
-    var totalPage = 0
-    var currentPage = 0
-    var status = ""
-    var leave_type_id = ""
-    var current_year = ""
+    private var lastVelocityYSign = 0
+    private var allowLoadMore = false
+    private var listRiwayatCuti = [ItemRiwayatCuti]()
+    private var isCalculatRiwayatCutiHeight = false
+    private var totalPage = 0
+    private var currentPage = 0
+    private var status = ""
+    private var leave_type_id = ""
+    private var current_year = ""
+    
+    var isFromAddLeaveRequest: Bool?
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -45,8 +48,6 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func getRiwayatCuti() {
-        current_year = function.getCurrentDate(pattern: "yyyy")
-            
         SVProgressHUD.show()
         
         informationNetworking.getLeaveHistoryList(page: currentPage, year: current_year, leave_type_id: leave_type_id, status: status) { (error, riwayatCuti, isExpired) in
@@ -65,6 +66,14 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
             }
             
             guard let riwayatCuti = riwayatCuti else { return }
+            
+            if riwayatCuti.data?.leave.count == 0 && self.listRiwayatCuti.count == 0 {
+                self.labelDataKosong.text = riwayatCuti.message
+                self.labelDataKosong.isHidden = false
+            } else {
+                self.labelDataKosong.isHidden = true
+            }
+            
             self.totalPage = (riwayatCuti.data?.total_page)!
             
             for riwayat in riwayatCuti.data!.leave {
@@ -94,7 +103,7 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
     
     private func initView() {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
-        
+        current_year = function.getCurrentDate(pattern: "yyyy")
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
     }
     
@@ -149,7 +158,23 @@ extension RiwayatCutiController: UICollectionViewDataSource, UICollectionViewDel
     }
 }
 
-extension RiwayatCutiController {
+extension RiwayatCutiController: RiwayatCutiFilterProtocol {
+    func filter(tahun: String, jenisCuti: String, status: String) {
+        print("status \(status), tahun \(tahun), jenisCuti \(jenisCuti)")
+        self.status = status
+        self.current_year = tahun
+        self.leave_type_id = jenisCuti
+        currentPage = 0
+        listRiwayatCuti.removeAll()
+        getRiwayatCuti()
+    }
+    
+    @IBAction func buttonFilterClick(_ sender: Any) {
+        let vc = RiwayatCutiFilterController()
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         listRiwayatCuti.removeAll()
@@ -168,12 +193,22 @@ extension RiwayatCutiController {
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = DetailCutiController()
-            vc.cuti = item
+            vc.leave_id = item.id
+            vc.title_content = "Detail Cuti"
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        if let _ = isFromAddLeaveRequest {
+            let transition = CATransition()
+            transition.duration = 0.4
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromLeft
+            self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+            self.navigationController?.pushViewController(HomeController(), animated: true)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
 }

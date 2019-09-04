@@ -20,6 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogBatalkanCutiController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
+                <outlet property="buttonKeluar" destination="Tme-Co-Ul7" id="3La-6f-lat"/>
                 <outlet property="buttonProses" destination="eNj-By-aBn" id="Cvr-LM-SJd"/>
                 <outlet property="fieldAlasan" destination="Exi-Do-Do2" id="6se-I0-OYD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -41,10 +42,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yoa-gL-9vy">
-                            <rect key="frame" x="19" y="46" width="337" height="519"/>
+                            <rect key="frame" x="19" y="46" width="337" height="480"/>
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Exi-Do-Do2" customClass="CustomTextView" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                    <rect key="frame" x="4" y="4" width="329" height="511"/>
+                                    <rect key="frame" x="4" y="4" width="329" height="472"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
@@ -53,14 +54,14 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Exi-Do-Do2" secondAttribute="bottom" constant="4" id="W84-Xy-PsT"/>
                                 <constraint firstItem="Exi-Do-Do2" firstAttribute="top" secondItem="Yoa-gL-9vy" secondAttribute="top" constant="4" id="f9L-TF-WFC"/>
                                 <constraint firstItem="Exi-Do-Do2" firstAttribute="leading" secondItem="Yoa-gL-9vy" secondAttribute="leading" constant="4" id="rrP-9E-PTd"/>
                                 <constraint firstAttribute="trailing" secondItem="Exi-Do-Do2" secondAttribute="trailing" constant="4" id="t1g-Hn-LKV"/>
-                                <constraint firstAttribute="bottom" secondItem="Exi-Do-Do2" secondAttribute="bottom" constant="4" id="x0T-xt-3hM"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNj-By-aBn" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                            <rect key="frame" x="19" y="591" width="337" height="36"/>
+                            <rect key="frame" x="19" y="546" width="337" height="36"/>
                             <color key="backgroundColor" red="0.61176470589999998" green="0.80000000000000004" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="14G-9F-zkI"/>
@@ -73,19 +74,37 @@
                                 <action selector="buttonProsesClick:" destination="-1" eventType="touchUpInside" id="stY-An-i9Y"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tme-Co-Ul7" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                            <rect key="frame" x="19" y="592" width="337" height="36"/>
+                            <color key="backgroundColor" red="0.93725490199999995" green="0.32549019610000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="I9A-9D-tOV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
+                            <state key="normal" title="Keluar">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonKeluarClick:" destination="-1" eventType="touchUpInside" id="4Gk-LL-jBh"/>
+                                <action selector="buttonProsesClick:" destination="-1" eventType="touchUpInside" id="wCB-dV-drG"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Tme-Co-Ul7" secondAttribute="bottom" constant="19" id="07C-MF-qDt"/>
                         <constraint firstAttribute="trailing" secondItem="Yoa-gL-9vy" secondAttribute="trailing" constant="19" id="3bW-dv-QlL"/>
                         <constraint firstItem="Yoa-gL-9vy" firstAttribute="leading" secondItem="PyW-Br-PYY" secondAttribute="leading" constant="19" id="5do-2O-q1Z"/>
                         <constraint firstItem="eNj-By-aBn" firstAttribute="leading" secondItem="PyW-Br-PYY" secondAttribute="leading" constant="19" id="EKh-Aa-fYJ"/>
                         <constraint firstItem="Z83-KI-rqR" firstAttribute="leading" secondItem="PyW-Br-PYY" secondAttribute="leading" constant="19" id="G2Y-ye-rMp"/>
+                        <constraint firstItem="Tme-Co-Ul7" firstAttribute="top" secondItem="eNj-By-aBn" secondAttribute="bottom" constant="10" id="Wq7-fz-xZW"/>
+                        <constraint firstItem="eNj-By-aBn" firstAttribute="top" secondItem="Yoa-gL-9vy" secondAttribute="bottom" constant="20" id="a12-eM-SQi"/>
                         <constraint firstItem="Z83-KI-rqR" firstAttribute="top" secondItem="PyW-Br-PYY" secondAttribute="top" constant="26" id="can-Fb-Csd"/>
                         <constraint firstAttribute="trailing" secondItem="eNj-By-aBn" secondAttribute="trailing" constant="19" id="gIf-Li-dwF"/>
-                        <constraint firstItem="eNj-By-aBn" firstAttribute="top" secondItem="Yoa-gL-9vy" secondAttribute="bottom" constant="26" id="k2E-6Z-SFT"/>
+                        <constraint firstItem="Tme-Co-Ul7" firstAttribute="leading" secondItem="PyW-Br-PYY" secondAttribute="leading" constant="19" id="rLz-NM-mTU"/>
                         <constraint firstAttribute="trailing" secondItem="Z83-KI-rqR" secondAttribute="trailing" constant="19" id="wkW-qJ-XBn"/>
                         <constraint firstItem="Yoa-gL-9vy" firstAttribute="top" secondItem="Z83-KI-rqR" secondAttribute="bottom" constant="5.7000000000000002" id="yDK-9r-TDQ"/>
-                        <constraint firstAttribute="bottom" secondItem="eNj-By-aBn" secondAttribute="bottom" constant="20" id="zb0-IX-AAL"/>
+                        <constraint firstAttribute="trailing" secondItem="Tme-Co-Ul7" secondAttribute="trailing" constant="19" id="zlZ-5M-K2q"/>
                     </constraints>
                 </view>
             </subviews>
@@ -97,6 +116,7 @@
                 <constraint firstItem="PyW-Br-PYY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tlL-oO-qNc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="52" y="91.304347826086968"/>
         </view>
     </objects>
 </document>

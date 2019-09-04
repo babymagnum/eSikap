@@ -13,6 +13,7 @@ import SVProgressHUD
 class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionViewDelegate {
     
     @IBOutlet weak var cutiCollectionView: UICollectionView!
+    @IBOutlet weak var labelDataKosong: CustomLabel!
     
     var listCuti = [ItemDelegation]()
     var isCalculateCutiHeight = false
@@ -65,6 +66,12 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
             }
             
             guard let delegationList = delegationList else { return }
+            if delegationList.data?.leave.count == 0 && self.listCuti.count == 0 {
+                self.labelDataKosong.text = delegationList.message
+                self.labelDataKosong.isHidden = false
+            } else {
+                self.labelDataKosong.isHidden = true
+            }
             self.totalPage = (delegationList.data?.total_page)!
             
             for cuti in delegationList.data!.leave {
@@ -90,7 +97,7 @@ extension CutiController {
         guard let indexpath = cutiCollectionView.indexPathForItem(at: sender.location(in: cutiCollectionView)) else { return }
         
         let vc = DetailPersetujuanCutiController()
-        vc.delegasi = listCuti[indexpath.item]
+        vc.leave_id = listCuti[indexpath.item].id
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -138,7 +145,6 @@ extension CutiController : UICollectionViewDataSource {
         if !isCalculateCutiHeight {
             self.isCalculateCutiHeight = true
             DispatchQueue.main.async {
-//                let cutiHeight = cutiCell.labelKodeCuti.getHeight(width: cutiCell.labelKodeCuti.frame.width) + cutiCell.labelTypeCuti.getHeight(width: cutiCell.labelTypeCuti.frame.width) + cutiCell.labelTanggalCuti.getHeight(width: cutiCell.labelTanggalCuti.frame.width) + 6.2 + 7.8 + 1.6 + 7.8
                 let cutiLayout = self.cutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
                 cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiCell.viewContainer.getHeight() + 8.9)
             }

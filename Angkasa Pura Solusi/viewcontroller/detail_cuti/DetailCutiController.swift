@@ -40,8 +40,8 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     private var isCalculateTanggalCutiHeight = false
     private var isSetTanggalCutiHeight = false
     
-    var cuti: ItemRiwayatCuti?
-    var delegasi: ItemDelegation?
+    var leave_id: String!
+    var title_content: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +54,11 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func getData() {
-        if let _ = cuti {
-            labelTitleTop.text = "Detail Cuti"
-            getDetailLeave()
-        }
+        labelTitleTop.text = title_content
         
-        if let _ = delegasi {
-            labelTitleTop.text = "Detail Delegasi Cuti"
+        if title_content == "Detail Cuti" {
+            getDetailLeave()
+        } else {
             getDetailLeaveDelegationById()
         }
     }
@@ -70,7 +68,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     private func getDetailLeaveDelegationById() {
         SVProgressHUD.show()
         
-        informationNetworking.getDetailLeaveDelegationById(leave_id: delegasi!.id!) { (error, detailDelegationList, isExpired) in
+        informationNetworking.getDetailLeaveDelegationById(leave_id: leave_id) { (error, detailDelegationList, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -135,7 +133,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
         labelStatusTop.layer.cornerRadius = labelStatusTop.frame.height / 2
-        buttonBatalkan.layer.cornerRadius = 5
+        buttonBatalkan.giveBorder(5, 1, "ea1c18")
         imageAccount.clipsToBounds = true
         imageAccount.layer.cornerRadius = (UIScreen.main.bounds.width * 0.15) / 2
         
@@ -145,7 +143,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     private func getDetailLeave() {
         SVProgressHUD.show()
         
-        informationNetworking.getDetailLeaveById(id: (cuti?.id!)!) { (error, detailRiwayatCuti, isExpired) in
+        informationNetworking.getDetailLeaveById(id: leave_id) { (error, detailRiwayatCuti, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -250,19 +248,6 @@ extension DetailCutiController: UICollectionViewDataSource {
                 }
             }
             
-//            if indexPath.item == listStatusPersetujuan.count - 1 {
-//                if !self.isSetStatusPersetujuanHeight {
-//                    self.isSetStatusPersetujuanHeight = true
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-//                        UIView.animate(withDuration: 0.2, animations: {
-//                            self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
-//                            self.scrollView.resizeScrollViewContentSize()
-//                            self.view.layoutIfNeeded()
-//                        })
-//                    }
-//                }
-//            }
-            
             return statusPersetujuanCell
         } else {
             let tanggalCutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailTanggalCutiCell", for: indexPath) as! DetailTanggalCutiCell
@@ -275,19 +260,6 @@ extension DetailCutiController: UICollectionViewDataSource {
                     tanggalCutiLayout.itemSize = CGSize(width: self.collectionTanggalCuti.frame.width, height: tanggalCutiCell.viewContainer.getHeight())
                 }
             }
-            
-//            if indexPath.item == listTanggalCuti.count - 1 {
-//                if !self.isSetTanggalCutiHeight {
-//                    self.isSetTanggalCutiHeight = true
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-//                        UIView.animate(withDuration: 0.2, animations: {
-//                            self.collectionTanggalCutiHeight.constant = self.collectionTanggalCuti.contentSize.height
-//                            self.scrollView.resizeScrollViewContentSize()
-//                            self.view.layoutIfNeeded()
-//                        })
-//                    }
-//                }
-//            }
             
             return tanggalCutiCell
         }
@@ -302,7 +274,7 @@ extension DetailCutiController: DialogBatalkanProtocol {
     
     @IBAction func buttonBatalkanClick(_ sender: Any) {
         let controller = DialogBatalkanCutiController()
-        controller.cuti = cuti
+        controller.leave_id = leave_id
         controller.delegate = self
         let vc = PopupViewController(contentController: controller, popupWidth: UIScreen.main.bounds.width - 44, popupHeight: UIScreen.main.bounds.height * 0.4)
         vc.cornerRadius = 5

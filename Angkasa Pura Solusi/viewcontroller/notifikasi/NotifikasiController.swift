@@ -41,6 +41,14 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
         getNotificationList()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        DispatchQueue.main.async {
+            self.notifikasiCollectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
     private func getNotificationList() {
         SVProgressHUD.show()
         
@@ -79,6 +87,7 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
         
         notifikasiCollectionView.delegate = self
         notifikasiCollectionView.dataSource = self
+        notifikasiCollectionView.isPrefetchingEnabled = false
         
         notifikasiCollectionView.addSubview(refreshControl)
     }
@@ -119,7 +128,7 @@ extension NotifikasiController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = listNotifikasi[indexPath.item]
         
-        let heightMargin: CGFloat = 8.9 + 8.3 + 10.7 + 5 + 8
+        let heightMargin: CGFloat = 8.9 + 8.3 + 10.7 + 8
         let contentHeight = getTextHeight(item.title!, 10) + getTextHeight(item.date!, 6) + getTextHeight(item.content!, 11)
         return CGSize(width: notifikasiCollectionView.frame.width - 26.6, height: heightMargin + contentHeight)
     }
@@ -131,11 +140,70 @@ extension NotifikasiController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotifikasiCell", for: indexPath) as! NotifikasiCell
         cell.data = listNotifikasi[indexPath.item]
+        cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(containerNotifikasiClick(sender:))))
         return cell
     }
 }
 
 extension NotifikasiController {
+    private func updateIsReadNotification(notification_id: String, completion: @escaping() -> Void) {
+        SVProgressHUD.show()
+        
+        informationNetworking.updateIsReadNotification(notification_id: notification_id) { (error, success, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Melihat Detail Notifikasi", error, "Mengerti")
+                return
+            }
+            
+            completion()
+        }
+    }
+    
+    private func redirectToDetailNotifikasi(_ notifikasi: ItemListNotification) {
+        if notifikasi.redirect == "leave_approval" {
+            let vc = DetailPersetujuanCutiController()
+            vc.leave_id = notifikasi.data_id
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if notifikasi.redirect == "leave_detail" {
+            let vc = DetailCutiController()
+            vc.leave_id = notifikasi.data_id
+            vc.title_content = "Detail Cuti"
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if notifikasi.redirect == "delegation_leave_detail" {
+            let vc = DetailCutiController()
+            vc.leave_id = notifikasi.data_id
+            vc.title_content = "Detail Delegasi Cuti"
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = DialogPreparePresenceController()
+            vc.stringDescription = "Tidak ada detail untuk notifikasi ini"
+            self.showCustomDialog(vc)
+        }
+    }
+    
+    @objc func containerNotifikasiClick(sender: UITapGestureRecognizer) {
+        guard let indexpath = notifikasiCollectionView.indexPathForItem(at: sender.location(in: notifikasiCollectionView)) else { return }
+        
+        let notifikasi = listNotifikasi[indexpath.item]
+        
+        if notifikasi.is_read == "0" {
+            print("belum dibaca")
+            self.updateIsReadNotification(notification_id: notifikasi.id!) {
+                self.redirectToDetailNotifikasi(notifikasi)
+            }
+        } else {
+            print("sudah dibaca")
+            self.redirectToDetailNotifikasi(notifikasi)
+        }
+    }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         currentPage = 0

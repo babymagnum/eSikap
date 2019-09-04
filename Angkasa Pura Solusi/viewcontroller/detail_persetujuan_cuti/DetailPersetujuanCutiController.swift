@@ -40,7 +40,7 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     private var isSetStatusPersetujuanHeight = false
     private var detailLeave: ItemDetailLeaveApproval?
     
-    var delegasi: ItemDelegation!
+    var leave_id: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     private func getDetailLeaveApprovalById() {
         SVProgressHUD.show()
         
-        informationNetworking.getDetailLeaveApprovalById(leave_id: delegasi.id!) { (error, detailLeaveApproval, isExpired) in
+        informationNetworking.getDetailLeaveApprovalById(leave_id: leave_id) { (error, detailLeaveApproval, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -77,6 +77,11 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
             }
             
             guard let detailLeaveApproval = detailLeaveApproval else { return }
+            
+            if detailLeaveApproval.data?.leave[0].is_processed == "1" {
+                self.navigationController?.popViewController(animated: true)
+                return
+            }
             
             self.setViewContent(detailLeaveApproval)
         }

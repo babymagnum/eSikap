@@ -13,6 +13,7 @@ import SVProgressHUD
 class DelegasiCutiController: BaseViewController, IndicatorInfoProvider, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionDelegasiCuti: UICollectionView!
+    @IBOutlet weak var labelDataKosong: CustomLabel!
     
     var listDelegasiCuti = [ItemDelegation]()
     var isCalculateCutiHeight = false
@@ -68,6 +69,12 @@ class DelegasiCutiController: BaseViewController, IndicatorInfoProvider, UIColle
             }
             
             guard let delegationList = delegationList else { return }
+            if delegationList.data?.leave.count == 0 && self.listDelegasiCuti.count == 0 {
+                self.labelDataKosong.text = delegationList.message
+                self.labelDataKosong.isHidden = false
+            } else {
+                self.labelDataKosong.isHidden = true
+            }
             self.totalPage = (delegationList.data?.total_page)!
             
             for cuti in delegationList.data!.leave {
@@ -85,7 +92,8 @@ extension DelegasiCutiController {
         guard let indexpath = collectionDelegasiCuti.indexPathForItem(at: sender.location(in: collectionDelegasiCuti)) else { return }
         
         let vc = DetailCutiController()
-        vc.delegasi = listDelegasiCuti[indexpath.item]
+        vc.leave_id = listDelegasiCuti[indexpath.item].id
+        vc.title_content = "Detail Delegasi Cuti"
         navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -9,10 +9,16 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DelegasiCutiController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
                 <outlet property="collectionDelegasiCuti" destination="cjo-OI-tHC" id="czr-8o-Lzg"/>
+                <outlet property="labelDataKosong" destination="sJN-n4-uwq" id="BmL-YV-kiQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,12 +40,21 @@
                                 <inset key="sectionInset" minX="0.0" minY="16" maxX="0.0" maxY="16"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data berita kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJN-n4-uwq" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                            <rect key="frame" x="14" y="316" width="347" height="15.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="cjo-OI-tHC" firstAttribute="leading" secondItem="jKh-nf-R91" secondAttribute="leading" id="7Od-13-zFN"/>
+                        <constraint firstAttribute="trailing" secondItem="sJN-n4-uwq" secondAttribute="trailing" constant="14" id="KdG-hU-5AE"/>
+                        <constraint firstItem="sJN-n4-uwq" firstAttribute="centerY" secondItem="jKh-nf-R91" secondAttribute="centerY" id="aoH-J7-CzA"/>
                         <constraint firstAttribute="bottom" secondItem="cjo-OI-tHC" secondAttribute="bottom" id="edA-f1-w9j"/>
                         <constraint firstAttribute="trailing" secondItem="cjo-OI-tHC" secondAttribute="trailing" id="euP-3k-HuY"/>
+                        <constraint firstItem="sJN-n4-uwq" firstAttribute="leading" secondItem="jKh-nf-R91" secondAttribute="leading" constant="14" id="fbO-I1-hl9"/>
                         <constraint firstItem="cjo-OI-tHC" firstAttribute="top" secondItem="jKh-nf-R91" secondAttribute="top" id="guD-RQ-iHQ"/>
                     </constraints>
                 </view>
