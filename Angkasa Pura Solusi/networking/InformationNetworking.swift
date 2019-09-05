@@ -516,4 +516,16 @@ class InformationNetworking: BaseNetworking {
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func getPayrollList(year: String, completion: @escaping(_ error: String?, _ slipGaji: SlipGaji?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/getPayrollList"
+        let body : [String: String] = [ "year": year ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func sendPayrollSlip(payroll_id: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(staticLet.base_url)api/sendPayrollSlip"
+        let body: [String: String] = [ "payroll_id": payroll_id ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

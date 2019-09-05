@@ -24,7 +24,7 @@ class JatahCutiCell: UICollectionViewCell {
     var data: ItemQuota? {
         didSet {
             if let item = data {
-                labelPeriode.text = "\(item.start ?? "") / \(item.end ?? "")"
+                labelPeriode.text = item.periode
                 labelSisaCuti.text = item.quota
                 labelKadaluarsa.text = item.expired
             }

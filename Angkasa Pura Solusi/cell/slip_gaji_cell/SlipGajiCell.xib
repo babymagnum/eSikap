@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SlipGajiCell" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyc-zx-Xcn">
+                        <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JANUARI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0o0-Ud-L26" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <rect key="frame" x="11" y="13" width="33.5" height="9.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
+                                <color key="textColor" red="0.25882352941176467" green="0.6470588235294118" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26 Desember 2018 - 25 Januari 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAd-h2-kog" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <rect key="frame" x="11" y="27.5" width="132.5" height="9.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opO-0a-BeM">
+                                <rect key="frame" x="222" y="7" width="1" height="36"/>
+                                <color key="backgroundColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="qEt-2c-bMe"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="paE-Z6-d8S">
+                                <rect key="frame" x="223" y="7" width="70" height="36"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sentMail" translatesAutoresizingMaskIntoConstraints="NO" id="99I-iM-aS5">
+                                        <rect key="frame" x="27" y="0.0" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="99I-iM-aS5" secondAttribute="height" multiplier="1:1" id="yiY-I4-ljq"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kirim Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE7-k5-Zka" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="24" width="60" height="9"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="7"/>
+                                        <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="wE7-k5-Zka" firstAttribute="leading" secondItem="paE-Z6-d8S" secondAttribute="leading" constant="5" id="633-zN-GgE"/>
+                                    <constraint firstItem="99I-iM-aS5" firstAttribute="top" secondItem="paE-Z6-d8S" secondAttribute="top" id="KvP-8v-A49"/>
+                                    <constraint firstItem="99I-iM-aS5" firstAttribute="centerX" secondItem="paE-Z6-d8S" secondAttribute="centerX" id="SZM-q7-evV"/>
+                                    <constraint firstAttribute="width" constant="70" id="hXe-bJ-nh3"/>
+                                    <constraint firstAttribute="height" constant="36" id="otb-9t-YEx"/>
+                                    <constraint firstAttribute="trailing" secondItem="wE7-k5-Zka" secondAttribute="trailing" constant="5" id="rGU-W8-ghE"/>
+                                    <constraint firstItem="wE7-k5-Zka" firstAttribute="top" secondItem="99I-iM-aS5" secondAttribute="bottom" constant="8" id="v1X-Ok-tgx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="paE-Z6-d8S" firstAttribute="leading" secondItem="opO-0a-BeM" secondAttribute="trailing" id="17L-Yn-9RZ"/>
+                            <constraint firstItem="99I-iM-aS5" firstAttribute="width" secondItem="Uyc-zx-Xcn" secondAttribute="width" multiplier="0.055" id="9dR-9j-Mpu"/>
+                            <constraint firstItem="OAd-h2-kog" firstAttribute="top" secondItem="0o0-Ud-L26" secondAttribute="bottom" constant="5" id="A1p-fp-1Aa"/>
+                            <constraint firstAttribute="trailing" secondItem="paE-Z6-d8S" secondAttribute="trailing" id="BGb-V9-qIB"/>
+                            <constraint firstItem="paE-Z6-d8S" firstAttribute="centerY" secondItem="Uyc-zx-Xcn" secondAttribute="centerY" id="CgF-IB-1J9"/>
+                            <constraint firstItem="OAd-h2-kog" firstAttribute="leading" secondItem="Uyc-zx-Xcn" secondAttribute="leading" constant="11" id="D91-EO-otn"/>
+                            <constraint firstItem="0o0-Ud-L26" firstAttribute="leading" secondItem="Uyc-zx-Xcn" secondAttribute="leading" constant="11" id="DqH-Ob-RPl"/>
+                            <constraint firstAttribute="bottom" secondItem="opO-0a-BeM" secondAttribute="bottom" constant="7" id="UvC-Jm-Lx1"/>
+                            <constraint firstItem="opO-0a-BeM" firstAttribute="top" secondItem="Uyc-zx-Xcn" secondAttribute="top" constant="7" id="btA-4q-qPv"/>
+                            <constraint firstItem="0o0-Ud-L26" firstAttribute="top" secondItem="Uyc-zx-Xcn" secondAttribute="top" constant="13" id="xLJ-b5-bZ7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Uyc-zx-Xcn" secondAttribute="bottom" id="4fJ-xM-0ci"/>
+                <constraint firstAttribute="trailing" secondItem="Uyc-zx-Xcn" secondAttribute="trailing" id="liR-HB-tuO"/>
+                <constraint firstItem="Uyc-zx-Xcn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="psd-W3-jwu"/>
+                <constraint firstItem="Uyc-zx-Xcn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="t3f-vl-XVt"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="labelBulan" destination="0o0-Ud-L26" id="63R-V3-np9"/>
+                <outlet property="labelDates" destination="OAd-h2-kog" id="h5b-X9-v7a"/>
+                <outlet property="viewContainer" destination="Uyc-zx-Xcn" id="cmh-qM-pvc"/>
+                <outlet property="viewKirimEmail" destination="paE-Z6-d8S" id="0Wl-rH-mgz"/>
+            </connections>
+            <point key="canvasLocation" x="131.15942028985509" y="118.86160714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="sentMail" width="19.5" height="18"/>
+    </resources>
+</document>

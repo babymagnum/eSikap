@@ -19,12 +19,13 @@ class BottomSheetFilterPresensi: BaseViewController, UIPickerViewDelegate {
     @IBOutlet weak var buttonKembali: UIButton!
     @IBOutlet weak var buttonTerapkan: UIButton!
     
-    var listBulan = [Bulan]()
-    var listTahun = [String]()
+    private var listBulan = [Bulan]()
+    private var listTahun = [String]()
     
-    var pickedBulan = ""
-    var pickedTahun = ""
+    private var pickedBulan = ""
+    private var pickedTahun = ""
     
+    var onlyYear: Bool?
     var delegate: BottomSheetFilterPresensiProtocol?
     
     override func viewDidLoad() {
@@ -36,10 +37,12 @@ class BottomSheetFilterPresensi: BaseViewController, UIPickerViewDelegate {
     }
     
     private func initView() {
+        if let _ = onlyYear {
+            pickerViewBulan.isHidden = true
+        }
+        
         pickedBulan = function.getCurrentDate(pattern: "MM")
         pickedTahun = function.getCurrentDate(pattern: "yyyy")
-        print("picked bulan \(pickedBulan)")
-        print("picked tahun \(pickedTahun)")
         
         buttonTerapkan.layer.cornerRadius = 5
         buttonKembali.giveBorder(5, 1, "42a5f5")

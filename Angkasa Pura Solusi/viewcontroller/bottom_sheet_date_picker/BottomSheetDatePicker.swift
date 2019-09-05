@@ -16,6 +16,7 @@ protocol BottomSheetDatePickerProtocol {
 enum PickerTypeEnum {
     case date
     case time
+    case year
 }
 
 class BottomSheetDatePicker: BaseViewController {

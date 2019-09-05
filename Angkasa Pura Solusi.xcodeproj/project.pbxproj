@@ -157,6 +157,13 @@
 		EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */; };
 		EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */; };
 		EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */; };
+		EDE5DBCE2320B80500CFC608 /* SlipGajiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBCC2320B80500CFC608 /* SlipGajiController.swift */; };
+		EDE5DBCF2320B80500CFC608 /* SlipGajiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE5DBCD2320B80500CFC608 /* SlipGajiController.xib */; };
+		EDE5DBD32320B8AF00CFC608 /* SlipGajiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBD12320B8AF00CFC608 /* SlipGajiCell.swift */; };
+		EDE5DBD42320B8AF00CFC608 /* SlipGajiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE5DBD22320B8AF00CFC608 /* SlipGajiCell.xib */; };
+		EDE5DBD62320BD4400CFC608 /* SlipGaji.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBD52320BD4400CFC608 /* SlipGaji.swift */; };
+		EDE5DBDA2320C5FB00CFC608 /* DialogSendEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBD82320C5FB00CFC608 /* DialogSendEmailController.swift */; };
+		EDE5DBDB2320C5FB00CFC608 /* DialogSendEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE5DBD92320C5FB00CFC608 /* DialogSendEmailController.xib */; };
 		EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */; };
 		EDFC1F4722FDB80D00AAA93B /* TabPersetujuanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F4522FDB80D00AAA93B /* TabPersetujuanController.swift */; };
 		EDFC1F4822FDB80D00AAA93B /* TabPersetujuanController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F4622FDB80D00AAA93B /* TabPersetujuanController.xib */; };
@@ -329,6 +336,13 @@
 		EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiMapController.swift; sourceTree = "<group>"; };
 		EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiMapController.xib; sourceTree = "<group>"; };
 		EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		EDE5DBCC2320B80500CFC608 /* SlipGajiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGajiController.swift; sourceTree = "<group>"; };
+		EDE5DBCD2320B80500CFC608 /* SlipGajiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlipGajiController.xib; sourceTree = "<group>"; };
+		EDE5DBD12320B8AF00CFC608 /* SlipGajiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGajiCell.swift; sourceTree = "<group>"; };
+		EDE5DBD22320B8AF00CFC608 /* SlipGajiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlipGajiCell.xib; sourceTree = "<group>"; };
+		EDE5DBD52320BD4400CFC608 /* SlipGaji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGaji.swift; sourceTree = "<group>"; };
+		EDE5DBD82320C5FB00CFC608 /* DialogSendEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogSendEmailController.swift; sourceTree = "<group>"; };
+		EDE5DBD92320C5FB00CFC608 /* DialogSendEmailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogSendEmailController.xib; sourceTree = "<group>"; };
 		EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JatahCuti.swift; sourceTree = "<group>"; };
 		EDFC1F4522FDB80D00AAA93B /* TabPersetujuanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPersetujuanController.swift; sourceTree = "<group>"; };
 		EDFC1F4622FDB80D00AAA93B /* TabPersetujuanController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabPersetujuanController.xib; sourceTree = "<group>"; };
@@ -667,6 +681,8 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				EDE5DBD72320C5DD00CFC608 /* dialog_send_email */,
+				EDE5DBCB2320B7AD00CFC608 /* slip_gaji */,
 				EDC19E91231EBDC600690B59 /* riwayat_cuti_filter */,
 				ED14CA71231DF36B00D5C7F0 /* search_delegasi_or_atasan */,
 				ED8A9145231C07C400C6834C /* dialog_batalkan_detail_cuti */,
@@ -747,6 +763,7 @@
 				EDC19E96231EC28D00690B59 /* LeaveTypeFilter.swift */,
 				EDC19E98231EC2DE00690B59 /* YearsFilter.swift */,
 				EDC19E9A231EC34000690B59 /* LeaveStatusFilter.swift */,
+				EDE5DBD52320BD4400CFC608 /* SlipGaji.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -819,6 +836,7 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				EDE5DBD02320B89700CFC608 /* slip_gaji_cell */,
 				ED14CA7A231E16AB00D5C7F0 /* notifikasi_cell */,
 				EDC71BBC231BEE86007FBBD9 /* detail_tanggal_cuti_cell */,
 				ED308CF3231B51EC00F5C43C /* exception_cell */,
@@ -941,6 +959,33 @@
 			path = presensi_map;
 			sourceTree = "<group>";
 		};
+		EDE5DBCB2320B7AD00CFC608 /* slip_gaji */ = {
+			isa = PBXGroup;
+			children = (
+				EDE5DBCC2320B80500CFC608 /* SlipGajiController.swift */,
+				EDE5DBCD2320B80500CFC608 /* SlipGajiController.xib */,
+			);
+			path = slip_gaji;
+			sourceTree = "<group>";
+		};
+		EDE5DBD02320B89700CFC608 /* slip_gaji_cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDE5DBD12320B8AF00CFC608 /* SlipGajiCell.swift */,
+				EDE5DBD22320B8AF00CFC608 /* SlipGajiCell.xib */,
+			);
+			path = slip_gaji_cell;
+			sourceTree = "<group>";
+		};
+		EDE5DBD72320C5DD00CFC608 /* dialog_send_email */ = {
+			isa = PBXGroup;
+			children = (
+				EDE5DBD82320C5FB00CFC608 /* DialogSendEmailController.swift */,
+				EDE5DBD92320C5FB00CFC608 /* DialogSendEmailController.xib */,
+			);
+			path = dialog_send_email;
+			sourceTree = "<group>";
+		};
 		EDFC1F4422FDB7E100AAA93B /* tab_persetujuan */ = {
 			isa = PBXGroup;
 			children = (
@@ -1057,11 +1102,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED0E0740230834D100260783 /* BottomSheetDatePicker.xib in Resources */,
+				EDE5DBDB2320C5FB00CFC608 /* DialogSendEmailController.xib in Resources */,
 				ED61BEFF22F67C9F00776C25 /* PresensiListController.xib in Resources */,
 				ED3038CC22ED639E005BCF87 /* BeritaCell.xib in Resources */,
 				ED95908B22EBE8DE00D696E5 /* OnboardingController.xib in Resources */,
 				EDFC1F6322FE347300AAA93B /* DetailPersetujuanCutiController.xib in Resources */,
 				ED95908722EBE8A000D696E5 /* LoginController.xib in Resources */,
+				EDE5DBD42320B8AF00CFC608 /* SlipGajiCell.xib in Resources */,
 				ED57FE3222F84F87007B62A0 /* PengajuanCutiController.xib in Resources */,
 				ED61BF0322F67E6700776C25 /* PresensiCell.xib in Resources */,
 				ED52152522F47C0D001C6A50 /* DialogPreparePresenceController.xib in Resources */,
@@ -1093,6 +1140,7 @@
 				ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */,
 				ED57FE4822F8F645007B62A0 /* TanggalCutiCell.xib in Resources */,
 				ED40AB4E231CB497007C0ADC /* DelegasiCutiController.xib in Resources */,
+				EDE5DBCF2320B80500CFC608 /* SlipGajiController.xib in Resources */,
 				ED52152022F46F11001C6A50 /* DialogFirstController.xib in Resources */,
 				ED57FE4422F8F633007B62A0 /* JatahCutiCell.xib in Resources */,
 				ED308CF7231B520500F5C43C /* ExceptionCell.xib in Resources */,
@@ -1205,8 +1253,12 @@
 				ED40AB4D231CB497007C0ADC /* DelegasiCutiController.swift in Sources */,
 				EDFC1F5B22FE297D00AAA93B /* CutiCell.swift in Sources */,
 				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
+				EDE5DBD32320B8AF00CFC608 /* SlipGajiCell.swift in Sources */,
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
+				EDE5DBDA2320C5FB00CFC608 /* DialogSendEmailController.swift in Sources */,
+				EDE5DBCE2320B80500CFC608 /* SlipGajiController.swift in Sources */,
 				EDBF21BB23005BDD003F5DAF /* CustomLabel.swift in Sources */,
+				EDE5DBD62320BD4400CFC608 /* SlipGaji.swift in Sources */,
 				EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */,
 				EDBF21BD2300DBA6003F5DAF /* CustomButton.swift in Sources */,
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,

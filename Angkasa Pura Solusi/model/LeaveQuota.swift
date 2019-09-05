@@ -15,11 +15,9 @@ struct LeaveQuota: Decodable {
 }
 
 struct ItemQuota: Decodable {
-    var id: String?
-    var emp_id: String?
-    var start: String?
-    var end: String?
+    var periode: String?
     var quota: String?
     var taken: String?
+    var sisa: String?
     var expired: String?
 }

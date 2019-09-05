@@ -174,13 +174,21 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         switch itemId {
         case 1:
             //pengajuan cuti
-            self.showInDevelopmentDialog()
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.parentNavigationController?.pushViewController(PengajuanCutiController(), animated: true)
+            }
         case 2:
             //pengajuan lembur
             self.showInDevelopmentDialog()
         case 3:
             //persetujuan
-            self.showInDevelopmentDialog()
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.parentNavigationController?.pushViewController(TabPersetujuanController(), animated: true)
+            }
         case 4:
             //presensi
             getPreparePresence()
@@ -195,7 +203,11 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             }
         case 6:
             //slip gaji
-            self.showInDevelopmentDialog()
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.parentNavigationController?.pushViewController(TabPersetujuanController(), animated: true)
+            }
         case 7:
             //peminjaman ruangan
             self.showInDevelopmentDialog()
