@@ -21,7 +21,7 @@
                 <outlet property="labelDataKosong" destination="Db7-Jc-Oez" id="Oya-dS-fFG"/>
                 <outlet property="labelTitleTop" destination="Wx7-6P-tTr" id="lmc-RH-KUQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="viewRootTopMargin" destination="eLx-hz-gbF" id="Ate-T9-3gQ"/>
+                <outlet property="viewRootTopMargin" destination="eLx-hz-gbF" id="TVV-rL-oD4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

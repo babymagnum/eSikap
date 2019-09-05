@@ -539,11 +539,11 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
 extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     func namePicked(itemEmp: ItemEmp, type: String) {
         if type == "Delegasi" {
-            imageDelegasi.image = UIImage(named: "group489")
+            imageDelegasi.image = UIImage(named: "group486")
             fieldDelegasi.text = itemEmp.emp_name
             delegation_emp_id = itemEmp.emp_id!
         } else {
-            imageAtasan.image = UIImage(named: "group489")
+            imageAtasan.image = UIImage(named: "group486")
             fieldAtasan.text = itemEmp.emp_name
             supervisor_emp_id = itemEmp.emp_id!
         }
@@ -728,7 +728,7 @@ extension PengajuanCutiController: UICollectionViewDataSource {
                 self.isCalculateJatahCutiHeight = true
                 DispatchQueue.main.async {
                     let jatahCutiLayout = self.jatahCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiCell.viewContainer.getHeight() + 12) // 12 is bottom constraint
+                    jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiCell.viewContainer.getHeight() + 14.2) // 12 is bottom constraint
                 }
             }
             

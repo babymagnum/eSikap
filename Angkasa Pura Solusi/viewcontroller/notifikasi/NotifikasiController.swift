@@ -41,14 +41,6 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
         getNotificationList()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        DispatchQueue.main.async {
-            self.notifikasiCollectionView.collectionViewLayout.invalidateLayout()
-        }
-    }
-    
     private func getNotificationList() {
         SVProgressHUD.show()
         
@@ -87,8 +79,6 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
         
         notifikasiCollectionView.delegate = self
         notifikasiCollectionView.dataSource = self
-        notifikasiCollectionView.isPrefetchingEnabled = false
-        
         notifikasiCollectionView.addSubview(refreshControl)
     }
     

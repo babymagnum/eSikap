@@ -12,20 +12,13 @@ import Firebase
 import GoogleMaps
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     var mainNavigationController : UINavigationController?
     
-    lazy var preference: Preference = {
-        let mPreference = Preference()
-        return mPreference
-    }()
-    
-    lazy var staticLet: StaticLet = {
-        let mStaticLet = StaticLet()
-        return mStaticLet
-    }()
+    lazy var preference: Preference = { return Preference() }()    
+    lazy var staticLet: StaticLet = { return StaticLet() }()
 
     func changeRootViewController(rootVC : UIViewController){
         mainNavigationController = UINavigationController(rootViewController: rootVC)
@@ -50,9 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         //keyboard manager
         IQKeyboardManager.shared.enable = true
         
-        //firebase
-        FirebaseApp.configure()
-        
         //firebase messaging
         Messaging.messaging().delegate = self
         
@@ -61,7 +51,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         let oldMapsKey = "AIzaSyABb3r3kEysXc1ahNhBczZfpFbKCTcEUZY"
         GMSServices.provideAPIKey(oldMapsKey)
         
+        //firebase
+        FirebaseApp.configure()
+        
+        //notification
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
+            // For iOS 10 data message (sent via FCM
+            Messaging.messaging().delegate = self
+        } else {
+            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+    
+    func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
+        print(remoteMessage.appData)
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        
+        // set which screen to proceed when user tap screen
+        
+        completionHandler()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

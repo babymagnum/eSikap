@@ -110,10 +110,10 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
     
     private func initLocationManager() {
         locationManager.delegate = self
-        //this line of code below to set the range of the accuracy
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         //this line of code below to prompt the user for location permission
         locationManager.requestWhenInUseAuthorization()
+        //this line of code below to set the range of the accuracy
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         //this line of code below to start updating the current location
         locationManager.startUpdatingLocation()
     }

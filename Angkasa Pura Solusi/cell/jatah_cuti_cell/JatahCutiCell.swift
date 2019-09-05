@@ -14,6 +14,8 @@ class JatahCutiCell: UICollectionViewCell {
     @IBOutlet weak var labelPeriode: UILabel!
     @IBOutlet weak var labelSisaCuti: UILabel!
     @IBOutlet weak var labelKadaluarsa: UILabel!
+    @IBOutlet weak var labelJatahCuti: CustomLabel!
+    @IBOutlet weak var labelTerambil: CustomLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +29,8 @@ class JatahCutiCell: UICollectionViewCell {
                 labelPeriode.text = item.periode
                 labelSisaCuti.text = item.quota
                 labelKadaluarsa.text = item.expired
+                labelJatahCuti.text = item.sisa
+                labelTerambil.text = item.taken
             }
         }
     }

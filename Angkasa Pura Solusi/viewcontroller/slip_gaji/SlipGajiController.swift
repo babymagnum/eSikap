@@ -73,6 +73,7 @@ class SlipGajiController: BaseViewController, UICollectionViewDelegate {
     
     private func initView() {
         currentYear = function.getCurrentDate(pattern: "yyyy")
+        labelTitleTop.text = "Slip Gaji \(currentYear)"
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
     }
@@ -83,6 +84,7 @@ class SlipGajiController: BaseViewController, UICollectionViewDelegate {
 extension SlipGajiController: BottomSheetFilterPresensiProtocol {
     func filterPicked(_ month: String, _ year: String) {
         currentYear = year
+        labelTitleTop.text = "Slip Gaji \(currentYear)"
         getSlipGaji()
     }
     

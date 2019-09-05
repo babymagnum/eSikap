@@ -63,6 +63,7 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         fieldSearch.attributedPlaceholder = NSAttributedString(string: "Tekan di sini untuk mencari \(type ?? "")...",attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12 + function.dynamicCustomDevice())])
         imageSearchTop.image = UIImage(named: "icSearchWhite")?.tinted(with: UIColor.white)
+        imageCancelSearch.image = UIImage(named: "close-button")?.tinted(with: UIColor.white)
         labelTitleTop.text = "Cari \(type ?? "")"
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         fieldSearch.delegate = self
