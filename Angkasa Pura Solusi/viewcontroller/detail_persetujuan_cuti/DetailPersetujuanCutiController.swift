@@ -11,6 +11,9 @@ import SVProgressHUD
 
 class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var viewLampiranHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewLampiran: UIView!
+    @IBOutlet weak var labelLampiran: CustomLabel!
     @IBOutlet weak var labelStatusTop: CustomButton!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var labelKodeCuti: UILabel!
@@ -90,6 +93,15 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     private func setViewContent(_ detailLeaveApproval: DetailLeaveApproval) {
         let item = detailLeaveApproval.data?.leave[0]
         
+        if item?.attachment_name == "" {
+            UIView.animate(withDuration: 0.2) {
+                self.viewLampiranHeight.constant = 0
+                self.viewLampiran.alpha = 0
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            }
+        }
+        
         if item?.is_processed == "1" {
             buttonProses.isEnabled = false
             buttonProses.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
@@ -98,6 +110,11 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
             buttonProses.backgroundColor = UIColor(hexString: "42a5f5")
         }
         
+        if item?.approval_dates.count == 0 {
+            self.labelStatusAction.text = "REJECTED"
+        }
+        
+        labelLampiran.text = item?.attachment_name
         labelStatusTop.setTitle(item?.status, for: .normal)
         labelStatusTop.backgroundColor = UIColor(hexString: String((item?.status_color?.dropFirst())!))
         imageAccount.loadUrl((item?.photo)!)
@@ -268,17 +285,21 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol {
     
     @objc func switchStatusActionChange(mySwitch: UISwitch) {
         
-        if mySwitch.isOn {
-            self.labelStatusAction.text = "APPROVE ALL"
-            for index in 0...self.listStatusAction.count - 1 {
-                self.listStatusAction[index].isApproved = "1"
-                self.statusActionCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
-            }
+        if listStatusAction.count == 0 {
+            self.labelStatusAction.text = mySwitch.isOn ? "APPROVED" : "REJECTED"
         } else {
-            self.labelStatusAction.text = "REJECT ALL"
-            for index in 0...self.listStatusAction.count - 1 {
-                self.listStatusAction[index].isApproved = "0"
-                self.statusActionCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+            if mySwitch.isOn {
+                self.labelStatusAction.text = "APPROVE ALL"
+                for index in 0...self.listStatusAction.count - 1 {
+                    self.listStatusAction[index].isApproved = "1"
+                    self.statusActionCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+                }
+            } else {
+                self.labelStatusAction.text = "REJECT ALL"
+                for index in 0...self.listStatusAction.count - 1 {
+                    self.listStatusAction[index].isApproved = "0"
+                    self.statusActionCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+                }
             }
         }
         

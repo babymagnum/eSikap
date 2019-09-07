@@ -34,6 +34,8 @@ struct ItemDetailLeaveApproval: Decodable {
     var is_range: String?
     var photo: String?
     var dates: String?
+    var attachment_name: String?
+    var attachment: String?
     var approval = [ItemApproval]()
     var approval_dates = [String]()
     var is_processed: String?

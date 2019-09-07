@@ -32,6 +32,8 @@ struct ItemDataDelegation: Decodable {
     var status_color: String?
     var photo: String?
     var dates: String?
+    var attachment_name: String?
+    var attachment: String?
     var date_show = [ItemDateShow]()
     var cancel_notes: String?
     var last_insert: String?

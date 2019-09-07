@@ -37,6 +37,8 @@ struct ItemDetailRiwayatCuti: Decodable {
     var cancel_button_is_show: String?
     var last_insert: String?
     var last_update: String?
+    var attachment_name: String?
+    var attachment: String?
     var approval = [ItemApproval]()
 }
 

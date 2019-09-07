@@ -67,6 +67,8 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
             
             guard let riwayatCuti = riwayatCuti else { return }
             
+            if self.currentPage == 0 { self.listRiwayatCuti.removeAll() }
+            
             if riwayatCuti.data?.leave.count == 0 && self.listRiwayatCuti.count == 0 {
                 self.labelDataKosong.text = riwayatCuti.message
                 self.labelDataKosong.isHidden = false
@@ -81,7 +83,8 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
             }
             
             self.currentPage += 1
-            self.riwayatCutiCollectionView.reloadData()
+            
+            DispatchQueue.main.async { self.riwayatCutiCollectionView.reloadData() }
         }
     }
     
@@ -177,7 +180,6 @@ extension RiwayatCutiController: RiwayatCutiFilterProtocol {
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
-        listRiwayatCuti.removeAll()
         currentPage = 0
         getRiwayatCuti()
     }

@@ -12,6 +12,9 @@ import EzPopup
 
 class DetailCutiController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var labelLampiran: CustomLabel!
+    @IBOutlet weak var viewLampiran: UIView!
+    @IBOutlet weak var viewLampiranHeight: NSLayoutConstraint!
     @IBOutlet weak var labelTitleTop: CustomLabel!
     @IBOutlet weak var labelStatusTop: CustomButton!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -92,6 +95,16 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     private func setViewDelegasi(_ detailDelegation: DetailDelegationList) {
         let item = detailDelegation.data?.leave[0]
         
+        if item?.attachment_name == "" {
+            UIView.animate(withDuration: 0.2) {
+                self.viewLampiranHeight.constant = 0
+                self.viewLampiran.alpha = 0
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+        labelLampiran.text = item?.attachment_name
         labelStatusTop.setTitle(item?.status, for: .normal)
         labelStatusTop.backgroundColor = UIColor(hexString: String((item?.status_color?.dropFirst())!))
         imageAccount.loadUrl((item?.photo)!)
@@ -167,6 +180,15 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     private func setViewContent(_ detailRiwayatCuti: DetailRiwayatCuti) {
         let item = detailRiwayatCuti.data?.leave[0]
         
+        if item?.attachment_name == "" {
+            UIView.animate(withDuration: 0.2) {
+                self.viewLampiranHeight.constant = 0
+                self.viewLampiran.alpha = 0
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            }
+        }
+        
         if item?.cancel_button_is_show == "1" {
             buttonBatalkan.isHidden = false
             labelInfoPembatalan.text = ""
@@ -174,6 +196,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
             buttonBatalkan.isHidden = true
         }
         
+        labelLampiran.text = item?.attachment_name
         labelStatusTop.setTitle(item?.status, for: .normal)
         labelStatusTop.backgroundColor = UIColor(hexString: String((item?.status_color?.dropFirst())!))
         imageAccount.loadUrl((item?.photo)!)
