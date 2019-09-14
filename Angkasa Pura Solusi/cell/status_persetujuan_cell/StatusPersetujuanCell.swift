@@ -16,6 +16,7 @@ class StatusPersetujuanCell: UICollectionViewCell {
     @IBOutlet weak var labelType: UILabel!
     @IBOutlet weak var imageStatus: UIImageView!
     @IBOutlet weak var labelStatus: UILabel!
+    @IBOutlet weak var labelDate: CustomLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +35,7 @@ class StatusPersetujuanCell: UICollectionViewCell {
                 labelNama.text = item.emp_name
                 labelType.text = item.status_notes
                 labelStatus.text = item.status_name
+                labelDate.text = item.status_date
                 setIcon(item.status!)
             }
         }

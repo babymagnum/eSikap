@@ -62,13 +62,7 @@ extension DialogPengajuanCutiController: UICollectionViewDataSource, UICollectio
         
         let item = listException[indexPath.item]
         
-        return CGSize(
-            width: collectionException.frame.width,
-            height: item.height(
-                withConstrainedWidth: collectionException.frame.width,
-                font: UIFont.systemFont(ofSize: 14)
-            )
-        )
+        return CGSize(width: collectionException.frame.width, height: item.getHeight(withConstrainedWidth: collectionException.frame.width, font_size: 14))
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -81,7 +75,4 @@ extension DialogPengajuanCutiController: UICollectionViewDataSource, UICollectio
         return cell
     }
     
-}
-
-extension DialogPengajuanCutiController {
 }

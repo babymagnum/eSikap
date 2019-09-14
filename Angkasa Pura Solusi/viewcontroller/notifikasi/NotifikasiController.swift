@@ -61,6 +61,8 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
             
             guard let listNotification = listNotification else { return }
             
+            if self.currentPage == 0 { self.listNotifikasi.removeAll() }
+            
             self.viewNotifikasiKosong.isHidden = listNotification.data?.notification.count == 0 && self.listNotifikasi.count == 0 ? false : true
             
             self.totalPage = (listNotification.data?.total_page)!
@@ -77,6 +79,7 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
     private func initCollectionView() {
         notifikasiCollectionView.register(UINib(nibName: "NotifikasiCell", bundle: nil), forCellWithReuseIdentifier: "NotifikasiCell")
         
+        notifikasiCollectionView.isPrefetchingEnabled = false
         notifikasiCollectionView.delegate = self
         notifikasiCollectionView.dataSource = self
         notifikasiCollectionView.addSubview(refreshControl)
@@ -112,7 +115,7 @@ extension NotifikasiController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func getTextHeight(_ text: String, _ font_size: CGFloat) -> CGFloat {
-        return text.getHeight(withConstrainedWidth: notifikasiCollectionView.frame.width, font_size: 10)
+        return text.getHeight(withConstrainedWidth: notifikasiCollectionView.frame.width, font_size: font_size)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -184,12 +187,10 @@ extension NotifikasiController {
         let notifikasi = listNotifikasi[indexpath.item]
         
         if notifikasi.is_read == "0" {
-            print("belum dibaca")
             self.updateIsReadNotification(notification_id: notifikasi.id!) {
                 self.redirectToDetailNotifikasi(notifikasi)
             }
         } else {
-            print("sudah dibaca")
             self.redirectToDetailNotifikasi(notifikasi)
         }
     }
@@ -197,7 +198,6 @@ extension NotifikasiController {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         currentPage = 0
-        listNotifikasi.removeAll()
         getNotificationList()
     }
 }

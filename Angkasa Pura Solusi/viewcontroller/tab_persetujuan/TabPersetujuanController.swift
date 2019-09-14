@@ -64,7 +64,7 @@ class TabPersetujuanController: ButtonBarPagerTabStripViewController {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         pages.append(DelegasiCutiController())
         pages.append(CutiController())
-        pages.append(LemburController())
+        //pages.append(LemburController())
         return pages
     }
 }

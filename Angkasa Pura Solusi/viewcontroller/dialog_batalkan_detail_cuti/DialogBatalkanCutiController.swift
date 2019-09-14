@@ -18,7 +18,7 @@ class DialogBatalkanCutiController: BaseViewController {
     @IBOutlet weak var viewTextView: UIView!
     @IBOutlet weak var fieldAlasan: CustomTextView!
     @IBOutlet weak var buttonProses: CustomButton!
-    @IBOutlet weak var buttonKeluar: CustomButton!
+    @IBOutlet weak var viewContainer: UIView!
     
     var leave_id: String!
     var delegate: DialogBatalkanProtocol!
@@ -32,8 +32,8 @@ class DialogBatalkanCutiController: BaseViewController {
     private func initView() {
         buttonProses.layer.cornerRadius = 5
         buttonProses.giveBorder(5, 1, "7eb73d")
-        buttonKeluar.giveBorder(5, 1, "ea1c18")
         viewTextView.giveBorder(5, 1, "dedede")
+        viewContainer.layer.cornerRadius = 5
     }
     
     private func cancelLeave() {
@@ -59,6 +59,7 @@ class DialogBatalkanCutiController: BaseViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
+    
 }
 
 extension DialogBatalkanCutiController {

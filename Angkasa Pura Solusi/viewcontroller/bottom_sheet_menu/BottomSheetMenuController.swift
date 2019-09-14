@@ -206,7 +206,7 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             dismiss(animated: true, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self.parentNavigationController?.pushViewController(TabPersetujuanController(), animated: true)
+                self.parentNavigationController?.pushViewController(SlipGajiController(), animated: true)
             }
         case 7:
             //peminjaman ruangan

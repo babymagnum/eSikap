@@ -34,6 +34,12 @@ class NotifikasiCell: UICollectionViewCell {
                 labelTitle.text = item.title
                 labelTanggal.text = item.date
                 labelContent.text = item.content
+                
+                if item.is_read == "0" {
+                    labelTitle.textColor = UIColor(hexString: "004CFF")
+                    labelTanggal.textColor = UIColor(hexString: "6C6C6C")
+                    labelContent.textColor = UIColor(hexString: "262626")
+                }
             }
         }
     }

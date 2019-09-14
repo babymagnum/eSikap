@@ -12,6 +12,7 @@ import EzPopup
 
 class DetailCutiController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var viewLampiranContent: UIView!
     @IBOutlet weak var labelLampiran: CustomLabel!
     @IBOutlet weak var viewLampiran: UIView!
     @IBOutlet weak var viewLampiranHeight: NSLayoutConstraint!
@@ -38,10 +39,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     
     private var listStatusPersetujuan = [ItemApproval]()
     private var listTanggalCuti = [ItemDateShow]()
-    private var isCalculatePesertujuanHeight = false
-    private var isSetStatusPersetujuanHeight = false
-    private var isCalculateTanggalCutiHeight = false
-    private var isSetTanggalCutiHeight = false
+    private var attachmentUrl: String?
     
     var leave_id: String!
     var title_content: String!
@@ -51,9 +49,15 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         
         initView()
         
+        initEvent()
+        
         initCollectionView()
         
         getData()
+    }
+    
+    private func initEvent() {
+        viewLampiranContent.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewLampiranContentClick)))
     }
     
     private func getData() {
@@ -103,7 +107,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
                 self.view.layoutIfNeeded()
             }
         }
-        
+        attachmentUrl = item?.attachment
         labelLampiran.text = item?.attachment_name
         labelStatusTop.setTitle(item?.status, for: .normal)
         labelStatusTop.backgroundColor = UIColor(hexString: String((item?.status_color?.dropFirst())!))
@@ -145,6 +149,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
+        scrollView.alpha = 0
         labelStatusTop.layer.cornerRadius = labelStatusTop.frame.height / 2
         buttonBatalkan.giveBorder(5, 1, "ea1c18")
         imageAccount.clipsToBounds = true
@@ -196,6 +201,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
             buttonBatalkan.isHidden = true
         }
         
+        attachmentUrl = item?.attachment
         labelLampiran.text = item?.attachment_name
         labelStatusTop.setTitle(item?.status, for: .normal)
         labelStatusTop.backgroundColor = UIColor(hexString: String((item?.status_color?.dropFirst())!))
@@ -212,6 +218,11 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         listStatusPersetujuan = item!.approval
         labelDateSubmitted.text = "Diajukan pada \(item?.date ?? "")"
         labelKodeCuti.text = item?.number
+        
+        UIView.animate(withDuration: 0.2) {
+            self.scrollView.alpha = 1
+            self.view.layoutIfNeeded()
+        }
         
         self.collectionTanggalCuti.reloadData()
         self.statusPersetujuanCollectionView.reloadData()
@@ -246,7 +257,25 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     
 }
 
-extension DetailCutiController: UICollectionViewDataSource {
+extension DetailCutiController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == statusPersetujuanCollectionView {
+            let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
+            
+            let item = listStatusPersetujuan[indexPath.item]
+            
+            let fullHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 25 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width) + statusPersetujuanCell.labelDate.getHeight(width: statusPersetujuanCell.labelDate.frame.width)
+            
+            let withoutDateHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 25 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width)
+            
+            return CGSize(width: UIScreen.main.bounds.width - 28, height: item.status_date == "" ? withoutDateHeight : fullHeight)
+        } else {
+            let tanggalCutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailTanggalCutiCell", for: indexPath) as! DetailTanggalCutiCell
+            return CGSize(width: self.collectionTanggalCuti.frame.width, height: tanggalCutiCell.viewContainer.getHeight())
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == statusPersetujuanCollectionView {
             return listStatusPersetujuan.count
@@ -259,48 +288,67 @@ extension DetailCutiController: UICollectionViewDataSource {
         
         if collectionView == statusPersetujuanCollectionView {
             let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
-            
             statusPersetujuanCell.data = listStatusPersetujuan[indexPath.item]
-            
-            if !isCalculatePesertujuanHeight {
-                self.isCalculatePesertujuanHeight = true
-                DispatchQueue.main.async {
-                    let statusPersetujuanLayout = self.statusPersetujuanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    let statusPersetujuanHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 5.3 + 2.7 + 5.2 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width)
-                    statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanHeight)
-                }
-            }
-            
             return statusPersetujuanCell
         } else {
             let tanggalCutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailTanggalCutiCell", for: indexPath) as! DetailTanggalCutiCell
             tanggalCutiCell.data = listTanggalCuti[indexPath.item]
-            
-            if !isCalculateTanggalCutiHeight {
-                self.isCalculateTanggalCutiHeight = true
-                DispatchQueue.main.async {
-                    let tanggalCutiLayout = self.collectionTanggalCuti.collectionViewLayout as! UICollectionViewFlowLayout
-                    tanggalCutiLayout.itemSize = CGSize(width: self.collectionTanggalCuti.frame.width, height: tanggalCutiCell.viewContainer.getHeight())
-                }
-            }
-            
             return tanggalCutiCell
         }
         
     }
 }
 
-extension DetailCutiController: DialogBatalkanProtocol {
+extension DetailCutiController: DialogBatalkanProtocol, URLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate {
+    
     func updateData() {
         getDetailLeave()
     }
     
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        SVProgressHUD.dismiss()
+        
+        print("downloadLocation:", location)
+        // create destination URL with the original pdf name
+        guard let url = downloadTask.originalRequest?.url else { return }
+        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
+        // delete original copy
+        try? FileManager.default.removeItem(at: destinationURL)
+        // copy from temp to Document
+        do {
+            try FileManager.default.copyItem(at: location, to: destinationURL)
+            DispatchQueue.main.async {
+                let docOpener = UIDocumentInteractionController.init(url: destinationURL)
+                docOpener.delegate = self
+                docOpener.presentPreview(animated: true)
+            }
+        } catch let error {
+            print("Copy Error: \(error.localizedDescription)")
+        }
+    }
+    
+    @objc func viewLampiranContentClick() {
+        guard let attachment = attachmentUrl else { return }
+        
+        guard let url = URL(string: attachment) else { return }
+        
+        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+        let downloadTask = urlSession.downloadTask(with: url)
+        downloadTask.resume()
+        SVProgressHUD.show(withStatus: "Sedang mendownload file...")
+    }
+    
     @IBAction func buttonBatalkanClick(_ sender: Any) {
-        let controller = DialogBatalkanCutiController()
-        controller.leave_id = leave_id
-        controller.delegate = self
-        let vc = PopupViewController(contentController: controller, popupWidth: UIScreen.main.bounds.width - 44, popupHeight: UIScreen.main.bounds.height * 0.4)
-        vc.cornerRadius = 5
+        let dialogVc = DialogBatalkanCutiController()
+        dialogVc.leave_id = leave_id
+        dialogVc.delegate = self
+        let vc = PopupViewController(contentController: dialogVc, popupWidth: UIScreen.main.bounds.width, popupHeight: UIScreen.main.bounds.height)
+        vc.shadowEnabled = false
         present(vc, animated: true)
     }
     

@@ -52,22 +52,12 @@
                                     <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5j-Yu-p4O">
-                                    <rect key="frame" x="322" y="0.0" width="53" height="53"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="53" id="2bv-oS-yR1"/>
-                                        <constraint firstAttribute="width" constant="53" id="ewe-22-j8g"/>
-                                    </constraints>
-                                    <state key="normal" image="filter"/>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="aQf-fQ-boI" firstAttribute="centerY" secondItem="X5c-QV-40i" secondAttribute="centerY" id="E6w-e4-1H9"/>
                                 <constraint firstItem="3jg-os-3if" firstAttribute="centerY" secondItem="X5c-QV-40i" secondAttribute="centerY" id="eGu-Dv-8Go"/>
-                                <constraint firstAttribute="trailing" secondItem="R5j-Yu-p4O" secondAttribute="trailing" id="h9s-9t-zLf"/>
                                 <constraint firstItem="aQf-fQ-boI" firstAttribute="leading" secondItem="X5c-QV-40i" secondAttribute="leading" id="sXZ-1u-BVD"/>
-                                <constraint firstItem="R5j-Yu-p4O" firstAttribute="centerY" secondItem="X5c-QV-40i" secondAttribute="centerY" id="slt-wj-8Tp"/>
                                 <constraint firstItem="3jg-os-3if" firstAttribute="leading" secondItem="aQf-fQ-boI" secondAttribute="trailing" constant="-12" id="ypK-JG-kd2"/>
                                 <constraint firstAttribute="height" constant="53" id="ziI-ZX-kwS"/>
                             </constraints>
@@ -116,6 +106,5 @@
     </objects>
     <resources>
         <image name="backwardArrow" width="9.5" height="16"/>
-        <image name="filter" width="16" height="16"/>
     </resources>
 </document>

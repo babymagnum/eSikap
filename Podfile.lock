@@ -72,6 +72,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.2.3):
     - GoogleUtilities/Logger
+  - HSAttachmentPicker (1.0.8)
   - iOSDropDown (0.3.3)
   - IQKeyboardManagerSwift (6.4.0)
   - Kingfisher (4.10.1)
@@ -83,6 +84,7 @@ PODS:
   - Protobuf (3.9.0)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.3.0)
+  - Toast-Swift (5.0.0)
   - XLPagerTabStrip (8.1.0)
 
 DEPENDENCIES:
@@ -96,11 +98,13 @@ DEPENDENCIES:
   - FittedSheets
   - GoogleMaps
   - GooglePlaces
+  - HSAttachmentPicker
   - iOSDropDown
   - IQKeyboardManagerSwift
   - Kingfisher
   - SVProgressHUD
   - SwiftyJSON (~> 4.0)
+  - Toast-Swift (~> 5.0.0)
   - XLPagerTabStrip
 
 SPEC REPOS:
@@ -120,6 +124,7 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlaces
     - GoogleUtilities
+    - HSAttachmentPicker
     - iOSDropDown
     - IQKeyboardManagerSwift
     - Kingfisher
@@ -127,6 +132,7 @@ SPEC REPOS:
     - Protobuf
     - SVProgressHUD
     - SwiftyJSON
+    - Toast-Swift
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
@@ -145,6 +151,7 @@ SPEC CHECKSUMS:
   GoogleMaps: 5046d7edfe381c1a0b20fdaf293915a375c3122b
   GooglePlaces: 41bc2e480816b1234a48f4bec92e1c886f37cfe1
   GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
+  HSAttachmentPicker: ed3d5a670cdd805ba8268f0d00a4d102d65cbd1d
   iOSDropDown: ae675451f6b91cec00531c953372e09c54dbd818
   IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
@@ -152,8 +159,9 @@ SPEC CHECKSUMS:
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
 
-PODFILE CHECKSUM: 361a155aaaa139ed76da322897c3017c579bbd49
+PODFILE CHECKSUM: 6d77a69906211dc77d3ee6e0f03b9fd6ac6e768f
 
 COCOAPODS: 1.7.1

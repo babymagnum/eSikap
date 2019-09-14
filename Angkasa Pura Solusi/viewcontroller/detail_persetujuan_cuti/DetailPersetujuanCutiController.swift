@@ -8,9 +8,11 @@
 
 import UIKit
 import SVProgressHUD
+import Toast_Swift
 
 class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var viewLampiranContent: UIView!
     @IBOutlet weak var viewLampiranHeight: NSLayoutConstraint!
     @IBOutlet weak var viewLampiran: UIView!
     @IBOutlet weak var labelLampiran: CustomLabel!
@@ -35,6 +37,7 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var labelStatusAction: CustomLabel!
     
+    private var attachment: String?
     private var listStatusPersetujuan = [ItemApproval]()
     private var listStatusAction = [StatusAction]()
     private var isCalculateStatusAction = false
@@ -58,6 +61,7 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     }
     
     private func initEvent() {
+        viewLampiranContent.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewLampiranContentClick)))
         switchStatusAction.addTarget(self, action: #selector(switchStatusActionChange), for: UIControl.Event.valueChanged)
     }
     
@@ -114,6 +118,7 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
             self.labelStatusAction.text = "REJECTED"
         }
         
+        attachment = item?.attachment
         labelLampiran.text = item?.attachment_name
         labelStatusTop.setTitle(item?.status, for: .normal)
         labelStatusTop.backgroundColor = UIColor(hexString: String((item?.status_color?.dropFirst())!))
@@ -127,6 +132,11 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
         labelDateSubmitted.text = "Diajukan pada \(item?.date ?? "")"
         labelKodeCuti.text = item?.number
         detailLeave = item
+        
+        UIView.animate(withDuration: 0.2) {
+            self.scrollView.alpha = 1
+            self.view.layoutIfNeeded()
+        }
         
         for date in item!.approval_dates {
             self.listStatusAction.append(StatusAction(date: date, isApproved: "0"))
@@ -176,11 +186,30 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
         viewFieldCatatan.giveBorder(3, 1, "dedede")
         labelStatusTop.layer.cornerRadius = labelStatusTop.frame.height / 2
         buttonProses.layer.cornerRadius = 5
+        scrollView.alpha = 0
     }
 
 }
 
-extension DetailPersetujuanCutiController : UICollectionViewDataSource {
+extension DetailPersetujuanCutiController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == statusPersetujuanCollectionView {
+            let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
+            
+            let item = listStatusPersetujuan[indexPath.item]
+            
+            let fullHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 25 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width) + statusPersetujuanCell.labelDate.getHeight(width: statusPersetujuanCell.labelDate.frame.width)
+            
+            let withoutDateHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 25 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width)
+            
+            return CGSize(width: UIScreen.main.bounds.width - 28, height: item.status_date == "" ? withoutDateHeight : fullHeight)
+        } else {
+            let statusActionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusActionCell", for: indexPath) as! StatusActionCell
+            return CGSize(width: UIScreen.main.bounds.width - 28, height: statusActionCell.viewContainer.frame.height)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == statusPersetujuanCollectionView {
             return listStatusPersetujuan.count
@@ -212,20 +241,13 @@ extension DetailPersetujuanCutiController : UICollectionViewDataSource {
             statusActionCell.delegate = self
             statusActionCell.position = indexPath.item
             
-            if !isCalculateStatusAction {
-                self.isCalculateStatusAction = true
-                DispatchQueue.main.async {
-                    let statusActionLayout = self.statusActionCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    statusActionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusActionCell.viewContainer.frame.height)
-                }
-            }
-            
             return statusActionCell
         }
     }
 }
 
-extension DetailPersetujuanCutiController: StatusActionCellProtocol {
+extension DetailPersetujuanCutiController: StatusActionCellProtocol, URLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate {
+    
     private func approvalLeaveByDate() {
         SVProgressHUD.show()
         
@@ -244,9 +266,10 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol {
             
             guard let success = success else { return }
             
-            self.function.showUnderstandDialog(self, "Sukses Melakukan Approval Cuti", success.message!, "Mengerti", completionHandler: {
-                self.listStatusAction.removeAll()
-                self.getDetailLeaveApprovalById()
+            self.buttonProses.isEnabled = false
+            self.view.makeToast(success.message)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.navigationController?.popViewController(animated: true)
             })
         }
     }
@@ -270,9 +293,10 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol {
             
             guard let success = success else { return }
             
-            self.function.showUnderstandDialog(self, "Sukses Melakukan Approval Cuti", success.message!, "Mengerti", completionHandler: {
-                self.listStatusAction.removeAll()
-                self.getDetailLeaveApprovalById()
+            self.buttonProses.isEnabled = false
+            self.view.makeToast(success.message)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.navigationController?.popViewController(animated: true)
             })
         }
     }
@@ -304,6 +328,49 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol {
         }
         
         print(listStatusAction)
+    }
+    
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        SVProgressHUD.dismiss()
+        
+        print("downloadLocation:", location)
+        // create destination URL with the original pdf name
+        guard let url = downloadTask.originalRequest?.url else { return }
+        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
+        // delete original copy
+        try? FileManager.default.removeItem(at: destinationURL)
+        // copy from temp to Document
+        do {
+            try FileManager.default.copyItem(at: location, to: destinationURL)
+            DispatchQueue.main.async {
+                let docOpener = UIDocumentInteractionController.init(url: destinationURL)
+                docOpener.delegate = self
+                docOpener.presentPreview(animated: true)
+            }
+        } catch let error {
+            print("Copy Error: \(error.localizedDescription)")
+        }
+    }
+    
+    @objc func viewLampiranContentClick() {
+        guard let attachment = attachment else { return }
+        
+        guard let url = URL(string: attachment) else {
+            self.function.showUnderstandDialog(self, "File Tidak Ditemukan", "File yang ingin didownload tidak tersedia di server.", "Mengerti")
+            return
+        }
+        
+        print("lampiran clicked \(url)")
+        
+        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+        let downloadTask = urlSession.downloadTask(with: url)
+        downloadTask.resume()
+        SVProgressHUD.show(withStatus: "Sedang mendownload file...")
     }
     
     @IBAction func buttonBackClick(_ sender: Any) { navigationController?.popViewController(animated: true) }

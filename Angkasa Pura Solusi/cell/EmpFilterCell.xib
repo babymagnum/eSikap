@@ -34,13 +34,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnR-TL-Z7Q" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="10" y="23" width="280" height="12"/>
+                                <rect key="frame" x="10" y="27" width="280" height="12"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                 <color key="textColor" red="0.1764705882" green="0.53333333329999999" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEu-gm-8PD" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="10" y="36" width="280" height="12"/>
+                                <rect key="frame" x="10" y="44" width="280" height="12"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                 <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -49,9 +49,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YnR-TL-Z7Q" secondAttribute="trailing" constant="10" id="AWV-TP-CBh"/>
-                            <constraint firstItem="YnR-TL-Z7Q" firstAttribute="top" secondItem="Cto-Ug-We4" secondAttribute="bottom" constant="1" id="IqN-7V-3cz"/>
+                            <constraint firstItem="YnR-TL-Z7Q" firstAttribute="top" secondItem="Cto-Ug-We4" secondAttribute="bottom" constant="5" id="IqN-7V-3cz"/>
                             <constraint firstItem="vEu-gm-8PD" firstAttribute="leading" secondItem="gej-1d-PkX" secondAttribute="leading" constant="10" id="TJu-lf-KwK"/>
-                            <constraint firstItem="vEu-gm-8PD" firstAttribute="top" secondItem="YnR-TL-Z7Q" secondAttribute="bottom" constant="1" id="bcp-J0-Mnk"/>
+                            <constraint firstItem="vEu-gm-8PD" firstAttribute="top" secondItem="YnR-TL-Z7Q" secondAttribute="bottom" constant="5" id="bcp-J0-Mnk"/>
                             <constraint firstAttribute="trailing" secondItem="vEu-gm-8PD" secondAttribute="trailing" constant="10" id="cma-cC-aLF"/>
                             <constraint firstItem="Cto-Ug-We4" firstAttribute="top" secondItem="gej-1d-PkX" secondAttribute="top" constant="11" id="mBo-xZ-qU0"/>
                             <constraint firstItem="Cto-Ug-We4" firstAttribute="leading" secondItem="gej-1d-PkX" secondAttribute="leading" constant="10" id="oQb-Dq-McM"/>

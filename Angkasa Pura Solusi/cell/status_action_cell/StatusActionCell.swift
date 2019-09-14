@@ -14,6 +14,8 @@ protocol StatusActionCellProtocol {
 
 class StatusActionCell: UICollectionViewCell {
 
+    lazy var function: PublicFunction = { return PublicFunction() }()
+    
     @IBOutlet weak var switchStatusHeight: NSLayoutConstraint!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var labelDate: UILabel!
@@ -42,7 +44,7 @@ class StatusActionCell: UICollectionViewCell {
         didSet {
             if let item = data {
                 switchStatus.setOn(item.isApproved == "1" ? true : false, animated: true)
-                labelDate.text = item.date
+                labelDate.text = function.dateToString(function.stringToDate(item.date!, "yyyy-MM-dd"), "dd-MM-yyyy")
                 if item.isApproved == "1" {
                     self.labelStatus.text = "APPROVED"
                 } else {

@@ -206,6 +206,10 @@ class PublicFunction {
         return Double((formatter.date(from: getCurrentDate(pattern: pattern))?.timeIntervalSince1970)! * 1000.0)
     }
     
+    func dateToMillis(date: Date, pattern: String) -> Double {
+        return Double(date.timeIntervalSince1970) * 1000.0
+    }
+    
     func dateToString(_ date: Date, _ pattern: String) -> String {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = pattern
@@ -254,7 +258,13 @@ class PublicFunction {
         }
     }
     
-    open func showUnderstandDialog(_ viewController: UIViewController, _ title: String, _ message: String, _ actionTitle: String) {
+    func showUnderstandDialog(_ viewController: UIViewController, _ title: String, _ message: String, _ actionTitle: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: .cancel, handler: nil))
+        viewController.present(alert, animated: true)
+    }
+    
+    func showUnderstandDialog(_ viewController: UIViewController, _ title: String, _ message: String?, _ actionTitle: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: actionTitle, style: .cancel, handler: nil))
         viewController.present(alert, animated: true)
@@ -547,6 +557,17 @@ extension UICollectionView {
 
 extension UIView {
     
+    func getHeight() -> CGFloat {
+        
+        var contentRect = CGRect.zero
+        
+        for view in self.subviews {
+            contentRect = contentRect.union(view.frame)
+        }
+        
+        return contentRect.height
+    }
+    
     func giveBorder(_ cornerRadius: CGFloat, _ borderWidth: CGFloat, _ borderColor: String) {
         clipsToBounds = true
         layer.cornerRadius = cornerRadius
@@ -558,17 +579,6 @@ extension UIView {
         return fromNib(nibName: nil)
     }
     
-    public class func fromNib(nibName: String?) -> Self {
-        func fromNibHelper<T>(nibName: String?) -> T where T : UIView {
-            let bundle = Bundle(for: T.self)
-            let name = nibName ?? String(describing: T.self)
-            return bundle.loadNibNamed(name, owner: nil, options: nil)?.first as? T ?? T()
-        }
-        return fromNibHelper(nibName: nibName)
-    }
-}
-
-extension UIView {
     func addShadow(_ offset: CGSize, _ color: UIColor, _ shadowRadius: CGFloat, _ opacity: Float, _ cornerRadius: CGFloat) {
         self.layer.cornerRadius = cornerRadius
         self.clipsToBounds = false
@@ -578,15 +588,13 @@ extension UIView {
         self.layer.shadowOpacity = opacity
     }
     
-    func getHeight() -> CGFloat {
-        
-        var contentRect = CGRect.zero
-        
-        for view in self.subviews {
-            contentRect = contentRect.union(view.frame)
+    public class func fromNib(nibName: String?) -> Self {
+        func fromNibHelper<T>(nibName: String?) -> T where T : UIView {
+            let bundle = Bundle(for: T.self)
+            let name = nibName ?? String(describing: T.self)
+            return bundle.loadNibNamed(name, owner: nil, options: nil)?.first as? T ?? T()
         }
-        
-        return contentRect.height
+        return fromNibHelper(nibName: nibName)
     }
 }
 

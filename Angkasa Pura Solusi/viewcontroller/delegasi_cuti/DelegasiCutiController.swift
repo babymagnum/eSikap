@@ -69,12 +69,16 @@ class DelegasiCutiController: BaseViewController, IndicatorInfoProvider, UIColle
             }
             
             guard let delegationList = delegationList else { return }
+            
+            if self.currentPage == 0 { self.listDelegasiCuti.removeAll() }
+            
             if delegationList.data?.leave.count == 0 && self.listDelegasiCuti.count == 0 {
                 self.labelDataKosong.text = delegationList.message
                 self.labelDataKosong.isHidden = false
             } else {
                 self.labelDataKosong.isHidden = true
             }
+            
             self.totalPage = (delegationList.data?.total_page)!
             
             for cuti in delegationList.data!.leave {
@@ -100,7 +104,6 @@ extension DelegasiCutiController {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         currentPage = 0
-        listDelegasiCuti.removeAll()
         getLeaveDelegationList()
     }
 }

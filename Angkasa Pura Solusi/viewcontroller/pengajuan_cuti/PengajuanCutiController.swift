@@ -10,6 +10,8 @@ import UIKit
 import iOSDropDown
 import SVProgressHUD
 import FittedSheets
+import HSAttachmentPicker
+import Toast_Swift
 
 enum DatePickerEnum {
     case date
@@ -19,12 +21,12 @@ enum DatePickerEnum {
     case timeEnd
 }
 
-class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UITextFieldDelegate {
+class PengajuanCutiController: BaseViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UITextFieldDelegate {
 
     //outlet root
+    @IBOutlet weak var imageLampiranButton: UIImageView!
     @IBOutlet weak var imageAtasan: UIImageView!
     @IBOutlet weak var imageDelegasi: UIImageView!
-    @IBOutlet weak var imageFile: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var labelNama: UILabel!
@@ -69,9 +71,13 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
     @IBOutlet weak var fieldRentangTanggalAkhir: CustomTextField!
     
     //view lampirkan file
+    @IBOutlet weak var labelLampiranFile: CustomLabel!
     @IBOutlet weak var viewRootLampirkanFile: UIView!
     @IBOutlet weak var viewLampirkanHeight: NSLayoutConstraint!
     @IBOutlet weak var viewLampirkanFile: UIView!
+    @IBOutlet weak var imageLampiranHeight: NSLayoutConstraint!
+    @IBOutlet weak var imageLampiran: UIImageView!
+    @IBOutlet weak var labelLampiranFileHeight: NSLayoutConstraint!
     
     //view rentang waktu
     @IBOutlet weak var viewRangeWaktu: UIView!
@@ -81,6 +87,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
     @IBOutlet weak var fieldRentangWaktuAwal: CustomTextField!
     @IBOutlet weak var fieldRentangWaktuAkhir: CustomTextField!
     
+    let picker = HSAttachmentPicker()
     private var datePicker: DatePickerEnum!
     private var defaultJatahCutiHeight: CGFloat = 0
     private var defaultPickTanggalHeight: CGFloat = 0
@@ -95,7 +102,6 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
     private var delegation_emp_id = ""
     private var supervisor_emp_id = ""
     private var idPilih = 99999999
-    
     private var listLeaveType = [ItemType]()
     private var listJatahCuti = [ItemQuota]()
     private var listTanggalCuti = [TanggalCuti]()
@@ -105,6 +111,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
     private var isSetTanggalCutiHeight = false
     private var isBackDate = true
     private var isTanggalCutiVisible = false
+    private var pickedData: Data?
     
     var leave_id: String?
     
@@ -117,7 +124,8 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         defaultLampirkanHeight = viewRootLampirkanFile.getHeight() + 100
         defaultRentangWaktuHeight = viewRangeWaktu.getHeight() + 100
         defaultTanggalPickedHeight = 0
-        defaultLabelMaksimalCutiHeight = (labelMaksimalCuti.text?.height(withConstrainedWidth: labelMaksimalCuti.frame.width, font: UIFont(name: labelMaksimalCuti.font.fontName, size: labelMaksimalCuti.font.pointSize)!))!
+        defaultLabelMaksimalCutiHeight = (labelMaksimalCuti.text?.getHeight(withConstrainedWidth: labelMaksimalCuti.frame.width, font_size: 12))!
+        
     }
     
     override func viewDidLoad() {
@@ -134,7 +142,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         getProfile()
         
         if let leave_id = leave_id {
-            self.getEditDetailLeaveById(id: leave_id)
+            getEditDetailLeaveById(id: leave_id)
         } else {
             getLeaveType()
         }
@@ -190,7 +198,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         fieldRentangTanggalAwal.text = item?.leave_start
         fieldRentangTanggalAkhir.text = item?.leave_end
         fieldPickTanggal.text = item?.date?.components(separatedBy: " ")[0]
-        if item?.url_file != "" { imageFile.loadUrl((item?.url_file)!) }
+        if item?.url_file != "" { imageLampiran.loadUrl((item?.url_file)!) }
         
         getLeaveType()
     }
@@ -200,7 +208,7 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         
         imageAtasan.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageAtasanClick)))
         
-        imageFile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageFileClick)))
+        viewLampirkanFile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewLampirkanFileClick)))
         
         viewPickTanggal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewPickTanggalClick)))
         
@@ -344,8 +352,30 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         scrollView.resizeScrollViewContentSize()
     }
     
+    private func hideLabelLampiranFile() {
+        labelLampiranFileHeight.constant = 0
+        scrollView.resizeScrollViewContentSize()
+    }
+    
+    private func showLabelLampiranFile() {
+        labelLampiranFileHeight.constant = defaultLabelMaksimalCutiHeight
+        scrollView.resizeScrollViewContentSize()
+    }
+    
+    private func hideImageLampiran() {
+        imageLampiranHeight.constant = 0
+        scrollView.resizeScrollViewContentSize()
+    }
+    
+    private func showImageLampiran() {
+        imageLampiranHeight.constant = 103.5
+        scrollView.resizeScrollViewContentSize()
+    }
+    
     private func resetPengajuanCuti() {
         hideLabelMaksimalCuti()
+        hideLabelLampiranFile()
+        hideImageLampiran()
         hidePickTanggal()
         hideJatahCuti()
         hideRentangTanggal()
@@ -427,7 +457,11 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
         
         if selectedItem.is_backdated == "0" { self.isBackDate = false } else { self.isBackDate = true }
         
-        if selectedItem.is_lampiran == "1" { self.showLampirkan() } else { self.hideLampirkan() }
+        if selectedItem.is_lampiran == "1" { self.showLampirkan() } else {
+            self.hideLampirkan()
+            self.hideLabelLampiranFile()
+            self.hideImageLampiran()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -435,6 +469,8 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
     private func initView() {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        
+        picker.delegate = self
         
         fieldJenisCuti.delegate = self
         labelUnit.layer.cornerRadius = 5
@@ -471,7 +507,32 @@ class PengajuanCutiController: BaseViewController, UICollectionViewDelegate, UIT
             self.view.layoutIfNeeded()
         }
     }
+}
 
+extension PengajuanCutiController: HSAttachmentPickerDelegate {
+    func attachmentPickerMenu(_ menu: HSAttachmentPicker, show controller: UIViewController, completion: (() -> Void)? = nil) {
+        self.present(controller, animated: true, completion: completion)
+    }
+    
+    func attachmentPickerMenu(_ menu: HSAttachmentPicker, showErrorMessage errorMessage: String) {
+        // do nothing
+    }
+    
+    func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
+        
+        if let image = image {
+            self.pickedData = image.jpegData(compressionQuality: 0.5)
+            self.imageLampiran.image = image
+            self.labelLampiranFile.text = filename
+            self.showImageLampiran()
+            self.showLabelLampiranFile()
+            return
+        }
+        
+        pickedData = data
+        labelLampiranFile.text = filename
+        showLabelLampiranFile()
+    }
 }
 
 //function show hide hidden view
@@ -508,10 +569,17 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
         switch datePicker {
             case .date?:
                 fieldPickTanggal.text = pickedDate
-            
-                if self.isTanggalCutiVisible {
+                
+                for date in listTanggalCuti {
+                    if date.tanggal == pickedDate {
+                        self.view.makeToast("Tanggal yang sama sudah dipilih")
+                        return
+                    }
+                }
+                
+                if isTanggalCutiVisible {
                     listTanggalCuti.append(TanggalCuti(tanggal: pickedDate))
-                    self.tanggalCutiCollectionView.reloadData()
+                    tanggalCutiCollectionView.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
                         self.viewTanggalPickedHeight.constant = self.tanggalCutiCollectionHeight.constant
@@ -559,10 +627,15 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     }
     
     private func addLeaveRequest(body: [String: String]) {
-        let imageData = imageFile.image?.jpegData(compressionQuality: 0.5)
+        var fileData: Data?
+        if let data = pickedData {
+            fileData = data
+        } else {
+            fileData = imageLampiranButton.image?.jpegData(compressionQuality: 0.5)
+        }
         
         SVProgressHUD.show()
-        informationNetworking.postLeaveRequest(imageData: imageData!, body: body) { (error, message, isExpired) in
+        informationNetworking.postLeaveRequest(imageData: fileData!, body: body) { (error, message, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -632,10 +705,45 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         imageAtasan.image = UIImage(named: "icSearchWhite")
     }
     
-    @objc func imageFileClick() {
-        imagePicker.pickImage(self) { (image) in
-            self.imageFile.image = image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
         }
+        
+        pickedData = image.jpegData(compressionQuality: 0.5)
+        imageLampiran.image = image
+        showImageLampiran()
+        showLabelLampiranFile()
+    }
+    
+    @objc func viewLampirkanFileClick() {
+        
+//        imagePicker.pickImage(self) { (image) in
+//            self.imageFile.image = image
+//        }
+        
+        let alert = UIAlertController(title: "Pick File", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (UIAlertAction) in
+            
+            if !UIImagePickerController.isSourceTypeAvailable(.camera){
+                self.function.showUnderstandDialog(self, "Device Tidak Memiliki Camera", nil, "Mengerti")
+            } else{
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.allowsEditing = true
+                imagePicker.sourceType = .camera
+                
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "File", style: .default, handler: { (UIAlertAction) in
+            self.picker.showAttachmentMenu()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     @objc func viewDelegasiClick() {

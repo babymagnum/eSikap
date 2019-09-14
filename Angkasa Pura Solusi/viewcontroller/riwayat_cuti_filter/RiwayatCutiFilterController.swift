@@ -189,6 +189,9 @@ class RiwayatCutiFilterController: BaseViewController, UITextFieldDelegate {
         viewStatus.giveBorder(5, 1, "dedede")
         buttonReset.giveBorder(buttonReset.frame.height / 2, 1, "42a5f5")
         buttonTerapkan.layer.cornerRadius = buttonTerapkan.frame.height / 2
+        
+        selectedTahun = function.getCurrentDate(pattern: "yyyy")
+        fieldTahun.text = selectedTahun
     }
     
 }

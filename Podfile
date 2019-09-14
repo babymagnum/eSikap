@@ -19,4 +19,6 @@ target 'Angkasa Pura Solusi' do
   pod 'EzPopup'
   pod 'FittedSheets'
   pod 'iOSDropDown'
+  pod 'Toast-Swift', '~> 5.0.0'
+  pod 'HSAttachmentPicker'
 end

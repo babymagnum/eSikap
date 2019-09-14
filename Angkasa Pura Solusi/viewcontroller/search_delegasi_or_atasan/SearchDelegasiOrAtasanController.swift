@@ -148,7 +148,7 @@ extension SearchDelegasiOrAtasanController: UICollectionViewDataSource {
             self.isSetCollectionNameHeight = true
             DispatchQueue.main.async {
                 let nameLayout = self.collectionName.collectionViewLayout as! UICollectionViewFlowLayout
-                nameLayout.itemSize = CGSize(width: self.collectionName.frame.width - 26, height: cell.viewContainer.getHeight() + 8)
+                nameLayout.itemSize = CGSize(width: self.collectionName.frame.width - 26, height: cell.viewContainer.getHeight() + 11)
             }
         }
         
@@ -197,10 +197,8 @@ extension SearchDelegasiOrAtasanController {
     @objc func containerNameClick(sender: UITapGestureRecognizer) {
         guard let indexpath = collectionName.indexPathForItem(at: sender.location(in: collectionName)) else { return }
         let item = listEmpFilter[indexpath.item]
-        self.function.showUnderstandDialog(self, "Pilih \(type ?? "")", "Apakah anda yakin memilih \(item.emp_name ?? "")?", "Ya", "Tidak") {
-            self.delegate.namePicked(itemEmp: item, type: self.type)
-            self.navigationController?.popViewController(animated: true)
-        }
+        self.delegate.namePicked(itemEmp: item, type: self.type)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
