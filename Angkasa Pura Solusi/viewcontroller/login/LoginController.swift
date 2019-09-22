@@ -55,7 +55,7 @@ class LoginController: BaseViewController {
         imageTopHeight.constant = UIScreen.main.bounds.height * 0.7
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .default }
 }
 
 extension LoginController {

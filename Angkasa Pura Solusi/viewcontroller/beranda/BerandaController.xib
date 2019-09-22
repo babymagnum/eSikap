@@ -26,6 +26,7 @@
                 <outlet property="beritaCollectionView" destination="0ga-Oi-UWc" id="m5v-ph-9cG"/>
                 <outlet property="beritaCollectionViewHeight" destination="LhC-Kq-GOz" id="WhH-l5-Ivl"/>
                 <outlet property="buttonSelengkapnya" destination="L8U-hd-QnA" id="qby-br-JEg"/>
+                <outlet property="collectionBeritaBottomMargin" destination="eAe-bq-oUc" id="oWS-zQ-k11"/>
                 <outlet property="iconPresenceStatus" destination="739-S5-9a2" id="RrN-Lo-PdS"/>
                 <outlet property="imageAccount" destination="jBV-aC-LNq" id="Liq-55-JcF"/>
                 <outlet property="imagePlaceholder" destination="eku-i3-0Te" id="Tnl-BW-zzg"/>

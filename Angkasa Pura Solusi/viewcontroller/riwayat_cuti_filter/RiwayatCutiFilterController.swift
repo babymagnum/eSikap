@@ -179,7 +179,7 @@ class RiwayatCutiFilterController: BaseViewController, UITextFieldDelegate {
     
     private func initView() {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
-        
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         fieldTahun.delegate = self
         fieldJenisCuti.delegate = self
         fieldStatus.delegate = self

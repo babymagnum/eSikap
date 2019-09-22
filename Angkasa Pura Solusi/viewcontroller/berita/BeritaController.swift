@@ -14,6 +14,7 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var beritaCollectionView: UICollectionView!
     @IBOutlet weak var labelBeritaKosong: CustomLabel!
+    @IBOutlet weak var collectionBeritaBottomMargin: NSLayoutConstraint!
     
     var listBerita = [News]()
     var isCalculateBeritaHeight = false
@@ -40,6 +41,17 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
         initCollectionView()
         
         getAllNews()
+        
+        checkVersion()
+    }
+    
+    private func checkVersion() {
+        if #available(iOS 11, *) {
+            //do nothing
+        } else {
+            collectionBeritaBottomMargin.constant += 49 // 49 is height of ui tabbar
+            self.view.layoutIfNeeded()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }

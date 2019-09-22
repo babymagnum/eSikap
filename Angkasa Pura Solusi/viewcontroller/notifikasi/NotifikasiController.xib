@@ -17,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotifikasiController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
+                <outlet property="collectionNotificationBottomMargin" destination="8s1-UH-Djv" id="jd5-fR-gEp"/>
                 <outlet property="notifikasiCollectionView" destination="TFT-83-V4f" id="AgQ-Lb-Ig8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewNotifikasiKosong" destination="Vk7-oD-mrh" id="isB-yS-4Kw"/>
@@ -58,7 +59,7 @@
                                 <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                             </collectionViewFlowLayout>
                         </collectionView>
-                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vk7-oD-mrh">
+                        <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vk7-oD-mrh">
                             <rect key="frame" x="20" y="297" width="335" height="53"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icNotifikasiNonActive" translatesAutoresizingMaskIntoConstraints="NO" id="LJx-QY-vvN">

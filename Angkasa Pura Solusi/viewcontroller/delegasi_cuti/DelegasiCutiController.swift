@@ -30,6 +30,11 @@ class DelegasiCutiController: BaseViewController, IndicatorInfoProvider, UIColle
         return refreshControl
     }()
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionDelegasiCuti.collectionViewLayout.invalidateLayout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

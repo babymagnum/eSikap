@@ -30,9 +30,7 @@ class PresensiCell: UICollectionViewCell {
         
         viewContainer.layer.cornerRadius = 5
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.buttonStatusPresensi.layer.cornerRadius = self.buttonStatusPresensi.frame.height / 2
-        }
+        self.buttonStatusPresensi.layer.cornerRadius = 5
     }
     
     override func layoutSubviews() {
@@ -72,7 +70,13 @@ class PresensiCell: UICollectionViewCell {
                     self.labelPresensiPulang.attributedText = function.coloredString(color: "ef5350", mainString: fullString!, stringNotColored: String((data.date_in?.prefix(9))!))
                 }
                 
-                buttonStatusPresensi.setTitle(data.presence_status, for: .normal)
+                if data.presence_status == "" {
+                    buttonStatusPresensi.alpha = 0
+                } else {
+                    buttonStatusPresensi.alpha = 1
+                    buttonStatusPresensi.setTitle(data.presence_status, for: .normal)
+                }
+                
                 buttonStatusPresensi.backgroundColor = UIColor(hexString: data.presence_status_bg_color!)
             }
         }

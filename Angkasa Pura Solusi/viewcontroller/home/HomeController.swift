@@ -13,15 +13,14 @@ class HomeController: UITabBarController {
 
     @IBOutlet weak var bottomNavigationBar: UITabBar!
     
-    private var currentPage = 0
-    private var totalPage = 0
-    private var timer: Timer?
-    
     lazy var informationNetworking: InformationNetworking = { return InformationNetworking() }()
     lazy var preference: Preference = { return Preference() }()
     lazy var staticLet: StaticLet = { return StaticLet() }()
     
     // properties
+    private var currentPage = 0
+    private var totalPage = 0
+    private var timer: Timer?
     private var hasNotif = false
     
     override func viewDidLoad() {
@@ -29,12 +28,13 @@ class HomeController: UITabBarController {
 
         initBottomNavigation()
         
+        getNotificationList()
+        
         checkingNotifForeground()
     }
     
     private func checkingNotifForeground() {
         timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { (timer) in
-            print("mengulangi mendapatkan data kembali")
             self.currentPage = 0
             self.getNotificationList()
         }
@@ -75,22 +75,14 @@ class HomeController: UITabBarController {
             for (index, notification) in (listNotification.data?.notification.enumerated())! {
                 if notification.is_read == "0" {
                     self.hasNotif = true
-                    if self.selectedIndex == 2 {
-                        self.checkHasNotifActive()
-                    } else {
-                        self.checkHasNotifNonActive()
-                    }
                     break
                 } else {
                     self.hasNotif = false
-                    if self.selectedIndex == 2 {
-                        self.checkHasNotifActive()
-                    } else {
-                        self.checkHasNotifNonActive()
-                    }
                 }
                 
                 if index == (listNotification.data?.notification.count)! - 1 {
+                    self.setTabbarItem()
+                    
                     if self.currentPage + 1 < self.totalPage {
                         self.currentPage += 1
                         self.getNotificationList()
@@ -100,24 +92,37 @@ class HomeController: UITabBarController {
         }
     }
     
-    private func checkHasNotifNonActive() {
+    private func checkNotifIcon(isSelected: Bool) -> UIImage {
         if hasNotif {
-            setImage("icHasNotifikasiActive", 2)
-            setImage("icHasNotifikasiNonActive", 2)
+            if isSelected {
+                return UIImage(named: "icHasNotifikasiActive")!
+            } else {
+                return UIImage(named: "icHasNotifikasiNonActive")!
+            }
         } else {
-            setImage("icNotifikasiActive", 2)
-            setImage("icNotifikasiNonActive", 2)
+            if isSelected {
+                return UIImage(named: "icNotifikasiActive")!
+            } else {
+                return UIImage(named: "icNotifikasiNonActive")!
+            }
         }
     }
     
-    private func checkHasNotifActive() {
-        if hasNotif {
-            setImage("icNotifikasiNonActive", 2)
-            setImage("icHasNotifikasiActive", 2)
-        } else {
-            setImage("icNotifikasiNonActive", 2)
-            setImage("icNotifikasiActive", 2)
-        }
+    private func setTabbarItem() {
+        let berandaController = BerandaController()
+        berandaController.delegate = self
+        let profilController = ProfilController()
+        profilController.open = .myProfile
+        let beritaController = BeritaController()
+        let notifikasiController = NotifikasiController()
+        viewControllers = [berandaController, beritaController, notifikasiController, profilController]
+        
+        berandaController.tabBarItem = UITabBarItem(title: "Beranda", image: UIImage(named: "icHomeNonActive"), selectedImage: UIImage(named: "icHomeActive"))
+        beritaController.tabBarItem = UITabBarItem(title: "Berita", image: UIImage(named: "icBeritaNonActive"), selectedImage: UIImage(named: "icBeritaActive"))
+        notifikasiController.tabBarItem = UITabBarItem(title: "Notifikasi", image: checkNotifIcon(isSelected: false), selectedImage: checkNotifIcon(isSelected: true))
+        profilController.tabBarItem = UITabBarItem(title: "Profil", image: UIImage(named: "icProfileNonActive"), selectedImage: UIImage(named: "icProfileActive"))
+        
+        setViewControllers(viewControllers, animated: true)
     }
     
     private func initBottomNavigation() {
@@ -127,30 +132,7 @@ class HomeController: UITabBarController {
         
         self.delegate = self
         
-        let berandaController = BerandaController()
-        berandaController.delegate = self
-        let profilController = ProfilController()
-        profilController.open = .myProfile
-        viewControllers = [berandaController, BeritaController(), NotifikasiController(), profilController]
-        
-        tabBar.items![0].title = "Beranda"
-        setImage("icHomeActive", 0)
-        
-        tabBar.items![1].title = "Berita"
-        //pemanggilan harus 2x agar terlihat efek nya, pemanggilan kedua adalah pemanggilan final
-        setImage("icBeritaActive", 1)
-        setImage("icBeritaNonActive", 1)
-        
-        tabBar.items![2].title = "Notifikasi"
-        checkHasNotifNonActive()
-        
-        tabBar.items![3].title = "Profil"
-        setImage("icProfileActive", 3)
-        setImage("icProfileNonActive", 3)
-    }
-    
-    private func setImage(_ image: String, _ index: Int) {
-        tabBar.items![index].image = UIImage(named: image)
+        setTabbarItem()
     }
 
 }
@@ -158,14 +140,6 @@ class HomeController: UITabBarController {
 // protocol init
 extension HomeController: BerandaControllerProtocol {
     func buttonSelengkapnyaClick() {
-        setImage("icHomeNonActive", 0)
-        setImage("icBeritaActive", 1)
-        if hasNotif {
-            setImage("icHasNotifikasiNonActive", 2)
-        } else {
-            setImage("icNotifikasiNonActive", 2)
-        }
-        setImage("icProfileNonActive", 3)
         self.selectedIndex = 1
     }
 }
@@ -173,33 +147,12 @@ extension HomeController: BerandaControllerProtocol {
 extension HomeController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item == (tabBar.items)![0] {
-            print("beranda")
-            self.selectedIndex = 0
-            setImage("icHomeActive", 0)
-            setImage("icBeritaNonActive", 1)
-            checkHasNotifNonActive()
-            setImage("icProfileNonActive", 3)
         } else if item == (tabBar.items)![1] {
-            print("berita")
             self.selectedIndex = 1
-            setImage("icHomeNonActive", 0)
-            setImage("icBeritaActive", 1)
-            checkHasNotifNonActive()
-            setImage("icProfileNonActive", 3)
         } else if item == (tabBar.items)![2] {
-            print("notifikasi")
             self.selectedIndex = 2
-            setImage("icHomeNonActive", 0)
-            setImage("icBeritaNonActive", 1)
-            checkHasNotifActive()
-            setImage("icProfileNonActive", 3)
         } else if item == (tabBar.items)![3] {
-            print("profil")
             self.selectedIndex = 3
-            setImage("icHomeNonActive", 0)
-            setImage("icBeritaNonActive", 1)
-            checkHasNotifNonActive()
-            setImage("icProfileActive", 3)
         }
     }
 }

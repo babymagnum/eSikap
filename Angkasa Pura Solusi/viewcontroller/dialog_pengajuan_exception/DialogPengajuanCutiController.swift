@@ -33,6 +33,11 @@ class DialogPengajuanCutiController: UIViewController, UICollectionViewDelegate 
         viewContainer.layer.cornerRadius = 5
         buttonOke.layer.cornerRadius = 5
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionException.collectionViewLayout.invalidateLayout()
+    }
 
     private func initCollection() {
         collectionException.register(UINib(nibName: "ExceptionCell", bundle: nil), forCellWithReuseIdentifier: "ExceptionCell")

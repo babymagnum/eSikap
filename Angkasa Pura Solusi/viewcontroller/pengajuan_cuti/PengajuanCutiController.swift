@@ -141,6 +141,10 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         
         getProfile()
         
+        getData()
+    }
+    
+    private func getData() {
         if let leave_id = leave_id {
             getEditDetailLeaveById(id: leave_id)
         } else {
@@ -204,6 +208,8 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     }
     
     private func initEvent() {
+        viewJenisCuti.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewJenisCutiClick)))
+        
         imageDelegasi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageDelegasiClick)))
         
         imageAtasan.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageAtasanClick)))
@@ -478,6 +484,8 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         viewAlasan.giveBorder(3, 1, "dedede")
         viewDelegasi.giveBorder(3, 1, "dedede")
         viewAtasan.giveBorder(3, 1, "dedede")
+        imageLampiran.clipsToBounds = true
+        imageLampiran.layer.cornerRadius = 3
         buttonSimpan.layer.cornerRadius = 5
         buttonSubmit.layer.cornerRadius = 5
         viewPickTanggal.giveBorder(3, 1, "dedede")
@@ -521,11 +529,11 @@ extension PengajuanCutiController: HSAttachmentPickerDelegate {
     func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
         
         if let image = image {
-            self.pickedData = image.jpegData(compressionQuality: 0.5)
-            self.imageLampiran.image = image
-            self.labelLampiranFile.text = filename
-            self.showImageLampiran()
-            self.showLabelLampiranFile()
+            pickedData = image.jpegData(compressionQuality: 0.5)
+            imageLampiran.image = image
+            labelLampiranFile.text = filename
+            showImageLampiran()
+            showLabelLampiranFile()
             return
         }
         
@@ -699,6 +707,10 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         imageDelegasi.image = UIImage(named: "icSearchWhite")
     }
     
+    @objc func viewJenisCutiClick() {
+        fieldJenisCuti.showList()
+    }
+    
     @objc func imageAtasanClick() {
         supervisor_emp_id = ""
         fieldAtasan.text = ""
@@ -716,18 +728,13 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         pickedData = image.jpegData(compressionQuality: 0.5)
         imageLampiran.image = image
         showImageLampiran()
-        showLabelLampiranFile()
+        hideLabelLampiranFile()
     }
     
     @objc func viewLampirkanFileClick() {
         
-//        imagePicker.pickImage(self) { (image) in
-//            self.imageFile.image = image
-//        }
-        
         let alert = UIAlertController(title: "Pick File", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (UIAlertAction) in
-            
             if !UIImagePickerController.isSourceTypeAvailable(.camera){
                 self.function.showUnderstandDialog(self, "Device Tidak Memiliki Camera", nil, "Mengerti")
             } else{
@@ -735,7 +742,6 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
                 imagePicker.delegate = self
                 imagePicker.allowsEditing = true
                 imagePicker.sourceType = .camera
-                
                 self.present(imagePicker, animated: true, completion: nil)
             }
         }))

@@ -17,6 +17,7 @@ class DialogPreparePresenceController: UIViewController {
     @IBOutlet weak var imageX: UIImageView!
     
     var stringDescription: String?
+    var image: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,9 @@ class DialogPreparePresenceController: UIViewController {
         viewContainer.layer.cornerRadius = 4
         
         labelDescription.text = stringDescription
+        if let image = image {
+            imageX.image = UIImage(named: image)
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             UIView.animate(withDuration: 0.2) {

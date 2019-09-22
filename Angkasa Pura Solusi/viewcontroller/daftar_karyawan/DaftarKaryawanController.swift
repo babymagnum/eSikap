@@ -45,6 +45,11 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
         getEmpList()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        daftarKaryawanCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 
     private func initCollectionView() {

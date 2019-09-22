@@ -125,8 +125,8 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         labelDateSubmitted.text = "Diajukan pada \(item?.date ?? "")"
         labelKodeCuti.text = item?.number
         
-        self.collectionTanggalCuti.reloadData()
-        self.statusPersetujuanCollectionView.reloadData()
+        collectionTanggalCuti.reloadData()
+        statusPersetujuanCollectionView.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             UIView.animate(withDuration: 0.2, animations: {
@@ -224,8 +224,8 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
             self.view.layoutIfNeeded()
         }
         
-        self.collectionTanggalCuti.reloadData()
-        self.statusPersetujuanCollectionView.reloadData()
+        collectionTanggalCuti.reloadData()
+        statusPersetujuanCollectionView.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             UIView.animate(withDuration: 0.2, animations: {
@@ -242,6 +242,12 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
                 self.view.layoutIfNeeded()
             })
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        statusPersetujuanCollectionView.collectionViewLayout.invalidateLayout()
+        collectionTanggalCuti.collectionViewLayout.invalidateLayout()
     }
     
     private func initCollectionView() {
@@ -261,18 +267,19 @@ extension DetailCutiController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == statusPersetujuanCollectionView {
-            let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
             
             let item = listStatusPersetujuan[indexPath.item]
             
-            let fullHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 25 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width) + statusPersetujuanCell.labelDate.getHeight(width: statusPersetujuanCell.labelDate.frame.width)
+            let statusDateHeight = item.status_date?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 28, font_size: 7)
+            let statusHeight = (item.status?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 28, font_size: 7))!
+            let imageHeight = ((UIScreen.main.bounds.width - 28) * 0.075)
             
-            let withoutDateHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 25 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width)
+            let fullHeight = imageHeight + 25 + statusHeight + statusDateHeight!
+            let withoutDateHeight = imageHeight + 25 + statusHeight
             
             return CGSize(width: UIScreen.main.bounds.width - 28, height: item.status_date == "" ? withoutDateHeight : fullHeight)
         } else {
-            let tanggalCutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailTanggalCutiCell", for: indexPath) as! DetailTanggalCutiCell
-            return CGSize(width: self.collectionTanggalCuti.frame.width, height: tanggalCutiCell.viewContainer.getHeight())
+            return CGSize(width: self.collectionTanggalCuti.frame.width, height: 32)
         }
     }
     

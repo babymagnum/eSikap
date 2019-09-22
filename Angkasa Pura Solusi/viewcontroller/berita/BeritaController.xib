@@ -18,6 +18,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BeritaController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
             <connections>
                 <outlet property="beritaCollectionView" destination="Btr-ll-J21" id="ppL-Il-sPb"/>
+                <outlet property="collectionBeritaBottomMargin" destination="ap9-mo-22K" id="pvV-bQ-ARa"/>
                 <outlet property="labelBeritaKosong" destination="i6I-Ma-Coe" id="Og2-aK-0aC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewRootTopMargin" destination="N7X-sz-P7f" id="9jj-a1-eiM"/>

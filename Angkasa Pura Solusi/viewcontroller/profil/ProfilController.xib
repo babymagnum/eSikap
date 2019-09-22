@@ -37,9 +37,9 @@
                 <outlet property="scrollView" destination="rfr-b5-XNG" id="Noc-br-8hh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewAction" destination="7Uz-AE-tKW" id="KlD-3R-UVx"/>
+                <outlet property="viewActionBottomMargin" destination="Tpu-Ba-zVs" id="Cbx-Gf-d6x"/>
                 <outlet property="viewInformation" destination="YUn-HV-bhc" id="Vd1-tO-A0a"/>
                 <outlet property="viewKeluar" destination="J1Z-Mh-f2M" id="OxV-ut-36L"/>
-                <outlet property="viewRootHeight" destination="gTx-eA-Z4a" id="ehv-Bj-Dz7"/>
                 <outlet property="viewRootTopMargin" destination="Duc-eN-M9g" id="svo-EO-QKZ"/>
                 <outlet property="viewTop" destination="DDK-K9-U62" id="VjD-DI-OZX"/>
                 <outlet property="viewTopHeight" destination="7tZ-15-as1" id="9yt-dO-vik"/>
@@ -48,11 +48,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAt-fw-idf">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="525"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZP-m6-iSM">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
@@ -87,10 +87,10 @@
                             </constraints>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfr-b5-XNG">
-                            <rect key="frame" x="0.0" y="53" width="375" height="594"/>
+                            <rect key="frame" x="0.0" y="53" width="375" height="472"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dke-Fm-Tjt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="476"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="472"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headway566297Unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="RGz-gd-ayw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
@@ -388,15 +388,16 @@
                                         <constraint firstItem="YUn-HV-bhc" firstAttribute="top" secondItem="DDK-K9-U62" secondAttribute="bottom" constant="16" id="NNo-ja-Uno"/>
                                         <constraint firstItem="7Uz-AE-tKW" firstAttribute="top" secondItem="YUn-HV-bhc" secondAttribute="bottom" constant="18" id="Nr7-iS-dza"/>
                                         <constraint firstItem="DDK-K9-U62" firstAttribute="top" secondItem="dke-Fm-Tjt" secondAttribute="top" id="Q7y-ZN-kkr"/>
+                                        <constraint firstAttribute="bottom" secondItem="7Uz-AE-tKW" secondAttribute="bottom" constant="16" id="Tpu-Ba-zVs"/>
                                         <constraint firstItem="RGz-gd-ayw" firstAttribute="top" secondItem="dke-Fm-Tjt" secondAttribute="top" id="XYV-ke-g7C"/>
                                         <constraint firstAttribute="trailing" secondItem="DDK-K9-U62" secondAttribute="trailing" id="cL3-3z-xH8"/>
-                                        <constraint firstAttribute="height" priority="999" constant="476" id="gTx-eA-Z4a"/>
                                         <constraint firstItem="RGz-gd-ayw" firstAttribute="height" secondItem="DDK-K9-U62" secondAttribute="height" id="iFG-2h-g5W"/>
                                     </constraints>
                                 </view>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="dke-Fm-Tjt" secondAttribute="trailing" id="KqO-gB-oAy"/>
+                                <constraint firstItem="dke-Fm-Tjt" firstAttribute="height" secondItem="rfr-b5-XNG" secondAttribute="height" priority="250" id="XEt-n4-TR9"/>
                                 <constraint firstItem="dke-Fm-Tjt" firstAttribute="width" secondItem="rfr-b5-XNG" secondAttribute="width" id="Xuj-1H-DKY"/>
                                 <constraint firstAttribute="bottom" secondItem="dke-Fm-Tjt" secondAttribute="bottom" id="iQd-Wj-ULA"/>
                                 <constraint firstItem="dke-Fm-Tjt" firstAttribute="top" secondItem="rfr-b5-XNG" secondAttribute="top" id="uRg-la-3TM"/>
@@ -423,6 +424,7 @@
                 <constraint firstItem="HAt-fw-idf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aUD-5M-0dK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HAt-fw-idf" secondAttribute="bottom" id="wvE-Ql-Nkr"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>

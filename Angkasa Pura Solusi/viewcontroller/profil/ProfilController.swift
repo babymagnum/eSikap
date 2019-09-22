@@ -16,7 +16,7 @@ enum WhichKaryawan {
 
 class ProfilController: BaseViewController {
 
-    @IBOutlet weak var viewRootHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewActionBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var labelTitle: UILabel!
@@ -68,6 +68,17 @@ class ProfilController: BaseViewController {
             labelTitle.text = "Detail Karyawan"
             getKaryawanProfil()
         }
+        
+        checkVersion()
+    }
+    
+    private func checkVersion() {
+        if #available(iOS 11, *) {
+            //do nothing
+        } else {
+            viewActionBottomMargin.constant += 49 // 49 is height of ui tabbar
+            scrollView.resizeScrollViewContentSize()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -79,11 +90,10 @@ class ProfilController: BaseViewController {
     }
     
     private func initView() {
-        viewRootHeight.constant -= viewTopHeight.constant
+        self.scrollView.alpha = 0
         viewTopHeight.constant = 0
         
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
-        checkRootHeight(viewRootHeight: viewRootHeight, 0, addHeightFor11Above: false, addHeightFor11Below: false)
         scrollView.addSubview(refreshControl)
         
         self.viewInformation.addShadow(CGSize(width: 1, height: 2), UIColor.lightGray, 2, 1, 3)
@@ -93,7 +103,7 @@ class ProfilController: BaseViewController {
             UIView.animate(withDuration: 0.2) {
                 self.imageAccount.layer.cornerRadius = self.imageAccount.frame.width / 2
                 self.viewTopHeight.constant = self.labelNama.getHeight(width: self.labelNama.frame.width) + self.labelJabatan.getHeight(width: self.labelJabatan.frame.width) + self.labelDivisi.getHeight(width: self.labelDivisi.frame.width) + self.imageAccount.frame.height + 60
-                self.viewRootHeight.constant += self.viewTopHeight.constant
+                self.scrollView.resizeScrollViewContentSize()
                 self.view.layoutIfNeeded()
             }
         }
@@ -108,6 +118,10 @@ class ProfilController: BaseViewController {
         labelLokasiKerja.text = item.workarea
         labelEmail.text = item.email
         labelTelepon.text = item.phone
+        
+        UIView.animate(withDuration: 0.4) {
+            self.scrollView.alpha = 1
+        }
     }
     
     private func setKaryawanView(_ item: ItemDetailKaryawan) {
@@ -119,6 +133,10 @@ class ProfilController: BaseViewController {
         labelLokasiKerja.text = item.workarea
         labelEmail.text = item.email
         labelTelepon.text = item.phone
+        
+        UIView.animate(withDuration: 0.4) {
+            self.scrollView.alpha = 1
+        }
     }
     
     private func getKaryawanProfil() {

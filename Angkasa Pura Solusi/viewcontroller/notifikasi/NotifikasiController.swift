@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class NotifikasiController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var collectionNotificationBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var notifikasiCollectionView: UICollectionView!
     @IBOutlet weak var viewNotifikasiKosong: UIView!
@@ -32,13 +33,27 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
-        
-        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
+        initView()
         
         initCollectionView()
         
         getNotificationList()
+        
+        checkVersion()
+    }
+    
+    private func checkVersion() {
+        if #available(iOS 11, *) {
+            //do nothing
+        } else {
+            collectionNotificationBottomMargin.constant += 49 // 49 is height of ui tabbar
+        }
+    }
+    
+    private func initView() {
+        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
+        
+        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
     }
     
     private func getNotificationList() {
@@ -76,10 +91,14 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        notifikasiCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     private func initCollectionView() {
         notifikasiCollectionView.register(UINib(nibName: "NotifikasiCell", bundle: nil), forCellWithReuseIdentifier: "NotifikasiCell")
         
-        notifikasiCollectionView.isPrefetchingEnabled = false
         notifikasiCollectionView.delegate = self
         notifikasiCollectionView.dataSource = self
         notifikasiCollectionView.addSubview(refreshControl)
@@ -115,12 +134,11 @@ extension NotifikasiController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func getTextHeight(_ text: String, _ font_size: CGFloat) -> CGFloat {
-        return text.getHeight(withConstrainedWidth: notifikasiCollectionView.frame.width, font_size: font_size)
+        return text.getHeight(withConstrainedWidth: notifikasiCollectionView.frame.width - 26.6, font_size: font_size)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = listNotifikasi[indexPath.item]
-        
         let heightMargin: CGFloat = 8.9 + 8.3 + 10.7 + 8
         let contentHeight = getTextHeight(item.title!, 10) + getTextHeight(item.date!, 6) + getTextHeight(item.content!, 11)
         return CGSize(width: notifikasiCollectionView.frame.width - 26.6, height: heightMargin + contentHeight)

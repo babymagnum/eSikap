@@ -18,6 +18,7 @@ protocol BerandaControllerProtocol {
 
 class BerandaController: BaseViewController, UICollectionViewDelegate {
     
+    @IBOutlet weak var collectionBeritaBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var buttonSelengkapnya: UIButton!
     @IBOutlet weak var labelBeritaPengumuman: UILabel!
@@ -47,8 +48,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     private var listMenu = [Menu]()
     private var listBerita = [News]()
     var delegate : BerandaControllerProtocol?
-    var isWasLoaded = false
-    var isMenuLoaded = false
     var isAlreadyCalculateBeritaHeight = false
     
     lazy var refreshControl: UIRefreshControl = {
@@ -59,10 +58,14 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         return refreshControl
     }()
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        menuCollectionView.collectionViewLayout.invalidateLayout()
+        beritaCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("token \(preference.getString(key: staticLet.TOKEN))")
         
         initView()
         
@@ -77,6 +80,17 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         getDashboard()
         
         getLatestNews()
+        
+        checkVersion()
+    }
+    
+    private func checkVersion() {
+        if #available(iOS 11, *) {
+            //do nothing
+        } else {
+            collectionBeritaBottomMargin.constant += 49 // 49 is height of ui tabbar
+            scrollView.resizeScrollViewContentSize()
+        }
     }
     
     private func clickEvent() {
@@ -96,9 +110,10 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         menuCollectionView.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.menuCollectionViewHeight.constant = self.menuCollectionView.contentSize.height
                 self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
             })
         }
     }
@@ -129,7 +144,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     
     private func initCollection() {
         menuCollectionView.register(UINib(nibName: "MenuUtamaCell", bundle: nil), forCellWithReuseIdentifier: "MenuUtamaCell")
-        
         beritaCollectionView.register(UINib(nibName: "BeritaCell", bundle: nil), forCellWithReuseIdentifier: "BeritaCell")
         
         let menuSize = (UIScreen.main.bounds.width * 0.33) - 20
@@ -143,6 +157,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initView() {
+        print("token \(preference.getString(key: staticLet.TOKEN))")
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1)
         scrollView.addSubview(refreshControl)
@@ -166,21 +181,15 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         }
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
 }
 
 //click event
 extension BerandaController {
-    @objc func viewContainerPresensiClick() {
-        getPreparePresence()
-    }
+    @objc func viewContainerPresensiClick() { getPreparePresence() }
     
-    @IBAction func buttonSelengkapnyaClick(_ sender: Any) {
-        delegate?.buttonSelengkapnyaClick()
-    }
+    @IBAction func buttonSelengkapnyaClick(_ sender: Any) { delegate?.buttonSelengkapnyaClick() }
     
     @objc func menuClick(sender: UITapGestureRecognizer) {
         if let indexpath = menuCollectionView.indexPathForItem(at: sender.location(in: menuCollectionView)) {
@@ -228,7 +237,6 @@ extension BerandaController {
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
-        listBerita.removeAll()
         getDashboard()
         getLatestNews()
     }
@@ -292,11 +300,9 @@ extension BerandaController {
     }
     
     private func getLatestNews() {
+        listBerita.removeAll()
+        
         informationNetworking.getLatestNews { (error, news, isExpired) in
-//            if let _ = isExpired {
-//                self.forceLogout(self.navigationController!)
-//                return
-//            }
             
             if let _ = error {
                 self.getLatestNews()
@@ -309,15 +315,15 @@ extension BerandaController {
             
             DispatchQueue.main.async { self.beritaCollectionView.reloadData() }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
-                UIView.animate(withDuration: 0.2, animations: {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.3, animations: {
                     let beritaCell = self.beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
                     let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.height) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.height) + 29.5 + 5
                     self.beritaCollectionViewHeight.constant = beritaHeight
                     self.scrollView.resizeScrollViewContentSize()
                     self.view.layoutIfNeeded()
                 })
-            })
+            }
         }
     }
     

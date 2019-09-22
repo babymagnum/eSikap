@@ -68,7 +68,7 @@
                                     <rect key="frame" x="24" y="40" width="327" height="37"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g. gamatechno.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jA8-lX-7dI" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="19" y="11" width="289" height="15"/>
+                                            <rect key="frame" x="19" y="0.0" width="289" height="37"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -76,9 +76,10 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="jA8-lX-7dI" secondAttribute="trailing" constant="19" id="4Jq-Fl-49U"/>
-                                        <constraint firstItem="jA8-lX-7dI" firstAttribute="leading" secondItem="wfB-d0-rFW" secondAttribute="leading" constant="19" id="tkk-Vp-TNS"/>
-                                        <constraint firstItem="jA8-lX-7dI" firstAttribute="centerY" secondItem="wfB-d0-rFW" secondAttribute="centerY" id="zIV-25-aVu"/>
+                                        <constraint firstItem="jA8-lX-7dI" firstAttribute="top" secondItem="wfB-d0-rFW" secondAttribute="top" id="3ks-Rp-7Cl"/>
+                                        <constraint firstItem="jA8-lX-7dI" firstAttribute="leading" secondItem="wfB-d0-rFW" secondAttribute="leading" constant="19" id="Igb-b8-jLY"/>
+                                        <constraint firstAttribute="bottom" secondItem="jA8-lX-7dI" secondAttribute="bottom" id="ZVN-vS-DZZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="jA8-lX-7dI" secondAttribute="trailing" constant="19" id="dds-dV-4wR"/>
                                         <constraint firstAttribute="height" constant="37" id="zOs-d8-hWP"/>
                                     </constraints>
                                 </view>
@@ -86,7 +87,7 @@
                                     <rect key="frame" x="24" y="97" width="327" height="37"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type your password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2KG-Sa-2HM" customClass="CustomTextField" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                            <rect key="frame" x="19" y="11" width="289" height="15"/>
+                                            <rect key="frame" x="19" y="0.0" width="289" height="37"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -94,10 +95,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="2KG-Sa-2HM" secondAttribute="bottom" id="2rJ-Gt-M7n"/>
                                         <constraint firstAttribute="height" constant="37" id="3dM-ZF-r1u"/>
-                                        <constraint firstAttribute="trailing" secondItem="2KG-Sa-2HM" secondAttribute="trailing" constant="19" id="GQ9-39-mBd"/>
-                                        <constraint firstItem="2KG-Sa-2HM" firstAttribute="centerY" secondItem="QcT-Uh-Z5r" secondAttribute="centerY" id="TGr-Ge-DnJ"/>
-                                        <constraint firstItem="2KG-Sa-2HM" firstAttribute="leading" secondItem="QcT-Uh-Z5r" secondAttribute="leading" constant="19" id="cjf-Yb-pT8"/>
+                                        <constraint firstItem="2KG-Sa-2HM" firstAttribute="top" secondItem="QcT-Uh-Z5r" secondAttribute="top" id="BYR-rJ-p2i"/>
+                                        <constraint firstAttribute="trailing" secondItem="2KG-Sa-2HM" secondAttribute="trailing" constant="19" id="aya-lm-hV5"/>
+                                        <constraint firstItem="2KG-Sa-2HM" firstAttribute="leading" secondItem="QcT-Uh-Z5r" secondAttribute="leading" constant="19" id="qTH-aM-54a"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycj-TI-GQf" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">

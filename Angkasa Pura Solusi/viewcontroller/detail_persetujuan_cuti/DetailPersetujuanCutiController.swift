@@ -166,6 +166,12 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        statusPersetujuanCollectionView.collectionViewLayout.invalidateLayout()
+        statusActionCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     private func initCollectionView() {
         statusPersetujuanCollectionView.register(UINib(nibName: "StatusPersetujuanCell", bundle: nil), forCellWithReuseIdentifier: "StatusPersetujuanCell")
         
@@ -195,18 +201,18 @@ extension DetailPersetujuanCutiController : UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == statusPersetujuanCollectionView {
-            let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
-            
             let item = listStatusPersetujuan[indexPath.item]
             
-            let fullHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 25 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width) + statusPersetujuanCell.labelDate.getHeight(width: statusPersetujuanCell.labelDate.frame.width)
+            let statusDateHeight = item.status_date?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 28, font_size: 7)
+            let statusHeight = (item.status?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 28, font_size: 7))!
+            let imageHeight = ((UIScreen.main.bounds.width - 28) * 0.075)
             
-            let withoutDateHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 25 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width)
+            let fullHeight = imageHeight + 25 + statusHeight + statusDateHeight!
+            let withoutDateHeight = imageHeight + 25 + statusHeight
             
             return CGSize(width: UIScreen.main.bounds.width - 28, height: item.status_date == "" ? withoutDateHeight : fullHeight)
         } else {
-            let statusActionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusActionCell", for: indexPath) as! StatusActionCell
-            return CGSize(width: UIScreen.main.bounds.width - 28, height: statusActionCell.viewContainer.frame.height)
+            return CGSize(width: UIScreen.main.bounds.width - 28, height: 50)
         }
     }
     
@@ -221,26 +227,13 @@ extension DetailPersetujuanCutiController : UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == statusPersetujuanCollectionView {
             let statusPersetujuanCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusPersetujuanCell", for: indexPath) as! StatusPersetujuanCell
-            
             statusPersetujuanCell.data = listStatusPersetujuan[indexPath.item]
-            
-            if !isCalculateStatusPersetujuan {
-                self.isCalculateStatusPersetujuan = true
-                DispatchQueue.main.async {
-                    let statusPersetujuanHeight = ((UIScreen.main.bounds.width - 28) * 0.075) + 5.3 + 2.7 + 5.2 + statusPersetujuanCell.labelStatus.getHeight(width: statusPersetujuanCell.labelStatus.frame.width)
-                    let statusPersetujuanLayout = self.statusPersetujuanCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    statusPersetujuanLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: statusPersetujuanHeight)
-                }
-            }
-            
             return statusPersetujuanCell
         } else {
             let statusActionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatusActionCell", for: indexPath) as! StatusActionCell
-            
             statusActionCell.data = listStatusAction[indexPath.item]
             statusActionCell.delegate = self
             statusActionCell.position = indexPath.item
-            
             return statusActionCell
         }
     }
@@ -376,6 +369,11 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol, URLSessionD
     @IBAction func buttonBackClick(_ sender: Any) { navigationController?.popViewController(animated: true) }
     
     @IBAction func buttonProsesClick(_ sender: Any) {
+        if fieldCatatan.text.trim() == "" {
+            self.view.makeToast("Catatan Status harus diisi.")
+            return
+        }
+        
         guard let detailLeave = detailLeave else { return }
         
         if detailLeave.is_day == "1" && detailLeave.is_range == "0" {

@@ -11,7 +11,6 @@ import Kingfisher
 
 class BeritaCell: UICollectionViewCell {
 
-    @IBOutlet weak var viewContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!

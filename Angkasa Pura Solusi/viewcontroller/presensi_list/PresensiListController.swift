@@ -52,6 +52,11 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
         getPresenceList(filteredMonth, filteredYear)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        presensiCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     private func initView() {
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         
@@ -70,7 +75,6 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
     
     private func initCollectionView() {
         presensiCollectionView.addSubview(refreshControl)
-        
         presensiCollectionView.register(UINib(nibName: "PresensiCell", bundle: nil), forCellWithReuseIdentifier: "PresensiCell")
         
         presensiCollectionView.delegate = self
@@ -112,7 +116,28 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
     }
 }
 
-extension PresensiListController: UICollectionViewDataSource {
+extension PresensiListController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let item = listPresensi[indexPath.item]
+        
+        let width = UIScreen.main.bounds.width - 60
+        let labelMasukPulangHeight = String("Masuk").getHeight(withConstrainedWidth: width, font_size: 10) + String("Pulang").getHeight(withConstrainedWidth: width, font_size: 10)
+        let labelValuePulangHeight = item.date_out?.getHeight(withConstrainedWidth: width, font_size: 10)
+        let labelValueMasukHeight = item.date_in?.getHeight(withConstrainedWidth: width, font_size: 10)
+        let labelDateHeight = item.date?.getHeight(withConstrainedWidth: width, font_size: 10)
+        let labelStatusHeight = item.presence_status?.getHeight(withConstrainedWidth: width, font_size: 10)
+        let valuePulangMasukHeight = labelValuePulangHeight! + labelValueMasukHeight!
+        let dateStatusHeight = labelDateHeight! + labelStatusHeight!
+        let marginHeight: CGFloat = item.presence_status == "" ? 49 : 75
+
+        if item.presence_status == "" {
+            return CGSize(width: UIScreen.main.bounds.width - 28, height: labelMasukPulangHeight + valuePulangMasukHeight + labelDateHeight! + marginHeight)
+        } else {
+            return CGSize(width: UIScreen.main.bounds.width - 28, height: labelMasukPulangHeight + valuePulangMasukHeight + dateStatusHeight + marginHeight)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listPresensi.count
     }
@@ -124,10 +149,6 @@ extension PresensiListController: UICollectionViewDataSource {
             self.isCalculatePresensiHeight = true
             
             DispatchQueue.main.async {
-                let presensiLayout = self.presensiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                let presensiCellHeight = presensiCell.buttonStatusPresensi.frame.height + presensiCell.labelMasuk.getHeight(width: presensiCell.labelMasuk.frame.width) + presensiCell.labelPulang.getHeight(width: presensiCell.labelPulang.frame.width) + presensiCell.labelPresensiMasuk.getHeight(width: presensiCell.labelPresensiMasuk.frame.width) + presensiCell.labelPresensiPulang.getHeight(width: presensiCell.labelPresensiPulang.frame.width) + 8.9 + 13.3 + 5.1 + 8.7 + 5.1 + 26.4
-                presensiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: presensiCellHeight)
-                
                 if self.listPresensi.count > 0 {
                     var index = 0
                     let currentDateInMonth = self.function.getCurrentDate(pattern: "dd")

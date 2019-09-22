@@ -42,9 +42,9 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
         getLeaveApprovalList()
     }
     
-    // use this function to call protocol to notify the tablayout that page is change
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        cutiCollectionView.collectionViewLayout.invalidateLayout()
     }
     
     private func getLeaveApprovalList() {

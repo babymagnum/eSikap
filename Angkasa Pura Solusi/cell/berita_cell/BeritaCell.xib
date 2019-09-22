@@ -35,19 +35,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informasi Penggajian Desember 2.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTZ-eS-kfr" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="11" y="111" width="200" height="14.5"/>
+                                <rect key="frame" x="11" y="111" width="200" height="14"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarPageEmpty1" translatesAutoresizingMaskIntoConstraints="NO" id="P2V-Qb-ToY">
-                                <rect key="frame" x="11" y="131.5" width="12" height="12"/>
+                                <rect key="frame" x="11" y="131" width="12" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="P2V-Qb-ToY" secondAttribute="height" multiplier="1:1" id="jdC-yS-4V6"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 Desember 2018 08:41:47 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="a0r-E8-YlF" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="30" y="131.5" width="182" height="12"/>
+                                <rect key="frame" x="30" y="131" width="182" height="12"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -58,14 +58,12 @@
                             <constraint firstItem="LTZ-eS-kfr" firstAttribute="leading" secondItem="3V6-wf-npN" secondAttribute="leading" constant="11" id="2Nn-jc-Z8A"/>
                             <constraint firstItem="P2V-Qb-ToY" firstAttribute="top" secondItem="LTZ-eS-kfr" secondAttribute="bottom" constant="6" id="AI4-DV-ewU"/>
                             <constraint firstItem="LTZ-eS-kfr" firstAttribute="top" secondItem="cuj-iy-wR0" secondAttribute="bottom" constant="11" id="F6z-5n-ToS"/>
-                            <constraint firstAttribute="width" constant="222" id="FoL-gu-Wrh"/>
                             <constraint firstItem="P2V-Qb-ToY" firstAttribute="width" secondItem="3V6-wf-npN" secondAttribute="width" multiplier="0.055" id="Mys-LU-8zS"/>
                             <constraint firstItem="cuj-iy-wR0" firstAttribute="top" secondItem="3V6-wf-npN" secondAttribute="top" id="QhX-K4-hWN"/>
                             <constraint firstItem="cuj-iy-wR0" firstAttribute="leading" secondItem="3V6-wf-npN" secondAttribute="leading" id="Vnc-Xf-bM8"/>
                             <constraint firstAttribute="trailing" secondItem="a0r-E8-YlF" secondAttribute="trailing" constant="10" id="WbR-oq-PYQ"/>
                             <constraint firstAttribute="trailing" secondItem="LTZ-eS-kfr" secondAttribute="trailing" constant="11" id="XC8-qe-sbq"/>
                             <constraint firstItem="a0r-E8-YlF" firstAttribute="top" secondItem="LTZ-eS-kfr" secondAttribute="bottom" constant="6" id="XP0-aQ-9mx"/>
-                            <constraint firstAttribute="height" constant="170" id="hut-J6-tBc"/>
                             <constraint firstItem="P2V-Qb-ToY" firstAttribute="leading" secondItem="3V6-wf-npN" secondAttribute="leading" constant="11" id="qV1-si-wGo"/>
                             <constraint firstItem="cuj-iy-wR0" firstAttribute="width" secondItem="3V6-wf-npN" secondAttribute="width" id="qjK-Uw-JmP"/>
                             <constraint firstItem="a0r-E8-YlF" firstAttribute="leading" secondItem="P2V-Qb-ToY" secondAttribute="trailing" constant="7" id="tFt-ZE-tzU"/>
@@ -87,8 +85,6 @@
                 <outlet property="labelCreatedAt" destination="a0r-E8-YlF" id="rrc-WM-cjk"/>
                 <outlet property="labelTitle" destination="LTZ-eS-kfr" id="aNE-rs-GhN"/>
                 <outlet property="viewContainer" destination="3V6-wf-npN" id="8og-vw-MZ0"/>
-                <outlet property="viewContainerHeight" destination="hut-J6-tBc" id="PIk-DN-Bd5"/>
-                <outlet property="widthConstraint" destination="FoL-gu-Wrh" id="8Ga-0P-0Xg"/>
             </connections>
             <point key="canvasLocation" x="210.1449275362319" y="145.64732142857142"/>
         </collectionViewCell>
