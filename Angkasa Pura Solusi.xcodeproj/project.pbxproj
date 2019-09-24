@@ -21,7 +21,6 @@
 		ED10746722F5DCE900ADF055 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED10746622F5DCE900ADF055 /* Profile.swift */; };
 		ED139BB82302EC9000B854BC /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED139BB72302EC9000B854BC /* CustomTextView.swift */; };
 		ED139BBA2302ED0700B854BC /* CustomDropDownField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED139BB92302ED0700B854BC /* CustomDropDownField.swift */; };
-		ED139BBE2302F2B500B854BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED139BBD2302F2B300B854BC /* GoogleService-Info.plist */; };
 		ED14CA70231DD92200D5C7F0 /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA6F231DD92200D5C7F0 /* Success.swift */; };
 		ED14CA74231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA72231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.swift */; };
 		ED14CA75231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED14CA73231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib */; };
@@ -157,6 +156,7 @@
 		EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */; };
 		EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */; };
 		EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */; };
+		EDD62A91233A364700DAB2F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */; };
 		EDE5DBCE2320B80500CFC608 /* SlipGajiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBCC2320B80500CFC608 /* SlipGajiController.swift */; };
 		EDE5DBCF2320B80500CFC608 /* SlipGajiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE5DBCD2320B80500CFC608 /* SlipGajiController.xib */; };
 		EDE5DBD32320B8AF00CFC608 /* SlipGajiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBD12320B8AF00CFC608 /* SlipGajiCell.swift */; };
@@ -194,7 +194,6 @@
 		ED10746622F5DCE900ADF055 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		ED139BB72302EC9000B854BC /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		ED139BB92302ED0700B854BC /* CustomDropDownField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownField.swift; sourceTree = "<group>"; };
-		ED139BBD2302F2B300B854BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED14CA6F231DD92200D5C7F0 /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
 		ED14CA72231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelegasiOrAtasanController.swift; sourceTree = "<group>"; };
 		ED14CA73231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDelegasiOrAtasanController.xib; sourceTree = "<group>"; };
@@ -336,6 +335,9 @@
 		EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiMapController.swift; sourceTree = "<group>"; };
 		EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiMapController.xib; sourceTree = "<group>"; };
 		EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDD62A92233A3F2600DAB2F5 /* Angkasa Pura SolusiRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiRelease.entitlements"; sourceTree = "<group>"; };
+		EDD62A93233A3F6500DAB2F5 /* Angkasa Pura SolusiDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiDebug.entitlements"; sourceTree = "<group>"; };
 		EDE5DBCC2320B80500CFC608 /* SlipGajiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGajiController.swift; sourceTree = "<group>"; };
 		EDE5DBCD2320B80500CFC608 /* SlipGajiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlipGajiController.xib; sourceTree = "<group>"; };
 		EDE5DBD12320B8AF00CFC608 /* SlipGajiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGajiCell.swift; sourceTree = "<group>"; };
@@ -665,8 +667,10 @@
 		ED95906622EBDF3300D696E5 /* Angkasa Pura Solusi */ = {
 			isa = PBXGroup;
 			children = (
+				EDD62A93233A3F6500DAB2F5 /* Angkasa Pura SolusiDebug.entitlements */,
+				EDD62A92233A3F2600DAB2F5 /* Angkasa Pura SolusiRelease.entitlements */,
 				ED95907322EBDF3500D696E5 /* Info.plist */,
-				ED139BBD2302F2B300B854BC /* GoogleService-Info.plist */,
+				EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */,
 				ED9590A222EBFB6300D696E5 /* fonts */,
 				ED858AFE22F312AC00016EAD /* networking */,
 				ED95909C22EBF98400D696E5 /* cell */,
@@ -1153,7 +1157,7 @@
 				ED14CA75231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib in Resources */,
 				ED57FE4F22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib in Resources */,
 				EDC19E95231EBE1700690B59 /* RiwayatCutiFilterController.xib in Resources */,
-				ED139BBE2302F2B500B854BC /* GoogleService-Info.plist in Resources */,
+				EDD62A91233A364700DAB2F5 /* GoogleService-Info.plist in Resources */,
 				ED10746122F5A5BA00ADF055 /* DetailBeritaController.xib in Resources */,
 				EDBF21B222FE71FA003F5DAF /* RiwayatCutiController.xib in Resources */,
 			);
@@ -1473,15 +1477,19 @@
 			baseConfigurationReference = C14CFE01F0097BA5643AAEA0 /* Pods-Angkasa Pura Solusi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiDebug.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.angkasapurasolusi.ess;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = aps_development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1492,15 +1500,19 @@
 			baseConfigurationReference = C4C2FE2E010A17EC58ACBEC2 /* Pods-Angkasa Pura Solusi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiRelease.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.angkasapurasolusi.ess;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = aps_production;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -25,7 +25,7 @@ class DialogSendEmailController: BaseViewController {
     private func initView() {
         buttonOke.layer.cornerRadius = 5
         
-        labelEmail.text = email
+        labelEmail.text = email.replacingOccurrences(of: "<center>", with: "").replacingOccurrences(of: "</center>", with: "").replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "")
     }
 
     @IBAction func buttonOkeClick(_ sender: Any) {

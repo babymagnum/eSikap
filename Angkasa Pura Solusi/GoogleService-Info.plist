@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1097904581864-ifggi2jr4hbp60fhdppebk7sf5749g4s.apps.googleusercontent.com</string>
+	<string>1097904581864-jps5ko3grvout9tt26i6ep4f118d1l9v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1097904581864-ifggi2jr4hbp60fhdppebk7sf5749g4s</string>
+	<string>com.googleusercontent.apps.1097904581864-jps5ko3grvout9tt26i6ep4f118d1l9v</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>1097904581864-7r8av5mqivu6841ejnnm3hck45q55in4.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.angkasapurasolusi.ess</string>
+	<string>com.apsolusi.ess</string>
 	<key>PROJECT_ID</key>
 	<string>ess-aps-ios</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1097904581864:ios:defd4c1e390366ec</string>
+	<string>1:1097904581864:ios:969f5ccbc04a42d0cc2d5d</string>
 	<key>DATABASE_URL</key>
 	<string>https://ess-aps-ios.firebaseio.com</string>
 </dict>

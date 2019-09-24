@@ -53,6 +53,7 @@ class SlipGajiController: BaseViewController, UICollectionViewDelegate {
             guard let slipGaji = slipGaji else { return }
             
             if slipGaji.data.count == 0 {
+                self.labelDataKosong.text = slipGaji.message
                 self.labelDataKosong.isHidden = false
             } else {
                 self.labelDataKosong.isHidden = true
@@ -151,7 +152,7 @@ extension SlipGajiController: UICollectionViewDataSource {
             DispatchQueue.main.async {
                 let layout = self.collectionSlipGaji.collectionViewLayout as! UICollectionViewFlowLayout
                 let height = cell.viewContainer.getHeight() + 13
-                layout.itemSize = CGSize(width: self.collectionSlipGaji.frame.width - 13.7, height: height)
+                layout.itemSize = CGSize(width: self.collectionSlipGaji.frame.width - 26.6, height: height)
             }
         }
         return cell

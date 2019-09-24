@@ -540,6 +540,7 @@ extension PengajuanCutiController: HSAttachmentPickerDelegate {
         pickedData = data
         labelLampiranFile.text = filename
         showLabelLampiranFile()
+        hideImageLampiran()
     }
 }
 

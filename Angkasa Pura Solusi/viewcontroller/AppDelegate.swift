@@ -33,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("fcm token \(fcmToken)")
         preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
+        
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -42,9 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
         //keyboard manager
         IQKeyboardManager.shared.enable = true
-        
-        //firebase messaging
-        Messaging.messaging().delegate = self
         
         //google maps
         let _ = "AIzaSyAoelL9ZpnUozmhFGvY94xRVmsVGPAOkZw"
@@ -67,13 +67,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             application.registerUserNotificationSettings(settings)
         }
         
+        //get application instance ID
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+            }
+        }
+        
         application.registerForRemoteNotifications()
         
         return true
     }
     
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Unable to register for remote notifications: \(error.localizedDescription)")
+    }
+    
     func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
-        print(remoteMessage.appData)
+        print("Receive data message: \(remoteMessage.appData)")
     }
     
     @available(iOS 10.0, *)
@@ -81,6 +94,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         let userInfo = response.notification.request.content.userInfo
         
         // set which screen to proceed when user tap screen
+        print("notification data: \(userInfo)")
+        changeRootViewController(rootVC: HomeController())
         
         completionHandler()
     }
