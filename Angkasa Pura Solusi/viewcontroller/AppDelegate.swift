@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
         // set which screen to proceed when user tap screen
         print("notification data: \(userInfo)")
-        changeRootViewController(rootVC: HomeController())
+        //changeRootViewController(rootVC: HomeController())
         
         completionHandler()
     }

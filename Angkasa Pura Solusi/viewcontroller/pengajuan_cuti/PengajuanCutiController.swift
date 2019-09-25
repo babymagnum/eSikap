@@ -643,8 +643,13 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
             fileData = imageLampiranButton.image?.jpegData(compressionQuality: 0.5)
         }
         
+        guard let file = fileData else {
+            function.showUnderstandDialog(self, "File Not Picked", "Error", "Understand")
+            return
+        }
+        
         SVProgressHUD.show()
-        informationNetworking.postLeaveRequest(imageData: fileData!, body: body) { (error, message, isExpired) in
+        informationNetworking.postLeaveRequest(imageData: file, body: body) { (error, message, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {

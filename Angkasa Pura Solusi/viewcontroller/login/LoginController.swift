@@ -19,12 +19,20 @@ class LoginController: BaseViewController {
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var buttonMasuk: UIButton!
     
+    private var counter = 0;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initView()
         
+        initEvent()
+        
         saveMenuForBerandaController()
+    }
+    
+    private func initEvent() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewClick)))
     }
     
     private func saveMenuForBerandaController() {
@@ -41,6 +49,7 @@ class LoginController: BaseViewController {
     }
 
     private func initView() {
+        preference.saveBool(value: true, key: staticLet.IS_RELEASE)
         buttonMasuk.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonMasukClick)))
         textFieldEmail.delegate = self
         textFieldPassword.delegate = self
@@ -59,6 +68,15 @@ class LoginController: BaseViewController {
 }
 
 extension LoginController {
+    @objc func viewClick() {
+        counter += 1
+        
+        if counter == 20 {
+            preference.saveBool(value: false, key: staticLet.IS_RELEASE)
+            function.showUnderstandDialog(self, "APS ESS", "You're in development mode", "Understand")
+        }
+    }
+    
     @objc func buttonMasukClick() {
         if textFieldEmail.text?.trim() == "" {
             self.function.showUnderstandDialog(self, "Username/email Empty", "Please fill username/email first.", "Understand")

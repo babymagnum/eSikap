@@ -20,6 +20,10 @@ class BaseNetworking {
         return [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
     }
     
+    func baseUrl() -> String {
+        return preference.getBool(key: staticLet.IS_RELEASE) ? staticLet.base_url_prod : staticLet.base_url_dev
+    }
+    
     func alamofirePost<T: Decodable>(url: String, headers: [String: String]?, body: [String: String]?, completion : @escaping(_ error: String?, _ object: T?, _ isExpired: Bool?) -> Void) {
         
         Alamofire.request(url, method: .post, parameters: body, headers: headers).responseJSON { (response) in

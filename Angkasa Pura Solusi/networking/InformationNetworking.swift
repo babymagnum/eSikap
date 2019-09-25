@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class InformationNetworking: BaseNetworking {
     func getDashboard(completion: @escaping(_ error: String?, _ dashboard: ItemDashboard?, _ isExpired: Bool?) -> Void) {
-        guard let url = URL(string: "\(staticLet.base_url)api/getDashboard") else { return }
+        guard let url = URL(string: "\(baseUrl())api/getDashboard") else { return }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(preference.getString(key: staticLet.TOKEN))", forHTTPHeaderField: "Authorization")
         
@@ -42,7 +42,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getLatestNews(completion: @escaping (_ error: String?, _ listNews: [News]?, _ isExpired: Bool?) -> Void) {
-        guard let url = URL(string: "\(staticLet.base_url)api/getLatestNews") else { return }
+        guard let url = URL(string: "\(baseUrl())api/getLatestNews") else { return }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(preference.getString(key: staticLet.TOKEN))", forHTTPHeaderField: "Authorization")
         
@@ -72,7 +72,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getNewsDetail(newsId: String, completion: @escaping (_ error: String?, _ itemDetailNews: ItemDetailNews?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getNewsDetail"
+        let url = "\(baseUrl())api/getNewsDetail"
         let body : [String: String] = [ "news_id": newsId ]
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
@@ -103,7 +103,7 @@ class InformationNetworking: BaseNetworking {
     
     func getAllNews(page: Int, completion: @escaping (_ error: String?, _ listNews: [News]?, _ isExpired: Bool?) -> Void) {
         
-        let url = "\(staticLet.base_url)api/getAllNews"
+        let url = "\(baseUrl())api/getAllNews"
         let body : [String: String] = [
             "page": "\(page)"
         ]
@@ -140,7 +140,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getProfile(completion: @escaping (_ error: String?, _ profile: ItemProfile?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getProfile"
+        let url = "\(baseUrl())api/getProfile"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
         Alamofire.request(url, method: .post, headers: headers).responseJSON { (response) in
@@ -172,7 +172,7 @@ class InformationNetworking: BaseNetworking {
     
     func getProfileByEmpId(empId: String, completion: @escaping (_ error: String?, _ itemDetailKaryawan: ItemDetailKaryawan?, _ isExpired: Bool?) -> Void) {
         
-        let url = "\(staticLet.base_url)api/getProfileByEmpId"
+        let url = "\(baseUrl())api/getProfileByEmpId"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         let body: [String: String] = [ "emp_id": empId ]
         
@@ -204,7 +204,7 @@ class InformationNetworking: BaseNetworking {
     
     func getEmpList(_ request: (emp_name: String, unit_id: String, workarea_id: String, gender: String, page: String, order_id: String), completion: @escaping (_ error: String?, _ listKaryawan: ListKaryawan?, _ isExpired: Bool?) -> Void) {
         
-        let url = "\(staticLet.base_url)api/getEmpList"
+        let url = "\(baseUrl())api/getEmpList"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         let body: [String: String] = [
             "order": request.order_id,
@@ -241,7 +241,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getUnit(completion: @escaping (_ error: String?, _ listUnit: [ItemUnit]?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getUnit"
+        let url = "\(baseUrl())api/getUnit"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
@@ -269,7 +269,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getWorkarea(completion: @escaping (_ error: String?, _ listUnit: [ItemWorkarea]?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getWorkarea"
+        let url = "\(baseUrl())api/getWorkarea"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
@@ -298,7 +298,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getGender(completion: @escaping (_ error: String?, _ listUnit: [ItemGender]?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getGender"
+        let url = "\(baseUrl())api/getGender"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
@@ -327,7 +327,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getOrder(completion: @escaping (_ error: String?, _ listUnit: [ItemOrder]?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getOrder"
+        let url = "\(baseUrl())api/getOrder"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
@@ -356,7 +356,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getAnnouncement(completion: @escaping (_ error: String?, _ itemAnnouncement: ItemAnnouncement?) -> Void) {
-        let url = "\(staticLet.base_url)api/getAnnouncement"
+        let url = "\(baseUrl())api/getAnnouncement"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
@@ -385,7 +385,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getEmpListFilter(page: Int, keyword: String, completion: @escaping(_ error: String?, _ listEmpFilter: ListEmpFilter?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getEmpListFiter"
+        let url = "\(baseUrl())api/getEmpListFiter"
         let body: [String: String] = [
             "page": "\(page)",
             "keyword": keyword
@@ -394,12 +394,12 @@ class InformationNetworking: BaseNetworking {
     }
     
     func postLeaveRequest(imageData: Data, body: [String: String], completion : @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/addLeaveRequest"
+        let url = "\(baseUrl())api/addLeaveRequest"
         alamofirePostImage(imageData: imageData, url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
     func getLeaveHistoryList(page: Int, year: String, leave_type_id: String, status: String, completion: @escaping(_ error: String?, _ riwayatCuti: RiwayatCuti?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getLeaveHistoryList"
+        let url = "\(baseUrl())api/getLeaveHistoryList"
         let body: [String: String] = [
             "page": "\(page)",
             "year": year,
@@ -410,7 +410,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getDetailLeaveById(id: String, completion: @escaping(_ error: String?, _ detailRiwayatCuti: DetailRiwayatCuti?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getDetailLeaveById"
+        let url = "\(baseUrl())api/getDetailLeaveById"
         let body: [String: String] = [
             "leave_id": id
         ]
@@ -419,7 +419,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func cancelLeave(id: String, cancelNotes: String, completion: @escaping(_ error: String?, _ baseResponse: BaseResponse?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/cancelLeave"
+        let url = "\(baseUrl())api/cancelLeave"
         let body: [String: String] = [
             "leave_id": id,
             "cancel_notes": cancelNotes
@@ -428,7 +428,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getEditDetailLeaveById(id: String, completion: @escaping(_ error: String?, _ detailLeaveById: DetailLeaveById?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getEditDetailLeaveById"
+        let url = "\(baseUrl())api/getEditDetailLeaveById"
         let body: [String: String] = [
             "leave_id": id
         ]
@@ -436,31 +436,31 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getLeaveApprovalList(page: Int, completion: @escaping(_ error: String?, _ delegationList: DelegationList?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getLeaveApprovalList"
+        let url = "\(baseUrl())api/getLeaveApprovalList"
         let body: [String: String] = [ "page": "\(page)" ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
     func getDetailLeaveApprovalById(leave_id: String, completion: @escaping(_ error: String?, _ detailLeaveApproval: DetailLeaveApproval?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getDetailLeaveApprovalById"
+        let url = "\(baseUrl())api/getDetailLeaveApprovalById"
         let body: [String: String] = [ "leave_id": leave_id ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
     func getLeaveDelegationList(page: Int, completion: @escaping(_ error: String?, _ delegationList: DelegationList?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getLeaveDelegationList"
+        let url = "\(baseUrl())api/getLeaveDelegationList"
         let body: [String: String] = [ "page": "\(page)" ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
     func getDetailLeaveDelegationById(leave_id: String, completion: @escaping(_ error: String?, _ detailDelegationList: DetailDelegationList?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getDetailLeaveDelegationById"
+        let url = "\(baseUrl())api/getDetailLeaveDelegationById"
         let body: [String: String] = [ "leave_id": leave_id ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
     func approvalLeaveByDate(leave_id: String, approval_notes: String, listStatusAction: [StatusAction], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/approvalLeave"
+        let url = "\(baseUrl())api/approvalLeave"
         var body: [String: String] = [
             "leave_id": leave_id,
             "approval_notes": approval_notes
@@ -476,7 +476,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func approvalLeaveOneDayAndRange(leave_id: String, approval_notes: String, status_date: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/approvalLeave"
+        let url = "\(baseUrl())api/approvalLeave"
         let body: [String: String] = [
             "leave_id": leave_id,
             "approval_notes": approval_notes,
@@ -487,7 +487,7 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getNotificationList(page: Int, completion: @escaping(_ error: String?, _ listNotification: ListNotification?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getNotificationList"
+        let url = "\(baseUrl())api/getNotificationList"
         let body: [String: String] = [
             "page": "\(page)"
         ]
@@ -495,22 +495,22 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getLeaveTypeFilter(completion: @escaping(_ error: String?, _ leaveTypeFilter: LeaveTypeFilter?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getLeaveTypeFilter"
+        let url = "\(baseUrl())api/getLeaveTypeFilter"
         alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
     }
     
     func getYearsFilter(completion: @escaping(_ error: String?, _ yearsFilter: YearsFilter?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getYearsFilter"
+        let url = "\(baseUrl())api/getYearsFilter"
         alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
     }
     
     func getLeaveStatusFilter(completion: @escaping(_ error: String?, _ leaveStatusFilter: LeaveStatusFilter?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getLeaveStatusFilter"
+        let url = "\(baseUrl())api/getLeaveStatusFilter"
         alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
     }
     
     func updateIsReadNotification(notification_id: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/updateIsReadNotification"
+        let url = "\(baseUrl())api/updateIsReadNotification"
         let body: [String: String] = [
             "notification_id": notification_id
         ]
@@ -518,13 +518,13 @@ class InformationNetworking: BaseNetworking {
     }
     
     func getPayrollList(year: String, completion: @escaping(_ error: String?, _ slipGaji: SlipGaji?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getPayrollList"
+        let url = "\(baseUrl())api/getPayrollList"
         let body : [String: String] = [ "year": year ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
     func sendPayrollSlip(payroll_id: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/sendPayrollSlip"
+        let url = "\(baseUrl())api/sendPayrollSlip"
         let body: [String: String] = [ "payroll_id": payroll_id ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }

@@ -13,12 +13,12 @@ import SwiftyJSON
 class AuthenticationNetworking: BaseNetworking {
         
     func logout(completion: @escaping(_ error: String?, _ logout: Logout?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/logout"
+        let url = "\(baseUrl())api/logout"
         alamofirePost(url: url, headers: getHeaders(), body: nil, completion: completion)
     }
     
     func login(_ email: String, _ password: String, completion: @escaping(_ message: String?) -> Void) {
-        let url = "\(staticLet.base_url)api/login"
+        let url = "\(baseUrl())api/login"
         let body: [String : String] = [
             "username": email,
             "password": password,
@@ -56,7 +56,7 @@ class AuthenticationNetworking: BaseNetworking {
     }
     
     func changePassword(request: (new_password: String, old_password: String), completion: @escaping (_ error: String?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/changePassword"
+        let url = "\(baseUrl())api/changePassword"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
         ]

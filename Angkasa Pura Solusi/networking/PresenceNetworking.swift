@@ -10,19 +10,10 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class PresenceNetworking {
-    lazy var preference: Preference = {
-        let mPreference = Preference()
-        return mPreference
-    }()
-    
-    lazy var staticLet: StaticLet = {
-        let mStaticLet = StaticLet()
-        return mStaticLet
-    }()
+class PresenceNetworking: BaseNetworking {
     
     func getPreparePresence(completion: @escaping(_ error: String?, _ prepare: ItemPreparePresence?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getPreparePresence"
+        let url = "\(baseUrl())api/getPreparePresence"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
         ]
@@ -53,7 +44,7 @@ class PresenceNetworking {
     }
     
     func addPresence(request: (checkpoint_id: String, presence_type: String, latitude: String, longitude: String), completion: @escaping(_ error: String?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/addPresence"
+        let url = "\(baseUrl())api/addPresence"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
         ]
@@ -83,7 +74,7 @@ class PresenceNetworking {
     }
     
     func getPresenceList(request: (month: String, year: String), completion: @escaping (_ error: String?, _ presensi: Presensi?, _ isExpired: Bool?) -> Void) {
-        let url = "\(staticLet.base_url)api/getPresenceList"
+        let url = "\(baseUrl())api/getPresenceList"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
         ]

@@ -108,7 +108,6 @@
 		ED8A914D231C236700C6834C /* DetailLeaveById.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A914C231C236700C6834C /* DetailLeaveById.swift */; };
 		ED8F239A23136B34005D700C /* BaseNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F239923136B34005D700C /* BaseNetworking.swift */; };
 		ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95906722EBDF3300D696E5 /* AppDelegate.swift */; };
-		ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95906922EBDF3300D696E5 /* ViewController.swift */; };
 		ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED95906B22EBDF3300D696E5 /* Main.storyboard */; };
 		ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED95906E22EBDF3500D696E5 /* Assets.xcassets */; };
 		ED95907E22EBE3C500D696E5 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95907D22EBE3C500D696E5 /* Preference.swift */; };
@@ -219,6 +218,8 @@
 		ED40AB4F231CB5FC007C0ADC /* DelegationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegationList.swift; sourceTree = "<group>"; };
 		ED40AB51231CBB59007C0ADC /* DetailDelegationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDelegationList.swift; sourceTree = "<group>"; };
 		ED40AB53231CBD6A007C0ADC /* DetailLeaveApproval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLeaveApproval.swift; sourceTree = "<group>"; };
+		ED42155D233ADDFA005B3F9E /* Angkasa Pura SolusiRelease.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiRelease.entitlements"; sourceTree = "<group>"; };
+		ED42155F233ADE5C005B3F9E /* Angkasa Pura SolusiDebug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiDebug.entitlements"; sourceTree = "<group>"; };
 		ED52151822F452A1001C6A50 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		ED52151D22F46F11001C6A50 /* DialogFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogFirstController.swift; sourceTree = "<group>"; };
 		ED52151E22F46F11001C6A50 /* DialogFirstController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogFirstController.xib; sourceTree = "<group>"; };
@@ -282,7 +283,6 @@
 		ED8F239923136B34005D700C /* BaseNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworking.swift; sourceTree = "<group>"; };
 		ED95906422EBDF3300D696E5 /* Angkasa Pura Solusi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Angkasa Pura Solusi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED95906722EBDF3300D696E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ED95906922EBDF3300D696E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ED95906C22EBDF3300D696E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED95906E22EBDF3500D696E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED95907322EBDF3500D696E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -336,8 +336,6 @@
 		EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiMapController.xib; sourceTree = "<group>"; };
 		EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EDD62A92233A3F2600DAB2F5 /* Angkasa Pura SolusiRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiRelease.entitlements"; sourceTree = "<group>"; };
-		EDD62A93233A3F6500DAB2F5 /* Angkasa Pura SolusiDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiDebug.entitlements"; sourceTree = "<group>"; };
 		EDE5DBCC2320B80500CFC608 /* SlipGajiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGajiController.swift; sourceTree = "<group>"; };
 		EDE5DBCD2320B80500CFC608 /* SlipGajiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlipGajiController.xib; sourceTree = "<group>"; };
 		EDE5DBD12320B8AF00CFC608 /* SlipGajiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGajiCell.swift; sourceTree = "<group>"; };
@@ -667,9 +665,9 @@
 		ED95906622EBDF3300D696E5 /* Angkasa Pura Solusi */ = {
 			isa = PBXGroup;
 			children = (
-				EDD62A93233A3F6500DAB2F5 /* Angkasa Pura SolusiDebug.entitlements */,
-				EDD62A92233A3F2600DAB2F5 /* Angkasa Pura SolusiRelease.entitlements */,
 				ED95907322EBDF3500D696E5 /* Info.plist */,
+				ED42155D233ADDFA005B3F9E /* Angkasa Pura SolusiRelease.entitlements */,
+				ED42155F233ADE5C005B3F9E /* Angkasa Pura SolusiDebug.entitlements */,
 				EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */,
 				ED9590A222EBFB6300D696E5 /* fonts */,
 				ED858AFE22F312AC00016EAD /* networking */,
@@ -721,7 +719,6 @@
 				ED95908322EBE87F00D696E5 /* onboarding */,
 				ED95908222EBE82B00D696E5 /* login */,
 				ED95906722EBDF3300D696E5 /* AppDelegate.swift */,
-				ED95906922EBDF3300D696E5 /* ViewController.swift */,
 			);
 			path = viewcontroller;
 			sourceTree = "<group>";
@@ -1237,7 +1234,6 @@
 				EDBF21C12301086A003F5DAF /* CustomTextField.swift in Sources */,
 				ED87339223176DAE004D9F9F /* ListEmpFilter.swift in Sources */,
 				ED10746722F5DCE900ADF055 /* Profile.swift in Sources */,
-				ED95906A22EBDF3300D696E5 /* ViewController.swift in Sources */,
 				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
 				EDBF21A522FE5502003F5DAF /* StatusActionCell.swift in Sources */,
 				ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */,
@@ -1480,6 +1476,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiDebug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -1487,9 +1484,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = aps_development;
+				PROVISIONING_PROFILE_SPECIFIER = ApsDevelopment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1503,6 +1501,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -1510,9 +1509,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = aps_production;
+				PROVISIONING_PROFILE_SPECIFIER = ApsProduction;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

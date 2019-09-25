@@ -17,7 +17,7 @@ class PerizinanNetworking: BaseNetworking {
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
         ]
         
-        let url = "\(staticLet.base_url)api/getLeaveType"
+        let url = "\(baseUrl())api/getLeaveType"
         
         Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
             switch response.result {
@@ -48,7 +48,7 @@ class PerizinanNetworking: BaseNetworking {
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"
         ]
         
-        let url = "\(staticLet.base_url)api/getLeaveQuota"
+        let url = "\(baseUrl())api/getLeaveQuota"
         
         Alamofire.request(url, method: .post, headers: headers).responseJSON { (response) in
             switch response.result {
