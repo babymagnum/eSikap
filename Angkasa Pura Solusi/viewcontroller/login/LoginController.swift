@@ -49,7 +49,6 @@ class LoginController: BaseViewController {
     }
 
     private func initView() {
-        preference.saveBool(value: true, key: staticLet.IS_RELEASE)
         buttonMasuk.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonMasukClick)))
         textFieldEmail.delegate = self
         textFieldPassword.delegate = self

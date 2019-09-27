@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         IQKeyboardManager.shared.enable = true
         
         //google maps
-        let _ = "AIzaSyAoelL9ZpnUozmhFGvY94xRVmsVGPAOkZw"
+        let releaseKey = "AIzaSyBt-Sef6bIAiMI-412Fg9LeoNGC3aKFnl8"
         let oldMapsKey = "AIzaSyABb3r3kEysXc1ahNhBczZfpFbKCTcEUZY"
         GMSServices.provideAPIKey(oldMapsKey)
         
