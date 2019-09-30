@@ -30,14 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         })
     }
     
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("fcm token \(fcmToken)")
-        preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
-        
-        let dataDict:[String: String] = ["token": fcmToken]
-        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-    }
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //root viewcontroller
@@ -47,12 +39,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         IQKeyboardManager.shared.enable = true
         
         //google maps
-        let releaseKey = "AIzaSyBt-Sef6bIAiMI-412Fg9LeoNGC3aKFnl8"
+        let _ = "AIzaSyBt-Sef6bIAiMI-412Fg9LeoNGC3aKFnl8"
         let oldMapsKey = "AIzaSyABb3r3kEysXc1ahNhBczZfpFbKCTcEUZY"
         GMSServices.provideAPIKey(oldMapsKey)
         
         //firebase
+        configureFirebase(application: application)
+        
+        return true
+    }
+    
+    private func configureFirebase(application: UIApplication) {
         FirebaseApp.configure()
+        
+        Messaging.messaging().delegate = self
         
         //notification
         if #available(iOS 10.0, *) {
@@ -60,8 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             UNUserNotificationCenter.current().delegate = self
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
-            // For iOS 10 data message (sent via FCM
-            Messaging.messaging().delegate = self
         } else {
             let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
@@ -73,20 +71,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                 print("Error fetching remote instance ID: \(error)")
             } else if let result = result {
                 print("Remote instance ID token: \(result.token)")
+                self.preference.saveString(value: result.token, key: self.staticLet.FCM_TOKEN)
             }
         }
         
         application.registerForRemoteNotifications()
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("fcm token \(fcmToken)")
+        preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
         
-        return true
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        // Print full message.
+        print(userInfo)
+    }
+    
     func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
-        print("Receive data message: \(remoteMessage.appData)")
+        let data = remoteMessage.appData
+        print("Receive data message: \(data)")
     }
     
     @available(iOS 10.0, *)
@@ -121,7 +136,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

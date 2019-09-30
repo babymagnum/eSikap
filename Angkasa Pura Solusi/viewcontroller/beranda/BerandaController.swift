@@ -132,12 +132,15 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
             
             guard let item = itemAnnouncement else { return }
             
+            if item.count == 0 { return }
+            
             self.preference.saveBool(value: true, key: self.staticLet.IS_SHOW_FIRST_DIALOG)
             
-            let cleanContent = item.content?.replacingOccurrences(of: "<p>", with: "").replacingOccurrences(of: "</p>", with: "")
+            let content = item[0]
+            let cleanContent = content.content?.replacingOccurrences(of: "<p>", with: "").replacingOccurrences(of: "</p>", with: "")
             
             let vc = DialogFirstController()
-            vc.resources = (image: item.img, title: item.title, description: cleanContent) as? (image: String, title: String, description: String)
+            vc.resources = (image: content.img, title: content.title, description: cleanContent) as? (image: String, title: String, description: String)
             self.showCustomDialog(vc)
         }
     }

@@ -75,6 +75,7 @@ class HomeController: UITabBarController {
             for (index, notification) in (listNotification.data?.notification.enumerated())! {
                 if notification.is_read == "0" {
                     self.hasNotif = true
+                    self.setTabbarItem()
                     break
                 } else {
                     self.hasNotif = false
@@ -83,7 +84,7 @@ class HomeController: UITabBarController {
                 if index == (listNotification.data?.notification.count)! - 1 {
                     self.setTabbarItem()
                     
-                    if self.currentPage + 1 < self.totalPage {
+                    if self.currentPage + 1 <= self.totalPage {
                         self.currentPage += 1
                         self.getNotificationList()
                     }

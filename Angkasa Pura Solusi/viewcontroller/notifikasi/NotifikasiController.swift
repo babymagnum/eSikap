@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Toast_Swift
 
 class NotifikasiController: BaseViewController, UICollectionViewDelegate {
 
@@ -111,7 +112,7 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
 extension NotifikasiController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == listNotifikasi.count - 1 {
-            if self.allowLoadMore && currentPage + 1 < totalPage {
+            if allowLoadMore && currentPage + 1 <= totalPage {
                 self.getNotificationList()
             }
         }
@@ -205,11 +206,9 @@ extension NotifikasiController {
         let notifikasi = listNotifikasi[indexpath.item]
         
         if notifikasi.is_read == "0" {
-            self.updateIsReadNotification(notification_id: notifikasi.id!) {
-                self.redirectToDetailNotifikasi(notifikasi)
-            }
+            self.updateIsReadNotification(notification_id: notifikasi.id!) { self.redirectToDetailNotifikasi(notifikasi) }
         } else {
-            self.redirectToDetailNotifikasi(notifikasi)
+            self.view.makeToast("Cuti telah diproses", duration: 1.0, position: .center)
         }
     }
     

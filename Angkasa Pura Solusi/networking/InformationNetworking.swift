@@ -355,7 +355,7 @@ class InformationNetworking: BaseNetworking {
         }
     }
     
-    func getAnnouncement(completion: @escaping (_ error: String?, _ itemAnnouncement: ItemAnnouncement?) -> Void) {
+    func getAnnouncement(completion: @escaping (_ error: String?, _ itemAnnouncement: [ItemAnnouncement]?) -> Void) {
         let url = "\(baseUrl())api/getAnnouncement"
         let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
@@ -370,7 +370,7 @@ class InformationNetworking: BaseNetworking {
                     
                     do {
                         let annoucement = try JSONDecoder().decode(Announcement.self, from: mData)
-                        completion(nil, annoucement.data[0])
+                        completion(nil, annoucement.data)
                     } catch let err { completion(err.localizedDescription, nil) }
                     
                 } else if status == 401 {

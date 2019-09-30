@@ -162,6 +162,9 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
         
         self.statusActionCollectionView.reloadData()
         self.statusPersetujuanCollectionView.reloadData()
+        
+        self.switchStatusAction.isOn = true
+        self.checkSwitchApproval(mySwitch: self.switchStatusAction)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -295,13 +298,25 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol, URLSessionD
     }
     
     func switchChange(status: String, position: Int) {
+        var totalApproved = 0
         listStatusAction[position].isApproved = status
         statusActionCollectionView.reloadItems(at: [IndexPath(item: position, section: 0)])
+        
+        for action in listStatusAction {
+            if action.isApproved == "1" {
+                totalApproved += 1
+            }
+        }
+        
         print(listStatusAction)
+        
+        switchStatusAction.isOn = totalApproved > 0
+        checkSwitchApproval(mySwitch: switchStatusAction)
     }
     
-    @objc func switchStatusActionChange(mySwitch: UISwitch) {
-        
+    @objc func switchStatusActionChange(mySwitch: UISwitch) { checkSwitchApproval(mySwitch: mySwitch) }
+    
+    private func checkSwitchApproval(mySwitch: UISwitch) {
         if listStatusAction.count == 0 {
             self.labelStatusAction.text = mySwitch.isOn ? "APPROVED" : "REJECTED"
         } else {
