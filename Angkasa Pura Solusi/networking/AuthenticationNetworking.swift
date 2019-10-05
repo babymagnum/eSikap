@@ -18,6 +18,8 @@ class AuthenticationNetworking: BaseNetworking {
     }
     
     func login(_ email: String, _ password: String, completion: @escaping(_ message: String?) -> Void) {
+        print("saved fcm token \(preference.getString(key: staticLet.FCM_TOKEN))")
+        
         let url = "\(baseUrl())api/login"
         let body: [String : String] = [
             "username": email,
@@ -56,6 +58,7 @@ class AuthenticationNetworking: BaseNetworking {
     }
     
     func changePassword(request: (new_password: String, old_password: String), completion: @escaping (_ error: String?, _ isExpired: Bool?) -> Void) {
+        
         let url = "\(baseUrl())api/changePassword"
         let headers: [String: String] = [
             "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))"

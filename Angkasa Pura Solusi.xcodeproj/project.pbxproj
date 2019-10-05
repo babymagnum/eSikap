@@ -219,7 +219,6 @@
 		ED40AB51231CBB59007C0ADC /* DetailDelegationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDelegationList.swift; sourceTree = "<group>"; };
 		ED40AB53231CBD6A007C0ADC /* DetailLeaveApproval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLeaveApproval.swift; sourceTree = "<group>"; };
 		ED42155D233ADDFA005B3F9E /* Angkasa Pura SolusiRelease.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiRelease.entitlements"; sourceTree = "<group>"; };
-		ED42155F233ADE5C005B3F9E /* Angkasa Pura SolusiDebug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiDebug.entitlements"; sourceTree = "<group>"; };
 		ED52151822F452A1001C6A50 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		ED52151D22F46F11001C6A50 /* DialogFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogFirstController.swift; sourceTree = "<group>"; };
 		ED52151E22F46F11001C6A50 /* DialogFirstController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogFirstController.xib; sourceTree = "<group>"; };
@@ -335,6 +334,7 @@
 		EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresensiMapController.swift; sourceTree = "<group>"; };
 		EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiMapController.xib; sourceTree = "<group>"; };
 		EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		EDD05DB923457609002D0F12 /* Angkasa Pura SolusiDebug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiDebug.entitlements"; sourceTree = "<group>"; };
 		EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EDE5DBCC2320B80500CFC608 /* SlipGajiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGajiController.swift; sourceTree = "<group>"; };
 		EDE5DBCD2320B80500CFC608 /* SlipGajiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlipGajiController.xib; sourceTree = "<group>"; };
@@ -666,8 +666,8 @@
 			isa = PBXGroup;
 			children = (
 				ED95907322EBDF3500D696E5 /* Info.plist */,
+				EDD05DB923457609002D0F12 /* Angkasa Pura SolusiDebug.entitlements */,
 				ED42155D233ADDFA005B3F9E /* Angkasa Pura SolusiRelease.entitlements */,
-				ED42155F233ADE5C005B3F9E /* Angkasa Pura SolusiDebug.entitlements */,
 				EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */,
 				ED9590A222EBFB6300D696E5 /* fonts */,
 				ED858AFE22F312AC00016EAD /* networking */,

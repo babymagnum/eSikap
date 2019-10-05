@@ -18,7 +18,6 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
     private var lastVelocityYSign = 0
     private var allowLoadMore = false
     private var listRiwayatCuti = [ItemRiwayatCuti]()
-    private var isCalculatRiwayatCutiHeight = false
     private var totalPage = 0
     private var currentPage = 0
     private var status = ""
@@ -31,7 +30,6 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor(hexString: "42a5f5")
-        
         return refreshControl
     }()
     
@@ -78,9 +76,9 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
             
             self.totalPage = (riwayatCuti.data?.total_page)!
             
-            for riwayat in riwayatCuti.data!.leave {
+            riwayatCuti.data?.leave.forEach({ (riwayat) in
                 self.listRiwayatCuti.append(riwayat)
-            }
+            })
             
             self.currentPage += 1
             
@@ -90,10 +88,7 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        DispatchQueue.main.async {
-            self.riwayatCutiCollectionView.collectionViewLayout.invalidateLayout()
-        }
+        riwayatCutiCollectionView.collectionViewLayout.invalidateLayout()
     }
     
     private func initCollectionView() {
@@ -144,20 +139,20 @@ extension RiwayatCutiController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RiwayatCutiCell", for: indexPath) as! RiwayatCutiCell
         cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cutiContainerClick(sender:))))
-        
+        cell.data = listRiwayatCuti[indexPath.item]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = listRiwayatCuti[indexPath.item]
         
-        DispatchQueue.main.async {
-            if !self.isCalculatRiwayatCutiHeight {
-                self.isCalculatRiwayatCutiHeight = true
-                let originalHeight = cell.viewContainer.getHeight()
-                let riwayatCutiLayout = self.riwayatCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                riwayatCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 24, height: originalHeight + 7.9)
-            }
-        }
-        
-        cell.data = item
-        return cell
+        let screenWidth = UIScreen.main.bounds.width
+        let typeHeight = item.type_name?.getHeight(withConstrainedWidth: screenWidth - 59 - 20, font_size: 8)
+        let dateHeight = item.dates?.getHeight(withConstrainedWidth: screenWidth - 59 - 20, font_size: 8)
+        let numberHeight = item.number?.getHeight(withConstrainedWidth: screenWidth - 59 - 20, font_size: 8)
+        let contentHeight = typeHeight! + dateHeight! + numberHeight!
+        let originalHeight = (51 - 28.5) + contentHeight
+        return CGSize(width: UIScreen.main.bounds.width - 24, height: originalHeight)
     }
 }
 
