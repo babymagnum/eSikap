@@ -200,6 +200,35 @@ extension NotifikasiController {
         }
     }
     
+    private func getDetailLeaveApprovalById(notifikasi: ItemListNotification) {
+        SVProgressHUD.show()
+        
+        informationNetworking.getDetailLeaveApprovalById(leave_id: notifikasi.data_id!) { (error, detailLeaveApproval, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
+                    self.getDetailLeaveApprovalById(notifikasi: notifikasi)
+                })
+                return
+            }
+            
+            guard let detailLeaveApproval = detailLeaveApproval else { return }
+            
+            if detailLeaveApproval.data?.leave[0].is_processed == "1" {
+                self.view.makeToast("Cuti telah diproses", duration: 1.0, position: .center)
+            } else {
+                self.redirectToDetailNotifikasi(notifikasi)
+            }
+            
+        }
+    }
+    
     @objc func containerNotifikasiClick(sender: UITapGestureRecognizer) {
         guard let indexpath = notifikasiCollectionView.indexPathForItem(at: sender.location(in: notifikasiCollectionView)) else { return }
         
@@ -208,7 +237,7 @@ extension NotifikasiController {
         if notifikasi.is_read == "0" {
             self.updateIsReadNotification(notification_id: notifikasi.id!) { self.redirectToDetailNotifikasi(notifikasi) }
         } else {
-            self.view.makeToast("Cuti telah diproses", duration: 1.0, position: .center)
+            self.getDetailLeaveApprovalById(notifikasi: notifikasi)
         }
     }
     

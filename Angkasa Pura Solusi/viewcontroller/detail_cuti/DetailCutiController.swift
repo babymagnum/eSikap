@@ -125,6 +125,11 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         labelDateSubmitted.text = "Diajukan pada \(item?.date ?? "")"
         labelKodeCuti.text = item?.number
         
+        UIView.animate(withDuration: 0.2) {
+            self.scrollView.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+        
         collectionTanggalCuti.reloadData()
         statusPersetujuanCollectionView.reloadData()
         

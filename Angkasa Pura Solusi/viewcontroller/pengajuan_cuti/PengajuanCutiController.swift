@@ -128,6 +128,13 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        jatahCutiCollectionView.collectionViewLayout.invalidateLayout()
+        tanggalCutiCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

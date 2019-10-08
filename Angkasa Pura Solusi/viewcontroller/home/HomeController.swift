@@ -23,14 +23,55 @@ class HomeController: UITabBarController {
     private var timer: Timer?
     private var hasNotif = false
     
+    // public
+    var redirect: String?
+    var leave_id: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        checkRedirect()
+        
         initBottomNavigation()
         
         getNotificationList()
         
         checkingNotifForeground()
+    }
+    
+    private func checkRedirect() {
+        print("check redirect")
+        if let redirect = redirect {
+            print("redirect not null")
+            
+            if redirect == "leave_approval" {
+//                let vc = DetailPersetujuanCutiController()
+//                vc.leave_id = leave_id
+                print("redirect ke \(redirect)")
+                self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
+            } else if redirect == "leave_detail" {
+                let vc = DetailCutiController()
+                vc.leave_id = leave_id
+                vc.title_content = "Detail Cuti"
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else if redirect == "delegation_leave_detail" {
+                let vc = DetailCutiController()
+                vc.leave_id = leave_id
+                vc.title_content = "Detail Delegasi Cuti"
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = DialogPreparePresenceController()
+                vc.stringDescription = "Tidak ada detail untuk notifikasi ini"
+                self.showCustomDialog(vc)
+            }
+            return
+        }
+    }
+    
+    private func showCustomDialog(_ vc: UIViewController) {
+        let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width)
+        popupVc.shadowEnabled = false
+        self.present(popupVc, animated: true)
     }
     
     private func checkingNotifForeground() {

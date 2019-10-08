@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 
     var window: UIWindow?
     var mainNavigationController : UINavigationController?
-    
-    lazy var preference: Preference = { return Preference() }()    
+    lazy var preference: Preference = { return Preference() }()
     lazy var staticLet: StaticLet = { return StaticLet() }()
 
     func changeRootViewController(rootVC : UIViewController){
@@ -55,12 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     private func configureFirebase(application: UIApplication) {
         FirebaseApp.configure()
         
-        Messaging.messaging().delegate = self
-        
         //notification
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
+            Messaging.messaging().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
                 if error == nil{
                     DispatchQueue.main.async {
@@ -81,23 +79,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                 print("Error fetching remote instance ID: \(error)")
             } else if let result = result {
                 print("Remote instance ID token: \(result.token)")
-                self.preference.saveString(value: result.token, key: self.staticLet.FCM_TOKEN)
+                //self.preference.saveString(value: result.token, key: self.staticLet.FCM_TOKEN)
             }
         }
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("fcm token \(fcmToken)")
-        preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
-        
-        let dataDict:[String: String] = ["token": fcmToken]
-        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        //preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
         Messaging.messaging().apnsToken = deviceToken
+        preference.saveString(value: token, key: staticLet.FCM_TOKEN)
         print("device token: \(token)")
     }
     
@@ -107,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         // Print full message.
-        print(userInfo)
+        print("notification data: \(userInfo)")
     }
     
     func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
@@ -119,11 +115,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         
-        // set which screen to proceed when user tap screen
-        print("notification data: \(userInfo)")
-        //changeRootViewController(rootVC: HomeController())
+        guard
+            let aps = userInfo[AnyHashable("aps")] as? NSDictionary,
+            let alert = aps["alert"] as? NSDictionary,
+            let body = alert["body"] as? String,
+            let title = alert["title"] as? String
+            else {
+                // handle any error here
+                return
+            }
+
+        print("Title: \(title) \nBody: \(body)")
+        
+        let vc = HomeController()
+        vc.redirect = "leave_approval"
+        changeRootViewController(rootVC: vc)
+        print("redirect to leave_approval")
         
         completionHandler()
+    }
+    
+    // handle notification in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let content = notification.request.content
+        // Process notification content
+        print("notification data foreground: \(content.userInfo)")
+        completionHandler([.alert, .sound]) // Display notification Banner
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
