@@ -429,6 +429,26 @@ extension UIColor {
 }
 
 extension String{
+    func matchingStrings(regex: String) -> [[String]] {
+        guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return [] }
+        let nsString = self as NSString
+        let results  = regex.matches(in: self, options: [], range: NSMakeRange(0, nsString.length))
+        return results.map { result in
+            (0..<result.numberOfRanges).map {
+                result.range(at: $0).location != NSNotFound
+                    ? nsString.substring(with: result.range(at: $0))
+                    : ""
+            }
+        }
+    }
+    
+    func contains(regex: String) -> Bool {
+        guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return false }
+        let nsString = self as NSString
+        let results  = regex.matches(in: self, options: [], range: NSMakeRange(0, nsString.length))
+        return results.count == 0 ? false : true
+    }
+    
     func dynamicCustomDevice() -> CGFloat {
         if (UIScreen.main.bounds.width == 320) {
             return 2
@@ -748,4 +768,19 @@ extension UIScrollView {
         self.contentSize = contentRect.size
     }
     
+}
+
+extension NSRegularExpression {
+    convenience init(_ pattern: String) {
+        do {
+            try self.init(pattern: pattern)
+        } catch {
+            preconditionFailure("Illegal regular expression: \(pattern).")
+        }
+    }
+    
+    func matches(_ string: String) -> Bool {
+        let range = NSRange(location: 0, length: string.utf16.count)
+        return firstMatch(in: string, options: [], range: range) != nil
+    }
 }

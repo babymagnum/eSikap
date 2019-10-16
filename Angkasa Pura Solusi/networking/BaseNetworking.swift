@@ -56,9 +56,9 @@ class BaseNetworking {
         
     }
     
-    func alamofirePostImage<T: Decodable>(imageData: Data, url: String, headers: [String: String], body: [String: String], completion : @escaping(_ error: String?, _ object: T?, _ isExpired: Bool?) -> Void) {
+    func alamofirePostImage<T: Decodable>(imageData: Data, fileName: String, fileType: String, url: String, headers: [String: String], body: [String: String], completion : @escaping(_ error: String?, _ object: T?, _ isExpired: Bool?) -> Void) {
         Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(imageData, withName: "attachment", fileName: "fileName", mimeType: "image/jpeg")
+            multipartFormData.append(imageData, withName: "attachment", fileName: fileName, mimeType: fileType)
             
             for (key, value) in body { multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key) }
             

@@ -101,6 +101,7 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     private var leave_type_id = ""
     private var delegation_emp_id = ""
     private var supervisor_emp_id = ""
+    private var fileType = ""
     private var idPilih = 99999999
     private var listLeaveType = [ItemType]()
     private var listJatahCuti = [ItemQuota]()
@@ -526,7 +527,9 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
 
 extension PengajuanCutiController: HSAttachmentPickerDelegate {
     func attachmentPickerMenu(_ menu: HSAttachmentPicker, show controller: UIViewController, completion: (() -> Void)? = nil) {
-        self.present(controller, animated: true, completion: completion)
+        DispatchQueue.main.async {
+            self.present(controller, animated: true, completion: completion)
+        }
     }
     
     func attachmentPickerMenu(_ menu: HSAttachmentPicker, showErrorMessage errorMessage: String) {
@@ -535,8 +538,12 @@ extension PengajuanCutiController: HSAttachmentPickerDelegate {
     
     func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
         
+        if filename.contains(".") {
+            fileType = filename.components(separatedBy: ".")[1]
+        }
+        
         if let image = image {
-            pickedData = image.jpegData(compressionQuality: 0.5)
+            pickedData = image.pngData()
             imageLampiran.image = image
             labelLampiranFile.text = filename
             showImageLampiran()
@@ -548,6 +555,12 @@ extension PengajuanCutiController: HSAttachmentPickerDelegate {
         labelLampiranFile.text = filename
         showLabelLampiranFile()
         hideImageLampiran()
+
+        if filename.contains(regex: "(jpg|png|jpeg)") {
+            imageLampiran.image = UIImage(data: data)
+            pickedData = UIImage(data: data)?.pngData()
+            showImageLampiran()
+        }
     }
 }
 
@@ -643,20 +656,9 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     }
     
     private func addLeaveRequest(body: [String: String]) {
-        var fileData: Data?
-        if let data = pickedData {
-            fileData = data
-        } else {
-            fileData = imageLampiranButton.image?.jpegData(compressionQuality: 0.5)
-        }
-        
-        guard let file = fileData else {
-            function.showUnderstandDialog(self, "File Not Picked", "Error", "Understand")
-            return
-        }
-        
+        print("leave request body \(body)")
         SVProgressHUD.show()
-        informationNetworking.postLeaveRequest(imageData: file, body: body) { (error, message, isExpired) in
+        informationNetworking.postLeaveRequest(imageData: pickedData!, fileName: labelLampiranFile.text ?? "", fileType: fileType, body: body) { (error, message, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -684,7 +686,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     private func getRequestBody(post_type: String) -> [String: String] {
         var body: [String: String] = [
             "leave_type_id": self.leave_type_id,
-            "reason": self.fieldAlasan.text!,
+            "reason": self.fieldAlasan.text.trim(),
             "delegation_emp_id": self.delegation_emp_id,
             "supervisor_emp_id": self.supervisor_emp_id,
             "post_type": post_type,
@@ -733,7 +735,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         picker.dismiss(animated: true, completion: nil)
-        guard let image = info[.editedImage] as? UIImage else {
+        guard let image = info[.originalImage] as? UIImage else {
             print("No image found")
             return
         }

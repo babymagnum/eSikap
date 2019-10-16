@@ -393,9 +393,9 @@ class InformationNetworking: BaseNetworking {
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
-    func postLeaveRequest(imageData: Data, body: [String: String], completion : @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+    func postLeaveRequest(imageData: Data, fileName: String, fileType: String, body: [String: String], completion : @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/addLeaveRequest"
-        alamofirePostImage(imageData: imageData, url: url, headers: getHeaders(), body: body, completion: completion)
+        alamofirePostImage(imageData: imageData, fileName: fileName, fileType: fileType, url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
     func getLeaveHistoryList(page: Int, year: String, leave_type_id: String, status: String, completion: @escaping(_ error: String?, _ riwayatCuti: RiwayatCuti?, _ isExpired: Bool?) -> Void) {

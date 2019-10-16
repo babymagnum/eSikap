@@ -93,10 +93,11 @@ class BaseViewController: UIViewController {
     }
     
     func forceLogout(_ navigationController: UINavigationController) {
-        let vc = DialogPreparePresenceController()
-        vc.stringDescription = "Session anda berakhir, silahkan login kembali untuk melanjutkan."
-        
-        DispatchQueue.main.async { self.showCustomDialog(vc) }
+        DispatchQueue.main.async {
+            let vc = DialogPreparePresenceController()
+            vc.stringDescription = "Session anda berakhir, silahkan login kembali untuk melanjutkan."
+            self.showCustomDialog(vc)
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.resetData()

@@ -241,7 +241,9 @@ extension BerandaController {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         getDashboard()
-        getLatestNews()
+        if listBerita.count == 0 {
+            getLatestNews()
+        }
     }
     
     @objc func beritaContainerClick(sender: UITapGestureRecognizer) {
@@ -271,7 +273,7 @@ extension BerandaController {
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
+                DispatchQueue.main.async { self.forceLogout(self.navigationController!) }
                 return
             }
             

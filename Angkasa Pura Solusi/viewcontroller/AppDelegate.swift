@@ -79,22 +79,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                 print("Error fetching remote instance ID: \(error)")
             } else if let result = result {
                 print("Remote instance ID token: \(result.token)")
-                //self.preference.saveString(value: result.token, key: self.staticLet.FCM_TOKEN)
+                self.preference.saveString(value: result.token, key: self.staticLet.FCM_TOKEN)
             }
         }
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("another fcm token: \(Messaging.messaging().fcmToken ?? "")")
         print("fcm token \(fcmToken)")
-        //preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
+        preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
+    }
+    
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        print("refresh fcm token \(fcmToken)")
+        preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        let token = tokenParts.joined()
+//        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+//        let token = tokenParts.joined()
         Messaging.messaging().apnsToken = deviceToken
-        preference.saveString(value: token, key: staticLet.FCM_TOKEN)
-        print("device token: \(token)")
+        Messaging.messaging().shouldEstablishDirectChannel = true
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -111,6 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         print("Receive data message: \(data)")
     }
     
+    // function to handle when notification clicked
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
