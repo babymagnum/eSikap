@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BottomSheetDatePickerProtocol {
-    func pickDate(pickedDate: String)
+    func pickDate(formatedDate: String, originalDate: String)
     func pickTime(pickedTime: String)
 }
 
@@ -57,7 +57,7 @@ class BottomSheetDatePicker: BaseViewController {
 extension BottomSheetDatePicker {
     @IBAction func buttonPilihClick(_ sender: Any) {
         switch picker {
-            case .date?: delegate?.pickDate(pickedDate: pickedDate)
+            case .date?: delegate?.pickDate(formatedDate: function.dateToString(datePicker.date, "dd-MM-yyyy"), originalDate: pickedDate)
             case .time?: delegate?.pickTime(pickedTime: pickedTime)
             default: break
         }

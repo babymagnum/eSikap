@@ -47,6 +47,7 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
     private var detailLeave: ItemDetailLeaveApproval?
     
     var leave_id: String!
+    var is_back_to_home: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -381,7 +382,13 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol, URLSessionD
         SVProgressHUD.show(withStatus: "Sedang mendownload file...")
     }
     
-    @IBAction func buttonBackClick(_ sender: Any) { navigationController?.popViewController(animated: true) }
+    @IBAction func buttonBackClick(_ sender: Any) {
+        if let _ = is_back_to_home {
+            backToHome()
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
     
     @IBAction func buttonProsesClick(_ sender: Any) {
         if fieldCatatan.text.trim() == "" {
@@ -396,5 +403,14 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol, URLSessionD
         } else {
             self.approvalLeaveOneDayAndRange()
         }
+    }
+    
+    private func backToHome() {
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(HomeController(), animated: true)
     }
 }

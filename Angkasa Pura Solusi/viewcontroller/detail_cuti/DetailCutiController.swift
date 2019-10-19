@@ -43,6 +43,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     
     var leave_id: String!
     var title_content: String!
+    var is_back_to_home: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -364,5 +365,20 @@ extension DetailCutiController: DialogBatalkanProtocol, URLSessionDownloadDelega
         present(vc, animated: true)
     }
     
-    @IBAction func buttonBackClick(_ sender: Any) { navigationController?.popViewController(animated: true) }
+    @IBAction func buttonBackClick(_ sender: Any) {
+        if let _ = is_back_to_home {
+            backToHome()
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func backToHome() {
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(HomeController(), animated: true)
+    }
 }

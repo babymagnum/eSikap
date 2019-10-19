@@ -54,9 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     private func configureFirebase(application: UIApplication) {
         FirebaseApp.configure()
         
-        //notification
+        // For iOS 10 display notification (sent via APNS)
         if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
             Messaging.messaging().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
@@ -85,7 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("another fcm token: \(Messaging.messaging().fcmToken ?? "")")
         print("fcm token \(fcmToken)")
         preference.saveString(value: fcmToken, key: staticLet.FCM_TOKEN)
     }
@@ -96,8 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-//        let token = tokenParts.joined()
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("device token \(token)")
         Messaging.messaging().apnsToken = deviceToken
         Messaging.messaging().shouldEstablishDirectChannel = true
     }
@@ -107,7 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        // Print full message.
         print("notification data: \(userInfo)")
     }
     
@@ -121,6 +119,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         
+        print("full message \(userInfo)")
+        
         guard
             let aps = userInfo[AnyHashable("aps")] as? NSDictionary,
             let alert = aps["alert"] as? NSDictionary,
@@ -133,10 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 
         print("Title: \(title) \nBody: \(body)")
         
-        let vc = HomeController()
-        vc.redirect = "leave_approval"
-        changeRootViewController(rootVC: vc)
-        print("redirect to leave_approval")
+        checkRedirect(redirect: "leave_approval", leave_id: "")
         
         completionHandler()
     }
@@ -144,9 +141,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     // handle notification in foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let content = notification.request.content
-        // Process notification content
         print("notification data foreground: \(content.userInfo)")
-        completionHandler([.alert, .sound]) // Display notification Banner
+        completionHandler([.alert, .sound])
+    }
+    
+    private func checkRedirect(redirect: String, leave_id: String) {
+        if redirect == "leave_approval" {
+            let vc = DetailPersetujuanCutiController()
+            vc.leave_id = leave_id
+            vc.is_back_to_home = true
+            changeRootViewController(rootVC: vc)
+        } else if redirect == "leave_detail" {
+            let vc = DetailCutiController()
+            vc.leave_id = leave_id
+            vc.is_back_to_home = true
+            vc.title_content = "Detail Cuti"
+            changeRootViewController(rootVC: vc)
+        } else if redirect == "delegation_leave_detail" {
+            let vc = DetailCutiController()
+            vc.leave_id = leave_id
+            vc.is_back_to_home = true
+            vc.title_content = "Detail Delegasi Cuti"
+            changeRootViewController(rootVC: vc)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

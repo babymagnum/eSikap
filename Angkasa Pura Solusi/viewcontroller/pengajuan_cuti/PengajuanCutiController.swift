@@ -113,6 +113,7 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     private var isBackDate = true
     private var isTanggalCutiVisible = false
     private var pickedData: Data?
+    private var pickedDate: String?
     
     var leave_id: String?
     
@@ -593,11 +594,12 @@ extension PengajuanCutiController {
 
 //date picker protocol
 extension PengajuanCutiController: BottomSheetDatePickerProtocol {
-    func pickDate(pickedDate: String) {
-        print("picked date \(pickedDate)")
+    func pickDate(formatedDate: String, originalDate: String) {
+        pickedDate = originalDate
+        
         switch datePicker {
             case .date?:
-                fieldPickTanggal.text = pickedDate
+                fieldPickTanggal.text = formatedDate
                 
                 for date in listTanggalCuti {
                     if date.tanggal == pickedDate {
@@ -658,7 +660,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     private func addLeaveRequest(body: [String: String]) {
         print("leave request body \(body)")
         SVProgressHUD.show()
-        informationNetworking.postLeaveRequest(imageData: pickedData!, fileName: labelLampiranFile.text ?? "", fileType: fileType, body: body) { (error, message, isExpired) in
+        informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0.5))!, fileName: labelLampiranFile.text ?? "", fileType: fileType, body: body) { (error, message, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -695,7 +697,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         ]
         
         if isDay == "0" && isRange == "0" {
-            body.updateValue(self.fieldPickTanggal.text!, forKey: "date")
+            body.updateValue(pickedDate ?? "", forKey: "date")
             body.updateValue(self.fieldRentangWaktuAwal.text!, forKey: "time_start")
             body.updateValue(self.fieldRentangWaktuAkhir.text!, forKey: "time_end")
             print(body)

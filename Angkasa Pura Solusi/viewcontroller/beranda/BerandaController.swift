@@ -64,6 +64,11 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         beritaCollectionView.collectionViewLayout.invalidateLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadMenuItem()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,8 +79,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         clickEvent()
         
         initCollection()
-        
-        loadMenuItem()
         
         getDashboard()
         
