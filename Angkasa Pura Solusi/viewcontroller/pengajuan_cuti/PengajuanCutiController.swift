@@ -114,6 +114,8 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     private var isTanggalCutiVisible = false
     private var pickedData: Data?
     private var pickedDate: String?
+    private var originalStartDate: String?
+    private var originalEndDate: String?
     
     var leave_id: String?
     
@@ -533,9 +535,7 @@ extension PengajuanCutiController: HSAttachmentPickerDelegate {
         }
     }
     
-    func attachmentPickerMenu(_ menu: HSAttachmentPicker, showErrorMessage errorMessage: String) {
-        // do nothing
-    }
+    func attachmentPickerMenu(_ menu: HSAttachmentPicker, showErrorMessage errorMessage: String) { }
     
     func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
         
@@ -595,10 +595,10 @@ extension PengajuanCutiController {
 //date picker protocol
 extension PengajuanCutiController: BottomSheetDatePickerProtocol {
     func pickDate(formatedDate: String, originalDate: String) {
-        pickedDate = originalDate
         
         switch datePicker {
             case .date?:
+                pickedDate = originalDate
                 fieldPickTanggal.text = formatedDate
                 
                 for date in listTanggalCuti {
@@ -618,8 +618,12 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
                     }
                 }
             
-            case .dateStart?: fieldRentangTanggalAwal.text = pickedDate
-            case .dateEnd?: fieldRentangTanggalAkhir.text = pickedDate
+            case .dateStart?:
+                fieldRentangTanggalAwal.text = formatedDate
+                originalStartDate = originalDate
+            case .dateEnd?:
+                fieldRentangTanggalAkhir.text = formatedDate
+                originalEndDate = originalDate
             default: break
         }
     }
@@ -711,8 +715,8 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
             return body
         }
         else {
-            body.updateValue(self.fieldRentangTanggalAwal.text!, forKey: "range_start")
-            body.updateValue(self.fieldRentangTanggalAkhir.text!, forKey: "range_end")
+            body.updateValue(self.originalStartDate ?? "", forKey: "range_start")
+            body.updateValue(self.originalEndDate ?? "", forKey: "range_end")
             print(body)
             return body
         }

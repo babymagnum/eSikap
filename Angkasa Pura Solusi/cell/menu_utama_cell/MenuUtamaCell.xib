@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +35,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SqC-18-YXV" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="44" width="46" height="21"/>
+                                        <rect key="frame" x="3" y="44" width="60" height="21.5"/>
                                         <string key="text">Pengajuan
 Cuti</string>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
@@ -52,8 +50,8 @@ Cuti</string>
                                     <constraint firstItem="qzW-Of-ogt" firstAttribute="centerX" secondItem="3bI-P8-Dlb" secondAttribute="centerX" id="UXw-d0-dxD"/>
                                     <constraint firstItem="SqC-18-YXV" firstAttribute="top" secondItem="qzW-Of-ogt" secondAttribute="bottom" constant="7" id="XBd-Ij-xWc"/>
                                     <constraint firstItem="qzW-Of-ogt" firstAttribute="top" secondItem="3bI-P8-Dlb" secondAttribute="top" id="eoo-yO-NOM"/>
-                                    <constraint firstItem="SqC-18-YXV" firstAttribute="leading" secondItem="3bI-P8-Dlb" secondAttribute="leading" constant="10" id="fQ1-Mk-BD2"/>
-                                    <constraint firstAttribute="trailing" secondItem="SqC-18-YXV" secondAttribute="trailing" constant="10" id="lLh-0a-qux"/>
+                                    <constraint firstItem="SqC-18-YXV" firstAttribute="leading" secondItem="3bI-P8-Dlb" secondAttribute="leading" constant="3" id="fQ1-Mk-BD2"/>
+                                    <constraint firstAttribute="trailing" secondItem="SqC-18-YXV" secondAttribute="trailing" constant="3" id="lLh-0a-qux"/>
                                 </constraints>
                             </view>
                         </subviews>

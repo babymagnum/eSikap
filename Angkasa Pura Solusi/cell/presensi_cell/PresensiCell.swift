@@ -47,13 +47,39 @@ class PresensiCell: UICollectionViewCell {
                 if data.shift_start == "" {
                     self.labelJamMasuk.text = "-"
                 } else {
-                    self.labelJamMasuk.text = data.shift_start
+                    if data.date_in == "" {
+                        if (data.shift_start?.contains(" "))! {
+                            self.labelJamMasuk.text = data.shift_start?.components(separatedBy: " ")[1]
+                        } else {
+                            self.labelJamMasuk.text = data.shift_start
+                        }
+                    } else {
+                        if (data.shift_start?.contains(" "))! {
+                            guard let arrayShiftStart = data.shift_start?.components(separatedBy: " ") else { return }
+                            self.labelJamMasuk.text = "\(arrayShiftStart[0])     \(arrayShiftStart[1])"
+                        } else {
+                            self.labelJamMasuk.text = data.shift_start
+                        }
+                    }
                 }
                 
                 if data.shift_end == "" {
                     self.labelJamPulang.text = "-"
                 } else {
-                    self.labelJamPulang.text = data.shift_end
+                    if data.date_in == "" {
+                        if (data.shift_end?.contains(" "))! {
+                            self.labelJamPulang.text = data.shift_end?.components(separatedBy: " ")[1]
+                        } else {
+                            self.labelJamPulang.text = data.shift_end
+                        }
+                    } else {
+                        if (data.shift_end?.contains(" "))! {
+                            guard let arrayShiftEnd = data.shift_end?.components(separatedBy: " ") else { return }
+                            self.labelJamPulang.text = "\(arrayShiftEnd[0])     \(arrayShiftEnd[1])"
+                        } else {
+                            self.labelJamPulang.text = data.shift_end
+                        }
+                    }
                 }
                 
                 if data.date_in == "" {

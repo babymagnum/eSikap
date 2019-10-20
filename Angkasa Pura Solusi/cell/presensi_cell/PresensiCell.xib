@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="292" height="148"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Senin, 01 Mei 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5K-L3-6S4" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="16" y="11" width="69" height="10"/>
+                                <rect key="frame" x="16" y="11" width="260" height="10"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
                                 <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -100,15 +98,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="S8x-c2-vlt" firstAttribute="top" secondItem="iAL-Se-sdG" secondAttribute="bottom" constant="21" id="08h-M2-0hl"/>
-                            <constraint firstItem="8pu-B4-9yJ" firstAttribute="leading" secondItem="G5K-L3-6S4" secondAttribute="trailing" constant="60" id="5it-gi-qxy"/>
+                            <constraint firstItem="8pu-B4-9yJ" firstAttribute="leading" secondItem="6gG-jN-MWk" secondAttribute="trailing" constant="85" id="5it-gi-qxy"/>
                             <constraint firstItem="FMv-R6-AAb" firstAttribute="leading" secondItem="IgV-Rw-9qe" secondAttribute="leading" constant="16" id="67X-qG-ihU"/>
                             <constraint firstItem="cKG-ZJ-1Zt" firstAttribute="leading" secondItem="iAL-Se-sdG" secondAttribute="trailing" constant="14" id="6Ga-fH-dpn"/>
                             <constraint firstItem="kui-Rg-u2L" firstAttribute="top" secondItem="G5K-L3-6S4" secondAttribute="bottom" constant="19" id="6UT-gz-ocy"/>
                             <constraint firstItem="cKG-ZJ-1Zt" firstAttribute="top" secondItem="8pu-B4-9yJ" secondAttribute="bottom" constant="5" id="8Q5-1D-hhL"/>
-                            <constraint firstItem="kui-Rg-u2L" firstAttribute="leading" secondItem="G5K-L3-6S4" secondAttribute="trailing" constant="60" id="Ajo-HR-jPm"/>
+                            <constraint firstItem="kui-Rg-u2L" firstAttribute="leading" secondItem="6gG-jN-MWk" secondAttribute="trailing" constant="85" id="Ajo-HR-jPm"/>
                             <constraint firstItem="iAL-Se-sdG" firstAttribute="top" secondItem="5Jh-qf-0oX" secondAttribute="bottom" constant="5" id="Bq0-PJ-RkJ"/>
                             <constraint firstItem="6gG-jN-MWk" firstAttribute="top" secondItem="G5K-L3-6S4" secondAttribute="bottom" constant="19" id="Ciy-IR-2Wd"/>
-                            <constraint firstItem="cKG-ZJ-1Zt" firstAttribute="leading" secondItem="G5K-L3-6S4" secondAttribute="trailing" constant="60" id="DFd-6Q-RIG"/>
+                            <constraint firstItem="cKG-ZJ-1Zt" firstAttribute="leading" secondItem="6gG-jN-MWk" secondAttribute="trailing" constant="85" id="DFd-6Q-RIG"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="S8x-c2-vlt" secondAttribute="trailing" constant="16" id="DYE-s8-Jnx"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cKG-ZJ-1Zt" secondAttribute="trailing" constant="16" id="FJw-up-DzD"/>
                             <constraint firstItem="Hbu-jq-xM9" firstAttribute="top" secondItem="kui-Rg-u2L" secondAttribute="bottom" constant="5" id="GCR-4l-1PA"/>
@@ -119,9 +117,10 @@
                             <constraint firstItem="G5K-L3-6S4" firstAttribute="top" secondItem="IgV-Rw-9qe" secondAttribute="top" constant="11" id="OCW-SV-3cC"/>
                             <constraint firstItem="G5K-L3-6S4" firstAttribute="leading" secondItem="IgV-Rw-9qe" secondAttribute="leading" constant="16" id="Oc1-wJ-DXe"/>
                             <constraint firstItem="5Jh-qf-0oX" firstAttribute="leading" secondItem="IgV-Rw-9qe" secondAttribute="leading" constant="16" id="PDT-HJ-qJ9"/>
-                            <constraint firstItem="Hbu-jq-xM9" firstAttribute="leading" secondItem="G5K-L3-6S4" secondAttribute="trailing" constant="60" id="RDl-gm-yKu"/>
+                            <constraint firstItem="Hbu-jq-xM9" firstAttribute="leading" secondItem="6gG-jN-MWk" secondAttribute="trailing" constant="85" id="RDl-gm-yKu"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Hbu-jq-xM9" secondAttribute="trailing" constant="16" id="Ymt-cw-qRu"/>
                             <constraint firstItem="S8x-c2-vlt" firstAttribute="leading" secondItem="IgV-Rw-9qe" secondAttribute="leading" constant="16" id="Znm-dP-2QS"/>
+                            <constraint firstAttribute="trailing" secondItem="G5K-L3-6S4" secondAttribute="trailing" constant="16" id="cKy-ce-MDJ"/>
                             <constraint firstItem="5Jh-qf-0oX" firstAttribute="top" secondItem="FMv-R6-AAb" secondAttribute="bottom" constant="11" id="iFg-UJ-zcj"/>
                             <constraint firstItem="iAL-Se-sdG" firstAttribute="leading" secondItem="IgV-Rw-9qe" secondAttribute="leading" constant="16" id="uOf-4U-CsQ"/>
                         </constraints>

@@ -39,12 +39,6 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if from == .standart {
-            setInteractiveRecognizer()
-        }
-
-        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
-        
         initView()
         
         initCollectionView()
@@ -58,17 +52,12 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func initView() {
+        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         checkTopMargin(viewRootTopMargin: viewRootTopMargin)
         
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestureRecognnizer))
         swipeGesture.direction = .right
         view.addGestureRecognizer(swipeGesture)
-    }
-    
-    private func setInteractiveRecognizer() {
-        guard let controller = navigationController else { return }
-        let recognizer = InteractivePopRecognizer(controller: controller)
-        controller.interactivePopGestureRecognizer?.delegate = recognizer
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -111,8 +100,23 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
             
             self.listPresensi = presensi.data
             
-            DispatchQueue.main.async { self.presensiCollectionView.reloadData() }
+            DispatchQueue.main.async {
+                self.presensiCollectionView.reloadData()
+                self.scrollToIndex()
+            }
         }
+    }
+    
+    private func scrollToIndex() {
+        var index = 0
+        let currentDateInMonth = self.function.getCurrentDate(pattern: "dd")
+        if currentDateInMonth.first == "0" {
+            index = Int(String(currentDateInMonth.dropFirst()))! - 1
+        } else {
+            index = Int(currentDateInMonth)! - 1
+        }
+        
+        presensiCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredVertically, animated: true)
     }
 }
 
@@ -144,25 +148,6 @@ extension PresensiListController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let presensiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PresensiCell", for: indexPath) as! PresensiCell
-        
-        if !isCalculatePresensiHeight {
-            self.isCalculatePresensiHeight = true
-            
-            DispatchQueue.main.async {
-                if self.listPresensi.count > 0 {
-                    var index = 0
-                    let currentDateInMonth = self.function.getCurrentDate(pattern: "dd")
-                    if currentDateInMonth.first == "0" {
-                        index = Int(String(currentDateInMonth.dropFirst()))! - 1
-                    } else {
-                        index = Int(currentDateInMonth)! - 1
-                    }
-                    
-                    self.presensiCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: UICollectionView.ScrollPosition.centeredVertically, animated: true)
-                }
-            }
-        }
-        
         presensiCell.data = listPresensi[indexPath.row]
         return presensiCell
     }

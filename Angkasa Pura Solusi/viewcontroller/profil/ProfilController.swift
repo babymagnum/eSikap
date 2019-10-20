@@ -191,7 +191,11 @@ class ProfilController: BaseViewController {
 extension ProfilController {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
-        getProfile()
+        if open == .myProfile {
+            getProfile()
+        } else {
+            getKaryawanProfil()
+        }
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {

@@ -124,16 +124,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         guard
             let aps = userInfo[AnyHashable("aps")] as? NSDictionary,
             let alert = aps["alert"] as? NSDictionary,
-            let body = alert["body"] as? String,
-            let title = alert["title"] as? String
+            let redirect = alert["redirect"] as? String,
+            let data_id = alert["data_id"] as? String
             else {
                 // handle any error here
                 return
             }
-
-        print("Title: \(title) \nBody: \(body)")
         
-        checkRedirect(redirect: "leave_approval", leave_id: "")
+        checkRedirect(redirect: redirect, leave_id: data_id)
         
         completionHandler()
     }
