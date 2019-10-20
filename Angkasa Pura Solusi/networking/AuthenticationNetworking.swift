@@ -18,9 +18,8 @@ class AuthenticationNetworking: BaseNetworking {
     }
     
     func login(_ email: String, _ password: String, completion: @escaping(_ message: String?) -> Void) {
-        print("saved fcm token \(preference.getString(key: staticLet.FCM_TOKEN))")
-        
         let url = "\(baseUrl())api/login"
+        print("url: \(url)")
         let body: [String : String] = [
             "username": email,
             "password": password,
