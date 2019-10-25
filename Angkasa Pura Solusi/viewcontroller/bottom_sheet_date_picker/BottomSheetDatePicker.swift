@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BottomSheetDatePickerProtocol {
-    func pickDate(formatedDate: String, originalDate: String)
+    func pickDate(formatedDate: String)
     func pickTime(pickedTime: String)
 }
 
@@ -25,8 +25,8 @@ class BottomSheetDatePicker: BaseViewController {
     @IBOutlet weak var buttonPilih: UIButton!
     @IBOutlet weak var viewContainer: UIView!
     
-    var pickedDate = ""
-    var pickedTime = ""
+//    var pickedDate = ""
+//    var pickedTime = ""
     var delegate: BottomSheetDatePickerProtocol?
     var picker: PickerTypeEnum!
     var isBackDate: Bool!
@@ -34,7 +34,7 @@ class BottomSheetDatePicker: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickedDate = function.getCurrentDate(pattern: "yyyy-MM-dd")
+//        pickedDate = function.getCurrentDate(pattern: "yyyy-MM-dd")
         
         initView()
     }
@@ -57,8 +57,8 @@ class BottomSheetDatePicker: BaseViewController {
 extension BottomSheetDatePicker {
     @IBAction func buttonPilihClick(_ sender: Any) {
         switch picker {
-            case .date?: delegate?.pickDate(formatedDate: function.dateToString(datePicker.date, "dd-MM-yyyy"), originalDate: pickedDate)
-            case .time?: delegate?.pickTime(pickedTime: pickedTime)
+            case .date?: delegate?.pickDate(formatedDate: function.dateToString(datePicker.date, "dd-MM-yyyy"))
+        case .time?: delegate?.pickTime(pickedTime: function.dateToString(datePicker.date, "hh:mm"))
             default: break
         }
         dismiss(animated: true, completion: nil)
@@ -67,9 +67,9 @@ extension BottomSheetDatePicker {
     @IBAction func datePickerChange(_ sender: Any) {
         switch picker {
         case .date?:
-            self.pickedDate = function.dateToString(datePicker.date, "yyyy-MM-dd")
+            print("")
         case .time?:
-            self.pickedTime = function.dateToString(datePicker.date, "hh:mm")
+            print("")
         default: break
         }
     }

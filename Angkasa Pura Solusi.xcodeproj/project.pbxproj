@@ -1476,7 +1476,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiDebug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -1484,7 +1484,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = ApsDevelopment;
@@ -1501,7 +1501,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -1509,7 +1509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = ApsProduction;

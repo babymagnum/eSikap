@@ -113,9 +113,9 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     private var isBackDate = true
     private var isTanggalCutiVisible = false
     private var pickedData: Data?
-    private var pickedDate: String?
-    private var originalStartDate: String?
-    private var originalEndDate: String?
+//    private var pickedDate: String?
+//    private var originalStartDate: String?
+//    private var originalEndDate: String?
     
     var leave_id: String?
     
@@ -594,36 +594,37 @@ extension PengajuanCutiController {
 
 //date picker protocol
 extension PengajuanCutiController: BottomSheetDatePickerProtocol {
-    func pickDate(formatedDate: String, originalDate: String) {
+    func pickDate(formatedDate: String) {
         
         switch datePicker {
             case .date?:
-                pickedDate = originalDate
+//                pickedDate = originalDate
                 fieldPickTanggal.text = formatedDate
                 
-                for date in listTanggalCuti {
-                    if date.tanggal == pickedDate {
-                        self.view.makeToast("Tanggal yang sama sudah dipilih")
-                        return
-                    }
-                }
-                
                 if isTanggalCutiVisible {
-                    listTanggalCuti.append(TanggalCuti(tanggal: pickedDate))
+                    for date in listTanggalCuti {
+                        if date.tanggal == formatedDate {
+                            self.view.makeToast("Tanggal yang sama sudah dipilih")
+                            return
+                        }
+                    }
+                    
+                    listTanggalCuti.append(TanggalCuti(tanggal: formatedDate))
                     tanggalCutiCollectionView.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                         self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
                         self.viewTanggalPickedHeight.constant = self.tanggalCutiCollectionHeight.constant
                         self.scrollView.resizeScrollViewContentSize()
+                        self.view.layoutIfNeeded()
                     }
                 }
             
             case .dateStart?:
                 fieldRentangTanggalAwal.text = formatedDate
-                originalStartDate = originalDate
+//                originalStartDate = originalDate
             case .dateEnd?:
                 fieldRentangTanggalAkhir.text = formatedDate
-                originalEndDate = originalDate
+//                originalEndDate = originalDate
             default: break
         }
     }
@@ -701,7 +702,8 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         ]
         
         if isDay == "0" && isRange == "0" {
-            body.updateValue(pickedDate ?? "", forKey: "date")
+            let formatedDate = function.dateToString(function.stringToDate(self.fieldPickTanggal.text!, "dd-MM-yyyy"), "yyyy-MM-dd")
+            body.updateValue(formatedDate, forKey: "date")
             body.updateValue(self.fieldRentangWaktuAwal.text!, forKey: "time_start")
             body.updateValue(self.fieldRentangWaktuAkhir.text!, forKey: "time_end")
             print(body)
@@ -709,14 +711,17 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         }
         else if isDay == "1" && isRange == "0" {
             for (index, date) in self.listTanggalCuti.enumerated() {
-                body.updateValue(date.tanggal!, forKey: "dates[\(index)]")
+                let formatedDate = function.dateToString(function.stringToDate(date.tanggal!, "dd-MM-yyyy"), "yyyy-MM-dd")
+                body.updateValue(formatedDate, forKey: "dates[\(index)]")
             }
             print(body)
             return body
         }
         else {
-            body.updateValue(self.originalStartDate ?? "", forKey: "range_start")
-            body.updateValue(self.originalEndDate ?? "", forKey: "range_end")
+            let startDate = function.dateToString(function.stringToDate(self.fieldRentangTanggalAwal.text!, "dd-MM-yyyy"), "yyyy-MM-dd")
+            let endDate = function.dateToString(function.stringToDate(self.fieldRentangTanggalAkhir.text!, "dd-MM-yyyy"), "yyyy-MM-dd")
+            body.updateValue(startDate, forKey: "range_start")
+            body.updateValue(endDate, forKey: "range_end")
             print(body)
             return body
         }

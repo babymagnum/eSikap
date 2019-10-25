@@ -81,14 +81,14 @@ class HomeController: UITabBarController {
         }
     }
     
-    func forceLogout(_ navigationController: UINavigationController) {
+    func forceLogout() {
         let vc = DialogPreparePresenceController()
         vc.stringDescription = "Session anda berakhir, silahkan login kembali untuk melanjutkan."
         present(PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width), animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.resetData()
-            navigationController.popToRootViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
         })
     }
     
@@ -101,7 +101,7 @@ class HomeController: UITabBarController {
     private func getNotificationList() {
         informationNetworking.getNotificationList(page: currentPage) { (error, listNotification, isExpired) in
             if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
+                self.forceLogout()
                 return
             }
             

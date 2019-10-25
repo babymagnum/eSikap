@@ -43,12 +43,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         //keyboard manager
         IQKeyboardManager.shared.enable = true
         
+        //Notification listener
+        //notificationListener()
+        
         //google maps
         let _ = "AIzaSyBt-Sef6bIAiMI-412Fg9LeoNGC3aKFnl8"
         let oldMapsKey = "AIzaSyABb3r3kEysXc1ahNhBczZfpFbKCTcEUZY"
         GMSServices.provideAPIKey(oldMapsKey)
         
         return true
+    }
+    
+    private func notificationListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleEvent), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc func handleEvent() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
     private func configureFirebase(application: UIApplication) {
@@ -122,16 +133,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         print("full message \(userInfo)")
         
         guard
-            let aps = userInfo[AnyHashable("aps")] as? NSDictionary,
-            let alert = aps["alert"] as? NSDictionary,
-            let redirect = alert["redirect"] as? String,
-            let data_id = alert["data_id"] as? String
+            //let aps = userInfo[AnyHashable("aps")] as? NSDictionary,
+            let data_id = userInfo[AnyHashable("data_id")],
+            let redirect = userInfo[AnyHashable("redirect")]
             else {
                 // handle any error here
                 return
             }
         
-        checkRedirect(redirect: redirect, leave_id: data_id)
+        print("redirect: \(redirect), data_id: \(data_id)")
+        
+        checkRedirect(redirect: "\(redirect)", leave_id: "\(data_id)")
         
         completionHandler()
     }
@@ -180,6 +192,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

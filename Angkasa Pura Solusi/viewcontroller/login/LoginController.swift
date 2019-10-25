@@ -72,8 +72,16 @@ extension LoginController {
         counter += 1
         
         if counter == 20 {
-            preference.saveBool(value: false, key: staticLet.IS_RELEASE)
-            function.showUnderstandDialog(self, "APS ESS", "You're in development mode", "Understand")
+            counter = 0
+            
+            if preference.getBool(key: staticLet.IS_RELEASE) {
+                preference.saveBool(value: false, key: staticLet.IS_RELEASE)
+                function.showUnderstandDialog(self, "APS ESS", "You're in development mode", "Understand")
+            } else {
+                preference.saveBool(value: true, key: staticLet.IS_RELEASE)
+                function.showUnderstandDialog(self, "APS ESS", "You're in production mode", "Understand")
+            }
+                        
         }
     }
     

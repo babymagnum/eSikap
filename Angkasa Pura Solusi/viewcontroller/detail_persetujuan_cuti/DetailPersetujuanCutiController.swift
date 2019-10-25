@@ -265,8 +265,12 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol, URLSessionD
             
             self.buttonProses.isEnabled = false
             self.view.makeToast(success.message)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.navigationController?.popViewController(animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                if let _ = self.is_back_to_home {
+                    self.backToHome()
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
             })
         }
     }
@@ -292,8 +296,12 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol, URLSessionD
             
             self.buttonProses.isEnabled = false
             self.view.makeToast(success.message)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.navigationController?.popViewController(animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                if let _ = self.is_back_to_home {
+                    self.backToHome()
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
             })
         }
     }

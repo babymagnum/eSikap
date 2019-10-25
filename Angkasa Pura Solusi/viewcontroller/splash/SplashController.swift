@@ -23,7 +23,7 @@ class SplashController: BaseViewController {
         
         changeScreen()
         
-        preference.saveBool(value: false, key: staticLet.IS_RELEASE)
+        preference.saveBool(value: true, key: staticLet.IS_RELEASE)
     }
     
     override func viewDidLoad() {
