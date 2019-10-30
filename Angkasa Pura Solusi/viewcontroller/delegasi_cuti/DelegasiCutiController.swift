@@ -116,7 +116,7 @@ extension DelegasiCutiController {
 extension DelegasiCutiController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == listDelegasiCuti.count - 1 {
-            if self.allowLoadMore && currentPage + 1 < totalPage {
+            if self.allowLoadMore && currentPage + 1 <= totalPage {
                 self.getLeaveDelegationList()
             }
         }

@@ -113,7 +113,7 @@ extension CutiController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == listCuti.count - 1 {
-            if self.allowLoadMore && currentPage + 1 < totalPage {
+            if self.allowLoadMore && currentPage + 1 <= totalPage {
                 self.getLeaveApprovalList()
             }
         }

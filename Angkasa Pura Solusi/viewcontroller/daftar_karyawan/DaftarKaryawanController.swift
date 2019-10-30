@@ -104,7 +104,7 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
 extension DaftarKaryawanController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == listKaryawan.count - 1 {
-            if self.allowLoadMore && currentPage + 1 < totalPage {
+            if self.allowLoadMore && currentPage + 1 <= totalPage {
                 self.getEmpList()
             }
         }

@@ -113,7 +113,7 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
 extension SearchDelegasiOrAtasanController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == listEmpFilter.count - 1 {
-            if self.allowLoadMore && currentPage + 1 < totalPage {
+            if self.allowLoadMore && currentPage + 1 <= totalPage {
                 self.getEmpFilter()
             }
         }
