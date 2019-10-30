@@ -55,10 +55,15 @@ class DialogPengajuanCutiController: UIViewController, UICollectionViewDelegate 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             UIView.animate(withDuration: 0.2, animations: {
                 self.collectionExceptionHeight.constant = self.collectionException.contentSize.height
-                self.viewContainerHeight.constant =  self.collectionExceptionHeight.constant + ((UIScreen.main.bounds.width - 42) * 0.21) + 159
+                let contentHeight = self.collectionExceptionHeight.constant + 70 + 164
+                self.viewContainerHeight.constant = contentHeight > UIScreen.main.bounds.height ? UIScreen.main.bounds.height - 60 : contentHeight
                 self.view.layoutIfNeeded()
             })
         }
+    }
+    
+    @IBAction func buttonOkeClick(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }
 

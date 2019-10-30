@@ -49,7 +49,6 @@ class LoginController: BaseViewController {
     }
 
     private func initView() {
-        print("saved fcm token \(preference.getString(key: staticLet.FCM_TOKEN))")
         buttonMasuk.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonMasukClick)))
         textFieldEmail.delegate = self
         textFieldPassword.delegate = self

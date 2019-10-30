@@ -244,9 +244,7 @@ extension BerandaController {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         getDashboard()
-        if listBerita.count == 0 {
-            getLatestNews()
-        }
+        getLatestNews()
     }
     
     @objc func beritaContainerClick(sender: UITapGestureRecognizer) {
@@ -289,22 +287,20 @@ extension BerandaController {
             
             guard let item = itemDashboard else { return }
             
-            self.setDashboardView(item)
+            DispatchQueue.main.async { self.setDashboardView(item) }
         }
     }
     
     private func setDashboardView(_ item: ItemDashboard) {
-        DispatchQueue.main.async {
-            self.labelCuti.text = item.total_leave_quota
-            self.labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 120"
-            if item.presence_today?.icon == "sad" {
-                self.iconPresenceStatus.image = UIImage(named: "sad")
-            } else if item.presence_today?.icon == "emotionless" {
-                self.iconPresenceStatus.image = UIImage(named: "surprised")
-            }
-            self.labelPresenceStatus.text = item.presence_today?.status?.uppercased()
-            self.labelClock.text = item.presence_today?.time
+        labelCuti.text = item.total_leave_quota
+        labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 120"
+        if item.presence_today?.icon == "sad" {
+            iconPresenceStatus.image = UIImage(named: "sad")
+        } else if item.presence_today?.icon == "emotionless" {
+            iconPresenceStatus.image = UIImage(named: "surprised")
         }
+        labelPresenceStatus.text = item.presence_today?.status?.uppercased()
+        labelClock.text = item.presence_today?.time
     }
     
     private func getLatestNews() {
@@ -322,16 +318,6 @@ extension BerandaController {
             self.listBerita = news
             
             DispatchQueue.main.async { self.beritaCollectionView.reloadData() }
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.3, animations: {
-                    let beritaCell = self.beritaCollectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: IndexPath(item: 0, section: 0)) as! BeritaCell
-                    let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.height) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.height) + 29.5 + 5
-                    self.beritaCollectionViewHeight.constant = beritaHeight
-                    self.scrollView.resizeScrollViewContentSize()
-                    self.view.layoutIfNeeded()
-                })
-            }
         }
     }
     
@@ -385,12 +371,16 @@ extension BerandaController: UICollectionViewDataSource {
         } else {
             let beritaCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeritaCell", for: indexPath) as! BeritaCell
             
-            if !isAlreadyCalculateBeritaHeight {
+            if !isAlreadyCalculateBeritaHeight && indexPath.item == listBerita.count - 1 {
                 isAlreadyCalculateBeritaHeight = true
                 DispatchQueue.main.async {
                     let beritaHeight = ((UIScreen.main.bounds.width * 0.8) * 0.45) + beritaCell.labelCreatedAt.getHeight(width: beritaCell.labelCreatedAt.frame.width) + beritaCell.labelTitle.getHeight(width: beritaCell.labelTitle.frame.width) + 29.5
                     let layoutBeritaCollectionView = self.beritaCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
                     layoutBeritaCollectionView.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.8, height: beritaHeight)
+                    
+                    self.beritaCollectionViewHeight.constant = beritaHeight + 4
+                    self.scrollView.resizeScrollViewContentSize()
+                    self.view.layoutIfNeeded()
                 }
             }
             

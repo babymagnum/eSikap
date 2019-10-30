@@ -116,7 +116,9 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
             index = Int(currentDateInMonth)! - 1
         }
         
-        presensiCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredVertically, animated: true)
+        if listPresensi.count > 28 {
+            presensiCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredVertically, animated: true)
+        }
     }
 }
 

@@ -598,7 +598,6 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
         
         switch datePicker {
             case .date?:
-//                pickedDate = originalDate
                 fieldPickTanggal.text = formatedDate
                 
                 if isTanggalCutiVisible {
@@ -621,19 +620,24 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
             
             case .dateStart?:
                 fieldRentangTanggalAwal.text = formatedDate
-//                originalStartDate = originalDate
             case .dateEnd?:
                 fieldRentangTanggalAkhir.text = formatedDate
-//                originalEndDate = originalDate
             default: break
         }
     }
     
     func pickTime(pickedTime: String) {
-        print("picked time \(pickedTime)")
         switch datePicker {
             case .timeStart?: fieldRentangWaktuAwal.text = pickedTime
-            case .timeEnd?: fieldRentangWaktuAkhir.text = pickedTime
+            case .timeEnd?:
+                let dateTime = function.dateStringToInt(stringDate: pickedTime, pattern: "kk:mm")
+                let timeStart = function.dateStringToInt(stringDate: fieldRentangWaktuAwal.text!, pattern: "kk:mm")
+                
+                if dateTime <= timeStart  {
+                    self.view.makeToast("Anda tidak bisa memilih waktu selesai sebelum atau sama dengan waktu mulai.")
+                } else {
+                    fieldRentangWaktuAkhir.text = pickedTime
+                }
             default: break
         }
     }
@@ -798,9 +802,18 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     
     @objc func viewRentangTanggalAkhirClick() { openDateTimePicker(.dateEnd, .date) }
     
-    @objc func viewRentangWaktuAwalClick() { openDateTimePicker(.timeStart, .time) }
+    @objc func viewRentangWaktuAwalClick() {
+        fieldRentangWaktuAkhir.text = ""
+        openDateTimePicker(.timeStart, .time)
+    }
     
-    @objc func viewRentangWaktuAkhirClick() { openDateTimePicker(.timeEnd, .time) }
+    @objc func viewRentangWaktuAkhirClick() {
+        if fieldRentangWaktuAwal.text == "" {
+            function.showUnderstandDialog(self, "APS ESS", "Isi waktu awal terlebih dahulu.", "OK")
+        } else {
+            openDateTimePicker(.timeEnd, .time)
+        }
+    }
     
     @IBAction func buttonRiwayatCutiClick(_ sender: Any) {
         navigationController?.pushViewController(RiwayatCutiController(), animated: true)

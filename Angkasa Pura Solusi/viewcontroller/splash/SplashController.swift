@@ -24,6 +24,7 @@ class SplashController: BaseViewController {
         changeScreen()
         
         preference.saveBool(value: true, key: staticLet.IS_RELEASE)
+        print("base url: \(function.baseUrl())")
     }
     
     override func viewDidLoad() {

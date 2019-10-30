@@ -25,6 +25,8 @@ class PublicFunction {
     
     let imageCache = NSCache<NSString, UIImage>()
     let imageCacheKey: NSString = "CachedMapSnapshot"
+    lazy var preference: Preference = { return Preference() }()
+    lazy var staticLet: StaticLet = { return StaticLet() }()
     
     func setStatusBarBackgroundColor(color: UIColor) {
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.red
@@ -41,6 +43,10 @@ class PublicFunction {
     
     func push(_ viewController: UIViewController, _ navigationController: UINavigationController) {
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func baseUrl() -> String {
+        return preference.getBool(key: staticLet.IS_RELEASE) ? staticLet.base_url_prod : staticLet.base_url_dev
     }
     
     open func getAddressFromLatLon(pdblLatitude: String, pdblLongitude: String) {
