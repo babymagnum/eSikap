@@ -21,7 +21,7 @@ enum DatePickerEnum {
     case timeEnd
 }
 
-class PengajuanCutiController: BaseViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UITextFieldDelegate {
+class PengajuanCutiController: BaseViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, URLSessionDownloadDelegate, UICollectionViewDelegate, UITextFieldDelegate {
 
     //outlet root
     @IBOutlet weak var imageLampiranButton: UIImageView!
@@ -113,6 +113,7 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     private var isBackDate = true
     private var isTanggalCutiVisible = false
     private var pickedData: Data?
+    private var attachmentOld = ""
 //    private var pickedDate: String?
 //    private var originalStartDate: String?
 //    private var originalEndDate: String?
@@ -157,6 +158,7 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     
     private func getData() {
         if let leave_id = leave_id {
+            scrollView.alpha = 0
             getEditDetailLeaveById(id: leave_id)
         } else {
             getLeaveType()
@@ -194,28 +196,54 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
             self.isTanggalCutiVisible = true
             
             for date in item!.dates {
-                self.listTanggalCuti.append(TanggalCuti(tanggal: date))
-            }
-            
-            self.tanggalCutiCollectionView.reloadData()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
-                self.viewTanggalPickedHeight.constant = self.tanggalCutiCollectionHeight.constant
-                self.scrollView.resizeScrollViewContentSize()
+                let formatedDate = function.dateToString(function.stringToDate(date, "yyyy-MM-dd"), "dd-MM-yyyy")
+                self.listTanggalCuti.append(TanggalCuti(tanggal: formatedDate))
             }
         }
         
+        attachmentOld = (item?.file_name)!
         leave_type_id = (item?.type_id)!
         fieldAlasan.text = item?.reason
         fieldRentangWaktuAwal.text = item?.start_time
         fieldRentangWaktuAkhir.text = item?.end_time
         fieldRentangTanggalAwal.text = item?.leave_start
         fieldRentangTanggalAkhir.text = item?.leave_end
-        fieldPickTanggal.text = item?.date?.components(separatedBy: " ")[0]
-        if item?.url_file != "" { imageLampiran.loadUrl((item?.url_file)!) }
+        fieldPickTanggal.text = function.dateToString(function.stringToDate((item?.date?.components(separatedBy: " ")[0])!, "yyyy-MM-dd"), "dd-MM-yyyy")
+
+        if item?.url_file != "" {
+            downloadFile(attachment: item?.url_file)
+            labelLampiranFile.text = item?.file
+            showLabelLampiranFile()
+            
+            if (item?.file_name?.contains(regex: "(jpg|png|jpeg)"))! {
+                imageLampiran.loadUrl((item?.url_file)!)
+                showImageLampiran()
+            }
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.scrollView.alpha = 1
+        }
         
         getLeaveType()
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        pickedData = try! Data(contentsOf: location)
+    }
+    
+    private func downloadFile(attachment: String?) {
+        guard let attachment = attachment else { return }
+        
+        guard let url = URL(string: attachment) else {
+            self.function.showUnderstandDialog(self, "File Tidak Ditemukan", "File yang ingin didownload tidak tersedia di server.", "Mengerti")
+            return
+        }
+        
+        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+        let downloadTask = urlSession.downloadTask(with: url)
+        downloadTask.resume()
+        SVProgressHUD.show(withStatus: "Sedang mendownload file...")
     }
     
     private func initEvent() {
@@ -701,8 +729,8 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
             "delegation_emp_id": self.delegation_emp_id,
             "supervisor_emp_id": self.supervisor_emp_id,
             "post_type": post_type,
-            "leave_id": "",
-            "attachment_old": ""
+            "leave_id": leave_id ?? "",
+            "attachment_old": attachmentOld
         ]
         
         if isDay == "0" && isRange == "0" {

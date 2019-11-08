@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +27,6 @@
                 <outlet property="labelEmail" destination="8wC-IH-0iX" id="G1W-ql-cTy"/>
                 <outlet property="labelJabatan" destination="hci-oI-UR1" id="jwT-gB-gAx"/>
                 <outlet property="labelLokasiKerja" destination="c45-jZ-jBI" id="I7b-KR-D1b"/>
-                <outlet property="labelNIKValue" destination="ar9-5h-x2O" id="CdV-jA-6h6"/>
                 <outlet property="labelNama" destination="GMu-Jm-K31" id="UcE-zR-GBd"/>
                 <outlet property="labelTelepon" destination="s7e-SW-WhS" id="bSj-0Y-Gz3"/>
                 <outlet property="labelTitle" destination="gZw-tU-7Ta" id="yPL-04-Zb1"/>
@@ -48,11 +45,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAt-fw-idf">
-                    <rect key="frame" x="0.0" y="20" width="375" height="525"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZP-m6-iSM">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
@@ -87,10 +84,10 @@
                             </constraints>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfr-b5-XNG">
-                            <rect key="frame" x="0.0" y="53" width="375" height="472"/>
+                            <rect key="frame" x="0.0" y="53" width="375" height="431"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dke-Fm-Tjt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="472"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headway566297Unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="RGz-gd-ayw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
@@ -142,40 +139,10 @@
                                             </constraints>
                                         </view>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUn-HV-bhc">
-                                            <rect key="frame" x="14" y="194" width="347" height="163"/>
+                                            <rect key="frame" x="14" y="194" width="347" height="122"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAH-Pj-IZ2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="347" height="40"/>
-                                                    <subviews>
-                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5c1-sX-l1l" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="139" height="40"/>
-                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
-                                                            <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                            <state key="normal" title="NIK">
-                                                                <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ar9-5h-x2O" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="139" y="0.0" width="208" height="40"/>
-                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
-                                                            <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="5c1-sX-l1l" firstAttribute="width" secondItem="tAH-Pj-IZ2" secondAttribute="width" multiplier="0.4" id="CeI-kf-8pE"/>
-                                                        <constraint firstAttribute="height" constant="40" id="NbN-Zl-dUB"/>
-                                                    </constraints>
-                                                </stackView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kns-sE-cqo">
-                                                    <rect key="frame" x="0.0" y="40" width="347" height="1"/>
-                                                    <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="JuZ-iO-HbJ"/>
-                                                    </constraints>
-                                                </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8s-2P-zx7">
-                                                    <rect key="frame" x="0.0" y="41" width="347" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="347" height="40"/>
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1b-eM-rgO" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="139" height="40"/>
@@ -198,14 +165,14 @@
                                                     </constraints>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xaW-KR-nrd">
-                                                    <rect key="frame" x="0.0" y="81" width="347" height="1"/>
+                                                    <rect key="frame" x="0.0" y="40" width="347" height="1"/>
                                                     <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="P3L-0N-RXE"/>
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vc8-pR-4vj">
-                                                    <rect key="frame" x="0.0" y="82" width="347" height="40"/>
+                                                    <rect key="frame" x="0.0" y="41" width="337" height="40"/>
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hej-co-uOY" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="139" height="40"/>
@@ -215,27 +182,27 @@
                                                                 <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8wC-IH-0iX" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                                            <rect key="frame" x="139" y="0.0" width="208" height="40"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8wC-IH-0iX" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                                            <rect key="frame" x="139" y="0.0" width="198" height="40"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="Hej-co-uOY" firstAttribute="width" secondItem="Vc8-pR-4vj" secondAttribute="width" multiplier="0.4" id="CKM-G8-inb"/>
+                                                        <constraint firstItem="Hej-co-uOY" firstAttribute="width" secondItem="Vc8-pR-4vj" secondAttribute="width" multiplier="0.413" id="CKM-G8-inb"/>
                                                         <constraint firstAttribute="height" constant="40" id="wn1-7k-j1j"/>
                                                     </constraints>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sya-rO-UrU">
-                                                    <rect key="frame" x="0.0" y="122" width="347" height="1"/>
+                                                    <rect key="frame" x="0.0" y="81" width="347" height="1"/>
                                                     <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="grf-bE-KXw"/>
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgr-VV-ZLI">
-                                                    <rect key="frame" x="0.0" y="123" width="347" height="40"/>
+                                                    <rect key="frame" x="0.0" y="82" width="347" height="40"/>
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5j-5U-EAE" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="139" height="40"/>
@@ -264,31 +231,25 @@
                                                 <constraint firstItem="xaW-KR-nrd" firstAttribute="top" secondItem="Y8s-2P-zx7" secondAttribute="bottom" id="9fe-xp-1qY"/>
                                                 <constraint firstItem="Cgr-VV-ZLI" firstAttribute="leading" secondItem="YUn-HV-bhc" secondAttribute="leading" id="DpM-eT-YvN"/>
                                                 <constraint firstItem="Sya-rO-UrU" firstAttribute="top" secondItem="Vc8-pR-4vj" secondAttribute="bottom" id="H5h-EC-5Fb"/>
-                                                <constraint firstItem="tAH-Pj-IZ2" firstAttribute="top" secondItem="YUn-HV-bhc" secondAttribute="top" id="MMC-IK-Rff"/>
                                                 <constraint firstItem="Sya-rO-UrU" firstAttribute="leading" secondItem="YUn-HV-bhc" secondAttribute="leading" id="Of9-0i-p9L"/>
                                                 <constraint firstAttribute="trailing" secondItem="Y8s-2P-zx7" secondAttribute="trailing" id="Qad-eK-yo0"/>
                                                 <constraint firstAttribute="trailing" secondItem="Sya-rO-UrU" secondAttribute="trailing" id="QvK-yR-LVC"/>
                                                 <constraint firstItem="Vc8-pR-4vj" firstAttribute="top" secondItem="xaW-KR-nrd" secondAttribute="bottom" id="RSz-0z-L8k"/>
                                                 <constraint firstItem="Y8s-2P-zx7" firstAttribute="leading" secondItem="YUn-HV-bhc" secondAttribute="leading" id="S0O-S0-ABR"/>
                                                 <constraint firstItem="Vc8-pR-4vj" firstAttribute="leading" secondItem="YUn-HV-bhc" secondAttribute="leading" id="UU8-SD-z21"/>
-                                                <constraint firstAttribute="trailing" secondItem="Kns-sE-cqo" secondAttribute="trailing" id="Vce-UH-sIN"/>
                                                 <constraint firstItem="Sya-rO-UrU" firstAttribute="top" secondItem="Vc8-pR-4vj" secondAttribute="bottom" id="ZCa-wy-EaV"/>
-                                                <constraint firstItem="Kns-sE-cqo" firstAttribute="top" secondItem="tAH-Pj-IZ2" secondAttribute="bottom" id="af0-Of-ow7"/>
-                                                <constraint firstItem="tAH-Pj-IZ2" firstAttribute="leading" secondItem="YUn-HV-bhc" secondAttribute="leading" id="dXn-gf-7jh"/>
                                                 <constraint firstAttribute="trailing" secondItem="xaW-KR-nrd" secondAttribute="trailing" id="e3l-LJ-eOf"/>
-                                                <constraint firstAttribute="trailing" secondItem="tAH-Pj-IZ2" secondAttribute="trailing" id="hAo-dz-F54"/>
-                                                <constraint firstAttribute="trailing" secondItem="Vc8-pR-4vj" secondAttribute="trailing" id="hrD-Pw-jNI"/>
+                                                <constraint firstItem="Y8s-2P-zx7" firstAttribute="top" secondItem="YUn-HV-bhc" secondAttribute="top" id="fhg-iB-Mqf"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vc8-pR-4vj" secondAttribute="trailing" constant="10" id="hrD-Pw-jNI"/>
                                                 <constraint firstItem="xaW-KR-nrd" firstAttribute="leading" secondItem="YUn-HV-bhc" secondAttribute="leading" id="iUr-Zn-sUa"/>
                                                 <constraint firstItem="Cgr-VV-ZLI" firstAttribute="top" secondItem="Sya-rO-UrU" secondAttribute="bottom" id="jje-bq-YIX"/>
-                                                <constraint firstAttribute="bottom" secondItem="Cgr-VV-ZLI" secondAttribute="bottom" id="sxe-Bo-PFv"/>
-                                                <constraint firstItem="Kns-sE-cqo" firstAttribute="leading" secondItem="YUn-HV-bhc" secondAttribute="leading" id="vYK-ey-fRT"/>
-                                                <constraint firstItem="Y8s-2P-zx7" firstAttribute="top" secondItem="Kns-sE-cqo" secondAttribute="bottom" id="weU-jp-zif"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cgr-VV-ZLI" secondAttribute="bottom" id="jpe-Yi-ckh"/>
                                                 <constraint firstItem="Sya-rO-UrU" firstAttribute="top" secondItem="Vc8-pR-4vj" secondAttribute="bottom" id="yU5-Lm-lKI"/>
-                                                <constraint firstAttribute="height" constant="163" id="zsW-cF-pxY"/>
+                                                <constraint firstAttribute="height" constant="122" id="zsW-cF-pxY"/>
                                             </constraints>
                                         </view>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Uz-AE-tKW">
-                                            <rect key="frame" x="14" y="375" width="347" height="81"/>
+                                            <rect key="frame" x="14" y="334" width="347" height="81"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="neK-ZW-gue">
                                                     <rect key="frame" x="0.0" y="0.0" width="347" height="40"/>
@@ -426,6 +387,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="-41" y="134"/>
         </view>
     </objects>
     <resources>

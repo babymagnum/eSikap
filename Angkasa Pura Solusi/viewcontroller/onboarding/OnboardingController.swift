@@ -50,11 +50,11 @@ class OnboardingController: BaseViewController, UICollectionViewDelegate {
     private func populateCollection() {
         listOnboarding.append(Onboarding(title: "Kenali Lebih Dekat Rekan Kerja Anda", image: UIImage(named: "onboarding1"), description: "Berikan selamat di hari ulang tahunya, ucapkan selamat datang kepada karyawan baru"))
         
-        listOnboarding.append(Onboarding(title: "Ajukan Ijin dan Cuti Anda Tanpa Repot", image: UIImage(named: "onboarding2"), description: "Ajukan ijin dan cuti anda tanpa repot menulis form, dengan ESS APS Mobile pengajuan bisa dilakukan dengan mudah"))
+        listOnboarding.append(Onboarding(title: "Ajukan Ijin dan Cuti Anda Tanpa Repot", image: UIImage(named: "onboarding2"), description: "Ajukan ijin dan cuti anda tanpa repot menulis form, dengan eSIKAP Mobile pengajuan bisa dilakukan dengan mudah"))
         
-        listOnboarding.append(Onboarding(title: "Pesan Ruang Untuk Rapat Dimanapun dan Kapanpun", image: UIImage(named: "onboarding3"), description: "Pesan Ruangan untuk kebutuhan Rapat dengan mudah melalui ESS APS Mobile"))
+        listOnboarding.append(Onboarding(title: "Pesan Ruang Untuk Rapat Dimanapun dan Kapanpun", image: UIImage(named: "onboarding3"), description: "Pesan Ruangan untuk kebutuhan Rapat dengan mudah melalui eSIKAP Mobile"))
         
-        listOnboarding.append(Onboarding(title: "Monitor Performa Anda Melalui Data Presensi", image: UIImage(named: "onboarding4"), description: "Seberapa rajinkah anda, berapa presentase kehadiran anda di kantor, semua termonitor di dalan ESS APS Mobile"))
+        listOnboarding.append(Onboarding(title: "Monitor Performa Anda Melalui Data Presensi", image: UIImage(named: "onboarding4"), description: "Seberapa rajinkah anda, berapa presentase kehadiran anda di kantor, semua termonitor di dalam eSIKAP Mobile"))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.onboardingCollection.reloadData()

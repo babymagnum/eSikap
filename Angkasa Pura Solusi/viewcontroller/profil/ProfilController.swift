@@ -24,7 +24,6 @@ class ProfilController: BaseViewController {
     @IBOutlet weak var labelNama: UILabel!
     @IBOutlet weak var labelJabatan: UILabel!
     @IBOutlet weak var labelDivisi: UILabel!
-    @IBOutlet weak var labelNIKValue: UILabel!
     @IBOutlet weak var labelLokasiKerja: UILabel!
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var labelTelepon: UILabel!
@@ -114,7 +113,6 @@ class ProfilController: BaseViewController {
         labelNama.text = item.emp_name
         labelJabatan.text = item.position
         labelDivisi.text = item.unit
-        labelNIKValue.text = item.nik
         labelLokasiKerja.text = item.workarea
         labelEmail.text = item.email
         labelTelepon.text = item.phone
@@ -129,7 +127,6 @@ class ProfilController: BaseViewController {
         labelNama.text = item.emp_name
         labelJabatan.text = item.position
         labelDivisi.text = item.unit
-        labelNIKValue.text = item.nik
         labelLokasiKerja.text = item.workarea
         labelEmail.text = item.email
         labelTelepon.text = item.phone
