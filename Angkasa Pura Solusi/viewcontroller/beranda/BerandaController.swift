@@ -74,7 +74,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         initView()
         
-        checkShowFirstDialog()
+        getAnnouncement()
         
         clickEvent()
         
@@ -140,7 +140,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
             self.preference.saveBool(value: true, key: self.staticLet.IS_SHOW_FIRST_DIALOG)
             
             let content = item[0]
-            let cleanContent = content.content?.replacingOccurrences(of: "<p>", with: "").replacingOccurrences(of: "</p>", with: "")
+            let cleanContent = content.content?.removingRegexMatches(pattern: "<[^>]+>", replaceWith: "").removingRegexMatches(pattern: "&[^;]+;", replaceWith: "").removingRegexMatches(pattern: "&[^;]+", replaceWith: "")
             
             let vc = DialogFirstController()
             vc.resources = (image: content.img, title: content.title, description: cleanContent) as? (image: String, title: String, description: String)

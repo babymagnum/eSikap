@@ -357,28 +357,28 @@ class InformationNetworking: BaseNetworking {
     
     func getAnnouncement(completion: @escaping (_ error: String?, _ itemAnnouncement: [ItemAnnouncement]?) -> Void) {
         let url = "\(baseUrl())api/getAnnouncement"
-        let headers: [String: String] = [ "Authorization": "Bearer \(preference.getString(key: staticLet.TOKEN))" ]
         
-        Alamofire.request(url, method: .get, headers: headers).responseJSON { (response) in
+        Alamofire.request(url, method: .get, headers: getHeaders()).responseJSON { (response) in
             switch response.result {
             case .success(let success):
+                print("announcement \(JSON(success))")
                 let status = JSON(success)["status"].int
                 let message = JSON(success)["message"].string
-                
+
                 if status == 200 {
                     guard let mData = response.data else { return}
-                    
+
                     do {
                         let annoucement = try JSONDecoder().decode(Announcement.self, from: mData)
                         completion(nil, annoucement.data)
                     } catch let err { completion(err.localizedDescription, nil) }
-                    
+
                 } else if status == 401 {
                     completion(nil, nil)
                 } else {
                     completion(message, nil)
                 }
-                
+
             case .failure(let error): completion(error.localizedDescription, nil)
             }
         }

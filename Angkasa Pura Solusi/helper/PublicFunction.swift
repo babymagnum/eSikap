@@ -448,6 +448,16 @@ extension String{
         }
     }
     
+    func removingRegexMatches(pattern: String, replaceWith: String = "") -> String {
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive)
+            let range = NSMakeRange(0, self.count)
+            return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replaceWith)
+        } catch {
+            return self
+        }
+    }
+    
     func contains(regex: String) -> Bool {
         guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return false }
         let nsString = self as NSString
