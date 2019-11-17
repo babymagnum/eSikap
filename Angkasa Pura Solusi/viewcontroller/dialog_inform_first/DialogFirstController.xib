@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +16,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogFirstController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogFirstController" customModule="eSIKAP" customModuleProvider="target">
             <connections>
                 <outlet property="imageAnnouncement" destination="MSI-rb-Tk6" id="oeb-zd-hgb"/>
                 <outlet property="labelDescription" destination="eQP-Iz-FBj" id="Ir0-hC-Ftt"/>
@@ -26,6 +24,7 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewContainer" destination="1e0-WU-Z22" id="erj-0J-m8m"/>
                 <outlet property="viewContainerHeight" destination="Yyh-Dq-hLo" id="gTR-Iv-Khi"/>
+                <outlet property="viewRoot" destination="O9W-TY-akS" id="EKA-Yk-DSb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -45,7 +44,7 @@
                                         <constraint firstAttribute="width" secondItem="MSI-rb-Tk6" secondAttribute="height" multiplier="1:1.01" id="XOl-9b-N3z"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-h0-7cW" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-h0-7cW" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
                                     <rect key="frame" x="87" y="348.5" width="159" height="30.5"/>
                                     <string key="text">Speeda Application Testing
 Challenge</string>
@@ -54,17 +53,18 @@ Challenge</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoP-Ua-2Hm">
-                                    <rect key="frame" x="313" y="-12" width="32" height="32"/>
+                                    <rect key="frame" x="308" y="-17" width="42" height="42"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="32" id="JqY-u4-LsD"/>
-                                        <constraint firstAttribute="height" constant="32" id="rH8-5C-6cr"/>
+                                        <constraint firstAttribute="width" constant="42" id="JqY-u4-LsD"/>
+                                        <constraint firstAttribute="height" constant="42" id="rH8-5C-6cr"/>
                                     </constraints>
+                                    <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                     <state key="normal" image="group475"/>
                                     <connections>
                                         <action selector="iconCancelClick:" destination="-1" eventType="touchUpInside" id="7Xb-Xf-64Y"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description testing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQP-Iz-FBj" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description testing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQP-Iz-FBj" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
                                     <rect key="frame" x="10" y="389" width="313" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -73,7 +73,7 @@ Challenge</string>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="IoP-Ua-2Hm" firstAttribute="top" secondItem="1e0-WU-Z22" secondAttribute="top" constant="-12" id="8sT-C2-AHf"/>
+                                <constraint firstItem="IoP-Ua-2Hm" firstAttribute="top" secondItem="1e0-WU-Z22" secondAttribute="top" constant="-17" id="8sT-C2-AHf"/>
                                 <constraint firstItem="MSI-rb-Tk6" firstAttribute="width" secondItem="1e0-WU-Z22" secondAttribute="width" id="Aak-17-tAT"/>
                                 <constraint firstItem="zyT-h0-7cW" firstAttribute="top" secondItem="MSI-rb-Tk6" secondAttribute="bottom" constant="12" id="Ang-3g-6Ug"/>
                                 <constraint firstItem="MSI-rb-Tk6" firstAttribute="top" secondItem="1e0-WU-Z22" secondAttribute="top" id="Ehf-pq-b0M"/>
@@ -82,7 +82,7 @@ Challenge</string>
                                 <constraint firstAttribute="trailing" secondItem="eQP-Iz-FBj" secondAttribute="trailing" constant="10" id="ckZ-7s-Qjm"/>
                                 <constraint firstItem="eQP-Iz-FBj" firstAttribute="leading" secondItem="1e0-WU-Z22" secondAttribute="leading" constant="10" id="fbm-z7-QwE"/>
                                 <constraint firstItem="zyT-h0-7cW" firstAttribute="centerX" secondItem="1e0-WU-Z22" secondAttribute="centerX" id="gcw-JL-GB2"/>
-                                <constraint firstAttribute="trailing" secondItem="IoP-Ua-2Hm" secondAttribute="trailing" constant="-12" id="k6Q-pR-Bki"/>
+                                <constraint firstAttribute="trailing" secondItem="IoP-Ua-2Hm" secondAttribute="trailing" constant="-17" id="k6Q-pR-Bki"/>
                                 <constraint firstAttribute="trailing" secondItem="MSI-rb-Tk6" secondAttribute="trailing" id="pcr-9w-qzT"/>
                                 <constraint firstItem="MSI-rb-Tk6" firstAttribute="leading" secondItem="1e0-WU-Z22" secondAttribute="leading" id="zOk-E6-wfu"/>
                             </constraints>

@@ -9,8 +9,9 @@
 import UIKit
 import Foundation
 
-class DialogFirstController: UIViewController {
+class DialogFirstController: BaseViewController {
 
+    @IBOutlet weak var viewRoot: UIView!
     @IBOutlet weak var viewContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var imageAnnouncement: UIImageView!
@@ -23,6 +24,13 @@ class DialogFirstController: UIViewController {
         super.viewDidLoad()
 
         initView()
+        
+        initEvent()
+    }
+    
+    private func initEvent() {
+        viewRoot.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRootClick)))
+        viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewContainerClick)))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,8 +52,15 @@ class DialogFirstController: UIViewController {
         }
     }
     
-    @IBAction func iconCancelClick(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    private func cancel() {
+        print("cancel click")
+        preference.saveBool(value: true, key: staticLet.IS_SHOW_FIRST_DIALOG)
+        dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func iconCancelClick(_ sender: Any) { cancel() }
+    
+    @objc func viewRootClick() { cancel() }
+    
+    @objc func viewContainerClick() { cancel() }
 }
