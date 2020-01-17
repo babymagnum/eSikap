@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KebijakanPeraturanDetail" customModule="eSIKAP" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionKebijakanPeraturan" destination="GRb-gC-iVu" id="VE6-oY-tyL"/>
+                <outlet property="constraintViewRoot" destination="f3X-p1-Tvh" id="1jT-Fd-8Iv"/>
+                <outlet property="labelKosong" destination="9gb-cj-dgb" id="dXo-v4-ZSm"/>
+                <outlet property="labelTitle" destination="sTp-Zq-KTV" id="pho-69-fRK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25f-TS-nQA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfR-2T-vPP">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBv-OR-doM">
+                                    <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="4aH-l0-Xw8"/>
+                                        <constraint firstAttribute="height" constant="53" id="N0P-g0-DR4"/>
+                                    </constraints>
+                                    <state key="normal" image="backwardArrow"/>
+                                    <connections>
+                                        <action selector="buttonBackClick:" destination="-1" eventType="touchUpInside" id="glT-0h-Yyu"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kebijakan &amp; Peraturan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTp-Zq-KTV" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="53" y="19.5" width="119" height="14"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE4-Z1-1vx">
+                                    <rect key="frame" x="322" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="90J-JJ-EfY"/>
+                                        <constraint firstAttribute="height" constant="53" id="gbO-pI-SBb"/>
+                                    </constraints>
+                                    <state key="normal" image="filter"/>
+                                    <connections>
+                                        <action selector="buttonFilterClick:" destination="-1" eventType="touchUpInside" id="D0q-hY-Ohb"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="sTp-Zq-KTV" firstAttribute="leading" secondItem="sBv-OR-doM" secondAttribute="trailing" id="1Xz-7w-b88"/>
+                                <constraint firstItem="sTp-Zq-KTV" firstAttribute="centerY" secondItem="MfR-2T-vPP" secondAttribute="centerY" id="9Pj-IZ-xTb"/>
+                                <constraint firstAttribute="height" constant="53" id="9Z9-Um-SlS"/>
+                                <constraint firstAttribute="trailing" secondItem="VE4-Z1-1vx" secondAttribute="trailing" id="sCh-ii-mrv"/>
+                                <constraint firstItem="sBv-OR-doM" firstAttribute="leading" secondItem="MfR-2T-vPP" secondAttribute="leading" id="tew-2A-aR8"/>
+                                <constraint firstItem="VE4-Z1-1vx" firstAttribute="centerY" secondItem="MfR-2T-vPP" secondAttribute="centerY" id="ujP-1Y-BIE"/>
+                                <constraint firstItem="sBv-OR-doM" firstAttribute="centerY" secondItem="MfR-2T-vPP" secondAttribute="centerY" id="wQ4-0V-2hG"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GRb-gC-iVu">
+                            <rect key="frame" x="0.0" y="53" width="375" height="614"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="45L-tc-XzF">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="23" maxX="0.0" maxY="23"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data karyawan kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gb-cj-dgb" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                            <rect key="frame" x="119" y="326" width="137" height="15.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="MfR-2T-vPP" firstAttribute="top" secondItem="25f-TS-nQA" secondAttribute="top" id="56X-2i-c85"/>
+                        <constraint firstItem="GRb-gC-iVu" firstAttribute="top" secondItem="MfR-2T-vPP" secondAttribute="bottom" id="9Ft-np-jTA"/>
+                        <constraint firstAttribute="trailing" secondItem="GRb-gC-iVu" secondAttribute="trailing" id="Dl1-rb-EfI"/>
+                        <constraint firstAttribute="bottom" secondItem="GRb-gC-iVu" secondAttribute="bottom" id="Hyx-P6-RFQ"/>
+                        <constraint firstItem="9gb-cj-dgb" firstAttribute="centerY" secondItem="25f-TS-nQA" secondAttribute="centerY" id="ZO7-fS-L43"/>
+                        <constraint firstAttribute="trailing" secondItem="MfR-2T-vPP" secondAttribute="trailing" id="Zl5-1Q-VbN"/>
+                        <constraint firstItem="GRb-gC-iVu" firstAttribute="leading" secondItem="25f-TS-nQA" secondAttribute="leading" id="ghX-lc-4DD"/>
+                        <constraint firstItem="9gb-cj-dgb" firstAttribute="centerX" secondItem="25f-TS-nQA" secondAttribute="centerX" id="hRW-aB-4E2"/>
+                        <constraint firstItem="MfR-2T-vPP" firstAttribute="leading" secondItem="25f-TS-nQA" secondAttribute="leading" id="ul1-cQ-iE1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="25f-TS-nQA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9pY-h0-Ypa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="25f-TS-nQA" secondAttribute="bottom" id="T4e-aH-dOg"/>
+                <constraint firstItem="25f-TS-nQA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="f3X-p1-Tvh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="25f-TS-nQA" secondAttribute="trailing" id="zTT-3J-g2u"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="132" y="131"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backwardArrow" width="9.5" height="16"/>
+        <image name="filter" width="16" height="16"/>
+    </resources>
+</document>

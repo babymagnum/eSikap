@@ -528,4 +528,82 @@ class InformationNetworking: BaseNetworking {
         let body: [String: String] = [ "payroll_id": payroll_id ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func getDestination(completion: @escaping(_ error: String?, _ destination: Destination?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getDestination"
+        alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
+    
+    func getStateFilter(page: Int, keyword: String, completion: @escaping(_ error: String?, _ propinsiCity: PropinsiCity?, _ isExpired: Bool?) -> Void) {
+        let body: [String: String] = [
+            "page": "\(page)",
+            "id": "122",
+            "keyword": keyword
+        ]
+        let url = "\(baseUrl())api/getStateFilter"
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getCityFilter(page: Int, propinsiId: String, keyword: String, completion: @escaping(_ error: String?, _ propinsiCity: PropinsiCity?, _ isExpired: Bool?) -> Void) {
+        
+        let body: [String: String] = [
+            "page": "\(page)",
+            "state_id": propinsiId,
+            "keyword": keyword
+        ]
+        let url = "\(baseUrl())api/getCityFilter"
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getCategoryCarRequest(completion: @escaping(_ error: String?, _ categoryCarRequest: CategoryCarRequest?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getCategoryCarRequest"
+        alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
+    
+    func addRequestCar(body: [String: String], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/addRequestCar"
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getRequestCarHistoryList(page: Int, year: String, status: String, completion: @escaping(_ error: String?, _ requestCarHistory: RequestCarHistory?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getRequestCarHistoryList"
+        let body: [String: String] = [
+            "page": "\(page)",
+            "year": year,
+            "status": status
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getRequestCarStatusFilter (completion: @escaping(_ error: String?, _ requestCarStatusFilter: RequestCarStatusFilter?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getRequestCarStatusFilter"
+        alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
+    
+    func getDetailRequestCar (requestId: String, completion: @escaping(_ error: String?, _ detailRequestCar: DetailRequestCar?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getDetailRequestCar"
+        let body: [String: String] = [
+            "requestcar_id": requestId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getPolicyCategory(page: Int, year: String, completion: @escaping(_ error: String?, _ policyCategory: PolicyCategory?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getPolicyCategory"
+        let body: [String: String] = [
+            "page": "\(page)",
+            "year": year
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getPolicy(page: Int, year: String, categoryId: String, completion: @escaping(_ error: String?, _ policy: Policy?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getPolicy"
+        let body: [String: String] = [
+            "page": "\(page)",
+            "year": year,
+            "category_id": categoryId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

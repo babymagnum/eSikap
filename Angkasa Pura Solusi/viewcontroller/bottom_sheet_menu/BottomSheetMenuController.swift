@@ -51,6 +51,8 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_8), action: nil))
         listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_9), action: nil))
         listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_10), action: nil))
+        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_11), action: nil))
+        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_12), action: nil))
         
         menuFavoritCollectionView.reloadData()
         menuLainyaCollectionView.reloadData()
@@ -213,7 +215,11 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             self.showInDevelopmentDialog()
         case 8:
             //peminjaman mobil dinas
-            self.showInDevelopmentDialog()
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.parentNavigationController?.pushViewController(PeminjamanMobilDinasController(), animated: true)
+            }
         case 9:
             //daftar karyawan
             dismiss(animated: true, completion: nil)
@@ -225,6 +231,20 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             //link website aps
             let safariVc = SFSafariViewController(url: URL(string: "https://angkasapurasolusi.co.id")!)
             self.present(safariVc, animated: true)
+        case 11:
+            //link kebijakan & peraturan
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.parentNavigationController?.pushViewController(KebijakanPeraturanController(), animated: true)
+            }
+        case 12:
+            //link daftar cuti
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                
+            }
         default: break
         }
     }

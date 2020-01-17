@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PenumpangCell" customModule="eSIKAP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwV-aX-T5a">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PUTRA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEU-ZY-fUF" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="12" width="263" height="17"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaM-fG-xEq">
+                                <rect key="frame" x="280" y="12" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="6Hv-yf-rfM"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="group382"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6FV-D6-oN0">
+                                <rect key="frame" x="0.0" y="44" width="300" height="1"/>
+                                <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="k87-Jt-Nb8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6FV-D6-oN0" firstAttribute="top" secondItem="gaM-fG-xEq" secondAttribute="bottom" constant="12" id="0g3-Ou-u5H"/>
+                            <constraint firstItem="gaM-fG-xEq" firstAttribute="leading" secondItem="SEU-ZY-fUF" secondAttribute="trailing" constant="17" id="D5p-Vl-XlR"/>
+                            <constraint firstAttribute="trailing" secondItem="6FV-D6-oN0" secondAttribute="trailing" id="D77-uF-dC5"/>
+                            <constraint firstItem="SEU-ZY-fUF" firstAttribute="top" secondItem="YwV-aX-T5a" secondAttribute="top" constant="12" id="Ksu-mL-Awt"/>
+                            <constraint firstItem="6FV-D6-oN0" firstAttribute="leading" secondItem="YwV-aX-T5a" secondAttribute="leading" id="Qqi-ha-6Ee"/>
+                            <constraint firstItem="SEU-ZY-fUF" firstAttribute="leading" secondItem="YwV-aX-T5a" secondAttribute="leading" id="ZUZ-6D-VN8"/>
+                            <constraint firstAttribute="bottom" secondItem="6FV-D6-oN0" secondAttribute="bottom" id="crk-vs-RNJ"/>
+                            <constraint firstAttribute="trailing" secondItem="gaM-fG-xEq" secondAttribute="trailing" id="ddQ-NZ-rbo"/>
+                            <constraint firstItem="gaM-fG-xEq" firstAttribute="top" secondItem="YwV-aX-T5a" secondAttribute="top" constant="12" id="z8Y-v3-bpN"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="YwV-aX-T5a" secondAttribute="trailing" id="Qty-Sj-oAt"/>
+                <constraint firstItem="YwV-aX-T5a" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="W7h-ST-hYQ"/>
+                <constraint firstItem="YwV-aX-T5a" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="b2b-lB-6QB"/>
+                <constraint firstAttribute="bottom" secondItem="YwV-aX-T5a" secondAttribute="bottom" id="gRB-ik-2Hg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="buttonDelete" destination="gaM-fG-xEq" id="POa-Lg-Eeh"/>
+                <outlet property="labelPenumpang" destination="SEU-ZY-fUF" id="h04-2C-g83"/>
+                <outlet property="viewDivider" destination="6FV-D6-oN0" id="ndc-24-Tpq"/>
+            </connections>
+            <point key="canvasLocation" x="97" y="90"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="group382" width="27" height="27"/>
+    </resources>
+</document>

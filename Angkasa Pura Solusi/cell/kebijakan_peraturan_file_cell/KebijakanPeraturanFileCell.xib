@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="KebijakanPeraturanFileCell" customModule="eSIKAP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="276" height="20"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="276" height="20"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fs-gN-ZG1">
+                        <rect key="frame" x="0.0" y="0.0" width="276" height="20"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsD-kQ-gFu">
+                                <rect key="frame" x="12" y="2.5" width="252" height="15"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="OsD-kQ-gFu" firstAttribute="leading" secondItem="6fs-gN-ZG1" secondAttribute="leading" constant="12" id="5K8-lq-glN"/>
+                            <constraint firstItem="OsD-kQ-gFu" firstAttribute="centerY" secondItem="6fs-gN-ZG1" secondAttribute="centerY" id="knj-JA-98U"/>
+                            <constraint firstAttribute="trailing" secondItem="OsD-kQ-gFu" secondAttribute="trailing" constant="12" id="rdi-zq-Z9B"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="6fs-gN-ZG1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ayf-SY-fHE"/>
+                <constraint firstAttribute="bottom" secondItem="6fs-gN-ZG1" secondAttribute="bottom" id="G1H-CN-ufp"/>
+                <constraint firstItem="6fs-gN-ZG1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MZQ-Fk-1Nq"/>
+                <constraint firstAttribute="trailing" secondItem="6fs-gN-ZG1" secondAttribute="trailing" id="bxN-wL-MEY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="276" height="20"/>
+            <connections>
+                <outlet property="labelTitle" destination="OsD-kQ-gFu" id="vPf-pM-j6w"/>
+                <outlet property="viewRoot" destination="6fs-gN-ZG1" id="Fqe-bT-qn6"/>
+            </connections>
+            <point key="canvasLocation" x="233.33333333333334" y="117.85714285714285"/>
+        </collectionViewCell>
+    </objects>
+</document>

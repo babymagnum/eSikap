@@ -47,7 +47,6 @@ class HomeController: UITabBarController {
             if redirect == "leave_approval" {
 //                let vc = DetailPersetujuanCutiController()
 //                vc.leave_id = leave_id
-                print("redirect ke \(redirect)")
                 self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             } else if redirect == "leave_detail" {
                 let vc = DetailCutiController()

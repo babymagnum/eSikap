@@ -46,6 +46,8 @@ class LoginController: BaseViewController {
         preference.saveInt(value: 8, key: staticLet.MENU_8)
         preference.saveInt(value: 9, key: staticLet.MENU_9)
         preference.saveInt(value: 10, key: staticLet.MENU_10)
+        preference.saveInt(value: 11, key: staticLet.MENU_11)
+        preference.saveInt(value: 12, key: staticLet.MENU_12)
     }
 
     private func initView() {

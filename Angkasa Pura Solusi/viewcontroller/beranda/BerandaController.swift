@@ -233,6 +233,12 @@ extension BerandaController {
                 //link website aps
                 let safariVc = SFSafariViewController(url: URL(string: "https://angkasapurasolusi.co.id")!)
                 self.present(safariVc, animated: true)
+            case 11:
+                //link kebijakan & peraturan
+                self.navigationController?.pushViewController(KebijakanPeraturanController(), animated: true)
+            case 12:
+                //link daftar cuti
+                print("daftar cuti")
             case 99:
                 //menu lainya item
                 openBottomSheet()

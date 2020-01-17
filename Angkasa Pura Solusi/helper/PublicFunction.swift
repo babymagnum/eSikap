@@ -216,6 +216,15 @@ class PublicFunction {
         return Double(date.timeIntervalSince1970) * 1000.0
     }
     
+    func dateStringTo(date: String, original: String, toFormat: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = original
+        let showDate = inputFormatter.date(from: date)
+        inputFormatter.dateFormat = toFormat
+        let resultString = inputFormatter.string(from: showDate!)
+        return resultString
+    }
+    
     func dateToString(_ date: Date, _ pattern: String) -> String {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = pattern

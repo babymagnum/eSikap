@@ -23,10 +23,10 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
     @IBOutlet weak var collectionName: UICollectionView!
     @IBOutlet weak var imageCancelSearch: UIImageView!
     
-    private var lastVelocityYSign = 0
-    private var allowLoadMore = false
     private var listEmpFilter = [ItemEmp]()
     private var isSetCollectionNameHeight = false
+    private var lastVelocityYSign = 0
+    private var allowLoadMore = false
     private var currentPage = 0
     private var totalPage = 0
     
@@ -83,7 +83,7 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
             }
             
             if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Atasan", error, "Reload", "Cancel", completionHandler: {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar \(self.type ?? "")", error, "Reload", "Cancel", completionHandler: {
                     self.getEmpFilter()
                 })
                 return

@@ -65,6 +65,12 @@
 		ED57FE4E22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE4C22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift */; };
 		ED57FE4F22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED57FE4D22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib */; };
 		ED57FE5122FA46F7007B62A0 /* Bulan.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED57FE5022FA46F7007B62A0 /* Bulan.swift */; };
+		ED5F9C0123D141CE008B977F /* KebijakanPeraturanDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F9BFF23D141CE008B977F /* KebijakanPeraturanDetail.swift */; };
+		ED5F9C0223D141CE008B977F /* KebijakanPeraturanDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED5F9C0023D141CE008B977F /* KebijakanPeraturanDetail.xib */; };
+		ED5F9C0623D1432C008B977F /* KebijakanPeraturanDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F9C0423D1432C008B977F /* KebijakanPeraturanDetailCell.swift */; };
+		ED5F9C0723D1432C008B977F /* KebijakanPeraturanDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED5F9C0523D1432C008B977F /* KebijakanPeraturanDetailCell.xib */; };
+		ED5F9C0B23D148F3008B977F /* KebijakanPeraturanFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F9C0923D148F3008B977F /* KebijakanPeraturanFileCell.swift */; };
+		ED5F9C0C23D148F3008B977F /* KebijakanPeraturanFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED5F9C0A23D148F3008B977F /* KebijakanPeraturanFileCell.xib */; };
 		ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED602F0322F1DB2100CD14FC /* PreparePresence.swift */; };
 		ED61BEF922F66D7D00776C25 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED61BEF722F66D7D00776C25 /* ChangePasswordController.swift */; };
 		ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED61BEF822F66D7D00776C25 /* ChangePasswordController.xib */; };
@@ -96,6 +102,9 @@
 		ED6E507422ED419500EED8E7 /* NotifikasiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6E507222ED419500EED8E7 /* NotifikasiController.xib */; };
 		ED6E507722ED41A200EED8E7 /* ProfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E507522ED41A200EED8E7 /* ProfilController.swift */; };
 		ED6E507822ED41A200EED8E7 /* ProfilController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED6E507622ED41A200EED8E7 /* ProfilController.xib */; };
+		ED70650123CE731800447654 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED70650023CE731800447654 /* Destination.swift */; };
+		ED70650323CE739500447654 /* PropinsiCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED70650223CE739500447654 /* PropinsiCity.swift */; };
+		ED70650523CE748300447654 /* CategoryCarRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED70650423CE748300447654 /* CategoryCarRequest.swift */; };
 		ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED858AFF22F312F500016EAD /* AuthenticationNetworking.swift */; };
 		ED858B0222F313FD00016EAD /* InformationNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED858B0122F313FD00016EAD /* InformationNetworking.swift */; };
 		ED858B0422F31C8400016EAD /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED858B0322F31C8400016EAD /* Dashboard.swift */; };
@@ -107,6 +116,10 @@
 		ED8A914B231C0D7C00C6834C /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A914A231C0D7C00C6834C /* BaseResponse.swift */; };
 		ED8A914D231C236700C6834C /* DetailLeaveById.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A914C231C236700C6834C /* DetailLeaveById.swift */; };
 		ED8F239A23136B34005D700C /* BaseNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F239923136B34005D700C /* BaseNetworking.swift */; };
+		ED93FFDE23CEB210003D08DE /* PropinsiKotaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED93FFDC23CEB210003D08DE /* PropinsiKotaCell.swift */; };
+		ED93FFDF23CEB210003D08DE /* PropinsiKotaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED93FFDD23CEB210003D08DE /* PropinsiKotaCell.xib */; };
+		ED93FFE323CEB337003D08DE /* PropinsiKotaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED93FFE123CEB337003D08DE /* PropinsiKotaController.swift */; };
+		ED93FFE423CEB337003D08DE /* PropinsiKotaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED93FFE223CEB337003D08DE /* PropinsiKotaController.xib */; };
 		ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95906722EBDF3300D696E5 /* AppDelegate.swift */; };
 		ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED95906B22EBDF3300D696E5 /* Main.storyboard */; };
 		ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED95906E22EBDF3500D696E5 /* Assets.xcassets */; };
@@ -155,7 +168,22 @@
 		EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BF922F09BFF0064AE57 /* PresensiMapController.swift */; };
 		EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */; };
 		EDCF3BFE22F0A9960064AE57 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */; };
+		EDD5890E23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5890C23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.swift */; };
+		EDD5890F23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD5890D23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.xib */; };
+		EDD5891323CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5891123CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.swift */; };
+		EDD5891423CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD5891223CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.xib */; };
+		EDD5891623CFD0B700A3EE7B /* RequestCarHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5891523CFD0B700A3EE7B /* RequestCarHistory.swift */; };
+		EDD5891A23CFEBD600A3EE7B /* FilterHistoryPeminjamanMobilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5891823CFEBD500A3EE7B /* FilterHistoryPeminjamanMobilController.swift */; };
+		EDD5891B23CFEBD600A3EE7B /* FilterHistoryPeminjamanMobilController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD5891923CFEBD500A3EE7B /* FilterHistoryPeminjamanMobilController.xib */; };
+		EDD5891D23CFEF8E00A3EE7B /* RequestCarStatusFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5891C23CFEF8E00A3EE7B /* RequestCarStatusFilter.swift */; };
+		EDD5892123D00D5700A3EE7B /* DetailPeminjamanMobilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5891F23D00D5700A3EE7B /* DetailPeminjamanMobilController.swift */; };
+		EDD5892223D00D5700A3EE7B /* DetailPeminjamanMobilController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD5892023D00D5700A3EE7B /* DetailPeminjamanMobilController.xib */; };
+		EDD5892423D01A7900A3EE7B /* DetailRequestCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5892323D01A7900A3EE7B /* DetailRequestCar.swift */; };
 		EDD62A91233A364700DAB2F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */; };
+		EDE0CA1723CCA151001215DF /* PeminjamanMobilDinasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0CA1523CCA151001215DF /* PeminjamanMobilDinasController.swift */; };
+		EDE0CA1823CCA151001215DF /* PeminjamanMobilDinasController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE0CA1623CCA151001215DF /* PeminjamanMobilDinasController.xib */; };
+		EDE0CA1C23CD33EE001215DF /* PenumpangCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0CA1A23CD33EE001215DF /* PenumpangCell.swift */; };
+		EDE0CA1D23CD33EE001215DF /* PenumpangCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE0CA1B23CD33EE001215DF /* PenumpangCell.xib */; };
 		EDE5DBCE2320B80500CFC608 /* SlipGajiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBCC2320B80500CFC608 /* SlipGajiController.swift */; };
 		EDE5DBCF2320B80500CFC608 /* SlipGajiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE5DBCD2320B80500CFC608 /* SlipGajiController.xib */; };
 		EDE5DBD32320B8AF00CFC608 /* SlipGajiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBD12320B8AF00CFC608 /* SlipGajiCell.swift */; };
@@ -163,6 +191,14 @@
 		EDE5DBD62320BD4400CFC608 /* SlipGaji.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBD52320BD4400CFC608 /* SlipGaji.swift */; };
 		EDE5DBDA2320C5FB00CFC608 /* DialogSendEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE5DBD82320C5FB00CFC608 /* DialogSendEmailController.swift */; };
 		EDE5DBDB2320C5FB00CFC608 /* DialogSendEmailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDE5DBD92320C5FB00CFC608 /* DialogSendEmailController.xib */; };
+		EDEDA22723D0A4E80085E2EA /* InformasiPersetujuanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDA22523D0A4E80085E2EA /* InformasiPersetujuanCell.swift */; };
+		EDEDA22823D0A4E80085E2EA /* InformasiPersetujuanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEDA22623D0A4E80085E2EA /* InformasiPersetujuanCell.xib */; };
+		EDEDA22A23D0B0400085E2EA /* PolicyCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDA22923D0B0400085E2EA /* PolicyCategory.swift */; };
+		EDEDA22C23D0B0C30085E2EA /* Policy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDA22B23D0B0C30085E2EA /* Policy.swift */; };
+		EDEDA23023D0B2C20085E2EA /* KebijakanPeraturanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDA22E23D0B2C20085E2EA /* KebijakanPeraturanController.swift */; };
+		EDEDA23123D0B2C20085E2EA /* KebijakanPeraturanController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEDA22F23D0B2C20085E2EA /* KebijakanPeraturanController.xib */; };
+		EDEDA23523D0B9D50085E2EA /* KebijakanPeraturanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEDA23323D0B9D50085E2EA /* KebijakanPeraturanCell.swift */; };
+		EDEDA23623D0B9D50085E2EA /* KebijakanPeraturanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEDA23423D0B9D50085E2EA /* KebijakanPeraturanCell.xib */; };
 		EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */; };
 		EDFC1F4722FDB80D00AAA93B /* TabPersetujuanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC1F4522FDB80D00AAA93B /* TabPersetujuanController.swift */; };
 		EDFC1F4822FDB80D00AAA93B /* TabPersetujuanController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC1F4622FDB80D00AAA93B /* TabPersetujuanController.xib */; };
@@ -238,6 +274,12 @@
 		ED57FE4C22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetFilterPresensi.swift; sourceTree = "<group>"; };
 		ED57FE4D22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetFilterPresensi.xib; sourceTree = "<group>"; };
 		ED57FE5022FA46F7007B62A0 /* Bulan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulan.swift; sourceTree = "<group>"; };
+		ED5F9BFF23D141CE008B977F /* KebijakanPeraturanDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebijakanPeraturanDetail.swift; sourceTree = "<group>"; };
+		ED5F9C0023D141CE008B977F /* KebijakanPeraturanDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KebijakanPeraturanDetail.xib; sourceTree = "<group>"; };
+		ED5F9C0423D1432C008B977F /* KebijakanPeraturanDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebijakanPeraturanDetailCell.swift; sourceTree = "<group>"; };
+		ED5F9C0523D1432C008B977F /* KebijakanPeraturanDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KebijakanPeraturanDetailCell.xib; sourceTree = "<group>"; };
+		ED5F9C0923D148F3008B977F /* KebijakanPeraturanFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebijakanPeraturanFileCell.swift; sourceTree = "<group>"; };
+		ED5F9C0A23D148F3008B977F /* KebijakanPeraturanFileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KebijakanPeraturanFileCell.xib; sourceTree = "<group>"; };
 		ED602F0322F1DB2100CD14FC /* PreparePresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparePresence.swift; sourceTree = "<group>"; };
 		ED61BEF722F66D7D00776C25 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		ED61BEF822F66D7D00776C25 /* ChangePasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordController.xib; sourceTree = "<group>"; };
@@ -269,6 +311,9 @@
 		ED6E507222ED419500EED8E7 /* NotifikasiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifikasiController.xib; sourceTree = "<group>"; };
 		ED6E507522ED41A200EED8E7 /* ProfilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilController.swift; sourceTree = "<group>"; };
 		ED6E507622ED41A200EED8E7 /* ProfilController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilController.xib; sourceTree = "<group>"; };
+		ED70650023CE731800447654 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		ED70650223CE739500447654 /* PropinsiCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropinsiCity.swift; sourceTree = "<group>"; };
+		ED70650423CE748300447654 /* CategoryCarRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCarRequest.swift; sourceTree = "<group>"; };
 		ED858AFF22F312F500016EAD /* AuthenticationNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNetworking.swift; sourceTree = "<group>"; };
 		ED858B0122F313FD00016EAD /* InformationNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationNetworking.swift; sourceTree = "<group>"; };
 		ED858B0322F31C8400016EAD /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
@@ -280,6 +325,10 @@
 		ED8A914A231C0D7C00C6834C /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		ED8A914C231C236700C6834C /* DetailLeaveById.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLeaveById.swift; sourceTree = "<group>"; };
 		ED8F239923136B34005D700C /* BaseNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworking.swift; sourceTree = "<group>"; };
+		ED93FFDC23CEB210003D08DE /* PropinsiKotaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropinsiKotaCell.swift; sourceTree = "<group>"; };
+		ED93FFDD23CEB210003D08DE /* PropinsiKotaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropinsiKotaCell.xib; sourceTree = "<group>"; };
+		ED93FFE123CEB337003D08DE /* PropinsiKotaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropinsiKotaController.swift; sourceTree = "<group>"; };
+		ED93FFE223CEB337003D08DE /* PropinsiKotaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropinsiKotaController.xib; sourceTree = "<group>"; };
 		ED95906422EBDF3300D696E5 /* eSIKAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eSIKAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED95906722EBDF3300D696E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED95906C22EBDF3300D696E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -335,7 +384,22 @@
 		EDCF3BFA22F09BFF0064AE57 /* PresensiMapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresensiMapController.xib; sourceTree = "<group>"; };
 		EDCF3BFD22F0A9960064AE57 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		EDD05DB923457609002D0F12 /* Angkasa Pura SolusiDebug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiDebug.entitlements"; sourceTree = "<group>"; };
+		EDD5890C23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPeminjamanMobilDinas.swift; sourceTree = "<group>"; };
+		EDD5890D23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryPeminjamanMobilDinas.xib; sourceTree = "<group>"; };
+		EDD5891123CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPeminjamanMobilCell.swift; sourceTree = "<group>"; };
+		EDD5891223CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryPeminjamanMobilCell.xib; sourceTree = "<group>"; };
+		EDD5891523CFD0B700A3EE7B /* RequestCarHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCarHistory.swift; sourceTree = "<group>"; };
+		EDD5891823CFEBD500A3EE7B /* FilterHistoryPeminjamanMobilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHistoryPeminjamanMobilController.swift; sourceTree = "<group>"; };
+		EDD5891923CFEBD500A3EE7B /* FilterHistoryPeminjamanMobilController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterHistoryPeminjamanMobilController.xib; sourceTree = "<group>"; };
+		EDD5891C23CFEF8E00A3EE7B /* RequestCarStatusFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCarStatusFilter.swift; sourceTree = "<group>"; };
+		EDD5891F23D00D5700A3EE7B /* DetailPeminjamanMobilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPeminjamanMobilController.swift; sourceTree = "<group>"; };
+		EDD5892023D00D5700A3EE7B /* DetailPeminjamanMobilController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPeminjamanMobilController.xib; sourceTree = "<group>"; };
+		EDD5892323D01A7900A3EE7B /* DetailRequestCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRequestCar.swift; sourceTree = "<group>"; };
 		EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDE0CA1523CCA151001215DF /* PeminjamanMobilDinasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeminjamanMobilDinasController.swift; sourceTree = "<group>"; };
+		EDE0CA1623CCA151001215DF /* PeminjamanMobilDinasController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeminjamanMobilDinasController.xib; sourceTree = "<group>"; };
+		EDE0CA1A23CD33EE001215DF /* PenumpangCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenumpangCell.swift; sourceTree = "<group>"; };
+		EDE0CA1B23CD33EE001215DF /* PenumpangCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PenumpangCell.xib; sourceTree = "<group>"; };
 		EDE5DBCC2320B80500CFC608 /* SlipGajiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGajiController.swift; sourceTree = "<group>"; };
 		EDE5DBCD2320B80500CFC608 /* SlipGajiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlipGajiController.xib; sourceTree = "<group>"; };
 		EDE5DBD12320B8AF00CFC608 /* SlipGajiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGajiCell.swift; sourceTree = "<group>"; };
@@ -343,6 +407,14 @@
 		EDE5DBD52320BD4400CFC608 /* SlipGaji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlipGaji.swift; sourceTree = "<group>"; };
 		EDE5DBD82320C5FB00CFC608 /* DialogSendEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogSendEmailController.swift; sourceTree = "<group>"; };
 		EDE5DBD92320C5FB00CFC608 /* DialogSendEmailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogSendEmailController.xib; sourceTree = "<group>"; };
+		EDEDA22523D0A4E80085E2EA /* InformasiPersetujuanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformasiPersetujuanCell.swift; sourceTree = "<group>"; };
+		EDEDA22623D0A4E80085E2EA /* InformasiPersetujuanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformasiPersetujuanCell.xib; sourceTree = "<group>"; };
+		EDEDA22923D0B0400085E2EA /* PolicyCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyCategory.swift; sourceTree = "<group>"; };
+		EDEDA22B23D0B0C30085E2EA /* Policy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Policy.swift; sourceTree = "<group>"; };
+		EDEDA22E23D0B2C20085E2EA /* KebijakanPeraturanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebijakanPeraturanController.swift; sourceTree = "<group>"; };
+		EDEDA22F23D0B2C20085E2EA /* KebijakanPeraturanController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KebijakanPeraturanController.xib; sourceTree = "<group>"; };
+		EDEDA23323D0B9D50085E2EA /* KebijakanPeraturanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebijakanPeraturanCell.swift; sourceTree = "<group>"; };
+		EDEDA23423D0B9D50085E2EA /* KebijakanPeraturanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KebijakanPeraturanCell.xib; sourceTree = "<group>"; };
 		EDFC1F4222FC428C00AAA93B /* JatahCuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JatahCuti.swift; sourceTree = "<group>"; };
 		EDFC1F4522FDB80D00AAA93B /* TabPersetujuanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPersetujuanController.swift; sourceTree = "<group>"; };
 		EDFC1F4622FDB80D00AAA93B /* TabPersetujuanController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabPersetujuanController.xib; sourceTree = "<group>"; };
@@ -542,6 +614,33 @@
 			path = bottom_sheet_filter_presensi;
 			sourceTree = "<group>";
 		};
+		ED5F9BFE23D141B5008B977F /* kebijakan_peraturan_detail */ = {
+			isa = PBXGroup;
+			children = (
+				ED5F9BFF23D141CE008B977F /* KebijakanPeraturanDetail.swift */,
+				ED5F9C0023D141CE008B977F /* KebijakanPeraturanDetail.xib */,
+			);
+			path = kebijakan_peraturan_detail;
+			sourceTree = "<group>";
+		};
+		ED5F9C0323D14311008B977F /* kebijakan_peraturan_detail_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED5F9C0423D1432C008B977F /* KebijakanPeraturanDetailCell.swift */,
+				ED5F9C0523D1432C008B977F /* KebijakanPeraturanDetailCell.xib */,
+			);
+			path = kebijakan_peraturan_detail_cell;
+			sourceTree = "<group>";
+		};
+		ED5F9C0823D148D6008B977F /* kebijakan_peraturan_file_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED5F9C0923D148F3008B977F /* KebijakanPeraturanFileCell.swift */,
+				ED5F9C0A23D148F3008B977F /* KebijakanPeraturanFileCell.xib */,
+			);
+			path = kebijakan_peraturan_file_cell;
+			sourceTree = "<group>";
+		};
 		ED61BEF622F66D6200776C25 /* change_password */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +743,24 @@
 			path = dialog_batalkan_detail_cuti;
 			sourceTree = "<group>";
 		};
+		ED93FFDB23CEB1F0003D08DE /* propinsi_kota_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED93FFDC23CEB210003D08DE /* PropinsiKotaCell.swift */,
+				ED93FFDD23CEB210003D08DE /* PropinsiKotaCell.xib */,
+			);
+			path = propinsi_kota_cell;
+			sourceTree = "<group>";
+		};
+		ED93FFE023CEB31D003D08DE /* propinsi_kota */ = {
+			isa = PBXGroup;
+			children = (
+				ED93FFE123CEB337003D08DE /* PropinsiKotaController.swift */,
+				ED93FFE223CEB337003D08DE /* PropinsiKotaController.xib */,
+			);
+			path = propinsi_kota;
+			sourceTree = "<group>";
+		};
 		ED95905B22EBDF3300D696E5 = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +800,13 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED5F9BFE23D141B5008B977F /* kebijakan_peraturan_detail */,
+				EDEDA22D23D0B29A0085E2EA /* kebijakan_peraturan */,
+				EDD5891E23D00D3C00A3EE7B /* detail_peminjaman_mobil */,
+				EDD5891723CFEBB400A3EE7B /* filter_history_peminjaman_mobil */,
+				EDD5890B23CF5A6D00A3EE7B /* history_peminjaman_mobil_dinas */,
+				ED93FFE023CEB31D003D08DE /* propinsi_kota */,
+				EDE0CA1423CCA129001215DF /* peminjaman_mobil_dinas */,
 				EDE5DBD72320C5DD00CFC608 /* dialog_send_email */,
 				EDE5DBCB2320B7AD00CFC608 /* slip_gaji */,
 				EDC19E91231EBDC600690B59 /* riwayat_cuti_filter */,
@@ -765,6 +889,14 @@
 				EDC19E98231EC2DE00690B59 /* YearsFilter.swift */,
 				EDC19E9A231EC34000690B59 /* LeaveStatusFilter.swift */,
 				EDE5DBD52320BD4400CFC608 /* SlipGaji.swift */,
+				ED70650023CE731800447654 /* Destination.swift */,
+				ED70650223CE739500447654 /* PropinsiCity.swift */,
+				ED70650423CE748300447654 /* CategoryCarRequest.swift */,
+				EDD5891523CFD0B700A3EE7B /* RequestCarHistory.swift */,
+				EDD5891C23CFEF8E00A3EE7B /* RequestCarStatusFilter.swift */,
+				EDD5892323D01A7900A3EE7B /* DetailRequestCar.swift */,
+				EDEDA22923D0B0400085E2EA /* PolicyCategory.swift */,
+				EDEDA22B23D0B0C30085E2EA /* Policy.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -837,6 +969,13 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED5F9C0823D148D6008B977F /* kebijakan_peraturan_file_cell */,
+				ED5F9C0323D14311008B977F /* kebijakan_peraturan_detail_cell */,
+				EDEDA23223D0B9BC0085E2EA /* kebijakan_peraturan_cell */,
+				EDEDA22423D0A4C80085E2EA /* informasi_persetujuan_cell */,
+				EDD5891023CF5B4600A3EE7B /* history_peminjaman_mobil_cell */,
+				ED93FFDB23CEB1F0003D08DE /* propinsi_kota_cell */,
+				EDE0CA1923CD33D1001215DF /* penumpang_cell */,
 				EDE5DBD02320B89700CFC608 /* slip_gaji_cell */,
 				ED14CA7A231E16AB00D5C7F0 /* notifikasi_cell */,
 				EDC71BBC231BEE86007FBBD9 /* detail_tanggal_cuti_cell */,
@@ -960,6 +1099,60 @@
 			path = presensi_map;
 			sourceTree = "<group>";
 		};
+		EDD5890B23CF5A6D00A3EE7B /* history_peminjaman_mobil_dinas */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5890C23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.swift */,
+				EDD5890D23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.xib */,
+			);
+			path = history_peminjaman_mobil_dinas;
+			sourceTree = "<group>";
+		};
+		EDD5891023CF5B4600A3EE7B /* history_peminjaman_mobil_cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5891123CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.swift */,
+				EDD5891223CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.xib */,
+			);
+			path = history_peminjaman_mobil_cell;
+			sourceTree = "<group>";
+		};
+		EDD5891723CFEBB400A3EE7B /* filter_history_peminjaman_mobil */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5891823CFEBD500A3EE7B /* FilterHistoryPeminjamanMobilController.swift */,
+				EDD5891923CFEBD500A3EE7B /* FilterHistoryPeminjamanMobilController.xib */,
+			);
+			path = filter_history_peminjaman_mobil;
+			sourceTree = "<group>";
+		};
+		EDD5891E23D00D3C00A3EE7B /* detail_peminjaman_mobil */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5891F23D00D5700A3EE7B /* DetailPeminjamanMobilController.swift */,
+				EDD5892023D00D5700A3EE7B /* DetailPeminjamanMobilController.xib */,
+			);
+			path = detail_peminjaman_mobil;
+			sourceTree = "<group>";
+		};
+		EDE0CA1423CCA129001215DF /* peminjaman_mobil_dinas */ = {
+			isa = PBXGroup;
+			children = (
+				EDE0CA1523CCA151001215DF /* PeminjamanMobilDinasController.swift */,
+				EDE0CA1623CCA151001215DF /* PeminjamanMobilDinasController.xib */,
+			);
+			path = peminjaman_mobil_dinas;
+			sourceTree = "<group>";
+		};
+		EDE0CA1923CD33D1001215DF /* penumpang_cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDE0CA1A23CD33EE001215DF /* PenumpangCell.swift */,
+				EDE0CA1B23CD33EE001215DF /* PenumpangCell.xib */,
+			);
+			path = penumpang_cell;
+			sourceTree = "<group>";
+		};
 		EDE5DBCB2320B7AD00CFC608 /* slip_gaji */ = {
 			isa = PBXGroup;
 			children = (
@@ -985,6 +1178,33 @@
 				EDE5DBD92320C5FB00CFC608 /* DialogSendEmailController.xib */,
 			);
 			path = dialog_send_email;
+			sourceTree = "<group>";
+		};
+		EDEDA22423D0A4C80085E2EA /* informasi_persetujuan_cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDEDA22523D0A4E80085E2EA /* InformasiPersetujuanCell.swift */,
+				EDEDA22623D0A4E80085E2EA /* InformasiPersetujuanCell.xib */,
+			);
+			path = informasi_persetujuan_cell;
+			sourceTree = "<group>";
+		};
+		EDEDA22D23D0B29A0085E2EA /* kebijakan_peraturan */ = {
+			isa = PBXGroup;
+			children = (
+				EDEDA22E23D0B2C20085E2EA /* KebijakanPeraturanController.swift */,
+				EDEDA22F23D0B2C20085E2EA /* KebijakanPeraturanController.xib */,
+			);
+			path = kebijakan_peraturan;
+			sourceTree = "<group>";
+		};
+		EDEDA23223D0B9BC0085E2EA /* kebijakan_peraturan_cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDEDA23323D0B9D50085E2EA /* KebijakanPeraturanCell.swift */,
+				EDEDA23423D0B9D50085E2EA /* KebijakanPeraturanCell.xib */,
+			);
+			path = kebijakan_peraturan_cell;
 			sourceTree = "<group>";
 		};
 		EDFC1F4422FDB7E100AAA93B /* tab_persetujuan */ = {
@@ -1108,25 +1328,35 @@
 				ED3038CC22ED639E005BCF87 /* BeritaCell.xib in Resources */,
 				ED95908B22EBE8DE00D696E5 /* OnboardingController.xib in Resources */,
 				EDFC1F6322FE347300AAA93B /* DetailPersetujuanCutiController.xib in Resources */,
+				EDD5891B23CFEBD600A3EE7B /* FilterHistoryPeminjamanMobilController.xib in Resources */,
 				ED95908722EBE8A000D696E5 /* LoginController.xib in Resources */,
 				EDE5DBD42320B8AF00CFC608 /* SlipGajiCell.xib in Resources */,
 				ED57FE3222F84F87007B62A0 /* PengajuanCutiController.xib in Resources */,
 				ED61BF0322F67E6700776C25 /* PresensiCell.xib in Resources */,
+				EDEDA22823D0A4E80085E2EA /* InformasiPersetujuanCell.xib in Resources */,
 				ED52152522F47C0D001C6A50 /* DialogPreparePresenceController.xib in Resources */,
 				ED6E507422ED419500EED8E7 /* NotifikasiController.xib in Resources */,
 				EDFC1F5322FDBB0400AAA93B /* LemburController.xib in Resources */,
+				EDE0CA1823CCA151001215DF /* PeminjamanMobilDinasController.xib in Resources */,
 				EDFC1F4F22FDBAEC00AAA93B /* CutiController.xib in Resources */,
 				EDBF21AD22FE6C7D003F5DAF /* DetailCutiController.xib in Resources */,
 				EDFC1F5C22FE297D00AAA93B /* CutiCell.xib in Resources */,
+				ED5F9C0223D141CE008B977F /* KebijakanPeraturanDetail.xib in Resources */,
+				ED5F9C0723D1432C008B977F /* KebijakanPeraturanDetailCell.xib in Resources */,
+				EDD5891423CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.xib in Resources */,
 				EDFC1F4822FDB80D00AAA93B /* TabPersetujuanController.xib in Resources */,
+				EDEDA23623D0B9D50085E2EA /* KebijakanPeraturanCell.xib in Resources */,
 				ED52153422F51DA7001C6A50 /* MenuLainyaCell.xib in Resources */,
 				ED8A9149231C088000C6834C /* DialogBatalkanCutiController.xib in Resources */,
 				EDC71BC0231BEEB5007FBBD9 /* DetailTanggalCutiCell.xib in Resources */,
 				ED308CF2231B50ED00F5C43C /* DialogPengajuanCutiController.xib in Resources */,
 				EDCF3BF722F08B8F0064AE57 /* PresensiController.xib in Resources */,
 				ED61BF0E22F7A30600776C25 /* DaftarKaryawanController.xib in Resources */,
+				EDD5890F23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.xib in Resources */,
 				ED95906F22EBDF3500D696E5 /* Assets.xcassets in Resources */,
 				EDCF3BFC22F09BFF0064AE57 /* PresensiMapController.xib in Resources */,
+				ED93FFDF23CEB210003D08DE /* PropinsiKotaCell.xib in Resources */,
+				EDD5892223D00D5700A3EE7B /* DetailPeminjamanMobilController.xib in Resources */,
 				ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */,
 				EDBF21B722FE7335003F5DAF /* RiwayatCutiCell.xib in Resources */,
 				ED95909022EBE90A00D696E5 /* HomeController.xib in Resources */,
@@ -1135,10 +1365,12 @@
 				ED61BF2122F7CF2500776C25 /* FilterKaryawanController.xib in Resources */,
 				ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */,
 				ED95909B22EBF4DC00D696E5 /* LaunchScreen.storyboard in Resources */,
+				ED5F9C0C23D148F3008B977F /* KebijakanPeraturanFileCell.xib in Resources */,
 				ED6E507822ED41A200EED8E7 /* ProfilController.xib in Resources */,
 				ED14CA7E231E17D600D5C7F0 /* NotifikasiCell.xib in Resources */,
 				ED95909522EBEE9300D696E5 /* SplashController.xib in Resources */,
 				ED95906D22EBDF3300D696E5 /* Main.storyboard in Resources */,
+				EDE0CA1D23CD33EE001215DF /* PenumpangCell.xib in Resources */,
 				ED57FE4822F8F645007B62A0 /* TanggalCutiCell.xib in Resources */,
 				ED40AB4E231CB497007C0ADC /* DelegasiCutiController.xib in Resources */,
 				EDE5DBCF2320B80500CFC608 /* SlipGajiController.xib in Resources */,
@@ -1146,9 +1378,11 @@
 				ED57FE4422F8F633007B62A0 /* JatahCutiCell.xib in Resources */,
 				ED308CF7231B520500F5C43C /* ExceptionCell.xib in Resources */,
 				ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */,
+				ED93FFE423CEB337003D08DE /* PropinsiKotaController.xib in Resources */,
 				ED52152A22F4846C001C6A50 /* BottomSheetMenuController.xib in Resources */,
 				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
 				EDBF21A622FE5502003F5DAF /* StatusActionCell.xib in Resources */,
+				EDEDA23123D0B2C20085E2EA /* KebijakanPeraturanController.xib in Resources */,
 				EDBF21A022FE465B003F5DAF /* StatusPersetujuanCell.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCell.xib in Resources */,
 				ED14CA75231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib in Resources */,
@@ -1226,9 +1460,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED5F9C0B23D148F3008B977F /* KebijakanPeraturanFileCell.swift in Sources */,
 				ED40AB52231CBB5A007C0ADC /* DetailDelegationList.swift in Sources */,
 				ED95909422EBEE9300D696E5 /* SplashController.swift in Sources */,
 				ED57FE4E22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift in Sources */,
+				EDEDA23023D0B2C20085E2EA /* KebijakanPeraturanController.swift in Sources */,
 				ED57FE4722F8F645007B62A0 /* TanggalCutiCell.swift in Sources */,
 				ED61BF0722F696AA00776C25 /* InteractivePopRecognizer.swift in Sources */,
 				EDBF21C12301086A003F5DAF /* CustomTextField.swift in Sources */,
@@ -1237,8 +1473,12 @@
 				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
 				EDBF21A522FE5502003F5DAF /* StatusActionCell.swift in Sources */,
 				ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */,
+				EDEDA22C23D0B0C30085E2EA /* Policy.swift in Sources */,
+				EDEDA22A23D0B0400085E2EA /* PolicyCategory.swift in Sources */,
+				ED5F9C0623D1432C008B977F /* KebijakanPeraturanDetailCell.swift in Sources */,
 				EDBF21AC22FE6C7D003F5DAF /* DetailCutiController.swift in Sources */,
 				ED40AB54231CBD6A007C0ADC /* DetailLeaveApproval.swift in Sources */,
+				ED70650323CE739500447654 /* PropinsiCity.swift in Sources */,
 				ED61BF2922F7E20600776C25 /* Gender.swift in Sources */,
 				ED95907E22EBE3C500D696E5 /* Preference.swift in Sources */,
 				ED858B0222F313FD00016EAD /* InformationNetworking.swift in Sources */,
@@ -1255,6 +1495,7 @@
 				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
 				EDE5DBD32320B8AF00CFC608 /* SlipGajiCell.swift in Sources */,
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
+				EDD5890E23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.swift in Sources */,
 				EDE5DBDA2320C5FB00CFC608 /* DialogSendEmailController.swift in Sources */,
 				EDE5DBCE2320B80500CFC608 /* SlipGajiController.swift in Sources */,
 				EDBF21BB23005BDD003F5DAF /* CustomLabel.swift in Sources */,
@@ -1262,6 +1503,7 @@
 				EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */,
 				EDBF21BD2300DBA6003F5DAF /* CustomButton.swift in Sources */,
 				ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */,
+				EDEDA23523D0B9D50085E2EA /* KebijakanPeraturanCell.swift in Sources */,
 				EDBF219F22FE465B003F5DAF /* StatusPersetujuanCell.swift in Sources */,
 				EDFC1F4722FDB80D00AAA93B /* TabPersetujuanController.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
@@ -1278,19 +1520,24 @@
 				ED95909722EBF1C500D696E5 /* PublicFunction.swift in Sources */,
 				ED9590AA22EC923A00D696E5 /* PresenceNetworking.swift in Sources */,
 				ED6E507322ED419500EED8E7 /* NotifikasiController.swift in Sources */,
+				EDD5891A23CFEBD600A3EE7B /* FilterHistoryPeminjamanMobilController.swift in Sources */,
 				EDFC1F6222FE347300AAA93B /* DetailPersetujuanCutiController.swift in Sources */,
 				ED61BF0522F6837500776C25 /* Presensi.swift in Sources */,
 				ED139BBA2302ED0700B854BC /* CustomDropDownField.swift in Sources */,
 				ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */,
+				EDD5891323CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.swift in Sources */,
 				EDC19E97231EC28D00690B59 /* LeaveTypeFilter.swift in Sources */,
 				ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */,
 				ED14CA78231DFCB100D5C7F0 /* EmpFilterCell.swift in Sources */,
 				ED61BF1222F7A4ED00776C25 /* KaryawanCell.swift in Sources */,
+				EDD5892123D00D5700A3EE7B /* DetailPeminjamanMobilController.swift in Sources */,
 				ED61BF2022F7CF2500776C25 /* FilterKaryawanController.swift in Sources */,
 				ED858B0622F323F000016EAD /* LatestNews.swift in Sources */,
+				ED70650123CE731800447654 /* Destination.swift in Sources */,
 				EDC19E9B231EC34000690B59 /* LeaveStatusFilter.swift in Sources */,
 				ED3038CE22ED6CDB005BCF87 /* Menu.swift in Sources */,
 				ED6E507722ED41A200EED8E7 /* ProfilController.swift in Sources */,
+				EDD5892423D01A7900A3EE7B /* DetailRequestCar.swift in Sources */,
 				ED308CFB231B84FD00F5C43C /* DetailRiwayatCuti.swift in Sources */,
 				ED95908022EBE77B00D696E5 /* StaticLet.swift in Sources */,
 				ED8A914B231C0D7C00C6834C /* BaseResponse.swift in Sources */,
@@ -1302,17 +1549,25 @@
 				ED9590A022EBF9B500D696E5 /* OnboardingCell.swift in Sources */,
 				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
 				EDBF21B622FE7335003F5DAF /* RiwayatCutiCell.swift in Sources */,
+				ED93FFE323CEB337003D08DE /* PropinsiKotaController.swift in Sources */,
 				EDC19E99231EC2DE00690B59 /* YearsFilter.swift in Sources */,
+				EDD5891623CFD0B700A3EE7B /* RequestCarHistory.swift in Sources */,
 				ED14CA7D231E17D600D5C7F0 /* NotifikasiCell.swift in Sources */,
+				EDEDA22723D0A4E80085E2EA /* InformasiPersetujuanCell.swift in Sources */,
 				ED10746022F5A5BA00ADF055 /* DetailBeritaController.swift in Sources */,
+				ED5F9C0123D141CE008B977F /* KebijakanPeraturanDetail.swift in Sources */,
+				EDE0CA1C23CD33EE001215DF /* PenumpangCell.swift in Sources */,
 				ED0E07392308039500260783 /* PerizinanNetworking.swift in Sources */,
 				EDC19E94231EBE1700690B59 /* RiwayatCutiFilterController.swift in Sources */,
 				ED52151922F452A1001C6A50 /* Circle.swift in Sources */,
 				ED0E0737230802AE00260783 /* LeaveQuota.swift in Sources */,
+				EDD5891D23CFEF8E00A3EE7B /* RequestCarStatusFilter.swift in Sources */,
 				ED40AB50231CB5FC007C0ADC /* DelegationList.swift in Sources */,
 				ED95908622EBE8A000D696E5 /* LoginController.swift in Sources */,
 				ED61BEFE22F67C9F00776C25 /* PresensiListController.swift in Sources */,
 				ED8A9148231C088000C6834C /* DialogBatalkanCutiController.swift in Sources */,
+				ED70650523CE748300447654 /* CategoryCarRequest.swift in Sources */,
+				ED93FFDE23CEB210003D08DE /* PropinsiKotaCell.swift in Sources */,
 				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
 				ED139BB82302EC9000B854BC /* CustomTextView.swift in Sources */,
 				ED61BF0222F67E6700776C25 /* PresensiCell.swift in Sources */,
@@ -1329,6 +1584,7 @@
 				EDC71BBF231BEEB5007FBBD9 /* DetailTanggalCutiCell.swift in Sources */,
 				ED8A914D231C236700C6834C /* DetailLeaveById.swift in Sources */,
 				ED858B0822F334D700016EAD /* AllNews.swift in Sources */,
+				EDE0CA1723CCA151001215DF /* PeminjamanMobilDinasController.swift in Sources */,
 				ED10746322F5AE6F00ADF055 /* DetailNews.swift in Sources */,
 				EDFC1F5222FDBB0400AAA93B /* LemburController.swift in Sources */,
 				ED61BF0D22F7A30600776C25 /* DaftarKaryawanController.swift in Sources */,

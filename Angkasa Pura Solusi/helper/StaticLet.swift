@@ -28,7 +28,7 @@ class StaticLet {
     let VALUE_UNIT = "VALUE_UNIT"
     let VALUE_GENDER = "VALUE_GENDER"
     let VALUE_ORDER = "VALUE_ORDER"
-    let base_url_dev = "http://aps-dev.eoviz.com/ess-mobile-api/index.php/"
+    let base_url_dev = "http://dev.angkasapurasolusi.co.id/api/index.php/"
     let base_url_prod = "https://api-ess.angkasapurasolusi.co.id/index.php/"
     let MENU_1 = "MENU_1"
     let MENU_2 = "MENU_2"
@@ -40,4 +40,6 @@ class StaticLet {
     let MENU_8 = "MENU_8"
     let MENU_9 = "MENU_9"
     let MENU_10 = "MENU_10"
+    let MENU_11 = "MENU_11"
+    let MENU_12 = "MENU_12"
 }

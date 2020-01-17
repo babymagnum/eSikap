@@ -138,8 +138,12 @@ class BaseViewController: UIViewController {
             return Menu(id: 8, image: UIImage(named: "group436"), title: "Peminjaman Mobil Dinas", action: action)
         case 9:
             return Menu(id: 9, image: UIImage(named: "group537"), title: "Daftar Karyawan", action: action)
-        default:
+        case 10:
             return Menu(id: 10, image: UIImage(named: "coporate"), title: "Link Website APS", action: action)
+        case 11:
+            return Menu(id: 11, image: UIImage(named: "group_632"), title: "Kebijakan & Peraturan", action: action)
+        default:
+            return Menu(id: 12, image: UIImage(named: "delivery_1"), title: "Daftar Cuti", action: action)
         }
     }
 }
