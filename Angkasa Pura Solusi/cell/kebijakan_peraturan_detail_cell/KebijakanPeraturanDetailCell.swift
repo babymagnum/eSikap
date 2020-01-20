@@ -95,13 +95,13 @@ extension KebijakanPeraturanDetailCell {
             UIView.animate(withDuration: 0.4) {
                 self.viewDividerHeight.constant = 0
                 self.collectionItemHeight.constant = 0
-                self.buttonExpand.setImage(UIImage(named: "group_634"), for: .normal)
+                self.buttonExpand.setImage(UIImage(named: "group_633"), for: .normal)
             }
         } else {
             UIView.animate(withDuration: 0.4) {
                 self.viewDividerHeight.constant = 1
                 self.collectionItemHeight.constant = self.collectionItem.contentSize.height
-                self.buttonExpand.setImage(UIImage(named: "group_633"), for: .normal)
+                self.buttonExpand.setImage(UIImage(named: "group_634"), for: .normal)
             }
         }
         

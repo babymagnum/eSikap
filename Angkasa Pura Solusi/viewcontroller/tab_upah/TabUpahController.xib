@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabUpahController" customModule="eSIKAP" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonBarView" destination="570-BC-YJD" id="dyV-R5-eNq"/>
+                <outlet property="constraintViewRoot" destination="5Uo-ES-hjd" id="2a4-lm-UD0"/>
+                <outlet property="containerView" destination="yyh-7C-td8" id="ia6-vT-NE5"/>
+                <outlet property="view" destination="cVM-mG-iZS" id="Ky7-dv-6M4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="cVM-mG-iZS">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYc-tb-b04">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtG-Bi-EbU">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWi-y6-42V">
+                                    <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="53" id="XOY-FY-Sxq"/>
+                                        <constraint firstAttribute="width" constant="53" id="cfY-0j-hrm"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" image="backwardArrow"/>
+                                    <connections>
+                                        <action selector="buttonBackClick:" destination="-1" eventType="touchUpInside" id="Bmf-5h-xEj"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upah" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTL-a1-6LO" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="41" y="19" width="251" height="15"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ps5-sx-drZ">
+                                    <rect key="frame" x="302" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="53" id="k8T-xR-UQG"/>
+                                        <constraint firstAttribute="width" constant="53" id="xDi-KY-UKq"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" image="filter"/>
+                                    <connections>
+                                        <action selector="buttonFilterClick:" destination="-1" eventType="touchUpInside" id="HyO-es-1qW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="PTL-a1-6LO" firstAttribute="leading" secondItem="PWi-y6-42V" secondAttribute="trailing" constant="-12" id="03s-dH-z77"/>
+                                <constraint firstItem="Ps5-sx-drZ" firstAttribute="centerY" secondItem="GtG-Bi-EbU" secondAttribute="centerY" id="3Cn-8Q-3cD"/>
+                                <constraint firstItem="PTL-a1-6LO" firstAttribute="centerY" secondItem="GtG-Bi-EbU" secondAttribute="centerY" id="ROa-3l-bmt"/>
+                                <constraint firstItem="PWi-y6-42V" firstAttribute="leading" secondItem="GtG-Bi-EbU" secondAttribute="leading" id="drp-Tp-UKI"/>
+                                <constraint firstItem="Ps5-sx-drZ" firstAttribute="leading" secondItem="PTL-a1-6LO" secondAttribute="trailing" constant="10" id="gr9-LX-NyO"/>
+                                <constraint firstAttribute="height" constant="53" id="sZv-Qq-W83"/>
+                                <constraint firstAttribute="trailing" secondItem="Ps5-sx-drZ" secondAttribute="trailing" constant="20" symbolic="YES" id="uLj-jq-YFF"/>
+                                <constraint firstItem="PWi-y6-42V" firstAttribute="centerY" secondItem="GtG-Bi-EbU" secondAttribute="centerY" id="yEh-OV-4b5"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="570-BC-YJD" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                            <rect key="frame" x="0.0" y="53" width="375" height="41"/>
+                            <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="41" id="Ig8-9c-2PQ"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tG3-GG-kAE">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyh-7C-td8" userLabel="containerView">
+                            <rect key="frame" x="0.0" y="94" width="375" height="573"/>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="yyh-7C-td8" secondAttribute="bottom" id="1XN-Hl-NdE"/>
+                        <constraint firstAttribute="trailing" secondItem="570-BC-YJD" secondAttribute="trailing" id="6he-ya-U3A"/>
+                        <constraint firstItem="yyh-7C-td8" firstAttribute="leading" secondItem="EYc-tb-b04" secondAttribute="leading" id="Bo0-5y-sDl"/>
+                        <constraint firstItem="570-BC-YJD" firstAttribute="leading" secondItem="EYc-tb-b04" secondAttribute="leading" id="Djh-8x-LmT"/>
+                        <constraint firstItem="GtG-Bi-EbU" firstAttribute="top" secondItem="EYc-tb-b04" secondAttribute="top" id="HU6-Ay-yCE"/>
+                        <constraint firstItem="yyh-7C-td8" firstAttribute="top" secondItem="570-BC-YJD" secondAttribute="bottom" id="HpB-LA-jWV"/>
+                        <constraint firstAttribute="trailing" secondItem="GtG-Bi-EbU" secondAttribute="trailing" id="Zk8-IX-Twv"/>
+                        <constraint firstItem="570-BC-YJD" firstAttribute="top" secondItem="GtG-Bi-EbU" secondAttribute="bottom" id="d16-EI-JgB"/>
+                        <constraint firstAttribute="trailing" secondItem="yyh-7C-td8" secondAttribute="trailing" id="eV0-5D-NJZ"/>
+                        <constraint firstItem="GtG-Bi-EbU" firstAttribute="leading" secondItem="EYc-tb-b04" secondAttribute="leading" id="esh-c2-8Oz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="EYc-tb-b04" firstAttribute="top" secondItem="vUh-ZQ-8Fa" secondAttribute="top" id="5Uo-ES-hjd"/>
+                <constraint firstItem="vUh-ZQ-8Fa" firstAttribute="trailing" secondItem="EYc-tb-b04" secondAttribute="trailing" id="Bb4-PM-o5M"/>
+                <constraint firstItem="EYc-tb-b04" firstAttribute="leading" secondItem="vUh-ZQ-8Fa" secondAttribute="leading" id="MnU-Ey-qlf"/>
+                <constraint firstItem="vUh-ZQ-8Fa" firstAttribute="bottom" secondItem="EYc-tb-b04" secondAttribute="bottom" id="nXf-TL-ZXg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUh-ZQ-8Fa"/>
+            <point key="canvasLocation" x="135" y="155"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backwardArrow" width="9.5" height="16"/>
+        <image name="filter" width="16" height="16"/>
+    </resources>
+</document>

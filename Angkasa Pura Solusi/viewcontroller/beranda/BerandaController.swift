@@ -219,7 +219,7 @@ extension BerandaController {
                 self.navigationController?.pushViewController(vc, animated: true)
             case 6:
                 //slip gaji
-                self.navigationController?.pushViewController(SlipGajiController(), animated: true)
+                self.navigationController?.pushViewController(TabUpahController(), animated: true)
             case 7:
                 //peminjaman ruangan
                 self.showInDevelopmentDialog()

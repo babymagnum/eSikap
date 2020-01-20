@@ -82,8 +82,7 @@ class KebijakanPeraturanDetail: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initView() {
-        //year = function.getCurrentDate(pattern: "yyyy")
-        year = "2019"
+        year = function.getCurrentDate(pattern: "yyyy")
         labelTitle.text = titleString ?? ""
         checkTopMargin(viewRootTopMargin: constraintViewRoot)
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
@@ -166,8 +165,6 @@ extension KebijakanPeraturanDetail: UICollectionViewDataSource, UICollectionView
             return
         }
         
-        print("lampiran clicked \(url)")
-        
         let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
         let downloadTask = urlSession.downloadTask(with: url)
         downloadTask.resume()
@@ -212,7 +209,14 @@ extension KebijakanPeraturanDetail: UICollectionViewDataSource, UICollectionView
     }
 }
 
-extension KebijakanPeraturanDetail {
+extension KebijakanPeraturanDetail: FilterKebijakanPeraturanProtocol {
+    func yearsPick(year: String) {
+        self.year = year
+        currentPage = 0
+        listPolicy.removeAll()
+        getDetailList()
+    }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         currentPage = 0
@@ -221,6 +225,9 @@ extension KebijakanPeraturanDetail {
     }
     
     @IBAction func buttonFilterClick(_ sender: Any) {
+        let vc = FilterKebijakanPeraturan()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {

@@ -1,24 +1,27 @@
 //
-//  TabPersetujuanController.swift
+//  TabUpahController.swift
 //  Angkasa Pura Solusi
 //
-//  Created by Arief Zainuri on 09/08/19.
-//  Copyright © 2019 Gama Techno. All rights reserved.
+//  Created by Arief Zainuri on 20/01/20.
+//  Copyright © 2020 Gama Techno. All rights reserved.
 //
 
 import UIKit
 import XLPagerTabStrip
+import FittedSheets
 
-class TabPersetujuanController: ButtonBarPagerTabStripViewController {
+class TabUpahController: ButtonBarPagerTabStripViewController {
 
-    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
+    @IBOutlet weak var constraintViewRoot: NSLayoutConstraint!
     
     lazy var function: PublicFunction = {
         let mFunction = PublicFunction()
         return mFunction
     }()
     
-    var pages = [UIViewController]()
+    private var year = ""
+    private var month = ""
+    private var pages = [UIViewController]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,9 +35,9 @@ class TabPersetujuanController: ButtonBarPagerTabStripViewController {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         
         if #available(iOS 11, *) {
-            self.viewRootTopMargin.constant = 0
+            self.constraintViewRoot.constant = 0
         } else {
-            self.viewRootTopMargin.constant = UIApplication.shared.statusBarFrame.height
+            self.constraintViewRoot.constant = UIApplication.shared.statusBarFrame.height
         }
     }
     
@@ -62,12 +65,35 @@ class TabPersetujuanController: ButtonBarPagerTabStripViewController {
     
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        pages.append(DelegasiCutiController())
-        pages.append(CutiController())
+        let slipGajiController = SlipGajiController()
+        slipGajiController.year = self.year
+        
+        let bonusController = BonusController()
+        bonusController.year = self.year
+        
+        pages.append(slipGajiController)
+        pages.append(bonusController)
         return pages
     }
+
 }
 
-extension TabPersetujuanController {
-    @IBAction func buttonBackClick(_ sender: Any) { navigationController?.popViewController(animated: true) }
+extension TabUpahController: BottomSheetFilterPresensiProtocol {
+    func filterPicked(_ month: String, _ year: String) {
+        self.year = year
+        pages.removeAll()
+        reloadPagerTabStripView()
+    }
+    
+    @IBAction func buttonBackClick(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func buttonFilterClick(_ sender: Any) {
+        let vc = BottomSheetFilterPresensi()
+        vc.delegate = self
+        vc.onlyYear = true
+        let sheetController = SheetViewController(controller: vc)
+        self.present(sheetController, animated: false, completion: nil)
+    }
 }

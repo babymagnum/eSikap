@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SlipGajiCell" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SlipGajiCell" customModule="eSIKAP" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -27,14 +25,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyc-zx-Xcn">
                         <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JANUARI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0o0-Ud-L26" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="11" y="13" width="33.5" height="9.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JANUARI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0o0-Ud-L26" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="11" y="13" width="200" height="9.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
                                 <color key="textColor" red="0.25882352941176467" green="0.6470588235294118" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26 Desember 2018 - 25 Januari 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAd-h2-kog" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="11" y="27.5" width="132.5" height="9.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26 Desember 2018 - 25 Januari 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAd-h2-kog" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="11" y="27.5" width="200" height="9.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -55,7 +53,7 @@
                                             <constraint firstAttribute="width" secondItem="99I-iM-aS5" secondAttribute="height" multiplier="1:1" id="yiY-I4-ljq"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kirim Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE7-k5-Zka" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kirim Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE7-k5-Zka" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
                                         <rect key="frame" x="5" y="24" width="60" height="9"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="7"/>
                                         <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,7 +81,9 @@
                             <constraint firstItem="paE-Z6-d8S" firstAttribute="centerY" secondItem="Uyc-zx-Xcn" secondAttribute="centerY" id="CgF-IB-1J9"/>
                             <constraint firstItem="OAd-h2-kog" firstAttribute="leading" secondItem="Uyc-zx-Xcn" secondAttribute="leading" constant="11" id="D91-EO-otn"/>
                             <constraint firstItem="0o0-Ud-L26" firstAttribute="leading" secondItem="Uyc-zx-Xcn" secondAttribute="leading" constant="11" id="DqH-Ob-RPl"/>
+                            <constraint firstItem="opO-0a-BeM" firstAttribute="leading" secondItem="OAd-h2-kog" secondAttribute="trailing" constant="11" id="KgA-n9-ruw"/>
                             <constraint firstAttribute="bottom" secondItem="opO-0a-BeM" secondAttribute="bottom" constant="7" id="UvC-Jm-Lx1"/>
+                            <constraint firstItem="opO-0a-BeM" firstAttribute="leading" secondItem="0o0-Ud-L26" secondAttribute="trailing" constant="11" id="YsW-U1-ewD"/>
                             <constraint firstItem="opO-0a-BeM" firstAttribute="top" secondItem="Uyc-zx-Xcn" secondAttribute="top" constant="7" id="btA-4q-qPv"/>
                             <constraint firstItem="0o0-Ud-L26" firstAttribute="top" secondItem="Uyc-zx-Xcn" secondAttribute="top" constant="13" id="xLJ-b5-bZ7"/>
                         </constraints>

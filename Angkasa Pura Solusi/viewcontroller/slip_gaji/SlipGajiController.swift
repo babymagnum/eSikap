@@ -10,22 +10,24 @@ import UIKit
 import SVProgressHUD
 import EzPopup
 import FittedSheets
+import XLPagerTabStrip
 
-class SlipGajiController: BaseViewController, UICollectionViewDelegate {
+class SlipGajiController: BaseViewController, UICollectionViewDelegate, IndicatorInfoProvider {
     
-    @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
-    @IBOutlet weak var labelTitleTop: CustomLabel!
     @IBOutlet weak var collectionSlipGaji: UICollectionView!
     @IBOutlet weak var labelDataKosong: CustomLabel!
     
     private var listSlipGaji = [ItemSlipGaji]()
     private var isSetSlipGajiHeight = false
-    private var currentYear = ""
+    
+    var year: String?
+    
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "SLIP GAJI")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        initView()
         
         initCollectionView()
         
@@ -35,7 +37,7 @@ class SlipGajiController: BaseViewController, UICollectionViewDelegate {
     private func getSlipGaji() {
         SVProgressHUD.show()
         
-        informationNetworking.getPayrollList(year: currentYear) { (error, slipGaji, isExpired) in
+        informationNetworking.getPayrollList(year: year ?? function.getCurrentDate(pattern: "yyyy")) { (error, slipGaji, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -71,24 +73,9 @@ class SlipGajiController: BaseViewController, UICollectionViewDelegate {
         collectionSlipGaji.delegate = self
         collectionSlipGaji.dataSource = self
     }
-    
-    private func initView() {
-        currentYear = function.getCurrentDate(pattern: "yyyy")
-        labelTitleTop.text = "Slip Gaji \(currentYear)"
-        checkTopMargin(viewRootTopMargin: viewRootTopMargin)
-        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 }
 
-extension SlipGajiController: BottomSheetFilterPresensiProtocol {
-    func filterPicked(_ month: String, _ year: String) {
-        currentYear = year
-        labelTitleTop.text = "Slip Gaji \(currentYear)"
-        getSlipGaji()
-    }
-    
+extension SlipGajiController {
     private func sendEmail(payroll_id: String) {
         SVProgressHUD.show(withStatus: "Sending to your email...")
         
@@ -116,22 +103,10 @@ extension SlipGajiController: BottomSheetFilterPresensiProtocol {
         }
     }
     
-    @IBAction func buttonFilterClick(_ sender: Any) {
-        let vc = BottomSheetFilterPresensi()
-        vc.delegate = self
-        vc.onlyYear = true
-        let sheetController = SheetViewController(controller: vc)
-        self.present(sheetController, animated: false, completion: nil)
-    }
-    
     @objc func kirimEmailClick(sender: UITapGestureRecognizer) {
         guard let indexpath = collectionSlipGaji.indexPathForItem(at: sender.location(in: collectionSlipGaji)) else { return }
         
         sendEmail(payroll_id: listSlipGaji[indexpath.item].payroll_id!)
-    }
-    
-    @IBAction func buttonBackClick(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
     }
 }
 

@@ -529,6 +529,21 @@ class InformationNetworking: BaseNetworking {
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
+    func getBonusList(year: String, completion: @escaping(_ error: String?, _ bonus: Bonus?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getBonusList"
+        let body : [String: String] = [ "year": year ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func sendBonusSlip(bonusId: String, type: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/sendBonusSlip"
+        let body: [String: String] = [
+            "bonus_id": bonusId,
+            "type": type
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
     func getDestination(completion: @escaping(_ error: String?, _ destination: Destination?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/getDestination"
         alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BonusCell" customModule="eSIKAP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgV-9S-Jys">
+                        <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JANUARI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUQ-2m-UBu" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="11" y="13" width="208" height="9.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
+                                <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26 Desember 2018 - 25 Januari 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxP-rU-TAe" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="11" y="27.5" width="208" height="9.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
+                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lS-It-ZyW">
+                                <rect key="frame" x="230" y="7" width="1" height="36"/>
+                                <color key="backgroundColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="t44-g7-Yej"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3T-U5-JAt">
+                                <rect key="frame" x="231" y="7" width="70" height="36"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sentMail" translatesAutoresizingMaskIntoConstraints="NO" id="i0J-1e-Gbe">
+                                        <rect key="frame" x="26.5" y="0.0" width="17" height="16.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="i0J-1e-Gbe" secondAttribute="height" multiplier="1:1" id="A4n-c1-hJS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kirim Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xB-ah-ndO" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="24.5" width="60" height="9"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="7"/>
+                                        <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3xB-ah-ndO" secondAttribute="trailing" constant="5" id="2OZ-en-XDJ"/>
+                                    <constraint firstItem="i0J-1e-Gbe" firstAttribute="top" secondItem="z3T-U5-JAt" secondAttribute="top" id="RDB-v1-SYu"/>
+                                    <constraint firstItem="i0J-1e-Gbe" firstAttribute="centerX" secondItem="z3T-U5-JAt" secondAttribute="centerX" id="S2C-LL-XBV"/>
+                                    <constraint firstItem="3xB-ah-ndO" firstAttribute="leading" secondItem="z3T-U5-JAt" secondAttribute="leading" constant="5" id="bAs-yE-CCg"/>
+                                    <constraint firstItem="3xB-ah-ndO" firstAttribute="top" secondItem="i0J-1e-Gbe" secondAttribute="bottom" constant="8" id="cYe-JG-zWg"/>
+                                    <constraint firstAttribute="width" constant="70" id="vhg-2f-RmY"/>
+                                    <constraint firstAttribute="height" constant="36" id="yVQ-FL-MsC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0lS-It-ZyW" firstAttribute="top" secondItem="MgV-9S-Jys" secondAttribute="top" constant="7" id="2mn-al-rA3"/>
+                            <constraint firstAttribute="bottom" secondItem="0lS-It-ZyW" secondAttribute="bottom" constant="7" id="9ei-Al-MbX"/>
+                            <constraint firstItem="zxP-rU-TAe" firstAttribute="top" secondItem="lUQ-2m-UBu" secondAttribute="bottom" constant="5" id="Fog-a2-wLK"/>
+                            <constraint firstItem="0lS-It-ZyW" firstAttribute="leading" secondItem="zxP-rU-TAe" secondAttribute="trailing" constant="11" id="WWk-tT-Do2"/>
+                            <constraint firstItem="zxP-rU-TAe" firstAttribute="leading" secondItem="MgV-9S-Jys" secondAttribute="leading" constant="11" id="ci7-Sy-kyb"/>
+                            <constraint firstItem="0lS-It-ZyW" firstAttribute="leading" secondItem="lUQ-2m-UBu" secondAttribute="trailing" constant="11" id="cmQ-Fg-GdF"/>
+                            <constraint firstItem="z3T-U5-JAt" firstAttribute="leading" secondItem="0lS-It-ZyW" secondAttribute="trailing" id="cs2-ZH-Bbc"/>
+                            <constraint firstItem="i0J-1e-Gbe" firstAttribute="width" secondItem="MgV-9S-Jys" secondAttribute="width" multiplier="0.055" id="dBg-tJ-4RK"/>
+                            <constraint firstItem="lUQ-2m-UBu" firstAttribute="leading" secondItem="MgV-9S-Jys" secondAttribute="leading" constant="11" id="jVE-dY-Efc"/>
+                            <constraint firstItem="lUQ-2m-UBu" firstAttribute="top" secondItem="MgV-9S-Jys" secondAttribute="top" constant="13" id="ojA-eZ-QFh"/>
+                            <constraint firstItem="z3T-U5-JAt" firstAttribute="centerY" secondItem="MgV-9S-Jys" secondAttribute="centerY" id="ua6-kE-aKp"/>
+                            <constraint firstAttribute="trailing" secondItem="z3T-U5-JAt" secondAttribute="trailing" id="zaV-Pe-fwN"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="MgV-9S-Jys" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="AlF-5s-Wsp"/>
+                <constraint firstAttribute="bottom" secondItem="MgV-9S-Jys" secondAttribute="bottom" id="C5Q-JK-WLd"/>
+                <constraint firstItem="MgV-9S-Jys" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Md4-aE-u4q"/>
+                <constraint firstAttribute="trailing" secondItem="MgV-9S-Jys" secondAttribute="trailing" id="a4a-f1-w1Q"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="301" height="50"/>
+            <connections>
+                <outlet property="labelDate" destination="zxP-rU-TAe" id="HSM-N6-Syx"/>
+                <outlet property="labelTitle" destination="lUQ-2m-UBu" id="Ry1-8t-mTt"/>
+                <outlet property="viewContainer" destination="MgV-9S-Jys" id="M5q-T9-5hx"/>
+                <outlet property="viewKirimEmail" destination="z3T-U5-JAt" id="0LM-z0-TMG"/>
+            </connections>
+            <point key="canvasLocation" x="277.536231884058" y="89.732142857142847"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="sentMail" width="19.5" height="18"/>
+    </resources>
+</document>

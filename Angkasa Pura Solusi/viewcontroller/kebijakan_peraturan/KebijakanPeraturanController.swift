@@ -74,8 +74,7 @@ class KebijakanPeraturanController: BaseViewController, UICollectionViewDelegate
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initView() {
-        //year = function.getCurrentDate(pattern: "yyyy")
-        year = "2019"
+        year = function.getCurrentDate(pattern: "yyyy")
         checkTopMargin(viewRootTopMargin: constraintViewRoot)
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         
@@ -125,7 +124,14 @@ extension KebijakanPeraturanController: UICollectionViewDataSource {
     }
 }
 
-extension KebijakanPeraturanController {
+extension KebijakanPeraturanController: FilterKebijakanPeraturanProtocol {
+    func yearsPick(year: String) {
+        self.year = year
+        currentPage = 0
+        listPolicyCategory.removeAll()
+        getPolicyCategory()
+    }
+    
     @objc func collectionViewRootClick(sender: UITapGestureRecognizer) {
         guard let indexpath = collectionPolicyCategory.indexPathForItem(at: sender.location(in: collectionPolicyCategory)) else { return }
         
@@ -136,6 +142,9 @@ extension KebijakanPeraturanController {
     }
     
     @IBAction func buttonFilterClick(_ sender: Any) {
+        let vc = FilterKebijakanPeraturan()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
