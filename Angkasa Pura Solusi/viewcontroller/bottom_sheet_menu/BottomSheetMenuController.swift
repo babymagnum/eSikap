@@ -212,7 +212,11 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             }
         case 7:
             //peminjaman ruangan
-            self.showInDevelopmentDialog()
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.parentNavigationController?.pushViewController(DaftarPeminjamanRuanganController(), animated: true)
+            }
         case 8:
             //peminjaman mobil dinas
             dismiss(animated: true, completion: nil)

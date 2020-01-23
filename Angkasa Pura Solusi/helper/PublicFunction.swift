@@ -206,6 +206,18 @@ class PublicFunction {
         return formater.string(from: Date())
     }
     
+    open func convertStringToDate(date: String, pattern: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = pattern
+        return formatter.date(from: date) ?? Date()
+    }
+    
+    open func convertDateToString(pattern: String, date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = pattern
+        return formatter.string(from: date)
+    }
+    
     open func getCurrentMillisecond(pattern: String) -> Double {
         let formatter = DateFormatter()
         formatter.dateFormat = pattern

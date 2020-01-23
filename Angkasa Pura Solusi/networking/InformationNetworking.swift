@@ -621,4 +621,29 @@ class InformationNetworking: BaseNetworking {
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func getDetailsRequestRooms(requestRoomId: String, completion: @escaping(_ error: String?, _ detailsRequestRooms: DetailsRequestRooms?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getDetailRequestRooms"
+        let body: [String: String] = [
+            "requestrooms_id": requestRoomId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getScheduleRoomsOneMonth(month: String, year: String, completion: @escaping(_ error: String?, _ schedulesRoom: SchedulesRoom?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getScheduleRoomsOneMonth"
+        let body: [String: String] = [
+            "month": month,
+            "year": year
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getScheduleRoomsOneDay(date: String, completion: @escaping(_ error: String?, _ schedulesRoom: SchedulesRoom?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getScheduleRoomsOneDay"
+        let body: [String: String] = [
+            "date": date
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

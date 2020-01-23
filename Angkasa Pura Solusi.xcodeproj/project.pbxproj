@@ -46,6 +46,16 @@
 		ED40AB50231CB5FC007C0ADC /* DelegationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40AB4F231CB5FC007C0ADC /* DelegationList.swift */; };
 		ED40AB52231CBB5A007C0ADC /* DetailDelegationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40AB51231CBB59007C0ADC /* DetailDelegationList.swift */; };
 		ED40AB54231CBD6A007C0ADC /* DetailLeaveApproval.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40AB53231CBD6A007C0ADC /* DetailLeaveApproval.swift */; };
+		ED40C67C23D7C5490033757C /* DaftarPeminjamanRuanganController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40C67A23D7C5490033757C /* DaftarPeminjamanRuanganController.swift */; };
+		ED40C67D23D7C5490033757C /* DaftarPeminjamanRuanganController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED40C67B23D7C5490033757C /* DaftarPeminjamanRuanganController.xib */; };
+		ED40C68123D7D3A80033757C /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40C67F23D7D3A80033757C /* DateCell.swift */; };
+		ED40C68223D7D3A80033757C /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED40C68023D7D3A80033757C /* DateCell.xib */; };
+		ED40C68623D7D4D00033757C /* DaftarPeminjamanRuanganCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40C68423D7D4D00033757C /* DaftarPeminjamanRuanganCell.swift */; };
+		ED40C68723D7D4D00033757C /* DaftarPeminjamanRuanganCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED40C68523D7D4D00033757C /* DaftarPeminjamanRuanganCell.xib */; };
+		ED40C68923D7DA760033757C /* SchedulesRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40C68823D7DA760033757C /* SchedulesRoom.swift */; };
+		ED40C68B23D7DB9F0033757C /* DetailRequestRooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40C68A23D7DB9F0033757C /* DetailRequestRooms.swift */; };
+		ED40C68F23D7DEE50033757C /* ItemPeminjamanRuanganCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40C68D23D7DEE50033757C /* ItemPeminjamanRuanganCell.swift */; };
+		ED40C69023D7DEE50033757C /* ItemPeminjamanRuanganCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED40C68E23D7DEE50033757C /* ItemPeminjamanRuanganCell.xib */; };
 		ED52151922F452A1001C6A50 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52151822F452A1001C6A50 /* Circle.swift */; };
 		ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52151D22F46F11001C6A50 /* DialogFirstController.swift */; };
 		ED52152022F46F11001C6A50 /* DialogFirstController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52151E22F46F11001C6A50 /* DialogFirstController.xib */; };
@@ -263,6 +273,16 @@
 		ED40AB4F231CB5FC007C0ADC /* DelegationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegationList.swift; sourceTree = "<group>"; };
 		ED40AB51231CBB59007C0ADC /* DetailDelegationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDelegationList.swift; sourceTree = "<group>"; };
 		ED40AB53231CBD6A007C0ADC /* DetailLeaveApproval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLeaveApproval.swift; sourceTree = "<group>"; };
+		ED40C67A23D7C5490033757C /* DaftarPeminjamanRuanganController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaftarPeminjamanRuanganController.swift; sourceTree = "<group>"; };
+		ED40C67B23D7C5490033757C /* DaftarPeminjamanRuanganController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaftarPeminjamanRuanganController.xib; sourceTree = "<group>"; };
+		ED40C67F23D7D3A80033757C /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		ED40C68023D7D3A80033757C /* DateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCell.xib; sourceTree = "<group>"; };
+		ED40C68423D7D4D00033757C /* DaftarPeminjamanRuanganCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaftarPeminjamanRuanganCell.swift; sourceTree = "<group>"; };
+		ED40C68523D7D4D00033757C /* DaftarPeminjamanRuanganCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaftarPeminjamanRuanganCell.xib; sourceTree = "<group>"; };
+		ED40C68823D7DA760033757C /* SchedulesRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesRoom.swift; sourceTree = "<group>"; };
+		ED40C68A23D7DB9F0033757C /* DetailRequestRooms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRequestRooms.swift; sourceTree = "<group>"; };
+		ED40C68D23D7DEE50033757C /* ItemPeminjamanRuanganCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPeminjamanRuanganCell.swift; sourceTree = "<group>"; };
+		ED40C68E23D7DEE50033757C /* ItemPeminjamanRuanganCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemPeminjamanRuanganCell.xib; sourceTree = "<group>"; };
 		ED42155D233ADDFA005B3F9E /* Angkasa Pura SolusiRelease.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Angkasa Pura SolusiRelease.entitlements"; sourceTree = "<group>"; };
 		ED52151822F452A1001C6A50 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		ED52151D22F46F11001C6A50 /* DialogFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogFirstController.swift; sourceTree = "<group>"; };
@@ -549,6 +569,42 @@
 				ED308CF5231B520500F5C43C /* ExceptionCell.xib */,
 			);
 			path = exception_cell;
+			sourceTree = "<group>";
+		};
+		ED40C67923D7C4E90033757C /* daftar_peminjaman_ruangan */ = {
+			isa = PBXGroup;
+			children = (
+				ED40C67A23D7C5490033757C /* DaftarPeminjamanRuanganController.swift */,
+				ED40C67B23D7C5490033757C /* DaftarPeminjamanRuanganController.xib */,
+			);
+			path = daftar_peminjaman_ruangan;
+			sourceTree = "<group>";
+		};
+		ED40C67E23D7D38F0033757C /* date_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED40C67F23D7D3A80033757C /* DateCell.swift */,
+				ED40C68023D7D3A80033757C /* DateCell.xib */,
+			);
+			path = date_cell;
+			sourceTree = "<group>";
+		};
+		ED40C68323D7D4BB0033757C /* daftar_peminjaman_ruangan_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED40C68423D7D4D00033757C /* DaftarPeminjamanRuanganCell.swift */,
+				ED40C68523D7D4D00033757C /* DaftarPeminjamanRuanganCell.xib */,
+			);
+			path = daftar_peminjaman_ruangan_cell;
+			sourceTree = "<group>";
+		};
+		ED40C68C23D7DECC0033757C /* item_peminjaman_ruangan_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED40C68D23D7DEE50033757C /* ItemPeminjamanRuanganCell.swift */,
+				ED40C68E23D7DEE50033757C /* ItemPeminjamanRuanganCell.xib */,
+			);
+			path = item_peminjaman_ruangan_cell;
 			sourceTree = "<group>";
 		};
 		ED52151B22F46E20001C6A50 /* dialog_inform_first */ = {
@@ -854,6 +910,7 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED40C67923D7C4E90033757C /* daftar_peminjaman_ruangan */,
 				ED6110AA23D5F0F40022DC4F /* bonus */,
 				ED6110A423D5ED850022DC4F /* tab_upah */,
 				ED61109F23D5E5A00022DC4F /* filter_kebijakan_peraturan */,
@@ -955,6 +1012,8 @@
 				EDEDA22923D0B0400085E2EA /* PolicyCategory.swift */,
 				EDEDA22B23D0B0C30085E2EA /* Policy.swift */,
 				ED6110AF23D603E30022DC4F /* Bonus.swift */,
+				ED40C68823D7DA760033757C /* SchedulesRoom.swift */,
+				ED40C68A23D7DB9F0033757C /* DetailRequestRooms.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1027,6 +1086,9 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED40C68C23D7DECC0033757C /* item_peminjaman_ruangan_cell */,
+				ED40C68323D7D4BB0033757C /* daftar_peminjaman_ruangan_cell */,
+				ED40C67E23D7D38F0033757C /* date_cell */,
 				ED6110B123D605DE0022DC4F /* bonus_cell */,
 				ED5F9C0823D148D6008B977F /* kebijakan_peraturan_file_cell */,
 				ED5F9C0323D14311008B977F /* kebijakan_peraturan_detail_cell */,
@@ -1405,8 +1467,10 @@
 				EDD5891423CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.xib in Resources */,
 				EDFC1F4822FDB80D00AAA93B /* TabPersetujuanController.xib in Resources */,
 				EDEDA23623D0B9D50085E2EA /* KebijakanPeraturanCell.xib in Resources */,
+				ED40C68223D7D3A80033757C /* DateCell.xib in Resources */,
 				ED52153422F51DA7001C6A50 /* MenuLainyaCell.xib in Resources */,
 				ED8A9149231C088000C6834C /* DialogBatalkanCutiController.xib in Resources */,
+				ED40C69023D7DEE50033757C /* ItemPeminjamanRuanganCell.xib in Resources */,
 				EDC71BC0231BEEB5007FBBD9 /* DetailTanggalCutiCell.xib in Resources */,
 				ED6110A323D5E5BF0022DC4F /* FilterKebijakanPeraturan.xib in Resources */,
 				ED308CF2231B50ED00F5C43C /* DialogPengajuanCutiController.xib in Resources */,
@@ -1421,10 +1485,12 @@
 				ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */,
 				EDBF21B722FE7335003F5DAF /* RiwayatCutiCell.xib in Resources */,
 				ED95909022EBE90A00D696E5 /* HomeController.xib in Resources */,
+				ED40C67D23D7C5490033757C /* DaftarPeminjamanRuanganController.xib in Resources */,
 				ED14CA79231DFCB100D5C7F0 /* EmpFilterCell.xib in Resources */,
 				ED61BF1322F7A4ED00776C25 /* KaryawanCell.xib in Resources */,
 				ED61BF2122F7CF2500776C25 /* FilterKaryawanController.xib in Resources */,
 				ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */,
+				ED40C68723D7D4D00033757C /* DaftarPeminjamanRuanganCell.xib in Resources */,
 				ED95909B22EBF4DC00D696E5 /* LaunchScreen.storyboard in Resources */,
 				ED5F9C0C23D148F3008B977F /* KebijakanPeraturanFileCell.xib in Resources */,
 				ED6E507822ED41A200EED8E7 /* ProfilController.xib in Resources */,
@@ -1554,6 +1620,7 @@
 				ED52152422F47C0D001C6A50 /* DialogPreparePresenceController.swift in Sources */,
 				ED57FE4322F8F633007B62A0 /* JatahCutiCell.swift in Sources */,
 				ED61BF2522F7E0B600776C25 /* Unit.swift in Sources */,
+				ED40C68123D7D3A80033757C /* DateCell.swift in Sources */,
 				ED40AB4D231CB497007C0ADC /* DelegasiCutiController.swift in Sources */,
 				EDFC1F5B22FE297D00AAA93B /* CutiCell.swift in Sources */,
 				ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */,
@@ -1561,6 +1628,7 @@
 				EDCF3BF622F08B8F0064AE57 /* PresensiController.swift in Sources */,
 				EDD5890E23CF5A9F00A3EE7B /* HistoryPeminjamanMobilDinas.swift in Sources */,
 				EDE5DBDA2320C5FB00CFC608 /* DialogSendEmailController.swift in Sources */,
+				ED40C68923D7DA760033757C /* SchedulesRoom.swift in Sources */,
 				EDE5DBCE2320B80500CFC608 /* SlipGajiController.swift in Sources */,
 				EDBF21BB23005BDD003F5DAF /* CustomLabel.swift in Sources */,
 				EDE5DBD62320BD4400CFC608 /* SlipGaji.swift in Sources */,
@@ -1571,6 +1639,8 @@
 				EDBF219F22FE465B003F5DAF /* StatusPersetujuanCell.swift in Sources */,
 				ED6110A223D5E5BF0022DC4F /* FilterKebijakanPeraturan.swift in Sources */,
 				EDFC1F4722FDB80D00AAA93B /* TabPersetujuanController.swift in Sources */,
+				ED40C68B23D7DB9F0033757C /* DetailRequestRooms.swift in Sources */,
+				ED40C68623D7D4D00033757C /* DaftarPeminjamanRuanganCell.swift in Sources */,
 				ED95908A22EBE8DE00D696E5 /* OnboardingController.swift in Sources */,
 				ED61BF2722F7E17000776C25 /* Workarea.swift in Sources */,
 				ED6110A823D5EDA10022DC4F /* TabUpahController.swift in Sources */,
@@ -1598,6 +1668,7 @@
 				ED61BF1222F7A4ED00776C25 /* KaryawanCell.swift in Sources */,
 				EDD5892123D00D5700A3EE7B /* DetailPeminjamanMobilController.swift in Sources */,
 				ED61BF2022F7CF2500776C25 /* FilterKaryawanController.swift in Sources */,
+				ED40C68F23D7DEE50033757C /* ItemPeminjamanRuanganCell.swift in Sources */,
 				ED858B0622F323F000016EAD /* LatestNews.swift in Sources */,
 				ED70650123CE731800447654 /* Destination.swift in Sources */,
 				EDC19E9B231EC34000690B59 /* LeaveStatusFilter.swift in Sources */,
@@ -1608,6 +1679,7 @@
 				ED95908022EBE77B00D696E5 /* StaticLet.swift in Sources */,
 				ED8A914B231C0D7C00C6834C /* BaseResponse.swift in Sources */,
 				ED1004B52318AE93009F5D4C /* ImagePickerManager.swift in Sources */,
+				ED40C67C23D7C5490033757C /* DaftarPeminjamanRuanganController.swift in Sources */,
 				ED57FE5122FA46F7007B62A0 /* Bulan.swift in Sources */,
 				ED61BF2B22F7E27900776C25 /* Order.swift in Sources */,
 				ED8F239A23136B34005D700C /* BaseNetworking.swift in Sources */,
