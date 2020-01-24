@@ -197,16 +197,11 @@ class DaftarPeminjamanRuanganController: BaseViewController {
 
 extension DaftarPeminjamanRuanganController {
     @objc func buttonPengajuanClick() {
-        print("button pengajuan clicked")
+        self.navigationController?.pushViewController(FormPeminjamanRuanganController(), animated: true)
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    @objc func collectionDateContainerClick(sender: UITapGestureRecognizer) {
-        guard let indexpath = collectionCalendar.indexPathForItem(at: sender.location(in: collectionCalendar)) else { return }
-        
     }
     
     @objc func viewTutupCalendarClick() {
@@ -243,8 +238,12 @@ extension DaftarPeminjamanRuanganController {
 }
 
 extension DaftarPeminjamanRuanganController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, DaftarPeminjamanRuanganProtocol {
+    
     func agendaClick(data: SchedulesRoomDataAgenda) {
-        
+        let vc = DetailPeminjamanRuanganController()
+        vc.requestRoomId = data.id
+        vc.isFromHistory = false
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func updateLayout() {

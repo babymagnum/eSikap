@@ -44,6 +44,7 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         cutiCollectionView.collectionViewLayout.invalidateLayout()
     }
     
@@ -66,17 +67,16 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
             }
             
             guard let delegationList = delegationList else { return }
-            if delegationList.data?.leave.count == 0 && self.listCuti.count == 0 {
-                self.labelDataKosong.text = delegationList.message
-                self.labelDataKosong.isHidden = false
-            } else {
-                self.labelDataKosong.isHidden = true
-            }
-            self.totalPage = (delegationList.data?.total_page)!
             
             for cuti in delegationList.data!.leave {
                 self.listCuti.append(cuti)
             }
+            
+            self.labelDataKosong.text = delegationList.message
+            
+            self.labelDataKosong.isHidden = (delegationList.data?.leave.count)! > 0 && self.listCuti.count > 0
+            
+            self.totalPage = (delegationList.data?.total_page)!
             
             self.currentPage += 1
             self.cutiCollectionView.reloadData()
@@ -109,7 +109,17 @@ extension CutiController {
     }
 }
 
-extension CutiController : UICollectionViewDataSource {
+extension CutiController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = listCuti[indexPath.item]
+        let nameHeight = item.emp_name?.getHeight(withConstrainedWidth: 59 + 36 + UIScreen.main.bounds.width - 26, font_size: 10) ?? 0
+        let numberHeight = item.number?.getHeight(withConstrainedWidth: 59 + 36 + UIScreen.main.bounds.width - 26, font_size: 10) ?? 0
+        let typeCutiHeight = item.type_name?.getHeight(withConstrainedWidth: 59 + 36 + UIScreen.main.bounds.width - 26, font_size: 9) ?? 0
+        let dateHeight = item.dates?.getHeight(withConstrainedWidth: 59 + 36 + UIScreen.main.bounds.width - 26, font_size: 10) ?? 0
+        let height: CGFloat = nameHeight + numberHeight + typeCutiHeight + dateHeight
+        return CGSize(width: UIScreen.main.bounds.width - 26, height: height + 24)
+    }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == listCuti.count - 1 {
@@ -142,13 +152,13 @@ extension CutiController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CutiCell", for: indexPath) as! CutiCell
         
-        if !isCalculateCutiHeight {
-            self.isCalculateCutiHeight = true
-            DispatchQueue.main.async {
-                let cutiLayout = self.cutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiCell.viewContainer.getHeight() + 8.9)
-            }
-        }
+//        if !isCalculateCutiHeight {
+//            self.isCalculateCutiHeight = true
+//            DispatchQueue.main.async {
+//                let cutiLayout = self.cutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//                cutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 26, height: cutiCell.viewContainer.getHeight() + 8.9)
+//            }
+//        }
         
         cutiCell.data = listCuti[indexPath.item]
         cutiCell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cutiContainerClick(sender:))))

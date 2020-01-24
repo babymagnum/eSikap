@@ -646,4 +646,9 @@ class InformationNetworking: BaseNetworking {
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func getRooms(completion: @escaping(_ error: String?, _ rooms: Rooms?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getRooms"
+        alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
 }

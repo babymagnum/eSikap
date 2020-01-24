@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailPeminjamanRuanganController" customModule="eSIKAP" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonAction" destination="mfU-MI-Ao6" id="d4a-FC-S80"/>
+                <outlet property="collectionLampiran" destination="Rmp-WS-p3H" id="Cwe-hq-yKf"/>
+                <outlet property="collectionLampiranHeight" destination="l5a-mM-yF5" id="tTe-KF-PPx"/>
+                <outlet property="labelJudul" destination="Fp2-lB-wnA" id="koJ-Cm-rOn"/>
+                <outlet property="labelJumlahOrang" destination="ZTr-kU-a4O" id="hKM-1x-x0Z"/>
+                <outlet property="labelKeterangan" destination="NPn-b2-IVC" id="tlw-30-zkV"/>
+                <outlet property="labelPartisipan" destination="ox3-LV-c9I" id="xPq-5G-kx7"/>
+                <outlet property="labelPengaju" destination="ttG-12-y7P" id="6JS-Od-mWM"/>
+                <outlet property="labelRuang" destination="FJz-pf-RoA" id="i3I-Lf-6hV"/>
+                <outlet property="labelWaktu" destination="RqN-TR-4LA" id="tFv-Mc-TLP"/>
+                <outlet property="scrollView" destination="ZJx-2R-h8e" id="3zI-vL-MB8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="439"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J9a-jx-OhX">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhB-NH-fjX">
+                            <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="53" id="FqI-zI-od9"/>
+                                <constraint firstAttribute="width" constant="53" id="LBJ-fP-wC0"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" image="backwardArrow"/>
+                            <connections>
+                                <action selector="buttonBackClick:" destination="-1" eventType="touchUpInside" id="2AG-nB-BUv"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Peminjaman Ruangan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hc6-VC-Axp" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                            <rect key="frame" x="41" y="19" width="152" height="15"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                            <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="hc6-VC-Axp" firstAttribute="centerY" secondItem="J9a-jx-OhX" secondAttribute="centerY" id="An4-sL-UWd"/>
+                        <constraint firstAttribute="height" constant="53" id="PjG-4a-abv"/>
+                        <constraint firstItem="hc6-VC-Axp" firstAttribute="leading" secondItem="hhB-NH-fjX" secondAttribute="trailing" constant="-12" id="fvP-jv-ChT"/>
+                        <constraint firstItem="hhB-NH-fjX" firstAttribute="centerY" secondItem="J9a-jx-OhX" secondAttribute="centerY" id="vTp-wy-tU7"/>
+                        <constraint firstItem="hhB-NH-fjX" firstAttribute="leading" secondItem="J9a-jx-OhX" secondAttribute="leading" id="wxK-60-fbZ"/>
+                    </constraints>
+                </view>
+                <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJx-2R-h8e">
+                    <rect key="frame" x="0.0" y="53" width="375" height="314"/>
+                    <subviews>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3G-gK-tyj">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="314"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rincian Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rt-BF-lCa" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="24" width="80" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="13"/>
+                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pengaju" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGG-Q7-ACc" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="61" width="40.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Judul" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxX-su-3ky" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="89" width="27.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Keterangan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4mo-4O-1FP" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="117" width="56.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ruang" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiA-zN-LAz" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="158" width="31.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jl. Cik di tiro" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fp2-lB-wnA" userLabel="Alamat Value" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="125.5" y="89" width="233.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daerah Istimewa Yogyakarta Mas Bro kasjdkajsd" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPn-b2-IVC" userLabel="Propinsi Value" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="125.5" y="117" width="233.5" height="26"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kabupaten Bantul" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJz-pf-RoA" userLabel="Kota Value" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="125.5" y="158" width="233.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waktu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs2-gV-o89" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="186" width="31" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Partisipan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AD-Oq-3CS" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="214" width="50.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jumlah Orang" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rjb-8w-fVn" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="242" width="69.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lampiran" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGT-Sv-3ye" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="270" width="46.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kunjungan" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqN-TR-4LA" userLabel="Tujuan Value" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="125.5" y="186" width="233.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wait" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ox3-LV-c9I" userLabel="Kategori Value" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="125.5" y="214" width="233.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTr-kU-a4O" userLabel="Jumlah Orang Value" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="125.5" y="242" width="233.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Kunjungan" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttG-12-y7P" userLabel="Area Tujuan Value" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="125.5" y="61" width="233.5" height="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Rmp-WS-p3H">
+                                    <rect key="frame" x="125.5" y="270" width="233.5" height="20"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="l5a-mM-yF5"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="v65-Cj-SW8">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="FJz-pf-RoA" firstAttribute="top" secondItem="NPn-b2-IVC" secondAttribute="bottom" constant="15" id="3GX-Kj-d0v"/>
+                                <constraint firstItem="ox3-LV-c9I" firstAttribute="top" secondItem="RqN-TR-4LA" secondAttribute="bottom" constant="15" id="4pn-E8-vBd"/>
+                                <constraint firstItem="8rt-BF-lCa" firstAttribute="top" secondItem="o3G-gK-tyj" secondAttribute="top" constant="24" id="5Tn-Of-6fs"/>
+                                <constraint firstItem="rjb-8w-fVn" firstAttribute="top" secondItem="ox3-LV-c9I" secondAttribute="bottom" constant="15" id="5uy-n2-Yd3"/>
+                                <constraint firstItem="nxX-su-3ky" firstAttribute="top" secondItem="ttG-12-y7P" secondAttribute="bottom" constant="15" id="7gx-rc-sOD"/>
+                                <constraint firstItem="RqN-TR-4LA" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="9mJ-bq-IZW"/>
+                                <constraint firstItem="Fp2-lB-wnA" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="BBk-nq-Xtw"/>
+                                <constraint firstItem="zs2-gV-o89" firstAttribute="top" secondItem="FJz-pf-RoA" secondAttribute="bottom" constant="15" id="Bin-BU-nSP"/>
+                                <constraint firstAttribute="trailing" secondItem="RqN-TR-4LA" secondAttribute="trailing" constant="16" id="DRW-4O-k0d"/>
+                                <constraint firstItem="Rmp-WS-p3H" firstAttribute="leading" secondItem="ZGT-Sv-3ye" secondAttribute="trailing" constant="63" id="Dr9-DT-3Qt"/>
+                                <constraint firstItem="FJz-pf-RoA" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="EWo-AP-9vJ"/>
+                                <constraint firstItem="Fp2-lB-wnA" firstAttribute="top" secondItem="ttG-12-y7P" secondAttribute="bottom" constant="15" id="Ezg-59-ZeJ"/>
+                                <constraint firstAttribute="trailing" secondItem="NPn-b2-IVC" secondAttribute="trailing" constant="16" id="FTu-QR-eRX"/>
+                                <constraint firstItem="ZGT-Sv-3ye" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="Gud-np-i89"/>
+                                <constraint firstItem="rjb-8w-fVn" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="H33-QL-HX6"/>
+                                <constraint firstItem="LGG-Q7-ACc" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="H3z-lp-cdW"/>
+                                <constraint firstAttribute="trailing" secondItem="FJz-pf-RoA" secondAttribute="trailing" constant="16" id="I3T-Af-LQz"/>
+                                <constraint firstAttribute="trailing" secondItem="ttG-12-y7P" secondAttribute="trailing" constant="16" id="IZN-O6-GWL"/>
+                                <constraint firstItem="ox3-LV-c9I" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="J1W-gT-AMd"/>
+                                <constraint firstItem="nxX-su-3ky" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="JnS-1s-rkx"/>
+                                <constraint firstItem="4mo-4O-1FP" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="Mxg-nh-doI"/>
+                                <constraint firstItem="ZTr-kU-a4O" firstAttribute="top" secondItem="ox3-LV-c9I" secondAttribute="bottom" constant="15" id="OFt-uI-dWW"/>
+                                <constraint firstItem="7AD-Oq-3CS" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="R7K-93-6j9"/>
+                                <constraint firstItem="ZGT-Sv-3ye" firstAttribute="top" secondItem="ZTr-kU-a4O" secondAttribute="bottom" constant="15" id="Thc-Ta-tvW"/>
+                                <constraint firstItem="ttG-12-y7P" firstAttribute="top" secondItem="8rt-BF-lCa" secondAttribute="top" constant="37" id="Vea-np-e5U"/>
+                                <constraint firstAttribute="bottom" secondItem="ZGT-Sv-3ye" secondAttribute="bottom" constant="31" id="Vi5-qf-pXA"/>
+                                <constraint firstItem="ttG-12-y7P" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="Xvd-Gt-uzC"/>
+                                <constraint firstItem="FiA-zN-LAz" firstAttribute="top" secondItem="NPn-b2-IVC" secondAttribute="bottom" constant="15" id="XyU-ph-Kwa"/>
+                                <constraint firstItem="NPn-b2-IVC" firstAttribute="top" secondItem="Fp2-lB-wnA" secondAttribute="bottom" constant="15" id="YIg-uk-87P"/>
+                                <constraint firstItem="FJz-pf-RoA" firstAttribute="leading" secondItem="FiA-zN-LAz" secondAttribute="trailing" constant="78" id="Z8G-rJ-IAX"/>
+                                <constraint firstItem="Rmp-WS-p3H" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="ZZs-nh-mbt"/>
+                                <constraint firstItem="RqN-TR-4LA" firstAttribute="top" secondItem="FJz-pf-RoA" secondAttribute="bottom" constant="15" id="aeB-uf-Z7e"/>
+                                <constraint firstItem="Rmp-WS-p3H" firstAttribute="top" secondItem="ZTr-kU-a4O" secondAttribute="bottom" constant="15" id="bt9-Ko-h5T"/>
+                                <constraint firstAttribute="trailing" secondItem="Fp2-lB-wnA" secondAttribute="trailing" constant="16" id="dgQ-SY-2iJ"/>
+                                <constraint firstItem="7AD-Oq-3CS" firstAttribute="top" secondItem="RqN-TR-4LA" secondAttribute="bottom" constant="15" id="eon-5g-Si4"/>
+                                <constraint firstItem="4mo-4O-1FP" firstAttribute="top" secondItem="Fp2-lB-wnA" secondAttribute="bottom" constant="15" id="fSA-iG-LEt"/>
+                                <constraint firstAttribute="bottom" secondItem="Rmp-WS-p3H" secondAttribute="bottom" constant="24" id="jB8-GW-kZH"/>
+                                <constraint firstItem="zs2-gV-o89" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="kcL-oR-DvE"/>
+                                <constraint firstAttribute="trailing" secondItem="Rmp-WS-p3H" secondAttribute="trailing" constant="16" id="lji-AF-Ivq"/>
+                                <constraint firstItem="NPn-b2-IVC" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="mQP-9j-ihD"/>
+                                <constraint firstItem="LGG-Q7-ACc" firstAttribute="top" secondItem="8rt-BF-lCa" secondAttribute="bottom" constant="24" id="mhN-yd-QsF"/>
+                                <constraint firstItem="ox3-LV-c9I" firstAttribute="leading" secondItem="7AD-Oq-3CS" secondAttribute="trailing" constant="59" id="pd3-do-ppX"/>
+                                <constraint firstItem="FiA-zN-LAz" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="pfK-ah-z5x"/>
+                                <constraint firstAttribute="trailing" secondItem="ox3-LV-c9I" secondAttribute="trailing" constant="16" id="qdV-OK-rfJ"/>
+                                <constraint firstItem="8rt-BF-lCa" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="rDr-xv-1qR"/>
+                                <constraint firstAttribute="trailing" secondItem="ZTr-kU-a4O" secondAttribute="trailing" constant="16" id="rHs-v5-66i"/>
+                                <constraint firstItem="NPn-b2-IVC" firstAttribute="leading" secondItem="4mo-4O-1FP" secondAttribute="trailing" constant="53" id="sfA-Ma-G2M"/>
+                                <constraint firstItem="ttG-12-y7P" firstAttribute="top" secondItem="8rt-BF-lCa" secondAttribute="bottom" constant="24" id="uCz-Fi-7gm"/>
+                                <constraint firstItem="RqN-TR-4LA" firstAttribute="leading" secondItem="zs2-gV-o89" secondAttribute="trailing" constant="78.5" id="uaF-eU-rdm"/>
+                                <constraint firstItem="ZTr-kU-a4O" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="uwO-qc-VMj"/>
+                                <constraint firstItem="ttG-12-y7P" firstAttribute="leading" secondItem="LGG-Q7-ACc" secondAttribute="trailing" constant="69" id="vV4-P3-484"/>
+                                <constraint firstItem="Fp2-lB-wnA" firstAttribute="leading" secondItem="nxX-su-3ky" secondAttribute="trailing" constant="82" id="z3H-rA-XkG"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="o3G-gK-tyj" firstAttribute="height" secondItem="ZJx-2R-h8e" secondAttribute="height" priority="250" id="1VV-oe-wg1"/>
+                        <constraint firstItem="o3G-gK-tyj" firstAttribute="top" secondItem="ZJx-2R-h8e" secondAttribute="top" id="NVA-il-0ak"/>
+                        <constraint firstAttribute="bottom" secondItem="o3G-gK-tyj" secondAttribute="bottom" id="Nsz-hJ-qNm"/>
+                        <constraint firstAttribute="trailing" secondItem="o3G-gK-tyj" secondAttribute="trailing" id="Uc6-ve-lye"/>
+                        <constraint firstItem="o3G-gK-tyj" firstAttribute="leading" secondItem="ZJx-2R-h8e" secondAttribute="leading" id="juX-U8-DQ7"/>
+                        <constraint firstItem="o3G-gK-tyj" firstAttribute="width" secondItem="ZJx-2R-h8e" secondAttribute="width" id="zhl-mF-g3o"/>
+                    </constraints>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfU-MI-Ao6">
+                    <rect key="frame" x="16" y="367" width="343" height="48"/>
+                    <color key="backgroundColor" red="0.88627450980392153" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="lqQ-Zq-v4i"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
+                    <state key="normal" title="Batalkan">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="J9a-jx-OhX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8M7-Tu-pqw"/>
+                <constraint firstItem="mfU-MI-Ao6" firstAttribute="top" secondItem="ZJx-2R-h8e" secondAttribute="bottom" id="9bF-p0-pkl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mfU-MI-Ao6" secondAttribute="trailing" constant="16" id="EDw-k0-AWY"/>
+                <constraint firstAttribute="trailing" secondItem="J9a-jx-OhX" secondAttribute="trailing" id="J0d-uA-lMO"/>
+                <constraint firstItem="mfU-MI-Ao6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="cBz-Ut-cZl"/>
+                <constraint firstItem="ZJx-2R-h8e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dMQ-v7-Acg"/>
+                <constraint firstItem="J9a-jx-OhX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gVa-iT-7bi"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mfU-MI-Ao6" secondAttribute="bottom" constant="24" id="nJi-sg-Cox"/>
+                <constraint firstItem="ZJx-2R-h8e" firstAttribute="top" secondItem="J9a-jx-OhX" secondAttribute="bottom" id="sCc-WP-T4I"/>
+                <constraint firstAttribute="trailing" secondItem="ZJx-2R-h8e" secondAttribute="trailing" id="znm-Ua-n4c"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="132" y="128.18590704647679"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backwardArrow" width="9.5" height="16"/>
+    </resources>
+</document>

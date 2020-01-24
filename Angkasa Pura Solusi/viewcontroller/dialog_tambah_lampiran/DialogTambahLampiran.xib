@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogTambahLampiran" customModule="eSIKAP" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonTambah" destination="Ttg-iV-ccY" id="MT2-If-DM9"/>
+                <outlet property="fieldJudul" destination="ZR5-F2-uCI" id="5JE-Oj-46p"/>
+                <outlet property="imageUnggahFile" destination="gXe-7b-k6q" id="3eg-DN-slB"/>
+                <outlet property="labelUnggahFile" destination="W2l-eY-B2L" id="nR5-2l-nXO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewContainer" destination="bXZ-KY-DBZ" id="Vgg-lF-0My"/>
+                <outlet property="viewJudul" destination="ndo-Vv-wuH" id="1JG-sO-dGP"/>
+                <outlet property="viewUnggahFile" destination="nqS-4w-hr3" id="jGs-q4-dmJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEP-Rp-iUn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXZ-KY-DBZ">
+                            <rect key="frame" x="21" y="222" width="333" height="223"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsD-gW-fzY">
+                                    <rect key="frame" x="311" y="-10" width="32" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="32" id="cbG-Ys-5pS"/>
+                                        <constraint firstAttribute="height" constant="32" id="qri-vj-gF3"/>
+                                    </constraints>
+                                    <state key="normal" image="group475"/>
+                                    <connections>
+                                        <action selector="buttonCancelClick:" destination="-1" eventType="touchUpInside" id="Jem-jg-NaJ"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ndo-Vv-wuH" userLabel="View Jumlah Penumpang">
+                                    <rect key="frame" x="18" y="25" width="297" height="42"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Judul" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZR5-F2-uCI" customClass="CustomTextField" customModule="eSIKAP" customModuleProvider="target">
+                                            <rect key="frame" x="10" y="0.0" width="277" height="42"/>
+                                            <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSearchEnable" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="arrowSize">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="ZR5-F2-uCI" firstAttribute="top" secondItem="ndo-Vv-wuH" secondAttribute="top" id="CZL-oo-HV8"/>
+                                        <constraint firstItem="ZR5-F2-uCI" firstAttribute="leading" secondItem="ndo-Vv-wuH" secondAttribute="leading" constant="10" id="Xwo-ok-zGz"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZR5-F2-uCI" secondAttribute="trailing" constant="10" id="bg2-Iw-JzK"/>
+                                        <constraint firstAttribute="height" constant="42" id="mUW-hy-ZCN"/>
+                                        <constraint firstAttribute="bottom" secondItem="ZR5-F2-uCI" secondAttribute="bottom" id="pG3-pt-hSb"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqS-4w-hr3" userLabel="View Jumlah Penumpang">
+                                    <rect key="frame" x="18" y="83" width="297" height="42"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gXe-7b-k6q">
+                                            <rect key="frame" x="13" y="11.5" width="20" height="19"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="9yS-Ay-KwE"/>
+                                                <constraint firstAttribute="width" constant="20" id="hyT-dc-Teo"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unggah File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2l-eY-B2L">
+                                            <rect key="frame" x="43" y="12.5" width="244" height="17"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                            <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="W2l-eY-B2L" firstAttribute="centerY" secondItem="nqS-4w-hr3" secondAttribute="centerY" id="CP5-zT-tvJ"/>
+                                        <constraint firstItem="gXe-7b-k6q" firstAttribute="leading" secondItem="nqS-4w-hr3" secondAttribute="leading" constant="13" id="MAB-7F-uJt"/>
+                                        <constraint firstItem="gXe-7b-k6q" firstAttribute="centerY" secondItem="nqS-4w-hr3" secondAttribute="centerY" id="UAe-Ec-Rfb"/>
+                                        <constraint firstItem="W2l-eY-B2L" firstAttribute="leading" secondItem="gXe-7b-k6q" secondAttribute="trailing" constant="10" id="kN0-M3-eZb"/>
+                                        <constraint firstAttribute="height" constant="42" id="o1u-fz-JPR"/>
+                                        <constraint firstAttribute="trailing" secondItem="W2l-eY-B2L" secondAttribute="trailing" constant="10" id="u12-8m-s2O"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttg-iV-ccY" customClass="CustomButton" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="18" y="159" width="297" height="39"/>
+                                    <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="39" id="vFn-03-O1h"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="11" maxX="0.0" maxY="11"/>
+                                    <state key="normal" title="Tambah">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="buttonTambahClick:" destination="-1" eventType="touchUpInside" id="pOa-kD-4fg"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Ttg-iV-ccY" secondAttribute="trailing" constant="18" id="12v-f6-d55"/>
+                                <constraint firstAttribute="height" constant="223" id="5Ad-jJ-X4o"/>
+                                <constraint firstItem="Ttg-iV-ccY" firstAttribute="top" secondItem="nqS-4w-hr3" secondAttribute="bottom" constant="34" id="71n-yF-fOd"/>
+                                <constraint firstItem="Ttg-iV-ccY" firstAttribute="leading" secondItem="bXZ-KY-DBZ" secondAttribute="leading" constant="18" id="7Yq-g2-aRD"/>
+                                <constraint firstItem="ndo-Vv-wuH" firstAttribute="top" secondItem="bXZ-KY-DBZ" secondAttribute="top" constant="25" id="Dq6-7f-8fn"/>
+                                <constraint firstAttribute="trailing" secondItem="ndo-Vv-wuH" secondAttribute="trailing" constant="18" id="EMX-9b-cvU"/>
+                                <constraint firstItem="EsD-gW-fzY" firstAttribute="top" secondItem="bXZ-KY-DBZ" secondAttribute="top" constant="-10" id="SJb-nA-L0p"/>
+                                <constraint firstItem="ndo-Vv-wuH" firstAttribute="leading" secondItem="bXZ-KY-DBZ" secondAttribute="leading" constant="18" id="ZPL-PX-L1M"/>
+                                <constraint firstItem="nqS-4w-hr3" firstAttribute="top" secondItem="ndo-Vv-wuH" secondAttribute="bottom" constant="16" id="kVd-Cy-h3I"/>
+                                <constraint firstAttribute="trailing" secondItem="EsD-gW-fzY" secondAttribute="trailing" constant="-10" id="nL5-er-Jzr"/>
+                                <constraint firstAttribute="trailing" secondItem="nqS-4w-hr3" secondAttribute="trailing" constant="18" id="oRf-bn-xK1"/>
+                                <constraint firstAttribute="bottom" secondItem="Ttg-iV-ccY" secondAttribute="bottom" constant="25" id="rx9-1e-uqp"/>
+                                <constraint firstItem="nqS-4w-hr3" firstAttribute="leading" secondItem="bXZ-KY-DBZ" secondAttribute="leading" constant="18" id="zdu-rU-9Je"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="bXZ-KY-DBZ" firstAttribute="centerY" secondItem="UEP-Rp-iUn" secondAttribute="centerY" id="Akd-Xd-fWw"/>
+                        <constraint firstAttribute="trailing" secondItem="bXZ-KY-DBZ" secondAttribute="trailing" constant="21" id="ODM-Sl-k2b"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bXZ-KY-DBZ" secondAttribute="bottom" constant="30" id="Ttk-D6-NZa"/>
+                        <constraint firstItem="bXZ-KY-DBZ" firstAttribute="leading" secondItem="UEP-Rp-iUn" secondAttribute="leading" constant="21" id="ZaH-lb-5iy"/>
+                        <constraint firstItem="bXZ-KY-DBZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UEP-Rp-iUn" secondAttribute="top" constant="30" id="c4z-xB-2tS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UEP-Rp-iUn" secondAttribute="trailing" id="EJz-ap-hGS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UEP-Rp-iUn" secondAttribute="bottom" id="KJD-rC-Tge"/>
+                <constraint firstItem="UEP-Rp-iUn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MHG-RD-HDZ"/>
+                <constraint firstItem="UEP-Rp-iUn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wEB-WG-G2q"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="57" y="129"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="group475" width="32.5" height="32.5"/>
+        <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
+</document>

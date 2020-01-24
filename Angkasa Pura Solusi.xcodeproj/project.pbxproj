@@ -124,6 +124,17 @@
 		ED70650123CE731800447654 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED70650023CE731800447654 /* Destination.swift */; };
 		ED70650323CE739500447654 /* PropinsiCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED70650223CE739500447654 /* PropinsiCity.swift */; };
 		ED70650523CE748300447654 /* CategoryCarRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED70650423CE748300447654 /* CategoryCarRequest.swift */; };
+		ED73D0A323D9887B002A1A3A /* DetailPeminjamanRuanganController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73D0A123D9887B002A1A3A /* DetailPeminjamanRuanganController.swift */; };
+		ED73D0A423D9887B002A1A3A /* DetailPeminjamanRuanganController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED73D0A223D9887B002A1A3A /* DetailPeminjamanRuanganController.xib */; };
+		ED73D0A823D99234002A1A3A /* LampiranCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73D0A623D99234002A1A3A /* LampiranCell.swift */; };
+		ED73D0A923D99235002A1A3A /* LampiranCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED73D0A723D99234002A1A3A /* LampiranCell.xib */; };
+		ED73D0AD23D9BBB0002A1A3A /* FormPeminjamanRuanganController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73D0AB23D9BBB0002A1A3A /* FormPeminjamanRuanganController.swift */; };
+		ED73D0AE23D9BBB0002A1A3A /* FormPeminjamanRuanganController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED73D0AC23D9BBB0002A1A3A /* FormPeminjamanRuanganController.xib */; };
+		ED73D0B023DA6692002A1A3A /* Rooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73D0AF23DA6692002A1A3A /* Rooms.swift */; };
+		ED73D0B423DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73D0B223DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.swift */; };
+		ED73D0B523DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED73D0B323DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.xib */; };
+		ED73D0B923DA9172002A1A3A /* DialogTambahLampiran.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73D0B723DA9172002A1A3A /* DialogTambahLampiran.swift */; };
+		ED73D0BA23DA9172002A1A3A /* DialogTambahLampiran.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED73D0B823DA9172002A1A3A /* DialogTambahLampiran.xib */; };
 		ED858B0022F312F500016EAD /* AuthenticationNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED858AFF22F312F500016EAD /* AuthenticationNetworking.swift */; };
 		ED858B0222F313FD00016EAD /* InformationNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED858B0122F313FD00016EAD /* InformationNetworking.swift */; };
 		ED858B0422F31C8400016EAD /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED858B0322F31C8400016EAD /* Dashboard.swift */; };
@@ -352,6 +363,17 @@
 		ED70650023CE731800447654 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		ED70650223CE739500447654 /* PropinsiCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropinsiCity.swift; sourceTree = "<group>"; };
 		ED70650423CE748300447654 /* CategoryCarRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCarRequest.swift; sourceTree = "<group>"; };
+		ED73D0A123D9887B002A1A3A /* DetailPeminjamanRuanganController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPeminjamanRuanganController.swift; sourceTree = "<group>"; };
+		ED73D0A223D9887B002A1A3A /* DetailPeminjamanRuanganController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPeminjamanRuanganController.xib; sourceTree = "<group>"; };
+		ED73D0A623D99234002A1A3A /* LampiranCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampiranCell.swift; sourceTree = "<group>"; };
+		ED73D0A723D99234002A1A3A /* LampiranCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LampiranCell.xib; sourceTree = "<group>"; };
+		ED73D0AB23D9BBB0002A1A3A /* FormPeminjamanRuanganController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPeminjamanRuanganController.swift; sourceTree = "<group>"; };
+		ED73D0AC23D9BBB0002A1A3A /* FormPeminjamanRuanganController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormPeminjamanRuanganController.xib; sourceTree = "<group>"; };
+		ED73D0AF23DA6692002A1A3A /* Rooms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rooms.swift; sourceTree = "<group>"; };
+		ED73D0B223DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampiranPeminjamanRuangCell.swift; sourceTree = "<group>"; };
+		ED73D0B323DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LampiranPeminjamanRuangCell.xib; sourceTree = "<group>"; };
+		ED73D0B723DA9172002A1A3A /* DialogTambahLampiran.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogTambahLampiran.swift; sourceTree = "<group>"; };
+		ED73D0B823DA9172002A1A3A /* DialogTambahLampiran.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogTambahLampiran.xib; sourceTree = "<group>"; };
 		ED858AFF22F312F500016EAD /* AuthenticationNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNetworking.swift; sourceTree = "<group>"; };
 		ED858B0122F313FD00016EAD /* InformationNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationNetworking.swift; sourceTree = "<group>"; };
 		ED858B0322F31C8400016EAD /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
@@ -832,6 +854,51 @@
 			path = profil;
 			sourceTree = "<group>";
 		};
+		ED73D0A023D9885D002A1A3A /* detail_peminjaman_ruangan */ = {
+			isa = PBXGroup;
+			children = (
+				ED73D0A123D9887B002A1A3A /* DetailPeminjamanRuanganController.swift */,
+				ED73D0A223D9887B002A1A3A /* DetailPeminjamanRuanganController.xib */,
+			);
+			path = detail_peminjaman_ruangan;
+			sourceTree = "<group>";
+		};
+		ED73D0A523D99222002A1A3A /* lampiran_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED73D0A623D99234002A1A3A /* LampiranCell.swift */,
+				ED73D0A723D99234002A1A3A /* LampiranCell.xib */,
+			);
+			path = lampiran_cell;
+			sourceTree = "<group>";
+		};
+		ED73D0AA23D9BB8F002A1A3A /* form_peminjaman_ruangan */ = {
+			isa = PBXGroup;
+			children = (
+				ED73D0AB23D9BBB0002A1A3A /* FormPeminjamanRuanganController.swift */,
+				ED73D0AC23D9BBB0002A1A3A /* FormPeminjamanRuanganController.xib */,
+			);
+			path = form_peminjaman_ruangan;
+			sourceTree = "<group>";
+		};
+		ED73D0B123DA8AAB002A1A3A /* lampiran_peminjaman_ruang_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED73D0B223DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.swift */,
+				ED73D0B323DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.xib */,
+			);
+			path = lampiran_peminjaman_ruang_cell;
+			sourceTree = "<group>";
+		};
+		ED73D0B623DA9150002A1A3A /* dialog_tambah_lampiran */ = {
+			isa = PBXGroup;
+			children = (
+				ED73D0B723DA9172002A1A3A /* DialogTambahLampiran.swift */,
+				ED73D0B823DA9172002A1A3A /* DialogTambahLampiran.xib */,
+			);
+			path = dialog_tambah_lampiran;
+			sourceTree = "<group>";
+		};
 		ED858AFE22F312AC00016EAD /* networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,6 +977,9 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED73D0B623DA9150002A1A3A /* dialog_tambah_lampiran */,
+				ED73D0AA23D9BB8F002A1A3A /* form_peminjaman_ruangan */,
+				ED73D0A023D9885D002A1A3A /* detail_peminjaman_ruangan */,
 				ED40C67923D7C4E90033757C /* daftar_peminjaman_ruangan */,
 				ED6110AA23D5F0F40022DC4F /* bonus */,
 				ED6110A423D5ED850022DC4F /* tab_upah */,
@@ -1014,6 +1084,7 @@
 				ED6110AF23D603E30022DC4F /* Bonus.swift */,
 				ED40C68823D7DA760033757C /* SchedulesRoom.swift */,
 				ED40C68A23D7DB9F0033757C /* DetailRequestRooms.swift */,
+				ED73D0AF23DA6692002A1A3A /* Rooms.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1086,6 +1157,8 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED73D0B123DA8AAB002A1A3A /* lampiran_peminjaman_ruang_cell */,
+				ED73D0A523D99222002A1A3A /* lampiran_cell */,
 				ED40C68C23D7DECC0033757C /* item_peminjaman_ruangan_cell */,
 				ED40C68323D7D4BB0033757C /* daftar_peminjaman_ruangan_cell */,
 				ED40C67E23D7D38F0033757C /* date_cell */,
@@ -1484,6 +1557,7 @@
 				EDD5892223D00D5700A3EE7B /* DetailPeminjamanMobilController.xib in Resources */,
 				ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */,
 				EDBF21B722FE7335003F5DAF /* RiwayatCutiCell.xib in Resources */,
+				ED73D0B523DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.xib in Resources */,
 				ED95909022EBE90A00D696E5 /* HomeController.xib in Resources */,
 				ED40C67D23D7C5490033757C /* DaftarPeminjamanRuanganController.xib in Resources */,
 				ED14CA79231DFCB100D5C7F0 /* EmpFilterCell.xib in Resources */,
@@ -1515,11 +1589,15 @@
 				EDBF21A022FE465B003F5DAF /* StatusPersetujuanCell.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCell.xib in Resources */,
 				ED14CA75231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib in Resources */,
+				ED73D0AE23D9BBB0002A1A3A /* FormPeminjamanRuanganController.xib in Resources */,
+				ED73D0BA23DA9172002A1A3A /* DialogTambahLampiran.xib in Resources */,
 				ED57FE4F22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib in Resources */,
+				ED73D0A423D9887B002A1A3A /* DetailPeminjamanRuanganController.xib in Resources */,
 				EDC19E95231EBE1700690B59 /* RiwayatCutiFilterController.xib in Resources */,
 				EDD62A91233A364700DAB2F5 /* GoogleService-Info.plist in Resources */,
 				ED10746122F5A5BA00ADF055 /* DetailBeritaController.xib in Resources */,
 				EDBF21B222FE71FA003F5DAF /* RiwayatCutiController.xib in Resources */,
+				ED73D0A923D99235002A1A3A /* LampiranCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1606,16 +1684,20 @@
 				EDEDA22A23D0B0400085E2EA /* PolicyCategory.swift in Sources */,
 				ED5F9C0623D1432C008B977F /* KebijakanPeraturanDetailCell.swift in Sources */,
 				EDBF21AC22FE6C7D003F5DAF /* DetailCutiController.swift in Sources */,
+				ED73D0A823D99234002A1A3A /* LampiranCell.swift in Sources */,
 				ED40AB54231CBD6A007C0ADC /* DetailLeaveApproval.swift in Sources */,
 				ED70650323CE739500447654 /* PropinsiCity.swift in Sources */,
 				ED61BF2922F7E20600776C25 /* Gender.swift in Sources */,
 				ED95907E22EBE3C500D696E5 /* Preference.swift in Sources */,
+				ED73D0B023DA6692002A1A3A /* Rooms.swift in Sources */,
 				ED6110AD23D5F1040022DC4F /* BonusController.swift in Sources */,
 				ED858B0222F313FD00016EAD /* InformationNetworking.swift in Sources */,
 				ED61BF1522F7B0BB00776C25 /* DetailKaryawan.swift in Sources */,
 				EDBF21B122FE71FA003F5DAF /* RiwayatCutiController.swift in Sources */,
 				ED6E506B22ED417000EED8E7 /* BerandaController.swift in Sources */,
+				ED73D0A323D9887B002A1A3A /* DetailPeminjamanRuanganController.swift in Sources */,
 				ED95908F22EBE90A00D696E5 /* HomeController.swift in Sources */,
+				ED73D0B923DA9172002A1A3A /* DialogTambahLampiran.swift in Sources */,
 				ED858B0422F31C8400016EAD /* Dashboard.swift in Sources */,
 				ED52152422F47C0D001C6A50 /* DialogPreparePresenceController.swift in Sources */,
 				ED57FE4322F8F633007B62A0 /* JatahCutiCell.swift in Sources */,
@@ -1658,6 +1740,7 @@
 				ED6E507322ED419500EED8E7 /* NotifikasiController.swift in Sources */,
 				EDD5891A23CFEBD600A3EE7B /* FilterHistoryPeminjamanMobilController.swift in Sources */,
 				EDFC1F6222FE347300AAA93B /* DetailPersetujuanCutiController.swift in Sources */,
+				ED73D0B423DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.swift in Sources */,
 				ED61BF0522F6837500776C25 /* Presensi.swift in Sources */,
 				ED139BBA2302ED0700B854BC /* CustomDropDownField.swift in Sources */,
 				ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */,
@@ -1731,6 +1814,7 @@
 				ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */,
 				ED61BF1722F7B5D700776C25 /* ListKaryawan.swift in Sources */,
 				ED308CF6231B520500F5C43C /* ExceptionCell.swift in Sources */,
+				ED73D0AD23D9BBB0002A1A3A /* FormPeminjamanRuanganController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
