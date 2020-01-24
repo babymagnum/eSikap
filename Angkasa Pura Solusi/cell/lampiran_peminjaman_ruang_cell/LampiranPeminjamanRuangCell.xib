@@ -42,13 +42,13 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6b-Ou-v01" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                        <rect key="frame" x="86" y="5.5" width="126" height="14.5"/>
+                                        <rect key="frame" x="86" y="5.5" width="146" height="14.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                         <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group382" translatesAutoresizingMaskIntoConstraints="NO" id="YVV-sc-w86">
-                                        <rect key="frame" x="223" y="0.0" width="25" height="25"/>
+                                        <rect key="frame" x="243" y="0.0" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="YFz-WN-STz"/>
                                             <constraint firstAttribute="height" constant="25" id="gsN-9q-7hf"/>
@@ -60,7 +60,7 @@
                                     <constraint firstAttribute="height" constant="25" id="1YN-kW-nOs"/>
                                     <constraint firstItem="65j-Wt-l56" firstAttribute="leading" secondItem="Y4B-bb-N0L" secondAttribute="leading" id="9wX-e3-SEh"/>
                                     <constraint firstItem="i6b-Ou-v01" firstAttribute="leading" secondItem="65j-Wt-l56" secondAttribute="trailing" constant="11" id="I5l-Vt-ezF"/>
-                                    <constraint firstAttribute="trailing" secondItem="YVV-sc-w86" secondAttribute="trailing" constant="20" symbolic="YES" id="Vja-l0-vTL"/>
+                                    <constraint firstAttribute="trailing" secondItem="YVV-sc-w86" secondAttribute="trailing" id="Vja-l0-vTL"/>
                                     <constraint firstItem="YVV-sc-w86" firstAttribute="centerY" secondItem="Y4B-bb-N0L" secondAttribute="centerY" id="VkK-rl-j4g"/>
                                     <constraint firstItem="i6b-Ou-v01" firstAttribute="centerY" secondItem="Y4B-bb-N0L" secondAttribute="centerY" id="evs-tI-YME"/>
                                     <constraint firstItem="YVV-sc-w86" firstAttribute="leading" secondItem="i6b-Ou-v01" secondAttribute="trailing" constant="11" id="xVM-mq-DSt"/>
@@ -130,7 +130,7 @@
                 <outlet property="labelJudul" destination="i6b-Ou-v01" id="INz-MT-haq"/>
                 <outlet property="viewContainer" destination="0hG-2p-I1K" id="oGX-tC-qhs"/>
             </connections>
-            <point key="canvasLocation" x="236" y="-29"/>
+            <point key="canvasLocation" x="-172" y="-41"/>
         </collectionViewCell>
     </objects>
     <resources>

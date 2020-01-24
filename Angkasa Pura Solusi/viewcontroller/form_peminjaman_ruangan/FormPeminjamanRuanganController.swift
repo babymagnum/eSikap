@@ -9,11 +9,16 @@
 import UIKit
 import SVProgressHUD
 import FittedSheets
+import Toast_Swift
 
 struct LampiranModel {
     var title: String
     var file: String
     var data: Data
+}
+
+protocol FormPeminjamanRuanganProtocol {
+    func updateData()
 }
 
 class FormPeminjamanRuanganController: BaseViewController {
@@ -55,11 +60,14 @@ class FormPeminjamanRuanganController: BaseViewController {
     
     private var listParticipant = [PenumpangItem]()
     private var listLampiran = [LampiranModel]()
+    private var listRooms = [RoomsData]()
     private var typeMeeting = "1"
-    private var selectedRooms = "0"
+    private var selectedRooms = ""
     private var consumption = "1"
     private var isPickTanggalMulai = true
     private var isPickWaktuMulai = true
+    
+    var delegate: FormPeminjamanRuanganProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +77,81 @@ class FormPeminjamanRuanganController: BaseViewController {
         getRooms()
         
         initEvent()
+    }
+    
+    private func checkInput() {
+        if fieldJudul.text?.trim() == "" {
+            self.view.makeToast("Judul tidak boleh kosong.")
+        } else if textviewKeterangan.text.trim() == "" {
+            self.view.makeToast("Keterangan tidak boleh kosong.")
+        } else if selectedRooms == "" {
+            self.view.makeToast("Anda belum memilih type ruangan.")
+        } else if fieldTanggalMulai.text == "" {
+            self.view.makeToast("Anda belum memilih tanggal mulai.")
+        } else if fieldTanggalSelesai.text == "" {
+            self.view.makeToast("Anda belum memilih tanggal selesai.")
+        } else if fieldWaktuMulai.text == "" {
+            self.view.makeToast("Anda belum memilih waktu mulai.")
+        } else if fieldWaktuSelesai.text == "" {
+            self.view.makeToast("Anda belum memilih waktu selesai.")
+        } else if listParticipant.count == 0 {
+            self.view.makeToast("Anda belum memilih partisipan.")
+        } else if fieldJumlahOrang.text?.trim() == "" {
+            self.view.makeToast("Anda belum menentukan jumlah orang.")
+        } else if Int(fieldJumlahOrang.text?.trim() ?? "0") != listParticipant.count {
+            self.view.makeToast("Isian jumlah orang tidak sama dengan partisipan yang dipilih.")
+        } else {
+            var body: [String: String] = [
+                "title": fieldJudul.text?.trim() ?? "",
+                "description": textviewKeterangan.text.trim(),
+                "room_id": selectedRooms,
+                "type": typeMeeting,
+                "date_start": function.dateStringTo(date: fieldTanggalMulai.text ?? "", original: "dd-MM-yyyy", toFormat: "yyyy-MM-dd"),
+                "time_start": "\(fieldWaktuMulai.text ?? ""):00",
+                "date_end": function.dateStringTo(date: fieldTanggalSelesai.text ?? "", original: "dd-MM-yyyy", toFormat: "yyyy-MM-dd"),
+                "time_end": "\(fieldWaktuSelesai.text ?? ""):00",
+                "total_participant": fieldJumlahOrang.text?.trim() ?? "0",
+                "consumption": consumption
+            ]
+            
+            for (index, item) in listParticipant.enumerated() {
+                body.updateValue(item.emp_id, forKey: "participant[\(index)]")
+            }
+            
+            if listLampiran.count > 0 {
+                for (index, item) in listLampiran.enumerated() {
+                    body.updateValue(item.title, forKey: "attachment_title[\(index)]")
+                }
+            }
+
+            addRequestRoom(body: body)
+        }
+    }
+    
+    private func addRequestRoom(body: [String: String]) {
+        SVProgressHUD.show()
+        
+        informationNetworking.addRequestRooms(body: body, listFiles: listLampiran) { (error, success, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let _error = error {
+                print("error \(_error)")
+                return
+            }
+            
+            guard let _ = success else { return }
+            
+            guard let _delegate = self.delegate else { return }
+            
+            _delegate.updateData()
+            
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     private func initEvent() {
@@ -102,15 +185,16 @@ class FormPeminjamanRuanganController: BaseViewController {
             
             guard let _rooms = rooms else { return }
             
+            self.listRooms = _rooms.data
+            
             _rooms.data.forEach { (item) in
                 self.fieldRuang.optionArray.append(item.name ?? "")
-                self.fieldRuang.optionIds?.append(Int(item.id == "" ? "0" : item.id ?? "0") ?? 0)
             }
             
             self.fieldRuang.didSelect { (text, index, id) in
-                print("selected id \(id)")
+                print("selected id \(self.listRooms[index].id ?? "0")")
                 self.fieldRuang.text = text
-                self.selectedRooms = "\(id)"
+                self.selectedRooms = self.listRooms[index].id ?? "0"
             }
         }
     }
@@ -335,10 +419,10 @@ extension FormPeminjamanRuanganController: BottomSheetDatePickerProtocol, Search
         self.showCustomDialog(vc)
     }
     
-    @IBAction func buttonSimpanClick(_ sender: Any) {
-    }
+    @IBAction func buttonSimpanClick(_ sender: Any) { checkInput() }
     
     @IBAction func buttonHistoryClick(_ sender: Any) {
+        
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {

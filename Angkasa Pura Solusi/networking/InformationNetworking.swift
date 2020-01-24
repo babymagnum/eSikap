@@ -651,4 +651,9 @@ class InformationNetworking: BaseNetworking {
         let url = "\(baseUrl())api/getRooms"
         alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
     }
+    
+    func addRequestRooms(body: [String: String], listFiles: [LampiranModel], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/addRequestRooms"
+        alamofirePostListImage(listFiles: listFiles, url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

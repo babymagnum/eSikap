@@ -116,6 +116,8 @@ extension DetailPeminjamanRuanganController: URLSessionDownloadDelegate, UIDocum
             return
         }
         
+        print("file \(url)")
+        
         let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
         let downloadTask = urlSession.downloadTask(with: url)
         downloadTask.resume()
@@ -156,7 +158,7 @@ extension DetailPeminjamanRuanganController: UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LampiranCell", for: indexPath) as! LampiranCell
-        cell.labelLampiran.text = listLampiran[indexPath.item].title
+        cell.labelLampiran.text = "\(indexPath.item + 1). \(listLampiran[indexPath.item].title ?? "")"
         cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewContainerClick(sender:))))
         return cell
     }

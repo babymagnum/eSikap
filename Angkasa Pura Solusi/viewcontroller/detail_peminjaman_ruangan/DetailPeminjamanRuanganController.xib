@@ -74,7 +74,7 @@
                 <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJx-2R-h8e">
                     <rect key="frame" x="0.0" y="53" width="375" height="314"/>
                     <subviews>
-                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3G-gK-tyj">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3G-gK-tyj">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="314"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rincian Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rt-BF-lCa" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
@@ -144,7 +144,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lampiran" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGT-Sv-3ye" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="270" width="46.5" height="13"/>
+                                    <rect key="frame" x="16" y="255" width="46.5" height="28"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -183,7 +183,7 @@
                                         <size key="itemSize" width="50" height="50"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
                             </subviews>
@@ -212,7 +212,7 @@
                                 <constraint firstItem="4mo-4O-1FP" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="Mxg-nh-doI"/>
                                 <constraint firstItem="ZTr-kU-a4O" firstAttribute="top" secondItem="ox3-LV-c9I" secondAttribute="bottom" constant="15" id="OFt-uI-dWW"/>
                                 <constraint firstItem="7AD-Oq-3CS" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="R7K-93-6j9"/>
-                                <constraint firstItem="ZGT-Sv-3ye" firstAttribute="top" secondItem="ZTr-kU-a4O" secondAttribute="bottom" constant="15" id="Thc-Ta-tvW"/>
+                                <constraint firstItem="ZGT-Sv-3ye" firstAttribute="top" secondItem="ZTr-kU-a4O" secondAttribute="bottom" id="Thc-Ta-tvW"/>
                                 <constraint firstItem="ttG-12-y7P" firstAttribute="top" secondItem="8rt-BF-lCa" secondAttribute="top" constant="37" id="Vea-np-e5U"/>
                                 <constraint firstAttribute="bottom" secondItem="ZGT-Sv-3ye" secondAttribute="bottom" constant="31" id="Vi5-qf-pXA"/>
                                 <constraint firstItem="ttG-12-y7P" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="Xvd-Gt-uzC"/>

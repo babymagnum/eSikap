@@ -89,10 +89,6 @@ extension DialogTambahLampiran: HSAttachmentPickerDelegate {
     
     func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
         
-//        if filename.contains(".") {
-//            fileType = filename.components(separatedBy: ".")[1]
-//        }
-        
         if let _image = image {
             guard let imageData = _image.pngData() else {
                 self.view.makeToast("Gambar yang anda pilih tidak sesuai ketentuan.")

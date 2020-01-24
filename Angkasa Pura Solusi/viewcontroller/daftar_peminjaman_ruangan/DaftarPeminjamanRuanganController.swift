@@ -195,9 +195,15 @@ class DaftarPeminjamanRuanganController: BaseViewController {
     }
 }
 
-extension DaftarPeminjamanRuanganController {
+extension DaftarPeminjamanRuanganController: FormPeminjamanRuanganProtocol {
+    func updateData() {
+        getSchedules()
+    }
+    
     @objc func buttonPengajuanClick() {
-        self.navigationController?.pushViewController(FormPeminjamanRuanganController(), animated: true)
+        let vc = FormPeminjamanRuanganController()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
