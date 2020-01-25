@@ -24,6 +24,8 @@ struct DetailsRequestRoomsData: Decodable {
     var total_person: String?
     var participants = [String]()
     var attachment = [DetailsRequestRoomsAttachment]()
+    var button_cancel_is_show : String?
+    var button_realization_is_show: String?
 }
 
 struct DetailsRequestRoomsAttachment: Decodable {

@@ -140,7 +140,13 @@ class FormPeminjamanRuanganController: BaseViewController {
             }
             
             if let _error = error {
-                print("error \(_error)")
+                if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
+                    let vc = DialogPengajuanCutiController()
+                    vc.exception = _error
+                    self.showCustomDialog(vc)
+                } else {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Peminjaman Ruangan", _error, "Cancel")
+                }
                 return
             }
             
@@ -422,7 +428,7 @@ extension FormPeminjamanRuanganController: BottomSheetDatePickerProtocol, Search
     @IBAction func buttonSimpanClick(_ sender: Any) { checkInput() }
     
     @IBAction func buttonHistoryClick(_ sender: Any) {
-        
+        self.navigationController?.pushViewController(HistoryPeminjamanRuangan(), animated: true)
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {

@@ -41,6 +41,13 @@
 		ED308CF7231B520500F5C43C /* ExceptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED308CF5231B520500F5C43C /* ExceptionCell.xib */; };
 		ED308CF9231B562F00F5C43C /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED308CF8231B562F00F5C43C /* Logout.swift */; };
 		ED308CFB231B84FD00F5C43C /* DetailRiwayatCuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED308CFA231B84FD00F5C43C /* DetailRiwayatCuti.swift */; };
+		ED3C13A623DC74EF0038A987 /* HistoryPeminjamanRuangan.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C13A423DC74EF0038A987 /* HistoryPeminjamanRuangan.swift */; };
+		ED3C13A723DC74EF0038A987 /* HistoryPeminjamanRuangan.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3C13A523DC74EF0038A987 /* HistoryPeminjamanRuangan.xib */; };
+		ED3C13A923DC78040038A987 /* RequestRoomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C13A823DC78040038A987 /* RequestRoomsHistory.swift */; };
+		ED3C13AD23DC7A810038A987 /* HistoryPeminjamanRuanganCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C13AB23DC7A810038A987 /* HistoryPeminjamanRuanganCell.swift */; };
+		ED3C13AE23DC7A810038A987 /* HistoryPeminjamanRuanganCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3C13AC23DC7A810038A987 /* HistoryPeminjamanRuanganCell.xib */; };
+		ED3C13B223DC93220038A987 /* RealisasiPeminjamanRuanganController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C13B023DC93220038A987 /* RealisasiPeminjamanRuanganController.swift */; };
+		ED3C13B323DC93220038A987 /* RealisasiPeminjamanRuanganController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3C13B123DC93220038A987 /* RealisasiPeminjamanRuanganController.xib */; };
 		ED40AB4D231CB497007C0ADC /* DelegasiCutiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40AB4B231CB497007C0ADC /* DelegasiCutiController.swift */; };
 		ED40AB4E231CB497007C0ADC /* DelegasiCutiController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED40AB4C231CB497007C0ADC /* DelegasiCutiController.xib */; };
 		ED40AB50231CB5FC007C0ADC /* DelegationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40AB4F231CB5FC007C0ADC /* DelegationList.swift */; };
@@ -279,6 +286,13 @@
 		ED308CF5231B520500F5C43C /* ExceptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExceptionCell.xib; sourceTree = "<group>"; };
 		ED308CF8231B562F00F5C43C /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		ED308CFA231B84FD00F5C43C /* DetailRiwayatCuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRiwayatCuti.swift; sourceTree = "<group>"; };
+		ED3C13A423DC74EF0038A987 /* HistoryPeminjamanRuangan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPeminjamanRuangan.swift; sourceTree = "<group>"; };
+		ED3C13A523DC74EF0038A987 /* HistoryPeminjamanRuangan.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryPeminjamanRuangan.xib; sourceTree = "<group>"; };
+		ED3C13A823DC78040038A987 /* RequestRoomsHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRoomsHistory.swift; sourceTree = "<group>"; };
+		ED3C13AB23DC7A810038A987 /* HistoryPeminjamanRuanganCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPeminjamanRuanganCell.swift; sourceTree = "<group>"; };
+		ED3C13AC23DC7A810038A987 /* HistoryPeminjamanRuanganCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryPeminjamanRuanganCell.xib; sourceTree = "<group>"; };
+		ED3C13B023DC93220038A987 /* RealisasiPeminjamanRuanganController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisasiPeminjamanRuanganController.swift; sourceTree = "<group>"; };
+		ED3C13B123DC93220038A987 /* RealisasiPeminjamanRuanganController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealisasiPeminjamanRuanganController.xib; sourceTree = "<group>"; };
 		ED40AB4B231CB497007C0ADC /* DelegasiCutiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegasiCutiController.swift; sourceTree = "<group>"; };
 		ED40AB4C231CB497007C0ADC /* DelegasiCutiController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DelegasiCutiController.xib; sourceTree = "<group>"; };
 		ED40AB4F231CB5FC007C0ADC /* DelegationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegationList.swift; sourceTree = "<group>"; };
@@ -591,6 +605,33 @@
 				ED308CF5231B520500F5C43C /* ExceptionCell.xib */,
 			);
 			path = exception_cell;
+			sourceTree = "<group>";
+		};
+		ED3C13A323DC74CD0038A987 /* history_peminjaman_ruangan */ = {
+			isa = PBXGroup;
+			children = (
+				ED3C13A423DC74EF0038A987 /* HistoryPeminjamanRuangan.swift */,
+				ED3C13A523DC74EF0038A987 /* HistoryPeminjamanRuangan.xib */,
+			);
+			path = history_peminjaman_ruangan;
+			sourceTree = "<group>";
+		};
+		ED3C13AA23DC7A560038A987 /* history_peminjaman_ruangan_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED3C13AB23DC7A810038A987 /* HistoryPeminjamanRuanganCell.swift */,
+				ED3C13AC23DC7A810038A987 /* HistoryPeminjamanRuanganCell.xib */,
+			);
+			path = history_peminjaman_ruangan_cell;
+			sourceTree = "<group>";
+		};
+		ED3C13AF23DC93060038A987 /* realisasi_peminjaman_ruangan */ = {
+			isa = PBXGroup;
+			children = (
+				ED3C13B023DC93220038A987 /* RealisasiPeminjamanRuanganController.swift */,
+				ED3C13B123DC93220038A987 /* RealisasiPeminjamanRuanganController.xib */,
+			);
+			path = realisasi_peminjaman_ruangan;
 			sourceTree = "<group>";
 		};
 		ED40C67923D7C4E90033757C /* daftar_peminjaman_ruangan */ = {
@@ -977,6 +1018,8 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED3C13AF23DC93060038A987 /* realisasi_peminjaman_ruangan */,
+				ED3C13A323DC74CD0038A987 /* history_peminjaman_ruangan */,
 				ED73D0B623DA9150002A1A3A /* dialog_tambah_lampiran */,
 				ED73D0AA23D9BB8F002A1A3A /* form_peminjaman_ruangan */,
 				ED73D0A023D9885D002A1A3A /* detail_peminjaman_ruangan */,
@@ -1085,6 +1128,7 @@
 				ED40C68823D7DA760033757C /* SchedulesRoom.swift */,
 				ED40C68A23D7DB9F0033757C /* DetailRequestRooms.swift */,
 				ED73D0AF23DA6692002A1A3A /* Rooms.swift */,
+				ED3C13A823DC78040038A987 /* RequestRoomsHistory.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1157,6 +1201,7 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED3C13AA23DC7A560038A987 /* history_peminjaman_ruangan_cell */,
 				ED73D0B123DA8AAB002A1A3A /* lampiran_peminjaman_ruang_cell */,
 				ED73D0A523D99222002A1A3A /* lampiran_cell */,
 				ED40C68C23D7DECC0033757C /* item_peminjaman_ruangan_cell */,
@@ -1537,6 +1582,7 @@
 				EDFC1F5C22FE297D00AAA93B /* CutiCell.xib in Resources */,
 				ED5F9C0223D141CE008B977F /* KebijakanPeraturanDetail.xib in Resources */,
 				ED5F9C0723D1432C008B977F /* KebijakanPeraturanDetailCell.xib in Resources */,
+				ED3C13B323DC93220038A987 /* RealisasiPeminjamanRuanganController.xib in Resources */,
 				EDD5891423CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.xib in Resources */,
 				EDFC1F4822FDB80D00AAA93B /* TabPersetujuanController.xib in Resources */,
 				EDEDA23623D0B9D50085E2EA /* KebijakanPeraturanCell.xib in Resources */,
@@ -1563,8 +1609,10 @@
 				ED14CA79231DFCB100D5C7F0 /* EmpFilterCell.xib in Resources */,
 				ED61BF1322F7A4ED00776C25 /* KaryawanCell.xib in Resources */,
 				ED61BF2122F7CF2500776C25 /* FilterKaryawanController.xib in Resources */,
+				ED3C13A723DC74EF0038A987 /* HistoryPeminjamanRuangan.xib in Resources */,
 				ED6E506C22ED417000EED8E7 /* BerandaController.xib in Resources */,
 				ED40C68723D7D4D00033757C /* DaftarPeminjamanRuanganCell.xib in Resources */,
+				ED3C13AE23DC7A810038A987 /* HistoryPeminjamanRuanganCell.xib in Resources */,
 				ED95909B22EBF4DC00D696E5 /* LaunchScreen.storyboard in Resources */,
 				ED5F9C0C23D148F3008B977F /* KebijakanPeraturanFileCell.xib in Resources */,
 				ED6E507822ED41A200EED8E7 /* ProfilController.xib in Resources */,
@@ -1677,6 +1725,7 @@
 				EDBF21C12301086A003F5DAF /* CustomTextField.swift in Sources */,
 				ED87339223176DAE004D9F9F /* ListEmpFilter.swift in Sources */,
 				ED10746722F5DCE900ADF055 /* Profile.swift in Sources */,
+				ED3C13B223DC93220038A987 /* RealisasiPeminjamanRuanganController.swift in Sources */,
 				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
 				EDBF21A522FE5502003F5DAF /* StatusActionCell.swift in Sources */,
 				ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */,
@@ -1768,6 +1817,7 @@
 				ED8F239A23136B34005D700C /* BaseNetworking.swift in Sources */,
 				ED52152922F4846C001C6A50 /* BottomSheetMenuController.swift in Sources */,
 				ED9590A022EBF9B500D696E5 /* OnboardingCell.swift in Sources */,
+				ED3C13A623DC74EF0038A987 /* HistoryPeminjamanRuangan.swift in Sources */,
 				EDCF3BFB22F09BFF0064AE57 /* PresensiMapController.swift in Sources */,
 				EDBF21B622FE7335003F5DAF /* RiwayatCutiCell.swift in Sources */,
 				ED93FFE323CEB337003D08DE /* PropinsiKotaController.swift in Sources */,
@@ -1791,6 +1841,7 @@
 				ED70650523CE748300447654 /* CategoryCarRequest.swift in Sources */,
 				ED93FFDE23CEB210003D08DE /* PropinsiKotaCell.swift in Sources */,
 				ED3038D022ED99CE005BCF87 /* Berita.swift in Sources */,
+				ED3C13A923DC78040038A987 /* RequestRoomsHistory.swift in Sources */,
 				ED139BB82302EC9000B854BC /* CustomTextView.swift in Sources */,
 				ED61BF0222F67E6700776C25 /* PresensiCell.swift in Sources */,
 				ED6E506F22ED418700EED8E7 /* BeritaController.swift in Sources */,
@@ -1814,6 +1865,7 @@
 				ED602F0422F1DB2100CD14FC /* PreparePresence.swift in Sources */,
 				ED61BF1722F7B5D700776C25 /* ListKaryawan.swift in Sources */,
 				ED308CF6231B520500F5C43C /* ExceptionCell.swift in Sources */,
+				ED3C13AD23DC7A810038A987 /* HistoryPeminjamanRuanganCell.swift in Sources */,
 				ED73D0AD23D9BBB0002A1A3A /* FormPeminjamanRuanganController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

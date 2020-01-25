@@ -27,6 +27,7 @@
                 <outlet property="labelJudul" destination="Fp2-lB-wnA" id="koJ-Cm-rOn"/>
                 <outlet property="labelJumlahOrang" destination="ZTr-kU-a4O" id="hKM-1x-x0Z"/>
                 <outlet property="labelKeterangan" destination="NPn-b2-IVC" id="tlw-30-zkV"/>
+                <outlet property="labelLampiran" destination="ZGT-Sv-3ye" id="yNf-7c-d7G"/>
                 <outlet property="labelPartisipan" destination="ox3-LV-c9I" id="xPq-5G-kx7"/>
                 <outlet property="labelPengaju" destination="ttG-12-y7P" id="6JS-Od-mWM"/>
                 <outlet property="labelRuang" destination="FJz-pf-RoA" id="i3I-Lf-6hV"/>

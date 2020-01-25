@@ -22,6 +22,7 @@ class DetailPeminjamanRuanganController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionLampiran: UICollectionView!
     @IBOutlet weak var collectionLampiranHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelLampiran: CustomLabel!
     
     private var listLampiran = [DetailsRequestRoomsAttachment]()
     
@@ -33,7 +34,45 @@ class DetailPeminjamanRuanganController: BaseViewController {
         
         initView()
         
-        getDetailPeminjamanRuangan()
+        getDetailData()
+    }
+    
+    private func getDetailData() {
+        guard let _isFromHistory = isFromHistory else { return }
+        
+        if _isFromHistory {
+            getDetailPeminjamanRuanganByUser()
+        } else {
+            getDetailPeminjamanRuangan()
+        }
+    }
+    
+    private func getDetailPeminjamanRuanganByUser() {
+        guard let _requestRoomId = requestRoomId else { return }
+        
+        SVProgressHUD.show()
+        
+        informationNetworking.getDetailRequestRoomsByUser(requestRoomId: _requestRoomId) { (error, detailRequest, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let _error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                    self.getDetailPeminjamanRuangan()
+                }
+                return
+            }
+            
+            guard let _detailRequest = detailRequest else { return }
+            
+            DispatchQueue.main.async {
+                self.updateLayout(_detailRequest.data[0])
+            }
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -74,8 +113,9 @@ class DetailPeminjamanRuanganController: BaseViewController {
         labelWaktu.text = "Mulai   - \(detailRequest.start ?? "")\nSelesai   - \(detailRequest.end ?? "")"
         var partisipan = ""
         for (index, item) in detailRequest.participants.enumerated() {
-            partisipan += index == detailRequest.participants.count - 1 ? "\(index + 1). \(item)" : "\(index + 1). \(item)\n\n"
+            partisipan += index == detailRequest.participants.count - 1 ? "\(index + 1). \(item.trim())" : "\(index + 1). \(item.trim())\n\n"
         }
+        labelLampiran.isHidden = detailRequest.attachment.count == 0
         labelPartisipan.text = partisipan
         labelJumlahOrang.text = detailRequest.total_person
         listLampiran = detailRequest.attachment
@@ -85,6 +125,18 @@ class DetailPeminjamanRuanganController: BaseViewController {
             self.scrollView.resizeScrollViewContentSize()
             self.view.layoutIfNeeded()
             self.scrollView.isHidden = false
+        }
+        
+        guard let _buttonCancelIsShow = detailRequest.button_cancel_is_show else { return }
+
+        if _buttonCancelIsShow == "0" {
+            buttonAction.setTitle("Realisasi", for: .normal)
+            buttonAction.backgroundColor = UIColor(hexString: "9ccc65")
+            buttonAction.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonActionRealisasi)))
+        } else {
+            buttonAction.setTitle("Batalkan", for: .normal)
+            buttonAction.backgroundColor = UIColor(hexString: "e23d3d")
+            buttonAction.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonActionBatalkan)))
         }
     }
 
@@ -104,8 +156,47 @@ class DetailPeminjamanRuanganController: BaseViewController {
 }
 
 extension DetailPeminjamanRuanganController: URLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate {
+    
+    private func cancelRequestRoom() {
+        guard let _requestRoomId = requestRoomId else { return }
+        
+        SVProgressHUD.show()
+        
+        informationNetworking.cancelRequestRooms(requestRoomId: _requestRoomId) { (error, success, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let _error = error {
+                self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan", _error, "Reload", "Cancel") {
+                    self.cancelRequestRoom()
+                }
+                return
+            }
+            
+            guard let _ = success else { return }
+            
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     @IBAction func buttonBackClick(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func buttonActionRealisasi() {
+        guard let _requestRoomId = requestRoomId else { return }
+        
+        let vc = RealisasiPeminjamanRuanganController()
+        vc.requestRoomId = _requestRoomId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func buttonActionBatalkan() {
+        cancelRequestRoom()
     }
     
     @objc func collectionViewContainerClick(sender: UITapGestureRecognizer) {

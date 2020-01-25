@@ -20,6 +20,7 @@
                 <outlet property="constraintViewRoot" destination="p1Y-oC-g7e" id="utC-iL-ThS"/>
                 <outlet property="fieldStatus" destination="xJV-2I-HgQ" id="fFi-E9-CRC"/>
                 <outlet property="fieldTahun" destination="y3M-rG-qQ0" id="AXU-fG-8d1"/>
+                <outlet property="labelStatus" destination="FgF-Cc-ZPZ" id="J1t-UF-BN8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewStatus" destination="lC7-JA-lqF" id="q5A-Xn-pz9"/>
                 <outlet property="viewTahun" destination="YFN-bu-agG" id="0oy-vm-Xtu"/>
@@ -49,7 +50,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0h-kQ-vPc" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                    <rect key="frame" x="41" y="19.5" width="26.5" height="14"/>
+                                    <rect key="frame" x="41" y="19.5" width="27.5" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -65,13 +66,13 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tahun" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySM-40-GuG" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                            <rect key="frame" x="14" y="71" width="347" height="14"/>
+                            <rect key="frame" x="14" y="71" width="347" height="14.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFN-bu-agG">
-                            <rect key="frame" x="14" y="91" width="347" height="37"/>
+                            <rect key="frame" x="14" y="91.5" width="347" height="37"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-- Semua  --" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y3M-rG-qQ0" customClass="CustomDropDownField" customModule="eSIKAP" customModuleProvider="target">
                                     <rect key="frame" x="16" y="0.0" width="331" height="37"/>
@@ -111,13 +112,13 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgF-Cc-ZPZ" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                            <rect key="frame" x="14" y="147" width="347" height="14"/>
+                            <rect key="frame" x="14" y="147.5" width="347" height="14.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lC7-JA-lqF">
-                            <rect key="frame" x="14" y="167" width="347" height="37"/>
+                            <rect key="frame" x="14" y="168" width="347" height="37"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-- Semua  --" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xJV-2I-HgQ" customClass="CustomDropDownField" customModule="eSIKAP" customModuleProvider="target">
                                     <rect key="frame" x="16" y="0.0" width="331" height="37"/>

@@ -630,11 +630,27 @@ class InformationNetworking: BaseNetworking {
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
+    func getDetailRequestRoomsByUser(requestRoomId: String, completion: @escaping(_ error: String?, _ detailsRequestRooms: DetailsRequestRooms?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getDetailRequestRoomsByUser"
+        let body: [String: String] = [
+            "requestrooms_id": requestRoomId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
     func getScheduleRoomsOneMonth(month: String, year: String, completion: @escaping(_ error: String?, _ schedulesRoom: SchedulesRoom?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/getScheduleRoomsOneMonth"
         let body: [String: String] = [
             "month": month,
             "year": year
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func cancelRequestRooms(requestRoomId: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/cancelRequestRooms"
+        let body: [String: String] = [
+            "requestrooms_id": requestRoomId
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
@@ -655,5 +671,19 @@ class InformationNetworking: BaseNetworking {
     func addRequestRooms(body: [String: String], listFiles: [LampiranModel], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/addRequestRooms"
         alamofirePostListImage(listFiles: listFiles, url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func realizationRequestRooms(body: [String: String], listFiles: [LampiranModel], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/realizationRequestRooms"
+        alamofirePostListImage(listFiles: listFiles, url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getRequestRoomsHistoryList(page: Int, year: String, completion: @escaping(_ error: String?, _ requestRoomsHistory: RequestRoomsHistory?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getRequestRoomsHistoryList"
+        let body: [String: String] = [
+            "page": "\(page)",
+            "year": year
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
 }

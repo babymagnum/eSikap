@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryPeminjamanRuangan" customModule="eSIKAP" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionHistoryPeminjamanRuangan" destination="0fs-LJ-udd" id="rV6-I2-WTH"/>
+                <outlet property="labelKosong" destination="zEt-Cu-ZaV" id="C8u-Fd-fpK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bV-N8-5b8">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEg-bY-AA0">
+                            <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="53" id="9DJ-oa-qyF"/>
+                                <constraint firstAttribute="height" constant="53" id="Quy-r7-jK3"/>
+                            </constraints>
+                            <state key="normal" image="backwardArrow"/>
+                            <connections>
+                                <action selector="buttonBackClick:" destination="-1" eventType="touchUpInside" id="G0b-Pc-LES"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History Peminjaman Ruangan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKy-Eg-d2n" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                            <rect key="frame" x="53" y="19" width="160" height="15"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                            <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yq9-JB-PYb">
+                            <rect key="frame" x="322" y="0.0" width="53" height="53"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="53" id="mew-7Y-IaV"/>
+                                <constraint firstAttribute="height" constant="53" id="vOS-90-M7s"/>
+                            </constraints>
+                            <state key="normal" image="filter"/>
+                            <connections>
+                                <action selector="buttonFilterClick:" destination="-1" eventType="touchUpInside" id="Yb6-eJ-ApZ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="zEg-bY-AA0" firstAttribute="leading" secondItem="5bV-N8-5b8" secondAttribute="leading" id="8Fn-YM-wgQ"/>
+                        <constraint firstAttribute="trailing" secondItem="yq9-JB-PYb" secondAttribute="trailing" id="8Vs-uH-eUq"/>
+                        <constraint firstAttribute="height" constant="53" id="S4J-ai-lXK"/>
+                        <constraint firstItem="nKy-Eg-d2n" firstAttribute="leading" secondItem="zEg-bY-AA0" secondAttribute="trailing" id="ZCO-xa-oaf"/>
+                        <constraint firstItem="nKy-Eg-d2n" firstAttribute="centerY" secondItem="5bV-N8-5b8" secondAttribute="centerY" id="eY7-ij-bWK"/>
+                        <constraint firstItem="yq9-JB-PYb" firstAttribute="centerY" secondItem="5bV-N8-5b8" secondAttribute="centerY" id="v2z-1f-EMS"/>
+                        <constraint firstItem="zEg-bY-AA0" firstAttribute="centerY" secondItem="5bV-N8-5b8" secondAttribute="centerY" id="xYq-Y4-wW4"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0fs-LJ-udd">
+                    <rect key="frame" x="0.0" y="53" width="375" height="614"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="Ix8-5h-CHK">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="15" minY="20" maxX="15" maxY="20"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data berita kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEt-Cu-ZaV" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                    <rect key="frame" x="131" y="326" width="113.5" height="15.5"/>
+                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5bV-N8-5b8" secondAttribute="trailing" id="2EI-hB-W1V"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0fs-LJ-udd" secondAttribute="bottom" id="3NN-Wx-5cd"/>
+                <constraint firstItem="zEt-Cu-ZaV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cZo-a9-Udo"/>
+                <constraint firstItem="5bV-N8-5b8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="chW-GD-a8t"/>
+                <constraint firstItem="zEt-Cu-ZaV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="k9X-Un-peT"/>
+                <constraint firstItem="0fs-LJ-udd" firstAttribute="top" secondItem="5bV-N8-5b8" secondAttribute="bottom" id="oIr-Fd-bW8"/>
+                <constraint firstItem="5bV-N8-5b8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rnY-ps-uxx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0fs-LJ-udd" secondAttribute="trailing" id="zBM-LR-xJF"/>
+                <constraint firstItem="0fs-LJ-udd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zBp-h3-ToI"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="110" y="129"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backwardArrow" width="9.5" height="16"/>
+        <image name="filter" width="16" height="16"/>
+    </resources>
+</document>

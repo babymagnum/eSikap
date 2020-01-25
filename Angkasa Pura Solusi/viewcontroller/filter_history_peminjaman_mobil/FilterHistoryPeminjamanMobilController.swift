@@ -22,8 +22,10 @@ class FilterHistoryPeminjamanMobilController: BaseViewController {
     @IBOutlet weak var constraintViewRoot: NSLayoutConstraint!
     @IBOutlet weak var buttonTerapkan: CustomButton!
     @IBOutlet weak var buttonReset: CustomButton!
+    @IBOutlet weak var labelStatus: CustomLabel!
     
     var delegate: FilterHistoryPeminjamanMobilProtocol?
+    var isFromPeminjamanRuangan: Bool?
     
     private var selectedYears = "2019"
     private var selectedStatus = ""
@@ -96,7 +98,13 @@ class FilterHistoryPeminjamanMobilController: BaseViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     private func initView() {
+        if let _ = isFromPeminjamanRuangan {
+            labelStatus.isHidden = true
+            viewStatus.isHidden = true
+        }
+        
         selectedYears = function.getCurrentDate(pattern: "yyyy")
         fieldTahun.text = selectedYears
         checkTopMargin(viewRootTopMargin: constraintViewRoot)
