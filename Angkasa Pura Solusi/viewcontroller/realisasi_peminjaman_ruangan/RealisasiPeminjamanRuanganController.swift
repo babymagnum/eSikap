@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 import SVProgressHUD
 
 class RealisasiPeminjamanRuanganController: BaseViewController {
@@ -67,10 +68,21 @@ class RealisasiPeminjamanRuanganController: BaseViewController {
             }
             
             if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Melakukan Realisasi", _error, "Ulangi", "Cancel") {
-                    self.realizationRequestRooms(body: body)
+                if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
+                    let vc = DialogPengajuanCutiController()
+                    vc.exception = _error
+                    self.showCustomDialog(vc)
+                } else {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Realisasi", _error, "Ulangi", "Cancel") {
+                        self.realizationRequestRooms(body: body)
+                    }
                 }
+                return
             }
+            
+            guard let _success = success else { return }
+            
+            self.view.makeToast(_success.message ?? "")
         }
     }
 }
@@ -99,26 +111,20 @@ extension RealisasiPeminjamanRuanganController: DialogTambahLampiranProtocol {
     }
     
     @IBAction func buttonSimpanClick(_ sender: Any) {
-        if textviewKeterangan.text.trim() == "" {
-            
-        } else if listLampiran.count == 0 {
-            
-        } else {
-            guard let _requestRoomId = requestRoomId else { return }
-            
-            var body: [String: String] = [
-                "requestrooms_id": _requestRoomId,
-                "description": textviewKeterangan.text.trim()
-            ]
-            
-            if listLampiran.count > 0 {
-                for (index, item) in listLampiran.enumerated() {
-                    body.updateValue(item.title, forKey: "attachment_title[\(index)]")
-                }
+        guard let _requestRoomId = requestRoomId else { return }
+        
+        var body: [String: String] = [
+            "requestrooms_id": _requestRoomId,
+            "description": textviewKeterangan.text.trim()
+        ]
+        
+        if listLampiran.count > 0 {
+            for (index, item) in listLampiran.enumerated() {
+                body.updateValue(item.title, forKey: "attachment_title[\(index)]")
             }
-            
-            realizationRequestRooms(body: body)
         }
+        
+        realizationRequestRooms(body: body)
     }
     
     @objc func collectionImageDeleteClick(sender: UITapGestureRecognizer) {
