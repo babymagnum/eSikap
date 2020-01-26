@@ -1,16 +1,15 @@
 //
-//  TabUpahController.swift
+//  TabRiwayatController.swift
 //  Angkasa Pura Solusi
 //
-//  Created by Arief Zainuri on 20/01/20.
+//  Created by Arief Zainuri on 26/01/20.
 //  Copyright © 2020 Gama Techno. All rights reserved.
 //
 
 import UIKit
 import XLPagerTabStrip
-import FittedSheets
 
-class TabUpahController: ButtonBarPagerTabStripViewController {
+class TabRiwayatController: ButtonBarPagerTabStripViewController {
 
     @IBOutlet weak var constraintViewRoot: NSLayoutConstraint!
     
@@ -20,7 +19,7 @@ class TabUpahController: ButtonBarPagerTabStripViewController {
     }()
     
     private var year = ""
-    private var month = ""
+    private var status = ""
     private var pages = [UIViewController]()
     
     override func viewDidLoad() {
@@ -40,7 +39,6 @@ class TabUpahController: ButtonBarPagerTabStripViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     func setupTabLayout() {
-        // change selected bar color
         settings.style.buttonBarBackgroundColor = UIColor.init(rgb: 0x42a5f5)
         settings.style.buttonBarItemBackgroundColor = UIColor.init(rgb: 0x42a5f5)
         settings.style.selectedBarBackgroundColor = UIColor.init(rgb: 0x707070)
@@ -61,35 +59,24 @@ class TabUpahController: ButtonBarPagerTabStripViewController {
     
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let slipGajiController = SlipGajiController()
-        slipGajiController.year = self.year
+        let pengajuanController = PengajuanLemburTabController()
+        pengajuanController.year = self.year
+        pengajuanController.status = self.status
         
-        let bonusController = BonusController()
-        bonusController.year = self.year
+        let realisasiController = RealisasiLemburTabController()
+        realisasiController.year = self.year
+        realisasiController.status = self.status
         
-        pages.append(slipGajiController)
-        pages.append(bonusController)
+        pages.append(pengajuanController)
+        pages.append(realisasiController)
         return pages
     }
-
 }
 
-extension TabUpahController: BottomSheetFilterPresensiProtocol {
-    func filterPicked(_ month: String, _ year: String) {
-        self.year = year
-        pages.removeAll()
-        reloadPagerTabStripView()
+extension TabRiwayatController {
+    @IBAction func buttonFilterClick(_ sender: Any) {
     }
-    
     @IBAction func buttonBackClick(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func buttonFilterClick(_ sender: Any) {
-        let vc = BottomSheetFilterPresensi()
-        vc.delegate = self
-        vc.onlyYear = true
-        let sheetController = SheetViewController(controller: vc)
-        self.present(sheetController, animated: false, completion: nil)
     }
 }

@@ -173,7 +173,11 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             }
         case "menuLembur":
             //pengajuan lembur
-            self.showInDevelopmentDialog()
+            dismiss(animated: true, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.parentNavigationController?.pushViewController(PengajuanLemburController(), animated: true)
+            }
         case "menuPersetujuan":
             //persetujuan
             dismiss(animated: true, completion: nil)

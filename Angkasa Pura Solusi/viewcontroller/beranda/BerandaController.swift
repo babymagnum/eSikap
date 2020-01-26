@@ -64,6 +64,12 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         beritaCollectionView.collectionViewLayout.invalidateLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        loadMenuItem()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -229,7 +235,7 @@ extension BerandaController {
                 self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
             case "menuLembur":
                 //pengajuan lembur
-                self.showInDevelopmentDialog()
+                self.navigationController?.pushViewController(PengajuanLemburController(), animated: true)
             case "menuPersetujuan":
                 //persetujuan
                 self.navigationController?.pushViewController(TabPersetujuanController(), animated: true)

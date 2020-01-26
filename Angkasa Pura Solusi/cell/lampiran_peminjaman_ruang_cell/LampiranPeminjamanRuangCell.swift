@@ -23,7 +23,6 @@ class LampiranPeminjamanRuangCell: UICollectionViewCell {
         buttonJudul.giveBorder(buttonJudul.frame.size.height / 2, 0, "fff")
         buttonFile.giveBorder(buttonJudul.frame.size.height / 2, 0, "fff")
         viewContainer.giveBorder(3, 1, "dedede")
-        buttonJudul.sizeToFit()
     }
 
     var data: LampiranModel? {

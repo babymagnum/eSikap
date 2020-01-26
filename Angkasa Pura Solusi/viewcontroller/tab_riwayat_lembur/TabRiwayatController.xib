@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabRiwayatController" customModule="eSIKAP" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonBarView" destination="U7b-kE-has" id="2qA-ta-O9a"/>
+                <outlet property="constraintViewRoot" destination="XaA-af-Oec" id="YtF-6f-mru"/>
+                <outlet property="containerView" destination="1AR-id-Ck3" id="dpn-ci-XDA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="oUU-m3-6mg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="ViewRoot">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RpD-Ot-CMx">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="U7b-kE-has" userLabel="collectionBarView" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                            <rect key="frame" x="0.0" y="53" width="375" height="41"/>
+                            <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="41" id="SBn-4z-cyx"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yjB-Bv-VkI">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4k-yk-g4P">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWM-2b-xJy">
+                                    <rect key="frame" x="0.0" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="GyS-uu-4hK"/>
+                                        <constraint firstAttribute="height" constant="53" id="cjf-x7-Ubt"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" image="backwardArrow"/>
+                                    <connections>
+                                        <action selector="buttonBackClick:" destination="-1" eventType="touchUpInside" id="6eB-5b-LSw"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Riwayat Lembur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xge-9f-jRC" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="41" y="19" width="271" height="15"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                    <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1v-gH-x3F">
+                                    <rect key="frame" x="322" y="0.0" width="53" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="VW3-yG-8kM"/>
+                                        <constraint firstAttribute="height" constant="53" id="ZLX-3T-bbR"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" image="filter"/>
+                                    <connections>
+                                        <action selector="buttonFilterClick:" destination="-1" eventType="touchUpInside" id="phm-YI-KUL"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="Xge-9f-jRC" firstAttribute="centerY" secondItem="e4k-yk-g4P" secondAttribute="centerY" id="5wL-uA-Ima"/>
+                                <constraint firstAttribute="height" constant="53" id="TfS-ks-Psp"/>
+                                <constraint firstItem="Xge-9f-jRC" firstAttribute="leading" secondItem="qWM-2b-xJy" secondAttribute="trailing" constant="-12" id="ZFB-ZH-m2A"/>
+                                <constraint firstItem="qWM-2b-xJy" firstAttribute="centerY" secondItem="e4k-yk-g4P" secondAttribute="centerY" id="bnI-JY-R6H"/>
+                                <constraint firstAttribute="trailing" secondItem="o1v-gH-x3F" secondAttribute="trailing" id="gIg-Ee-HBf"/>
+                                <constraint firstItem="o1v-gH-x3F" firstAttribute="leading" secondItem="Xge-9f-jRC" secondAttribute="trailing" constant="10" id="mZX-Vi-d4o"/>
+                                <constraint firstItem="o1v-gH-x3F" firstAttribute="centerY" secondItem="e4k-yk-g4P" secondAttribute="centerY" id="sKK-SC-poF"/>
+                                <constraint firstItem="qWM-2b-xJy" firstAttribute="leading" secondItem="e4k-yk-g4P" secondAttribute="leading" id="ttk-6a-eZC"/>
+                            </constraints>
+                        </view>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1AR-id-Ck3" userLabel="scrollView">
+                            <rect key="frame" x="0.0" y="94" width="375" height="573"/>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="U7b-kE-has" firstAttribute="leading" secondItem="RpD-Ot-CMx" secondAttribute="leading" id="1Gg-gO-TeF"/>
+                        <constraint firstAttribute="bottom" secondItem="1AR-id-Ck3" secondAttribute="bottom" id="9oV-U1-8Hh"/>
+                        <constraint firstAttribute="trailing" secondItem="U7b-kE-has" secondAttribute="trailing" id="HCy-nv-sFE"/>
+                        <constraint firstItem="1AR-id-Ck3" firstAttribute="top" secondItem="U7b-kE-has" secondAttribute="bottom" id="S1M-qF-loB"/>
+                        <constraint firstItem="1AR-id-Ck3" firstAttribute="leading" secondItem="RpD-Ot-CMx" secondAttribute="leading" id="TAb-Fb-fbz"/>
+                        <constraint firstItem="U7b-kE-has" firstAttribute="top" secondItem="e4k-yk-g4P" secondAttribute="bottom" id="ZVt-oX-Ija"/>
+                        <constraint firstItem="e4k-yk-g4P" firstAttribute="top" secondItem="RpD-Ot-CMx" secondAttribute="top" id="eG1-nV-4IJ"/>
+                        <constraint firstAttribute="trailing" secondItem="1AR-id-Ck3" secondAttribute="trailing" id="mpo-fv-Dxl"/>
+                        <constraint firstItem="e4k-yk-g4P" firstAttribute="leading" secondItem="RpD-Ot-CMx" secondAttribute="leading" id="rxE-Yb-mty"/>
+                        <constraint firstAttribute="trailing" secondItem="e4k-yk-g4P" secondAttribute="trailing" id="sKj-7B-geM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="RpD-Ot-CMx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GX2-Hv-TAI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RpD-Ot-CMx" secondAttribute="bottom" id="SF0-af-b6y"/>
+                <constraint firstItem="RpD-Ot-CMx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XaA-af-Oec"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RpD-Ot-CMx" secondAttribute="trailing" id="qDh-ne-sMK"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="110" y="123"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backwardArrow" width="9.5" height="16"/>
+        <image name="filter" width="16" height="16"/>
+    </resources>
+</document>

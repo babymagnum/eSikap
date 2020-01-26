@@ -42,7 +42,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6b-Ou-v01" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                        <rect key="frame" x="86" y="5.5" width="146" height="14.5"/>
+                                        <rect key="frame" x="86" y="5.5" width="146" height="14"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                         <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -71,11 +71,11 @@
                                 <rect key="frame" x="16" y="48" width="268" height="25"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lf-ub-zge" customClass="CustomButton" customModule="eSIKAP" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="67" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="25"/>
                                         <color key="backgroundColor" red="0.25882352941176467" green="0.6470588235294118" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="2jL-Ac-Umo"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="67" id="cIK-8z-o8B"/>
+                                            <constraint firstAttribute="width" constant="75" id="cIK-8z-o8B"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                         <inset key="contentEdgeInsets" minX="17" minY="0.0" maxX="17" maxY="0.0"/>
@@ -84,7 +84,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgF-OE-NiI" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                        <rect key="frame" x="78" y="5.5" width="179" height="14.5"/>
+                                        <rect key="frame" x="86" y="5.5" width="171" height="14"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                         <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
