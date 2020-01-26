@@ -145,7 +145,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lampiran" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGT-Sv-3ye" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="255" width="46.5" height="28"/>
+                                    <rect key="frame" x="16" y="270" width="46.5" height="13"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -213,9 +213,8 @@
                                 <constraint firstItem="4mo-4O-1FP" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="Mxg-nh-doI"/>
                                 <constraint firstItem="ZTr-kU-a4O" firstAttribute="top" secondItem="ox3-LV-c9I" secondAttribute="bottom" constant="15" id="OFt-uI-dWW"/>
                                 <constraint firstItem="7AD-Oq-3CS" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="R7K-93-6j9"/>
-                                <constraint firstItem="ZGT-Sv-3ye" firstAttribute="top" secondItem="ZTr-kU-a4O" secondAttribute="bottom" id="Thc-Ta-tvW"/>
+                                <constraint firstItem="ZGT-Sv-3ye" firstAttribute="top" secondItem="ZTr-kU-a4O" secondAttribute="bottom" constant="15" id="Thc-Ta-tvW"/>
                                 <constraint firstItem="ttG-12-y7P" firstAttribute="top" secondItem="8rt-BF-lCa" secondAttribute="top" constant="37" id="Vea-np-e5U"/>
-                                <constraint firstAttribute="bottom" secondItem="ZGT-Sv-3ye" secondAttribute="bottom" constant="31" id="Vi5-qf-pXA"/>
                                 <constraint firstItem="ttG-12-y7P" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="Xvd-Gt-uzC"/>
                                 <constraint firstItem="FiA-zN-LAz" firstAttribute="top" secondItem="NPn-b2-IVC" secondAttribute="bottom" constant="15" id="XyU-ph-Kwa"/>
                                 <constraint firstItem="NPn-b2-IVC" firstAttribute="top" secondItem="Fp2-lB-wnA" secondAttribute="bottom" constant="15" id="YIg-uk-87P"/>
@@ -226,7 +225,6 @@
                                 <constraint firstAttribute="trailing" secondItem="Fp2-lB-wnA" secondAttribute="trailing" constant="16" id="dgQ-SY-2iJ"/>
                                 <constraint firstItem="7AD-Oq-3CS" firstAttribute="top" secondItem="RqN-TR-4LA" secondAttribute="bottom" constant="15" id="eon-5g-Si4"/>
                                 <constraint firstItem="4mo-4O-1FP" firstAttribute="top" secondItem="Fp2-lB-wnA" secondAttribute="bottom" constant="15" id="fSA-iG-LEt"/>
-                                <constraint firstAttribute="bottom" secondItem="Rmp-WS-p3H" secondAttribute="bottom" constant="24" id="jB8-GW-kZH"/>
                                 <constraint firstItem="zs2-gV-o89" firstAttribute="leading" secondItem="o3G-gK-tyj" secondAttribute="leading" constant="16" id="kcL-oR-DvE"/>
                                 <constraint firstAttribute="trailing" secondItem="Rmp-WS-p3H" secondAttribute="trailing" constant="16" id="lji-AF-Ivq"/>
                                 <constraint firstItem="NPn-b2-IVC" firstAttribute="leading" secondItem="rjb-8w-fVn" secondAttribute="trailing" constant="40" id="mQP-9j-ihD"/>
@@ -281,7 +279,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="132" y="128.18590704647679"/>
+            <point key="canvasLocation" x="-554" y="63"/>
         </view>
     </objects>
     <resources>

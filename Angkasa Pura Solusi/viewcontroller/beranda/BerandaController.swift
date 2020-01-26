@@ -64,11 +64,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         beritaCollectionView.collectionViewLayout.invalidateLayout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadMenuItem()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,7 +79,38 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         
         getLatestNews()
         
+        getMenu()
+        
         checkVersion()
+    }
+    
+    private func getMenu() {
+        SVProgressHUD.show()
+        
+        informationNetworking.getMenu { (error, menu, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = error {
+                self.getMenu()
+                return
+            }
+            
+            guard let _menu = menu else { return }
+            
+            if _menu.data.count != self.preference.getInt(key: self.staticLet.JUMLAH_MENU) {
+                self.preference.saveInt(value: _menu.data.count, key: self.staticLet.JUMLAH_MENU)
+                
+                for (index, item) in _menu.data.enumerated() {
+                    if index < 5 {
+                        self.preference.saveString(value: item.menu_key, key: "MENU_\(index + 1)")
+                    } else if index > 5 {
+                        self.preference.saveString(value: item.menu_key, key: "MENU_\(index)")
+                    }
+                }
+            }
+            
+            self.loadMenuItem()
+        }
     }
     
     private func checkVersion() {
@@ -103,12 +129,10 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     private func loadMenuItem() {
         listMenu.removeAll()
         
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_1), action: nil))
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_2), action: nil))
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_3), action: nil))
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_4), action: nil))
-        listMenu.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_5), action: nil))
-        listMenu.append(Menu(id: 99, image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
+        for index in 0...5 {
+            if index < 5 { listMenu.append(generateMenu(savedMenu: preference.getString(key: "MENU_\(index + 1)"), action: nil)) }
+            else { listMenu.append(Menu(id: "menuAll", image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil)) }
+        }
         
         menuCollectionView.reloadData()
         
@@ -200,46 +224,46 @@ extension BerandaController {
     @objc func menuClick(sender: UITapGestureRecognizer) {
         if let indexpath = menuCollectionView.indexPathForItem(at: sender.location(in: menuCollectionView)) {
             switch listMenu[indexpath.item].id {
-            case 1:
+            case "menuCuti":
                 //pengajuan cuti
                 self.navigationController?.pushViewController(PengajuanCutiController(), animated: true)
-            case 2:
+            case "menuLembur":
                 //pengajuan lembur
                 self.showInDevelopmentDialog()
-            case 3:
+            case "menuPersetujuan":
                 //persetujuan
                 self.navigationController?.pushViewController(TabPersetujuanController(), animated: true)
-            case 4:
+            case "menuPresensi":
                 //presensi
                 getPreparePresence()
-            case 5:
+            case "menuDaftarPresensi":
                 //presensi list item
                 let vc = PresensiListController()
                 vc.from = .standart
                 self.navigationController?.pushViewController(vc, animated: true)
-            case 6:
+            case "menuUpah":
                 //slip gaji
                 self.navigationController?.pushViewController(TabUpahController(), animated: true)
-            case 7:
+            case "menuRuang":
                 //peminjaman ruangan
-                self.showInDevelopmentDialog()
-            case 8:
+                self.navigationController?.pushViewController(DaftarPeminjamanRuanganController(), animated: true)
+            case "menuMobil":
                 //peminjaman mobil dinas
-                self.showInDevelopmentDialog()
-            case 9:
+                self.navigationController?.pushViewController(PeminjamanMobilDinasController(), animated: true)
+            case "menuKaryawan":
                 //daftar karyawan
                 self.navigationController?.pushViewController(DaftarKaryawanController(), animated: true)
-            case 10:
+            case "menuLink":
                 //link website aps
                 let safariVc = SFSafariViewController(url: URL(string: "https://angkasapurasolusi.co.id")!)
                 self.present(safariVc, animated: true)
-            case 11:
+            case "menuKebijakan":
                 //link kebijakan & peraturan
                 self.navigationController?.pushViewController(KebijakanPeraturanController(), animated: true)
-            case 12:
+            case "menuDaftarCuti":
                 //link daftar cuti
                 print("daftar cuti")
-            case 99:
+            case "menuAll":
                 //menu lainya item
                 openBottomSheet()
             default: break
@@ -266,7 +290,9 @@ extension BerandaController {
         vc.parentNavigationController = self.navigationController
         let sheetController = SheetViewController(controller: vc, sizes: [SheetSize.fullScreen])
         sheetController.didDismiss = { _ in
-            self.loadMenuItem()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                self.loadMenuItem()
+            }
         }
         
         self.present(sheetController, animated: false, completion: nil)

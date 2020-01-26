@@ -686,4 +686,9 @@ class InformationNetworking: BaseNetworking {
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func getMenu(completion: @escaping(_ error: String?, _ menuServer: MenuServer?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getMenu"
+        alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
 }

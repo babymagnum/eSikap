@@ -10,6 +10,10 @@ import UIKit
 import Toast_Swift
 import SVProgressHUD
 
+protocol RealisasiPeminjamanRuanganProtocol {
+    func updateData()
+}
+
 class RealisasiPeminjamanRuanganController: BaseViewController {
 
     @IBOutlet weak var viewKeterangan: UIView!
@@ -21,6 +25,7 @@ class RealisasiPeminjamanRuanganController: BaseViewController {
     private var listLampiran = [LampiranModel]()
     
     var requestRoomId: String?
+    var delegate: RealisasiPeminjamanRuanganProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +87,14 @@ class RealisasiPeminjamanRuanganController: BaseViewController {
             
             guard let _success = success else { return }
             
-            self.view.makeToast(_success.message ?? "")
+            self.view.makeToast(_success.message ?? "", duration: 1)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if let _delegate = self.delegate {
+                    _delegate.updateData()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
     }
 }

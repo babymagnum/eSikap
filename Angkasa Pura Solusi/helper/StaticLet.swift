@@ -30,6 +30,7 @@ class StaticLet {
     let VALUE_ORDER = "VALUE_ORDER"
     let base_url_dev = "http://dev.angkasapurasolusi.co.id/api/index.php/"
     let base_url_prod = "https://api-ess.angkasapurasolusi.co.id/index.php/"
+    let JUMLAH_MENU = "JUMLAH_MENU"
     let MENU_1 = "MENU_1"
     let MENU_2 = "MENU_2"
     let MENU_3 = "MENU_3"

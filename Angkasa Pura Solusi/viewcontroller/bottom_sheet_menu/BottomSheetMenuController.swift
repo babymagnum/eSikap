@@ -37,22 +37,15 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func loadMenu() {
-        // append list menu favorit
-        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_1), action: nil))
-        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_2), action: nil))
-        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_3), action: nil))
-        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_4), action: nil))
-        listMenuFavorit.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_5), action: nil))
-        listMenuFavorit.append(Menu(id: 99, image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
-        
-        // append list menu lainya
-        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_6), action: nil))
-        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_7), action: nil))
-        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_8), action: nil))
-        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_9), action: nil))
-        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_10), action: nil))
-        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_11), action: nil))
-        listMenuLainya.append(generateMenu(savedMenu: preference.getInt(key: staticLet.MENU_12), action: nil))
+        for index in 0...preference.getInt(key: staticLet.JUMLAH_MENU) - 1 {
+            if index < 5 {
+                listMenuFavorit.append(generateMenu(savedMenu: preference.getString(key: "MENU_\(index + 1)"), action: nil))
+            } else if index == 5 {
+                listMenuFavorit.append(Menu(id: "menuAll", image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
+            } else if index > 5 {
+                listMenuLainya.append(generateMenu(savedMenu: preference.getString(key: "MENU_\(index)"), action: nil))
+            }
+        }
         
         menuFavoritCollectionView.reloadData()
         menuLainyaCollectionView.reloadData()
@@ -95,11 +88,11 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
 
     private func saveMenu() {
         for (index, menu) in listMenuFavorit.enumerated() {
-            preference.saveInt(value: menu.id!, key: "MENU_\(index + 1)")
+            preference.saveString(value: menu.id!, key: "MENU_\(index + 1)")
         }
         
         for (index, menu) in listMenuLainya.enumerated() {
-            preference.saveInt(value: menu.id!, key: "MENU_\(index + 6)")
+            preference.saveString(value: menu.id!, key: "MENU_\(index + 6)")
         }
     }
     
@@ -111,7 +104,6 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func showActionInListMenuFavorit() {
-        
         for (index, _) in listMenuFavorit.enumerated() {
             if index == listMenuFavorit.count - 1 { break }
             
@@ -121,7 +113,6 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func showActionInListMenuLainya() {
-        
         for (index, _) in listMenuLainya.enumerated() {
             listMenuLainya[index].action = UIImage(named: "addButtonInsideBlackCircle")
             menuLainyaCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
@@ -129,7 +120,6 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func hideActionInListMenuFavorit() {
-        
         for (index, _) in listMenuFavorit.enumerated() {
             listMenuFavorit[index].action = nil
             menuFavoritCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
@@ -172,29 +162,29 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         }
     }
     
-    private func clickMenu(_ itemId: Int) {
+    private func clickMenu(_ itemId: String) {
         switch itemId {
-        case 1:
+        case "menuCuti":
             //pengajuan cuti
             dismiss(animated: true, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.parentNavigationController?.pushViewController(PengajuanCutiController(), animated: true)
             }
-        case 2:
+        case "menuLembur":
             //pengajuan lembur
             self.showInDevelopmentDialog()
-        case 3:
+        case "menuPersetujuan":
             //persetujuan
             dismiss(animated: true, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.parentNavigationController?.pushViewController(TabPersetujuanController(), animated: true)
             }
-        case 4:
+        case "menuPresensi":
             //presensi
             getPreparePresence()
-        case 5:
+        case "menuDaftarPresensi":
             //presensi list item
             dismiss(animated: true, completion: nil)
             
@@ -203,46 +193,46 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
                 vc.from = .standart
                 self.parentNavigationController?.pushViewController(vc, animated: true)
             }
-        case 6:
+        case "menuUpah":
             //slip gaji
             dismiss(animated: true, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.parentNavigationController?.pushViewController(TabUpahController(), animated: true)
             }
-        case 7:
+        case "menuRuang":
             //peminjaman ruangan
             dismiss(animated: true, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.parentNavigationController?.pushViewController(DaftarPeminjamanRuanganController(), animated: true)
             }
-        case 8:
+        case "menuMobil":
             //peminjaman mobil dinas
             dismiss(animated: true, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.parentNavigationController?.pushViewController(PeminjamanMobilDinasController(), animated: true)
             }
-        case 9:
+        case "menuKaryawan":
             //daftar karyawan
             dismiss(animated: true, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.parentNavigationController?.pushViewController(DaftarKaryawanController(), animated: true)
             }
-        case 10:
+        case "menuLink":
             //link website aps
             let safariVc = SFSafariViewController(url: URL(string: "https://angkasapurasolusi.co.id")!)
             self.present(safariVc, animated: true)
-        case 11:
+        case "menuKebijakan":
             //link kebijakan & peraturan
             dismiss(animated: true, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.parentNavigationController?.pushViewController(KebijakanPeraturanController(), animated: true)
             }
-        case 12:
+        case "menuDaftarCuti":
             //link daftar cuti
             dismiss(animated: true, completion: nil)
             

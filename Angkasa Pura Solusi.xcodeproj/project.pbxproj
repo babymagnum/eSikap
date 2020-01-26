@@ -29,6 +29,7 @@
 		ED14CA7D231E17D600D5C7F0 /* NotifikasiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA7B231E17D600D5C7F0 /* NotifikasiCell.swift */; };
 		ED14CA7E231E17D600D5C7F0 /* NotifikasiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED14CA7C231E17D600D5C7F0 /* NotifikasiCell.xib */; };
 		ED14CA80231E198B00D5C7F0 /* ListNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA7F231E198B00D5C7F0 /* ListNotification.swift */; };
+		ED19672723DD19EB00C64DAE /* MenuServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED19672623DD19EB00C64DAE /* MenuServer.swift */; };
 		ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */; };
 		ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */; };
 		ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038C922ED639E005BCF87 /* BeritaCell.swift */; };
@@ -274,6 +275,7 @@
 		ED14CA7B231E17D600D5C7F0 /* NotifikasiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiCell.swift; sourceTree = "<group>"; };
 		ED14CA7C231E17D600D5C7F0 /* NotifikasiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifikasiCell.xib; sourceTree = "<group>"; };
 		ED14CA7F231E198B00D5C7F0 /* ListNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNotification.swift; sourceTree = "<group>"; };
+		ED19672623DD19EB00C64DAE /* MenuServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuServer.swift; sourceTree = "<group>"; };
 		ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUtamaCell.swift; sourceTree = "<group>"; };
 		ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuUtamaCell.xib; sourceTree = "<group>"; };
 		ED3038C922ED639E005BCF87 /* BeritaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeritaCell.swift; sourceTree = "<group>"; };
@@ -1129,6 +1131,7 @@
 				ED40C68A23D7DB9F0033757C /* DetailRequestRooms.swift */,
 				ED73D0AF23DA6692002A1A3A /* Rooms.swift */,
 				ED3C13A823DC78040038A987 /* RequestRoomsHistory.swift */,
+				ED19672623DD19EB00C64DAE /* MenuServer.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1795,6 +1798,7 @@
 				ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */,
 				EDD5891323CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.swift in Sources */,
 				EDC19E97231EC28D00690B59 /* LeaveTypeFilter.swift in Sources */,
+				ED19672723DD19EB00C64DAE /* MenuServer.swift in Sources */,
 				ED95906822EBDF3300D696E5 /* AppDelegate.swift in Sources */,
 				ED14CA78231DFCB100D5C7F0 /* EmpFilterCell.swift in Sources */,
 				ED61BF1222F7A4ED00776C25 /* KaryawanCell.swift in Sources */,

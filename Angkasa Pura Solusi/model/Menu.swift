@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct Menu {
-    var id: Int?
+    var id: String?
     var image: UIImage?
     var title: String?
     var action: UIImage?

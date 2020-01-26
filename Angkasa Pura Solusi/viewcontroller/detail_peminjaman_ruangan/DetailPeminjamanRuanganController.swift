@@ -155,7 +155,11 @@ class DetailPeminjamanRuanganController: BaseViewController {
     }
 }
 
-extension DetailPeminjamanRuanganController: URLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate {
+extension DetailPeminjamanRuanganController: URLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate, RealisasiPeminjamanRuanganProtocol {
+    
+    func updateData() {
+        getDetailData()
+    }
     
     private func cancelRequestRoom() {
         guard let _requestRoomId = requestRoomId else { return }
@@ -192,6 +196,7 @@ extension DetailPeminjamanRuanganController: URLSessionDownloadDelegate, UIDocum
         
         let vc = RealisasiPeminjamanRuanganController()
         vc.requestRoomId = _requestRoomId
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

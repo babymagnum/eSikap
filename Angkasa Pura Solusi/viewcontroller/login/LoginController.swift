@@ -27,27 +27,10 @@ class LoginController: BaseViewController {
         initView()
         
         initEvent()
-        
-        saveMenuForBerandaController()
     }
     
     private func initEvent() {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewClick)))
-    }
-    
-    private func saveMenuForBerandaController() {
-        preference.saveInt(value: 1, key: staticLet.MENU_1)
-        preference.saveInt(value: 2, key: staticLet.MENU_2)
-        preference.saveInt(value: 3, key: staticLet.MENU_3)
-        preference.saveInt(value: 4, key: staticLet.MENU_4)
-        preference.saveInt(value: 5, key: staticLet.MENU_5)
-        preference.saveInt(value: 6, key: staticLet.MENU_6)
-        preference.saveInt(value: 7, key: staticLet.MENU_7)
-        preference.saveInt(value: 8, key: staticLet.MENU_8)
-        preference.saveInt(value: 9, key: staticLet.MENU_9)
-        preference.saveInt(value: 10, key: staticLet.MENU_10)
-        preference.saveInt(value: 11, key: staticLet.MENU_11)
-        preference.saveInt(value: 12, key: staticLet.MENU_12)
     }
 
     private func initView() {
@@ -108,6 +91,7 @@ extension LoginController {
             } else {
                 //login success
                 self.preference.saveBool(value: true, key: self.staticLet.IS_LOGIN)
+                self.preference.saveInt(value: 0, key: self.staticLet.JUMLAH_MENU)
                 let vc = HomeController()
                 
                 DispatchQueue.main.async {

@@ -43,11 +43,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="540"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbq-YB-Ofm">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="540"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rrk-NR-U42">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
@@ -81,10 +81,10 @@
                             </constraints>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odg-Qx-1GN">
-                            <rect key="frame" x="0.0" y="53" width="375" height="477"/>
+                            <rect key="frame" x="0.0" y="53" width="375" height="487"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3w-Y3-7tI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="477"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="487"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zm-nz-fp2" customClass="CustomButton" customModule="eSIKAP" customModuleProvider="target">
                                             <rect key="frame" x="16" y="16" width="343" height="48"/>
@@ -217,10 +217,10 @@
                                             </constraints>
                                         </stackView>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Cju-63-PR5" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                            <rect key="frame" x="0.0" y="217" width="375" height="210"/>
+                                            <rect key="frame" x="0.0" y="217" width="375" height="220"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="210" id="Evz-6A-LMC"/>
+                                                <constraint firstAttribute="height" constant="220" id="Evz-6A-LMC"/>
                                             </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="nXa-ly-O07">
                                                 <size key="itemSize" width="49" height="50"/>
@@ -235,7 +235,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </collectionView>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UNT-DA-5f1">
-                                            <rect key="frame" x="0.0" y="427" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="437" width="375" height="50"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="KtR-n0-ZBQ"/>
@@ -244,11 +244,11 @@
                                                 <size key="itemSize" width="50" height="50"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="16" minY="30" maxX="16" maxY="30"/>
+                                                <inset key="sectionInset" minX="16" minY="20" maxX="16" maxY="30"/>
                                             </collectionViewFlowLayout>
                                         </collectionView>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data berita kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTY-O6-dIe" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="457" width="343" height="15.5"/>
+                                            <rect key="frame" x="16" y="467" width="343" height="15.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>

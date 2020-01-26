@@ -118,32 +118,34 @@ class BaseViewController: UIViewController {
         preference.saveString(value: "", key: staticLet.TOKEN)
     }
     
-    func generateMenu(savedMenu: Int, action: UIImage?) -> Menu {
+    func generateMenu(savedMenu: String, action: UIImage?) -> Menu {
         switch savedMenu {
-        case 1:
-            return Menu(id: 1, image: UIImage(named: "briefcase"), title: "Pengajuan Cuti", action: action)
-        case 2:
-            return Menu(id: 2, image: UIImage(named: "employee"), title: "Pengajuan Lembur", action: action)
-        case 3:
-            return Menu(id: 3, image: UIImage(named: "test"), title: "Persetujuan", action: action)
-        case 4:
-            return Menu(id: 4, image: UIImage(named: "circularClock"), title: "Presensi", action: action)
-        case 5:
-            return Menu(id: 5, image: UIImage(named: "form"), title: "Daftar Presensi", action: action)
-        case 6:
-            return Menu(id: 6, image: UIImage(named: "salary"), title: "Slip Gaji", action: action)
-        case 7:
-            return Menu(id: 7, image: UIImage(named: "seat"), title: "Peminjaman Ruangan", action: action)
-        case 8:
-            return Menu(id: 8, image: UIImage(named: "group436"), title: "Peminjaman Mobil Dinas", action: action)
-        case 9:
-            return Menu(id: 9, image: UIImage(named: "group537"), title: "Daftar Karyawan", action: action)
-        case 10:
-            return Menu(id: 10, image: UIImage(named: "coporate"), title: "Link Website APS", action: action)
-        case 11:
-            return Menu(id: 11, image: UIImage(named: "group_632"), title: "Kebijakan & Peraturan", action: action)
+        case "menuCuti":
+            return Menu(id: "menuCuti", image: UIImage(named: "briefcase"), title: "Pengajuan Cuti", action: action)
+        case "menuLembur":
+            return Menu(id: "menuLembur", image: UIImage(named: "employee"), title: "Pengajuan Lembur", action: action)
+        case "menuPersetujuan":
+            return Menu(id: "menuPersetujuan", image: UIImage(named: "test"), title: "Persetujuan", action: action)
+        case "menuPresensi":
+            return Menu(id: "menuPresensi", image: UIImage(named: "circularClock"), title: "Presensi", action: action)
+        case "menuDaftarPresensi":
+            return Menu(id: "menuDaftarPresensi", image: UIImage(named: "form"), title: "Daftar Presensi", action: action)
+        case "menuUpah":
+            return Menu(id: "menuUpah", image: UIImage(named: "salary"), title: "Upah", action: action)
+        case "menuRuang":
+            return Menu(id: "menuRuang", image: UIImage(named: "seat"), title: "Peminjaman Ruangan", action: action)
+        case "menuMobil":
+            return Menu(id: "menuMobil", image: UIImage(named: "group436"), title: "Peminjaman Mobil Dinas", action: action)
+        case "menuKaryawan":
+            return Menu(id: "menuKaryawan", image: UIImage(named: "group537"), title: "Daftar Karyawan", action: action)
+        case "menuLink":
+            return Menu(id: "menuLink", image: UIImage(named: "coporate"), title: "Link Website APS", action: action)
+        case "menuKebijakan":
+            return Menu(id: "menuKebijakan", image: UIImage(named: "group_632"), title: "Kebijakan & Peraturan", action: action)
+        case "menuDaftarCuti":
+            return Menu(id: "menuDaftarCuti", image: UIImage(named: "delivery_1"), title: "Daftar Cuti", action: action)
         default:
-            return Menu(id: 12, image: UIImage(named: "delivery_1"), title: "Daftar Cuti", action: action)
+            return Menu()
         }
     }
 }
