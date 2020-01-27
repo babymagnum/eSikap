@@ -29,6 +29,8 @@ class TabRiwayatController: ButtonBarPagerTabStripViewController {
         
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         
+        year = function.getCurrentDate(pattern: "yyyy")
+        
         if #available(iOS 11, *) {
             self.constraintViewRoot.constant = 0
         } else {
@@ -60,12 +62,12 @@ class TabRiwayatController: ButtonBarPagerTabStripViewController {
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let pengajuanController = PengajuanLemburTabController()
-        pengajuanController.year = self.year
-        pengajuanController.status = self.status
+        pengajuanController.year = year
+        pengajuanController.status = status
         
         let realisasiController = RealisasiLemburTabController()
-        realisasiController.year = self.year
-        realisasiController.status = self.status
+        realisasiController.year = year
+        realisasiController.status = status
         
         pages.append(pengajuanController)
         pages.append(realisasiController)
@@ -73,9 +75,20 @@ class TabRiwayatController: ButtonBarPagerTabStripViewController {
     }
 }
 
-extension TabRiwayatController {
-    @IBAction func buttonFilterClick(_ sender: Any) {
+extension TabRiwayatController: FilterPengajuanLemburTabProtocol {
+    func filterApply(year: String, status: String) {
+        self.year = year
+        self.status = status
+        pages.removeAll()
+        reloadPagerTabStripView()
     }
+    
+    @IBAction func buttonFilterClick(_ sender: Any) {
+        let vc = FilterPengajuanLemburTabController()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func buttonBackClick(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

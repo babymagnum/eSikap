@@ -1,38 +1,38 @@
 //
-//  FilterHistoryPeminjamanMobilController.swift
+//  FilterPengajuanLemburTabController.swift
 //  Angkasa Pura Solusi
 //
-//  Created by Arief Zainuri on 16/01/20.
+//  Created by Arief Zainuri on 27/01/20.
 //  Copyright © 2020 Gama Techno. All rights reserved.
 //
 
 import UIKit
 import SVProgressHUD
 
-protocol FilterHistoryPeminjamanMobilProtocol {
-    func terapkan(years: String, status: String)
+protocol FilterPengajuanLemburTabProtocol {
+    func filterApply(year: String, status: String)
 }
 
-class FilterHistoryPeminjamanMobilController: BaseViewController {
+class FilterPengajuanLemburTabController: BaseViewController {
 
+    @IBOutlet weak var constraintViewRoot: NSLayoutConstraint!
     @IBOutlet weak var viewTahun: UIView!
     @IBOutlet weak var fieldTahun: CustomDropDownField!
     @IBOutlet weak var viewStatus: UIView!
     @IBOutlet weak var fieldStatus: CustomDropDownField!
-    @IBOutlet weak var constraintViewRoot: NSLayoutConstraint!
-    @IBOutlet weak var buttonTerapkan: CustomButton!
     @IBOutlet weak var buttonReset: CustomButton!
-    @IBOutlet weak var labelStatus: CustomLabel!
+    @IBOutlet weak var buttonTerapkan: CustomButton!
     
-    var delegate: FilterHistoryPeminjamanMobilProtocol?
-    var isFromPeminjamanRuangan: Bool?
+    var delegate: FilterPengajuanLemburTabProtocol?
     
-    private var selectedYears = "2019"
+    private var listStatus = [OvertimeStatusFilterItem]()
+    
+    private var selectedYears = ""
     private var selectedStatus = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         initView()
         
         getYearsFilter()
@@ -43,7 +43,7 @@ class FilterHistoryPeminjamanMobilController: BaseViewController {
     private func getStatusFilter() {
         SVProgressHUD.show()
         
-        informationNetworking.getRequestCarStatusFilter { (error, request, isExpired) in
+        informationNetworking.getOvertimeStatusFilter { (error, overtimeStatus, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -52,21 +52,33 @@ class FilterHistoryPeminjamanMobilController: BaseViewController {
             }
             
             if let _ = error {
-                self.getStatusFilter()
+                self.getYearsFilter()
                 return
             }
             
-            guard let _request = request else { return }
+            guard let _overtimeStatus = overtimeStatus else { return }
             
-            _request.data.forEach { (item) in
-                self.fieldStatus.optionArray.append(item.opercarstat_name)
-                self.fieldStatus.optionIds?.append(Int(item.opercarstat_id == "" ? "-1" : item.opercarstat_id) ?? -1)
+            self.listStatus = _overtimeStatus.data
+            
+            _overtimeStatus.data.forEach { (item) in
+                self.fieldStatus.optionArray.append(item.overtimestat_name ?? "")
             }
             
-            self.fieldStatus.didSelect { (text, index, id) in
-                self.selectedStatus = "\(id)"
+            self.fieldStatus.didSelect { (text, index, _) in
+                self.selectedStatus = self.listStatus[index].overtimestat_id ?? ""
             }
         }
+    }
+
+    private func initView() {
+        selectedYears = function.getCurrentDate(pattern: "yyyy")
+        fieldTahun.text = selectedYears
+        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
+        checkTopMargin(viewRootTopMargin: constraintViewRoot)
+        buttonReset.giveBorder(38 / 2, 1, "42a5f5")
+        buttonTerapkan.giveBorder(38 / 2, 0, "fff")
+        viewTahun.giveBorder(3, 1, "dedede")
+        viewStatus.giveBorder(3, 1, "dedede")
     }
     
     private func getYearsFilter() {
@@ -93,36 +105,18 @@ class FilterHistoryPeminjamanMobilController: BaseViewController {
             
             self.fieldTahun.didSelect { (text, index, _) in
                 self.selectedYears = text
-                self.fieldTahun.text = text
             }
         }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    
-    private func initView() {
-        if let _ = isFromPeminjamanRuangan {
-            labelStatus.isHidden = true
-            viewStatus.isHidden = true
-        }
-        
-        selectedYears = function.getCurrentDate(pattern: "yyyy")
-        fieldTahun.text = selectedYears
-        checkTopMargin(viewRootTopMargin: constraintViewRoot)
-        function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
-        viewTahun.giveBorder(3, 1, "dedede")
-        viewStatus.giveBorder(3, 1, "dedede")
-        buttonTerapkan.giveBorder(38 / 2, 0, "dedede")
-        buttonReset.giveBorder(38 / 2, 1, "42a5f5")
-    }
-
 }
 
-extension FilterHistoryPeminjamanMobilController {
+extension FilterPengajuanLemburTabController {
     @IBAction func buttonTerapkanClick(_ sender: Any) {
         guard let _delegate = delegate else { return }
         
-        _delegate.terapkan(years: selectedYears, status: selectedStatus)
+        _delegate.filterApply(year: selectedYears, status: selectedStatus)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -131,7 +125,7 @@ extension FilterHistoryPeminjamanMobilController {
         
         selectedYears = function.getCurrentDate(pattern: "yyyy")
         selectedStatus = ""
-        _delegate.terapkan(years: selectedYears, status: selectedStatus)
+        _delegate.filterApply(year: selectedYears, status: selectedStatus)
         self.navigationController?.popViewController(animated: true)
     }
     
