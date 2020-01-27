@@ -7,9 +7,16 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RealisasiLemburTabController" customModule="eSIKAP" customModuleProvider="target">
             <connections>
+                <outlet property="collectionRealisasi" destination="vim-4z-Gw6" id="fJe-ls-v9e"/>
+                <outlet property="labelEmpty" destination="Did-vP-3E9" id="3az-Ta-Vfu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,7 +24,34 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vim-4z-Gw6">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="14" minimumInteritemSpacing="14" id="5ZL-9x-mf0">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data berita kosong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Did-vP-3E9" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                    <rect key="frame" x="16" y="326" width="343" height="15.5"/>
+                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vim-4z-Gw6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6zu-bX-Y9t"/>
+                <constraint firstItem="Did-vP-3E9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="NIM-gj-eqZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vim-4z-Gw6" secondAttribute="bottom" id="VZg-nz-Nxu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Did-vP-3E9" secondAttribute="trailing" constant="16" id="ala-TO-2gr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vim-4z-Gw6" secondAttribute="trailing" id="gmV-wA-Fe8"/>
+                <constraint firstItem="vim-4z-Gw6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ljm-E7-zcw"/>
+                <constraint firstItem="Did-vP-3E9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="utO-Mc-Etx"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="132" y="123"/>
         </view>
