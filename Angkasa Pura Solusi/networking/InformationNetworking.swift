@@ -711,4 +711,21 @@ class InformationNetworking: BaseNetworking {
         let url = "\(baseUrl())api/getOvertimeStatusFilter"
         alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
     }
+    
+    func getDetailOvertimeById(overtimeId: String, completion: @escaping(_ error: String?, _ detailOvertime: DetailOvertime?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getDetailOvertimeById"
+        let body: [String: String] = [
+            "overtime_id": overtimeId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func cancelOvertime(overtimeId: String, cancelNotes: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/cancelOvertime"
+        let body: [String: String] = [
+            "overtime_id": overtimeId,
+            "cancel_notes": cancelNotes
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

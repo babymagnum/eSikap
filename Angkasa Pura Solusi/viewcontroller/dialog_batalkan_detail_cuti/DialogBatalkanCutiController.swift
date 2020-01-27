@@ -21,6 +21,7 @@ class DialogBatalkanCutiController: BaseViewController {
     @IBOutlet weak var viewContainer: UIView!
     
     var leave_id: String!
+    var overtime_id: String?
     var delegate: DialogBatalkanProtocol!
     
     override func viewDidLoad() {
@@ -60,6 +61,29 @@ class DialogBatalkanCutiController: BaseViewController {
         }
     }
     
+    private func cancelRequestOvertime(overtimeId: String) {
+        SVProgressHUD.show()
+        
+        informationNetworking.cancelOvertime(overtimeId: overtimeId, cancelNotes: fieldAlasan.text.trim()) { (error, success, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Lembur", error, "Ulangi", "Cancel", completionHandler: {
+                    self.cancelRequestOvertime(overtimeId: overtimeId)
+                })
+                return
+            }
+            
+            self.delegate.updateData()
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
 }
 
 extension DialogBatalkanCutiController {
@@ -70,6 +94,11 @@ extension DialogBatalkanCutiController {
     @IBAction func buttonProsesClick(_ sender: Any) {
         if fieldAlasan.text.trim() == "" {
             self.function.showUnderstandDialog(self, "Alasan Tidak Boleh Kosong", "Anda harus menyertakan alasan yang jelas untuk pembatalan cuti", "Understand")
+            return
+        }
+        
+        if let _overtimeId = overtime_id {
+            cancelRequestOvertime(overtimeId: _overtimeId)
             return
         }
         

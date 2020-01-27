@@ -140,6 +140,16 @@ extension PengajuanLemburTabController: UICollectionViewDataSource, UICollection
 extension PengajuanLemburTabController {
     @objc func collectionViewContainerClick(sender: UITapGestureRecognizer) {
         guard let indexpath = collectionPengajuan.indexPathForItem(at: sender.location(in: collectionPengajuan)) else { return }
+        
+        if listPengajuan[indexpath.item].status == "Saved" {
+            let vc = PengajuanLemburController()
+            vc.overtimeId = listPengajuan[indexpath.item].id
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = DetailPengajuanLemburController()
+            vc.overtimeId = listPengajuan[indexpath.item].id
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="StatusPengajuanLemburCell" customModule="eSIKAP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pyL-TH-Tgr">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxv-Qk-Oc3" customClass="CustomButton" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="10" y="30" width="16.5" height="16.5"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Oxv-Qk-Oc3" secondAttribute="height" multiplier="1:1" id="xSV-rJ-JCd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="7"/>
+                                <state key="normal" title="1">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="WAYAN SANJAYA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="CeS-z4-swD" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="42.5" y="30" width="211" height="11"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
+                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pengaju" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="5jB-Gt-Ehy" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="42.5" y="43" width="207.5" height="11"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
+                                <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waiting" translatesAutoresizingMaskIntoConstraints="NO" id="qGL-zh-rho">
+                                <rect key="frame" x="263.5" y="27" width="22.5" height="22.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qGL-zh-rho" secondAttribute="height" multiplier="1:1" id="AHb-sR-sbx"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Submited" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="T4n-7M-gZt" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="260" y="51.5" width="30" height="8.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="7"/>
+                                <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="WAYAN SANJAYA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="3hk-Ob-3kb" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="10" y="8" width="280" height="11"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="9"/>
+                                <color key="textColor" red="0.72941176470000002" green="0.72941176470000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5jB-Gt-Ehy" firstAttribute="top" secondItem="CeS-z4-swD" secondAttribute="bottom" constant="2" id="1l2-gc-J0t"/>
+                            <constraint firstItem="qGL-zh-rho" firstAttribute="width" secondItem="pyL-TH-Tgr" secondAttribute="width" multiplier="0.075" id="C3N-ub-NbJ"/>
+                            <constraint firstItem="3hk-Ob-3kb" firstAttribute="leading" secondItem="pyL-TH-Tgr" secondAttribute="leading" constant="10" id="O3q-tN-r1V"/>
+                            <constraint firstItem="5jB-Gt-Ehy" firstAttribute="leading" secondItem="Oxv-Qk-Oc3" secondAttribute="trailing" constant="16" id="WCC-yH-8cb"/>
+                            <constraint firstItem="3hk-Ob-3kb" firstAttribute="top" secondItem="pyL-TH-Tgr" secondAttribute="top" constant="8" id="XbL-h9-1PL"/>
+                            <constraint firstItem="CeS-z4-swD" firstAttribute="leading" secondItem="Oxv-Qk-Oc3" secondAttribute="trailing" constant="16" id="YqQ-kg-Bei"/>
+                            <constraint firstItem="T4n-7M-gZt" firstAttribute="leading" secondItem="5jB-Gt-Ehy" secondAttribute="trailing" constant="10" id="b2d-Ro-gK5"/>
+                            <constraint firstAttribute="trailing" secondItem="T4n-7M-gZt" secondAttribute="trailing" constant="10" id="bRz-Ch-4bU"/>
+                            <constraint firstAttribute="trailing" secondItem="qGL-zh-rho" secondAttribute="trailing" constant="14" id="e01-Ul-GLc"/>
+                            <constraint firstItem="T4n-7M-gZt" firstAttribute="top" secondItem="qGL-zh-rho" secondAttribute="bottom" constant="2" id="hwh-ph-X6f"/>
+                            <constraint firstItem="qGL-zh-rho" firstAttribute="leading" secondItem="CeS-z4-swD" secondAttribute="trailing" constant="10" id="ja8-g6-d0a"/>
+                            <constraint firstItem="qGL-zh-rho" firstAttribute="top" secondItem="3hk-Ob-3kb" secondAttribute="bottom" constant="8" id="kav-K8-Hm2"/>
+                            <constraint firstItem="Oxv-Qk-Oc3" firstAttribute="top" secondItem="3hk-Ob-3kb" secondAttribute="bottom" constant="11" id="m2t-k5-Ens"/>
+                            <constraint firstItem="CeS-z4-swD" firstAttribute="top" secondItem="3hk-Ob-3kb" secondAttribute="bottom" constant="11" id="oXt-z5-q9J"/>
+                            <constraint firstItem="Oxv-Qk-Oc3" firstAttribute="width" secondItem="pyL-TH-Tgr" secondAttribute="width" multiplier="0.055" id="w4t-Js-YC5"/>
+                            <constraint firstAttribute="trailing" secondItem="3hk-Ob-3kb" secondAttribute="trailing" constant="10" id="wMd-nJ-sSe"/>
+                            <constraint firstItem="Oxv-Qk-Oc3" firstAttribute="leading" secondItem="pyL-TH-Tgr" secondAttribute="leading" constant="10" id="yGj-Oh-rIe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="pyL-TH-Tgr" secondAttribute="trailing" id="BUe-Lg-j2Y"/>
+                <constraint firstAttribute="bottom" secondItem="pyL-TH-Tgr" secondAttribute="bottom" id="CQB-Np-6N2"/>
+                <constraint firstItem="pyL-TH-Tgr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="UNG-JQ-Im1"/>
+                <constraint firstItem="pyL-TH-Tgr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Uh3-WY-KwN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="300" height="50"/>
+            <connections>
+                <outlet property="buttonNomor" destination="Oxv-Qk-Oc3" id="0aR-jN-vhh"/>
+                <outlet property="imageStatus" destination="qGL-zh-rho" id="Jad-nl-ZdY"/>
+                <outlet property="labelAlasan" destination="5jB-Gt-Ehy" id="MDw-x2-b2I"/>
+                <outlet property="labelDate" destination="3hk-Ob-3kb" id="tL8-PY-p4X"/>
+                <outlet property="labelNama" destination="CeS-z4-swD" id="HYP-4i-9mi"/>
+                <outlet property="labelStatus" destination="T4n-7M-gZt" id="ylN-mI-EmR"/>
+                <outlet property="viewContainer" destination="pyL-TH-Tgr" id="lwM-i9-y6Q"/>
+            </connections>
+            <point key="canvasLocation" x="313.04347826086956" y="127.90178571428571"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="waiting" width="22.5" height="22.5"/>
+    </resources>
+</document>
