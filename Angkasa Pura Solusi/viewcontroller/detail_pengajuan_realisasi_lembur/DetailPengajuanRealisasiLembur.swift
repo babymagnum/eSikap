@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SVProgressHUD
+import FittedSheets
+import HSAttachmentPicker
 
 class DetailPengajuanRealisasiLembur: BaseViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var constraintViewRoot: NSLayoutConstraint!
     @IBOutlet weak var constraintTopLabelFilePendukung: NSLayoutConstraint!
@@ -27,20 +30,114 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
     @IBOutlet weak var viewFilePendukung: UIView!
     @IBOutlet weak var buttonSubmit: UIButton!
     
+    private var datetimes_start = [String]()
+    private var datetimes_start_show = [String]()
+    private var datetimes_end = [String]()
+    private var datetimes_end_show = [String]()
+    private var datetimes_start_real = [String]()
+    private var datetimes_end_real = [String]()
+    private var isPickTanggalMulai = false
+    private var isPickWaktuMulai = false
+    private var selectedIndex = 0
+    private let picker = HSAttachmentPicker()
+    private var fileType = ""
+    private var pickedData: Data?
+    
+    var overtimeId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initView()
         
         initEvent()
+        
+        getEditOvertime()
+        
+        getProfile()
+    }
+    
+    private func getProfile() {
+        informationNetworking.getProfile { (error, itemProfile, isExpired) in
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let _ = error {
+                self.getProfile()
+                return
+            }
+            
+            guard let _itemProfile = itemProfile else { return }
+            
+            self.setProfileView(data: _itemProfile)
+        }
+    }
+    
+    private func setProfileView(data: ItemProfile) {
+        labelNama.text = data.emp_name
+        labelUnitKerja.text = data.workarea
+        imageProfile.loadUrl(data.img ?? "")
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
+    private func getEditOvertime() {
+        guard let _overtimeId = overtimeId else { return }
+        
+        SVProgressHUD.show()
+        
+        informationNetworking.getEditDetailOvertimeRealizationById(overtimeId: _overtimeId) { (error, editDetailOvertime, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let _error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                    self.getEditOvertime()
+                }
+            }
+            
+            guard let _data = editDetailOvertime?.data else { return }
+                        
+            self.labelKeterangan.text = _data.reason
+            self.labelNumber.text = _data.number
+            self.labelDate.text = _data.date
+            self.datetimes_start = _data.datetimes_start
+            self.datetimes_start_show = _data.datetimes_start_show
+            self.datetimes_end = _data.datetimes_end
+            self.datetimes_end_show = _data.datetimes_end_show
+            self.datetimes_start_real = _data.datetimes_start_real
+            self.datetimes_end_real = _data.datetimes_end_real
+            
+            self.collectionTanggalLembur.reloadData()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                self.collectionTanggalLemburHeight.constant = self.collectionTanggalLembur.contentSize.height
+                self.scrollView.resizeScrollViewContentSize()
+                self.scrollView.alpha = 1
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
     private func initEvent() {
+        viewFilePendukung.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewFilePendukungClick)))
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
+        collectionTanggalLembur.collectionViewLayout.invalidateLayout()
     }
 
     private func initView() {
-        checkTopMargin(viewRootTopMargin: constraintViewRoot)
+        picker.delegate = self
+        constraintViewRoot.constant += UIApplication.shared.statusBarFrame.height
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         
         labelFilePendukung.text = ""
@@ -49,15 +146,151 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
         
         viewFilePendukung.giveBorder(3, 1, "dedede")
         viewKeteranganRealisasi.giveBorder(3, 1, "dedede")
+        buttonSubmit.giveBorder(5, 0, "fff")
         
         scrollView.alpha = 0
         imageProfile.clipsToBounds = true
-        imageProfile.layer.cornerRadius = (UIScreen.main.bounds.width * 0.15) / 2
+        imageProfile.layer.cornerRadius = (UIScreen.main.bounds.width * 0.16) / 2
+        
+        collectionTanggalLembur.register(UINib(nibName: "TanggalLemburRealisasiCell", bundle: nil), forCellWithReuseIdentifier: "TanggalLemburRealisasiCell")
+        collectionTanggalLembur.dataSource = self
+        collectionTanggalLembur.delegate = self
+        let collectionLayout = collectionTanggalLembur.collectionViewLayout as! UICollectionViewFlowLayout
+        collectionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 324)
     }
 }
 
-extension DetailPengajuanRealisasiLembur {
+extension DetailPengajuanRealisasiLembur: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return datetimes_start.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TanggalLemburRealisasiCell", for: indexPath) as! TanggalLemburRealisasiCell
+        let tanggalWaktuMulai = datetimes_start_real[indexPath.item].components(separatedBy: " ")
+        let tanggalWaktuSelesai = datetimes_end_real[indexPath.item].components(separatedBy: " ")
+        cell.labelMulaiPermintaan.text = datetimes_start_show[indexPath.item]
+        cell.labelSelesaiPermintaan.text = datetimes_end_show[indexPath.item]
+        cell.fieldTanggalMulai.text = function.dateStringTo(date: tanggalWaktuMulai[0], original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")
+        cell.fieldWaktuMulai.text = "\(tanggalWaktuMulai[1].prefix(5))"
+        cell.fieldTanggalSelesai.text = function.dateStringTo(date: tanggalWaktuSelesai[0], original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")
+        cell.fieldWaktuSelesai.text = "\(tanggalWaktuSelesai[1].prefix(5))"
+        cell.viewTanggalMulai.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewTanggalMulaiClick(sender:))))
+        cell.viewWaktuMulai.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewWaktuMulaiClick(sender:))))
+        cell.viewTanggalSelesai.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewTanggalSelesaiClick(sender:))))
+        cell.viewWaktuSelesai.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewWaktuSelesaiClick(sender:))))
+        return cell
+    }
+}
+
+extension DetailPengajuanRealisasiLembur: HSAttachmentPickerDelegate {
+    func attachmentPickerMenu(_ menu: HSAttachmentPicker, show controller: UIViewController, completion: (() -> Void)? = nil) {
+        DispatchQueue.main.async {
+            self.present(controller, animated: true, completion: completion)
+        }
+    }
+    
+    func attachmentPickerMenu(_ menu: HSAttachmentPicker, showErrorMessage errorMessage: String) { }
+    
+    func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
+        
+        if filename.contains(".") {
+            fileType = filename.components(separatedBy: ".")[1]
+        }
+        
+        if let image = image {
+            pickedData = image.pngData()
+            labelFilePendukung.text = filename
+            return
+        }
+        
+        pickedData = data
+        labelFilePendukung.text = filename
+
+        if filename.contains(regex: "(jpg|png|jpeg)") {
+            pickedData = UIImage(data: data)?.pngData()
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.scrollView.resizeScrollViewContentSize()
+            self.view.layoutIfNeeded()
+        }
+    }
+}
+
+extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol {
+    func pickDate(formatedDate: String) {
+        if isPickTanggalMulai {
+            let tanggalWaktuMulai = datetimes_start_real[selectedIndex].components(separatedBy: " ")
+            let originalTanggal = function.dateStringTo(date: formatedDate, original: "dd-MM-yyyy", toFormat: "yyyy-MM-dd")
+            datetimes_start_real[selectedIndex] = "\(originalTanggal) \(tanggalWaktuMulai[1])"
+            collectionTanggalLembur.reloadItems(at: [IndexPath(row: selectedIndex, section: 0)])
+        } else {
+            let tanggalWaktuSelesai = datetimes_end_real[selectedIndex].components(separatedBy: " ")
+            let originalTanggal = function.dateStringTo(date: formatedDate, original: "dd-MM-yyyy", toFormat: "yyyy-MM-dd")
+            datetimes_end_real[selectedIndex] = "\(originalTanggal) \(tanggalWaktuSelesai[1])"
+            collectionTanggalLembur.reloadItems(at: [IndexPath(row: selectedIndex, section: 0)])
+        }
+    }
+    
+    func pickTime(pickedTime: String) {
+        if isPickWaktuMulai {
+            let tanggalWaktuMulai = datetimes_start_real[selectedIndex].components(separatedBy: " ")
+            datetimes_start_real[selectedIndex] = "\(tanggalWaktuMulai[0]) \(pickedTime):00"
+            collectionTanggalLembur.reloadItems(at: [IndexPath(row: selectedIndex, section: 0)])
+        } else {
+            let tanggalWaktuSelesai = datetimes_end_real[selectedIndex].components(separatedBy: " ")
+            datetimes_end_real[selectedIndex] = "\(tanggalWaktuSelesai[0]) \(pickedTime):00"
+            collectionTanggalLembur.reloadItems(at: [IndexPath(row: selectedIndex, section: 0)])
+        }
+    }
+    
+    private func openDateTimePicker(_ picker: PickerTypeEnum) {
+        let vc = BottomSheetDatePicker()
+        vc.delegate = self
+        vc.picker = picker
+        vc.isBackDate = false
+        present(SheetViewController(controller: vc), animated: false, completion: nil)
+    }
+    
+    @objc func collectionViewTanggalMulaiClick(sender: UITapGestureRecognizer) {
+        guard let indexpath = collectionTanggalLembur.indexPathForItem(at: sender.location(in: collectionTanggalLembur)) else { return }
+        
+        isPickTanggalMulai = true
+        selectedIndex = indexpath.item
+        openDateTimePicker(PickerTypeEnum.date)
+    }
+    
+    @objc func collectionViewTanggalSelesaiClick(sender: UITapGestureRecognizer) {
+        guard let indexpath = collectionTanggalLembur.indexPathForItem(at: sender.location(in: collectionTanggalLembur)) else { return }
+        
+        isPickTanggalMulai = false
+        selectedIndex = indexpath.item
+        openDateTimePicker(PickerTypeEnum.date)
+    }
+    
+    @objc func collectionViewWaktuMulaiClick(sender: UITapGestureRecognizer) {
+        guard let indexpath = collectionTanggalLembur.indexPathForItem(at: sender.location(in: collectionTanggalLembur)) else { return }
+        
+        isPickWaktuMulai = true
+        selectedIndex = indexpath.item
+        openDateTimePicker(PickerTypeEnum.time)
+    }
+    
+    @objc func collectionViewWaktuSelesaiClick(sender: UITapGestureRecognizer) {
+        guard let indexpath = collectionTanggalLembur.indexPathForItem(at: sender.location(in: collectionTanggalLembur)) else { return }
+        
+        isPickWaktuMulai = false
+        selectedIndex = indexpath.item
+        openDateTimePicker(PickerTypeEnum.time)
+    }
+    
+    @objc func viewFilePendukungClick() {
+        self.picker.showAttachmentMenu()
+    }
+    
     @IBAction func buttonSubmitClick(_ sender: Any) {
+        
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {

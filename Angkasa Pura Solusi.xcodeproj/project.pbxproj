@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D8D432A86DE3EDD47415F16D /* Pods_Angkasa_Pura_Solusi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EBC11F8DD2D9E24273410E5 /* Pods_Angkasa_Pura_Solusi.framework */; };
+		ED0B454423DFB9DA0058772C /* TanggalLemburRealisasiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B454223DFB9DA0058772C /* TanggalLemburRealisasiCell.swift */; };
+		ED0B454523DFB9DA0058772C /* TanggalLemburRealisasiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED0B454323DFB9DA0058772C /* TanggalLemburRealisasiCell.xib */; };
+		ED0B454723DFE8770058772C /* EditDetailOvertimeRealization.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B454623DFE8770058772C /* EditDetailOvertimeRealization.swift */; };
 		ED0E0737230802AE00260783 /* LeaveQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E0736230802AE00260783 /* LeaveQuota.swift */; };
 		ED0E07392308039500260783 /* PerizinanNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E07382308039500260783 /* PerizinanNetworking.swift */; };
 		ED0E073B2308191800260783 /* LeaveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E073A2308191800260783 /* LeaveType.swift */; };
@@ -279,6 +282,9 @@
 		4EBC11F8DD2D9E24273410E5 /* Pods_Angkasa_Pura_Solusi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Angkasa_Pura_Solusi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14CFE01F0097BA5643AAEA0 /* Pods-Angkasa Pura Solusi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Angkasa Pura Solusi.debug.xcconfig"; path = "Target Support Files/Pods-Angkasa Pura Solusi/Pods-Angkasa Pura Solusi.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C2FE2E010A17EC58ACBEC2 /* Pods-Angkasa Pura Solusi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Angkasa Pura Solusi.release.xcconfig"; path = "Target Support Files/Pods-Angkasa Pura Solusi/Pods-Angkasa Pura Solusi.release.xcconfig"; sourceTree = "<group>"; };
+		ED0B454223DFB9DA0058772C /* TanggalLemburRealisasiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanggalLemburRealisasiCell.swift; sourceTree = "<group>"; };
+		ED0B454323DFB9DA0058772C /* TanggalLemburRealisasiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TanggalLemburRealisasiCell.xib; sourceTree = "<group>"; };
+		ED0B454623DFE8770058772C /* EditDetailOvertimeRealization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailOvertimeRealization.swift; sourceTree = "<group>"; };
 		ED0E0736230802AE00260783 /* LeaveQuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveQuota.swift; sourceTree = "<group>"; };
 		ED0E07382308039500260783 /* PerizinanNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerizinanNetworking.swift; sourceTree = "<group>"; };
 		ED0E073A2308191800260783 /* LeaveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveType.swift; sourceTree = "<group>"; };
@@ -585,6 +591,15 @@
 				C4C2FE2E010A17EC58ACBEC2 /* Pods-Angkasa Pura Solusi.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		ED0B454123DFB9AF0058772C /* tanggal_lembur_realisasi_cell */ = {
+			isa = PBXGroup;
+			children = (
+				ED0B454223DFB9DA0058772C /* TanggalLemburRealisasiCell.swift */,
+				ED0B454323DFB9DA0058772C /* TanggalLemburRealisasiCell.xib */,
+			);
+			path = tanggal_lembur_realisasi_cell;
 			sourceTree = "<group>";
 		};
 		ED0E073C230834B200260783 /* bottom_sheet_date_picker */ = {
@@ -1273,6 +1288,7 @@
 				EDCB54F423DE705000D3CA2C /* OvertimeHistoryList.swift */,
 				EDCB54FB23DE7E2F00D3CA2C /* OvertimeStatusFilter.swift */,
 				ED6D2FF623DEC0E6000E7919 /* DetailOvertime.swift */,
+				ED0B454623DFE8770058772C /* EditDetailOvertimeRealization.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1345,6 +1361,7 @@
 		ED95909C22EBF98400D696E5 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED0B454123DFB9AF0058772C /* tanggal_lembur_realisasi_cell */,
 				ED6D2FF823DEC48F000E7919 /* status_pengajuan_lembur_cell */,
 				ED6D2FF123DEB673000E7919 /* tanggal_lembur_cell */,
 				EDCB54EF23DE696B00D3CA2C /* pengajuan_lembur_cell */,
@@ -1758,6 +1775,7 @@
 				EDD5891423CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.xib in Resources */,
 				EDFC1F4822FDB80D00AAA93B /* TabPersetujuanController.xib in Resources */,
 				EDEDA23623D0B9D50085E2EA /* KebijakanPeraturanCell.xib in Resources */,
+				ED0B454523DFB9DA0058772C /* TanggalLemburRealisasiCell.xib in Resources */,
 				ED40C68223D7D3A80033757C /* DateCell.xib in Resources */,
 				ED52153422F51DA7001C6A50 /* MenuLainyaCell.xib in Resources */,
 				ED8A9149231C088000C6834C /* DialogBatalkanCutiController.xib in Resources */,
@@ -1896,6 +1914,7 @@
 				ED40AB52231CBB5A007C0ADC /* DetailDelegationList.swift in Sources */,
 				ED95909422EBEE9300D696E5 /* SplashController.swift in Sources */,
 				ED57FE4E22FA44C2007B62A0 /* BottomSheetFilterPresensi.swift in Sources */,
+				ED0B454723DFE8770058772C /* EditDetailOvertimeRealization.swift in Sources */,
 				EDEDA23023D0B2C20085E2EA /* KebijakanPeraturanController.swift in Sources */,
 				ED57FE4722F8F645007B62A0 /* TanggalCutiCell.swift in Sources */,
 				ED61BF0722F696AA00776C25 /* InteractivePopRecognizer.swift in Sources */,
@@ -1942,6 +1961,7 @@
 				ED40C68923D7DA760033757C /* SchedulesRoom.swift in Sources */,
 				EDE5DBCE2320B80500CFC608 /* SlipGajiController.swift in Sources */,
 				EDBF21BB23005BDD003F5DAF /* CustomLabel.swift in Sources */,
+				ED0B454423DFB9DA0058772C /* TanggalLemburRealisasiCell.swift in Sources */,
 				EDE5DBD62320BD4400CFC608 /* SlipGaji.swift in Sources */,
 				EDFC1F4322FC428C00AAA93B /* JatahCuti.swift in Sources */,
 				EDBF21BD2300DBA6003F5DAF /* CustomButton.swift in Sources */,

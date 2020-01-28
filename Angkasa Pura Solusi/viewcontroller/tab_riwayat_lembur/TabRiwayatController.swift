@@ -29,8 +29,6 @@ class TabRiwayatController: ButtonBarPagerTabStripViewController {
         
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         
-        year = function.getCurrentDate(pattern: "yyyy")
-        
         if #available(iOS 11, *) {
             self.constraintViewRoot.constant = 0
         } else {
@@ -61,6 +59,11 @@ class TabRiwayatController: ButtonBarPagerTabStripViewController {
     
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        
+        if year == "" {
+            year = function.getCurrentDate(pattern: "yyyy")
+        }
+        
         let pengajuanController = PengajuanLemburTabController()
         pengajuanController.year = year
         pengajuanController.status = status

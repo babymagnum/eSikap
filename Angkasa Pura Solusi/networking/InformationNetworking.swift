@@ -738,4 +738,12 @@ class InformationNetworking: BaseNetworking {
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func getEditDetailOvertimeRealizationById(overtimeId: String, completion: @escaping(_ error: String?, _ editDetailOvertimeRealization: EditDetailOvertimeRealization?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getEditDetailOvertimeRealizationById"
+        let body: [String: String] = [
+            "overtime_id": overtimeId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

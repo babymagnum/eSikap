@@ -71,6 +71,7 @@ class DetailPengajuanLemburController: BaseViewController {
     private func updateLayout(_ data: DetailOvertimeDataItem?) {
         guard let _data = data else { return }
         
+        imageProfile.loadUrl(_data.photo ?? "")
         labelNumber.text = _data.number
         labelPengajuan.text = _data.date
         labelNama.text = ": \(_data.emp_name ?? "")"
@@ -113,7 +114,7 @@ class DetailPengajuanLemburController: BaseViewController {
         buttonStatus.layer.cornerRadius = buttonStatus.frame.height / 2
         buttonBatalkan.giveBorder(5, 1, "ea1c18")
         imageProfile.clipsToBounds = true
-        imageProfile.layer.cornerRadius = (UIScreen.main.bounds.width * 0.15) / 2
+        imageProfile.layer.cornerRadius = (UIScreen.main.bounds.width * 0.16) / 2
         
         // register collectionview
         collectionTanggalLembur.register(UINib(nibName: "TanggalLemburCell", bundle: nil), forCellWithReuseIdentifier: "TanggalLemburCell")

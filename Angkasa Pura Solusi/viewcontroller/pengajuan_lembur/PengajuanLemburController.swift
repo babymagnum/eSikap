@@ -93,10 +93,14 @@ class PengajuanLemburController: BaseViewController {
             
             self.labelPegawai.text = _itemProfile.emp_name
             self.buttonUnitKerja.setTitle(_itemProfile.workarea, for: .normal)
+            UIView.animate(withDuration: 0.2) {
+                self.scrollView.alpha = 1
+            }
         }
     }
 
     private func initView() {
+        scrollView.alpha = 0
         function.changeStatusBar(hexCode: 0x42A5F5, view: self.view, opacity: 1)
         buttonUnitKerja.giveBorder(3, 1, "dedede")
         viewTanggalMulai.giveBorder(3, 1, "dedede")

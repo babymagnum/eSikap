@@ -116,6 +116,7 @@ class BaseViewController: UIViewController {
         preference.saveBool(value: false, key: staticLet.IS_LOGIN)
         preference.saveBool(value: false, key: staticLet.IS_SHOW_FIRST_DIALOG)
         preference.saveString(value: "", key: staticLet.TOKEN)
+        preference.saveInt(value: 0, key: staticLet.JUMLAH_MENU)
     }
     
     func generateMenu(savedMenu: String, action: UIImage?) -> Menu {

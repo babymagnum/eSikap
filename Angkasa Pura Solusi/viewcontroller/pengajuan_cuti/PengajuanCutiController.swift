@@ -795,7 +795,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (UIAlertAction) in
             if !UIImagePickerController.isSourceTypeAvailable(.camera){
                 self.function.showUnderstandDialog(self, "Device Tidak Memiliki Camera", nil, "Mengerti")
-            } else{
+            } else {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.allowsEditing = true

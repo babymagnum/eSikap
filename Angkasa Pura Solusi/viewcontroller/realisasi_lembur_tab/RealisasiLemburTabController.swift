@@ -82,6 +82,8 @@ class RealisasiLemburTabController: BaseViewController, IndicatorInfoProvider {
         collectionRealisasi.register(UINib(nibName: "PengajuanLemburCell", bundle: nil), forCellWithReuseIdentifier: "PengajuanLemburCell")
         collectionRealisasi.dataSource = self
         collectionRealisasi.delegate = self
+        let collectionLayout = collectionRealisasi.collectionViewLayout as! UICollectionViewFlowLayout
+        collectionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 60 - 33 + ((UIScreen.main.bounds.width - 32) * 0.11))
     }
 }
 
@@ -120,7 +122,8 @@ extension RealisasiLemburTabController: UICollectionViewDataSource, UICollection
         cell.labelTime.text = listPengajuan[indexPath.item].date
         cell.labelNumber.text = listPengajuan[indexPath.item].number
         cell.labelStatus.text = listPengajuan[indexPath.item].status
-        cell.imageStatus.image = UIImage(named: listPengajuan[indexPath.item].status_icon ?? "")
+        let statusIcon = listPengajuan[indexPath.item].status_icon ?? ""
+        cell.imageStatus.image = UIImage(named: statusIcon == "" ? "plus" : statusIcon)
         cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewContainerClick(sender:))))
         return cell
     }
@@ -130,14 +133,14 @@ extension RealisasiLemburTabController {
     @objc func collectionViewContainerClick(sender: UITapGestureRecognizer) {
         guard let indexpath = collectionRealisasi.indexPathForItem(at: sender.location(in: collectionRealisasi)) else { return }
         
-        if listPengajuan[indexpath.item].status == "Saved" {
-            let vc = PengajuanLemburController()
-            vc.overtimeId = listPengajuan[indexpath.item].id
+        let item = listPengajuan[indexpath.item]
+        
+        if item.status ?? "" == "" {
+            let vc = DetailPengajuanRealisasiLembur()
+            vc.overtimeId = item.id
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            let vc = DetailPengajuanLemburController()
-            vc.overtimeId = listPengajuan[indexpath.item].id
-            self.navigationController?.pushViewController(vc, animated: true)
+            // to detail realisasi lembur
         }
     }
     
