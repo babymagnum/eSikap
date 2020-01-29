@@ -22,6 +22,7 @@ class DialogBatalkanCutiController: BaseViewController {
     
     var leave_id: String!
     var overtime_id: String?
+    var isFromDetailRealization: Bool?
     var delegate: DialogBatalkanProtocol!
     
     override func viewDidLoad() {
@@ -51,6 +52,35 @@ class DialogBatalkanCutiController: BaseViewController {
             if let error = error {
                 self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Cuti", error, "Ulangi", "Cancel", completionHandler: {
                     self.cancelLeave()
+                })
+                return
+            }
+            
+            self.delegate.updateData()
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    private func cancelRequestOvertizeRealization(overtimeId: String) {
+        let body: [String: String] = [
+            "overtime_id": overtimeId,
+            "cancel_notes": fieldAlasan.text.trim()
+        ]
+        
+        SVProgressHUD.show()
+        
+        informationNetworking.cancelOvertimeRealization(body: body) { (error, success, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Realisasi Lembur", error, "Ulangi", "Cancel", completionHandler: {
+                    self.cancelRequestOvertizeRealization(overtimeId: overtimeId)
                 })
                 return
             }
@@ -98,6 +128,11 @@ extension DialogBatalkanCutiController {
         }
         
         if let _overtimeId = overtime_id {
+            if let _ = isFromDetailRealization {
+                cancelRequestOvertizeRealization(overtimeId: _overtimeId)
+                return
+            }
+            
             cancelRequestOvertime(overtimeId: _overtimeId)
             return
         }

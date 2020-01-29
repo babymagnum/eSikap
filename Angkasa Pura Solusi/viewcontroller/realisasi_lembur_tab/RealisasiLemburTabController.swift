@@ -129,7 +129,13 @@ extension RealisasiLemburTabController: UICollectionViewDataSource, UICollection
     }
 }
 
-extension RealisasiLemburTabController {
+extension RealisasiLemburTabController: DetailPengajuanRealisasiLemburProtocol {
+    func updateData() {
+        currentPage = 0
+        listPengajuan.removeAll()
+        getOvertimeRealization()
+    }
+    
     @objc func collectionViewContainerClick(sender: UITapGestureRecognizer) {
         guard let indexpath = collectionRealisasi.indexPathForItem(at: sender.location(in: collectionRealisasi)) else { return }
         
@@ -138,9 +144,12 @@ extension RealisasiLemburTabController {
         if item.status ?? "" == "" {
             let vc = DetailPengajuanRealisasiLembur()
             vc.overtimeId = item.id
+            vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            // to detail realisasi lembur
+            let vc = DetailRealisasiLemburController()
+            vc.overtimeId = item.id
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

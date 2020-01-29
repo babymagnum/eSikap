@@ -23,6 +23,8 @@ class DetailPeminjamanRuanganController: BaseViewController {
     @IBOutlet weak var collectionLampiran: UICollectionView!
     @IBOutlet weak var collectionLampiranHeight: NSLayoutConstraint!
     @IBOutlet weak var labelLampiran: CustomLabel!
+    @IBOutlet weak var buttonBatalkanHeight: NSLayoutConstraint!
+    @IBOutlet weak var buttonBatalkanBot: NSLayoutConstraint!
     
     private var listLampiran = [DetailsRequestRoomsAttachment]()
     
@@ -151,6 +153,14 @@ class DetailPeminjamanRuanganController: BaseViewController {
         collectionLampiranLayout.itemSize = CGSize(width: collectionLampiran.frame.size.width - 20, height: 20)
         if let _isFromHistory = isFromHistory {
             buttonAction.isHidden = _isFromHistory ? false : true
+            
+            if !_isFromHistory {
+                print("from home tanggal")
+                buttonBatalkanHeight.constant = 0
+                buttonBatalkanBot.constant = 0
+                scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            }
         }
     }
 }

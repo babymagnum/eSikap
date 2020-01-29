@@ -22,6 +22,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailPeminjamanRuanganController" customModule="eSIKAP" customModuleProvider="target">
             <connections>
                 <outlet property="buttonAction" destination="mfU-MI-Ao6" id="d4a-FC-S80"/>
+                <outlet property="buttonBatalkanBot" destination="nJi-sg-Cox" id="BWn-Bi-9ep"/>
+                <outlet property="buttonBatalkanHeight" destination="lqQ-Zq-v4i" id="44x-IM-QJc"/>
                 <outlet property="collectionLampiran" destination="Rmp-WS-p3H" id="Cwe-hq-yKf"/>
                 <outlet property="collectionLampiranHeight" destination="l5a-mM-yF5" id="tTe-KF-PPx"/>
                 <outlet property="labelJudul" destination="Fp2-lB-wnA" id="koJ-Cm-rOn"/>

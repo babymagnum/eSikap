@@ -18,6 +18,13 @@ protocol BerandaControllerProtocol {
 
 class BerandaController: BaseViewController, UICollectionViewDelegate {
     
+    @IBOutlet weak var buttonSelengkapnyaTop: NSLayoutConstraint!
+    @IBOutlet weak var labelBeritaTop: NSLayoutConstraint!
+    @IBOutlet weak var labelMenuEmptyTop: NSLayoutConstraint!
+    @IBOutlet weak var labelMenuEmptyHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelMenuEmpty: CustomLabel!
+    @IBOutlet weak var dividerBot: UIView!
+    @IBOutlet weak var dividerTop: UIView!
     @IBOutlet weak var collectionBeritaBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var buttonSelengkapnya: UIButton!
@@ -47,8 +54,10 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     // properties
     private var listMenu = [Menu]()
     private var listBerita = [News]()
+    private var isAlreadyCalculateBeritaHeight = false
+    private var isGetMenuItem = false
+    
     var delegate : BerandaControllerProtocol?
-    var isAlreadyCalculateBeritaHeight = false
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -67,7 +76,9 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        loadMenuItem()
+        if isGetMenuItem {
+            loadMenuItem()
+        }
     }
     
     override func viewDidLoad() {
@@ -103,6 +114,12 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
             
             guard let _menu = menu else { return }
             
+            self.isGetMenuItem = true
+            self.labelMenuEmpty.isHidden = _menu.data.count > 0
+            self.dividerTop.isHidden = _menu.data.count == 0
+            self.dividerBot.isHidden = _menu.data.count == 0
+            self.labelMenuEmpty.text = _menu.message
+            
             if _menu.data.count != self.preference.getInt(key: self.staticLet.JUMLAH_MENU) {
                 self.preference.saveInt(value: _menu.data.count, key: self.staticLet.JUMLAH_MENU)
                 
@@ -115,7 +132,17 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
                 }
             }
             
-            self.loadMenuItem()
+            if _menu.data.count > 0 {
+                self.labelMenuEmptyHeight.constant = 0
+                self.loadMenuItem()
+            } else {
+                self.labelMenuEmptyTop.constant = 30
+                self.labelBeritaTop.constant = 30
+                self.buttonSelengkapnyaTop.constant = 30 - 7
+                self.menuCollectionViewHeight.constant = 0
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
@@ -143,7 +170,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         menuCollectionView.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.2, animations: {
                 self.menuCollectionViewHeight.constant = self.menuCollectionView.contentSize.height
                 self.scrollView.resizeScrollViewContentSize()
                 self.view.layoutIfNeeded()

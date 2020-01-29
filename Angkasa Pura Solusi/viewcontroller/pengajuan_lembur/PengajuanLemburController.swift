@@ -40,6 +40,8 @@ class PengajuanLemburController: BaseViewController {
     @IBOutlet weak var buttonSubmit: UIButton!
     
     private var listWaktu = [WaktuPengajuanLemburModel]()
+    private var datetimes_start = [String]()
+    private var datetimes_end = [String]()
     private var isPickTanggalMulai = false
     private var isPickWaktuMulai = false
     private var selectedPemberiPersetujuan = ""
@@ -54,6 +56,48 @@ class PengajuanLemburController: BaseViewController {
         initEvent()
         
         getProfile()
+        
+        if let _overtimeId = overtimeId {
+            getEditDetailOvertime(_overtimeId)
+        }
+    }
+    
+    private func getEditDetailOvertime(_ overtimeId: String) {
+        SVProgressHUD.show()
+        
+        informationNetworking.getEditDetailOvertimeById(overtimeId: overtimeId) { (error, editDetail, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let _error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Overtime", _error, "Reload", "Cancel", completionHandler: {
+                    self.getEditDetailOvertime(overtimeId)
+                })
+                return
+            }
+            
+            guard let _editDetail = editDetail?.data else { return }
+            
+            self.textviewKeterangan.text = _editDetail.reason
+            
+            for index in 0..._editDetail.datetimes_start.count - 1 {
+                self.listWaktu.append(WaktuPengajuanLemburModel(tanggalWaktuMulai: _editDetail.datetimes_start[index], tanggalWaktuSelesai: _editDetail.datetimes_end[index]))
+            }
+            
+            self.collectionWaktu.reloadData()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                UIView.animate(withDuration: 0.2) {
+                    self.collectionWaktuHeight.constant = self.collectionWaktu.contentSize.height
+                    self.scrollView.resizeScrollViewContentSize()
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {

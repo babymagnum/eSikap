@@ -10,6 +10,11 @@ import UIKit
 import SVProgressHUD
 import FittedSheets
 import HSAttachmentPicker
+import Toast_Swift
+
+protocol DetailPengajuanRealisasiLemburProtocol {
+    func updateData()
+}
 
 class DetailPengajuanRealisasiLembur: BaseViewController {
     
@@ -42,8 +47,10 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
     private let picker = HSAttachmentPicker()
     private var fileType = ""
     private var pickedData: Data?
+    private var attachment_old = ""
     
     var overtimeId: String?
+    var delegate: DetailPengajuanRealisasiLemburProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +120,7 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
             self.datetimes_end_show = _data.datetimes_end_show
             self.datetimes_start_real = _data.datetimes_start_real
             self.datetimes_end_real = _data.datetimes_end_real
+            self.attachment_old = _data.attachment_name_old ?? ""
             
             self.collectionTanggalLembur.reloadData()
             
@@ -219,6 +227,70 @@ extension DetailPengajuanRealisasiLembur: HSAttachmentPickerDelegate {
 }
 
 extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol {
+    
+    private func addOvertimeRealization() {
+        print("datetimes_start_show \(datetimes_start_show)")
+        print("datetimes_end_show \(datetimes_end_show)")
+        print("datetimes_start_real \(datetimes_start_real)")
+        print("datetimes_end_real \(datetimes_end_real)")
+        
+        guard let _overtimeId = overtimeId else { return }
+        
+        var body: [String: String] = [
+            "reason": textviewKeteranganRealisasi.text.trim(),
+            "overtime_id": _overtimeId,
+            "attachment_old": attachment_old
+        ]
+        
+        for (index, item) in datetimes_start_show.enumerated() {
+            body.updateValue(item, forKey: "datetimes_start[\(index)]")
+        }
+        
+        for (index, item) in datetimes_end_show.enumerated() {
+            body.updateValue(item, forKey: "datetimes_end[\(index)]")
+        }
+        
+        for (index, item) in datetimes_start_real.enumerated() {
+            body.updateValue(item, forKey: "datetimes_start_real[\(index)]")
+        }
+        
+        for (index, item) in datetimes_end_real.enumerated() {
+            body.updateValue(item, forKey: "datetimes_end_real[\(index)]")
+        }
+        
+        SVProgressHUD.show(withStatus: "Harap tunggu...")
+        
+        informationNetworking.addOvertimeRealization(body: body, imageData: pickedData, fileName: labelFilePendukung.text ?? "", fileType: fileType) { (error, success, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let _error = error {
+                if _error.contains(regex: "(</ul>|</li>|</span>)") {
+                    let vc = DialogPengajuanCutiController()
+                    vc.exception = error
+                    self.showCustomDialog(vc)
+                } else {
+                    self.function.showUnderstandDialog(self, "Gagal Mengajukan Realisasi", _error, "Ulangi", "Cancel") {
+                        self.addOvertimeRealization()
+                    }
+                }
+                return
+            }
+            
+            guard let _ = success, let _delegate = self.delegate else { return }
+            
+            self.view.makeToast("Berhasil melakukan pengajuan realisasi lembur.")
+            
+            _delegate.updateData()
+            
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     func pickDate(formatedDate: String) {
         if isPickTanggalMulai {
             let tanggalWaktuMulai = datetimes_start_real[selectedIndex].components(separatedBy: " ")
@@ -290,7 +362,7 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol {
     }
     
     @IBAction func buttonSubmitClick(_ sender: Any) {
-        
+        addOvertimeRealization()
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {

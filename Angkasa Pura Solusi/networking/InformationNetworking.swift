@@ -746,4 +746,30 @@ class InformationNetworking: BaseNetworking {
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func addOvertimeRealization(body: [String: String], imageData: Data?, fileName: String, fileType: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/addOvertimeRealization"
+        alamofirePostImage(imageData: imageData ?? Data(), fileName: fileName, fileType: fileType, url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getDetailOvertimeRealizationById(overtimeId: String, completion: @escaping(_ error: String?, _ detailOvertimeRealization: DetailOvertimeRealization?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getDetailOvertimeRealizationById"
+        let body: [String: String] = [
+            "overtime_id": overtimeId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func cancelOvertimeRealization(body: [String: String], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/cancelOvertimeRealization"
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getEditDetailOvertimeById(overtimeId: String, completion: @escaping(_ error: String?, _ editDetailOvertime: EditDetailOvertime?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getEditDetailOvertimeById"
+        let body: [String: String] = [
+            "overtime_id": overtimeId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }
