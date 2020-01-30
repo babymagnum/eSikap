@@ -772,4 +772,45 @@ class InformationNetworking: BaseNetworking {
         ]
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func getOvertimeApprovalList(page: Int, year: String, status: String, completion: @escaping(_ error: String?, _ overtimeApprovalList: OvertimeApprovalList?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getOvertimeApprovalList"
+        let body: [String: String] = [
+            "page": "\(page)",
+            "year": year,
+            "status": status
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getOvertimeRealizationApprovalList(page: Int, year: String, status: String, completion: @escaping(_ error: String?, _ overtimeApprovalList: OvertimeApprovalList?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getOvertimeRealizationApprovalList"
+        let body: [String: String] = [
+            "page": "\(page)",
+            "year": year,
+            "status": status
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getDetailOvertimeApprovalById(overtimeId: String, completion: @escaping(_ error: String?, _ detailApprovalOvertime: DetailApprovalOvertime?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getDetailOvertimeApprovalById"
+        let body: [String: String] = [
+            "overtime_id": overtimeId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getDetailOvertimeRealizationApprovalById(overtimeId: String, completion: @escaping(_ error: String?, _ detailOvertimeRealizationApproval: DetailOvertimeRealizationApproval?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getDetailOvertimeRealizationApprovalById"
+        let body: [String: String] = [
+            "overtime_id": overtimeId
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func approvalOvertime(body: [String: String], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/approvalOvertime"
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

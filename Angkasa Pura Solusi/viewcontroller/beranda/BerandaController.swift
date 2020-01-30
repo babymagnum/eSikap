@@ -162,9 +162,12 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     private func loadMenuItem() {
         listMenu.removeAll()
         
-        for index in 0...5 {
+        for index in 0...preference.getInt(key: staticLet.JUMLAH_MENU) - 1 {
             if index < 5 { listMenu.append(generateMenu(savedMenu: preference.getString(key: "MENU_\(index + 1)"), action: nil)) }
-            else { listMenu.append(Menu(id: "menuAll", image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil)) }
+            else {
+                listMenu.append(Menu(id: "menuAll", image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
+                break
+            }
         }
         
         menuCollectionView.reloadData()
