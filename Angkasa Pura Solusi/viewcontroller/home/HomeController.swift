@@ -36,13 +36,11 @@ class HomeController: UITabBarController {
         
         getNotificationList()
         
-        checkingNotifForeground()
+        //checkingNotifForeground()
     }
     
     private func checkRedirect() {
-        print("check redirect")
         if let redirect = redirect {
-            print("redirect not null")
             
             if redirect == "leave_approval" {
 //                let vc = DetailPersetujuanCutiController()
@@ -178,7 +176,6 @@ class HomeController: UITabBarController {
 
 }
 
-// protocol init
 extension HomeController: BerandaControllerProtocol {
     func buttonSelengkapnyaClick() {
         self.selectedIndex = 1

@@ -131,6 +131,10 @@ extension PersetujuanTabRealisasiLemburController: UICollectionViewDataSource, U
 extension PersetujuanTabRealisasiLemburController {
     @objc func collectionViewContainerClick(sender: UITapGestureRecognizer) {
         guard let indexpath = collectionRealisasiLembur.indexPathForItem(at: sender.location(in: collectionRealisasiLembur)) else { return }
+        
+        let vc = DetailPersetujuanRealisasiLemburController()
+        vc.overtimeId = listLembur[indexpath.item].id
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl){

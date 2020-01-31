@@ -204,6 +204,8 @@
 		ED9590A122EBF9B500D696E5 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED95909F22EBF9B500D696E5 /* OnboardingCell.xib */; };
 		ED9590A822EBFF8D00D696E5 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A722EBFF8D00D696E5 /* Onboarding.swift */; };
 		ED9590AA22EC923A00D696E5 /* PresenceNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9590A922EC923A00D696E5 /* PresenceNetworking.swift */; };
+		ED96EF9423E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED96EF9223E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.swift */; };
+		ED96EF9523E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED96EF9323E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.xib */; };
 		EDB12C6423E27C120097CD34 /* PersetujuanTabLemburController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB12C6223E27C120097CD34 /* PersetujuanTabLemburController.swift */; };
 		EDB12C6523E27C120097CD34 /* PersetujuanTabLemburController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB12C6323E27C120097CD34 /* PersetujuanTabLemburController.xib */; };
 		EDB12C6923E27E870097CD34 /* PersetujuanLemburTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB12C6723E27E870097CD34 /* PersetujuanLemburTabCell.swift */; };
@@ -502,6 +504,8 @@
 		ED9590A622EBFB9100D696E5 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		ED9590A722EBFF8D00D696E5 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		ED9590A922EC923A00D696E5 /* PresenceNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceNetworking.swift; sourceTree = "<group>"; };
+		ED96EF9223E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersetujuanRealisasiLemburController.swift; sourceTree = "<group>"; };
+		ED96EF9323E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPersetujuanRealisasiLemburController.xib; sourceTree = "<group>"; };
 		EDB12C6223E27C120097CD34 /* PersetujuanTabLemburController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersetujuanTabLemburController.swift; sourceTree = "<group>"; };
 		EDB12C6323E27C120097CD34 /* PersetujuanTabLemburController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersetujuanTabLemburController.xib; sourceTree = "<group>"; };
 		EDB12C6723E27E870097CD34 /* PersetujuanLemburTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersetujuanLemburTabCell.swift; sourceTree = "<group>"; };
@@ -1209,6 +1213,7 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED96EF9123E3C39100A27A54 /* detail_persetujuan_realisasi_lembur */,
 				EDB12C7623E3173C0097CD34 /* detail_persetujuan_lembur */,
 				EDB12C7123E290F30097CD34 /* persetujuan_tab_realisasi_lembur */,
 				EDB12C6123E27BF20097CD34 /* persetujuan_tab_lembur */,
@@ -1474,6 +1479,15 @@
 				ED9590A522EBFB9100D696E5 /* Roboto-Regular.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		ED96EF9123E3C39100A27A54 /* detail_persetujuan_realisasi_lembur */ = {
+			isa = PBXGroup;
+			children = (
+				ED96EF9223E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.swift */,
+				ED96EF9323E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.xib */,
+			);
+			path = detail_persetujuan_realisasi_lembur;
 			sourceTree = "<group>";
 		};
 		EDB12C6123E27BF20097CD34 /* persetujuan_tab_lembur */ = {
@@ -1899,6 +1913,7 @@
 				ED95909022EBE90A00D696E5 /* HomeController.xib in Resources */,
 				ED40C67D23D7C5490033757C /* DaftarPeminjamanRuanganController.xib in Resources */,
 				ED14CA79231DFCB100D5C7F0 /* EmpFilterCell.xib in Resources */,
+				ED96EF9523E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.xib in Resources */,
 				ED61BF1322F7A4ED00776C25 /* KaryawanCell.xib in Resources */,
 				ED61BF2122F7CF2500776C25 /* FilterKaryawanController.xib in Resources */,
 				ED3C13A723DC74EF0038A987 /* HistoryPeminjamanRuangan.xib in Resources */,
@@ -2192,6 +2207,7 @@
 				EDCB54FC23DE7E2F00D3CA2C /* OvertimeStatusFilter.swift in Sources */,
 				ED435B5C23DDE47200DDD009 /* RealisasiLemburTabController.swift in Sources */,
 				EDCB54F923DE793800D3CA2C /* FilterPengajuanLemburTabController.swift in Sources */,
+				ED96EF9423E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.swift in Sources */,
 				ED308CF6231B520500F5C43C /* ExceptionCell.swift in Sources */,
 				ED3C13AD23DC7A810038A987 /* HistoryPeminjamanRuanganCell.swift in Sources */,
 				ED73D0AD23D9BBB0002A1A3A /* FormPeminjamanRuanganController.swift in Sources */,

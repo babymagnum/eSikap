@@ -813,4 +813,9 @@ class InformationNetworking: BaseNetworking {
         let url = "\(baseUrl())api/approvalOvertime"
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func approvalOvertimeRealization(body: [String: String], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/approvalOvertimeRealization"
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
 }

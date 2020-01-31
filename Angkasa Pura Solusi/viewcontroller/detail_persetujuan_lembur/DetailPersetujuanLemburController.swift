@@ -73,6 +73,8 @@ class DetailPersetujuanLemburController: BaseViewController {
             
             guard let _data = detailApproval?.data else { return }
             
+            self.textviewCatatanStatus.text = _data.status_notes
+            self.imageProfile.loadUrl(_data.photo ?? "")
             self.buttonStatus.setTitle(_data.status, for: .normal)
             self.buttonStatus.backgroundColor = UIColor(hexString: _data.status_color?.replacingOccurrences(of: "#", with: "") ?? "#")
             self.labelNumber.text = _data.number

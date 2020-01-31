@@ -73,9 +73,9 @@ class DetailPengajuanLemburController: BaseViewController {
         
         imageProfile.loadUrl(_data.photo ?? "")
         labelNumber.text = _data.number
-        labelPengajuan.text = _data.date
+        labelPengajuan.text = "Diajukan pada \(_data.date ?? "")"
         labelNama.text = ": \(_data.emp_name ?? "")"
-        labelUnitKerja.text = ": \(_data.unit_name ?? "")"
+        labelUnitKerja.text = ": \(_data.unit_name ?? "") "
         labelKeterangan.text = ": \(_data.reason ?? "")"
         buttonStatus.setTitle(_data.status, for: .normal)
         buttonStatus.backgroundColor = UIColor(hexString: "\(_data.status_color?.replacingOccurrences(of: "#", with: "") ?? "")")

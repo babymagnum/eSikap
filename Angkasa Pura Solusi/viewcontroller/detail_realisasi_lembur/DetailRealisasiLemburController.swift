@@ -92,7 +92,7 @@ class DetailRealisasiLemburController: BaseViewController {
         labelKeteranganRealisasi.text = ": \(_data.reason ?? "")"
         imageProfile.loadUrl(_data.photo ?? "")
         labelNumber.text = _data.number
-        labelDates.text = _data.date
+        labelDates.text = "Diajukan pada \(_data.date ?? "")"
         labelNama.text = ": \(_data.emp_name ?? "")"
         labelUnitKerja.text = ": \(_data.unit_name ?? "")"
         labelKeterangan.text = ": \(_data.reason ?? "")"
