@@ -291,7 +291,7 @@ extension BerandaController {
                 self.navigationController?.pushViewController(KebijakanPeraturanController(), animated: true)
             case "menuDaftarCuti":
                 //link daftar cuti
-                print("daftar cuti")
+                self.navigationController?.pushViewController(DaftarCutiController(), animated: true)
             case "menuAll":
                 //menu lainya item
                 openBottomSheet()

@@ -173,6 +173,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             vc.is_back_to_home = true
             vc.title_content = "Detail Delegasi Cuti"
             changeRootViewController(rootVC: vc)
+        } else if redirect == "overtime_approval" {
+            let vc = DetailPersetujuanLemburController()
+            vc.overtimeId = leave_id
+            vc.isBackToHome = true
+            changeRootViewController(rootVC: vc)
+        } else if redirect == "overtime_canceled" || redirect == "overtime_approval_all_approver" || redirect == "overtime_rejected" {
+            let vc = DetailPengajuanLemburController()
+            vc.overtimeId = leave_id
+            vc.isBackToHome = true
+            changeRootViewController(rootVC: vc)
+        } else if redirect == "overtime_approval_realize" {
+            let vc = DetailPersetujuanRealisasiLemburController()
+            vc.isBackToHome = true
+            vc.overtimeId = leave_id
+            changeRootViewController(rootVC: vc)
+        } else if redirect == "overtime_approval_all_realize_approver" || redirect == "overtime_realize_rejected" {
+            let vc = DetailRealisasiLemburController()
+            vc.overtimeId = leave_id
+            vc.isBackToHome = true
+            changeRootViewController(rootVC: vc)
         }
     }
 

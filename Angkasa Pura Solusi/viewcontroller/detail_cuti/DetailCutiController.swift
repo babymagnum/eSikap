@@ -176,7 +176,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
             }
             
             if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Understand", completionHandler: {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
                     self.getDetailLeave()
                 })
                 return

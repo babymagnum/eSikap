@@ -362,7 +362,7 @@ class PublicFunction {
         return dateFormatter.date(from: stringDate) // replace Date String
     }
     
-    func dynamicCustomDevice() -> CGFloat {
+    open func dynamicCustomDevice() -> CGFloat {
         if (UIScreen.main.bounds.width == 320) {
             return 2
         } else if (UIScreen.main.bounds.width == 375) {
@@ -504,10 +504,20 @@ extension String{
         return ceil(boundingBox.height)
     }
     
+    func getWidth(fontSize: CGFloat, fontName: String) -> CGFloat {
+        let size = self.size(withAttributes:[.font: UIFont(name: fontName, size: fontSize + dynamicCustomDevice()) ?? UIFont.systemFont(ofSize:18.0)])
+        return size.width
+    }
+    
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         return ceil(boundingBox.height)
+    }
+    
+    func getHeight(fontSize: CGFloat, fontName: String) -> CGFloat {
+        let size = self.size(withAttributes:[.font: UIFont(name: fontName, size: fontSize + dynamicCustomDevice()) ?? UIFont.systemFont(ofSize:18.0)])
+        return size.height
     }
     
     func width(withConstraintedHeight height: CGFloat, font: UIFont) -> CGFloat {

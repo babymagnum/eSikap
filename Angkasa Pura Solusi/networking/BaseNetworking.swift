@@ -172,7 +172,10 @@ class BaseNetworking {
                     do {
                         let data = try JSONDecoder().decode(T.self, from: mData)
                         completion(nil, data, nil)
-                    } catch let err { completion(err.localizedDescription, nil, nil) }
+                    } catch let err {
+                        print(err.localizedDescription)
+                        completion(message, nil, nil)
+                    }
                     
                 } else if status == 401 {
                     completion(nil, nil, true)

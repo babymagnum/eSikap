@@ -414,7 +414,6 @@ class InformationNetworking: BaseNetworking {
         let body: [String: String] = [
             "leave_id": id
         ]
-        
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
@@ -816,6 +815,11 @@ class InformationNetworking: BaseNetworking {
     
     func approvalOvertimeRealization(body: [String: String], completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/approvalOvertimeRealization"
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
+    func getLeaveList(body: [String: String], completion: @escaping(_ error: String?, _ leaveList: LeaveList?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getLeaveList"
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
 }

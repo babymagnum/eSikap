@@ -238,7 +238,7 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
             dismiss(animated: true, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                
+                self.parentNavigationController?.pushViewController(DaftarCutiController(), animated: true)
             }
         default: break
         }
