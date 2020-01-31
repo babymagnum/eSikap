@@ -51,7 +51,6 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var stackBottomHeight: NSLayoutConstraint!
     @IBOutlet weak var imagePlaceholder: UIImageView!
     
-    // properties
     private var listMenu = [Menu]()
     private var listBerita = [News]()
     private var isAlreadyCalculateBeritaHeight = false

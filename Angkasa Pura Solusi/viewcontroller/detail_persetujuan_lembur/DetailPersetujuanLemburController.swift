@@ -38,6 +38,7 @@ class DetailPersetujuanLemburController: BaseViewController {
     private var listTanggalLembur = [TanggalLemburPersetujuanModel]()
     private var datetime_id = [String]()
     
+    var isBackToHome: Bool?
     var overtimeId: String?
     
     override func viewDidLoad() {
@@ -230,6 +231,19 @@ extension DetailPersetujuanLemburController {
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let _ = isBackToHome {
+            backToHome()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func backToHome() {
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(HomeController(), animated: true)
     }
 }

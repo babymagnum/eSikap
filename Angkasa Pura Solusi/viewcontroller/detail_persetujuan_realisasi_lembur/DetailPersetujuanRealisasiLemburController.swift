@@ -38,6 +38,7 @@ class DetailPersetujuanRealisasiLemburController: BaseViewController {
     private var datetimes_real_end = [String]()
     
     var overtimeId: String?
+    var isBackToHome: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,7 +162,20 @@ extension DetailPersetujuanRealisasiLemburController {
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let _ = isBackToHome {
+            backToHome()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func backToHome() {
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(HomeController(), animated: true)
     }
     
     private func approvalOvertime() {
