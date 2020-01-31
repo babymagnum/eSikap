@@ -146,7 +146,7 @@ class BaseViewController: UIViewController {
         case "menuDaftarCuti":
             return Menu(id: "menuDaftarCuti", image: UIImage(named: "delivery_1"), title: "Daftar Cuti", action: action)
         default:
-            return Menu()
+            return Menu(id: "menuAll", image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil)
         }
     }
 }

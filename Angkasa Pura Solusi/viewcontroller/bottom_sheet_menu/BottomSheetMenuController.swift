@@ -38,12 +38,10 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     
     private func loadMenu() {
         for index in 0...preference.getInt(key: staticLet.JUMLAH_MENU) - 1 {
-            if index < 5 {
+            if index <= 5 {
                 listMenuFavorit.append(generateMenu(savedMenu: preference.getString(key: "MENU_\(index + 1)"), action: nil))
-            } else if index == 5 {
-                listMenuFavorit.append(Menu(id: "menuAll", image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
             } else if index > 5 {
-                listMenuLainya.append(generateMenu(savedMenu: preference.getString(key: "MENU_\(index)"), action: nil))
+                listMenuLainya.append(generateMenu(savedMenu: preference.getString(key: "MENU_\(index + 1)"), action: nil))
             }
         }
         
@@ -88,11 +86,11 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
 
     private func saveMenu() {
         for (index, menu) in listMenuFavorit.enumerated() {
-            preference.saveString(value: menu.id!, key: "MENU_\(index + 1)")
+            preference.saveString(value: menu.id, key: "MENU_\(index + 1)")
         }
         
         for (index, menu) in listMenuLainya.enumerated() {
-            preference.saveString(value: menu.id!, key: "MENU_\(index + 6)")
+            preference.saveString(value: menu.id, key: "MENU_\(index + 7)")
         }
     }
     
@@ -127,7 +125,6 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func hideActionInListMenuLainya() {
-        
         for (index, _) in listMenuLainya.enumerated() {
             listMenuLainya[index].action = nil
             menuLainyaCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
@@ -268,15 +265,15 @@ extension BottomSheetMenuController {
             
             // click item if action is null (not editable)
             guard let _ = listMenuFavorit[indexpath.item].action else {
-                clickMenu(listMenuFavorit[indexpath.item].id!)
+                clickMenu(listMenuFavorit[indexpath.item].id)
                 return
             }
             
             // add deleted item from menu favorit, and append it to menu lainya
             var item = listMenuFavorit[indexpath.item]
             item.action = UIImage(named: "addButtonInsideBlackCircle")
-            listMenuLainya.insert(item, at: listMenuLainya.count - 1)
-            menuLainyaCollectionView.insertItems(at: [IndexPath(item: listMenuLainya.count - 1, section: 0)])
+            listMenuLainya.insert(item, at: listMenuLainya.count)
+            //menuLainyaCollectionView.insertItems(at: [IndexPath(item: listMenuLainya.count - 1, section: 0)])
             
             listMenuFavorit.remove(at: indexpath.item)
             menuFavoritCollectionView.deleteItems(at: [indexpath])
@@ -294,7 +291,7 @@ extension BottomSheetMenuController {
             
             // click item if action is null (not editable)
             guard let _ = listMenuLainya[indexpath.item].action else {
-                clickMenu(listMenuLainya[indexpath.item].id!)
+                clickMenu(listMenuLainya[indexpath.item].id)
                 return
             }
             

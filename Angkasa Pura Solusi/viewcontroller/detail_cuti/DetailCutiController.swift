@@ -189,9 +189,9 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func setViewContent(_ detailRiwayatCuti: DetailRiwayatCuti) {
-        let item = detailRiwayatCuti.data?.leave[0]
+        guard let item = detailRiwayatCuti.data?.leave[0] else { return }
         
-        if item?.attachment_name == "" {
+        if item.attachment_name == "" {
             UIView.animate(withDuration: 0.2) {
                 self.viewLampiranHeight.constant = 0
                 self.viewLampiran.alpha = 0
@@ -200,30 +200,30 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
             }
         }
         
-        if item?.cancel_button_is_show == "1" {
+        if item.cancel_button_is_show == "1" {
             buttonBatalkan.isHidden = false
             labelInfoPembatalan.text = ""
         } else {
             buttonBatalkan.isHidden = true
+            labelInfoPembatalan.text = item.cancel_notes
         }
         
-        attachmentUrl = item?.attachment
-        labelLampiran.text = item?.attachment_name
-        labelStatusTop.setTitle(item?.status, for: .normal)
-        labelStatusTop.backgroundColor = UIColor(hexString: String((item?.status_color?.dropFirst())!))
-        imageAccount.loadUrl((item?.photo)!)
-        labelNama.text = ": \(item?.emp_name ?? "")"
-        labelUnitKerja.text = ": \(item?.unit_name ?? "")"
-        labelJenisIjin.text = ": \(item?.type_name ?? "")"
-        labelAlasan.text = ": \(item?.reason ?? "")"
-        labelTanggal.text = (item?.date_show.count)! > 0 ? ": -" : ": \(item?.dates ?? "")"
-        labelInfoPembatalan.text = item?.cancel_notes
-        labelAwalInput.text = item?.last_insert
-        labelUbahanTerakhir.text = item?.last_update
-        listTanggalCuti = item!.date_show
-        listStatusPersetujuan = item!.approval
-        labelDateSubmitted.text = "Diajukan pada \(item?.date ?? "")"
-        labelKodeCuti.text = item?.number
+        attachmentUrl = item.attachment
+        labelLampiran.text = item.attachment_name
+        labelStatusTop.setTitle(item.status, for: .normal)
+        labelStatusTop.backgroundColor = UIColor(hexString: String((item.status_color?.dropFirst())!))
+        imageAccount.loadUrl((item.photo)!)
+        labelNama.text = ": \(item.emp_name ?? "")"
+        labelUnitKerja.text = ": \(item.unit_name ?? "")"
+        labelJenisIjin.text = ": \(item.type_name ?? "")"
+        labelAlasan.text = ": \(item.reason ?? "")"
+        labelTanggal.text = (item.date_show.count) > 0 ? ": -" : ": \(item.dates ?? "")"
+        labelAwalInput.text = item.last_insert
+        labelUbahanTerakhir.text = item.last_update
+        listTanggalCuti = item.date_show
+        listStatusPersetujuan = item.approval
+        labelDateSubmitted.text = "Diajukan pada \(item.date ?? "")"
+        labelKodeCuti.text = item.number
         
         UIView.animate(withDuration: 0.2) {
             self.scrollView.alpha = 1

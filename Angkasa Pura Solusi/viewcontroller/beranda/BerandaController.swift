@@ -123,11 +123,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
                 self.preference.saveInt(value: _menu.data.count, key: self.staticLet.JUMLAH_MENU)
                 
                 for (index, item) in _menu.data.enumerated() {
-                    if index < 5 {
-                        self.preference.saveString(value: item.menu_key, key: "MENU_\(index + 1)")
-                    } else if index > 5 {
-                        self.preference.saveString(value: item.menu_key, key: "MENU_\(index)")
-                    }
+                    self.preference.saveString(value: item.menu_key, key: "MENU_\(index + 1)")
                 }
             }
             
@@ -162,11 +158,9 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         listMenu.removeAll()
         
         for index in 0...preference.getInt(key: staticLet.JUMLAH_MENU) - 1 {
-            if index < 5 { listMenu.append(generateMenu(savedMenu: preference.getString(key: "MENU_\(index + 1)"), action: nil)) }
-            else {
-                listMenu.append(Menu(id: "menuAll", image: UIImage(named: "menuLainya"), title: "Lihat Lainya", action: nil))
-                break
-            }
+            listMenu.append(generateMenu(savedMenu: preference.getString(key: "MENU_\(index + 1)"), action: nil))
+            
+            if index == 5 { break }
         }
         
         menuCollectionView.reloadData()
