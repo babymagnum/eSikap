@@ -697,7 +697,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     private func addLeaveRequest(body: [String: String]) {
         print("leave request body \(body)")
         SVProgressHUD.show()
-        informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0.5))!, fileName: labelLampiranFile.text ?? "", fileType: fileType, body: body) { (error, message, isExpired) in
+        informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0))!, fileName: labelLampiranFile.text ?? "", fileType: fileType, body: body) { (error, message, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -783,7 +783,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
             return
         }
         
-        pickedData = image.jpegData(compressionQuality: 0.5)
+        pickedData = image.jpegData(compressionQuality: 0)
         imageLampiran.image = image
         showImageLampiran()
         hideLabelLampiranFile()

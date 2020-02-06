@@ -75,7 +75,7 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        if isGetMenuItem {
+        if isGetMenuItem && preference.getInt(key: staticLet.JUMLAH_MENU) > 0 {
             loadMenuItem()
         }
     }

@@ -78,12 +78,13 @@ class DetailBeritaController: BaseViewController {
             
             guard let item = itemDetailNews else { return }
             
-            if (item.content?.contains("<p>"))! {
-                let cleanContent = item.content?.replacingOccurrences(of: "<p>", with: "").replacingOccurrences(of: "</p>", with: "").replacingOccurrences(of: "<div>", with: "").replacingOccurrences(of: "<br />", with: "\n").replacingOccurrences(of: "<strong>", with: "").replacingOccurrences(of: "</strong>", with: "")
-                self.labelDescriptionBerita.text = cleanContent
-            } else {
-                self.labelDescriptionBerita.text = item.content
-            }
+            let regex = "<[^>]+>" // remove <> tag
+            let nextRegex = "&[^;]+;" // remove &;
+            let advanceRegex = "&[^ ]+ " // remove leftover &
+            let cleanContent = item.content?.replacingOccurrences(of: regex, with: "", options: .regularExpression, range: nil)
+            let nextContent = cleanContent?.replacingOccurrences(of: nextRegex, with: "", options: .regularExpression, range: nil)
+            
+            self.labelDescriptionBerita.text = nextContent?.replacingOccurrences(of: advanceRegex, with: "", options: .regularExpression, range: nil)
             
             self.scrollView.resizeScrollViewContentSize()
             
