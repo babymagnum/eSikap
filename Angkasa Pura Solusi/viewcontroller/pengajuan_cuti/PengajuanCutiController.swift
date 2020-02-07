@@ -82,10 +82,8 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     //view rentang waktu
     @IBOutlet weak var viewRangeWaktu: UIView!
     @IBOutlet weak var viewRentangWaktuHeight: NSLayoutConstraint!
-    @IBOutlet weak var viewRentangWaktuAkhir: UIView!
     @IBOutlet weak var viewRentangWaktuAwal: UIView!
     @IBOutlet weak var fieldRentangWaktuAwal: CustomTextField!
-    @IBOutlet weak var fieldRentangWaktuAkhir: CustomTextField!
     
     let picker = HSAttachmentPicker()
     private var datePicker: DatePickerEnum!
@@ -114,9 +112,6 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     private var isTanggalCutiVisible = false
     private var pickedData: Data?
     private var attachmentOld = ""
-//    private var pickedDate: String?
-//    private var originalStartDate: String?
-//    private var originalEndDate: String?
     
     var leave_id: String?
     
@@ -130,7 +125,6 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         defaultRentangWaktuHeight = viewRangeWaktu.getHeight() + 100
         defaultTanggalPickedHeight = 0
         defaultLabelMaksimalCutiHeight = (labelMaksimalCuti.text?.getHeight(withConstrainedWidth: labelMaksimalCuti.frame.width, font_size: 12))!
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -201,11 +195,10 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
             }
         }
         
-        attachmentOld = (item?.file_name)!
-        leave_type_id = (item?.type_id)!
+        attachmentOld = item?.file_name ?? ""
+        leave_type_id = item?.type_id ?? ""
         fieldAlasan.text = item?.reason
         fieldRentangWaktuAwal.text = item?.start_time
-        fieldRentangWaktuAkhir.text = item?.end_time
         fieldRentangTanggalAwal.text = item?.leave_start
         fieldRentangTanggalAkhir.text = item?.leave_end
         fieldPickTanggal.text = function.dateToString(function.stringToDate((item?.date?.components(separatedBy: " ")[0])!, "yyyy-MM-dd"), "dd-MM-yyyy")
@@ -262,8 +255,6 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         viewRentangTanggalAkhir.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangTanggalAkhirClick)))
         
         viewRentangWaktuAwal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangWaktuAwalClick)))
-        
-        viewRentangWaktuAkhir.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewRentangWaktuAkhirClick)))
         
         viewDelegasi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewDelegasiClick)))
         
@@ -532,7 +523,6 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         viewRentangTanggalAkhir.giveBorder(3, 1, "dedede")
         viewLampirkanFile.giveBorder(3, 1, "dedede")
         viewRentangWaktuAwal.giveBorder(3, 1, "dedede")
-        viewRentangWaktuAkhir.giveBorder(3, 1, "dedede")
         
         resetPengajuanCuti()
     }
@@ -548,9 +538,9 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     
     private func hideView(_ viewRootHeight: NSLayoutConstraint, _ viewRoot: UIView) {
         UIView.animate(withDuration: 0.2) {
+            viewRoot.isHidden = true
             viewRootHeight.constant = 0
             self.scrollView.resizeScrollViewContentSize()
-            viewRoot.isHidden = true
             self.view.layoutIfNeeded()
         }
     }
@@ -657,15 +647,7 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
     func pickTime(pickedTime: String) {
         switch datePicker {
             case .timeStart?: fieldRentangWaktuAwal.text = pickedTime
-            case .timeEnd?:
-                let dateTime = function.dateStringToInt(stringDate: pickedTime, pattern: "kk:mm")
-                let timeStart = function.dateStringToInt(stringDate: fieldRentangWaktuAwal.text!, pattern: "kk:mm")
-                
-                if dateTime <= timeStart  {
-                    self.view.makeToast("Anda tidak bisa memilih waktu selesai sebelum atau sama dengan waktu mulai.")
-                } else {
-                    fieldRentangWaktuAkhir.text = pickedTime
-                }
+            case .timeEnd?: break
             default: break
         }
     }
@@ -724,10 +706,10 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     
     private func getRequestBody(post_type: String) -> [String: String] {
         var body: [String: String] = [
-            "leave_type_id": self.leave_type_id,
-            "reason": self.fieldAlasan.text.trim(),
-            "delegation_emp_id": self.delegation_emp_id,
-            "supervisor_emp_id": self.supervisor_emp_id,
+            "leave_type_id": leave_type_id,
+            "reason": fieldAlasan.text.trim(),
+            "delegation_emp_id": delegation_emp_id,
+            "supervisor_emp_id": supervisor_emp_id,
             "post_type": post_type,
             "leave_id": leave_id ?? "",
             "attachment_old": attachmentOld
@@ -736,8 +718,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         if isDay == "0" && isRange == "0" {
             let formatedDate = function.dateToString(function.stringToDate(self.fieldPickTanggal.text!, "dd-MM-yyyy"), "yyyy-MM-dd")
             body.updateValue(formatedDate, forKey: "date")
-            body.updateValue(self.fieldRentangWaktuAwal.text!, forKey: "time_start")
-            body.updateValue(self.fieldRentangWaktuAkhir.text!, forKey: "time_end")
+            body.updateValue(self.fieldRentangWaktuAwal.text!, forKey: "time")
             print(body)
             return body
         }
@@ -831,7 +812,6 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     @objc func viewRentangTanggalAkhirClick() { openDateTimePicker(.dateEnd, .date) }
     
     @objc func viewRentangWaktuAwalClick() {
-        fieldRentangWaktuAkhir.text = ""
         openDateTimePicker(.timeStart, .time)
     }
     

@@ -69,7 +69,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Cuti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZB-D4-YYK" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                    <rect key="frame" x="41" y="19.5" width="55.5" height="14.5"/>
+                                    <rect key="frame" x="41" y="19.5" width="318" height="14.5"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                     <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -77,6 +77,7 @@
                             </subviews>
                             <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="kZB-D4-YYK" secondAttribute="trailing" constant="16" id="Hzc-us-h3e"/>
                                 <constraint firstItem="kZB-D4-YYK" firstAttribute="centerY" secondItem="3K2-Ob-6dV" secondAttribute="centerY" id="Mg1-At-4cP"/>
                                 <constraint firstItem="DUQ-oe-SfP" firstAttribute="centerY" secondItem="3K2-Ob-6dV" secondAttribute="centerY" id="V3P-Mb-O4k"/>
                                 <constraint firstItem="kZB-D4-YYK" firstAttribute="leading" secondItem="DUQ-oe-SfP" secondAttribute="trailing" constant="-12" id="ddi-Ic-wUQ"/>

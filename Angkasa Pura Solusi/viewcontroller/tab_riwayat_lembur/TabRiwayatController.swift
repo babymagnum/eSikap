@@ -18,6 +18,8 @@ class TabRiwayatController: ButtonBarPagerTabStripViewController {
         return mFunction
     }()
     
+    var afterAddLeave: Bool?
+    
     private var year = ""
     private var status = ""
     private var pages = [UIViewController]()
@@ -93,6 +95,19 @@ extension TabRiwayatController: FilterPengajuanLemburTabProtocol {
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let _ = afterAddLeave {
+            backToHome()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func backToHome() {
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(HomeController(), animated: true)
     }
 }

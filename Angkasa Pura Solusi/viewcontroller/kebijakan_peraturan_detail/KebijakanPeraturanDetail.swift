@@ -18,6 +18,7 @@ class KebijakanPeraturanDetail: BaseViewController, UICollectionViewDelegate {
     
     var titleString: String?
     var policyCategoryId: String?
+    var previousSelectedYear: String?
     
     private var year = ""
     private var listPolicy = [PolicyDataListItem]()
@@ -82,7 +83,7 @@ class KebijakanPeraturanDetail: BaseViewController, UICollectionViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initView() {
-        year = function.getCurrentDate(pattern: "yyyy")
+        year = previousSelectedYear ?? function.getCurrentDate(pattern: "yyyy")
         labelTitle.text = titleString ?? ""
         checkTopMargin(viewRootTopMargin: constraintViewRoot)
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)

@@ -136,7 +136,7 @@ class PengajuanLemburController: BaseViewController {
             guard let _itemProfile = itemProfile else { return }
             
             self.labelPegawai.text = _itemProfile.emp_name
-            self.buttonUnitKerja.setTitle(_itemProfile.workarea, for: .normal)
+            self.buttonUnitKerja.setTitle(_itemProfile.unit, for: .normal)
             UIView.animate(withDuration: 0.2) {
                 self.scrollView.alpha = 1
             }
@@ -230,9 +230,15 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
                     return
                 }
                 
-                guard let _ = success else { return }
+                guard let _success = success else { return }
                 
+                self.view.makeToast(_success.message, duration: 1)
                 
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    let vc = TabRiwayatController()
+                    vc.afterAddLeave = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
     }

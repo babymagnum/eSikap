@@ -87,7 +87,7 @@
                                     <constraint firstItem="TAY-aT-bOf" firstAttribute="top" secondItem="MfP-UQ-Ucf" secondAttribute="top" id="KIU-y7-mFc"/>
                                     <constraint firstItem="Cs4-bi-a8j" firstAttribute="leading" secondItem="MfP-UQ-Ucf" secondAttribute="leading" id="LKd-IR-n2v"/>
                                     <constraint firstAttribute="trailing" secondItem="Cs4-bi-a8j" secondAttribute="trailing" id="OKZ-Jw-jsX"/>
-                                    <constraint firstAttribute="height" constant="28" id="Qn7-1F-eEM"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Qn7-1F-eEM"/>
                                     <constraint firstItem="Cs4-bi-a8j" firstAttribute="top" secondItem="TAY-aT-bOf" secondAttribute="bottom" constant="4" id="UnJ-Ea-jEA"/>
                                     <constraint firstItem="MWm-6J-Fle" firstAttribute="top" secondItem="MfP-UQ-Ucf" secondAttribute="top" id="dD6-BL-gFS"/>
                                     <constraint firstItem="MWm-6J-Fle" firstAttribute="leading" secondItem="TAY-aT-bOf" secondAttribute="trailing" constant="10" id="e6E-Yu-LOd"/>

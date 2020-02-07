@@ -138,6 +138,7 @@ extension KebijakanPeraturanController: FilterKebijakanPeraturanProtocol {
         let vc = KebijakanPeraturanDetail()
         vc.titleString = listPolicyCategory[indexpath.item].name
         vc.policyCategoryId = listPolicyCategory[indexpath.item].id
+        vc.previousSelectedYear = year
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

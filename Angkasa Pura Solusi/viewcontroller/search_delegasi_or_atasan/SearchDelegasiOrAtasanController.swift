@@ -160,9 +160,9 @@ extension SearchDelegasiOrAtasanController {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == fieldSearch {
             fieldSearch.resignFirstResponder()
-            self.currentPage = 0
-            self.listEmpFilter.removeAll()
-            self.getEmpFilter()
+            currentPage = 0
+            listEmpFilter.removeAll()
+            getEmpFilter()
             return true
         }
         
@@ -171,6 +171,7 @@ extension SearchDelegasiOrAtasanController {
     
     @objc func imageSearchTopClick() {
         UIView.animate(withDuration: 0.2) {
+            self.fieldSearch.becomeFirstResponder()
             self.labelTitleTop.isHidden = true
             self.imageSearchTop.isHidden = true
             self.viewSearch.isHidden = false

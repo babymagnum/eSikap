@@ -106,7 +106,9 @@ extension SlipGajiController {
     @objc func kirimEmailClick(sender: UITapGestureRecognizer) {
         guard let indexpath = collectionSlipGaji.indexPathForItem(at: sender.location(in: collectionSlipGaji)) else { return }
         
-        sendEmail(payroll_id: listSlipGaji[indexpath.item].payroll_id!)
+        function.showUnderstandDialog(self, "Kirim Slip Gaji ke email?", "", "Kirim", "Keluar") {
+            self.sendEmail(payroll_id: self.listSlipGaji[indexpath.item].payroll_id!)
+        }
     }
 }
 

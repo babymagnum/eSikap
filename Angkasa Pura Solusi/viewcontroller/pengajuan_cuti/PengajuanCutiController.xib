@@ -27,7 +27,6 @@
                 <outlet property="fieldPickTanggal" destination="che-M7-wB7" id="T2B-bk-IJW"/>
                 <outlet property="fieldRentangTanggalAkhir" destination="V8s-fn-sFS" id="8qE-Bf-tiE"/>
                 <outlet property="fieldRentangTanggalAwal" destination="C2S-ub-sCF" id="Acv-oy-a8A"/>
-                <outlet property="fieldRentangWaktuAkhir" destination="fiu-QW-btX" id="tcE-D8-MZH"/>
                 <outlet property="fieldRentangWaktuAwal" destination="JQu-pm-6IJ" id="mlq-wI-ykn"/>
                 <outlet property="imageAtasan" destination="MEr-sO-HcB" id="t1g-V5-Vlr"/>
                 <outlet property="imageDelegasi" destination="Tfz-e5-xjl" id="OxX-c0-dP3"/>
@@ -61,7 +60,6 @@
                 <outlet property="viewRentangTanggalAkhir" destination="LNQ-QD-HXD" id="Opc-5j-ys7"/>
                 <outlet property="viewRentangTanggalAwal" destination="0zv-Rb-ptc" id="b3X-q2-h9y"/>
                 <outlet property="viewRentangTanggalHeight" destination="iDV-vd-tHF" id="9vY-WC-3pu"/>
-                <outlet property="viewRentangWaktuAkhir" destination="Wiz-4r-iIE" id="SnN-VO-2V6"/>
                 <outlet property="viewRentangWaktuAwal" destination="Lon-Yr-FjZ" id="RwP-BI-9o2"/>
                 <outlet property="viewRentangWaktuHeight" destination="XIZ-4n-U0D" id="ccQ-Px-mKa"/>
                 <outlet property="viewRootLampirkanFile" destination="7PF-ug-zJF" id="Qj7-wr-xnA"/>
@@ -73,11 +71,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="viewPengajuanCuti">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="1294"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="1237"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYE-fQ-Ebq">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="1294"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1237"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nku-wd-pFr">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
@@ -124,25 +122,25 @@
                             </constraints>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mze-8F-cdk">
-                            <rect key="frame" x="0.0" y="53" width="375" height="1241"/>
+                            <rect key="frame" x="0.0" y="53" width="375" height="1184"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCP-hd-s6w">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1221.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1184"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Pegawai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gzn-Rl-YOX" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="17" width="46" height="14.5"/>
+                                            <rect key="frame" x="14" y="17" width="347" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="ARIEF ZAINURI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="u2e-Dn-jTn" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="45.5" width="81.5" height="14.5"/>
+                                            <rect key="frame" x="14" y="45.5" width="347" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Unit Kerja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bIL-1J-h38" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="80" width="53" height="14.5"/>
+                                            <rect key="frame" x="14" y="80" width="347" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -160,7 +158,7 @@
                                             </state>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Jenis Cuti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BwN-XH-cvd" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="142.5" width="54.5" height="14.5"/>
+                                            <rect key="frame" x="14" y="142.5" width="347" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -218,7 +216,7 @@
                                             <rect key="frame" x="0.0" y="223.5" width="375" height="123.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jatah Cuti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uPj-lJ-J7S" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="9" width="55.5" height="14.5"/>
+                                                    <rect key="frame" x="14" y="9" width="347" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -239,6 +237,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="uPj-lJ-J7S" secondAttribute="trailing" constant="14" id="B5J-Kr-9R1"/>
                                                 <constraint firstItem="tTe-PS-Rer" firstAttribute="top" secondItem="uPj-lJ-J7S" secondAttribute="bottom" id="F0P-Uf-udP"/>
                                                 <constraint firstAttribute="trailing" secondItem="tTe-PS-Rer" secondAttribute="trailing" constant="14" id="Hqm-gg-4rx"/>
                                                 <constraint firstItem="uPj-lJ-J7S" firstAttribute="top" secondItem="qNB-Ai-iJN" secondAttribute="top" constant="9" id="Nhp-Pp-D2X"/>
@@ -252,7 +251,7 @@
                                             <rect key="frame" x="0.0" y="347" width="375" height="66.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tanggal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MLk-7n-rpa" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="9" width="43" height="14.5"/>
+                                                    <rect key="frame" x="14" y="9" width="347" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -294,6 +293,7 @@
                                                 <constraint firstItem="MLk-7n-rpa" firstAttribute="top" secondItem="iUs-8G-BwK" secondAttribute="top" constant="9" id="E37-Fa-jbD"/>
                                                 <constraint firstItem="MLk-7n-rpa" firstAttribute="leading" secondItem="Ggh-Bc-UgU" secondAttribute="leading" constant="14" id="GRH-Uq-oan"/>
                                                 <constraint firstItem="8iz-p4-t7V" firstAttribute="leading" secondItem="Ggh-Bc-UgU" secondAttribute="leading" constant="14" id="JaZ-WJ-fil"/>
+                                                <constraint firstItem="iUs-8G-BwK" firstAttribute="trailing" secondItem="MLk-7n-rpa" secondAttribute="trailing" constant="14" id="omM-U2-kuv"/>
                                                 <constraint firstItem="iUs-8G-BwK" firstAttribute="trailing" secondItem="8iz-p4-t7V" secondAttribute="trailing" constant="14" id="xbl-GI-ntE"/>
                                                 <constraint firstItem="8iz-p4-t7V" firstAttribute="top" secondItem="MLk-7n-rpa" secondAttribute="bottom" constant="6" id="zUF-KK-KA2"/>
                                             </constraints>
@@ -303,7 +303,7 @@
                                             <rect key="frame" x="0.0" y="413.5" width="375" height="109.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rentang Tanggal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VRw-3j-H6c" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="9" width="90.5" height="14.5"/>
+                                                    <rect key="frame" x="14" y="9" width="347" height="14.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="25" id="Uay-ua-yJf"/>
                                                     </constraints>
@@ -375,6 +375,7 @@
                                                 <constraint firstItem="LNQ-QD-HXD" firstAttribute="top" secondItem="0zv-Rb-ptc" secondAttribute="bottom" constant="6" id="Cvz-wH-5Vv"/>
                                                 <constraint firstItem="0zv-Rb-ptc" firstAttribute="leading" secondItem="5WT-Rq-q1a" secondAttribute="leading" constant="14" id="DIQ-6P-yzt"/>
                                                 <constraint firstAttribute="trailing" secondItem="0zv-Rb-ptc" secondAttribute="trailing" constant="14" id="E00-gC-N5J"/>
+                                                <constraint firstItem="5WT-Rq-q1a" firstAttribute="trailing" secondItem="VRw-3j-H6c" secondAttribute="trailing" constant="14" id="Vpq-Um-vog"/>
                                                 <constraint firstItem="5WT-Rq-q1a" firstAttribute="trailing" secondItem="LNQ-QD-HXD" secondAttribute="trailing" constant="14" id="bDJ-IE-WQ0"/>
                                                 <constraint firstItem="LNQ-QD-HXD" firstAttribute="leading" secondItem="OvC-E8-kM5" secondAttribute="leading" constant="14" id="bdM-cH-zKU"/>
                                                 <constraint firstItem="5WT-Rq-q1a" firstAttribute="bottom" secondItem="LNQ-QD-HXD" secondAttribute="bottom" id="fHu-Ew-099"/>
@@ -386,10 +387,10 @@
                                             <viewLayoutGuide key="safeArea" id="5WT-Rq-q1a"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDQ-oK-XQe" userLabel="viewRangeWaktu">
-                                            <rect key="frame" x="0.0" y="523" width="375" height="110.5"/>
+                                            <rect key="frame" x="0.0" y="523" width="375" height="68"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waktu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lZU-o9-wvh" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                                    <rect key="frame" x="14" y="10" width="34" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waktu Datang / Pulang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lZU-o9-wvh" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                                    <rect key="frame" x="14" y="10" width="347" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -397,7 +398,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lon-Yr-FjZ">
                                                     <rect key="frame" x="14" y="30.5" width="347" height="37"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pilih waktu mulai." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQu-pm-6IJ" customClass="CustomTextField" customModule="eSIKAP" customModuleProvider="target">
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pilih waktu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQu-pm-6IJ" customClass="CustomTextField" customModule="eSIKAP" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="0.0" width="299" height="37"/>
                                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
@@ -423,56 +424,25 @@
                                                         <constraint firstAttribute="trailing" secondItem="1vD-UW-PcI" secondAttribute="trailing" constant="7" id="vuh-fH-XD7"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wiz-4r-iIE">
-                                                    <rect key="frame" x="14" y="73.5" width="347" height="37"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pilih waktu selesai." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiu-QW-btX" customClass="CustomTextField" customModule="eSIKAP" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="0.0" width="299" height="37"/>
-                                                            <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZu-e3-ZKb">
-                                                            <rect key="frame" x="319" y="8" width="21" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="21" id="XQG-AI-G9Q"/>
-                                                                <constraint firstAttribute="height" constant="21" id="r8p-8I-rFQ"/>
-                                                            </constraints>
-                                                            <state key="normal" image="clockCircularOutline1"/>
-                                                        </button>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstItem="fiu-QW-btX" firstAttribute="top" secondItem="Wiz-4r-iIE" secondAttribute="top" id="U2L-yk-dB8"/>
-                                                        <constraint firstAttribute="trailing" secondItem="OZu-e3-ZKb" secondAttribute="trailing" constant="7" id="bMt-de-Ku3"/>
-                                                        <constraint firstAttribute="bottom" secondItem="fiu-QW-btX" secondAttribute="bottom" id="ivS-6Y-kH0"/>
-                                                        <constraint firstItem="OZu-e3-ZKb" firstAttribute="leading" secondItem="fiu-QW-btX" secondAttribute="trailing" constant="10" id="kyB-YL-Nd0"/>
-                                                        <constraint firstItem="OZu-e3-ZKb" firstAttribute="centerY" secondItem="Wiz-4r-iIE" secondAttribute="centerY" id="o3T-B5-VQw"/>
-                                                        <constraint firstAttribute="height" constant="37" id="p77-Je-LdT"/>
-                                                        <constraint firstItem="fiu-QW-btX" firstAttribute="leading" secondItem="Wiz-4r-iIE" secondAttribute="leading" constant="10" id="zth-bF-rzd"/>
-                                                    </constraints>
-                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="lZU-o9-wvh" firstAttribute="leading" secondItem="DDQ-oK-XQe" secondAttribute="leading" constant="14" id="3QX-pO-9QM"/>
-                                                <constraint firstItem="Wiz-4r-iIE" firstAttribute="top" secondItem="Lon-Yr-FjZ" secondAttribute="bottom" constant="6" id="KcG-fD-wno"/>
+                                                <constraint firstItem="frg-fW-MmB" firstAttribute="bottom" secondItem="Lon-Yr-FjZ" secondAttribute="bottom" constant="0.5" id="3s9-JU-hcq"/>
                                                 <constraint firstItem="Lon-Yr-FjZ" firstAttribute="top" secondItem="lZU-o9-wvh" secondAttribute="bottom" constant="6" id="KuM-KU-wIg"/>
-                                                <constraint firstItem="frg-fW-MmB" firstAttribute="trailing" secondItem="Wiz-4r-iIE" secondAttribute="trailing" constant="14" id="R3g-3A-YKe"/>
                                                 <constraint firstItem="lZU-o9-wvh" firstAttribute="top" secondItem="frg-fW-MmB" secondAttribute="top" constant="10" id="RaD-fb-HuN"/>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="111" id="XIZ-4n-U0D"/>
-                                                <constraint firstItem="frg-fW-MmB" firstAttribute="bottom" secondItem="Wiz-4r-iIE" secondAttribute="bottom" id="Xh8-BI-jB1"/>
-                                                <constraint firstItem="Wiz-4r-iIE" firstAttribute="leading" secondItem="DDQ-oK-XQe" secondAttribute="leading" constant="14" id="ZCc-7P-4ev"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="XIZ-4n-U0D"/>
                                                 <constraint firstItem="frg-fW-MmB" firstAttribute="trailing" secondItem="Lon-Yr-FjZ" secondAttribute="trailing" constant="14" id="aek-lX-BJr"/>
                                                 <constraint firstItem="Lon-Yr-FjZ" firstAttribute="leading" secondItem="DDQ-oK-XQe" secondAttribute="leading" constant="14" id="fiI-pU-lXb"/>
+                                                <constraint firstItem="frg-fW-MmB" firstAttribute="trailing" secondItem="lZU-o9-wvh" secondAttribute="trailing" constant="14" id="re9-Mf-0k6"/>
                                             </constraints>
                                             <viewLayoutGuide key="safeArea" id="frg-fW-MmB"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PF-ug-zJF" userLabel="viewLampirkan">
-                                            <rect key="frame" x="0.0" y="633.5" width="375" height="67.5"/>
+                                            <rect key="frame" x="0.0" y="591" width="375" height="68"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lampirkan File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VW0-UQ-tmI" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="10" width="80" height="14.5"/>
+                                                    <rect key="frame" x="15" y="10.5" width="346" height="14.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="25" id="eRM-Nr-YZu"/>
                                                     </constraints>
@@ -481,7 +451,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D68-Bk-Cv9">
-                                                    <rect key="frame" x="15" y="30.5" width="345" height="37"/>
+                                                    <rect key="frame" x="15" y="31" width="345" height="37"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group448" translatesAutoresizingMaskIntoConstraints="NO" id="11q-r7-Nfc">
                                                             <rect key="frame" x="142" y="5" width="61" height="27"/>
@@ -503,15 +473,16 @@
                                             <constraints>
                                                 <constraint firstItem="VW0-UQ-tmI" firstAttribute="leading" secondItem="7PF-ug-zJF" secondAttribute="leading" constant="15" id="1jb-f4-pvu"/>
                                                 <constraint firstAttribute="trailing" secondItem="D68-Bk-Cv9" secondAttribute="trailing" constant="15" id="Fuv-2K-gf9"/>
+                                                <constraint firstAttribute="trailing" secondItem="VW0-UQ-tmI" secondAttribute="trailing" constant="14" id="Kz3-hh-UGE"/>
                                                 <constraint firstItem="D68-Bk-Cv9" firstAttribute="leading" secondItem="7PF-ug-zJF" secondAttribute="leading" constant="15" id="Okn-CC-653"/>
                                                 <constraint firstAttribute="bottom" secondItem="D68-Bk-Cv9" secondAttribute="bottom" id="SEU-ff-vxa"/>
                                                 <constraint firstItem="D68-Bk-Cv9" firstAttribute="top" secondItem="VW0-UQ-tmI" secondAttribute="bottom" constant="6" id="fwj-Xy-hNe"/>
-                                                <constraint firstItem="VW0-UQ-tmI" firstAttribute="top" secondItem="7PF-ug-zJF" secondAttribute="top" constant="10" id="fyZ-O3-oC8"/>
+                                                <constraint firstItem="VW0-UQ-tmI" firstAttribute="top" secondItem="7PF-ug-zJF" secondAttribute="top" constant="10.5" id="wEr-pn-WYg"/>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="102" id="wXy-lx-Dil"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLc-SZ-47f" userLabel="viewCollectionTanggalPicked">
-                                            <rect key="frame" x="0.0" y="834" width="375" height="62"/>
+                                            <rect key="frame" x="0.0" y="792" width="375" height="62"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BeU-zv-R5y">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="62"/>
@@ -537,13 +508,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vE8-d7-Xqo" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="906" width="37.5" height="14.5"/>
+                                            <rect key="frame" x="14" y="864" width="347" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Km8-Il-SHf">
-                                            <rect key="frame" x="14" y="926.5" width="347" height="88"/>
+                                            <rect key="frame" x="14" y="884.5" width="347" height="88"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sdd-BK-tMO" customClass="CustomTextView" customModule="eSIKAP" customModuleProvider="target">
                                                     <rect key="frame" x="4" y="0.0" width="339" height="88"/>
@@ -563,13 +534,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Delegasi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KOV-rL-NYK" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="1023.5" width="47" height="14.5"/>
+                                            <rect key="frame" x="14" y="981.5" width="347" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fix-3O-wWz">
-                                            <rect key="frame" x="14" y="1044" width="347" height="37"/>
+                                            <rect key="frame" x="14" y="1002" width="347" height="37"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cari delegasi..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAY-6m-k8b" customClass="CustomDropDownField" customModule="eSIKAP" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="0.0" width="294" height="37"/>
@@ -603,13 +574,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Atasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qSi-Ss-W8B" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="14" y="1093" width="38" height="14.5"/>
+                                            <rect key="frame" x="14" y="1051" width="347" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smb-bk-OWC">
-                                            <rect key="frame" x="14" y="1113.5" width="347" height="37"/>
+                                            <rect key="frame" x="14" y="1071.5" width="347" height="37"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cari atasan..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gad-KX-mxP" customClass="CustomDropDownField" customModule="eSIKAP" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="0.0" width="294" height="37"/>
@@ -643,7 +614,7 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="au0-d6-w42">
-                                            <rect key="frame" x="14" y="1167.5" width="347" height="42"/>
+                                            <rect key="frame" x="14" y="1125.5" width="347" height="42"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykK-ON-Xk9" customClass="CustomButton" customModule="eSIKAP" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="169" height="42"/>
@@ -673,7 +644,7 @@
                                             </constraints>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lampirkan File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHW-P7-kNG" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="706" width="345" height="14.5"/>
+                                            <rect key="frame" x="15" y="664" width="345" height="14.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="25" id="jmq-XB-Ne1"/>
                                             </constraints>
@@ -682,7 +653,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="woo-Za-8LO">
-                                            <rect key="frame" x="136" y="730.5" width="103.5" height="103.5"/>
+                                            <rect key="frame" x="136" y="688.5" width="103.5" height="103.5"/>
                                             <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="103.5" id="brJ-n2-7b2"/>
@@ -694,6 +665,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Fix-3O-wWz" secondAttribute="trailing" constant="14" id="0l6-06-PKb"/>
                                         <constraint firstAttribute="trailing" secondItem="au0-d6-w42" secondAttribute="trailing" constant="14" id="0sz-EP-yaA"/>
+                                        <constraint firstAttribute="trailing" secondItem="KOV-rL-NYK" secondAttribute="trailing" constant="14" id="12C-hF-e6L"/>
                                         <constraint firstAttribute="trailing" secondItem="Smb-bk-OWC" secondAttribute="trailing" constant="14" id="17f-jK-9yZ"/>
                                         <constraint firstItem="woo-Za-8LO" firstAttribute="centerX" secondItem="FCP-hd-s6w" secondAttribute="centerX" id="2hC-mn-KuY"/>
                                         <constraint firstItem="BwN-XH-cvd" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="3b4-L1-vBq"/>
@@ -717,8 +689,10 @@
                                         <constraint firstItem="qNB-Ai-iJN" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" id="MH4-gP-xsV"/>
                                         <constraint firstItem="Fix-3O-wWz" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="NR3-pX-8Az"/>
                                         <constraint firstItem="u2e-Dn-jTn" firstAttribute="top" secondItem="Gzn-Rl-YOX" secondAttribute="bottom" constant="14" id="Nfn-1K-tIW"/>
+                                        <constraint firstAttribute="trailing" secondItem="vE8-d7-Xqo" secondAttribute="trailing" constant="14" id="OIL-Ld-93W"/>
                                         <constraint firstItem="qNB-Ai-iJN" firstAttribute="top" secondItem="exW-5y-MLu" secondAttribute="bottom" id="PfX-LP-oG2"/>
                                         <constraint firstAttribute="trailing" secondItem="xg0-af-Eth" secondAttribute="trailing" constant="14" id="R3x-cY-WjX"/>
+                                        <constraint firstAttribute="trailing" secondItem="u2e-Dn-jTn" secondAttribute="trailing" constant="14" id="Sah-Ac-qRD"/>
                                         <constraint firstItem="DDQ-oK-XQe" firstAttribute="top" secondItem="OvC-E8-kM5" secondAttribute="bottom" id="TVs-GG-rn9"/>
                                         <constraint firstItem="oHW-P7-kNG" firstAttribute="top" secondItem="7PF-ug-zJF" secondAttribute="bottom" constant="5" id="U66-7g-vGL"/>
                                         <constraint firstItem="Km8-Il-SHf" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="Uiz-AS-ydL"/>
@@ -733,16 +707,20 @@
                                         <constraint firstAttribute="trailing" secondItem="CLc-SZ-47f" secondAttribute="trailing" id="cNT-Ow-JrP"/>
                                         <constraint firstItem="woo-Za-8LO" firstAttribute="top" secondItem="oHW-P7-kNG" secondAttribute="bottom" constant="10" id="d8Q-fh-Xdr"/>
                                         <constraint firstItem="vE8-d7-Xqo" firstAttribute="top" secondItem="CLc-SZ-47f" secondAttribute="bottom" constant="10" id="dFv-je-9n3"/>
+                                        <constraint firstAttribute="trailing" secondItem="qSi-Ss-W8B" secondAttribute="trailing" constant="14" id="dmC-Wp-yf0"/>
                                         <constraint firstAttribute="trailing" secondItem="DDQ-oK-XQe" secondAttribute="trailing" id="eol-UN-2Qu"/>
                                         <constraint firstItem="KOV-rL-NYK" firstAttribute="top" secondItem="Km8-Il-SHf" secondAttribute="bottom" constant="9" id="gkF-js-c0d"/>
                                         <constraint firstAttribute="trailing" secondItem="qNB-Ai-iJN" secondAttribute="trailing" id="ieo-Ms-syu"/>
+                                        <constraint firstAttribute="bottom" secondItem="au0-d6-w42" secondAttribute="bottom" constant="16.5" id="ito-BG-8o2"/>
                                         <constraint firstItem="OvC-E8-kM5" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" id="iwL-aD-JmJ"/>
                                         <constraint firstItem="Gzn-Rl-YOX" firstAttribute="top" secondItem="FCP-hd-s6w" secondAttribute="top" constant="17" id="j6t-In-RUE"/>
+                                        <constraint firstAttribute="trailing" secondItem="Gzn-Rl-YOX" secondAttribute="trailing" constant="14" id="jgN-54-jo8"/>
+                                        <constraint firstAttribute="trailing" secondItem="BwN-XH-cvd" secondAttribute="trailing" constant="14" id="jr7-e7-XTL"/>
                                         <constraint firstItem="vE8-d7-Xqo" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="kSB-O4-Lel"/>
-                                        <constraint firstAttribute="bottom" secondItem="au0-d6-w42" secondAttribute="bottom" constant="12" id="lfv-Xh-wYJ"/>
                                         <constraint firstItem="Use-5g-iB0" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" constant="14" id="lxM-2h-1Is"/>
                                         <constraint firstItem="bIL-1J-h38" firstAttribute="top" secondItem="u2e-Dn-jTn" secondAttribute="bottom" constant="20" id="ovN-pi-4U9"/>
                                         <constraint firstItem="Ggh-Bc-UgU" firstAttribute="leading" secondItem="FCP-hd-s6w" secondAttribute="leading" id="p72-Aa-SZs"/>
+                                        <constraint firstAttribute="trailing" secondItem="bIL-1J-h38" secondAttribute="trailing" constant="14" id="pnh-cA-8pm"/>
                                         <constraint firstAttribute="trailing" secondItem="Ggh-Bc-UgU" secondAttribute="trailing" id="qG1-GR-fua"/>
                                         <constraint firstAttribute="trailing" secondItem="7PF-ug-zJF" secondAttribute="trailing" id="rHp-Qv-qme"/>
                                         <constraint firstItem="BwN-XH-cvd" firstAttribute="top" secondItem="xg0-af-Eth" secondAttribute="bottom" constant="7" id="rXx-fq-O8I"/>

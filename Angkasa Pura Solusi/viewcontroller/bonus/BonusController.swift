@@ -116,8 +116,11 @@ extension BonusController {
     @objc func kirimEmailClick(sender: UITapGestureRecognizer) {
         guard let indexpath = collectionBonus.indexPathForItem(at: sender.location(in: collectionBonus)) else { return }
         
-        sendEmail(bonusItem: listBonus[indexpath.item])
+        function.showUnderstandDialog(self, "Kirim Slip Gaji ke email?", "", "Kirim", "Keluar") {
+            self.sendEmail(bonusItem: self.listBonus[indexpath.item])
+        }
     }
+    
 }
 
 extension BonusController: UICollectionViewDataSource {

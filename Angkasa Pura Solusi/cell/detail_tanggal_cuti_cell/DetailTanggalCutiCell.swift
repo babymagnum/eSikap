@@ -22,7 +22,7 @@ class DetailTanggalCutiCell: UICollectionViewCell {
     var data: ItemDateShow? {
         didSet {
             if let item = data {
-                labelTanggal.text = item.date
+                labelTanggal.text = PublicFunction().dateStringTo(date: item.date ?? PublicFunction().getCurrentDate(pattern: "yyyy-MM-dd"), original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")
                 labelStatus.text = item.status?.uppercased()
                 imageStatus.image = UIImage(named: (item.status?.lowercased())!)
             }
