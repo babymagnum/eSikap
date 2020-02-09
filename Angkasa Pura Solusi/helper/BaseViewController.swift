@@ -50,7 +50,11 @@ class BaseViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-        //do something
+        super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     func checkTopMargin(viewRootTopMargin: NSLayoutConstraint) {

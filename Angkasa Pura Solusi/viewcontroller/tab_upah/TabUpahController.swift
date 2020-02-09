@@ -30,6 +30,10 @@ class TabUpahController: ButtonBarPagerTabStripViewController {
         
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        
         if #available(iOS 11, *) {
             self.constraintViewRoot.constant = 0
         } else {

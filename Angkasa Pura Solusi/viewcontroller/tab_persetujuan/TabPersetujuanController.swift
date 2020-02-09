@@ -29,6 +29,10 @@ class TabPersetujuanController: ButtonBarPagerTabStripViewController {
         
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         
         if #available(iOS 11, *) {

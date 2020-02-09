@@ -831,3 +831,13 @@ extension NSRegularExpression {
         return firstMatch(in: string, options: [], range: range) != nil
     }
 }
+
+extension UIViewController {
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        if #available(iOS 13, *) {
+            overrideUserInterfaceStyle = .light
+        }
+    }
+}
