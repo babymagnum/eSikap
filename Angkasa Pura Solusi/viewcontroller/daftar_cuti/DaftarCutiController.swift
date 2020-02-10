@@ -175,6 +175,7 @@ extension DaftarCutiController: FilterDaftarCutiProtocol {
         let vc = DetailCutiController()
         vc.leave_id = listDaftarCuti[indexpath.item].id
         vc.title_content = "Detail Cuti"
+        vc.isFromDaftarCuti = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

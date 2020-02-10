@@ -107,36 +107,37 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
             SVProgressHUD.dismiss()
             
             if let _ = error {
-                self.getMenu()
                 return
             }
             
-            guard let _menu = menu else { return }
-            
-            self.isGetMenuItem = true
-            self.labelMenuEmpty.isHidden = _menu.data.count > 0
-            self.dividerTop.isHidden = _menu.data.count == 0
-            self.dividerBot.isHidden = _menu.data.count == 0
-            self.labelMenuEmpty.text = _menu.message
-            
-            if _menu.data.count != self.preference.getInt(key: self.staticLet.JUMLAH_MENU) {
-                self.preference.saveInt(value: _menu.data.count, key: self.staticLet.JUMLAH_MENU)
+            DispatchQueue.main.async {
+                guard let _menu = menu else { return }
                 
-                for (index, item) in _menu.data.enumerated() {
-                    self.preference.saveString(value: item.menu_key, key: "MENU_\(index + 1)")
+                self.isGetMenuItem = true
+                self.labelMenuEmpty.isHidden = _menu.data.count > 0
+                self.dividerTop.isHidden = _menu.data.count == 0
+                self.dividerBot.isHidden = _menu.data.count == 0
+                self.labelMenuEmpty.text = _menu.message
+                
+                if _menu.data.count != self.preference.getInt(key: self.staticLet.JUMLAH_MENU) {
+                    self.preference.saveInt(value: _menu.data.count, key: self.staticLet.JUMLAH_MENU)
+                    
+                    for (index, item) in _menu.data.enumerated() {
+                        self.preference.saveString(value: item.menu_key, key: "MENU_\(index + 1)")
+                    }
                 }
-            }
-            
-            if _menu.data.count > 0 {
-                self.labelMenuEmptyHeight.constant = 0
-                self.loadMenuItem()
-            } else {
-                self.labelMenuEmptyTop.constant = 30
-                self.labelBeritaTop.constant = 30
-                self.buttonSelengkapnyaTop.constant = 30 - 7
-                self.menuCollectionViewHeight.constant = 0
-                self.scrollView.resizeScrollViewContentSize()
-                self.view.layoutIfNeeded()
+                
+                if _menu.data.count > 0 {
+                    self.labelMenuEmptyHeight.constant = 0
+                    self.loadMenuItem()
+                } else {
+                    self.labelMenuEmptyTop.constant = 30
+                    self.labelBeritaTop.constant = 30
+                    self.buttonSelengkapnyaTop.constant = 30 - 7
+                    self.menuCollectionViewHeight.constant = 0
+                    self.scrollView.resizeScrollViewContentSize()
+                    self.view.layoutIfNeeded()
+                }
             }
         }
     }
@@ -186,18 +187,20 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
                 return
             }
             
-            guard let item = itemAnnouncement else { return }
-            
-            if item.count == 0 { return }
-            
-            let content = item[0]
-            let cleanContent = content.content?.removingRegexMatches(pattern: "<[^>]+>", replaceWith: "").removingRegexMatches(pattern: "&[^;]+;", replaceWith: "").removingRegexMatches(pattern: "&[^;]+", replaceWith: "")
-            
-            let vc = DialogFirstController()
-            vc.resources = (image: content.img, title: content.title, description: cleanContent) as? (image: String, title: String, description: String)
-            let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width, popupHeight: UIScreen.main.bounds.height)
-            popupVc.shadowEnabled = false
-            self.present(popupVc, animated: true)
+            DispatchQueue.main.async {
+                guard let item = itemAnnouncement else { return }
+                
+                if item.count == 0 { return }
+                
+                let content = item[0]
+                let cleanContent = content.content?.removingRegexMatches(pattern: "<[^>]+>", replaceWith: "").removingRegexMatches(pattern: "&[^;]+;", replaceWith: "").removingRegexMatches(pattern: "&[^;]+", replaceWith: "")
+                
+                let vc = DialogFirstController()
+                vc.resources = (image: content.img, title: content.title, description: cleanContent) as? (image: String, title: String, description: String)
+                let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width, popupHeight: UIScreen.main.bounds.height)
+                popupVc.shadowEnabled = false
+                self.present(popupVc, animated: true)
+            }
         }
     }
     
@@ -332,36 +335,34 @@ extension BerandaController {
         
         informationNetworking.getDashboard { (error, itemDashboard, isExpired) in
             
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                DispatchQueue.main.async { self.forceLogout(self.navigationController!) }
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Dashboard Error", error, "Reload", "Cancel", completionHandler: {
+                        self.getDashboard()
+                    })
+                    return
+                }
+                
+                guard let item = itemDashboard else { return }
+                
+                self.labelCuti.text = item.total_leave_quota
+                self.labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 120"
+                if item.presence_today?.icon == "sad" {
+                    self.iconPresenceStatus.image = UIImage(named: "sad")
+                } else if item.presence_today?.icon == "emotionless" {
+                    self.iconPresenceStatus.image = UIImage(named: "surprised")
+                }
+                self.labelPresenceStatus.text = item.presence_today?.status?.uppercased()
+                self.labelClock.text = item.presence_today?.time
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Dashboard Error", error, "Reload", "Cancel", completionHandler: {
-                    self.getDashboard()
-                })
-                return
-            }
-            
-            guard let item = itemDashboard else { return }
-            
-            DispatchQueue.main.async { self.setDashboardView(item) }
         }
-    }
-    
-    private func setDashboardView(_ item: ItemDashboard) {
-        labelCuti.text = item.total_leave_quota
-        labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 120"
-        if item.presence_today?.icon == "sad" {
-            iconPresenceStatus.image = UIImage(named: "sad")
-        } else if item.presence_today?.icon == "emotionless" {
-            iconPresenceStatus.image = UIImage(named: "surprised")
-        }
-        labelPresenceStatus.text = item.presence_today?.status?.uppercased()
-        labelClock.text = item.presence_today?.time
     }
     
     private func getLatestNews() {
@@ -370,15 +371,16 @@ extension BerandaController {
         informationNetworking.getLatestNews { (error, news, isExpired) in
             
             if let _ = error {
-                self.getLatestNews()
                 return
             }
             
-            guard let news = news else { return }
-            
-            self.listBerita = news
-            
-            DispatchQueue.main.async { self.beritaCollectionView.reloadData() }
+            DispatchQueue.main.async {
+                guard let _news = news else { return }
+                
+                self.listBerita = _news
+                
+                self.beritaCollectionView.reloadData()
+            }
         }
     }
     

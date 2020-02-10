@@ -417,6 +417,14 @@ class InformationNetworking: BaseNetworking {
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
+    func getDetailLeaveListById(id: String, completion: @escaping(_ error: String?, _ detailRiwayatCuti: DetailRiwayatCuti?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getDetailLeaveListById"
+        let body: [String: String] = [
+            "leave_id": id
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
     func cancelLeave(id: String, cancelNotes: String, completion: @escaping(_ error: String?, _ baseResponse: BaseResponse?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/cancelLeave"
         let body: [String: String] = [

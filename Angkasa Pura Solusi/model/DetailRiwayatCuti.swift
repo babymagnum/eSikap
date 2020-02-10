@@ -9,8 +9,8 @@
 import Foundation
 
 struct DetailRiwayatCuti: Decodable {
-    var status: Int?
-    var message: String?
+    var status: Int
+    var message: String
     var data: DataDetailRiwayatCuti?
 }
 

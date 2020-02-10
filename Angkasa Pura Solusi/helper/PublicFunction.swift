@@ -246,7 +246,7 @@ class PublicFunction {
     func stringToDate(_ stringDate: String, _ pattern: String) -> Date {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = pattern
-        return dateformatter.date(from: stringDate)!
+        return dateformatter.date(from: stringDate) ?? Date()
     }
     
     open func dateLongToString(dateInMillis: Double, pattern: String) -> String {

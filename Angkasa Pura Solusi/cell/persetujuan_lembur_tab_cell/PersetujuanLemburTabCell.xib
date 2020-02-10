@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,7 +75,7 @@
                                     <constraint firstAttribute="trailing" secondItem="d5z-sg-Eo8" secondAttribute="trailing" id="0gv-oq-1c0"/>
                                     <constraint firstItem="6bK-iD-374" firstAttribute="leading" secondItem="2pA-wR-6QM" secondAttribute="leading" id="22K-Rg-WUX"/>
                                     <constraint firstItem="Uqt-3C-vDf" firstAttribute="top" secondItem="2pA-wR-6QM" secondAttribute="top" id="7Ei-u2-pzN"/>
-                                    <constraint firstAttribute="height" constant="28" id="9FK-rC-ULI"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="9FK-rC-ULI"/>
                                     <constraint firstAttribute="bottom" secondItem="6bK-iD-374" secondAttribute="bottom" id="KlA-0N-Yfb"/>
                                     <constraint firstItem="Uqt-3C-vDf" firstAttribute="leading" secondItem="2pA-wR-6QM" secondAttribute="leading" id="Zjc-R5-rVj"/>
                                     <constraint firstItem="6bK-iD-374" firstAttribute="top" secondItem="Uqt-3C-vDf" secondAttribute="bottom" constant="4" id="aK3-59-xXg"/>
@@ -116,7 +116,7 @@
                 <outlet property="labelTime" destination="d5z-sg-Eo8" id="TfF-lW-CMd"/>
                 <outlet property="viewContainer" destination="4wD-ne-MPI" id="hZr-iE-RK4"/>
             </connections>
-            <point key="canvasLocation" x="174" y="60"/>
+            <point key="canvasLocation" x="-330" y="63"/>
         </collectionViewCell>
     </objects>
 </document>

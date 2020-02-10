@@ -44,6 +44,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     var leave_id: String!
     var title_content: String!
     var is_back_to_home: Bool?
+    var isFromDaftarCuti: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,10 +65,40 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
     private func getData() {
         labelTitleTop.text = title_content
         
-        if title_content == "Detail Cuti" {
-            getDetailLeave()
+        if let _ = isFromDaftarCuti {
+            getDetailLeaveListById()
         } else {
-            getDetailLeaveDelegationById()
+            if title_content == "Detail Cuti" {
+                getDetailLeave()
+            } else {
+                getDetailLeaveDelegationById()
+            }
+        }
+    }
+    
+    private func getDetailLeaveListById() {
+        SVProgressHUD.show()
+        
+        guard let _leaveId = leave_id else { return }
+        
+        informationNetworking.getDetailLeaveListById(id: _leaveId) { (error, detailRiwayatCuti, isExpired) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = isExpired {
+                self.forceLogout(self.navigationController!)
+                return
+            }
+            
+            if let error = error {
+                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
+                    self.getDetailLeave()
+                })
+                return
+            }
+            
+            guard let _detailRiwayatCuti = detailRiwayatCuti else { return }
+            
+            self.setViewContent(_detailRiwayatCuti)
         }
     }
     

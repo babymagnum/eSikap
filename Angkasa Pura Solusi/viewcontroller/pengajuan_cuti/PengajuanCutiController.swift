@@ -51,8 +51,6 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     @IBOutlet weak var jatahCutiCollectionHeight: NSLayoutConstraint!
     
     //view tanggal cuti picked
-    @IBOutlet weak var viewTanggalCutiPicked: UIView!
-    @IBOutlet weak var viewTanggalPickedHeight: NSLayoutConstraint!
     @IBOutlet weak var tanggalCutiCollectionView: UICollectionView!
     @IBOutlet weak var tanggalCutiCollectionHeight: NSLayoutConstraint!
     
@@ -163,35 +161,50 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         SVProgressHUD.show()
         
         informationNetworking.getEditDetailLeaveById(id: id) { (error, detailLeaveById, isExpired) in
-            SVProgressHUD.dismiss()
             
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Edit Cuti", error, "Reload", "Cancel", completionHandler: {
+                        self.getEditDetailLeaveById(id: id)
+                    })
+                    return
+                }
+                
+                guard let detailLeave = detailLeaveById else { return }
+                
+                self.setViewContent(detailLeave)
             }
             
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Edit Cuti", error, "Reload", "Cancel", completionHandler: {
-                    self.getEditDetailLeaveById(id: id)
-                })
-                return
-            }
-            
-            guard let detailLeave = detailLeaveById else { return }
-            
-            self.setViewContent(detailLeave)
         }
     }
     
     private func setViewContent(_ detailLeave: DetailLeaveById) {
         let item = detailLeave.data
         
-        if (item?.dates.count)! > 0 {
-            self.isTanggalCutiVisible = true
+        if item?.dates.count ?? 0 > 0 {
+            isTanggalCutiVisible = true
             
             for date in item!.dates {
-                let formatedDate = function.dateToString(function.stringToDate(date, "yyyy-MM-dd"), "dd-MM-yyyy")
-                self.listTanggalCuti.append(TanggalCuti(tanggal: formatedDate))
+                let formatedDate = function.dateStringTo(date: date, original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")
+                listTanggalCuti.append(TanggalCuti(tanggal: formatedDate))
+            }
+        }
+        
+        tanggalCutiCollectionView.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            UIView.animate(withDuration: 0.2) {
+                let tanggalCutiHeight = ((UIScreen.main.bounds.width - 28) * 0.09) + 6.7 + 14
+                self.tanggalCutiCollectionHeight.constant = tanggalCutiHeight * CGFloat(self.listTanggalCuti.count)
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
             }
         }
         
@@ -201,7 +214,8 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         fieldRentangWaktuAwal.text = item?.start_time
         fieldRentangTanggalAwal.text = item?.leave_start
         fieldRentangTanggalAkhir.text = item?.leave_end
-        fieldPickTanggal.text = function.dateToString(function.stringToDate((item?.date?.components(separatedBy: " ")[0])!, "yyyy-MM-dd"), "dd-MM-yyyy")
+        
+        //fieldPickTanggal.text = function.dateToString(function.stringToDate((item?.date?.components(separatedBy: " ")[0])!, "yyyy-MM-dd"), "dd-MM-yyyy")
 
         if item?.url_file != "" {
             downloadFile(attachment: item?.url_file)
@@ -557,28 +571,30 @@ extension PengajuanCutiController: HSAttachmentPickerDelegate {
     
     func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
         
-        if filename.contains(".") {
-            fileType = filename.components(separatedBy: ".")[1]
-        }
-        
-        if let image = image {
-            pickedData = image.pngData()
-            imageLampiran.image = image
-            labelLampiranFile.text = filename
-            showImageLampiran()
-            showLabelLampiranFile()
-            return
-        }
-        
-        pickedData = data
-        labelLampiranFile.text = filename
-        showLabelLampiranFile()
-        hideImageLampiran()
+        DispatchQueue.main.async {
+            if filename.contains(".") {
+                self.fileType = filename.components(separatedBy: ".")[1]
+            }
+            
+            if let image = image {
+                self.pickedData = image.pngData()
+                self.imageLampiran.image = image
+                self.labelLampiranFile.text = filename
+                self.showImageLampiran()
+                self.showLabelLampiranFile()
+                return
+            }
+            
+            self.pickedData = data
+            self.labelLampiranFile.text = filename
+            self.showLabelLampiranFile()
+            self.hideImageLampiran()
 
-        if filename.contains(regex: "(jpg|png|jpeg)") {
-            imageLampiran.image = UIImage(data: data)
-            pickedData = UIImage(data: data)?.pngData()
-            showImageLampiran()
+            if filename.contains(regex: "(jpg|png|jpeg)") {
+                self.imageLampiran.image = UIImage(data: data)
+                self.pickedData = UIImage(data: data)?.pngData()
+                self.showImageLampiran()
+            }
         }
     }
 }
@@ -605,9 +621,9 @@ extension PengajuanCutiController {
     
     private func hideRentangWaktu() { hideView(viewRentangWaktuHeight, viewRangeWaktu) }
     
-    private func showTanggalPicked() { showView(viewTanggalPickedHeight, viewTanggalCutiPicked, defaultTanggalPickedHeight) }
+    private func showTanggalPicked() { showView(tanggalCutiCollectionHeight, tanggalCutiCollectionView, defaultTanggalPickedHeight) }
     
-    private func hideTanggalPicked() { hideView(viewTanggalPickedHeight, viewTanggalCutiPicked) }
+    private func hideTanggalPicked() { hideView(tanggalCutiCollectionHeight, tanggalCutiCollectionView) }
 }
 
 //date picker protocol
@@ -629,10 +645,11 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
                     listTanggalCuti.append(TanggalCuti(tanggal: formatedDate))
                     tanggalCutiCollectionView.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
-                        self.viewTanggalPickedHeight.constant = self.tanggalCutiCollectionHeight.constant
-                        self.scrollView.resizeScrollViewContentSize()
-                        self.view.layoutIfNeeded()
+                        UIView.animate(withDuration: 0.2) {
+                            self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
+                            self.scrollView.resizeScrollViewContentSize()
+                            self.view.layoutIfNeeded()
+                        }
                     }
                 }
             
@@ -678,8 +695,12 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
     
     private func addLeaveRequest(body: [String: String]) {
         print("leave request body \(body)")
+        let labelLampiran = labelLampiranFile.text ?? ""
+        let _fileType = fileType == "" ? "JPG" : fileType
+        let _labelLampiran = labelLampiran == "" ? "\(function.getCurrentMillisecond(pattern: "yyyy-MM-dd kk-mm-ss")).JPG" : labelLampiran
+        print("filename \(_labelLampiran), fileType \(_fileType)")
         SVProgressHUD.show()
-        informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0))!, fileName: labelLampiranFile.text ?? "", fileType: fileType, body: body) { (error, message, isExpired) in
+        informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0))!, fileName: _labelLampiran, fileType: _fileType, body: body) { (error, message, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -859,13 +880,9 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             UIView.animate(withDuration: 0.2, animations: {
-                if self.listTanggalCuti.count > 0 {
-                    self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
-                    self.viewTanggalPickedHeight.constant = self.tanggalCutiCollectionHeight.constant
-                } else {
-                    self.viewTanggalPickedHeight.constant = 0
-                }
+                self.tanggalCutiCollectionHeight.constant = self.tanggalCutiCollectionView.contentSize.height
                 self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
             })
         }
     }
