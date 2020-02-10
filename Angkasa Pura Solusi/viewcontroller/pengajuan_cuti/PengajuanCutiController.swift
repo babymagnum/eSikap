@@ -12,6 +12,7 @@ import SVProgressHUD
 import FittedSheets
 import HSAttachmentPicker
 import Toast_Swift
+import MobileCoreServices
 
 enum DatePickerEnum {
     case date
@@ -222,7 +223,7 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
             labelLampiranFile.text = item?.file
             showLabelLampiranFile()
             
-            if (item?.file_name?.contains(regex: "(jpg|png|jpeg)"))! {
+            if (item?.file_name?.lowercased().contains(regex: "(jpg|png|jpeg)"))! {
                 imageLampiran.loadUrl((item?.url_file)!)
                 showImageLampiran()
             }
@@ -671,7 +672,39 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
 }
 
 //click event
-extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
+extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentMenuDelegate, UIDocumentPickerDelegate {
+    func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+        documentPicker.delegate = self
+        present(documentPicker, animated: true, completion: nil)
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let myURL = urls.first else { return }
+        
+        do {
+            let data = try Data(contentsOf: myURL) // Getting file data here
+            pickedData = data
+            let filename = "\(myURL)".components(separatedBy: "/").last
+            labelLampiranFile.text = "\(filename ?? "")"
+            fileType = "\(filename ?? " . ")".components(separatedBy: ".")[1]
+            showLabelLampiranFile()
+            hideImageLampiran()
+            if fileType.lowercased().contains(regex: "(jpg|png|jpeg)") {
+                let data = try? Data(contentsOf: myURL)
+                guard let _data = data else { return }
+                imageLampiran.image = UIImage.init(data: _data)
+                showImageLampiran()
+            }
+        } catch {
+            print("loading data error")
+        }
+        
+    }
+    
     func namePicked(itemEmp: ItemEmp, type: String) {
         if type == "Delegasi" {
             imageDelegasi.image = UIImage(named: "group486")
@@ -697,10 +730,10 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
         print("leave request body \(body)")
         let labelLampiran = labelLampiranFile.text ?? ""
         let _fileType = fileType == "" ? "JPG" : fileType
-        let _labelLampiran = labelLampiran == "" ? "\(function.getCurrentMillisecond(pattern: "yyyy-MM-dd kk-mm-ss")).JPG" : labelLampiran
+        let _labelLampiran = labelLampiran == "" ? "\(Int(function.getCurrentMillisecond(pattern: "yyyy-MM-dd kk-mm-ss"))).JPG" : labelLampiran
         print("filename \(_labelLampiran), fileType \(_fileType)")
         SVProgressHUD.show()
-        informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0))!, fileName: _labelLampiran, fileType: _fileType, body: body) { (error, message, isExpired) in
+        informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0.1))!, fileName: _labelLampiran, fileType: _fileType, body: body) { (error, message, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {
@@ -785,7 +818,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
             return
         }
         
-        pickedData = image.jpegData(compressionQuality: 0)
+        pickedData = image.jpegData(compressionQuality: 0.1)
         imageLampiran.image = image
         showImageLampiran()
         hideLabelLampiranFile()
@@ -806,7 +839,12 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol {
             }
         }))
         alert.addAction(UIAlertAction(title: "File", style: .default, handler: { (UIAlertAction) in
-            self.picker.showAttachmentMenu()
+            //self.picker.showAttachmentMenu()
+            let allowedFiles = ["com.apple.iwork.pages.pages", "com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key","public.image", "com.apple.application", "public.item","public.data", "public.content", "public.audiovisual-content", "public.movie", "public.audiovisual-content", "public.video", "public.audio", "public.text", "public.data", "public.zip-archive", "com.pkware.zip-archive", "public.composite-content", "public.text"]
+            let importMenu = UIDocumentMenuViewController(documentTypes: allowedFiles, in: .import)
+            importMenu.delegate = self
+            importMenu.modalPresentationStyle = .formSheet
+            self.present(importMenu, animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true)
