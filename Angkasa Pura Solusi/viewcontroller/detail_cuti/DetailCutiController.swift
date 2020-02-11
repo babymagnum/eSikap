@@ -148,7 +148,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         labelUnitKerja.text = ": \(item?.unit_name ?? "")"
         labelJenisIjin.text = ": \(item?.type_name ?? "")"
         labelAlasan.text = ": \(item?.reason ?? "")"
-        labelTanggal.text = (item?.date_show.count)! > 0 ? ": -" : ": \(item?.dates ?? "")"
+        labelTanggal.text = (item?.date_show.count)! > 0 ? ":" : ": \(item?.dates ?? "")"
         labelInfoPembatalan.text = item?.cancel_notes
         labelAwalInput.text = item?.last_insert
         labelUbahanTerakhir.text = item?.last_update
@@ -248,7 +248,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         labelUnitKerja.text = ": \(item.unit_name ?? "")"
         labelJenisIjin.text = ": \(item.type_name ?? "")"
         labelAlasan.text = ": \(item.reason ?? "")"
-        labelTanggal.text = (item.date_show.count) > 0 ? ": -" : ": \(item.dates ?? "")"
+        labelTanggal.text = (item.date_show.count) > 0 ? ":" : ": \(item.dates ?? "")"
         labelAwalInput.text = item.last_insert
         labelUbahanTerakhir.text = item.last_update
         listTanggalCuti = item.date_show
@@ -267,13 +267,6 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             UIView.animate(withDuration: 0.2, animations: {
                 self.statusPersetujuanCollectionHeight.constant = self.statusPersetujuanCollectionView.contentSize.height
-                self.scrollView.resizeScrollViewContentSize()
-                self.view.layoutIfNeeded()
-            })
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            UIView.animate(withDuration: 0.2, animations: {
                 self.collectionTanggalCutiHeight.constant = self.collectionTanggalCuti.contentSize.height
                 self.scrollView.resizeScrollViewContentSize()
                 self.view.layoutIfNeeded()
@@ -316,7 +309,7 @@ extension DetailCutiController: UICollectionViewDataSource, UICollectionViewDele
             
             return CGSize(width: UIScreen.main.bounds.width - 28, height: item.status_date == "" ? withoutDateHeight : fullHeight)
         } else {
-            return CGSize(width: self.collectionTanggalCuti.frame.width, height: 32)
+            return CGSize(width: UIScreen.main.bounds.width - 28, height: 32)
         }
     }
     

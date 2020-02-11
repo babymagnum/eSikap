@@ -187,50 +187,47 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
     }
     
     private func setViewContent(_ detailLeave: DetailLeaveById) {
-        let item = detailLeave.data
+        guard let item = detailLeave.data else { return }
         
-        if item?.dates.count ?? 0 > 0 {
+        if item.dates.count > 0 {
             isTanggalCutiVisible = true
             
-            for date in item!.dates {
+            for date in item.dates {
                 let formatedDate = function.dateStringTo(date: date, original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")
                 listTanggalCuti.append(TanggalCuti(tanggal: formatedDate))
             }
         }
-        
-        tanggalCutiCollectionView.reloadData()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            UIView.animate(withDuration: 0.2) {
-                let tanggalCutiHeight = ((UIScreen.main.bounds.width - 28) * 0.09) + 6.7 + 14
-                self.tanggalCutiCollectionHeight.constant = tanggalCutiHeight * CGFloat(self.listTanggalCuti.count)
-                self.scrollView.resizeScrollViewContentSize()
-                self.view.layoutIfNeeded()
-            }
-        }
-        
-        attachmentOld = item?.file_name ?? ""
-        leave_type_id = item?.type_id ?? ""
-        fieldAlasan.text = item?.reason
-        fieldRentangWaktuAwal.text = item?.start_time
-        fieldRentangTanggalAwal.text = item?.leave_start
-        fieldRentangTanggalAkhir.text = item?.leave_end
-        
-        //fieldPickTanggal.text = function.dateToString(function.stringToDate((item?.date?.components(separatedBy: " ")[0])!, "yyyy-MM-dd"), "dd-MM-yyyy")
+                        
+        attachmentOld = item.file_name ?? ""
+        leave_type_id = item.type_id ?? ""
+        fieldAlasan.text = item.reason
+        fieldRentangWaktuAwal.text = item.start_time
+        fieldRentangTanggalAwal.text = item.leave_start
+        fieldRentangTanggalAkhir.text = item.leave_end
 
-        if item?.url_file != "" {
-            downloadFile(attachment: item?.url_file)
-            labelLampiranFile.text = item?.file
+        if item.url_file != "" {
+            downloadFile(attachment: item.url_file)
+            labelLampiranFile.text = item.file
             showLabelLampiranFile()
             
-            if (item?.file_name?.lowercased().contains(regex: "(jpg|png|jpeg)"))! {
-                imageLampiran.loadUrl((item?.url_file)!)
+            if (item.file_name?.lowercased().contains(regex: "(jpg|png|jpeg)"))! {
+                imageLampiran.loadUrl((item.url_file)!)
                 showImageLampiran()
             }
         }
         
         UIView.animate(withDuration: 0.2) {
             self.scrollView.alpha = 1
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            UIView.animate(withDuration: 0.2) {
+                self.tanggalCutiCollectionView.reloadData()
+                let tanggalCutiHeight = ((UIScreen.main.bounds.width - 28) * 0.09) + 6.7 + 14
+                self.tanggalCutiCollectionHeight.constant = tanggalCutiHeight * CGFloat(self.listTanggalCuti.count)
+                self.scrollView.resizeScrollViewContentSize()
+                self.view.layoutIfNeeded()
+            }
         }
         
         getLeaveType()
@@ -391,6 +388,14 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         // set datasource
         tanggalCutiCollectionView.dataSource = self
         jatahCutiCollectionView.dataSource = self
+        
+        // set item size
+        let tanggalCutiHeight = ((UIScreen.main.bounds.width - 28) * 0.09) + 6.7
+        let tanggalCutiLayout = self.tanggalCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        tanggalCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: tanggalCutiHeight)
+        
+        let jatahCutiLayout = self.jatahCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: 136.2)
     }
     
     private func hideLabelMaksimalCuti() {
@@ -936,29 +941,10 @@ extension PengajuanCutiController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == jatahCutiCollectionView {
             let jatahCutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "JatahCutiCell", for: indexPath) as! JatahCutiCell
-            
-            if !isCalculateJatahCutiHeight {
-                self.isCalculateJatahCutiHeight = true
-                DispatchQueue.main.async {
-                    let jatahCutiLayout = self.jatahCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    jatahCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: jatahCutiCell.viewContainer.getHeight() + 14.2) // 12 is bottom constraint
-                }
-            }
-            
             jatahCutiCell.data = listJatahCuti[indexPath.item]
             return jatahCutiCell
         } else {
             let tanggalCutiCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TanggalCutiCell", for: indexPath) as! TanggalCutiCell
-            
-            if !isCalculateTanggalCutiHeight {
-                self.isCalculateTanggalCutiHeight = true
-                DispatchQueue.main.async {
-                    let tanggalCutiHeight = ((UIScreen.main.bounds.width - 28) * 0.09) + 6.7
-                    let tanggalCutiLayout = self.tanggalCutiCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                    tanggalCutiLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 28, height: tanggalCutiHeight)
-                }
-            }
-            
             tanggalCutiCell.data = listTanggalCuti[indexPath.item].tanggal
             tanggalCutiCell.buttonDeleteTanggal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(deleteTanggalClick(sender:))))
             return tanggalCutiCell
