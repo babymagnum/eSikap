@@ -87,7 +87,7 @@ class FilterDaftarCutiController: BaseViewController {
     private func getLeaveStatus() {
         SVProgressHUD.show()
         
-        informationNetworking.getLeaveStatusFilter { (error, leaveStatus, isExpired) in
+        informationNetworking.getLeaveListStatusFilter { (error, leaveStatus, isExpired) in
             SVProgressHUD.dismiss()
             
             if let _ = isExpired {

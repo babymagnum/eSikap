@@ -8,7 +8,7 @@
 
 import UIKit
 import Toast_Swift
-import HSAttachmentPicker
+import MobileCoreServices
 
 protocol DialogTambahLampiranProtocol {
     func tambahClick(title: String, file: String, data: Data)
@@ -26,7 +26,6 @@ class DialogTambahLampiran: UIViewController {
     
     var delegate: DialogTambahLampiranProtocol?
     
-    private let picker = HSAttachmentPicker()
     private var pickedData = Data()
     
     override func viewDidLoad() {
@@ -43,7 +42,6 @@ class DialogTambahLampiran: UIViewController {
 
     private func initView() {
         fieldJudul.textColor = UIColor(hexString: "bababa")
-        picker.delegate = self
         viewContainer.layer.cornerRadius = 5
         buttonTambah.giveBorder(5, 0, "fff")
         viewJudul.giveBorder(3, 1, "dedede")
@@ -72,43 +70,71 @@ extension DialogTambahLampiran {
     }
     
     @objc func viewUnggahFileClick() {
-        picker.showAttachmentMenu()
+        let allowedFiles = ["com.apple.iwork.pages.pages", "com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key","public.image", "com.apple.application", "public.item","public.data", "public.content", "public.audiovisual-content", "public.movie", "public.audiovisual-content", "public.video", "public.audio", "public.text", "public.data", "public.zip-archive", "com.pkware.zip-archive", "public.composite-content", "public.text"]
+        let importMenu = UIDocumentPickerViewController(documentTypes: allowedFiles, in: .import)
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .formSheet
+        self.present(importMenu, animated: true, completion: nil)
     }
 }
 
-extension DialogTambahLampiran: HSAttachmentPickerDelegate {
-    func attachmentPickerMenu(_ menu: HSAttachmentPicker, show controller: UIViewController, completion: (() -> Void)? = nil) {
-        DispatchQueue.main.async {
-            self.present(controller, animated: true, completion: completion)
+extension DialogTambahLampiran: UIDocumentPickerDelegate {
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let myURL = urls.first else { return }
+        
+        do {
+            let data = try? Data(contentsOf: myURL) // Getting file data here
+            guard let _data = data else { return }
+            pickedData = _data
+            let filename = "\(myURL)".components(separatedBy: "/").last
+            labelUnggahFile.text = "\(filename ?? "")"
+            let fileType = "\(filename ?? " . ")".components(separatedBy: ".")[1]
+            if fileType.lowercased().contains(regex: "(jpg|png|jpeg)") {
+                let image = UIImage.init(data: _data)
+                guard let _image = image else { return }
+                pickedData = _image.jpegData(compressionQuality: 0.1) ?? Data()
+            }
+        } catch {
+            // something
         }
     }
     
-    func attachmentPickerMenu(_ menu: HSAttachmentPicker, showErrorMessage errorMessage: String) {
-        self.view.makeToast(errorMessage)
-    }
-    
-    func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
-        
-        if let _image = image {
-            guard let imageData = _image.pngData() else {
-                self.view.makeToast("Gambar yang anda pilih tidak sesuai ketentuan.")
-                return
-            }
-            pickedData = imageData
-            labelUnggahFile.text = filename
-            return
-        }
-        
-        pickedData = data
-        labelUnggahFile.text = filename
-
-        if filename.contains(regex: "(jpg|png|jpeg)") {
-            guard let imageData = UIImage(data: data)?.pngData() else {
-                self.view.makeToast("Gambar yang anda pilih tidak sesuai ketentuan.")
-                return
-            }
-                        
-            pickedData = imageData
-        }
-    }
+//    func attachmentPickerMenu(_ menu: HSAttachmentPicker, show controller: UIViewController, completion: (() -> Void)? = nil) {
+//        DispatchQueue.main.async {
+//            self.present(controller, animated: true, completion: completion)
+//        }
+//    }
+//
+//    func attachmentPickerMenu(_ menu: HSAttachmentPicker, showErrorMessage errorMessage: String) {
+//        self.view.makeToast(errorMessage)
+//    }
+//
+//    func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
+//
+//        if let _image = image {
+//            guard let imageData = _image.pngData() else {
+//                self.view.makeToast("Gambar yang anda pilih tidak sesuai ketentuan.")
+//                return
+//            }
+//            pickedData = imageData
+//            labelUnggahFile.text = filename
+//            return
+//        }
+//
+//        pickedData = data
+//        labelUnggahFile.text = filename
+//
+//        if filename.contains(regex: "(jpg|png|jpeg)") {
+//            guard let imageData = UIImage(data: data)?.pngData() else {
+//                self.view.makeToast("Gambar yang anda pilih tidak sesuai ketentuan.")
+//                return
+//            }
+//
+//            pickedData = imageData
+//        }
+//    }
 }

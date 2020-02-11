@@ -516,6 +516,11 @@ class InformationNetworking: BaseNetworking {
         alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
     }
     
+    func getLeaveListStatusFilter(completion: @escaping(_ error: String?, _ leaveStatusFilter: LeaveStatusFilter?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getLeaveListStatusFilter"
+        alamofireGet(url: url, headers: getHeaders(), body: nil, completion: completion)
+    }
+    
     func updateIsReadNotification(notification_id: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/updateIsReadNotification"
         let body: [String: String] = [

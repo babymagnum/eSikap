@@ -672,11 +672,7 @@ extension PengajuanCutiController: BottomSheetDatePickerProtocol {
 }
 
 //click event
-extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentMenuDelegate, UIDocumentPickerDelegate {
-    func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
-        documentPicker.delegate = self
-        present(documentPicker, animated: true, completion: nil)
-    }
+extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentPickerDelegate {
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         dismiss(animated: true, completion: nil)
@@ -826,7 +822,7 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentMen
     
     @objc func viewLampirkanFileClick() {
         
-        let alert = UIAlertController(title: "Pick File", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (UIAlertAction) in
             if !UIImagePickerController.isSourceTypeAvailable(.camera){
                 self.function.showUnderstandDialog(self, "Device Tidak Memiliki Camera", nil, "Mengerti")
@@ -841,7 +837,8 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentMen
         alert.addAction(UIAlertAction(title: "File", style: .default, handler: { (UIAlertAction) in
             //self.picker.showAttachmentMenu()
             let allowedFiles = ["com.apple.iwork.pages.pages", "com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key","public.image", "com.apple.application", "public.item","public.data", "public.content", "public.audiovisual-content", "public.movie", "public.audiovisual-content", "public.video", "public.audio", "public.text", "public.data", "public.zip-archive", "com.pkware.zip-archive", "public.composite-content", "public.text"]
-            let importMenu = UIDocumentMenuViewController(documentTypes: allowedFiles, in: .import)
+            //let importMenu = UIDocumentMenuViewController(documentTypes: allowedFiles, in: .import)
+            let importMenu = UIDocumentPickerViewController(documentTypes: allowedFiles, in: .import)
             importMenu.delegate = self
             importMenu.modalPresentationStyle = .formSheet
             self.present(importMenu, animated: true, completion: nil)
