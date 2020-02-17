@@ -52,34 +52,36 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
         SVProgressHUD.show()
         
         informationNetworking.getLeaveApprovalList(page: currentPage) { (error, delegationList, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Daftar List", error, "Reload", "Cancel", completionHandler: {
+                        self.getLeaveApprovalList()
+                    })
+                    return
+                }
+                
+                guard let delegationList = delegationList else { return }
+                
+                for cuti in delegationList.data!.leave {
+                    self.listCuti.append(cuti)
+                }
+                
+                self.labelDataKosong.text = delegationList.message
+                
+                self.labelDataKosong.isHidden = (delegationList.data?.leave.count)! > 0 && self.listCuti.count > 0
+                
+                self.totalPage = (delegationList.data?.total_page)!
+                
+                self.currentPage += 1
+                self.cutiCollectionView.reloadData()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Daftar List", error, "Reload", "Cancel", completionHandler: {
-                    self.getLeaveApprovalList()
-                })
-                return
-            }
-            
-            guard let delegationList = delegationList else { return }
-            
-            for cuti in delegationList.data!.leave {
-                self.listCuti.append(cuti)
-            }
-            
-            self.labelDataKosong.text = delegationList.message
-            
-            self.labelDataKosong.isHidden = (delegationList.data?.leave.count)! > 0 && self.listCuti.count > 0
-            
-            self.totalPage = (delegationList.data?.total_page)!
-            
-            self.currentPage += 1
-            self.cutiCollectionView.reloadData()
         }
     }
     

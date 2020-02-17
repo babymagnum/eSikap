@@ -65,34 +65,36 @@ class RealisasiPeminjamanRuanganController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.realizationRequestRooms(body: body, listFiles: listLampiran) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
-                    let vc = DialogPengajuanCutiController()
-                    vc.exception = _error
-                    self.showCustomDialog(vc)
-                } else {
-                    self.function.showUnderstandDialog(self, "Gagal Melakukan Realisasi", _error, "Ulangi", "Cancel") {
-                        self.realizationRequestRooms(body: body)
-                    }
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
-            }
-            
-            guard let _success = success else { return }
-            
-            self.view.makeToast(_success.message ?? "", duration: 1)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                if let _delegate = self.delegate {
-                    _delegate.updateData()
-                    self.navigationController?.popViewController(animated: true)
+                
+                if let _error = error {
+                    if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
+                        let vc = DialogPengajuanCutiController()
+                        vc.exception = _error
+                        self.showCustomDialog(vc)
+                    } else {
+                        self.function.showUnderstandDialog(self, "Gagal Melakukan Realisasi", _error, "Ulangi", "Cancel") {
+                            self.realizationRequestRooms(body: body)
+                        }
+                    }
+                    return
+                }
+                
+                guard let _success = success else { return }
+                
+                self.view.makeToast(_success.message ?? "", duration: 1)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    if let _delegate = self.delegate {
+                        _delegate.updateData()
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
             }
         }

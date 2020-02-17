@@ -23,6 +23,8 @@ class HistoryPeminjamanMobilDinas: BaseViewController, UICollectionViewDelegate 
     private var year = ""
     private var status = "0"
     
+    var isFromPeminjamanMobilDinas: Bool?
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
@@ -64,21 +66,21 @@ class HistoryPeminjamanMobilDinas: BaseViewController, UICollectionViewDelegate 
         SVProgressHUD.show()
         
         informationNetworking.getRequestCarHistoryList(page: currentPage, year: year, status: status) { (error, requestCarHistory, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload") {
-                    self.getHistory()
-                }
-                return
-            }
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload") {
+                        self.getHistory()
+                    }
+                    return
+                }
+                
                 guard let _requestCarHistory = requestCarHistory else { return }
                 self.labelKosong.text = _requestCarHistory.message
                 if self.currentPage == 0 { self.listPeminjamanMobilDinas.removeAll() }
@@ -159,7 +161,11 @@ extension HistoryPeminjamanMobilDinas: FilterHistoryPeminjamanMobilProtocol {
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let _ = isFromPeminjamanMobilDinas {
+            backToHome()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc func handleRefresh(_ refresh: UIRefreshControl) {
@@ -167,6 +173,15 @@ extension HistoryPeminjamanMobilDinas: FilterHistoryPeminjamanMobilProtocol {
         listPeminjamanMobilDinas.removeAll()
         currentPage = 0
         getHistory()
+    }
+    
+    private func backToHome() {
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(HomeController(), animated: true)
     }
     
 }

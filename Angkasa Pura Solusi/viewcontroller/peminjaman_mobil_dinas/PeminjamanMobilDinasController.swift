@@ -79,44 +79,48 @@ class PeminjamanMobilDinasController: BaseViewController, UICollectionViewDelega
     
     private func getCategory() {
         informationNetworking.getCategoryCarRequest { (error, categoryCar, isExpired) in
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                print("error get category \(_error)")
-                return
-            }
-            
-            guard let _category = categoryCar else { return }
-            
-            self.listKategori = _category.data
-            
-            _category.data.forEach { (item) in
-                self.fieldKategori.optionArray.append(item.name)
+            DispatchQueue.main.async {
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _error = error {
+                    print("error get category \(_error)")
+                    return
+                }
+                
+                guard let _category = categoryCar else { return }
+                
+                self.listKategori = _category.data
+                
+                _category.data.forEach { (item) in
+                    self.fieldKategori.optionArray.append(item.name)
+                }
             }
         }
     }
     
     private func getDestination() {
         informationNetworking.getDestination { (error, destination, isExpired) in
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                print("error get destination \(_error)")
-                return
-            }
-            
-            guard let _destination = destination else { return }
-            
-            self.listAreaTujuan = _destination.data
-            
-            _destination.data.forEach { (item) in
-                self.fieldAreaTujuan.optionArray.append(item.name)
+            DispatchQueue.main.async {
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _error = error {
+                    print("error get destination \(_error)")
+                    return
+                }
+                
+                guard let _destination = destination else { return }
+                
+                self.listAreaTujuan = _destination.data
+                
+                _destination.data.forEach { (item) in
+                    self.fieldAreaTujuan.optionArray.append(item.name)
+                }
             }
         }
     }
@@ -251,9 +255,6 @@ extension PeminjamanMobilDinasController: SearchDelegasiOrAtasanProtocol, Bottom
         } else if listPenumpang.count != Int(fieldJumlahPenumpang.text ?? "0") ?? 0 {
             self.view.makeToast("Jumlah penumpang tidak sesuai dengan penumpang yang di pilih.")
             return false
-        } else if fieldUndangan.trim() == "" {
-            self.view.makeToast("Undangan harus diisi.")
-            return false
         } else {
             return true
         }
@@ -287,22 +288,30 @@ extension PeminjamanMobilDinasController: SearchDelegasiOrAtasanProtocol, Bottom
         SVProgressHUD.show()
         
         informationNetworking.addRequestCar(body: body) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Melakukan Peminjaman", _error, "Ulangi") {
-                    self.addRequest()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
-            }
-            
-            self.function.showUnderstandDialog(self, "Sukses Melakukan Peminjaman", "", "Lanjut") {
-                // go to history
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Peminjaman", _error, "Ulangi") {
+                        self.addRequest()
+                    }
+                    return
+                }
+                
+                guard let _success = success else { return }
+                
+                self.view.makeToast(_success.message ?? "")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    let vc = HistoryPeminjamanMobilDinas()
+                    vc.isFromPeminjamanMobilDinas = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
     }
@@ -414,6 +423,5 @@ extension PeminjamanMobilDinasController: UICollectionViewDataSource {
         cell.data = listPenumpang[indexPath.item]
         cell.buttonDelete.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonDeleteClick(sender:))))
         return cell
-        
     }
 }

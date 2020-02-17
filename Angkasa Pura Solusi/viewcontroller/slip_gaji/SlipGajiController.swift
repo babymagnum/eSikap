@@ -38,32 +38,34 @@ class SlipGajiController: BaseViewController, UICollectionViewDelegate, Indicato
         SVProgressHUD.show()
         
         informationNetworking.getPayrollList(year: year ?? function.getCurrentDate(pattern: "yyyy")) { (error, slipGaji, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Gaji", error, "Reload", "Understand", completionHandler: {
+                        self.getSlipGaji()
+                    })
+                    return
+                }
+                
+                guard let slipGaji = slipGaji else { return }
+                
+                if slipGaji.data.count == 0 {
+                    self.labelDataKosong.text = slipGaji.message
+                    self.labelDataKosong.isHidden = false
+                } else {
+                    self.labelDataKosong.isHidden = true
+                }
+                
+                self.listSlipGaji = slipGaji.data
+                
+                self.collectionSlipGaji.reloadData()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Gaji", error, "Reload", "Understand", completionHandler: {
-                    self.getSlipGaji()
-                })
-                return
-            }
-            
-            guard let slipGaji = slipGaji else { return }
-            
-            if slipGaji.data.count == 0 {
-                self.labelDataKosong.text = slipGaji.message
-                self.labelDataKosong.isHidden = false
-            } else {
-                self.labelDataKosong.isHidden = true
-            }
-            
-            self.listSlipGaji = slipGaji.data
-            
-            DispatchQueue.main.async { self.collectionSlipGaji.reloadData() }
         }
     }
     
@@ -80,26 +82,28 @@ extension SlipGajiController {
         SVProgressHUD.show(withStatus: "Sending to your email...")
         
         informationNetworking.sendPayrollSlip(payroll_id: payroll_id) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mengirimkan Slip Gaji", error, "Mengerti")
+                    return
+                }
+                
+                guard let success = success else { return }
+                
+                let vc = DialogSendEmailController()
+                vc.email = success.message?.components(separatedBy: "<br>")[1]
+                let popup = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width - 44, popupHeight: vc.view.getHeight())
+                popup.cornerRadius = 5
+                popup.shadowEnabled = false
+                self.present(popup, animated: true)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mengirimkan Slip Gaji", error, "Mengerti")
-                return
-            }
-            
-            guard let success = success else { return }
-            
-            let vc = DialogSendEmailController()
-            vc.email = success.message?.components(separatedBy: "<br>")[1]
-            let popup = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width - 44, popupHeight: vc.view.getHeight())
-            popup.cornerRadius = 5
-            popup.shadowEnabled = false
-            self.present(popup, animated: true)
         }
     }
     

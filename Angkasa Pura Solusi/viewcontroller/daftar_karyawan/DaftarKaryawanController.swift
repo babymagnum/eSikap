@@ -64,39 +64,40 @@ class DaftarKaryawanController: BaseViewController, UICollectionViewDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getEmpList((emp_name: request!.emp_name, unit_id: request!.unit_id, workarea_id: request!.workarea_id, gender: request!.gender, page: String(currentPage), order_id: request!.order_id)) { (error, karyawan, isExpired) in
-        
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Karyawan", error, "Reload", "Cancel", completionHandler: {
+                        self.getEmpList()
+                    })
+                }
+                
+                guard let karyawan = karyawan else { return }
+                
+                if self.currentPage == 0 { self.listKaryawan.removeAll() }
+                
+                if karyawan.data!.emp.count == 0 && self.listKaryawan.count == 0 {
+                    self.labelKaryawanKosong.text = karyawan.message
+                    self.labelKaryawanKosong.isHidden = false
+                } else {
+                    self.labelKaryawanKosong.isHidden = true
+                }
+                
+                self.totalPage = (karyawan.data?.total_page!)!
+                self.currentPage += 1
+                
+                for itemKaryawan in karyawan.data!.emp {
+                    self.listKaryawan.append(itemKaryawan)
+                }
+                
+                self.daftarKaryawanCollectionView.reloadData()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Karyawan", error, "Reload", "Cancel", completionHandler: {
-                    self.getEmpList()
-                })
-            }
-            
-            guard let karyawan = karyawan else { return }
-            
-            if self.currentPage == 0 { self.listKaryawan.removeAll() }
-            
-            if karyawan.data!.emp.count == 0 && self.listKaryawan.count == 0 {
-                self.labelKaryawanKosong.text = karyawan.message
-                self.labelKaryawanKosong.isHidden = false
-            } else {
-                self.labelKaryawanKosong.isHidden = true
-            }
-            
-            self.totalPage = (karyawan.data?.total_page!)!
-            self.currentPage += 1
-            
-            for itemKaryawan in karyawan.data!.emp {
-                self.listKaryawan.append(itemKaryawan)
-            }
-            
-            DispatchQueue.main.async { self.daftarKaryawanCollectionView.reloadData() }
         }
     }
 }

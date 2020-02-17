@@ -49,40 +49,42 @@ class RiwayatCutiController: BaseViewController, UICollectionViewDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getLeaveHistoryList(page: currentPage, year: current_year, leave_type_id: leave_type_id, status: status) { (error, riwayatCuti, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Riwayat Cuti", error, "Reload", "Understand", completionHandler: {
-                    self.getRiwayatCuti()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Riwayat Cuti", error, "Reload", "Understand", completionHandler: {
+                        self.getRiwayatCuti()
+                    })
+                    return
+                }
+                
+                guard let riwayatCuti = riwayatCuti else { return }
+                
+                if self.currentPage == 0 { self.listRiwayatCuti.removeAll() }
+                
+                if riwayatCuti.data?.leave.count == 0 && self.listRiwayatCuti.count == 0 {
+                    self.labelDataKosong.text = riwayatCuti.message
+                    self.labelDataKosong.isHidden = false
+                } else {
+                    self.labelDataKosong.isHidden = true
+                }
+                
+                self.totalPage = (riwayatCuti.data?.total_page)!
+                
+                riwayatCuti.data?.leave.forEach({ (riwayat) in
+                    self.listRiwayatCuti.append(riwayat)
                 })
-                return
+                
+                self.currentPage += 1
+                
+                self.riwayatCutiCollectionView.reloadData()
             }
-            
-            guard let riwayatCuti = riwayatCuti else { return }
-            
-            if self.currentPage == 0 { self.listRiwayatCuti.removeAll() }
-            
-            if riwayatCuti.data?.leave.count == 0 && self.listRiwayatCuti.count == 0 {
-                self.labelDataKosong.text = riwayatCuti.message
-                self.labelDataKosong.isHidden = false
-            } else {
-                self.labelDataKosong.isHidden = true
-            }
-            
-            self.totalPage = (riwayatCuti.data?.total_page)!
-            
-            riwayatCuti.data?.leave.forEach({ (riwayat) in
-                self.listRiwayatCuti.append(riwayat)
-            })
-            
-            self.currentPage += 1
-            
-            DispatchQueue.main.async { self.riwayatCutiCollectionView.reloadData() }
         }
     }
     

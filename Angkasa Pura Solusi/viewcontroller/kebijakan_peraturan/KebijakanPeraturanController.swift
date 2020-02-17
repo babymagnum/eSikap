@@ -34,23 +34,23 @@ class KebijakanPeraturanController: BaseViewController, UICollectionViewDelegate
         SVProgressHUD.show()
         
         informationNetworking.getPolicyCategory(page: currentPage, year: year) { (error, policyCategory, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getPolicyCategory()
-                }
-                return
-            }
-            
-            guard let _policyCategory = policyCategory else { return }
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getPolicyCategory()
+                    }
+                    return
+                }
+                
+                guard let _policyCategory = policyCategory else { return }
+                
                 self.labelKosong.text = _policyCategory.message
                 self.totalPage = _policyCategory.data?.total_page ?? 1
                 self.currentPage += 1

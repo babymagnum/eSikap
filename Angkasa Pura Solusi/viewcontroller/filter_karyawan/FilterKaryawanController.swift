@@ -59,32 +59,32 @@ class FilterKaryawanController: BaseViewController {
     private func getUnit() {
         SVProgressHUD.show()
         informationNetworking.getUnit { (error, listUnit, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getUnit()
-                return
-            }
-            
-            guard let list = listUnit else { return }
-            
-            var nameList = [String]()
-            var idList = [Int]()
-            
-            for unit in list {
-                nameList.append(unit.unit_name!)
-                
-                if unit.unit_id == "" {
-                    idList.append(123456789)
-                } else { idList.append(Int(unit.unit_id!)!) }
-            }
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getUnit()
+                    return
+                }
+                
+                guard let list = listUnit else { return }
+                
+                var nameList = [String]()
+                var idList = [Int]()
+                
+                for unit in list {
+                    nameList.append(unit.unit_name!)
+                    
+                    if unit.unit_id == "" {
+                        idList.append(123456789)
+                    } else { idList.append(Int(unit.unit_id!)!) }
+                }
+                
                 self.fieldDivisi.optionArray = nameList
                 self.fieldDivisi.optionIds = idList
             }
@@ -94,31 +94,31 @@ class FilterKaryawanController: BaseViewController {
     private func getWorkArea() {
         SVProgressHUD.show()
         informationNetworking.getWorkarea { (error, listWorkarea, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getWorkArea()
-                return
-            }
-            
-            guard let list = listWorkarea else { return }
-            
-            var nameList = [String]()
-            var idList = [Int]()
-            
-            for workarea in list {
-                nameList.append(workarea.workarea_name!)
-                
-                if workarea.workarea_id == "" { idList.append(1234567890)}
-                else { idList.append(Int(workarea.workarea_id!)!) }
-            }
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getWorkArea()
+                    return
+                }
+                
+                guard let list = listWorkarea else { return }
+                
+                var nameList = [String]()
+                var idList = [Int]()
+                
+                for workarea in list {
+                    nameList.append(workarea.workarea_name!)
+                    
+                    if workarea.workarea_id == "" { idList.append(1234567890)}
+                    else { idList.append(Int(workarea.workarea_id!)!) }
+                }
+                
                 self.fieldLokasiKerja.optionArray = nameList
                 self.fieldLokasiKerja.optionIds = idList
             }
@@ -128,27 +128,27 @@ class FilterKaryawanController: BaseViewController {
     private func getGender() {
         SVProgressHUD.show()
         informationNetworking.getGender { (error, listGender, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getGender()
-                return
-            }
-            
-            guard let list = listGender else { return }
-            
-            var nameList = [String]()
-            
-            for gender in list {
-                nameList.append(gender.gender_name!)
-            }
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getGender()
+                    return
+                }
+                
+                guard let list = listGender else { return }
+                
+                var nameList = [String]()
+                
+                for gender in list {
+                    nameList.append(gender.gender_name!)
+                }
+                
                 self.fieldGender.optionArray = nameList
             }
         }
@@ -157,27 +157,27 @@ class FilterKaryawanController: BaseViewController {
     private func getOrder() {
         SVProgressHUD.show()
         informationNetworking.getOrder { (error, listOrder, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getOrder()
-                return
-            }
-            
-            guard let list = listOrder else { return }
-            
-            var nameList = [String]()
-            
-            for order in list {
-                nameList.append(order.order_name!)
-            }
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getOrder()
+                    return
+                }
+                
+                guard let list = listOrder else { return }
+                
+                var nameList = [String]()
+                
+                for order in list {
+                    nameList.append(order.order_name!)
+                }
+                
                 self.fieldOrderBy.optionArray = nameList
             }
         }

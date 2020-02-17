@@ -66,19 +66,21 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
     
     private func getProfile() {
         informationNetworking.getProfile { (error, itemProfile, isExpired) in
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getProfile()
+                    return
+                }
+                
+                guard let _itemProfile = itemProfile else { return }
+                
+                self.setProfileView(data: _itemProfile)
             }
-            
-            if let _ = error {
-                self.getProfile()
-                return
-            }
-            
-            guard let _itemProfile = itemProfile else { return }
-            
-            self.setProfileView(data: _itemProfile)
         }
     }
     
@@ -96,39 +98,41 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getEditDetailOvertimeRealizationById(overtimeId: _overtimeId) { (error, editDetailOvertime, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getEditOvertime()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-            }
-            
-            guard let _data = editDetailOvertime?.data else { return }
-                        
-            self.labelKeterangan.text = _data.reason
-            self.labelNumber.text = _data.number
-            self.labelDate.text = _data.date
-            self.datetimes_start = _data.datetimes_start
-            self.datetimes_start_show = _data.datetimes_start_show
-            self.datetimes_end = _data.datetimes_end
-            self.datetimes_end_show = _data.datetimes_end_show
-            self.datetimes_start_real = _data.datetimes_start_real
-            self.datetimes_end_real = _data.datetimes_end_real
-            self.attachment_old = _data.attachment_name_old ?? ""
-            
-            self.collectionTanggalLembur.reloadData()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                self.collectionTanggalLemburHeight.constant = self.collectionTanggalLembur.contentSize.height
-                self.scrollView.resizeScrollViewContentSize()
-                self.scrollView.alpha = 1
-                self.view.layoutIfNeeded()
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getEditOvertime()
+                    }
+                }
+                
+                guard let _data = editDetailOvertime?.data else { return }
+                            
+                self.labelKeterangan.text = _data.reason
+                self.labelNumber.text = _data.number
+                self.labelDate.text = _data.date
+                self.datetimes_start = _data.datetimes_start
+                self.datetimes_start_show = _data.datetimes_start_show
+                self.datetimes_end = _data.datetimes_end
+                self.datetimes_end_show = _data.datetimes_end_show
+                self.datetimes_start_real = _data.datetimes_start_real
+                self.datetimes_end_real = _data.datetimes_end_real
+                self.attachment_old = _data.attachment_name_old ?? ""
+                
+                self.collectionTanggalLembur.reloadData()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self.collectionTanggalLemburHeight.constant = self.collectionTanggalLembur.contentSize.height
+                    self.scrollView.resizeScrollViewContentSize()
+                    self.scrollView.alpha = 1
+                    self.view.layoutIfNeeded()
+                }
             }
         }
     }
@@ -261,33 +265,35 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol {
         SVProgressHUD.show(withStatus: "Harap tunggu...")
         
         informationNetworking.addOvertimeRealization(body: body, imageData: pickedData, fileName: labelFilePendukung.text ?? "", fileType: fileType) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                if _error.contains(regex: "(</ul>|</li>|</span>)") {
-                    let vc = DialogPengajuanCutiController()
-                    vc.exception = error
-                    self.showCustomDialog(vc)
-                } else {
-                    self.function.showUnderstandDialog(self, "Gagal Mengajukan Realisasi", _error, "Ulangi", "Cancel") {
-                        self.addOvertimeRealization()
-                    }
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
+                
+                if let _error = error {
+                    if _error.contains(regex: "(</ul>|</li>|</span>)") {
+                        let vc = DialogPengajuanCutiController()
+                        vc.exception = error
+                        self.showCustomDialog(vc)
+                    } else {
+                        self.function.showUnderstandDialog(self, "Gagal Mengajukan Realisasi", _error, "Ulangi", "Cancel") {
+                            self.addOvertimeRealization()
+                        }
+                    }
+                    return
+                }
+                
+                guard let _ = success, let _delegate = self.delegate else { return }
+                
+                self.view.makeToast("Berhasil melakukan pengajuan realisasi lembur.")
+                
+                _delegate.updateData()
+                
+                self.navigationController?.popViewController(animated: true)
             }
-            
-            guard let _ = success, let _delegate = self.delegate else { return }
-            
-            self.view.makeToast("Berhasil melakukan pengajuan realisasi lembur.")
-            
-            _delegate.updateData()
-            
-            self.navigationController?.popViewController(animated: true)
         }
     }
     

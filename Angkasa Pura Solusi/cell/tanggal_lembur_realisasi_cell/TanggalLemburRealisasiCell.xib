@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -271,7 +271,6 @@
                             <constraint firstItem="rd3-Fj-RjL" firstAttribute="top" secondItem="JVA-uH-nIo" secondAttribute="top" constant="13" id="cdO-fp-Scl"/>
                             <constraint firstAttribute="trailing" secondItem="zZw-B5-1qW" secondAttribute="trailing" constant="14" id="fTu-a6-QMT"/>
                             <constraint firstItem="Kga-BE-Xfb" firstAttribute="leading" secondItem="JVA-uH-nIo" secondAttribute="leading" constant="14" id="fvV-zP-HO7"/>
-                            <constraint firstAttribute="bottom" secondItem="LDD-W4-LhV" secondAttribute="bottom" constant="16" id="kSS-ZF-0N1"/>
                             <constraint firstItem="LDD-W4-LhV" firstAttribute="top" secondItem="z3A-7h-pka" secondAttribute="bottom" constant="10" id="m8B-Aa-vT3"/>
                             <constraint firstAttribute="trailing" secondItem="wOo-J7-TZg" secondAttribute="trailing" constant="14" id="nk8-VK-qf0"/>
                             <constraint firstItem="rd3-Fj-RjL" firstAttribute="leading" secondItem="JVA-uH-nIo" secondAttribute="leading" constant="14" id="rhA-nB-PEW"/>

@@ -21,6 +21,8 @@ class HistoryPeminjamanRuangan: BaseViewController {
     private var currentPage = 0
     private var totalPage = 0
     
+    var isFromPeminjamanRuangan: Bool?
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
@@ -59,29 +61,31 @@ class HistoryPeminjamanRuangan: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getRequestRoomsHistoryList(page: currentPage, year: year) { (error, requestRoomHistory, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getHistory()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getHistory()
+                    }
+                }
+                
+                guard let _requestRoomHistory = requestRoomHistory else { return }
+                
+                _requestRoomHistory.data?.requestrooms.forEach({ (item) in
+                    self.listHistory.append(item)
+                })
+                
+                self.labelKosong.text = _requestRoomHistory.message
+                self.labelKosong.isHidden = _requestRoomHistory.data?.requestrooms.count ?? 0 > 0 && self.listHistory.count > 0
+                
+                self.collectionHistoryPeminjamanRuangan.reloadData()
             }
-            
-            guard let _requestRoomHistory = requestRoomHistory else { return }
-            
-            _requestRoomHistory.data?.requestrooms.forEach({ (item) in
-                self.listHistory.append(item)
-            })
-            
-            self.labelKosong.text = _requestRoomHistory.message
-            self.labelKosong.isHidden = _requestRoomHistory.data?.requestrooms.count ?? 0 > 0 && self.listHistory.count > 0
-            
-            self.collectionHistoryPeminjamanRuangan.reloadData()
         }
     }
 }
@@ -159,7 +163,11 @@ extension HistoryPeminjamanRuangan: FilterHistoryPeminjamanMobilProtocol {
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let _ = isFromPeminjamanRuangan {
+            backToHome()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc func handleRefresh(_ refresh: UIRefreshControl) {
@@ -167,5 +175,14 @@ extension HistoryPeminjamanRuangan: FilterHistoryPeminjamanMobilProtocol {
         listHistory.removeAll()
         currentPage = 0
         getHistory()
+    }
+    
+    private func backToHome() {
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(HomeController(), animated: true)
     }
 }

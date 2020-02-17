@@ -60,34 +60,36 @@ class DaftarPeminjamanRuanganController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getScheduleRoomsOneDay(date: date) { (error, schedules, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController ?? UINavigationController(nibName: "DaftarPeminjamanRuanganController", bundle: nil))
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getSchedulesOneDay(date: date)
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController ?? UINavigationController(nibName: "DaftarPeminjamanRuanganController", bundle: nil))
+                    return
                 }
-                return
-            }
-            
-            guard let _schedules = schedules else { return }
-            
-            self.listSchedules = _schedules.data
-            
-            self.labelEmpty.text = _schedules.message
-            self.labelEmpty.isHidden = self.listSchedules.count > 0
-            
-            self.collectionDaftarPeminjamanRuangan.reloadData()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                UIView.animate(withDuration: 0.2) {
-                    self.collectionDaftarPeminjamanRuanganHeight.constant = self.collectionDaftarPeminjamanRuangan.contentSize.height
-                    self.scrollView.resizeScrollViewContentSize()
-                    self.view.layoutIfNeeded()
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getSchedulesOneDay(date: date)
+                    }
+                    return
+                }
+                
+                guard let _schedules = schedules else { return }
+                
+                self.listSchedules = _schedules.data
+                
+                self.labelEmpty.text = _schedules.message
+                self.labelEmpty.isHidden = self.listSchedules.count > 0
+                
+                self.collectionDaftarPeminjamanRuangan.reloadData()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    UIView.animate(withDuration: 0.2) {
+                        self.collectionDaftarPeminjamanRuanganHeight.constant = self.collectionDaftarPeminjamanRuangan.contentSize.height
+                        self.scrollView.resizeScrollViewContentSize()
+                        self.view.layoutIfNeeded()
+                    }
                 }
             }
         }
@@ -97,35 +99,37 @@ class DaftarPeminjamanRuanganController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getScheduleRoomsOneMonth(month: function.getCurrentDate(pattern: "MM"), year: function.getCurrentDate(pattern: "yyyy")) { (error, schedules, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getSchedules()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
-            }
-            
-            guard let _schedules = schedules else { return }
-            
-            self.listSchedules = _schedules.data
-            
-            self.labelEmpty.text = _schedules.message
-            self.labelEmpty.isHidden = self.listSchedules.count > 0
-            
-            self.collectionDaftarPeminjamanRuangan.reloadData()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                UIView.animate(withDuration: 0.2) {
-                    
-                    self.collectionDaftarPeminjamanRuanganHeight.constant = self.collectionDaftarPeminjamanRuangan.contentSize.height
-                    self.scrollView.resizeScrollViewContentSize()
-                    self.view.layoutIfNeeded()
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getSchedules()
+                    }
+                    return
+                }
+                
+                guard let _schedules = schedules else { return }
+                
+                self.listSchedules = _schedules.data
+                
+                self.labelEmpty.text = _schedules.message
+                self.labelEmpty.isHidden = self.listSchedules.count > 0
+                
+                self.collectionDaftarPeminjamanRuangan.reloadData()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    UIView.animate(withDuration: 0.2) {
+                        
+                        self.collectionDaftarPeminjamanRuanganHeight.constant = self.collectionDaftarPeminjamanRuangan.contentSize.height
+                        self.scrollView.resizeScrollViewContentSize()
+                        self.view.layoutIfNeeded()
+                    }
                 }
             }
         }
@@ -163,36 +167,6 @@ class DaftarPeminjamanRuanganController: BaseViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
- 
-    // Configure the cell
-    func configureCell(cell: JTAppleCell?, cellState: CellState) {
-        guard let currentCell = cell as? DateCell else {
-            return
-        }
-        
-        currentCell.dateLabel.text = cellState.text
-        configureTextColorFor(cell: currentCell, cellState: cellState)
-    }
-    
-    // Configure text colors
-    func configureTextColorFor(cell: JTAppleCell?, cellState: CellState){
-        
-        guard let currentCell = cell as? DateCell else {
-            return
-        }
-        if cellState.isSelected{
-            currentCell.dateLabel.textColor = UIColor.white
-            currentCell.viewContainer.backgroundColor = UIColor(hexString: "9ccc65")
-        }else{
-            currentCell.viewContainer.backgroundColor = UIColor(hexString: "ffffff")
-            
-            if cellState.dateBelongsTo == .thisMonth {
-                currentCell.dateLabel.textColor = UIColor.black
-            }else{
-                currentCell.dateLabel.textColor = UIColor.gray
-            }
-        }
-    }
 }
 
 extension DaftarPeminjamanRuanganController: FormPeminjamanRuanganProtocol {
@@ -201,9 +175,7 @@ extension DaftarPeminjamanRuanganController: FormPeminjamanRuanganProtocol {
     }
     
     @objc func buttonPengajuanClick() {
-        let vc = FormPeminjamanRuanganController()
-        vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(FormPeminjamanRuanganController(), animated: true)
     }
     
     @IBAction func buttonBackClick(_ sender: Any) {
@@ -306,6 +278,35 @@ extension DaftarPeminjamanRuanganController: JTAppleCalendarViewDataSource{
 
 extension DaftarPeminjamanRuanganController: JTAppleCalendarViewDelegate{
 
+    // Configure the cell
+    func configureCell(cell: JTAppleCell?, cellState: CellState) {
+        guard let currentCell = cell as? DateCell else {
+            return
+        }
+        
+        currentCell.dateLabel.text = cellState.text
+        configureTextColorFor(cell: currentCell, cellState: cellState)
+    }
+    
+    // Configure text colors
+    func configureTextColorFor(cell: JTAppleCell?, cellState: CellState){
+        guard let currentCell = cell as? DateCell else {
+            return
+        }
+        if cellState.isSelected{
+            currentCell.dateLabel.textColor = UIColor.white
+            currentCell.viewContainer.backgroundColor = UIColor(hexString: "9ccc65")
+        }else{
+            currentCell.viewContainer.backgroundColor = UIColor(hexString: "ffffff")
+            
+            if cellState.dateBelongsTo == .thisMonth {
+                currentCell.dateLabel.textColor = UIColor.black
+            }else{
+                currentCell.dateLabel.textColor = UIColor.gray
+            }
+        }
+    }
+    
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
 
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCell

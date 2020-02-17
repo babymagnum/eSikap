@@ -62,7 +62,7 @@ class DetailPersetujuanRealisasiLemburController: BaseViewController {
         collectionTanggalLembur.delegate = self
         collectionTanggalLembur.dataSource = self
         let collectionLayout = collectionTanggalLembur.collectionViewLayout as! UICollectionViewFlowLayout
-        collectionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 324)
+        collectionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 324 + (function.getGlobalHeight() * 2))
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -83,47 +83,49 @@ class DetailPersetujuanRealisasiLemburController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getDetailOvertimeRealizationApprovalById(overtimeId: _overtimeId) { (error, detailApproval, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getDetailApproval()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
-            }
-            
-            guard let _data = detailApproval?.data else { return }
-            
-            self.textviewCatatanStatus.text = _data.real_status_notes
-            self.imageProfile.loadUrl(_data.photo ?? "")
-            self.buttonStatus.setTitle(_data.real_status, for: .normal)
-            self.buttonStatus.backgroundColor = UIColor(hexString: _data.real_status_color?.replacingOccurrences(of: "#", with: "") ?? "#")
-            self.labelNumber.text = _data.number
-            self.labelDate.text = "Diajkukan pada \(_data.date ?? "")"
-            self.labelNama.text = ": \(_data.emp_name ?? "")"
-            self.labelUnitKerja.text = ": \(_data.unit_name ?? "")"
-            self.labelKeterangan.text = ": \(_data.real_reason ?? "")"
-            self.datetime_id = _data.datetime_id
-            self.datetimes_start = _data.datetimes_start
-            self.datetimes_start_show = _data.datetimes_start_show
-            self.datetimes_end = _data.datetimes_end
-            self.datetimes_end_show = _data.datetimes_end_show
-            self.datetimes_real_start = _data.datetimes_real_start
-            self.datetimes_real_end = _data.datetimes_real_end
-            
-            self.collectionTanggalLembur.reloadData()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                UIView.animate(withDuration: 0.2) {
-                    self.collectionTanggalLemburHeight.constant = self.collectionTanggalLembur.contentSize.height
-                    self.scrollView.resizeScrollViewContentSize()
-                    self.view.layoutIfNeeded()
-                    self.scrollView.alpha = 1
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getDetailApproval()
+                    }
+                    return
+                }
+                
+                guard let _data = detailApproval?.data else { return }
+                
+                self.textviewCatatanStatus.text = _data.real_status_notes
+                self.imageProfile.loadUrl(_data.photo ?? "")
+                self.buttonStatus.setTitle(_data.real_status, for: .normal)
+                self.buttonStatus.backgroundColor = UIColor(hexString: _data.real_status_color?.replacingOccurrences(of: "#", with: "") ?? "#")
+                self.labelNumber.text = _data.number
+                self.labelDate.text = "Diajkukan pada \(_data.date ?? "")"
+                self.labelNama.text = ": \(_data.emp_name ?? "")"
+                self.labelUnitKerja.text = ": \(_data.unit_name ?? "")"
+                self.labelKeterangan.text = ": \(_data.real_reason ?? "")"
+                self.datetime_id = _data.datetime_id
+                self.datetimes_start = _data.datetimes_start
+                self.datetimes_start_show = _data.datetimes_start_show
+                self.datetimes_end = _data.datetimes_end
+                self.datetimes_end_show = _data.datetimes_end_show
+                self.datetimes_real_start = _data.datetimes_real_start
+                self.datetimes_real_end = _data.datetimes_real_end
+                
+                self.collectionTanggalLembur.reloadData()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    UIView.animate(withDuration: 0.2) {
+                        self.collectionTanggalLemburHeight.constant = self.collectionTanggalLembur.contentSize.height
+                        self.scrollView.resizeScrollViewContentSize()
+                        self.view.layoutIfNeeded()
+                        self.scrollView.alpha = 1
+                    }
                 }
             }
         }
@@ -196,31 +198,33 @@ extension DetailPersetujuanRealisasiLemburController {
         SVProgressHUD.show()
         
         informationNetworking.approvalOvertimeRealization(body: body) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
-                    let vc = DialogPengajuanCutiController()
-                    vc.exception = _error
-                    self.showCustomDialog(vc)
-                } else {
-                    self.function.showUnderstandDialog(self, "Gagal Melakukan Persetujuan Realisasi Lembur", _error, "Ulangi", "Cancel") {
-                        self.approvalOvertime()
-                    }
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
+                
+                if let _error = error {
+                    if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
+                        let vc = DialogPengajuanCutiController()
+                        vc.exception = _error
+                        self.showCustomDialog(vc)
+                    } else {
+                        self.function.showUnderstandDialog(self, "Gagal Melakukan Persetujuan Realisasi Lembur", _error, "Ulangi", "Cancel") {
+                            self.approvalOvertime()
+                        }
+                    }
+                    return
+                }
+                
+                guard let _success = success else { return }
+                
+                self.view.makeToast(_success.message)
+                
+                self.getDetailApproval()
             }
-            
-            guard let _success = success else { return }
-            
-            self.view.makeToast(_success.message)
-            
-            self.getDetailApproval()
         }
     }
 }

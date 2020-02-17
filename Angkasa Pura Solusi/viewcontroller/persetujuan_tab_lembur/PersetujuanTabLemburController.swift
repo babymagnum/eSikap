@@ -54,37 +54,40 @@ class PersetujuanTabLemburController: BaseViewController, IndicatorInfoProvider 
         SVProgressHUD.show()
         
         informationNetworking.getOvertimeApprovalList(page: currentPage, year: "", status: "") { (error, overtimeApproval, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getLembur()
-                }
-                return
-            }
-            
-            guard let _data = overtimeApproval?.data else { return }
-            
-            self.totalPage = _data.total_page
-            
-            if _data.overtime.count > 0 {
-                self.currentPage += 1
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 
-                _data.overtime.forEach { (item) in
-                    self.listLembur.append(item)
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
                 
-                self.labelEmpty.isHidden = _data.overtime.count > 0 && self.listLembur.count > 0
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getLembur()
+                    }
+                    return
+                }
                 
-                self.collectionLembur.reloadData()
+                guard let _data = overtimeApproval?.data else { return }
+                
+                self.totalPage = _data.total_page
+                
+                if _data.overtime.count > 0 {
+                    self.currentPage += 1
+                    
+                    _data.overtime.forEach { (item) in
+                        self.listLembur.append(item)
+                    }
+                    
+                    self.labelEmpty.isHidden = _data.overtime.count > 0 && self.listLembur.count > 0
+                    
+                    self.collectionLembur.reloadData()
+                }
             }
         }
     }
+    
 }
 
 extension PersetujuanTabLemburController: UICollectionViewDataSource, UICollectionViewDelegate {

@@ -50,31 +50,33 @@ class RealisasiLemburTabController: BaseViewController, IndicatorInfoProvider {
         SVProgressHUD.show()
         
         informationNetworking.getOvertimeRealizationHistoryList(status: _status, page: currentPage, year: _year) { (error, overtimeHistory, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getOvertimeRealization()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getOvertimeRealization()
+                    }
+                    return
+                }
+                
+                guard let _overtimeHistory = overtimeHistory else { return }
+                
+                _overtimeHistory.data?.overtime.forEach({ (item) in
+                    self.listPengajuan.append(item)
+                })
+                
+                self.totalPage = _overtimeHistory.data?.total_page ?? 1
+                self.currentPage += 1
+                self.labelEmpty.text = _overtimeHistory.message
+                self.labelEmpty.isHidden = !(self.listPengajuan.count == 0) && !(_overtimeHistory.data?.overtime.count ?? 0 == 0)
+                self.collectionRealisasi.reloadData()
             }
-            
-            guard let _overtimeHistory = overtimeHistory else { return }
-            
-            _overtimeHistory.data?.overtime.forEach({ (item) in
-                self.listPengajuan.append(item)
-            })
-            
-            self.totalPage = _overtimeHistory.data?.total_page ?? 1
-            self.currentPage += 1
-            self.labelEmpty.text = _overtimeHistory.message
-            self.labelEmpty.isHidden = !(self.listPengajuan.count == 0) && !(_overtimeHistory.data?.overtime.count ?? 0 == 0)
-            self.collectionRealisasi.reloadData()
         }
     }
 

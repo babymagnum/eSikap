@@ -70,28 +70,30 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
         SVProgressHUD.show()
         
         informationNetworking.getDetailLeaveApprovalById(leave_id: leave_id) { (error, detailLeaveApproval, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
+                        self.getDetailLeaveApprovalById()
+                    })
+                    return
+                }
+                
+                guard let detailLeaveApproval = detailLeaveApproval else { return }
+                
+                if detailLeaveApproval.data?.leave[0].is_processed == "1" {
+                    self.navigationController?.popViewController(animated: true)
+                    return
+                }
+                
+                self.setViewContent(detailLeaveApproval)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
-                    self.getDetailLeaveApprovalById()
-                })
-                return
-            }
-            
-            guard let detailLeaveApproval = detailLeaveApproval else { return }
-            
-            if detailLeaveApproval.data?.leave[0].is_processed == "1" {
-                self.navigationController?.popViewController(animated: true)
-                return
-            }
-            
-            self.setViewContent(detailLeaveApproval)
         }
     }
     
@@ -249,29 +251,31 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol, URLSessionD
         SVProgressHUD.show()
         
         informationNetworking.approvalLeaveByDate(leave_id: detailLeave!.id!, approval_notes: fieldCatatan.text.trim(), listStatusAction: listStatusAction) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Melakukan Approval Cuti", error, "Mengerti")
-                return
-            }
-            
-            guard let success = success else { return }
-            
-            self.buttonProses.isEnabled = false
-            self.view.makeToast(success.message)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                if let _ = self.is_back_to_home {
-                    self.backToHome()
-                } else {
-                    self.navigationController?.popViewController(animated: true)
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-            })
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Approval Cuti", error, "Mengerti")
+                    return
+                }
+                
+                guard let success = success else { return }
+                
+                self.buttonProses.isEnabled = false
+                self.view.makeToast(success.message)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    if let _ = self.is_back_to_home {
+                        self.backToHome()
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                })
+            }
         }
     }
     
@@ -279,30 +283,31 @@ extension DetailPersetujuanCutiController: StatusActionCellProtocol, URLSessionD
         SVProgressHUD.show()
         
         informationNetworking.approvalLeaveOneDayAndRange(leave_id: detailLeave!.id!, approval_notes: fieldCatatan.text.trim(), status_date: switchStatusAction.isOn ? "1" : "0") { (error, success, isExpired) in
-            
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Melakukan Approval Cuti", error, "Mengerti")
-                return
-            }
-            
-            guard let success = success else { return }
-            
-            self.buttonProses.isEnabled = false
-            self.view.makeToast(success.message)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                if let _ = self.is_back_to_home {
-                    self.backToHome()
-                } else {
-                    self.navigationController?.popViewController(animated: true)
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-            })
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Approval Cuti", error, "Mengerti")
+                    return
+                }
+                
+                guard let success = success else { return }
+                
+                self.buttonProses.isEnabled = false
+                self.view.makeToast(success.message)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    if let _ = self.is_back_to_home {
+                        self.backToHome()
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                })
+            }
         }
     }
     

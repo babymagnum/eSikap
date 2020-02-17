@@ -104,13 +104,13 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getMenu { (error, menu, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = error {
-                return
-            }
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = error {
+                    return
+                }
+                
                 guard let _menu = menu else { return }
                 
                 self.isGetMenuItem = true
@@ -183,11 +183,11 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     
     private func getAnnouncement() {
         informationNetworking.getAnnouncement { (error, itemAnnouncement) in
-            if let _ = error {
-                return
-            }
-            
             DispatchQueue.main.async {
+                if let _ = error {
+                    return
+                }
+                
                 guard let item = itemAnnouncement else { return }
                 
                 if item.count == 0 { return }
@@ -353,7 +353,7 @@ extension BerandaController {
                 guard let item = itemDashboard else { return }
                 
                 self.labelCuti.text = item.total_leave_quota
-                self.labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 120"
+                self.labelCapaian.text = "\(item.total_work?.total_work_achievement ?? "") / 160"
                 if item.presence_today?.icon == "sad" {
                     self.iconPresenceStatus.image = UIImage(named: "sad")
                 } else if item.presence_today?.icon == "emotionless" {
@@ -369,12 +369,11 @@ extension BerandaController {
         listBerita.removeAll()
         
         informationNetworking.getLatestNews { (error, news, isExpired) in
-            
-            if let _ = error {
-                return
-            }
-            
             DispatchQueue.main.async {
+                if let _ = error {
+                    return
+                }
+                
                 guard let _news = news else { return }
                 
                 self.listBerita = _news
@@ -388,23 +387,25 @@ extension BerandaController {
         SVProgressHUD.show()
         
         presenceNetworking.getPreparePresence { (error, preparePresence, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    let vc = DialogPreparePresenceController()
+                    vc.stringDescription = error
+                    self.showCustomDialog(vc)
+                    return
+                }
+                
+                let vc = PresensiController()
+                vc.preparePresence = preparePresence
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-            
-            if let error = error {
-                let vc = DialogPreparePresenceController()
-                vc.stringDescription = error
-                self.showCustomDialog(vc)
-                return
-            }
-            
-            let vc = PresensiController()
-            vc.preparePresence = preparePresence
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

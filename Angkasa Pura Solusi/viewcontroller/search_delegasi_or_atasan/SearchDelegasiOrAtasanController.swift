@@ -75,29 +75,31 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
         SVProgressHUD.show()
         
         informationNetworking.getEmpListFilter(page: currentPage, keyword: fieldSearch.trim()) { (error, listEmpFilter, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar \(self.type ?? "")", error, "Reload", "Cancel", completionHandler: {
+                        self.getEmpFilter()
+                    })
+                    return
+                }
+                
+                guard let listEmpFilter = listEmpFilter else { return }
+                self.totalPage = (listEmpFilter.data?.total_page)!
+                
+                for emp in listEmpFilter.data!.emp {
+                    self.listEmpFilter.append(emp)
+                }
+                
+                self.currentPage += 1
+                self.collectionName.reloadData()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar \(self.type ?? "")", error, "Reload", "Cancel", completionHandler: {
-                    self.getEmpFilter()
-                })
-                return
-            }
-            
-            guard let listEmpFilter = listEmpFilter else { return }
-            self.totalPage = (listEmpFilter.data?.total_page)!
-            
-            for emp in listEmpFilter.data!.emp {
-                self.listEmpFilter.append(emp)
-            }
-            
-            self.currentPage += 1
-            self.collectionName.reloadData()
         }
     }
     

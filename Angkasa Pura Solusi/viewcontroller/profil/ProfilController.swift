@@ -139,47 +139,50 @@ class ProfilController: BaseViewController {
     private func getKaryawanProfil() {
         SVProgressHUD.show()
         informationNetworking.getProfileByEmpId(empId: empId ?? "") { (error, itemDetailKaryawan, isExpired) in
-            
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Karyawan", error, "Reload", "Cancel", completionHandler: {
+                        self.getKaryawanProfil()
+                    })
+                }
+                
+                guard let item = itemDetailKaryawan else { return }
+                
+                self.setKaryawanView(item)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Karyawan", error, "Reload", "Cancel", completionHandler: {
-                    self.getKaryawanProfil()
-                })
-            }
-            
-            guard let item = itemDetailKaryawan else { return }
-            
-            self.setKaryawanView(item)
         }
     }
     
     private func getProfile() {
         SVProgressHUD.show()
         informationNetworking.getProfile { (error, itemProfile, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Profil", error, "Reload", "Cancel", completionHandler: {
+                        if self.open == .myProfile { self.getProfile() }
+                        else { self.getKaryawanProfil() }
+                    })
+                    return
+                }
+                
+                guard let item = itemProfile else { return }
+                
+                self.setView(item)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Profil", error, "Reload", "Cancel", completionHandler: {
-                    if self.open == .myProfile { self.getProfile() }
-                    else { self.getKaryawanProfil() }
-                })
-                return
-            }
-            
-            guard let item = itemProfile else { return }
-            
-            self.setView(item)
         }
     }
 
@@ -205,20 +208,22 @@ extension ProfilController {
             SVProgressHUD.show()
             
             self.authNetworking.logout(completion: { (error, logout, isExpired) in
-                SVProgressHUD.dismiss()
-                
-                if let _ = isExpired {
-                    self.forceLogout(self.navigationController!)
-                    return
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    
+                    if let _ = isExpired {
+                        self.forceLogout(self.navigationController!)
+                        return
+                    }
+                    
+                    if let error = error {
+                        self.function.showUnderstandDialog(self, "Gagal Logout", error, "Mengerti")
+                        return
+                    }
+                    
+                    self.resetData()
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
-                
-                if let error = error {
-                    self.function.showUnderstandDialog(self, "Gagal Logout", error, "Mengerti")
-                    return
-                }
-                
-                self.resetData()
-                self.navigationController?.popToRootViewController(animated: true)
             })
             
         }

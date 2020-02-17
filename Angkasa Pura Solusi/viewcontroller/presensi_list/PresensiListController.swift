@@ -74,33 +74,32 @@ class PresensiListController: BaseViewController, UICollectionViewDelegate {
         SVProgressHUD.show()
         
         presenceNetworking.getPresenceList(request: (month: month, year: year)) { (error, presensi, isExpired) in
-            
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Presensi", error, "Reload", "Cancel", completionHandler: {
-                    self.getPresenceList(month, year)
-                })
-                return
-            }
-            
-            guard let presensi = presensi else { return }
-            
-            if presensi.data.count == 0 {
-                self.labelPresensiKosong.text = presensi.message
-                self.labelPresensiKosong.isHidden = false
-            } else {
-                self.labelPresensiKosong.isHidden = true
-            }
-            
-            self.listPresensi = presensi.data
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Presensi", error, "Reload", "Cancel", completionHandler: {
+                        self.getPresenceList(month, year)
+                    })
+                    return
+                }
+                
+                guard let presensi = presensi else { return }
+                
+                if presensi.data.count == 0 {
+                    self.labelPresensiKosong.text = presensi.message
+                    self.labelPresensiKosong.isHidden = false
+                } else {
+                    self.labelPresensiKosong.isHidden = true
+                }
+                
+                self.listPresensi = presensi.data
+                
                 self.presensiCollectionView.reloadData()
                 self.scrollToIndex()
             }

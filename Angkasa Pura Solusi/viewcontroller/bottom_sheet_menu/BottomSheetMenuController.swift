@@ -135,27 +135,29 @@ class BottomSheetMenuController: BaseViewController, UICollectionViewDelegate {
         SVProgressHUD.show()
         
         presenceNetworking.getPreparePresence { (error, preparePresence, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    let vc = DialogPreparePresenceController()
+                    vc.stringDescription = error
+                    self.showCustomDialog(vc)
+                    return
+                }
+                
+                self.dismiss(animated: true, completion: nil)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                    let vc = PresensiController()
+                    vc.preparePresence = preparePresence
+                    self.parentNavigationController?.pushViewController(vc, animated: true)
+                })
             }
-            
-            if let error = error {
-                let vc = DialogPreparePresenceController()
-                vc.stringDescription = error
-                self.showCustomDialog(vc)
-                return
-            }
-            
-            self.dismiss(animated: true, completion: nil)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                let vc = PresensiController()
-                vc.preparePresence = preparePresence
-                self.parentNavigationController?.pushViewController(vc, animated: true)
-            })
         }
     }
     

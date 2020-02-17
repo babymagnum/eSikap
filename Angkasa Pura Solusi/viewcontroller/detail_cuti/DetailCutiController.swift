@@ -82,23 +82,25 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         guard let _leaveId = leave_id else { return }
         
         informationNetworking.getDetailLeaveListById(id: _leaveId) { (error, detailRiwayatCuti, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
+                        self.getDetailLeave()
+                    })
+                    return
+                }
+                
+                guard let _detailRiwayatCuti = detailRiwayatCuti else { return }
+                
+                self.setViewContent(_detailRiwayatCuti)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
-                    self.getDetailLeave()
-                })
-                return
-            }
-            
-            guard let _detailRiwayatCuti = detailRiwayatCuti else { return }
-            
-            self.setViewContent(_detailRiwayatCuti)
         }
     }
     
@@ -108,23 +110,25 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getDetailLeaveDelegationById(leave_id: leave_id) { (error, detailDelegationList, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Delegasi", error, "Reload", "Cancel", completionHandler: {
+                        self.getDetailLeaveDelegationById()
+                    })
+                    return
+                }
+                
+                guard let detailDelegationList = detailDelegationList else { return }
+                
+                self.setViewDelegasi(detailDelegationList)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Delegasi", error, "Reload", "Cancel", completionHandler: {
-                    self.getDetailLeaveDelegationById()
-                })
-                return
-            }
-            
-            guard let detailDelegationList = detailDelegationList else { return }
-            
-            self.setViewDelegasi(detailDelegationList)
         }
     }
     
@@ -199,23 +203,25 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getDetailLeaveById(id: leave_id) { (error, detailRiwayatCuti, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
+                        self.getDetailLeave()
+                    })
+                    return
+                }
+                
+                guard let detailRiwayatCuti = detailRiwayatCuti else { return }
+                
+                self.setViewContent(detailRiwayatCuti)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
-                    self.getDetailLeave()
-                })
-                return
-            }
-            
-            guard let detailRiwayatCuti = detailRiwayatCuti else { return }
-            
-            self.setViewContent(detailRiwayatCuti)
         }
     }
     

@@ -67,8 +67,6 @@ class FormPeminjamanRuanganController: BaseViewController {
     private var isPickTanggalMulai = true
     private var isPickWaktuMulai = true
     
-    var delegate: FormPeminjamanRuanganProtocol?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -132,31 +130,35 @@ class FormPeminjamanRuanganController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.addRequestRooms(body: body, listFiles: listLampiran) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
-                    let vc = DialogPengajuanCutiController()
-                    vc.exception = _error
-                    self.showCustomDialog(vc)
-                } else {
-                    self.function.showUnderstandDialog(self, "Gagal Melakukan Peminjaman Ruangan", _error, "Cancel")
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
+                
+                if let _error = error {
+                    if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
+                        let vc = DialogPengajuanCutiController()
+                        vc.exception = _error
+                        self.showCustomDialog(vc)
+                    } else {
+                        self.function.showUnderstandDialog(self, "Gagal Melakukan Peminjaman Ruangan", _error, "Cancel")
+                    }
+                    return
+                }
+                
+                guard let _success = success else { return }
+                
+                self.view.makeToast(_success.message ?? "")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    let vc = HistoryPeminjamanRuangan()
+                    vc.isFromPeminjamanRuangan = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
-            
-            guard let _ = success else { return }
-            
-            guard let _delegate = self.delegate else { return }
-            
-            _delegate.updateData()
-            
-            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -177,30 +179,32 @@ class FormPeminjamanRuanganController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getRooms { (error, rooms, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getRooms()
-                return
-            }
-            
-            guard let _rooms = rooms else { return }
-            
-            self.listRooms = _rooms.data
-            
-            _rooms.data.forEach { (item) in
-                self.fieldRuang.optionArray.append(item.name ?? "")
-            }
-            
-            self.fieldRuang.didSelect { (text, index, id) in
-                print("selected id \(self.listRooms[index].id ?? "0")")
-                self.fieldRuang.text = text
-                self.selectedRooms = self.listRooms[index].id ?? "0"
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getRooms()
+                    return
+                }
+                
+                guard let _rooms = rooms else { return }
+                
+                self.listRooms = _rooms.data
+                
+                _rooms.data.forEach { (item) in
+                    self.fieldRuang.optionArray.append(item.name ?? "")
+                }
+                
+                self.fieldRuang.didSelect { (text, index, id) in
+                    print("selected id \(self.listRooms[index].id ?? "0")")
+                    self.fieldRuang.text = text
+                    self.selectedRooms = self.listRooms[index].id ?? "0"
+                }
             }
         }
     }

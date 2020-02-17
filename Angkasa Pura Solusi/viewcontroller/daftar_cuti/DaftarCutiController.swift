@@ -67,33 +67,35 @@ class DaftarCutiController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getLeaveList(body: body) { (error, leaveList, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getDaftarCuti()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getDaftarCuti()
+                    }
+                    return
+                }
+                
+                guard let _data = leaveList?.data, let _leaveList = leaveList else { return }
+                
+                if self.currentPage == 0 { self.listDaftarCuti.removeAll() }
+                
+                _data.leave.forEach { (item) in
+                    self.listDaftarCuti.append(item)
+                }
+                
+                self.labelEmpty.isHidden = _data.leave.count > 0 && self.listDaftarCuti.count > 0
+                self.labelEmpty.text = _leaveList.message
+                self.totalPage = _data.total_page
+                self.currentPage += 1
+                self.collectionDaftarCuti.reloadData()
             }
-            
-            guard let _data = leaveList?.data, let _leaveList = leaveList else { return }
-            
-            if self.currentPage == 0 { self.listDaftarCuti.removeAll() }
-            
-            _data.leave.forEach { (item) in
-                self.listDaftarCuti.append(item)
-            }
-            
-            self.labelEmpty.isHidden = _data.leave.count > 0 && self.listDaftarCuti.count > 0
-            self.labelEmpty.text = _leaveList.message
-            self.totalPage = _data.total_page
-            self.currentPage += 1
-            self.collectionDaftarCuti.reloadData()
         }
     }
 }

@@ -97,34 +97,36 @@ class HomeController: UITabBarController {
     
     private func getNotificationList() {
         informationNetworking.getNotificationList(page: currentPage) { (error, listNotification, isExpired) in
-            if let _ = isExpired {
-                self.forceLogout()
-                return
-            }
-            
-            if let _ = error {
-                self.getNotificationList()
-                return
-            }
-            
-            guard let listNotification = listNotification else { return }
-            self.totalPage = (listNotification.data?.total_page)!
-            
-            for (index, notification) in (listNotification.data?.notification.enumerated())! {
-                if notification.is_read == "0" {
-                    self.hasNotif = true
-                    self.setTabbarItem()
-                    break
-                } else {
-                    self.hasNotif = false
+            DispatchQueue.main.async {
+                if let _ = isExpired {
+                    self.forceLogout()
+                    return
                 }
                 
-                if index == (listNotification.data?.notification.count)! - 1 {
-                    self.setTabbarItem()
+                if let _ = error {
+                    self.getNotificationList()
+                    return
+                }
+                
+                guard let listNotification = listNotification else { return }
+                self.totalPage = (listNotification.data?.total_page)!
+                
+                for (index, notification) in (listNotification.data?.notification.enumerated())! {
+                    if notification.is_read == "0" {
+                        self.hasNotif = true
+                        self.setTabbarItem()
+                        break
+                    } else {
+                        self.hasNotif = false
+                    }
                     
-                    if self.currentPage + 1 <= self.totalPage {
-                        self.currentPage += 1
-                        self.getNotificationList()
+                    if index == (listNotification.data?.notification.count)! - 1 {
+                        self.setTabbarItem()
+                        
+                        if self.currentPage + 1 <= self.totalPage {
+                            self.currentPage += 1
+                            self.getNotificationList()
+                        }
                     }
                 }
             }

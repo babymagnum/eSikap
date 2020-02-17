@@ -59,39 +59,41 @@ class DelegasiCutiController: BaseViewController, IndicatorInfoProvider, UIColle
         SVProgressHUD.show()
         
         informationNetworking.getLeaveDelegationList(page: currentPage) { (error, delegationList, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Delegasi Cuti", error, "Reload", "Cancel", completionHandler: {
+                        self.getLeaveDelegationList()
+                    })
+                    return
+                }
+                
+                guard let delegationList = delegationList else { return }
+                
+                if self.currentPage == 0 { self.listDelegasiCuti.removeAll() }
+                
+                if delegationList.data?.leave.count == 0 && self.listDelegasiCuti.count == 0 {
+                    self.labelDataKosong.text = delegationList.message
+                    self.labelDataKosong.isHidden = false
+                } else {
+                    self.labelDataKosong.isHidden = true
+                }
+                
+                self.totalPage = (delegationList.data?.total_page)!
+                
+                for cuti in delegationList.data!.leave {
+                    self.listDelegasiCuti.append(cuti)
+                }
+                
+                self.currentPage += 1
+                self.collectionDelegasiCuti.reloadData()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Delegasi Cuti", error, "Reload", "Cancel", completionHandler: {
-                    self.getLeaveDelegationList()
-                })
-                return
-            }
-            
-            guard let delegationList = delegationList else { return }
-            
-            if self.currentPage == 0 { self.listDelegasiCuti.removeAll() }
-            
-            if delegationList.data?.leave.count == 0 && self.listDelegasiCuti.count == 0 {
-                self.labelDataKosong.text = delegationList.message
-                self.labelDataKosong.isHidden = false
-            } else {
-                self.labelDataKosong.isHidden = true
-            }
-            
-            self.totalPage = (delegationList.data?.total_page)!
-            
-            for cuti in delegationList.data!.leave {
-                self.listDelegasiCuti.append(cuti)
-            }
-            
-            self.currentPage += 1
-            self.collectionDelegasiCuti.reloadData()
         }
     }
 }

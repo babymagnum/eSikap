@@ -68,26 +68,27 @@ class ChangePasswordController: BaseViewController {
         SVProgressHUD.show()
         
         authNetworking.changePassword(request: (new_password: fieldKataSandiBaru.trim(), old_password: fieldKataSandiLama.trim())) { (error, isExpired) in
-            
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    let vc = DialogPreparePresenceController()
+                    vc.stringDescription = error
+                    self.showCustomDialog(vc)
+                    return
+                }
+                
+                self.function.showUnderstandDialog(self, "Sukses Ganti Password", "", "Understand")
+                
+                self.fieldKataSandiLama.text = ""
+                self.fieldKataSandiBaru.text = ""
+                self.fieldUlangiKataSandiBaru.text = ""
             }
-            
-            if let error = error {
-                let vc = DialogPreparePresenceController()
-                vc.stringDescription = error
-                self.showCustomDialog(vc)
-                return
-            }
-            
-            self.function.showUnderstandDialog(self, "Sukses Ganti Password", "", "Understand")
-            
-            self.fieldKataSandiLama.text = ""
-            self.fieldKataSandiBaru.text = ""
-            self.fieldUlangiKataSandiBaru.text = ""
         }
     }
 }

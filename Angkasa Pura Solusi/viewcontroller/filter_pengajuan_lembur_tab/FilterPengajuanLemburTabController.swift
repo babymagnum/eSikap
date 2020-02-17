@@ -44,28 +44,30 @@ class FilterPengajuanLemburTabController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getOvertimeStatusFilter { (error, overtimeStatus, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getYearsFilter()
-                return
-            }
-            
-            guard let _overtimeStatus = overtimeStatus else { return }
-            
-            self.listStatus = _overtimeStatus.data
-            
-            _overtimeStatus.data.forEach { (item) in
-                self.fieldStatus.optionArray.append(item.overtimestat_name ?? "")
-            }
-            
-            self.fieldStatus.didSelect { (text, index, _) in
-                self.selectedStatus = self.listStatus[index].overtimestat_id ?? ""
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getYearsFilter()
+                    return
+                }
+                
+                guard let _overtimeStatus = overtimeStatus else { return }
+                
+                self.listStatus = _overtimeStatus.data
+                
+                _overtimeStatus.data.forEach { (item) in
+                    self.fieldStatus.optionArray.append(item.overtimestat_name ?? "")
+                }
+                
+                self.fieldStatus.didSelect { (text, index, _) in
+                    self.selectedStatus = self.listStatus[index].overtimestat_id ?? ""
+                }
             }
         }
     }
@@ -85,26 +87,28 @@ class FilterPengajuanLemburTabController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getYearsFilter { (error, years, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getYearsFilter()
-                return
-            }
-            
-            guard let _years = years else { return }
-            
-            _years.data.forEach { (item) in
-                self.fieldTahun.optionArray.append("\(item.year_name ?? 0)")
-            }
-            
-            self.fieldTahun.didSelect { (text, index, _) in
-                self.selectedYears = text
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getYearsFilter()
+                    return
+                }
+                
+                guard let _years = years else { return }
+                
+                _years.data.forEach { (item) in
+                    self.fieldTahun.optionArray.append("\(item.year_name ?? 0)")
+                }
+                
+                self.fieldTahun.didSelect { (text, index, _) in
+                    self.selectedYears = text
+                }
             }
         }
     }

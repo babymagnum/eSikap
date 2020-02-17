@@ -83,22 +83,20 @@ extension LoginController {
         SVProgressHUD.show()
         
         authNetworking.login((textFieldEmail.text?.trim())!, (textFieldPassword.text?.trim())!) { (message) in
-            
-            SVProgressHUD.dismiss()
-            
-            if message != nil {
-                self.function.showUnderstandDialog(self, "Login Error", message!, "Understand")
-            } else {
-                //login success
-                self.preference.saveBool(value: true, key: self.staticLet.IS_LOGIN)
-                self.preference.saveInt(value: 0, key: self.staticLet.JUMLAH_MENU)
-                let vc = HomeController()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 
-                DispatchQueue.main.async {
+                if message != nil {
+                    self.function.showUnderstandDialog(self, "Login Error", message!, "Understand")
+                } else {
+                    //login success
+                    self.preference.saveBool(value: true, key: self.staticLet.IS_LOGIN)
+                    self.preference.saveInt(value: 0, key: self.staticLet.JUMLAH_MENU)
+                    let vc = HomeController()
+                    
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
-            
         }
     }
 }

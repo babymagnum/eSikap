@@ -56,30 +56,32 @@ class FilterDaftarCutiController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getLeaveTypeFilter { (error, leaveType, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getLeaveType()
-                return
-            }
-            
-            guard let _leaveType = leaveType else { return }
-            
-            self.listType = _leaveType.data
-            
-            self.listType.forEach { (item) in
-                self.fieldJenisCuti.optionArray.append(item.name ?? "")
-            }
-            
-            self.fieldJenisCuti.text = self.listType[0].name
-            
-            self.fieldJenisCuti.didSelect { (text, index, _) in
-                self.type = self.listType[index].id ?? ""
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getLeaveType()
+                    return
+                }
+                
+                guard let _leaveType = leaveType else { return }
+                
+                self.listType = _leaveType.data
+                
+                self.listType.forEach { (item) in
+                    self.fieldJenisCuti.optionArray.append(item.name ?? "")
+                }
+                
+                self.fieldJenisCuti.text = self.listType[0].name
+                
+                self.fieldJenisCuti.didSelect { (text, index, _) in
+                    self.type = self.listType[index].id ?? ""
+                }
             }
         }
     }
@@ -88,30 +90,32 @@ class FilterDaftarCutiController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getLeaveListStatusFilter { (error, leaveStatus, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getLeaveType()
-                return
-            }
-            
-            guard let _leaveStatus = leaveStatus else { return }
-            
-            self.listStatus = _leaveStatus.data
-            
-            self.listStatus.forEach { (item) in
-                self.fieldStatus.optionArray.append(item.leavestatus_name ?? "")
-            }
-            
-            self.fieldStatus.text = self.listStatus[0].leavestatus_name
-            
-            self.fieldStatus.didSelect { (text, index, _) in
-                self.status = self.listStatus[index].leavestatus_id ?? ""
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getLeaveType()
+                    return
+                }
+                
+                guard let _leaveStatus = leaveStatus else { return }
+                
+                self.listStatus = _leaveStatus.data
+                
+                self.listStatus.forEach { (item) in
+                    self.fieldStatus.optionArray.append(item.leavestatus_name ?? "")
+                }
+                
+                self.fieldStatus.text = self.listStatus[0].leavestatus_name
+                
+                self.fieldStatus.didSelect { (text, index, _) in
+                    self.status = self.listStatus[index].leavestatus_id ?? ""
+                }
             }
         }
     }

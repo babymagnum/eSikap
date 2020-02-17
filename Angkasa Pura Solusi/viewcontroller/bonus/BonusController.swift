@@ -44,32 +44,34 @@ class BonusController: BaseViewController, UICollectionViewDelegate, IndicatorIn
         SVProgressHUD.show()
         
         informationNetworking.getBonusList(year: year ?? function.getCurrentDate(pattern: "yyyy")) { (error, bonus, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Bonus", error, "Reload", "Cancel", completionHandler: {
+                        self.getBonusSlip()
+                    })
+                    return
+                }
+                
+                guard let _bonus = bonus else { return }
+                
+                if _bonus.data.count == 0 {
+                    self.labelEmpty.text = _bonus.message
+                    self.labelEmpty.isHidden = false
+                } else {
+                    self.labelEmpty.isHidden = true
+                }
+                
+                self.listBonus = _bonus.data
+                
+                self.collectionBonus.reloadData()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Bonus", error, "Reload", "Cancel", completionHandler: {
-                    self.getBonusSlip()
-                })
-                return
-            }
-            
-            guard let _bonus = bonus else { return }
-            
-            if _bonus.data.count == 0 {
-                self.labelEmpty.text = _bonus.message
-                self.labelEmpty.isHidden = false
-            } else {
-                self.labelEmpty.isHidden = true
-            }
-            
-            self.listBonus = _bonus.data
-            
-            DispatchQueue.main.async { self.collectionBonus.reloadData() }
         }
     }
     
@@ -90,26 +92,28 @@ extension BonusController {
         SVProgressHUD.show(withStatus: "Sending to your email...")
         
         informationNetworking.sendBonusSlip(bonusId: bonusItem.id ?? "", type: bonusItem.type ?? "") { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mengirimkan Slip Gaji", error, "Mengerti")
+                    return
+                }
+                
+                guard let success = success else { return }
+                
+                let vc = DialogSendEmailController()
+                vc.email = success.message?.components(separatedBy: "<br>")[1]
+                let popup = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width - 44, popupHeight: vc.view.getHeight())
+                popup.cornerRadius = 5
+                popup.shadowEnabled = false
+                self.present(popup, animated: true)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mengirimkan Slip Gaji", error, "Mengerti")
-                return
-            }
-            
-            guard let success = success else { return }
-            
-            let vc = DialogSendEmailController()
-            vc.email = success.message?.components(separatedBy: "<br>")[1]
-            let popup = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width - 44, popupHeight: vc.view.getHeight())
-            popup.cornerRadius = 5
-            popup.shadowEnabled = false
-            self.present(popup, animated: true)
         }
     }
     

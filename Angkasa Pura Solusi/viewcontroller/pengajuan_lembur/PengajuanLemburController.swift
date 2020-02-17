@@ -66,35 +66,37 @@ class PengajuanLemburController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getEditDetailOvertimeById(overtimeId: overtimeId) { (error, editDetail, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Overtime", _error, "Reload", "Cancel", completionHandler: {
-                    self.getEditDetailOvertime(overtimeId)
-                })
-                return
-            }
-            
-            guard let _editDetail = editDetail?.data else { return }
-            
-            self.textviewKeterangan.text = _editDetail.reason
-            
-            for index in 0..._editDetail.datetimes_start.count - 1 {
-                self.listWaktu.append(WaktuPengajuanLemburModel(tanggalWaktuMulai: _editDetail.datetimes_start[index], tanggalWaktuSelesai: _editDetail.datetimes_end[index]))
-            }
-            
-            self.collectionWaktu.reloadData()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                UIView.animate(withDuration: 0.2) {
-                    self.collectionWaktuHeight.constant = self.collectionWaktu.contentSize.height
-                    self.scrollView.resizeScrollViewContentSize()
-                    self.view.layoutIfNeeded()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Overtime", _error, "Reload", "Cancel", completionHandler: {
+                        self.getEditDetailOvertime(overtimeId)
+                    })
+                    return
+                }
+                
+                guard let _editDetail = editDetail?.data else { return }
+                
+                self.textviewKeterangan.text = _editDetail.reason
+                
+                for index in 0..._editDetail.datetimes_start.count - 1 {
+                    self.listWaktu.append(WaktuPengajuanLemburModel(tanggalWaktuMulai: _editDetail.datetimes_start[index], tanggalWaktuSelesai: _editDetail.datetimes_end[index]))
+                }
+                
+                self.collectionWaktu.reloadData()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    UIView.animate(withDuration: 0.2) {
+                        self.collectionWaktuHeight.constant = self.collectionWaktu.contentSize.height
+                        self.scrollView.resizeScrollViewContentSize()
+                        self.view.layoutIfNeeded()
+                    }
                 }
             }
         }
@@ -119,26 +121,28 @@ class PengajuanLemburController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getProfile { (error, itemProfile, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Profile", error, "Reload", "Cancel", completionHandler: {
-                    self.getProfile()
-                })
-                return
-            }
-            
-            guard let _itemProfile = itemProfile else { return }
-            
-            self.labelPegawai.text = _itemProfile.emp_name
-            self.buttonUnitKerja.setTitle(_itemProfile.unit, for: .normal)
-            UIView.animate(withDuration: 0.2) {
-                self.scrollView.alpha = 1
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Profile", error, "Reload", "Cancel", completionHandler: {
+                        self.getProfile()
+                    })
+                    return
+                }
+                
+                guard let _itemProfile = itemProfile else { return }
+                
+                self.labelPegawai.text = _itemProfile.emp_name
+                self.buttonUnitKerja.setTitle(_itemProfile.unit, for: .normal)
+                UIView.animate(withDuration: 0.2) {
+                    self.scrollView.alpha = 1
+                }
             }
         }
     }
@@ -212,32 +216,34 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
             SVProgressHUD.show()
             
             informationNetworking.addOvertime(body: body) { (error, success, isExpired) in
-                SVProgressHUD.dismiss()
-                
-                if let _ = isExpired {
-                    self.forceLogout(self.navigationController!)
-                    return
-                }
-                
-                if let _error = error {
-                    if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
-                        let vc = DialogPengajuanCutiController()
-                        vc.exception = _error
-                        self.showCustomDialog(vc)
-                    } else {
-                        self.function.showUnderstandDialog(self, "Gagal Melakukan Pengajuan Lembur", _error, "Cancel")
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    
+                    if let _ = isExpired {
+                        self.forceLogout(self.navigationController!)
+                        return
                     }
-                    return
-                }
-                
-                guard let _success = success else { return }
-                
-                self.view.makeToast(_success.message, duration: 1)
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    let vc = TabRiwayatController()
-                    vc.afterAddLeave = true
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                    if let _error = error {
+                        if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
+                            let vc = DialogPengajuanCutiController()
+                            vc.exception = _error
+                            self.showCustomDialog(vc)
+                        } else {
+                            self.function.showUnderstandDialog(self, "Gagal Melakukan Pengajuan Lembur", _error, "Cancel")
+                        }
+                        return
+                    }
+                    
+                    guard let _success = success else { return }
+                    
+                    self.view.makeToast(_success.message, duration: 1)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        let vc = TabRiwayatController()
+                        vc.afterAddLeave = true
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
             }
         }

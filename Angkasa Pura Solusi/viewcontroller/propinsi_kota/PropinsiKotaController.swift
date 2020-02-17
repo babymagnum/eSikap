@@ -100,65 +100,67 @@ class PropinsiKotaController: BaseViewController, UICollectionViewDelegate, UITe
         
         if _isSearchPropinsi {
             informationNetworking.getStateFilter(page: currentPage, keyword: fieldSearch.text ?? "") { (error, propinsiCity, isExpired) in
-                
-                SVProgressHUD.dismiss()
-                
-                if let _ = isExpired {
-                    self.forceLogout(self.navigationController!)
-                    return
-                }
-                
-                if let _error = error {
-                    print("error get propinsi \(_error)")
-                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel", completionHandler: {
-                        self.getPropinsiKota()
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    
+                    if let _ = isExpired {
+                        self.forceLogout(self.navigationController!)
+                        return
+                    }
+                    
+                    if let _error = error {
+                        print("error get propinsi \(_error)")
+                        self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel", completionHandler: {
+                            self.getPropinsiKota()
+                        })
+                        return
+                    }
+                    
+                    guard let _propinsiCity = propinsiCity else { return }
+                    
+                    if self.currentPage == 0 { self.listPropinsiKota.removeAll() }
+                    
+                    self.totalPage = _propinsiCity.data?.total_page ?? 1
+                    self.currentPage += 1
+                    
+                    _propinsiCity.data?.emp.forEach({ (item) in
+                        self.listPropinsiKota.append(item)
                     })
-                    return
+                    
+                    self.collectionPropinsiKota.reloadData()
                 }
-                
-                guard let _propinsiCity = propinsiCity else { return }
-                
-                if self.currentPage == 0 { self.listPropinsiKota.removeAll() }
-                
-                self.totalPage = _propinsiCity.data?.total_page ?? 1
-                self.currentPage += 1
-                
-                _propinsiCity.data?.emp.forEach({ (item) in
-                    self.listPropinsiKota.append(item)
-                })
-                
-                self.collectionPropinsiKota.reloadData()
             }
         } else {
             informationNetworking.getCityFilter(page: currentPage, propinsiId: propinsiId ?? "", keyword: fieldSearch.text ?? "") { (error, propinsiCity, isExpired) in
-                
-                SVProgressHUD.dismiss()
-                
-                if let _ = isExpired {
-                    self.forceLogout(self.navigationController!)
-                    return
-                }
-                
-                if let _error = error {
-                    print("error get kota \(_error)")
-                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel", completionHandler: {
-                        self.getPropinsiKota()
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    
+                    if let _ = isExpired {
+                        self.forceLogout(self.navigationController!)
+                        return
+                    }
+                    
+                    if let _error = error {
+                        print("error get kota \(_error)")
+                        self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel", completionHandler: {
+                            self.getPropinsiKota()
+                        })
+                        return
+                    }
+                    
+                    guard let _propinsiCity = propinsiCity else { return }
+                    
+                    if self.currentPage == 0 { self.listPropinsiKota.removeAll() }
+                    
+                    self.totalPage = _propinsiCity.data?.total_page ?? 1
+                    self.currentPage += 1
+                    
+                    _propinsiCity.data?.emp.forEach({ (item) in
+                        self.listPropinsiKota.append(item)
                     })
-                    return
+                    
+                    self.collectionPropinsiKota.reloadData()
                 }
-                
-                guard let _propinsiCity = propinsiCity else { return }
-                
-                if self.currentPage == 0 { self.listPropinsiKota.removeAll() }
-                
-                self.totalPage = _propinsiCity.data?.total_page ?? 1
-                self.currentPage += 1
-                
-                _propinsiCity.data?.emp.forEach({ (item) in
-                    self.listPropinsiKota.append(item)
-                })
-                
-                self.collectionPropinsiKota.reloadData()
             }
         }
     }

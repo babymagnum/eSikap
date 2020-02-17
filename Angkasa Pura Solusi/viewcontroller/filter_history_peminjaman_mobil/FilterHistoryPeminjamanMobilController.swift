@@ -44,27 +44,29 @@ class FilterHistoryPeminjamanMobilController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getRequestCarStatusFilter { (error, request, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getStatusFilter()
-                return
-            }
-            
-            guard let _request = request else { return }
-            
-            _request.data.forEach { (item) in
-                self.fieldStatus.optionArray.append(item.opercarstat_name)
-                self.fieldStatus.optionIds?.append(Int(item.opercarstat_id == "" ? "-1" : item.opercarstat_id) ?? -1)
-            }
-            
-            self.fieldStatus.didSelect { (text, index, id) in
-                self.selectedStatus = "\(id)"
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getStatusFilter()
+                    return
+                }
+                
+                guard let _request = request else { return }
+                
+                _request.data.forEach { (item) in
+                    self.fieldStatus.optionArray.append(item.opercarstat_name)
+                    self.fieldStatus.optionIds?.append(Int(item.opercarstat_id == "" ? "-1" : item.opercarstat_id) ?? -1)
+                }
+                
+                self.fieldStatus.didSelect { (text, index, id) in
+                    self.selectedStatus = "\(id)"
+                }
             }
         }
     }
@@ -73,27 +75,29 @@ class FilterHistoryPeminjamanMobilController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getYearsFilter { (error, years, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getYearsFilter()
-                return
-            }
-            
-            guard let _years = years else { return }
-            
-            _years.data.forEach { (item) in
-                self.fieldTahun.optionArray.append("\(item.year_name ?? 0)")
-            }
-            
-            self.fieldTahun.didSelect { (text, index, _) in
-                self.selectedYears = text
-                self.fieldTahun.text = text
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getYearsFilter()
+                    return
+                }
+                
+                guard let _years = years else { return }
+                
+                _years.data.forEach { (item) in
+                    self.fieldTahun.optionArray.append("\(item.year_name ?? 0)")
+                }
+                
+                self.fieldTahun.didSelect { (text, index, _) in
+                    self.selectedYears = text
+                    self.fieldTahun.text = text
+                }
             }
         }
     }

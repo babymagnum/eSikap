@@ -61,34 +61,36 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getNotificationList(page: currentPage) { (error, listNotification, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Notifikasi", error, "Reload", "Cancel", completionHandler: {
+                        self.getNotificationList()
+                    })
+                    return
+                }
+                
+                guard let listNotification = listNotification else { return }
+                
+                if self.currentPage == 0 { self.listNotifikasi.removeAll() }
+                
+                self.viewNotifikasiKosong.isHidden = listNotification.data?.notification.count == 0 && self.listNotifikasi.count == 0 ? false : true
+                
+                self.totalPage = (listNotification.data?.total_page)!
+                
+                for notification in listNotification.data!.notification {
+                    self.listNotifikasi.append(notification)
+                }
+                
+                self.currentPage += 1
+                self.notifikasiCollectionView.reloadData()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar Notifikasi", error, "Reload", "Cancel", completionHandler: {
-                    self.getNotificationList()
-                })
-                return
-            }
-            
-            guard let listNotification = listNotification else { return }
-            
-            if self.currentPage == 0 { self.listNotifikasi.removeAll() }
-            
-            self.viewNotifikasiKosong.isHidden = listNotification.data?.notification.count == 0 && self.listNotifikasi.count == 0 ? false : true
-            
-            self.totalPage = (listNotification.data?.total_page)!
-            
-            for notification in listNotification.data!.notification {
-                self.listNotifikasi.append(notification)
-            }
-            
-            self.currentPage += 1
-            self.notifikasiCollectionView.reloadData()
         }
     }
     
@@ -162,19 +164,21 @@ extension NotifikasiController {
         SVProgressHUD.show()
         
         informationNetworking.updateIsReadNotification(notification_id: notification_id) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Melihat Detail Notifikasi", error, "Mengerti")
+                    return
+                }
+                
+                completion()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Melihat Detail Notifikasi", error, "Mengerti")
-                return
-            }
-            
-            completion()
         }
     }
     
@@ -204,28 +208,29 @@ extension NotifikasiController {
         SVProgressHUD.show()
         
         informationNetworking.getDetailLeaveApprovalById(leave_id: notifikasi.data_id!) { (error, detailLeaveApproval, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
+                        self.getDetailLeaveApprovalById(notifikasi: notifikasi)
+                    })
+                    return
+                }
+                
+                guard let detailLeaveApproval = detailLeaveApproval else { return }
+                
+                if detailLeaveApproval.data?.leave[0].is_processed == "1" {
+                    self.view.makeToast("Cuti telah diproses", duration: 1.0, position: .center)
+                } else {
+                    self.redirectToDetailNotifikasi(notifikasi)
+                }
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
-                    self.getDetailLeaveApprovalById(notifikasi: notifikasi)
-                })
-                return
-            }
-            
-            guard let detailLeaveApproval = detailLeaveApproval else { return }
-            
-            if detailLeaveApproval.data?.leave[0].is_processed == "1" {
-                self.view.makeToast("Cuti telah diproses", duration: 1.0, position: .center)
-            } else {
-                self.redirectToDetailNotifikasi(notifikasi)
-            }
-            
         }
     }
     

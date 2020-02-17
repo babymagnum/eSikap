@@ -277,63 +277,67 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         SVProgressHUD.show()
         
         perizinanNetworking.getLeaveType { (error, leaveType, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Tipe Cuti", error, "Reload", "Cancel", completionHandler: {
-                    self.getLeaveType()
-                })
-                return
-            }
-            
-            guard let leaveType = leaveType else { return }
-            
-            self.listLeaveType = leaveType.data
-            var listName = [String]()
-            var listId = [Int]()
-            
-            for (index, type) in leaveType.data.enumerated() {
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 
-                if self.leave_type_id != "" && type.id == self.leave_type_id {
-                    self.checkSelectedLeaveType(type, index)
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
                 
-                listName.append(type.name ?? "")
-                
-                if index == 0 {
-                    listId.append(self.idPilih)
-                } else {
-                    listId.append(Int(type.id!)!)
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Tipe Cuti", error, "Reload", "Cancel", completionHandler: {
+                        self.getLeaveType()
+                    })
+                    return
                 }
+                
+                guard let leaveType = leaveType else { return }
+                
+                self.listLeaveType = leaveType.data
+                var listName = [String]()
+                var listId = [Int]()
+                
+                for (index, type) in leaveType.data.enumerated() {
+                    
+                    if self.leave_type_id != "" && type.id == self.leave_type_id {
+                        self.checkSelectedLeaveType(type, index)
+                    }
+                    
+                    listName.append(type.name ?? "")
+                    
+                    if index == 0 {
+                        listId.append(self.idPilih)
+                    } else {
+                        listId.append(Int(type.id!)!)
+                    }
+                }
+                
+                self.fieldJenisCuti.optionArray = listName
+                self.fieldJenisCuti.optionIds = listId
             }
-            
-            self.fieldJenisCuti.optionArray = listName
-            self.fieldJenisCuti.optionIds = listId
         }
     }
     
     private func getProfile() {
         informationNetworking.getProfile { (error, itemProfile, isExpired) in
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Profile", error, "Reload", "Cancel", completionHandler: {
+                        self.getProfile()
+                    })
+                    return
+                }
+                
+                guard let itemProfile = itemProfile else { return }
+                
+                self.setProfileView(item: itemProfile)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Profile", error, "Reload", "Cancel", completionHandler: {
-                    self.getProfile()
-                })
-                return
-            }
-            
-            guard let itemProfile = itemProfile else { return }
-            
-            self.setProfileView(item: itemProfile)
         }
     }
     
@@ -346,32 +350,34 @@ class PengajuanCutiController: BaseViewController, UINavigationControllerDelegat
         SVProgressHUD.show()
         
         perizinanNetworking.getLeaveQuota { (error, leaveQuota, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Error", error, "Reload", "Cancel", completionHandler: {
-                    self.getLeaveQuota()
-                })
-                return
-            }
-            
-            guard let leaveQuota = leaveQuota else { return }
-            
-            self.listJatahCuti = leaveQuota.data
-            
-            self.jatahCutiCollectionView.reloadData()
-            
-            if !self.isSetJatahCutiHeight {
-                self.isSetJatahCutiHeight = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                    self.jatahCutiCollectionHeight.constant = self.jatahCutiCollectionView.contentSize.height
-                    self.defaultJatahCutiHeight = self.defaultJatahCutiHeight + self.jatahCutiCollectionView.contentSize.height
-                    self.showJatahCuti()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Error", error, "Reload", "Cancel", completionHandler: {
+                        self.getLeaveQuota()
+                    })
+                    return
+                }
+                
+                guard let leaveQuota = leaveQuota else { return }
+                
+                self.listJatahCuti = leaveQuota.data
+                
+                self.jatahCutiCollectionView.reloadData()
+                
+                if !self.isSetJatahCutiHeight {
+                    self.isSetJatahCutiHeight = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        self.jatahCutiCollectionHeight.constant = self.jatahCutiCollectionView.contentSize.height
+                        self.defaultJatahCutiHeight = self.defaultJatahCutiHeight + self.jatahCutiCollectionView.contentSize.height
+                        self.showJatahCuti()
+                    }
                 }
             }
         }
@@ -734,28 +740,31 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentPic
         let _labelLampiran = labelLampiran == "" ? "\(Int(function.getCurrentMillisecond(pattern: "yyyy-MM-dd kk-mm-ss"))).JPG" : labelLampiran
         print("filename \(_labelLampiran), fileType \(_fileType)")
         SVProgressHUD.show()
+        
         informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0.1))!, fileName: _labelLampiran, fileType: _fileType, body: body) { (error, message, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                if error.contains("</ul>") || error.contains("</li>") || error.contains("</span>") {
-                    let vc = DialogPengajuanCutiController()
-                    vc.exception = error
-                    self.showCustomDialog(vc)
-                } else {
-                    self.function.showUnderstandDialog(self, "Error", error, "Mengerti")
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
+                
+                if let error = error {
+                    if error.contains("</ul>") || error.contains("</li>") || error.contains("</span>") {
+                        let vc = DialogPengajuanCutiController()
+                        vc.exception = error
+                        self.showCustomDialog(vc)
+                    } else {
+                        self.function.showUnderstandDialog(self, "Error", error, "Mengerti")
+                    }
+                    return
+                }
+                
+                let vc = RiwayatCutiController()
+                vc.isFromAddLeaveRequest = true
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-            
-            let vc = RiwayatCutiController()
-            vc.isFromAddLeaveRequest = true
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -840,9 +849,9 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentPic
             }
         }))
         alert.addAction(UIAlertAction(title: "File", style: .default, handler: { (UIAlertAction) in
-            //self.picker.showAttachmentMenu()
+            
             let allowedFiles = ["com.apple.iwork.pages.pages", "com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key","public.image", "com.apple.application", "public.item","public.data", "public.content", "public.audiovisual-content", "public.movie", "public.audiovisual-content", "public.video", "public.audio", "public.text", "public.data", "public.zip-archive", "com.pkware.zip-archive", "public.composite-content", "public.text"]
-            //let importMenu = UIDocumentMenuViewController(documentTypes: allowedFiles, in: .import)
+            
             let importMenu = UIDocumentPickerViewController(documentTypes: allowedFiles, in: .import)
             importMenu.delegate = self
             importMenu.modalPresentationStyle = .formSheet

@@ -37,26 +37,28 @@ class FilterKebijakanPeraturan: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getYearsFilter { (error, years, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _ = error {
-                self.getYearsFilter()
-                return
-            }
-            
-            guard let _years = years else { return }
-            
-            _years.data.forEach { (item) in
-                self.fieldTahun.optionArray.append("\(item.year_name ?? 0)")
-            }
-            
-            self.fieldTahun.didSelect { (text, index, _) in
-                self.selectedYears = text
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _ = error {
+                    self.getYearsFilter()
+                    return
+                }
+                
+                guard let _years = years else { return }
+                
+                _years.data.forEach { (item) in
+                    self.fieldTahun.optionArray.append("\(item.year_name ?? 0)")
+                }
+                
+                self.fieldTahun.didSelect { (text, index, _) in
+                    self.selectedYears = text
+                }
             }
         }
     }

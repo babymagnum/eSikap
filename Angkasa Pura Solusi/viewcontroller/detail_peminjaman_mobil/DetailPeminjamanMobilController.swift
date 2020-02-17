@@ -46,24 +46,26 @@ class DetailPeminjamanMobilController: BaseViewController, UICollectionViewDeleg
         SVProgressHUD.show()
         
         informationNetworking.getDetailRequestCar(requestId: _requestId) { (error, detailRequest, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload") {
-                    self.getDetail()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
-            }
-            
-            guard let _detailRequest = detailRequest else { return }
-            
-            UIView.animate(withDuration: 0.2) {
-                self.updateLayout(detailRequest: _detailRequest)
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload") {
+                        self.getDetail()
+                    }
+                    return
+                }
+                
+                guard let _detailRequest = detailRequest else { return }
+                
+                UIView.animate(withDuration: 0.2) {
+                    self.updateLayout(detailRequest: _detailRequest)
+                }
             }
         }
     }

@@ -64,30 +64,31 @@ class DetailBeritaController: BaseViewController {
         guard let news = news else { return }
         
         informationNetworking.getNewsDetail(newsId: news.id!) { (error, itemDetailNews, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Error Get Detail News", error, "Retry", completionHandler: { self.getDetailNews() })
+                    return
+                }
+                
+                guard let item = itemDetailNews else { return }
+                
+                let regex = "<[^>]+>" // remove <> tag
+                let nextRegex = "&[^;]+;" // remove &;
+                let advanceRegex = "&[^ ]+ " // remove leftover &
+                let cleanContent = item.content?.replacingOccurrences(of: regex, with: "", options: .regularExpression, range: nil)
+                let nextContent = cleanContent?.replacingOccurrences(of: nextRegex, with: "", options: .regularExpression, range: nil)
+                
+                self.labelDescriptionBerita.text = nextContent?.replacingOccurrences(of: advanceRegex, with: "", options: .regularExpression, range: nil)
+                
+                self.scrollView.resizeScrollViewContentSize()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Error Get Detail News", error, "Retry", completionHandler: { self.getDetailNews() })
-                return
-            }
-            
-            guard let item = itemDetailNews else { return }
-            
-            let regex = "<[^>]+>" // remove <> tag
-            let nextRegex = "&[^;]+;" // remove &;
-            let advanceRegex = "&[^ ]+ " // remove leftover &
-            let cleanContent = item.content?.replacingOccurrences(of: regex, with: "", options: .regularExpression, range: nil)
-            let nextContent = cleanContent?.replacingOccurrences(of: nextRegex, with: "", options: .regularExpression, range: nil)
-            
-            self.labelDescriptionBerita.text = nextContent?.replacingOccurrences(of: advanceRegex, with: "", options: .regularExpression, range: nil)
-            
-            self.scrollView.resizeScrollViewContentSize()
-            
         }
     }
 

@@ -69,35 +69,37 @@ class BeritaController: BaseViewController, UICollectionViewDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getAllNews(page: currentPage) { (error, allNews, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Error getting news", error, "Reload", "Cancel", completionHandler: {
+                        self.getAllNews()
+                    })
+                    return
+                }
+                
+                guard let allNews = allNews else { return }
+                
+                if allNews.count == 0 && self.listBerita.count == 0 {
+                    self.labelBeritaKosong.isHidden = false
+                } else {
+                    self.labelBeritaKosong.isHidden = true
+                }
+                
+                self.currentPage += 1
+                
+                for news in allNews {
+                    self.listBerita.append(news)
+                }
+                
+                self.beritaCollectionView.reloadData()
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Error getting news", error, "Reload", "Cancel", completionHandler: {
-                    self.getAllNews()
-                })
-                return
-            }
-            
-            guard let allNews = allNews else { return }
-            
-            if allNews.count == 0 && self.listBerita.count == 0 {
-                self.labelBeritaKosong.isHidden = false
-            } else {
-                self.labelBeritaKosong.isHidden = true
-            }
-            
-            self.currentPage += 1
-            
-            for news in allNews {
-                self.listBerita.append(news)
-            }
-            
-            DispatchQueue.main.async { self.beritaCollectionView.reloadData() }
         }
     }
 }

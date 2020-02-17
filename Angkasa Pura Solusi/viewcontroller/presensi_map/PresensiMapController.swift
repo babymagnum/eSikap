@@ -298,26 +298,26 @@ class PresensiMapController: BaseViewController, CLLocationManagerDelegate {
         buttonPresence.isEnabled = false
         
         presenceNetworking.addPresence(request: (checkpoint_id: pickedCheckpointId, presence_type: presenceType, latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))) { (error, isExpired) in
-            
-            SVProgressHUD.dismiss()
-            self.buttonPresence.isEnabled = true
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                self.buttonPresence.isEnabled = true
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Error Presence", error, "Retry", "Cancel", completionHandler: {
+                        self.addPresence()
+                    })
+                    return
+                }
+                
+                let vc = PresensiListController()
+                vc.from = .presensiMapController
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Error Presence", error, "Retry", "Cancel", completionHandler: {
-                    self.addPresence()
-                })
-                return
-            }
-            
-            let vc = PresensiListController()
-            vc.from = .presensiMapController
-            self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
 }

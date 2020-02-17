@@ -49,44 +49,46 @@ class RiwayatCutiFilterController: BaseViewController, UITextFieldDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getLeaveStatusFilter { (error, leaveStatusFilter, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Filter", error, "Reload", "Cancel", completionHandler: {
-                    self.getYearsFilter()
-                    self.getLeaveTypeFilter()
-                    self.getLeaveStatusFilter()
-                })
-                return
-            }
-            
-            guard let leaveStatusFilter = leaveStatusFilter else { return }
-            
-            var nameArray = [String]()
-            var idArray = [Int]()
-            
-            for (index, leaveStatus) in leaveStatusFilter.data.enumerated() {
-                nameArray.append(leaveStatus.leavestatus_name!)
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 
-                if index == 0 {
-                    idArray.append(self.defaultIds)
-                } else {
-                    idArray.append(Int(leaveStatus.leavestatus_id!)!)
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Filter", error, "Reload", "Cancel", completionHandler: {
+                        self.getYearsFilter()
+                        self.getLeaveTypeFilter()
+                        self.getLeaveStatusFilter()
+                    })
+                    return
+                }
+                
+                guard let leaveStatusFilter = leaveStatusFilter else { return }
+                
+                var nameArray = [String]()
+                var idArray = [Int]()
+                
+                for (index, leaveStatus) in leaveStatusFilter.data.enumerated() {
+                    nameArray.append(leaveStatus.leavestatus_name!)
+                    
+                    if index == 0 {
+                        idArray.append(self.defaultIds)
+                    } else {
+                        idArray.append(Int(leaveStatus.leavestatus_id!)!)
+                    }
+                }
+                
+                self.fieldStatus.optionArray = nameArray
+                self.fieldStatus.optionIds = idArray
+                
+                self.fieldStatus.didSelect(completion: { (text, index, id) in
+                    self.selectedStatus = "\(id)"
+                    self.fieldStatus.text = text
+                })
             }
-            
-            self.fieldStatus.optionArray = nameArray
-            self.fieldStatus.optionIds = idArray
-            
-            self.fieldStatus.didSelect(completion: { (text, index, id) in
-                self.selectedStatus = "\(id)"
-                self.fieldStatus.text = text
-            })
         }
     }
     
@@ -94,39 +96,41 @@ class RiwayatCutiFilterController: BaseViewController, UITextFieldDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getYearsFilter { (error, yearsFilter, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Filter", error, "Reload", "Cancel", completionHandler: {
-                    self.getYearsFilter()
-                    self.getLeaveTypeFilter()
-                    self.getLeaveStatusFilter()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Filter", error, "Reload", "Cancel", completionHandler: {
+                        self.getYearsFilter()
+                        self.getLeaveTypeFilter()
+                        self.getLeaveStatusFilter()
+                    })
+                    return
+                }
+                
+                guard let yearsFilter = yearsFilter else { return }
+                
+                var nameArray = [String]()
+                var idArray = [Int]()
+                
+                for year in yearsFilter.data {
+                    nameArray.append("\(year.year_name ?? 0)")
+                    idArray.append(year.year!)
+                }
+                
+                self.fieldTahun.optionArray = nameArray
+                self.fieldTahun.optionIds = idArray
+                
+                self.fieldTahun.didSelect(completion: { (text, index, id) in
+                    self.selectedTahun = "\(id)"
+                    self.fieldTahun.text = text
                 })
-                return
             }
-            
-            guard let yearsFilter = yearsFilter else { return }
-            
-            var nameArray = [String]()
-            var idArray = [Int]()
-            
-            for year in yearsFilter.data {
-                nameArray.append("\(year.year_name ?? 0)")
-                idArray.append(year.year!)
-            }
-            
-            self.fieldTahun.optionArray = nameArray
-            self.fieldTahun.optionIds = idArray
-            
-            self.fieldTahun.didSelect(completion: { (text, index, id) in
-                self.selectedTahun = "\(id)"
-                self.fieldTahun.text = text
-            })
         }
     }
     
@@ -134,44 +138,46 @@ class RiwayatCutiFilterController: BaseViewController, UITextFieldDelegate {
         SVProgressHUD.show()
         
         informationNetworking.getLeaveTypeFilter { (error, leaveTypeFilters, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Filter", error, "Reload", "Cancel", completionHandler: {
-                    self.getYearsFilter()
-                    self.getLeaveTypeFilter()
-                    self.getLeaveStatusFilter()
-                })
-                return
-            }
-            
-            guard let leaveTypeFilters = leaveTypeFilters else { return }
-            
-            var nameArray = [String]()
-            var idArray = [Int]()
-            
-            for (index, leaveType) in leaveTypeFilters.data.enumerated() {
-                nameArray.append(leaveType.name!)
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 
-                if index == 0 {
-                    idArray.append(self.defaultIds)
-                } else {
-                    idArray.append(Int(leaveType.id!)!)
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data Filter", error, "Reload", "Cancel", completionHandler: {
+                        self.getYearsFilter()
+                        self.getLeaveTypeFilter()
+                        self.getLeaveStatusFilter()
+                    })
+                    return
+                }
+                
+                guard let leaveTypeFilters = leaveTypeFilters else { return }
+                
+                var nameArray = [String]()
+                var idArray = [Int]()
+                
+                for (index, leaveType) in leaveTypeFilters.data.enumerated() {
+                    nameArray.append(leaveType.name!)
+                    
+                    if index == 0 {
+                        idArray.append(self.defaultIds)
+                    } else {
+                        idArray.append(Int(leaveType.id!)!)
+                    }
+                }
+                
+                self.fieldJenisCuti.optionArray = nameArray
+                self.fieldJenisCuti.optionIds = idArray
+                
+                self.fieldJenisCuti.didSelect(completion: { (text, index, id) in
+                    self.selectedJenisCuti = "\(id)"
+                    self.fieldJenisCuti.text = text
+                })
             }
-            
-            self.fieldJenisCuti.optionArray = nameArray
-            self.fieldJenisCuti.optionIds = idArray
-            
-            self.fieldJenisCuti.didSelect(completion: { (text, index, id) in
-                self.selectedJenisCuti = "\(id)"
-                self.fieldJenisCuti.text = text
-            })
         }
     }
     

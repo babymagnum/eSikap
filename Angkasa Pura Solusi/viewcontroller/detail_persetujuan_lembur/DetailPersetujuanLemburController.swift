@@ -57,46 +57,47 @@ class DetailPersetujuanLemburController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getDetailOvertimeApprovalById(overtimeId: _overtimeId) { (error, detailApproval, isExpired) in
-            
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getDetailApproval()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
-            }
-            
-            guard let _data = detailApproval?.data else { return }
-            
-            self.textviewCatatanStatus.text = _data.status_notes
-            self.imageProfile.loadUrl(_data.photo ?? "")
-            self.buttonStatus.setTitle(_data.status, for: .normal)
-            self.buttonStatus.backgroundColor = UIColor(hexString: _data.status_color?.replacingOccurrences(of: "#", with: "") ?? "#")
-            self.labelNumber.text = _data.number
-            self.labelDate.text = "Diajkukan pada \(_data.date ?? "")"
-            self.labelNama.text = ": \(_data.emp_name ?? "")"
-            self.labelUnitKerja.text = ": \(_data.unit_name ?? "")"
-            self.labelKeterangan.text = ": \(_data.reason ?? "")"
-            self.datetime_id = _data.datetime_id
-            
-            for index in 0..._data.datetimes_start.count - 1 {
-                self.listTanggalLembur.append(TanggalLemburPersetujuanModel(tanggalMulai: _data.datetimes_start_show[index], tanggalSelesai: _data.datetimes_end_show[index], isOn: true))
-            }
-            
-            self.collectionTanggalLembur.reloadData()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                UIView.animate(withDuration: 0.2) {
-                    self.collectionTanggalLemburHeight.constant = self.collectionTanggalLembur.contentSize.height
-                    self.scrollView.resizeScrollViewContentSize()
-                    self.view.layoutIfNeeded()
-                    self.scrollView.alpha = 1
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getDetailApproval()
+                    }
+                    return
+                }
+                
+                guard let _data = detailApproval?.data else { return }
+                
+                self.textviewCatatanStatus.text = _data.status_notes
+                self.imageProfile.loadUrl(_data.photo ?? "")
+                self.buttonStatus.setTitle(_data.status, for: .normal)
+                self.buttonStatus.backgroundColor = UIColor(hexString: _data.status_color?.replacingOccurrences(of: "#", with: "") ?? "#")
+                self.labelNumber.text = _data.number
+                self.labelDate.text = "Diajkukan pada \(_data.date ?? "")"
+                self.labelNama.text = ": \(_data.emp_name ?? "")"
+                self.labelUnitKerja.text = ": \(_data.unit_name ?? "")"
+                self.labelKeterangan.text = ": \(_data.reason ?? "")"
+                self.datetime_id = _data.datetime_id
+                
+                for index in 0..._data.datetimes_start.count - 1 {
+                    self.listTanggalLembur.append(TanggalLemburPersetujuanModel(tanggalMulai: _data.datetimes_start_show[index], tanggalSelesai: _data.datetimes_end_show[index], isOn: true))
+                }
+                
+                self.collectionTanggalLembur.reloadData()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    UIView.animate(withDuration: 0.2) {
+                        self.collectionTanggalLemburHeight.constant = self.collectionTanggalLembur.contentSize.height
+                        self.scrollView.resizeScrollViewContentSize()
+                        self.view.layoutIfNeeded()
+                        self.scrollView.alpha = 1
+                    }
                 }
             }
         }
@@ -202,31 +203,33 @@ extension DetailPersetujuanLemburController {
         SVProgressHUD.show()
         
         informationNetworking.approvalOvertime(body: body) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
-                    let vc = DialogPengajuanCutiController()
-                    vc.exception = _error
-                    self.showCustomDialog(vc)
-                } else {
-                    self.function.showUnderstandDialog(self, "Gagal Melakukan Persetujuan", _error, "Ulangi", "Cancel") {
-                        self.approvalOvertime()
-                    }
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
+                
+                if let _error = error {
+                    if _error.contains("</ul>") || _error.contains("</li>") || _error.contains("</span>") {
+                        let vc = DialogPengajuanCutiController()
+                        vc.exception = _error
+                        self.showCustomDialog(vc)
+                    } else {
+                        self.function.showUnderstandDialog(self, "Gagal Melakukan Persetujuan", _error, "Ulangi", "Cancel") {
+                            self.approvalOvertime()
+                        }
+                    }
+                    return
+                }
+                
+                guard let _success = success else { return }
+                
+                self.view.makeToast(_success.message)
+                
+                self.getDetailApproval()
             }
-            
-            guard let _success = success else { return }
-            
-            self.view.makeToast(_success.message)
-            
-            self.getDetailApproval()
         }
     }
     

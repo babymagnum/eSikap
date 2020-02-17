@@ -42,23 +42,25 @@ class DialogBatalkanCutiController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.cancelLeave(id: leave_id, cancelNotes: fieldAlasan.text.trim()) { (error, baseResponse, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Cuti", error, "Ulangi", "Cancel", completionHandler: {
+                        self.cancelLeave()
+                    })
+                    return
+                }
+                
+                self.delegate.updateData()
+                
+                self.dismiss(animated: true, completion: nil)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Cuti", error, "Ulangi", "Cancel", completionHandler: {
-                    self.cancelLeave()
-                })
-                return
-            }
-            
-            self.delegate.updateData()
-            
-            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -71,23 +73,25 @@ class DialogBatalkanCutiController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.cancelOvertimeRealization(body: body) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Realisasi Lembur", error, "Ulangi", "Cancel", completionHandler: {
+                        self.cancelRequestOvertizeRealization(overtimeId: overtimeId)
+                    })
+                    return
+                }
+                
+                self.delegate.updateData()
+                
+                self.dismiss(animated: true, completion: nil)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Realisasi Lembur", error, "Ulangi", "Cancel", completionHandler: {
-                    self.cancelRequestOvertizeRealization(overtimeId: overtimeId)
-                })
-                return
-            }
-            
-            self.delegate.updateData()
-            
-            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -95,23 +99,25 @@ class DialogBatalkanCutiController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.cancelOvertime(overtimeId: overtimeId, cancelNotes: fieldAlasan.text.trim()) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Lembur", error, "Ulangi", "Cancel", completionHandler: {
+                        self.cancelRequestOvertime(overtimeId: overtimeId)
+                    })
+                    return
+                }
+                
+                self.delegate.updateData()
+                
+                self.dismiss(animated: true, completion: nil)
             }
-            
-            if let error = error {
-                self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Lembur", error, "Ulangi", "Cancel", completionHandler: {
-                    self.cancelRequestOvertime(overtimeId: overtimeId)
-                })
-                return
-            }
-            
-            self.delegate.updateData()
-            
-            self.dismiss(animated: true, completion: nil)
         }
     }
 }

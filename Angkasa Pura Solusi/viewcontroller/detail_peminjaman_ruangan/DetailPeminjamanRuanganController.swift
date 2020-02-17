@@ -55,23 +55,23 @@ class DetailPeminjamanRuanganController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getDetailRequestRoomsByUser(requestRoomId: _requestRoomId) { (error, detailRequest, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getDetailPeminjamanRuangan()
-                }
-                return
-            }
-            
-            guard let _detailRequest = detailRequest else { return }
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getDetailPeminjamanRuangan()
+                    }
+                    return
+                }
+                
+                guard let _detailRequest = detailRequest else { return }
+                
                 self.updateLayout(_detailRequest.data[0])
             }
         }
@@ -85,23 +85,23 @@ class DetailPeminjamanRuanganController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getDetailsRequestRooms(requestRoomId: _requestRoomId) { (error, detailRequest, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getDetailPeminjamanRuangan()
-                }
-                return
-            }
-            
-            guard let _detailRequest = detailRequest else { return }
-            
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getDetailPeminjamanRuangan()
+                    }
+                    return
+                }
+                
+                guard let _detailRequest = detailRequest else { return }
+                
                 self.updateLayout(_detailRequest.data[0])
             }
         }
@@ -177,23 +177,25 @@ extension DetailPeminjamanRuanganController: URLSessionDownloadDelegate, UIDocum
         SVProgressHUD.show()
         
         informationNetworking.cancelRequestRooms(requestRoomId: _requestRoomId) { (error, success, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan", _error, "Reload", "Cancel") {
-                    self.cancelRequestRoom()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan", _error, "Reload", "Cancel") {
+                        self.cancelRequestRoom()
+                    }
+                    return
+                }
+                
+                guard let _ = success else { return }
+                
+                self.navigationController?.popViewController(animated: true)
             }
-            
-            guard let _ = success else { return }
-            
-            self.navigationController?.popViewController(animated: true)
         }
     }
     

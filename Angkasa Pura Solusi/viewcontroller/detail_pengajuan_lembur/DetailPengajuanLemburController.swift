@@ -49,23 +49,25 @@ class DetailPengajuanLemburController: BaseViewController {
         SVProgressHUD.show()
         
         informationNetworking.getDetailOvertimeById(overtimeId: _overtimeId) { (error, detailOvertime, isExpired) in
-            SVProgressHUD.dismiss()
-            
-            if let _ = isExpired {
-                self.forceLogout(self.navigationController!)
-                return
-            }
-            
-            if let _error = error {
-                self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
-                    self.getDetailOvertime()
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
                 }
-                return
+                
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel") {
+                        self.getDetailOvertime()
+                    }
+                    return
+                }
+                
+                guard let _detailOvertime = detailOvertime else { return }
+                
+                self.updateLayout(_detailOvertime.data?.overtime[0])
             }
-            
-            guard let _detailOvertime = detailOvertime else { return }
-            
-            self.updateLayout(_detailOvertime.data?.overtime[0])
         }
     }
 
