@@ -738,7 +738,6 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentPic
         let labelLampiran = labelLampiranFile.text ?? ""
         let _fileType = fileType == "" ? "JPG" : fileType
         let _labelLampiran = labelLampiran == "" ? "\(Int(function.getCurrentMillisecond(pattern: "yyyy-MM-dd kk-mm-ss"))).JPG" : labelLampiran
-        print("filename \(_labelLampiran), fileType \(_fileType)")
         SVProgressHUD.show()
         
         informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0.1))!, fileName: _labelLampiran, fileType: _fileType, body: body) { (error, message, isExpired) in

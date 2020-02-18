@@ -69,6 +69,8 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
                 
                 guard let delegationList = delegationList else { return }
                 
+                if self.currentPage == 0 { self.listCuti.removeAll() }
+                
                 for cuti in delegationList.data!.leave {
                     self.listCuti.append(cuti)
                 }
@@ -77,7 +79,7 @@ class CutiController: BaseViewController, IndicatorInfoProvider, UICollectionVie
                 
                 self.labelDataKosong.isHidden = (delegationList.data?.leave.count)! > 0 && self.listCuti.count > 0
                 
-                self.totalPage = (delegationList.data?.total_page)!
+                self.totalPage = delegationList.data?.total_page ?? 0
                 
                 self.currentPage += 1
                 self.cutiCollectionView.reloadData()

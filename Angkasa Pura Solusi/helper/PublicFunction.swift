@@ -299,13 +299,13 @@ class PublicFunction {
     
     func getGlobalHeight() -> CGFloat {
         if (UIScreen.main.bounds.width == 320) {
-            return 3
+            return 2
         } else if (UIScreen.main.bounds.width == 375) {
-            return 4
+            return 3
         } else if (UIScreen.main.bounds.width == 414) {
-            return 5
+            return 4
         } else {
-            return 6
+            return 5
         }
     }
     

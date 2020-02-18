@@ -256,17 +256,45 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
     
     func pickDate(formatedDate: String) {
         if isPickTanggalMulai {
+            let tanggalSelesai = function.stringToDate(fieldTanggalSelesai.text ?? function.getCurrentDate(pattern: "dd-MM-yyyy"), "dd-MM-yyyy")
+            let tanggalMulai = function.stringToDate(formatedDate, "dd-MM-yyyy")
+            
+            if tanggalMulai > tanggalSelesai {
+                fieldTanggalSelesai.text = ""
+            }
+            
             fieldTanggalMulai.text = formatedDate
         } else {
-            fieldTanggalSelesai.text = formatedDate
+            let tanggalMulai = function.stringToDate(fieldTanggalMulai.text ?? function.getCurrentDate(pattern: "dd-MM-yyyy"), "dd-MM-yyyy")
+            let tanggalSelesai = function.stringToDate(formatedDate, "dd-MM-yyyy")
+                        
+            if tanggalSelesai < tanggalMulai {
+                self.view.makeToast("Tanggal selesai tidak boleh lebih kecil dari tanggal mulai.")
+            } else {
+                fieldTanggalSelesai.text = formatedDate
+            }
         }
     }
     
     func pickTime(pickedTime: String) {
         if isPickWaktuMulai {
+            let waktuMulai = pickedTime.replacingOccurrences(of: ":", with: "")
+            let waktuSelesai = (fieldWaktuSelesai?.text ?? "").replacingOccurrences(of: ":", with: "")
+            
+            if Int(waktuMulai) ?? 0 > Int(waktuSelesai) ?? 0 {
+                fieldWaktuSelesai.text = ""
+            }
+            
             fieldWaktuMulai.text = pickedTime
         } else {
-            fieldWaktuSelesai.text = pickedTime
+            let waktuMulai = (fieldWaktuMulai?.text ?? "").replacingOccurrences(of: ":", with: "")
+            let waktuSelesai = pickedTime.replacingOccurrences(of: ":", with: "")
+            
+            if Int(waktuSelesai) ?? 0 < Int(waktuMulai) ?? 0 {
+                self.view.makeToast("waktu selesai tidak boleh lebih kecil dari waktu mulai.")
+            } else {
+                fieldWaktuSelesai.text = pickedTime
+            }
         }
     }
     
@@ -321,8 +349,12 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
     }
     
     @objc func viewWaktuSelesaiClick() {
-        isPickWaktuMulai = false
-        openDateTimePicker(PickerTypeEnum.time)
+        if fieldWaktuMulai.text?.trim() == "" {
+            self.view.makeToast("Isi waktu mulai terlebih dahulu")
+        } else {
+            isPickWaktuMulai = false
+            openDateTimePicker(PickerTypeEnum.time)
+        }
     }
     
     @objc func viewWaktuMulaiClick() {
@@ -336,8 +368,12 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
     }
     
     @objc func viewTanggalSelesaiClick() {
-        isPickTanggalMulai = false
-        openDateTimePicker(PickerTypeEnum.date)
+        if fieldTanggalMulai.text?.trim() == "" {
+            self.view.makeToast("Isi tanggal mulai terlebih dahulu.")
+        } else {
+            isPickTanggalMulai = false
+            openDateTimePicker(PickerTypeEnum.date)
+        }
     }
     
     @objc func imageDeleteClick(sender: UITapGestureRecognizer) {

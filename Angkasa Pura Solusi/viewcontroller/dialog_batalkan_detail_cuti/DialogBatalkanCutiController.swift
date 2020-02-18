@@ -81,8 +81,8 @@ class DialogBatalkanCutiController: BaseViewController {
                     return
                 }
                 
-                if let error = error {
-                    self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Realisasi Lembur", error, "Ulangi", "Cancel", completionHandler: {
+                if let _error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Melakukan Pembatalan Realisasi Lembur", _error, "Ulangi", "Cancel", completionHandler: {
                         self.cancelRequestOvertizeRealization(overtimeId: overtimeId)
                     })
                     return

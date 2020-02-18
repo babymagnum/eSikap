@@ -71,19 +71,19 @@ class PersetujuanTabRealisasiLemburController: BaseViewController, IndicatorInfo
                 
                 guard let _data = overtimeApproval?.data else { return }
                 
+                if self.currentPage == 0 { self.listLembur.removeAll() }
+                
+                _data.overtime.forEach { (item) in
+                    self.listLembur.append(item)
+                }
+                
                 self.totalPage = _data.total_page
                 
-                if _data.overtime.count > 0 {
-                    self.currentPage += 1
-                    
-                    _data.overtime.forEach { (item) in
-                        self.listLembur.append(item)
-                    }
-                    
-                    self.labelEmpty.isHidden = _data.overtime.count > 0 && self.listLembur.count > 0
-                    
-                    self.collectionRealisasiLembur.reloadData()
-                }
+                self.currentPage += 1
+                
+                self.labelEmpty.isHidden = _data.overtime.count > 0 && self.listLembur.count > 0
+                
+                self.collectionRealisasiLembur.reloadData()
             }
         }
     }

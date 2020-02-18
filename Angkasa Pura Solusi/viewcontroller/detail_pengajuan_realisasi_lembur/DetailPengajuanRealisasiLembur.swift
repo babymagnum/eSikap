@@ -233,11 +233,6 @@ extension DetailPengajuanRealisasiLembur: HSAttachmentPickerDelegate {
 extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol {
     
     private func addOvertimeRealization() {
-        print("datetimes_start_show \(datetimes_start_show)")
-        print("datetimes_end_show \(datetimes_end_show)")
-        print("datetimes_start_real \(datetimes_start_real)")
-        print("datetimes_end_real \(datetimes_end_real)")
-        
         guard let _overtimeId = overtimeId else { return }
         
         var body: [String: String] = [
@@ -286,13 +281,15 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol {
                     return
                 }
                 
-                guard let _ = success, let _delegate = self.delegate else { return }
-                
                 self.view.makeToast("Berhasil melakukan pengajuan realisasi lembur.")
                 
-                _delegate.updateData()
-                
-                self.navigationController?.popViewController(animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    guard let _delegate = self.delegate else { return }
+                    
+                    _delegate.updateData()
+                    
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }

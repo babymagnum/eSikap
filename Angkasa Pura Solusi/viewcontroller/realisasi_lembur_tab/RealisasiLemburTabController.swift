@@ -67,6 +67,8 @@ class RealisasiLemburTabController: BaseViewController, IndicatorInfoProvider {
                 
                 guard let _overtimeHistory = overtimeHistory else { return }
                 
+                if self.currentPage == 0 { self.listPengajuan.removeAll() }
+                
                 _overtimeHistory.data?.overtime.forEach({ (item) in
                     self.listPengajuan.append(item)
                 })
@@ -84,12 +86,25 @@ class RealisasiLemburTabController: BaseViewController, IndicatorInfoProvider {
         collectionRealisasi.register(UINib(nibName: "PengajuanLemburCell", bundle: nil), forCellWithReuseIdentifier: "PengajuanLemburCell")
         collectionRealisasi.dataSource = self
         collectionRealisasi.delegate = self
+        collectionRealisasi.addSubview(refreshControl)
         let collectionLayout = collectionRealisasi.collectionViewLayout as! UICollectionViewFlowLayout
-        collectionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 60 - 33 + ((UIScreen.main.bounds.width - 32) * 0.11))
+        collectionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: function.getGlobalHeight() + 60 - 33 + ((UIScreen.main.bounds.width - 32) * 0.11))
     }
 }
 
-extension RealisasiLemburTabController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension RealisasiLemburTabController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let item = listPengajuan[indexPath.item]
+        
+        if item.status == "" {
+            return CGSize(width: UIScreen.main.bounds.width - 32, height: 60 - 33 - 12.5 + ((UIScreen.main.bounds.width - 32) * 0.11))
+        } else {
+            return CGSize(width: UIScreen.main.bounds.width - 32, height: function.getGlobalHeight() + 60 - 33 + ((UIScreen.main.bounds.width - 32) * 0.11))
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == listPengajuan.count - 1 {
             if self.allowLoadMore && currentPage + 1 <= totalPage {

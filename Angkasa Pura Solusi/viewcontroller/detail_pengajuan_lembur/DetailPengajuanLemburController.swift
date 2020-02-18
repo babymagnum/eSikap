@@ -84,12 +84,8 @@ class DetailPengajuanLemburController: BaseViewController {
         buttonStatus.backgroundColor = UIColor(hexString: "\(_data.status_color?.replacingOccurrences(of: "#", with: "") ?? "")")
         listTanggalLembur = _data.date_show
         listInformasiStatus = _data.approval
-        if _data.cancel_button_is_show == "0" {
-            labelInformasiPembatalan.isHidden = false
-            labelInformasiPembatalan.text = _data.cancel_notes
-        } else {
-            buttonBatalkan.isHidden = false
-        }
+        buttonBatalkan.isHidden = _data.cancel_button_is_show == "0" ? true : false
+        labelInformasiPembatalan.text = _data.cancel_button_is_show == "0" ? _data.cancel_notes : ""
         labelAwalInput.text = _data.last_insert
         labelUbahanTerakhir.text = _data.last_update
         collectionTanggalLembur.reloadData()

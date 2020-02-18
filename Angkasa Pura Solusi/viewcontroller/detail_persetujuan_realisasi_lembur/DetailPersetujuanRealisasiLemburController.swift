@@ -223,7 +223,9 @@ extension DetailPersetujuanRealisasiLemburController {
                 
                 self.view.makeToast(_success.message)
                 
-                self.getDetailApproval()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }

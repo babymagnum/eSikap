@@ -761,7 +761,13 @@ class InformationNetworking: BaseNetworking {
     
     func addOvertimeRealization(body: [String: String], imageData: Data?, fileName: String, fileType: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/addOvertimeRealization"
-        alamofirePostImage(imageData: imageData ?? Data(), fileName: fileName, fileType: fileType, url: url, headers: getHeaders(), body: body, completion: completion)
+        
+        if let _imageData = imageData {
+            alamofirePostImage(imageData: _imageData, fileName: fileName, fileType: fileType, url: url, headers: getHeaders(), body: body, completion: completion)
+        } else {
+            alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+        }
+        
     }
     
     func getDetailOvertimeRealizationById(overtimeId: String, completion: @escaping(_ error: String?, _ detailOvertimeRealization: DetailOvertimeRealization?, _ isExpired: Bool?) -> Void) {

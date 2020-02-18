@@ -73,6 +73,8 @@ class PengajuanLemburTabController: BaseViewController, IndicatorInfoProvider {
                 
                 guard let _overtimeHistory = overtimeHistory else { return }
                 
+                if self.currentPage == 0 { self.listPengajuan.removeAll()}
+                
                 _overtimeHistory.data?.overtime.forEach({ (item) in
                     self.listPengajuan.append(item)
                 })
@@ -94,7 +96,7 @@ class PengajuanLemburTabController: BaseViewController, IndicatorInfoProvider {
         collectionPengajuan.dataSource = self
         collectionPengajuan.addSubview(refreshControl)
         let collectionLayout = collectionPengajuan.collectionViewLayout as! UICollectionViewFlowLayout
-        collectionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 60 - 33 + ((UIScreen.main.bounds.width - 32) * 0.11))
+        collectionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 32, height: 60 - 33 + ((UIScreen.main.bounds.width - 32) * 0.11) + function.getGlobalHeight())
     }
 }
 
