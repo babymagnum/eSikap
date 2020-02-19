@@ -66,12 +66,13 @@ class KebijakanPeraturanDetail: BaseViewController, UICollectionViewDelegate {
                 guard let _policy = policy else { return }
                 
                 if self.currentPage == 0 { self.listPolicy.removeAll() }
-                self.totalPage = _policy.data?.total_page ?? 1
-                self.currentPage += 1
                 
                 _policy.data?.policy.forEach({ (item) in
                     self.listPolicy.append(PolicyDataListItem(id: item.id, name: item.name, date: item.date, files: item.files, isExpanded: false))
                 })
+                
+                self.totalPage = _policy.data?.total_page ?? 1
+                self.currentPage += 1
                 
                 self.labelKosong.text = _policy.message
                 self.labelKosong.isHidden = self.listPolicy.count > 0
@@ -188,24 +189,25 @@ extension KebijakanPeraturanDetail: UICollectionViewDataSource, UICollectionView
         return cell
     }
     
-    func getTextHeight(_ text: String, _ font_size: CGFloat) -> CGFloat {
-        return text.getHeight(withConstrainedWidth: collectionKebijakanPeraturan.frame.width - 30, font_size: font_size)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let item = listPolicy[indexPath.item]
         
         var textHeight: CGFloat = 0
         
         listPolicy[indexPath.item].files.forEach { (item) in
-            textHeight += getTextHeight(item.file_name ?? "", 12)
+            textHeight += item.file_name?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 30 - 26, font_size: 12) ?? 0
         }
+        
+        let titleHeight = item.name?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 30 - 50, font_size: 12) ?? 0
+        let dateHeight = item.date?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 30 - 50, font_size: 10) ?? 0
         
         let isExpanded = listPolicy[indexPath.item].isExpanded
         let spaceHeight: CGFloat = (CGFloat(4 * (listPolicy[indexPath.item].files.count - 1)))
         if isExpanded {
-            return CGSize(width: UIScreen.main.bounds.width - 30, height: 58 + textHeight + 26 + spaceHeight)
+            return CGSize(width: UIScreen.main.bounds.width - 30, height: titleHeight + dateHeight + 26 + textHeight + spaceHeight + 26 + 2)
         } else {
-            return CGSize(width: UIScreen.main.bounds.width - 30, height: 55)
+            return CGSize(width: UIScreen.main.bounds.width - 30, height: titleHeight + dateHeight + 26)
         }
     }
 }
@@ -214,14 +216,12 @@ extension KebijakanPeraturanDetail: FilterKebijakanPeraturanProtocol {
     func yearsPick(year: String) {
         self.year = year
         currentPage = 0
-        listPolicy.removeAll()
         getDetailList()
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         currentPage = 0
-        listPolicy.removeAll()
         getDetailList()
     }
     

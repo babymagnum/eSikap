@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,10 +29,10 @@
                                 <rect key="frame" x="13" y="15" width="271" height="25"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYv-EM-QHW">
-                                        <rect key="frame" x="0.0" y="-2" width="80" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mulai" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7e-TU-Np7" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                                <rect key="frame" x="5" y="7" width="70" height="15.5"/>
+                                                <rect key="frame" x="5" y="5" width="70" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                                     <constraint firstItem="qYv-EM-QHW" firstAttribute="centerY" secondItem="bbu-7b-hIf" secondAttribute="centerY" id="1hh-OG-3af"/>
                                     <constraint firstAttribute="trailing" secondItem="LRc-YA-9f4" secondAttribute="trailing" id="2Qx-Bh-T6H"/>
                                     <constraint firstItem="HYi-kc-qcn" firstAttribute="centerY" secondItem="bbu-7b-hIf" secondAttribute="centerY" id="Omq-sP-niP"/>
-                                    <constraint firstItem="qYv-EM-QHW" firstAttribute="top" secondItem="bbu-7b-hIf" secondAttribute="top" constant="-2" id="YHz-cC-O4z"/>
+                                    <constraint firstItem="qYv-EM-QHW" firstAttribute="top" secondItem="bbu-7b-hIf" secondAttribute="top" id="YHz-cC-O4z"/>
                                     <constraint firstItem="86X-Jm-6hk" firstAttribute="leading" secondItem="HYi-kc-qcn" secondAttribute="trailing" constant="10" id="bR8-eq-HMH"/>
                                     <constraint firstItem="LRc-YA-9f4" firstAttribute="baseline" secondItem="HYi-kc-qcn" secondAttribute="baseline" id="ehM-pH-AHG"/>
                                     <constraint firstItem="qYv-EM-QHW" firstAttribute="leading" secondItem="bbu-7b-hIf" secondAttribute="leading" id="fVY-eG-K0X"/>

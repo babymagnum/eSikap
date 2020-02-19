@@ -207,14 +207,27 @@ extension PeminjamanMobilDinasController: SearchDelegasiOrAtasanProtocol, Bottom
     
     func pickDate(formatedDate: String) {
         fieldTanggalPermintaan.text = formatedDate
-        print("\(fieldTanggalPermintaan.text ?? "")")
     }
     
     func pickTime(pickedTime: String) {
         if isPickWaktuMulai {
+            let waktuSelesai = (fieldWaktuSelesai?.text ?? "").replacingOccurrences(of: ":", with: "")
+            let waktuMulai = pickedTime.replacingOccurrences(of: ":", with: "")
+            
+            if Int(waktuMulai) ?? 0 > Int(waktuSelesai) ?? 0 {
+                fieldWaktuSelesai.text = ""
+            }
+            
             fieldWaktuMulai.text = pickedTime
         } else {
-            fieldWaktuSelesai.text = pickedTime
+            let waktuMulai = fieldWaktuMulai.text?.replacingOccurrences(of: ":", with: "") ?? ""
+            let waktuSelesai = pickedTime.replacingOccurrences(of: ":", with: "")
+            
+            if Int(waktuSelesai) ?? 0 < Int(waktuMulai) ?? 0 {
+                self.view.makeToast("Waktu selesai tidak boleh lebih kecil dari waktu mulai.")
+            } else {
+                fieldWaktuSelesai.text = pickedTime
+            }
         }
     }
     
@@ -374,8 +387,12 @@ extension PeminjamanMobilDinasController: SearchDelegasiOrAtasanProtocol, Bottom
     }
     
     @objc func viewWaktuSelesaiClick() {
-        isPickWaktuMulai = false
-        openDateTimePicker(PickerTypeEnum.time)
+        if fieldWaktuMulai.text == "" {
+            self.view.makeToast("Pilih waktu mulai terlebih dahulu.")
+        } else {
+            isPickWaktuMulai = false
+            openDateTimePicker(PickerTypeEnum.time)
+        }
     }
     
     @objc func viewTanggalPermintaanClick() { openDateTimePicker(PickerTypeEnum.date) }

@@ -49,8 +49,6 @@ class KebijakanPeraturanDetailCell: UICollectionViewCell, UICollectionViewDelega
         collectionItemHeight.constant = 0
         
         collectionItem.register(UINib(nibName: "KebijakanPeraturanFileCell", bundle: nil), forCellWithReuseIdentifier: "KebijakanPeraturanFileCell")
-        let collectionLayout = collectionItem.collectionViewLayout as! UICollectionViewFlowLayout
-        collectionLayout.itemSize = CGSize(width: UIScreen.main.bounds.width - 30, height: 20)
         collectionItem.delegate = self
         collectionItem.dataSource = self
     }
@@ -64,7 +62,14 @@ class KebijakanPeraturanDetailCell: UICollectionViewCell, UICollectionViewDelega
     }
 }
 
-extension KebijakanPeraturanDetailCell: UICollectionViewDataSource {
+extension KebijakanPeraturanDetailCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = listFiles[indexPath.item]
+        let itemHeight = item.file_name?.getHeight(withConstrainedWidth: collectionItem.frame.size.width - 26, font_size: 12) ?? 0
+        return CGSize(width: collectionItem.frame.size.width - 26, height: itemHeight)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listFiles.count
     }

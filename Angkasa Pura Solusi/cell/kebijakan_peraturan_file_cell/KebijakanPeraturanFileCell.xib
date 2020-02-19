@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,16 +26,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="276" height="20"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsD-kQ-gFu">
-                                <rect key="frame" x="12" y="2.5" width="252" height="15"/>
+                                <rect key="frame" x="0.0" y="2.5" width="276" height="15"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                 <color key="textColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="OsD-kQ-gFu" firstAttribute="leading" secondItem="6fs-gN-ZG1" secondAttribute="leading" constant="12" id="5K8-lq-glN"/>
+                            <constraint firstItem="OsD-kQ-gFu" firstAttribute="leading" secondItem="6fs-gN-ZG1" secondAttribute="leading" id="5K8-lq-glN"/>
                             <constraint firstItem="OsD-kQ-gFu" firstAttribute="centerY" secondItem="6fs-gN-ZG1" secondAttribute="centerY" id="knj-JA-98U"/>
-                            <constraint firstAttribute="trailing" secondItem="OsD-kQ-gFu" secondAttribute="trailing" constant="12" id="rdi-zq-Z9B"/>
+                            <constraint firstAttribute="trailing" secondItem="OsD-kQ-gFu" secondAttribute="trailing" id="rdi-zq-Z9B"/>
                         </constraints>
                     </view>
                 </subviews>

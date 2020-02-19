@@ -59,8 +59,8 @@ class DaftarPeminjamanRuanganCell: UICollectionViewCell, UICollectionViewDelegat
 
 extension DaftarPeminjamanRuanganCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let textHeight = listAgenda[indexPath.item].title_agenda?.getHeight(withConstrainedWidth: collectionDaftarPeminjamanRuangan.frame.size.width, font_size: 12) ?? 0
-        return CGSize(width: collectionDaftarPeminjamanRuangan.frame.size.width, height: textHeight + 20)
+        let textHeight = listAgenda[indexPath.item].title_agenda?.trim().getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 45 - PublicFunction().getGlobalHeight(), font_size: 12) ?? 0
+        return CGSize(width: UIScreen.main.bounds.width - 45 - PublicFunction().getGlobalHeight() - 32, height: textHeight + 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

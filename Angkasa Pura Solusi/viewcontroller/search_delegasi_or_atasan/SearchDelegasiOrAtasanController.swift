@@ -53,6 +53,12 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
         getEmpFilter()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        collectionName.collectionViewLayout.invalidateLayout()
+    }
+    
     private func initEvent() {
         imageSearchTop.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageSearchTopClick)))
         
@@ -91,12 +97,14 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
                 }
                 
                 guard let listEmpFilter = listEmpFilter else { return }
-                self.totalPage = (listEmpFilter.data?.total_page)!
+                
+                if self.currentPage == 0 { self.listEmpFilter.removeAll() }
                 
                 for emp in listEmpFilter.data!.emp {
                     self.listEmpFilter.append(emp)
                 }
                 
+                self.totalPage = listEmpFilter.data?.total_page ?? 0
                 self.currentPage += 1
                 self.collectionName.reloadData()
             }
@@ -143,7 +151,7 @@ extension SearchDelegasiOrAtasanController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmpFilterCell", for: indexPath) as! EmpFilterCell
-        cell.data = listEmpFilter[indexPath.item]
+        cell.data = listEmpFilter[indexPath.row]
         cell.viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(containerNameClick(sender:))))
         
         if !isSetCollectionNameHeight {
@@ -206,7 +214,6 @@ extension SearchDelegasiOrAtasanController {
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
-        listEmpFilter.removeAll()
         currentPage = 0
         getEmpFilter()
     }

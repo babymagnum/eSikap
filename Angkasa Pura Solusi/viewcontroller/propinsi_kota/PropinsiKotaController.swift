@@ -120,12 +120,12 @@ class PropinsiKotaController: BaseViewController, UICollectionViewDelegate, UITe
                     
                     if self.currentPage == 0 { self.listPropinsiKota.removeAll() }
                     
-                    self.totalPage = _propinsiCity.data?.total_page ?? 1
-                    self.currentPage += 1
-                    
                     _propinsiCity.data?.emp.forEach({ (item) in
                         self.listPropinsiKota.append(item)
                     })
+                    
+                    self.totalPage = _propinsiCity.data?.total_page ?? 1
+                    self.currentPage += 1
                     
                     self.collectionPropinsiKota.reloadData()
                 }
@@ -141,7 +141,6 @@ class PropinsiKotaController: BaseViewController, UICollectionViewDelegate, UITe
                     }
                     
                     if let _error = error {
-                        print("error get kota \(_error)")
                         self.function.showUnderstandDialog(self, "Gagal Mendapatkan Data", _error, "Reload", "Cancel", completionHandler: {
                             self.getPropinsiKota()
                         })
@@ -152,12 +151,12 @@ class PropinsiKotaController: BaseViewController, UICollectionViewDelegate, UITe
                     
                     if self.currentPage == 0 { self.listPropinsiKota.removeAll() }
                     
-                    self.totalPage = _propinsiCity.data?.total_page ?? 1
-                    self.currentPage += 1
-                    
                     _propinsiCity.data?.emp.forEach({ (item) in
                         self.listPropinsiKota.append(item)
                     })
+                    
+                    self.totalPage = _propinsiCity.data?.total_page ?? 1
+                    self.currentPage += 1
                     
                     self.collectionPropinsiKota.reloadData()
                 }
@@ -197,7 +196,6 @@ extension PropinsiKotaController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PropinsiKotaCell", for: indexPath) as! PropinsiKotaCell
-        
         cell.data = listPropinsiKota[indexPath.item]
         cell.viewRoot.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewRootClick(sender:))))
         return cell
@@ -228,7 +226,6 @@ extension PropinsiKotaController {
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
-        listPropinsiKota.removeAll()
         currentPage = 0
         getPropinsiKota()
     }
@@ -239,6 +236,7 @@ extension PropinsiKotaController {
             self.imageSearchTop.isHidden = true
             self.viewSearch.isHidden = false
             self.viewSearch.alpha = 1
+            self.fieldSearch.becomeFirstResponder()
             self.view.layoutIfNeeded()
         }
     }

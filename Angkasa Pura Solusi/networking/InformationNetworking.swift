@@ -759,7 +759,7 @@ class InformationNetworking: BaseNetworking {
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
     
-    func addOvertimeRealization(body: [String: String], imageData: Data?, fileName: String, fileType: String, completion: @escaping(_ error: String?, _ success: Success?, _ isExpired: Bool?) -> Void) {
+    func addOvertimeRealization(body: [String: String], imageData: Data?, fileName: String, fileType: String, completion: @escaping(_ error: String?, _ successData: SuccessData?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/addOvertimeRealization"
         
         if let _imageData = imageData {

@@ -232,8 +232,11 @@ extension DaftarPeminjamanRuanganController: UICollectionViewDataSource, UIColle
         var agendaHeight: CGFloat = 0
         let item = listSchedules[indexPath.item]
         item.agenda.forEach { (item) in
-            let height = item.title_agenda?.getHeight(withConstrainedWidth: UIScreen.main.bounds.size.width - 32 - 19.2 - 26, font_size: 12) ?? 0
-            agendaHeight += height + 26
+            let textHeight = item.title_agenda?.trim().getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 45 - function.getGlobalHeight(), font_size: 12) ?? 0
+            //return CGSize(width: UIScreen.main.bounds.width - 45 - PublicFunction().getGlobalHeight() - 32, height: textHeight + 20)
+            
+            //let height = item.title_agenda?.getHeight(withConstrainedWidth: UIScreen.main.bounds.size.width - 32 - 19.2 - 26, font_size: 12) ?? 0
+            agendaHeight += textHeight + 26
         }
         agendaHeight += CGFloat(item.agenda.count - 1 * 7)
         return CGSize(width: UIScreen.main.bounds.size.width - 32, height: agendaHeight)

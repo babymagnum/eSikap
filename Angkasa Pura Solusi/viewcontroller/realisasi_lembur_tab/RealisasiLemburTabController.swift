@@ -38,7 +38,7 @@ class RealisasiLemburTabController: BaseViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         initView()
         
         getOvertimeRealization()

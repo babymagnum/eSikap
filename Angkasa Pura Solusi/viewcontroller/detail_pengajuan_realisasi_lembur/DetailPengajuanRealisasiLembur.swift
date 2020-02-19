@@ -11,6 +11,7 @@ import SVProgressHUD
 import FittedSheets
 import HSAttachmentPicker
 import Toast_Swift
+import MobileCoreServices
 
 protocol DetailPengajuanRealisasiLemburProtocol {
     func updateData()
@@ -44,7 +45,7 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
     private var isPickTanggalMulai = false
     private var isPickWaktuMulai = false
     private var selectedIndex = 0
-    private let picker = HSAttachmentPicker()
+    //private let picker = HSAttachmentPicker()
     private var fileType = ""
     private var pickedData: Data?
     private var attachment_old = ""
@@ -85,8 +86,8 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
     }
     
     private func setProfileView(data: ItemProfile) {
-        labelNama.text = data.emp_name
-        labelUnitKerja.text = data.workarea
+        labelNama.text = ": \(data.emp_name ?? "")"
+        labelUnitKerja.text = ": \(data.unit ?? "")"
         imageProfile.loadUrl(data.img ?? "")
     }
     
@@ -114,9 +115,9 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
                 
                 guard let _data = editDetailOvertime?.data else { return }
                             
-                self.labelKeterangan.text = _data.reason
+                self.labelKeterangan.text = ": \(_data.reason ?? "")"
                 self.labelNumber.text = _data.number
-                self.labelDate.text = _data.date
+                self.labelDate.text = "Diajukan pada \(_data.date ?? "")"
                 self.datetimes_start = _data.datetimes_start
                 self.datetimes_start_show = _data.datetimes_start_show
                 self.datetimes_end = _data.datetimes_end
@@ -148,7 +149,7 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
     }
 
     private func initView() {
-        picker.delegate = self
+        //picker.delegate = self
         constraintViewRoot.constant += UIApplication.shared.statusBarFrame.height
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         
@@ -181,8 +182,8 @@ extension DetailPengajuanRealisasiLembur: UICollectionViewDataSource, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TanggalLemburRealisasiCell", for: indexPath) as! TanggalLemburRealisasiCell
         let tanggalWaktuMulai = datetimes_start_real[indexPath.item].components(separatedBy: " ")
         let tanggalWaktuSelesai = datetimes_end_real[indexPath.item].components(separatedBy: " ")
-        cell.labelMulaiPermintaan.text = datetimes_start_show[indexPath.item]
-        cell.labelSelesaiPermintaan.text = datetimes_end_show[indexPath.item]
+        cell.labelMulaiPermintaan.text = "\(datetimes_start_show[indexPath.item].dropLast(3))"
+        cell.labelSelesaiPermintaan.text = "\(datetimes_end_show[indexPath.item].dropLast(3))"
         cell.fieldTanggalMulai.text = function.dateStringTo(date: tanggalWaktuMulai[0], original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")
         cell.fieldWaktuMulai.text = "\(tanggalWaktuMulai[1].prefix(5))"
         cell.fieldTanggalSelesai.text = function.dateStringTo(date: tanggalWaktuSelesai[0], original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")
@@ -195,42 +196,42 @@ extension DetailPengajuanRealisasiLembur: UICollectionViewDataSource, UICollecti
     }
 }
 
-extension DetailPengajuanRealisasiLembur: HSAttachmentPickerDelegate {
-    func attachmentPickerMenu(_ menu: HSAttachmentPicker, show controller: UIViewController, completion: (() -> Void)? = nil) {
-        DispatchQueue.main.async {
-            self.present(controller, animated: true, completion: completion)
-        }
-    }
-    
-    func attachmentPickerMenu(_ menu: HSAttachmentPicker, showErrorMessage errorMessage: String) { }
-    
-    func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
-        
-        if filename.contains(".") {
-            fileType = filename.components(separatedBy: ".")[1]
-        }
-        
-        if let image = image {
-            pickedData = image.pngData()
-            labelFilePendukung.text = filename
-            return
-        }
-        
-        pickedData = data
-        labelFilePendukung.text = filename
+//extension DetailPengajuanRealisasiLembur: HSAttachmentPickerDelegate {
+//    func attachmentPickerMenu(_ menu: HSAttachmentPicker, show controller: UIViewController, completion: (() -> Void)? = nil) {
+//        DispatchQueue.main.async {
+//            self.present(controller, animated: true, completion: completion)
+//        }
+//    }
+//
+//    func attachmentPickerMenu(_ menu: HSAttachmentPicker, showErrorMessage errorMessage: String) { }
+//
+//    func attachmentPickerMenu(_ menu: HSAttachmentPicker, upload data: Data, filename: String, image: UIImage?) {
+//
+//        if filename.contains(".") {
+//            fileType = filename.components(separatedBy: ".")[1]
+//        }
+//
+//        if let image = image {
+//            pickedData = image.pngData()
+//            labelFilePendukung.text = filename
+//            return
+//        }
+//
+//        pickedData = data
+//        labelFilePendukung.text = filename
+//
+//        if filename.contains(regex: "(jpg|png|jpeg)") {
+//            pickedData = UIImage(data: data)?.pngData()
+//        }
+//
+//        UIView.animate(withDuration: 0.2) {
+//            self.scrollView.resizeScrollViewContentSize()
+//            self.view.layoutIfNeeded()
+//        }
+//    }
+//}
 
-        if filename.contains(regex: "(jpg|png|jpeg)") {
-            pickedData = UIImage(data: data)?.pngData()
-        }
-        
-        UIView.animate(withDuration: 0.2) {
-            self.scrollView.resizeScrollViewContentSize()
-            self.view.layoutIfNeeded()
-        }
-    }
-}
-
-extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol {
+extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol, UIDocumentPickerDelegate {
     
     private func addOvertimeRealization() {
         guard let _overtimeId = overtimeId else { return }
@@ -273,12 +274,8 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol {
                         let vc = DialogPengajuanCutiController()
                         vc.exception = error
                         self.showCustomDialog(vc)
-                    } else {
-                        self.function.showUnderstandDialog(self, "Gagal Mengajukan Realisasi", _error, "Ulangi", "Cancel") {
-                            self.addOvertimeRealization()
-                        }
+                        return
                     }
-                    return
                 }
                 
                 self.view.makeToast("Berhasil melakukan pengajuan realisasi lembur.")
@@ -360,8 +357,37 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol {
         openDateTimePicker(PickerTypeEnum.time)
     }
     
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let myURL = urls.first else { return }
+        
+        do {
+            let data = try? Data(contentsOf: myURL) // Getting file data here
+            guard let _data = data else { return }
+            pickedData = _data
+            let filename = "\(myURL)".components(separatedBy: "/").last
+            labelFilePendukung.text = "\(filename ?? "")"
+            let fileType = "\(filename ?? " . ")".components(separatedBy: ".")[1]
+            if fileType.lowercased().contains(regex: "(jpg|png|jpeg)") {
+                let image = UIImage.init(data: _data)
+                guard let _image = image else { return }
+                pickedData = _image.jpegData(compressionQuality: 0.1) ?? Data()
+            }
+        } catch {
+            // something
+        }
+    }
+    
     @objc func viewFilePendukungClick() {
-        self.picker.showAttachmentMenu()
+        //self.picker.showAttachmentMenu()
+        let allowedFiles = ["com.apple.iwork.pages.pages", "com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key","public.image", "com.apple.application", "public.item","public.data", "public.content", "public.audiovisual-content", "public.movie", "public.audiovisual-content", "public.video", "public.audio", "public.text", "public.data", "public.zip-archive", "com.pkware.zip-archive", "public.composite-content", "public.text"]
+        let importMenu = UIDocumentPickerViewController(documentTypes: allowedFiles, in: .import)
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .formSheet
+        self.present(importMenu, animated: true, completion: nil)
     }
     
     @IBAction func buttonSubmitClick(_ sender: Any) {

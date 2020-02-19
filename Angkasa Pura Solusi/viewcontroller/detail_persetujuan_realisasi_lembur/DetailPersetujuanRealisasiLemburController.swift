@@ -139,14 +139,14 @@ extension DetailPersetujuanRealisasiLemburController: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TanggalLemburRealisasiCell", for: indexPath) as! TanggalLemburRealisasiCell
-        cell.labelMulaiPermintaan.text = datetimes_start_show[indexPath.item]
-        cell.labelSelesaiPermintaan.text = datetimes_end_show[indexPath.item]
-        let tanggalWaktuMulai = datetimes_real_start[indexPath.item].components(separatedBy: " ")
-        let tanggalWaktuSelesai = datetimes_real_end[indexPath.item].components(separatedBy: " ")
+        cell.labelMulaiPermintaan.text = "\(datetimes_start_show[indexPath.item].dropLast(3))"
+        cell.labelSelesaiPermintaan.text = "\(datetimes_end_show[indexPath.item].dropLast(3))"
+        let tanggalWaktuMulai = datetimes_start[indexPath.item].components(separatedBy: " ")
+        let tanggalWaktuSelesai = datetimes_end[indexPath.item].components(separatedBy: " ")
         cell.fieldTanggalMulai.text = function.dateStringTo(date: tanggalWaktuMulai[0], original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")
-        cell.fieldWaktuMulai.text = tanggalWaktuMulai[1]
+        cell.fieldWaktuMulai.text = "\(tanggalWaktuMulai[1].dropLast(3))"
         cell.fieldTanggalSelesai.text = function.dateStringTo(date: tanggalWaktuSelesai[0], original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")
-        cell.fieldWaktuSelesai.text = tanggalWaktuSelesai[1]
+        cell.fieldWaktuSelesai.text = "\(tanggalWaktuSelesai[1].dropLast(3))"
         return cell
     }
 }
@@ -191,8 +191,8 @@ extension DetailPersetujuanRealisasiLemburController {
         
         for (index, item) in datetime_id.enumerated() {
             body.updateValue(item, forKey: "datetimes_id[\(index)]")
-            body.updateValue(datetimes_real_start[index], forKey: "datetimes_start_real[\(index)]")
-            body.updateValue(datetimes_real_end[index], forKey: "datetimes_end_real[\(index)]")
+            body.updateValue(datetimes_start[index], forKey: "datetimes_start_real[\(index)]")
+            body.updateValue(datetimes_end[index], forKey: "datetimes_end_real[\(index)]")
         }
         
         SVProgressHUD.show()

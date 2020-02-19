@@ -22,6 +22,14 @@ class KebijakanPeraturanController: BaseViewController, UICollectionViewDelegate
     private var currentPage = 0
     private var totalPage = 0
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)),for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor(hexString: "42a5f5")
+        
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,13 +59,15 @@ class KebijakanPeraturanController: BaseViewController, UICollectionViewDelegate
                 
                 guard let _policyCategory = policyCategory else { return }
                 
-                self.labelKosong.text = _policyCategory.message
-                self.totalPage = _policyCategory.data?.total_page ?? 1
-                self.currentPage += 1
+                if self.currentPage == 0 { self.listPolicyCategory.removeAll() }
                 
                 _policyCategory.data?.policy_category.forEach({ (item) in
                     self.listPolicyCategory.append(item)
                 })
+                
+                self.labelKosong.text = _policyCategory.message
+                self.totalPage = _policyCategory.data?.total_page ?? 1
+                self.currentPage += 1
                 
                 self.labelKosong.isHidden = self.listPolicyCategory.count > 0
                 self.collectionPolicyCategory.reloadData()
@@ -83,6 +93,7 @@ class KebijakanPeraturanController: BaseViewController, UICollectionViewDelegate
         collectionPolicyCategory.register(UINib(nibName: "KebijakanPeraturanCell", bundle: nil), forCellWithReuseIdentifier: "KebijakanPeraturanCell")
         collectionPolicyCategory.delegate = self
         collectionPolicyCategory.dataSource = self
+        collectionPolicyCategory.addSubview(refreshControl)
     }
 
 }
@@ -128,7 +139,6 @@ extension KebijakanPeraturanController: FilterKebijakanPeraturanProtocol {
     func yearsPick(year: String) {
         self.year = year
         currentPage = 0
-        listPolicyCategory.removeAll()
         getPolicyCategory()
     }
     
@@ -140,6 +150,12 @@ extension KebijakanPeraturanController: FilterKebijakanPeraturanProtocol {
         vc.policyCategoryId = listPolicyCategory[indexpath.item].id
         vc.previousSelectedYear = year
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        currentPage = 0
+        getPolicyCategory()
     }
     
     @IBAction func buttonFilterClick(_ sender: Any) {

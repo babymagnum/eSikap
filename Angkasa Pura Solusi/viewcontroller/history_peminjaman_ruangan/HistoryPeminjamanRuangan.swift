@@ -96,7 +96,7 @@ extension HistoryPeminjamanRuangan: UICollectionViewDataSource, UICollectionView
         let item = listHistory[indexPath.item]
         let titleHeight = item.title_agenda?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 30 - 20 - 30 - 14 - 22, font_size: 12) ?? 0
         let dateHeight = item.date_use?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 30 - 20 - 30 - 14 - 22, font_size: 12) ?? 0
-        return CGSize(width: UIScreen.main.bounds.width - 30, height: titleHeight + dateHeight + 37)
+        return CGSize(width: UIScreen.main.bounds.width - 30, height: titleHeight + dateHeight + 27)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

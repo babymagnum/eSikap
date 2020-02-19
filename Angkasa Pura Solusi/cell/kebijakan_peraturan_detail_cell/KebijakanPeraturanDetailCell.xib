@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,12 +57,11 @@
                                     <constraint firstItem="mYN-ds-CLp" firstAttribute="leading" secondItem="LDi-ew-3gm" secondAttribute="leading" constant="12" id="G7d-MN-HdH"/>
                                     <constraint firstItem="mYN-ds-CLp" firstAttribute="top" secondItem="2f9-kS-DQZ" secondAttribute="bottom" constant="4" id="Ugx-dv-DZj"/>
                                     <constraint firstItem="dbh-lm-g38" firstAttribute="centerY" secondItem="LDi-ew-3gm" secondAttribute="centerY" id="VY4-TZ-11K"/>
-                                    <constraint firstAttribute="height" constant="55" id="WRR-mx-opy"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1000" id="WRR-mx-opy"/>
                                     <constraint firstItem="2f9-kS-DQZ" firstAttribute="leading" secondItem="LDi-ew-3gm" secondAttribute="leading" constant="12" id="ZdE-gd-TbI"/>
                                     <constraint firstItem="2f9-kS-DQZ" firstAttribute="top" secondItem="LDi-ew-3gm" secondAttribute="top" constant="12" id="cNb-PN-j86"/>
                                     <constraint firstAttribute="trailing" secondItem="dbh-lm-g38" secondAttribute="trailing" constant="17" id="drf-3a-OAj"/>
                                     <constraint firstItem="dbh-lm-g38" firstAttribute="leading" secondItem="2f9-kS-DQZ" secondAttribute="trailing" constant="10" id="egU-Ru-Bbv"/>
-                                    <constraint firstAttribute="bottom" secondItem="mYN-ds-CLp" secondAttribute="bottom" constant="12" id="ngx-wR-Obl"/>
                                     <constraint firstItem="dbh-lm-g38" firstAttribute="leading" secondItem="mYN-ds-CLp" secondAttribute="trailing" constant="10" id="qMN-X6-cFM"/>
                                 </constraints>
                             </view>
@@ -83,7 +82,7 @@
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="13" maxX="0.0" maxY="13"/>
+                                    <inset key="sectionInset" minX="13" minY="13" maxX="13" maxY="13"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
                         </subviews>

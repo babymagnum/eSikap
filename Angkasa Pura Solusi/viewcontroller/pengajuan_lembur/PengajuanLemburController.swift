@@ -86,7 +86,9 @@ class PengajuanLemburController: BaseViewController {
                 self.textviewKeterangan.text = _editDetail.reason
                 
                 for index in 0..._editDetail.datetimes_start.count - 1 {
-                    self.listWaktu.append(WaktuPengajuanLemburModel(tanggalWaktuMulai: _editDetail.datetimes_start[index], tanggalWaktuSelesai: _editDetail.datetimes_end[index]))
+                    let tanggalWaktuMulai = _editDetail.datetimes_start[index].components(separatedBy: " ")
+                    let tanggalWaktuSelesai = _editDetail.datetimes_end[index].components(separatedBy: " ")
+                    self.listWaktu.append(WaktuPengajuanLemburModel(tanggalWaktuMulai: "\(self.function.dateStringTo(date: tanggalWaktuMulai[0], original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")) \(tanggalWaktuMulai[1].dropLast(3))", tanggalWaktuSelesai: "\(self.function.dateStringTo(date: tanggalWaktuSelesai[0], original: "yyyy-MM-dd", toFormat: "dd-MM-yyyy")) \(tanggalWaktuSelesai[1].dropLast(3))"))
                 }
                 
                 self.collectionWaktu.reloadData()
@@ -350,7 +352,7 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
     
     @objc func viewWaktuSelesaiClick() {
         if fieldWaktuMulai.text?.trim() == "" {
-            self.view.makeToast("Isi waktu mulai terlebih dahulu")
+            self.view.makeToast("Pilih waktu mulai terlebih dahulu")
         } else {
             isPickWaktuMulai = false
             openDateTimePicker(PickerTypeEnum.time)
@@ -369,7 +371,7 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
     
     @objc func viewTanggalSelesaiClick() {
         if fieldTanggalMulai.text?.trim() == "" {
-            self.view.makeToast("Isi tanggal mulai terlebih dahulu.")
+            self.view.makeToast("Pilih tanggal mulai terlebih dahulu.")
         } else {
             isPickTanggalMulai = false
             openDateTimePicker(PickerTypeEnum.date)

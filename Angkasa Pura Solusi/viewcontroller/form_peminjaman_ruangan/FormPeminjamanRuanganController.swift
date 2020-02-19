@@ -320,17 +320,45 @@ extension FormPeminjamanRuanganController: BottomSheetDatePickerProtocol, Search
     
     func pickDate(formatedDate: String) {
         if isPickTanggalMulai {
+            let tanggalSelesai = function.stringToDate(fieldTanggalSelesai.text ?? function.getCurrentDate(pattern: "dd-MM-yyyy"), "dd-MM-yyyy")
+            let tanggalMulai = function.stringToDate(formatedDate, "dd-MM-yyyy")
+            
+            if tanggalMulai > tanggalSelesai {
+                fieldTanggalSelesai.text = ""
+            }
+            
             fieldTanggalMulai.text = formatedDate
         } else {
-            fieldTanggalSelesai.text = formatedDate
+            let tanggalMulai = function.stringToDate(fieldTanggalMulai.text ?? function.getCurrentDate(pattern: "dd-MM-yyyy"), "dd-MM-yyyy")
+            let tanggalSelesai = function.stringToDate(formatedDate, "dd-MM-yyyy")
+                        
+            if tanggalSelesai < tanggalMulai {
+                self.view.makeToast("Tanggal selesai tidak boleh lebih kecil dari tanggal mulai.")
+            } else {
+                fieldTanggalSelesai.text = formatedDate
+            }
         }
     }
     
     func pickTime(pickedTime: String) {
         if isPickWaktuMulai {
+            let waktuSelesai = (fieldWaktuSelesai?.text ?? "").replacingOccurrences(of: ":", with: "")
+            let waktuMulai = pickedTime.replacingOccurrences(of: ":", with: "")
+            
+            if Int(waktuMulai) ?? 0 > Int(waktuSelesai) ?? 0 {
+                fieldWaktuSelesai.text = ""
+            }
+            
             fieldWaktuMulai.text = pickedTime
         } else {
-            fieldWaktuSelesai.text = pickedTime
+            let waktuMulai = fieldWaktuMulai.text?.replacingOccurrences(of: ":", with: "") ?? ""
+            let waktuSelesai = pickedTime.replacingOccurrences(of: ":", with: "")
+            
+            if Int(waktuSelesai) ?? 0 < Int(waktuMulai) ?? 0 {
+                self.view.makeToast("Waktu selesai tidak boleh lebih kecil dari waktu mulai.")
+            } else {
+                fieldWaktuSelesai.text = pickedTime
+            }
         }
     }
     
@@ -402,8 +430,12 @@ extension FormPeminjamanRuanganController: BottomSheetDatePickerProtocol, Search
     }
     
     @objc func viewTanggalSelesaiClick() {
-        isPickTanggalMulai = false
-        openDateTimePicker(PickerTypeEnum.date)
+        if fieldTanggalMulai.text == "" {
+            self.view.makeToast("Pilih tanggal mulai terlebih dahulu.")
+        } else {
+            isPickTanggalMulai = false
+            openDateTimePicker(PickerTypeEnum.date)
+        }
     }
     
     @objc func viewWaktuMulaiClick() {
@@ -412,13 +444,17 @@ extension FormPeminjamanRuanganController: BottomSheetDatePickerProtocol, Search
     }
     
     @objc func viewWaktuSelesaiClick() {
-        isPickWaktuMulai = false
-        openDateTimePicker(PickerTypeEnum.time)
+        if fieldWaktuMulai.text == "" {
+            self.view.makeToast("Pilih waktu mulai terlebih dahulu.")
+        } else {
+            isPickWaktuMulai = false
+            openDateTimePicker(PickerTypeEnum.time)
+        }
     }
     
     @objc func viewPartisipanClick() {
         let vc = SearchDelegasiOrAtasanController()
-        vc.type = "Penumpang"
+        vc.type = "Partisipan"
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
