@@ -32,6 +32,7 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
     
     var delegate: SearchDelegasiOrAtasanProtocol!
     var type: String!
+    var isFromPengajuanLembur: Bool?
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -50,7 +51,45 @@ class SearchDelegasiOrAtasanController: BaseViewController, UICollectionViewDele
         
         initCollection()
         
-        getEmpFilter()
+        if let _ = isFromPengajuanLembur {
+            getEmpListOvertimeFiter()
+        } else {
+            getEmpFilter()
+        }
+    }
+    
+    private func getEmpListOvertimeFiter() {
+        SVProgressHUD.show()
+        
+        informationNetworking.getEmpListOvertimeFiter(page: currentPage, keyword: fieldSearch.trim()) { (error, listEmpFilter, isExpired) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                
+                if let _ = isExpired {
+                    self.forceLogout(self.navigationController!)
+                    return
+                }
+                
+                if let error = error {
+                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Daftar \(self.type ?? "")", error, "Reload", "Cancel", completionHandler: {
+                        self.getEmpFilter()
+                    })
+                    return
+                }
+                
+                guard let listEmpFilter = listEmpFilter else { return }
+                
+                if self.currentPage == 0 { self.listEmpFilter.removeAll() }
+                
+                for emp in listEmpFilter.data!.emp {
+                    self.listEmpFilter.append(emp)
+                }
+                
+                self.totalPage = listEmpFilter.data?.total_page ?? 0
+                self.currentPage += 1
+                self.collectionName.reloadData()
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -124,7 +163,13 @@ extension SearchDelegasiOrAtasanController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == listEmpFilter.count - 1 {
             if self.allowLoadMore && currentPage + 1 <= totalPage {
-                self.getEmpFilter()
+                
+                if let _ = isFromPengajuanLembur {
+                    getEmpListOvertimeFiter()
+                } else {
+                    getEmpFilter()
+                }
+                
             }
         }
     }
@@ -171,8 +216,11 @@ extension SearchDelegasiOrAtasanController {
         if textField == fieldSearch {
             fieldSearch.resignFirstResponder()
             currentPage = 0
-            listEmpFilter.removeAll()
-            getEmpFilter()
+            if let _ = isFromPengajuanLembur {
+                getEmpListOvertimeFiter()
+            } else {
+                getEmpFilter()
+            }
             return true
         }
         
@@ -192,9 +240,12 @@ extension SearchDelegasiOrAtasanController {
     
     @objc func imageCancelSearchClick() {
         fieldSearch.text = ""
-        listEmpFilter.removeAll()
         currentPage = 0
-        getEmpFilter()
+        if let _ = isFromPengajuanLembur {
+            getEmpListOvertimeFiter()
+        } else {
+            getEmpFilter()
+        }
         
         UIView.animate(withDuration: 0.2) {
             self.labelTitleTop.isHidden = false
@@ -215,7 +266,11 @@ extension SearchDelegasiOrAtasanController {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         currentPage = 0
-        getEmpFilter()
+        if let _ = isFromPengajuanLembur {
+            getEmpListOvertimeFiter()
+        } else {
+            getEmpFilter()
+        }
     }
     
     @IBAction func buttonBackClick(_ sender: Any) { navigationController?.popViewController(animated: true) }

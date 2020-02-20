@@ -73,6 +73,8 @@ class PersetujuanTabLemburController: BaseViewController, IndicatorInfoProvider 
                 
                 if self.currentPage == 0 { self.listLembur.removeAll() }
                 
+                self.labelEmpty.text = overtimeApproval?.message ?? ""
+                
                 _data.overtime.forEach { (item) in
                     self.listLembur.append(item)
                 }

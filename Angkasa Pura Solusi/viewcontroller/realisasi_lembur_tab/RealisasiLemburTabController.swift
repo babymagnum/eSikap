@@ -173,7 +173,6 @@ extension RealisasiLemburTabController: DetailPengajuanRealisasiLemburProtocol {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         currentPage = 0
-        listPengajuan.removeAll()
         getOvertimeRealization()
     }
 }

@@ -19,6 +19,8 @@ protocol DetailPengajuanRealisasiLemburProtocol {
 
 class DetailPengajuanRealisasiLembur: BaseViewController {
     
+    @IBOutlet weak var imageFilePendukungHeight: NSLayoutConstraint!
+    @IBOutlet weak var imageFilePendukung: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var constraintViewRoot: NSLayoutConstraint!
     @IBOutlet weak var constraintTopLabelFilePendukung: NSLayoutConstraint!
@@ -35,6 +37,7 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
     @IBOutlet weak var textviewKeteranganRealisasi: CustomTextView!
     @IBOutlet weak var viewFilePendukung: UIView!
     @IBOutlet weak var buttonSubmit: UIButton!
+    @IBOutlet weak var imageFilePendukungTopConstraint: NSLayoutConstraint!
     
     private var datetimes_start = [String]()
     private var datetimes_start_show = [String]()
@@ -114,7 +117,7 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
                 }
                 
                 guard let _data = editDetailOvertime?.data else { return }
-                            
+                
                 self.labelKeterangan.text = ": \(_data.reason ?? "")"
                 self.labelNumber.text = _data.number
                 self.labelDate.text = "Diajukan pada \(_data.date ?? "")"
@@ -154,9 +157,9 @@ class DetailPengajuanRealisasiLembur: BaseViewController {
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1)
         
         labelFilePendukung.text = ""
-        scrollView.resizeScrollViewContentSize()
-        self.view.layoutIfNeeded()
+        hideImage()
         
+        imageFilePendukung.giveBorder(5, 0, "fff")
         viewFilePendukung.giveBorder(3, 1, "dedede")
         viewKeteranganRealisasi.giveBorder(3, 1, "dedede")
         buttonSubmit.giveBorder(5, 0, "fff")
@@ -231,7 +234,7 @@ extension DetailPengajuanRealisasiLembur: UICollectionViewDataSource, UICollecti
 //    }
 //}
 
-extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol, UIDocumentPickerDelegate {
+extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol, UIDocumentPickerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     private func addOvertimeRealization() {
         guard let _overtimeId = overtimeId else { return }
@@ -260,7 +263,7 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol, UIDocum
         
         SVProgressHUD.show(withStatus: "Harap tunggu...")
         
-        informationNetworking.addOvertimeRealization(body: body, imageData: pickedData, fileName: labelFilePendukung.text ?? "", fileType: fileType) { (error, success, isExpired) in
+        informationNetworking.addOvertimeRealization(body: body, imageData: pickedData, fileName: labelFilePendukung.text ?? "" == "" ? "\(Int(function.getCurrentMillisecond(pattern: "dd-MM-yyyy HH:mm:ss"))).JPG" : labelFilePendukung.text ?? "", fileType: fileType == "" ? "JPG" : fileType) { (error, success, isExpired) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
                 
@@ -361,6 +364,19 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol, UIDocum
         dismiss(animated: true, completion: nil)
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[.originalImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+        
+        pickedData = image.jpegData(compressionQuality: 0.1)
+        imageFilePendukung.image = image
+        showImage()
+    }
+    
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let myURL = urls.first else { return }
         
@@ -370,24 +386,63 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol, UIDocum
             pickedData = _data
             let filename = "\(myURL)".components(separatedBy: "/").last
             labelFilePendukung.text = "\(filename ?? "")"
-            let fileType = "\(filename ?? " . ")".components(separatedBy: ".")[1]
+            fileType = "\(filename ?? " . ")".components(separatedBy: ".")[1]
+            hideImage()
+            
             if fileType.lowercased().contains(regex: "(jpg|png|jpeg)") {
                 let image = UIImage.init(data: _data)
                 guard let _image = image else { return }
-                pickedData = _image.jpegData(compressionQuality: 0.1) ?? Data()
+                pickedData = _image.jpegData(compressionQuality: 0.1)
+                imageFilePendukung.image = _image
+                showImage()
             }
         } catch {
             // something
         }
     }
     
+    private func hideImage() {
+        UIView.animate(withDuration: 0.2) {
+            self.imageFilePendukungHeight.constant = 0
+            self.imageFilePendukungTopConstraint.constant = 0
+            self.scrollView.resizeScrollViewContentSize()
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func showImage() {
+        UIView.animate(withDuration: 0.2) {
+            self.imageFilePendukungHeight.constant = 90
+            self.imageFilePendukungTopConstraint.constant = 10
+            self.scrollView.resizeScrollViewContentSize()
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     @objc func viewFilePendukungClick() {
-        //self.picker.showAttachmentMenu()
-        let allowedFiles = ["com.apple.iwork.pages.pages", "com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key","public.image", "com.apple.application", "public.item","public.data", "public.content", "public.audiovisual-content", "public.movie", "public.audiovisual-content", "public.video", "public.audio", "public.text", "public.data", "public.zip-archive", "com.pkware.zip-archive", "public.composite-content", "public.text"]
-        let importMenu = UIDocumentPickerViewController(documentTypes: allowedFiles, in: .import)
-        importMenu.delegate = self
-        importMenu.modalPresentationStyle = .formSheet
-        self.present(importMenu, animated: true, completion: nil)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (UIAlertAction) in
+            if !UIImagePickerController.isSourceTypeAvailable(.camera){
+                self.function.showUnderstandDialog(self, "Device Tidak Memiliki Camera", nil, "Mengerti")
+            } else {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.allowsEditing = true
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "File", style: .default, handler: { (UIAlertAction) in
+            
+            let allowedFiles = ["com.apple.iwork.pages.pages", "com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key","public.image", "com.apple.application", "public.item","public.data", "public.content", "public.audiovisual-content", "public.movie", "public.audiovisual-content", "public.video", "public.audio", "public.text", "public.data", "public.zip-archive", "com.pkware.zip-archive", "public.composite-content", "public.text"]
+            
+            let importMenu = UIDocumentPickerViewController(documentTypes: allowedFiles, in: .import)
+            importMenu.delegate = self
+            importMenu.modalPresentationStyle = .formSheet
+            self.present(importMenu, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     @IBAction func buttonSubmitClick(_ sender: Any) {

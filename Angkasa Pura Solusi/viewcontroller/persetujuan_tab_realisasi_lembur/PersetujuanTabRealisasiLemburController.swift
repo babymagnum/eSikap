@@ -81,6 +81,8 @@ class PersetujuanTabRealisasiLemburController: BaseViewController, IndicatorInfo
                 
                 self.currentPage += 1
                 
+                self.labelEmpty.text = overtimeApproval?.message ?? ""
+                
                 self.labelEmpty.isHidden = _data.overtime.count > 0 && self.listLembur.count > 0
                 
                 self.collectionRealisasiLembur.reloadData()

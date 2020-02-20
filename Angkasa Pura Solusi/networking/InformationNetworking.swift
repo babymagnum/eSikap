@@ -384,6 +384,15 @@ class InformationNetworking: BaseNetworking {
         }
     }
     
+    func getEmpListOvertimeFiter(page: Int, keyword: String, completion: @escaping(_ error: String?, _ listEmpFilter: ListEmpFilter?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/getEmpListOvertimeFiter"
+        let body: [String: String] = [
+            "page": "\(page)",
+            "keyword": keyword
+        ]
+        alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
+    }
+    
     func getEmpListFilter(page: Int, keyword: String, completion: @escaping(_ error: String?, _ listEmpFilter: ListEmpFilter?, _ isExpired: Bool?) -> Void) {
         let url = "\(baseUrl())api/getEmpListFiter"
         let body: [String: String] = [

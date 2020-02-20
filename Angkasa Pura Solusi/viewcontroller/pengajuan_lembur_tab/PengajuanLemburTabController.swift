@@ -73,7 +73,7 @@ class PengajuanLemburTabController: BaseViewController, IndicatorInfoProvider {
                 
                 guard let _overtimeHistory = overtimeHistory else { return }
                 
-                if self.currentPage == 0 { self.listPengajuan.removeAll()}
+                if self.currentPage == 0 { self.listPengajuan.removeAll() }
                 
                 _overtimeHistory.data?.overtime.forEach({ (item) in
                     self.listPengajuan.append(item)
@@ -159,7 +159,6 @@ extension PengajuanLemburTabController {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
         currentPage = 0
-        listPengajuan.removeAll()
         getOvertimeList()
     }
 }

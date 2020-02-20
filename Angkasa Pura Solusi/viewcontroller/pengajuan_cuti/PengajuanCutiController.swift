@@ -834,7 +834,6 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentPic
     }
     
     @objc func viewLampirkanFileClick() {
-        
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (UIAlertAction) in
             if !UIImagePickerController.isSourceTypeAvailable(.camera){
