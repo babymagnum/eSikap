@@ -40,9 +40,9 @@ class NotifikasiCell: UICollectionViewCell {
                 labelTanggal.text = item.date
                 labelContent.text = item.content
                 
-                labelTitle.font = UIFont(name: item.is_read ?? "" == "0" ? "Futura-Bold" : "Futura-Medium", size: labelTitle.font.pointSize)
-                labelTanggal.font = UIFont.systemFont(ofSize: labelTanggal.font.pointSize, weight: item.is_read ?? "" == "0" ? UIFont.Weight.bold : UIFont.Weight.medium)
-                labelContent.font = UIFont(name: item.is_read ?? "" == "0" ? "Futura-Medium" : "Futura-Bold", size: labelContent.font.pointSize)
+                labelTitle.font = UIFont(name: item.is_read ?? "" == "0" ? "Roboto-Bold" : "Roboto-Regular", size: labelContent.font.pointSize)
+                labelTanggal.font = UIFont(name: item.is_read ?? "" == "0" ? "Roboto-Bold" : "Roboto-Medium", size: labelContent.font.pointSize)
+                labelContent.font = UIFont(name: item.is_read ?? "" == "0" ? "Roboto-Bold" : "Roboto-Regular", size: labelContent.font.pointSize)
             }
         }
     }

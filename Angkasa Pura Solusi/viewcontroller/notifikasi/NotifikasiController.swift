@@ -143,8 +143,8 @@ extension NotifikasiController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = listNotifikasi[indexPath.item]
         let heightMargin: CGFloat = 9 + 5 + 10 + 8.5
-        let contentHeight = getTextHeight(item.title!, 10) + getTextHeight(item.date!, 6) + getTextHeight(item.content!, 11)
-        return CGSize(width: notifikasiCollectionView.frame.width - 26.6, height: heightMargin + contentHeight)
+        let contentHeight = getTextHeight(item.title ?? "", 10) + getTextHeight(item.date ?? "", 8) + getTextHeight(item.content ?? "", 11)
+        return CGSize(width: notifikasiCollectionView.frame.width - 26, height: heightMargin + contentHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

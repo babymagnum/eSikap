@@ -240,6 +240,10 @@
 		EDBF21BD2300DBA6003F5DAF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21BC2300DBA6003F5DAF /* CustomButton.swift */; };
 		EDBF21BF2300DCEE003F5DAF /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21BE2300DCEE003F5DAF /* CustomImage.swift */; };
 		EDBF21C12301086A003F5DAF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF21C02301086A003F5DAF /* CustomTextField.swift */; };
+		EDC151FA23FE978F00659A63 /* roboto_light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED9590A622EBFB9100D696E5 /* roboto_light.ttf */; };
+		EDC151FB23FE979100659A63 /* roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED9590A322EBFB9000D696E5 /* roboto_medium.ttf */; };
+		EDC151FC23FE979400659A63 /* roboto_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED9590A522EBFB9100D696E5 /* roboto_regular.ttf */; };
+		EDC151FD23FE979700659A63 /* roboto_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED9590A422EBFB9000D696E5 /* roboto_bold.ttf */; };
 		EDC19E94231EBE1700690B59 /* RiwayatCutiFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC19E92231EBE1700690B59 /* RiwayatCutiFilterController.swift */; };
 		EDC19E95231EBE1700690B59 /* RiwayatCutiFilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC19E93231EBE1700690B59 /* RiwayatCutiFilterController.xib */; };
 		EDC19E97231EC28D00690B59 /* LeaveTypeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC19E96231EC28D00690B59 /* LeaveTypeFilter.swift */; };
@@ -506,10 +510,10 @@
 		ED95909A22EBF4DC00D696E5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED95909E22EBF9B500D696E5 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		ED95909F22EBF9B500D696E5 /* OnboardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
-		ED9590A322EBFB9000D696E5 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		ED9590A422EBFB9000D696E5 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		ED9590A522EBFB9100D696E5 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		ED9590A622EBFB9100D696E5 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		ED9590A322EBFB9000D696E5 /* roboto_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_medium.ttf; sourceTree = "<group>"; };
+		ED9590A422EBFB9000D696E5 /* roboto_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_bold.ttf; sourceTree = "<group>"; };
+		ED9590A522EBFB9100D696E5 /* roboto_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_regular.ttf; sourceTree = "<group>"; };
+		ED9590A622EBFB9100D696E5 /* roboto_light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_light.ttf; sourceTree = "<group>"; };
 		ED9590A722EBFF8D00D696E5 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		ED9590A922EC923A00D696E5 /* PresenceNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceNetworking.swift; sourceTree = "<group>"; };
 		ED96EF9223E3C3AF00A27A54 /* DetailPersetujuanRealisasiLemburController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersetujuanRealisasiLemburController.swift; sourceTree = "<group>"; };
@@ -1211,11 +1215,11 @@
 		ED95906622EBDF3300D696E5 /* Angkasa Pura Solusi */ = {
 			isa = PBXGroup;
 			children = (
+				EDF797A223FE954700DAD3D4 /* fonts */,
 				ED95907322EBDF3500D696E5 /* Info.plist */,
 				EDD05DB923457609002D0F12 /* Angkasa Pura SolusiDebug.entitlements */,
 				ED42155D233ADDFA005B3F9E /* Angkasa Pura SolusiRelease.entitlements */,
 				EDD62A90233A364700DAB2F5 /* GoogleService-Info.plist */,
-				ED9590A222EBFB6300D696E5 /* fonts */,
 				ED858AFE22F312AC00016EAD /* networking */,
 				ED95909C22EBF98400D696E5 /* cell */,
 				ED95907C22EBE30E00D696E5 /* helper */,
@@ -1489,17 +1493,6 @@
 				ED95909F22EBF9B500D696E5 /* OnboardingCell.xib */,
 			);
 			path = onboarding_cell;
-			sourceTree = "<group>";
-		};
-		ED9590A222EBFB6300D696E5 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				ED9590A422EBFB9000D696E5 /* Roboto-Bold.ttf */,
-				ED9590A622EBFB9100D696E5 /* Roboto-Light.ttf */,
-				ED9590A322EBFB9000D696E5 /* Roboto-Medium.ttf */,
-				ED9590A522EBFB9100D696E5 /* Roboto-Regular.ttf */,
-			);
-			path = fonts;
 			sourceTree = "<group>";
 		};
 		ED96EF9123E3C39100A27A54 /* detail_persetujuan_realisasi_lembur */ = {
@@ -1781,6 +1774,17 @@
 			path = kebijakan_peraturan_cell;
 			sourceTree = "<group>";
 		};
+		EDF797A223FE954700DAD3D4 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ED9590A622EBFB9100D696E5 /* roboto_light.ttf */,
+				ED9590A322EBFB9000D696E5 /* roboto_medium.ttf */,
+				ED9590A522EBFB9100D696E5 /* roboto_regular.ttf */,
+				ED9590A422EBFB9000D696E5 /* roboto_bold.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		EDFABC8723E31F3A002A417A /* tanggal_lembur_persetujuan_cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1956,6 +1960,8 @@
 				ED93FFDF23CEB210003D08DE /* PropinsiKotaCell.xib in Resources */,
 				EDD5892223D00D5700A3EE7B /* DetailPeminjamanMobilController.xib in Resources */,
 				ED6D2FFC23DEC4A4000E7919 /* StatusPengajuanLemburCell.xib in Resources */,
+				EDC151FB23FE979100659A63 /* roboto_medium.ttf in Resources */,
+				EDC151FD23FE979700659A63 /* roboto_bold.ttf in Resources */,
 				ED61BEFA22F66D7D00776C25 /* ChangePasswordController.xib in Resources */,
 				ED9D758323E4D377001A48A1 /* FilterDaftarCutiController.xib in Resources */,
 				EDBF21B722FE7335003F5DAF /* RiwayatCutiCell.xib in Resources */,
@@ -1997,12 +2003,14 @@
 				ED6E507022ED418700EED8E7 /* BeritaController.xib in Resources */,
 				ED6D2FF023DEAE98000E7919 /* DetailPengajuanLemburController.xib in Resources */,
 				EDBF21A622FE5502003F5DAF /* StatusActionCell.xib in Resources */,
+				EDC151FA23FE978F00659A63 /* roboto_light.ttf in Resources */,
 				EDEDA23123D0B2C20085E2EA /* KebijakanPeraturanController.xib in Resources */,
 				EDBF21A022FE465B003F5DAF /* StatusPersetujuanCell.xib in Resources */,
 				ED9590A122EBF9B500D696E5 /* OnboardingCell.xib in Resources */,
 				ED14CA75231DF39000D5C7F0 /* SearchDelegasiOrAtasanController.xib in Resources */,
 				EDFABC8B23E31F79002A417A /* TanggalLemburPersetujuanCell.xib in Resources */,
 				ED73D0AE23D9BBB0002A1A3A /* FormPeminjamanRuanganController.xib in Resources */,
+				EDC151FC23FE979400659A63 /* roboto_regular.ttf in Resources */,
 				ED73D0BA23DA9172002A1A3A /* DialogTambahLampiran.xib in Resources */,
 				ED57FE4F22FA44C2007B62A0 /* BottomSheetFilterPresensi.xib in Resources */,
 				ED73D0A423D9887B002A1A3A /* DetailPeminjamanRuanganController.xib in Resources */,

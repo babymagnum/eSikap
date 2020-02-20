@@ -47,10 +47,10 @@
 	<string>We need your photo library access to accesing photo library</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Roboto-Bold.ttf</string>
-		<string>Roboto-Light.ttf</string>
-		<string>Roboto-Medium.ttf</string>
-		<string>Roboto-Regular.ttf</string>
+		<string>roboto_bold.ttf</string>
+		<string>roboto_light.ttf</string>
+		<string>roboto_medium.ttf</string>
+		<string>roboto_regular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

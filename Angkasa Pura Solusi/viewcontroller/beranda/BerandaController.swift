@@ -83,6 +83,14 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(UIFont.familyNames)
+        
+        for family in UIFont.familyNames {
+            for font in UIFont.fontNames(forFamilyName: family) {
+                print(font)
+            }
+        }
+        
         initView()
         
         clickEvent()
