@@ -15,6 +15,11 @@ class NotifikasiCell: UICollectionViewCell {
     @IBOutlet weak var labelTanggal: CustomLabel!
     @IBOutlet weak var labelContent: CustomLabel!
     
+    lazy var function: PublicFunction = {
+        let mFunction = PublicFunction()
+        return mFunction
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -35,11 +40,9 @@ class NotifikasiCell: UICollectionViewCell {
                 labelTanggal.text = item.date
                 labelContent.text = item.content
                 
-                if item.is_read == "0" {
-                    labelTitle.textColor = UIColor(hexString: "004CFF")
-                    labelTanggal.textColor = UIColor(hexString: "6C6C6C")
-                    labelContent.textColor = UIColor(hexString: "262626")
-                }
+                labelTitle.font = UIFont(name: item.is_read ?? "" == "0" ? "Futura-Bold" : "Futura-Medium", size: labelTitle.font.pointSize)
+                labelTanggal.font = UIFont.systemFont(ofSize: labelTanggal.font.pointSize, weight: item.is_read ?? "" == "0" ? UIFont.Weight.bold : UIFont.Weight.medium)
+                labelContent.font = UIFont(name: item.is_read ?? "" == "0" ? "Futura-Medium" : "Futura-Bold", size: labelContent.font.pointSize)
             }
         }
     }

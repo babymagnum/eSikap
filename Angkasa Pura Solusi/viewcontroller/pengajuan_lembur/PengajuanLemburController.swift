@@ -310,7 +310,7 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
     
     @objc func viewPemberiPersetujuanClick() {
         let vc = SearchDelegasiOrAtasanController()
-        vc.type = "Cari Pemberi Persetujuan"
+        vc.type = "Pemberi Persetujuan"
         vc.delegate = self
         vc.isFromPengajuanLembur = true
         navigationController?.pushViewController(vc, animated: true)

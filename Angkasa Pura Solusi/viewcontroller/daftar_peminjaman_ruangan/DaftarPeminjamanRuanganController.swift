@@ -98,7 +98,7 @@ class DaftarPeminjamanRuanganController: BaseViewController {
     private func getSchedules() {
         SVProgressHUD.show()
         
-        informationNetworking.getScheduleRoomsOneMonth(month: function.getCurrentDate(pattern: "MM"), year: function.getCurrentDate(pattern: "yyyy")) { (error, schedules, isExpired) in
+        informationNetworking.getScheduleRoomsOneMonth(month: function.dateToString(currentDate, "MM"), year: function.dateToString(currentDate, "yyyy")) { (error, schedules, isExpired) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
                 
@@ -125,7 +125,6 @@ class DaftarPeminjamanRuanganController: BaseViewController {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                     UIView.animate(withDuration: 0.2) {
-                        
                         self.collectionDaftarPeminjamanRuanganHeight.constant = self.collectionDaftarPeminjamanRuangan.contentSize.height
                         self.scrollView.resizeScrollViewContentSize()
                         self.view.layoutIfNeeded()
@@ -339,34 +338,24 @@ extension DaftarPeminjamanRuanganController: JTAppleCalendarViewDelegate{
     }
     
     @IBAction func buttonPreviousClick(_ sender: Any) {
-        if currentDate < Date() {
-            self.view.makeToast("Sudah mencapai batas bulan.")
-        } else {
-            var dateComponents = DateComponents()
-            dateComponents.month = -1
-            let futureDate = Calendar.current.date(byAdding: dateComponents, to: currentDate) ?? Date()
-            currentDate = futureDate
-            
-            labelMonth.text = function.convertDateToString(pattern: "MMMM yyyy", date: currentDate)
-            collectionCalendar.scrollToDate(currentDate, animateScroll: true)
-        }
+        var dateComponents = DateComponents()
+        dateComponents.month = -1
+        let futureDate = Calendar.current.date(byAdding: dateComponents, to: currentDate) ?? Date()
+        currentDate = futureDate
+        
+        labelMonth.text = function.convertDateToString(pattern: "MMMM yyyy", date: currentDate)
+        collectionCalendar.scrollToDate(currentDate, animateScroll: true)
+        getSchedules()
     }
     
     @IBAction func buttonNextClick(_ sender: Any) {
-        var maxDateComponents = DateComponents()
-        maxDateComponents.year = 1
-        let maxDate = Calendar.current.date(byAdding: maxDateComponents, to: Date())!
+        var currentDateComponents = DateComponents()
+        currentDateComponents.month = 1
+        let futureDate = Calendar.current.date(byAdding: currentDateComponents, to: currentDate)!
+        currentDate = futureDate
         
-        if currentDate > maxDate {
-            self.view.makeToast("Sudah mencapai batas bulan.")
-        } else {
-            var currentDateComponents = DateComponents()
-            currentDateComponents.month = 1
-            let futureDate = Calendar.current.date(byAdding: currentDateComponents, to: currentDate)!
-            currentDate = futureDate
-            
-            labelMonth.text = function.convertDateToString(pattern: "MMMM yyyy", date: currentDate)
-            collectionCalendar.scrollToDate(currentDate, animateScroll: true)
-        }
+        labelMonth.text = function.convertDateToString(pattern: "MMMM yyyy", date: currentDate)
+        collectionCalendar.scrollToDate(currentDate, animateScroll: true)
+        getSchedules()
     }
 }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,30 +18,30 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NotifikasiCell" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="70.5"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NotifikasiCell" customModule="eSIKAP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="67"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="70.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="67"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eev-mV-u42">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="70.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="67"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEA-Zy-UnC" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEA-Zy-UnC" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
                                 <rect key="frame" x="10" y="9" width="280" height="12"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="10"/>
                                 <color key="textColor" red="0.1764705882" green="0.53333333329999999" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiA-8G-Ecy" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="10" y="29.5" width="280" height="9.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiA-8G-Ecy" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="10" y="26" width="280" height="9.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="8"/>
                                 <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXK-iA-w7w" customClass="CustomLabel" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
-                                <rect key="frame" x="10" y="49.5" width="280" height="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXK-iA-w7w" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                <rect key="frame" x="10" y="45.5" width="280" height="13"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                 <color key="textColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -53,12 +51,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="iiA-8G-Ecy" secondAttribute="trailing" constant="10" id="7dd-4l-yGH"/>
                             <constraint firstItem="FXK-iA-w7w" firstAttribute="leading" secondItem="Eev-mV-u42" secondAttribute="leading" constant="10" id="DyP-OF-VH9"/>
-                            <constraint firstItem="iiA-8G-Ecy" firstAttribute="top" secondItem="LEA-Zy-UnC" secondAttribute="bottom" constant="8.3000000000000007" id="IlY-CZ-lCd"/>
+                            <constraint firstItem="iiA-8G-Ecy" firstAttribute="top" secondItem="LEA-Zy-UnC" secondAttribute="bottom" constant="5" id="IlY-CZ-lCd"/>
                             <constraint firstAttribute="trailing" secondItem="FXK-iA-w7w" secondAttribute="trailing" constant="10" id="Jzq-EQ-lLC"/>
                             <constraint firstItem="LEA-Zy-UnC" firstAttribute="leading" secondItem="Eev-mV-u42" secondAttribute="leading" constant="10" id="Rjg-R0-qvh"/>
                             <constraint firstAttribute="trailing" secondItem="LEA-Zy-UnC" secondAttribute="trailing" constant="10" id="sRH-qp-toY"/>
-                            <constraint firstItem="FXK-iA-w7w" firstAttribute="top" secondItem="iiA-8G-Ecy" secondAttribute="bottom" constant="10.699999999999999" id="tye-8k-H2p"/>
-                            <constraint firstAttribute="bottom" secondItem="FXK-iA-w7w" secondAttribute="bottom" constant="8" id="uoz-Sb-ZGB"/>
+                            <constraint firstItem="FXK-iA-w7w" firstAttribute="top" secondItem="iiA-8G-Ecy" secondAttribute="bottom" constant="10" id="tye-8k-H2p"/>
                             <constraint firstItem="iiA-8G-Ecy" firstAttribute="leading" secondItem="Eev-mV-u42" secondAttribute="leading" constant="10" id="vHP-4F-JKD"/>
                             <constraint firstItem="LEA-Zy-UnC" firstAttribute="top" secondItem="Eev-mV-u42" secondAttribute="top" constant="9" id="zdZ-BV-CpO"/>
                         </constraints>
@@ -78,6 +75,7 @@
                 <outlet property="labelTitle" destination="LEA-Zy-UnC" id="qs3-M4-jno"/>
                 <outlet property="viewContainer" destination="Eev-mV-u42" id="NIi-8H-aME"/>
             </connections>
+            <point key="canvasLocation" x="133" y="91"/>
         </collectionViewCell>
     </objects>
 </document>
