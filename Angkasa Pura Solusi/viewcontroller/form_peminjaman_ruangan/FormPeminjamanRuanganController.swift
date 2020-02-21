@@ -99,6 +99,8 @@ class FormPeminjamanRuanganController: BaseViewController {
         } else if Int(fieldJumlahOrang.text?.trim() ?? "0") != listParticipant.count {
             self.view.makeToast("Isian jumlah orang tidak sama dengan partisipan yang dipilih.")
         } else {
+            buttonSimpan.isEnabled = false
+            
             var body: [String: String] = [
                 "title": fieldJudul.text?.trim() ?? "",
                 "description": textviewKeterangan.text.trim(),
@@ -131,6 +133,7 @@ class FormPeminjamanRuanganController: BaseViewController {
         
         informationNetworking.addRequestRooms(body: body, listFiles: listLampiran) { (error, success, isExpired) in
             DispatchQueue.main.async {
+                self.buttonSimpan.isEnabled = true
                 SVProgressHUD.dismiss()
                 
                 if let _ = isExpired {
@@ -465,7 +468,9 @@ extension FormPeminjamanRuanganController: BottomSheetDatePickerProtocol, Search
         self.showCustomDialog(vc)
     }
     
-    @IBAction func buttonSimpanClick(_ sender: Any) { checkInput() }
+    @IBAction func buttonSimpanClick(_ sender: Any) {
+        checkInput()
+    }
     
     @IBAction func buttonHistoryClick(_ sender: Any) {
         self.navigationController?.pushViewController(HistoryPeminjamanRuangan(), animated: true)

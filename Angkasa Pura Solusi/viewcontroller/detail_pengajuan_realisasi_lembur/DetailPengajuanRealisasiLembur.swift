@@ -265,6 +265,7 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol, UIDocum
         
         informationNetworking.addOvertimeRealization(body: body, imageData: pickedData, fileName: labelFilePendukung.text ?? "" == "" ? "\(Int(function.getCurrentMillisecond(pattern: "dd-MM-yyyy HH:mm:ss"))).JPG" : labelFilePendukung.text ?? "", fileType: fileType == "" ? "JPG" : fileType) { (error, success, isExpired) in
             DispatchQueue.main.async {
+                self.buttonSubmit.isEnabled = true
                 SVProgressHUD.dismiss()
                 
                 if let _ = isExpired {
@@ -446,6 +447,7 @@ extension DetailPengajuanRealisasiLembur: BottomSheetDatePickerProtocol, UIDocum
     }
     
     @IBAction func buttonSubmitClick(_ sender: Any) {
+        buttonSubmit.isEnabled = false
         addOvertimeRealization()
     }
     

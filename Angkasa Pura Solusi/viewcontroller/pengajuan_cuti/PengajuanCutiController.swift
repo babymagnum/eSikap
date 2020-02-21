@@ -742,6 +742,8 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentPic
         
         informationNetworking.postLeaveRequest(imageData: pickedData ?? (imageDelegasi.image?.jpegData(compressionQuality: 0.1))!, fileName: _labelLampiran, fileType: _fileType, body: body) { (error, message, isExpired) in
             DispatchQueue.main.async {
+                self.buttonSimpan.isEnabled = true
+                self.buttonSubmit.isEnabled = true
                 SVProgressHUD.dismiss()
                 
                 if let _ = isExpired {
@@ -903,6 +905,8 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentPic
             return
         }
         
+        buttonSubmit.isEnabled = false
+        
         addLeaveRequest(body: getRequestBody(post_type: "submit"))
     }
     
@@ -913,6 +917,8 @@ extension PengajuanCutiController: SearchDelegasiOrAtasanProtocol, UIDocumentPic
             }
             return
         }
+        
+        buttonSimpan.isEnabled = false
         
         addLeaveRequest(body: getRequestBody(post_type: "save"))
     }

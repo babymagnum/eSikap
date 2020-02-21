@@ -278,6 +278,8 @@ extension PeminjamanMobilDinasController: SearchDelegasiOrAtasanProtocol, Bottom
             return
         }
         
+        buttonSimpan.isEnabled = false
+        
         var body: [String: String] = [
             "request_date": function.dateStringTo(date: fieldTanggalPermintaan.text ?? "", original: "dd-MM-yyyy", toFormat: "yyyy-MM-dd"),
             "time_start": "\(fieldWaktuMulai.text ?? ""):00",
@@ -302,6 +304,7 @@ extension PeminjamanMobilDinasController: SearchDelegasiOrAtasanProtocol, Bottom
         
         informationNetworking.addRequestCar(body: body) { (error, success, isExpired) in
             DispatchQueue.main.async {
+                self.buttonSimpan.isEnabled = true
                 SVProgressHUD.dismiss()
                 
                 if let _ = isExpired {

@@ -160,6 +160,7 @@ extension DetailPersetujuanRealisasiLemburController {
     }
     
     @IBAction func buttonProsesClick(_ sender: Any) {
+        buttonProses.isEnabled = false
         approvalOvertime()
     }
     
@@ -199,6 +200,7 @@ extension DetailPersetujuanRealisasiLemburController {
         
         informationNetworking.approvalOvertimeRealization(body: body) { (error, success, isExpired) in
             DispatchQueue.main.async {
+                self.buttonProses.isEnabled = true
                 SVProgressHUD.dismiss()
                 
                 if let _ = isExpired {

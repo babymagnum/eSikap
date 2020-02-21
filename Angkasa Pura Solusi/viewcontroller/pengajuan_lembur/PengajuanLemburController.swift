@@ -199,6 +199,9 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
         } else if selectedPemberiPersetujuan == "" {
             self.view.makeToast("Pemberi persetujuan masih kosong.")
         } else {
+            buttonSimpan.isEnabled = false
+            buttonSubmit.isEnabled = false
+            
             var body: [String: String] = [
                 "reason": textviewKeterangan.text.trim(),
                 "supervisor_emp_id": selectedPemberiPersetujuan,
@@ -219,6 +222,8 @@ extension PengajuanLemburController: BottomSheetDatePickerProtocol, SearchDelega
             
             informationNetworking.addOvertime(body: body) { (error, success, isExpired) in
                 DispatchQueue.main.async {
+                    self.buttonSimpan.isEnabled = true
+                    self.buttonSubmit.isEnabled = true
                     SVProgressHUD.dismiss()
                     
                     if let _ = isExpired {
