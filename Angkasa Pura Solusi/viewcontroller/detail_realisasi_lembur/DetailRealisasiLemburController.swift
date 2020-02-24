@@ -20,7 +20,6 @@ class DetailRealisasiLemburController: BaseViewController {
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var labelNama: CustomLabel!
     @IBOutlet weak var labelUnitKerja: CustomLabel!
-    @IBOutlet weak var labelKeterangan: CustomLabel!
     @IBOutlet weak var labelKeteranganRealisasi: CustomLabel!
     @IBOutlet weak var collectionTanggalLembur: UICollectionView!
     @IBOutlet weak var collectionTanggalLemburHeight: NSLayoutConstraint!
@@ -33,6 +32,11 @@ class DetailRealisasiLemburController: BaseViewController {
     @IBOutlet weak var labelInfoPembatalan: CustomLabel!
     @IBOutlet weak var labelAwalInput: CustomLabel!
     @IBOutlet weak var labelUbahanTerakhir: CustomLabel!
+    @IBOutlet weak var labelTanggalLembur: CustomLabel!
+    @IBOutlet weak var labelTitle: CustomLabel!
+    @IBOutlet weak var viewDividerTanggalLemburHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelTanggalLemburTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionTanggalLemburBotConstraint: NSLayoutConstraint!
     
     private var listTanggalLembur = [DetailOvertimeDataItemDates]()
     private var listInformasiStatus = [DetailOvertimeDataItemApproval]()
@@ -40,6 +44,7 @@ class DetailRealisasiLemburController: BaseViewController {
     
     var overtimeId: String?
     var isBackToHome: Bool?
+    var screenTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +103,6 @@ class DetailRealisasiLemburController: BaseViewController {
         labelDates.text = "Diajukan pada \(_data.date ?? "")"
         labelNama.text = ": \(_data.emp_name ?? "")"
         labelUnitKerja.text = ": \(_data.unit_name ?? "")"
-        labelKeterangan.text = ": \(_data.reason ?? "")"
         buttonStatus.setTitle(_data.status, for: .normal)
         buttonStatus.backgroundColor = UIColor(hexString: "\(_data.status_color?.replacingOccurrences(of: "#", with: "") ?? "")")
         listTanggalLembur = _data.date_show
@@ -109,6 +113,13 @@ class DetailRealisasiLemburController: BaseViewController {
         labelUbahanTerakhir.text = _data.last_update
         collectionTanggalLembur.reloadData()
         collectionInformasiStatus.reloadData()
+        
+        if listTanggalLembur.count == 0 {
+            labelTanggalLembur.text = ""
+            labelTanggalLemburTopConstraint.constant = 0
+            collectionTanggalLemburBotConstraint.constant = 0
+            viewDividerTanggalLemburHeight.constant = 0
+        }
         
         scrollView.alpha = 1
         
@@ -125,6 +136,9 @@ class DetailRealisasiLemburController: BaseViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func initView() {
+        if let _screenTitle = screenTitle {
+            labelTitle.text = _screenTitle
+        }
         constraintViewRoot.constant += UIApplication.shared.statusBarFrame.height
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         
@@ -133,6 +147,9 @@ class DetailRealisasiLemburController: BaseViewController {
         buttonBatalkan.giveBorder(5, 1, "ea1c18")
         imageProfile.clipsToBounds = true
         imageProfile.layer.cornerRadius = (UIScreen.main.bounds.width * 0.16) / 2
+        
+        scrollView.resizeScrollViewContentSize()
+        self.view.layoutIfNeeded()
         
         // register collectionview
         collectionTanggalLembur.register(UINib(nibName: "TanggalLemburCell", bundle: nil), forCellWithReuseIdentifier: "TanggalLemburCell")

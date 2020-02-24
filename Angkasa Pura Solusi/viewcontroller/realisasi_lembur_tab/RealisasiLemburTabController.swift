@@ -165,6 +165,7 @@ extension RealisasiLemburTabController: DetailPengajuanRealisasiLemburProtocol {
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = DetailRealisasiLemburController()
+            vc.screenTitle = "Detail Realisasi Lembur"
             vc.overtimeId = item.id
             self.navigationController?.pushViewController(vc, animated: true)
         }

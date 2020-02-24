@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Bold.ttf">
+        <array key="roboto_bold.ttf">
             <string>Roboto-Bold</string>
         </array>
-        <array key="Roboto-Medium.ttf">
+        <array key="roboto_medium.ttf">
             <string>Roboto-Medium</string>
         </array>
     </customFonts>
@@ -108,7 +108,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="56T-OC-q6t"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Unit Kerja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dL-5Q-NnP" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Unit Kerja" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dL-5Q-NnP" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
                                             <rect key="frame" x="16" y="138" width="48" height="13"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -120,7 +120,7 @@
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Keterangan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0e1-SZ-Eyd" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Keterangan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0e1-SZ-Eyd" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
                                             <rect key="frame" x="16" y="160" width="56.5" height="13"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -138,7 +138,7 @@
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Nama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xB2-KF-5re" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Nama" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xB2-KF-5re" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
                                             <rect key="frame" x="16" y="116" width="29.5" height="13"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -290,6 +290,7 @@
                                         <constraint firstAttribute="trailing" secondItem="spj-jB-vav" secondAttribute="trailing" constant="16" id="gTf-hc-PmU"/>
                                         <constraint firstAttribute="trailing" secondItem="xT0-pN-gN9" secondAttribute="trailing" constant="16" id="imD-dP-fzd"/>
                                         <constraint firstItem="Rmw-JA-kBm" firstAttribute="top" secondItem="B4C-y3-pN6" secondAttribute="bottom" constant="30" id="lNl-kE-ai6"/>
+                                        <constraint firstItem="xT0-pN-gN9" firstAttribute="leading" secondItem="0dL-5Q-NnP" secondAttribute="trailing" constant="23.5" id="nRr-ta-dKa"/>
                                         <constraint firstItem="PgC-e2-9OR" firstAttribute="leading" secondItem="0no-2m-tj4" secondAttribute="leading" constant="16" id="oeH-Qz-NK6"/>
                                         <constraint firstAttribute="trailing" secondItem="Rmw-JA-kBm" secondAttribute="trailing" constant="16" id="qLH-QN-XJB"/>
                                         <constraint firstAttribute="trailing" secondItem="3ag-wc-StI" secondAttribute="trailing" constant="16" id="qWN-8Q-ai7"/>

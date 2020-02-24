@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Bold.ttf">
+        <array key="roboto_bold.ttf">
             <string>Roboto-Bold</string>
         </array>
-        <array key="Roboto-Medium.ttf">
+        <array key="roboto_medium.ttf">
             <string>Roboto-Medium</string>
         </array>
     </customFonts>
@@ -111,37 +111,37 @@
                                                 <constraint firstAttribute="height" constant="1" id="3QS-MK-eI4"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Unit Kerja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiT-MX-3fM" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Unit Kerja" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiT-MX-3fM" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
                                             <rect key="frame" x="16" y="106" width="48" height="13"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": Corporate Business Solution" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="ex6-v6-AUK" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="94" y="106" width="267" height="13"/>
+                                            <rect key="frame" x="92.5" y="106" width="268.5" height="13"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Keterangan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoG-lQ-oDj" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="128" width="57" height="13"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Keterangan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoG-lQ-oDj" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="128" width="56.5" height="13"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": Sakit Dengan Surat Dokter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="JDl-hr-EhZ" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="94" y="128" width="267" height="13"/>
+                                            <rect key="frame" x="92.5" y="128" width="268.5" height="13"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text=": Arief Zainuri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="y5X-Ki-gpe" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                            <rect key="frame" x="94" y="84" width="65" height="13"/>
+                                            <rect key="frame" x="92.5" y="84" width="268.5" height="13"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Nama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K0-UR-V05" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Nama" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K0-UR-V05" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
                                             <rect key="frame" x="16" y="84" width="29.5" height="13"/>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
                                             <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -265,7 +265,7 @@
                                         <constraint firstAttribute="trailing" secondItem="dsK-pY-bun" secondAttribute="trailing" constant="16" id="2S1-w7-Rnm"/>
                                         <constraint firstItem="hLp-qd-fMz" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="2fz-3Z-Veh"/>
                                         <constraint firstItem="OLG-We-dPf" firstAttribute="top" secondItem="SgH-Sp-ffU" secondAttribute="bottom" id="2lV-7M-HrF"/>
-                                        <constraint firstItem="ex6-v6-AUK" firstAttribute="leading" secondItem="LiT-MX-3fM" secondAttribute="trailing" constant="30" id="4sz-Si-sIQ"/>
+                                        <constraint firstItem="ex6-v6-AUK" firstAttribute="leading" secondItem="XoG-lQ-oDj" secondAttribute="trailing" constant="20" id="4sz-Si-sIQ"/>
                                         <constraint firstItem="mDk-tK-hjA" firstAttribute="leading" secondItem="hLp-qd-fMz" secondAttribute="trailing" constant="16" id="6Jo-IY-GFT"/>
                                         <constraint firstItem="SgH-Sp-ffU" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" id="7qf-KD-z8a"/>
                                         <constraint firstItem="ex6-v6-AUK" firstAttribute="top" secondItem="y5X-Ki-gpe" secondAttribute="bottom" constant="9" id="8Id-WE-Zyq"/>
@@ -284,9 +284,10 @@
                                         <constraint firstAttribute="trailing" secondItem="ids-dw-6AF" secondAttribute="trailing" constant="16" id="GuK-mC-p3n"/>
                                         <constraint firstAttribute="trailing" secondItem="ADd-jC-Hud" secondAttribute="trailing" constant="16" id="ItV-ib-tYd"/>
                                         <constraint firstItem="JDl-hr-EhZ" firstAttribute="top" secondItem="ex6-v6-AUK" secondAttribute="bottom" constant="9" id="JXt-yN-tIk"/>
+                                        <constraint firstAttribute="trailing" secondItem="y5X-Ki-gpe" secondAttribute="trailing" constant="14" id="KAa-dj-GZd"/>
                                         <constraint firstItem="8jC-V3-3Sv" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="LIY-oD-A4r"/>
                                         <constraint firstItem="OLG-We-dPf" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="NT5-GO-KpR"/>
-                                        <constraint firstItem="JDl-hr-EhZ" firstAttribute="leading" secondItem="LiT-MX-3fM" secondAttribute="trailing" constant="30" id="OTx-7k-uTk"/>
+                                        <constraint firstItem="JDl-hr-EhZ" firstAttribute="leading" secondItem="XoG-lQ-oDj" secondAttribute="trailing" constant="20" id="OTx-7k-uTk"/>
                                         <constraint firstItem="ids-dw-6AF" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="QvS-cn-f2V"/>
                                         <constraint firstItem="DKn-5k-Sfz" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="R8A-GL-H2t"/>
                                         <constraint firstItem="9K0-UR-V05" firstAttribute="top" secondItem="DKn-5k-Sfz" secondAttribute="bottom" constant="14" id="RKC-e4-Qi0"/>
@@ -294,9 +295,11 @@
                                         <constraint firstItem="LiT-MX-3fM" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="VMP-LB-XC1"/>
                                         <constraint firstItem="udm-cM-ZUW" firstAttribute="top" secondItem="dsK-pY-bun" secondAttribute="bottom" constant="10" id="VPn-38-5Nn"/>
                                         <constraint firstItem="ADd-jC-Hud" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="Vpw-Sl-Ahv"/>
+                                        <constraint firstItem="ex6-v6-AUK" firstAttribute="leading" secondItem="LiT-MX-3fM" secondAttribute="trailing" constant="28.5" id="Y7V-vD-Q5C"/>
                                         <constraint firstAttribute="trailing" secondItem="8jC-V3-3Sv" secondAttribute="trailing" constant="16" id="Z0q-Cn-qEm"/>
                                         <constraint firstAttribute="trailing" secondItem="gPC-tF-gRs" secondAttribute="trailing" constant="16" id="bKe-d9-Smw"/>
                                         <constraint firstItem="DKn-5k-Sfz" firstAttribute="top" secondItem="vHH-Ux-NVj" secondAttribute="bottom" constant="7" id="baa-Om-6lt"/>
+                                        <constraint firstItem="y5X-Ki-gpe" firstAttribute="leading" secondItem="9K0-UR-V05" secondAttribute="trailing" constant="47" id="bjr-Fn-ayj"/>
                                         <constraint firstItem="LiT-MX-3fM" firstAttribute="top" secondItem="9K0-UR-V05" secondAttribute="bottom" constant="9" id="fKD-Wj-kSy"/>
                                         <constraint firstItem="dsK-pY-bun" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="fMp-J0-j8I"/>
                                         <constraint firstItem="ADd-jC-Hud" firstAttribute="top" secondItem="cfq-sN-pEY" secondAttribute="bottom" constant="6" id="fj2-If-SCo"/>
@@ -315,7 +318,7 @@
                                         <constraint firstItem="XoG-lQ-oDj" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="tHi-iP-Ock"/>
                                         <constraint firstItem="ids-dw-6AF" firstAttribute="top" secondItem="udm-cM-ZUW" secondAttribute="bottom" constant="20" id="tJj-zh-f1q"/>
                                         <constraint firstItem="vHH-Ux-NVj" firstAttribute="leading" secondItem="1ib-Xa-ivT" secondAttribute="leading" constant="16" id="ueh-NW-ri1"/>
-                                        <constraint firstItem="y5X-Ki-gpe" firstAttribute="leading" secondItem="LiT-MX-3fM" secondAttribute="trailing" constant="30" id="wp4-l6-mJV"/>
+                                        <constraint firstItem="y5X-Ki-gpe" firstAttribute="leading" secondItem="XoG-lQ-oDj" secondAttribute="trailing" constant="20" id="wp4-l6-mJV"/>
                                         <constraint firstAttribute="trailing" secondItem="XCh-F2-eWX" secondAttribute="trailing" constant="16" id="xZg-qR-MYg"/>
                                         <constraint firstItem="8jC-V3-3Sv" firstAttribute="top" secondItem="OLG-We-dPf" secondAttribute="bottom" constant="6" id="xaF-md-eOD"/>
                                         <constraint firstItem="XoG-lQ-oDj" firstAttribute="top" secondItem="LiT-MX-3fM" secondAttribute="bottom" constant="9" id="yom-87-zSx"/>

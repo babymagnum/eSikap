@@ -216,10 +216,14 @@ extension NotifikasiController {
                     return
                 }
                 
-                if let error = error {
-                    self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", error, "Reload", "Cancel", completionHandler: {
-                        self.getDetailLeaveApprovalById(notifikasi: notifikasi)
-                    })
+                if let _error = error {
+                    if _error == "Data Detail Cuti Kosong" {
+                        self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", _error, "Cancel")
+                    } else {
+                        self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", _error, "Reload", "Cancel", completionHandler: {
+                            self.getDetailLeaveApprovalById(notifikasi: notifikasi)
+                        })
+                    }
                     return
                 }
                 
@@ -240,9 +244,11 @@ extension NotifikasiController {
         let notifikasi = listNotifikasi[indexpath.item]
         
         if notifikasi.is_read == "0" {
-            self.updateIsReadNotification(notification_id: notifikasi.id!) { self.redirectToDetailNotifikasi(notifikasi) }
+            listNotifikasi[indexpath.item].is_read = "1"
+            notifikasiCollectionView.reloadItems(at: [indexpath])
+            updateIsReadNotification(notification_id: notifikasi.id!) { self.redirectToDetailNotifikasi(notifikasi) }
         } else {
-            self.getDetailLeaveApprovalById(notifikasi: notifikasi)
+            getDetailLeaveApprovalById(notifikasi: notifikasi)
         }
     }
     

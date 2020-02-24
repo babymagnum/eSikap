@@ -306,11 +306,11 @@ extension DetailCutiController: UICollectionViewDataSource, UICollectionViewDele
             
             let item = listStatusPersetujuan[indexPath.item]
             
-            let statusDateHeight = item.status_date?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 28, font_size: 7)
-            let statusHeight = (item.status?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 28, font_size: 7))!
+            let statusDateHeight = item.status_date?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 28, font_size: 7) ?? 0
+            let statusHeight = (item.status?.getHeight(withConstrainedWidth: UIScreen.main.bounds.width - 28, font_size: 7)) ?? 0
             let imageHeight = ((UIScreen.main.bounds.width - 28) * 0.075)
             
-            let fullHeight = imageHeight + 25 + statusHeight + statusDateHeight!
+            let fullHeight = imageHeight + 25 + statusHeight + statusDateHeight
             let withoutDateHeight = imageHeight + 25 + statusHeight
             
             return CGSize(width: UIScreen.main.bounds.width - 28, height: item.status_date == "" ? withoutDateHeight : fullHeight)
