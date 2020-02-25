@@ -88,7 +88,11 @@ class DetailPersetujuanCutiController: BaseViewController, UICollectionViewDeleg
                 guard let detailLeaveApproval = detailLeaveApproval else { return }
                 
                 if detailLeaveApproval.data?.leave[0].is_processed == "1" {
-                    self.navigationController?.popViewController(animated: true)
+                    self.view.makeToast("Cuti telah diproses")
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     return
                 }
                 

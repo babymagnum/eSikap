@@ -100,6 +100,15 @@ class DetailPersetujuanRealisasiLemburController: BaseViewController {
                 
                 guard let _data = detailApproval?.data else { return }
                 
+                if _data.is_processed ?? "" == "1" {
+                    self.view.makeToast("Realisasi lembur telah diproses")
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    return
+                }
+                
                 self.textviewCatatanStatus.text = _data.real_status_notes
                 self.imageProfile.loadUrl(_data.photo ?? "")
                 self.buttonStatus.setTitle(_data.real_status, for: .normal)

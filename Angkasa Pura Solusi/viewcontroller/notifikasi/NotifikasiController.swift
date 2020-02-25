@@ -197,44 +197,31 @@ extension NotifikasiController {
             vc.leave_id = notifikasi.data_id
             vc.title_content = "Detail Delegasi Cuti"
             self.navigationController?.pushViewController(vc, animated: true)
+        } else if notifikasi.redirect == "overtime_approval" {
+            let vc = DetailPersetujuanLemburController()
+            vc.overtimeId = notifikasi.data_id
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if notifikasi.redirect == "overtime_canceled" || notifikasi.redirect == "overtime_approval_all_approver" || notifikasi.redirect == "overtime_rejected" || notifikasi.redirect == "overtime_detail" {
+            let vc = DetailPengajuanLemburController()
+            vc.overtimeId = notifikasi.data_id
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if notifikasi.redirect == "overtime_approval_realization" {
+            let vc = DetailPersetujuanRealisasiLemburController()
+            vc.overtimeId = notifikasi.data_id
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if notifikasi.redirect == "overtime_approval_all_realize_approver" || notifikasi.redirect == "overtime_realize_rejected" {
+            let vc = DetailRealisasiLemburController()
+            vc.overtimeId = notifikasi.data_id
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if notifikasi.redirect == "detail_requestroom" {
+            let vc = DetailPeminjamanRuanganController()
+            vc.requestRoomId = notifikasi.data_id
+            vc.isFromHistory = false
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = DialogPreparePresenceController()
             vc.stringDescription = "Tidak ada detail untuk notifikasi ini"
             self.showCustomDialog(vc)
-        }
-    }
-    
-    private func getDetailLeaveApprovalById(notifikasi: ItemListNotification) {
-        SVProgressHUD.show()
-        
-        informationNetworking.getDetailLeaveApprovalById(leave_id: notifikasi.data_id!) { (error, detailLeaveApproval, isExpired) in
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-                
-                if let _ = isExpired {
-                    self.forceLogout(self.navigationController!)
-                    return
-                }
-                
-                if let _error = error {
-                    if _error == "Data Detail Cuti Kosong" {
-                        self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", _error, "Cancel")
-                    } else {
-                        self.function.showUnderstandDialog(self, "Gagal Mendapatkan Detail Cuti", _error, "Reload", "Cancel", completionHandler: {
-                            self.getDetailLeaveApprovalById(notifikasi: notifikasi)
-                        })
-                    }
-                    return
-                }
-                
-                guard let detailLeaveApproval = detailLeaveApproval else { return }
-                
-                if detailLeaveApproval.data?.leave[0].is_processed == "1" {
-                    self.view.makeToast("Cuti telah diproses", duration: 1.0, position: .center)
-                } else {
-                    self.redirectToDetailNotifikasi(notifikasi)
-                }
-            }
         }
     }
     
@@ -246,9 +233,10 @@ extension NotifikasiController {
         if notifikasi.is_read == "0" {
             listNotifikasi[indexpath.item].is_read = "1"
             notifikasiCollectionView.reloadItems(at: [indexpath])
-            updateIsReadNotification(notification_id: notifikasi.id!) { self.redirectToDetailNotifikasi(notifikasi) }
+            updateIsReadNotification(notification_id: notifikasi.id!) { self.redirectToDetailNotifikasi(notifikasi)
+            }
         } else {
-            getDetailLeaveApprovalById(notifikasi: notifikasi)
+            redirectToDetailNotifikasi(notifikasi)
         }
     }
     

@@ -98,7 +98,7 @@ class DetailCutiController: BaseViewController, UICollectionViewDelegate {
                 }
                 
                 guard let _detailRiwayatCuti = detailRiwayatCuti else { return }
-                
+            
                 self.setViewContent(_detailRiwayatCuti)
             }
         }
