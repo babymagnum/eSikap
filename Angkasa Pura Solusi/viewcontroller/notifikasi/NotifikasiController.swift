@@ -96,6 +96,7 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         notifikasiCollectionView.collectionViewLayout.invalidateLayout()
     }
     
@@ -104,6 +105,7 @@ class NotifikasiController: BaseViewController, UICollectionViewDelegate {
         
         notifikasiCollectionView.delegate = self
         notifikasiCollectionView.dataSource = self
+        notifikasiCollectionView.isPrefetchingEnabled = false
         notifikasiCollectionView.addSubview(refreshControl)
     }
     
@@ -137,14 +139,14 @@ extension NotifikasiController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func getTextHeight(_ text: String, _ font_size: CGFloat) -> CGFloat {
-        return text.getHeight(withConstrainedWidth: notifikasiCollectionView.frame.width - 26.6, font_size: font_size)
+        return text.getHeight(withConstrainedWidth: notifikasiCollectionView.bounds.width - 26 - 20, font_size: font_size)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = listNotifikasi[indexPath.item]
-        let heightMargin: CGFloat = 9 + 5 + 10 + 8.5
+        let heightMargin: CGFloat = 9 + 5 + 10 + 10
         let contentHeight = getTextHeight(item.title ?? "", 10) + getTextHeight(item.date ?? "", 8) + getTextHeight(item.content ?? "", 11)
-        return CGSize(width: notifikasiCollectionView.frame.width - 26, height: heightMargin + contentHeight)
+        return CGSize(width: notifikasiCollectionView.bounds.width - 26, height: heightMargin + contentHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
