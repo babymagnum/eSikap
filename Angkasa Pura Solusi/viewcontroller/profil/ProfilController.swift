@@ -16,6 +16,7 @@ enum WhichKaryawan {
 
 class ProfilController: BaseViewController {
 
+    @IBOutlet weak var labelVersion: UILabel!
     @IBOutlet weak var viewActionBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var viewRootTopMargin: NSLayoutConstraint!
     @IBOutlet weak var viewTop: UIView!
@@ -89,6 +90,9 @@ class ProfilController: BaseViewController {
     }
     
     private func initView() {
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            labelVersion.text = "v\(version)"
+        }
         self.scrollView.alpha = 0
         viewTopHeight.constant = 0
         

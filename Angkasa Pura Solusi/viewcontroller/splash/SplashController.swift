@@ -19,13 +19,35 @@ class SplashController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        initView()
-        
-        changeScreen()
-        
         preference.saveBool(value: true, key: staticLet.IS_RELEASE)
         
         preference.saveBool(value: false, key: staticLet.IS_SHOW_FIRST_DIALOG)
+        
+        initView()
+        
+        checkVersion()
+    }
+    
+    private func checkVersion() {
+        informationNetworking.checkVersion { (error, checkVersion, _) in
+            if let _ = error {
+                self.function.showUnderstandDialog(self, "eSIKAP", "Gagal mendapatkan versi aplikasi terbaru.", "Reload") {
+                    self.checkVersion()
+                }
+                return
+            }
+            
+            guard let _data = checkVersion?.data else { return }
+            
+            print("message \(_data.current_version ?? "")")
+            
+            if (_data.must_update ?? false) {
+                let vc = DialogCheckUpdate()
+                self.showCustomDialog(vc, UIScreen.main.bounds.height, cancelable: false)
+            } else {
+                self.changeScreen()
+            }
+        }
     }
     
     override func viewDidLoad() {

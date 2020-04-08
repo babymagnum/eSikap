@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Bold.ttf">
+        <array key="roboto_bold.ttf">
             <string>Roboto-Bold</string>
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogPengajuanCutiController" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogPengajuanCutiController" customModule="eSIKAP" customModuleProvider="target">
             <connections>
                 <outlet property="buttonOke" destination="585-Jo-ACR" id="w3r-mK-4LP"/>
                 <outlet property="collectionException" destination="j7V-xT-t8i" id="qs3-Z2-waV"/>
@@ -34,14 +34,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekY-Mk-bKH">
                             <rect key="frame" x="21" y="206.5" width="333" height="254"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exception" translatesAutoresizingMaskIntoConstraints="NO" id="YTE-OA-vDg">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exceptionRed" translatesAutoresizingMaskIntoConstraints="NO" id="YTE-OA-vDg">
                                     <rect key="frame" x="131.5" y="30" width="70" height="70"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="70" id="WBj-Gb-duB"/>
                                         <constraint firstAttribute="height" constant="70" id="YMY-W1-VM5"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="585-Jo-ACR" customClass="CustomButton" customModule="Angkasa_Pura_Solusi" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="585-Jo-ACR" customClass="CustomButton" customModule="eSIKAP" customModuleProvider="target">
                                     <rect key="frame" x="20" y="198" width="293" height="39"/>
                                     <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
@@ -115,6 +115,6 @@
         </view>
     </objects>
     <resources>
-        <image name="exception" width="56" height="56"/>
+        <image name="exceptionRed" width="56" height="56"/>
     </resources>
 </document>

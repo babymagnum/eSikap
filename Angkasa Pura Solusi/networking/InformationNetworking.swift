@@ -850,4 +850,14 @@ class InformationNetworking: BaseNetworking {
         let url = "\(baseUrl())api/getLeaveList"
         alamofirePostFormData(url: url, headers: getHeaders(), body: body, completion: completion)
     }
+    
+    func checkVersion(completion: @escaping(_ error: String?, _ checkVersion: CheckVersion?, _ isExpired: Bool?) -> Void) {
+        let url = "\(baseUrl())api/checkVersion"
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let body: [String: String] = [
+            "platform": "ios",
+            "current_version": version ?? "1.0.0"
+        ]
+        alamofirePostFormData(url: url, headers: nil, body: body, completion: completion)
+    }
 }

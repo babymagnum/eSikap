@@ -91,7 +91,7 @@ class BaseViewController: UIViewController {
         self.present(popupVc, animated: true)
     }
     
-    func showCustomDialog(_ vc: UIViewController, _ height: CGFloat) {
+    func showCustomDialog(_ vc: UIViewController, _ height: CGFloat, cancelable: Bool) {
         let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width, popupHeight: height)
         self.present(popupVc, animated: true)
     }

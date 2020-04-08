@@ -79,6 +79,9 @@
 		ED435B5923DDE45C00DDD009 /* PengajuanLemburTabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED435B5723DDE45C00DDD009 /* PengajuanLemburTabController.xib */; };
 		ED435B5C23DDE47200DDD009 /* RealisasiLemburTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED435B5A23DDE47200DDD009 /* RealisasiLemburTabController.swift */; };
 		ED435B5D23DDE47200DDD009 /* RealisasiLemburTabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED435B5B23DDE47200DDD009 /* RealisasiLemburTabController.xib */; };
+		ED4C011F243D856700A1EB0A /* DialogCheckUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4C011D243D856700A1EB0A /* DialogCheckUpdate.swift */; };
+		ED4C0120243D856700A1EB0A /* DialogCheckUpdate.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4C011E243D856700A1EB0A /* DialogCheckUpdate.xib */; };
+		ED4C0122243D8C8F00A1EB0A /* CheckVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4C0121243D8C8F00A1EB0A /* CheckVersion.swift */; };
 		ED52151922F452A1001C6A50 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52151822F452A1001C6A50 /* Circle.swift */; };
 		ED52151F22F46F11001C6A50 /* DialogFirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED52151D22F46F11001C6A50 /* DialogFirstController.swift */; };
 		ED52152022F46F11001C6A50 /* DialogFirstController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED52151E22F46F11001C6A50 /* DialogFirstController.xib */; };
@@ -385,6 +388,9 @@
 		ED435B5723DDE45C00DDD009 /* PengajuanLemburTabController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PengajuanLemburTabController.xib; sourceTree = "<group>"; };
 		ED435B5A23DDE47200DDD009 /* RealisasiLemburTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealisasiLemburTabController.swift; sourceTree = "<group>"; };
 		ED435B5B23DDE47200DDD009 /* RealisasiLemburTabController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealisasiLemburTabController.xib; sourceTree = "<group>"; };
+		ED4C011D243D856700A1EB0A /* DialogCheckUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogCheckUpdate.swift; sourceTree = "<group>"; };
+		ED4C011E243D856700A1EB0A /* DialogCheckUpdate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogCheckUpdate.xib; sourceTree = "<group>"; };
+		ED4C0121243D8C8F00A1EB0A /* CheckVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckVersion.swift; sourceTree = "<group>"; };
 		ED52151822F452A1001C6A50 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		ED52151D22F46F11001C6A50 /* DialogFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogFirstController.swift; sourceTree = "<group>"; };
 		ED52151E22F46F11001C6A50 /* DialogFirstController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogFirstController.xib; sourceTree = "<group>"; };
@@ -849,6 +855,15 @@
 			path = realisasi_lembur_tab;
 			sourceTree = "<group>";
 		};
+		ED4C011C243D849E00A1EB0A /* dialog_check_update */ = {
+			isa = PBXGroup;
+			children = (
+				ED4C011D243D856700A1EB0A /* DialogCheckUpdate.swift */,
+				ED4C011E243D856700A1EB0A /* DialogCheckUpdate.xib */,
+			);
+			path = dialog_check_update;
+			sourceTree = "<group>";
+		};
 		ED52151B22F46E20001C6A50 /* dialog_inform_first */ = {
 			isa = PBXGroup;
 			children = (
@@ -1233,6 +1248,7 @@
 		ED95907922EBE29C00D696E5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				ED4C011C243D849E00A1EB0A /* dialog_check_update */,
 				ED9D757F23E4D35E001A48A1 /* filter_daftar_cuti */,
 				ED9D757523E4AC7E001A48A1 /* daftar_cuti */,
 				ED96EF9123E3C39100A27A54 /* detail_persetujuan_realisasi_lembur */,
@@ -1370,6 +1386,7 @@
 				EDB12C6F23E28CA50097CD34 /* DetailOvertimeRealizationApproval.swift */,
 				ED9D757323E4AB0E001A48A1 /* LeaveList.swift */,
 				EDD428F223FCE186000D048F /* SuccessData.swift */,
+				ED4C0121243D8C8F00A1EB0A /* CheckVersion.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1932,6 +1949,7 @@
 				EDFC1F5322FDBB0400AAA93B /* LemburController.xib in Resources */,
 				EDE0CA1823CCA151001215DF /* PeminjamanMobilDinasController.xib in Resources */,
 				EDFC1F4F22FDBAEC00AAA93B /* CutiController.xib in Resources */,
+				ED4C0120243D856700A1EB0A /* DialogCheckUpdate.xib in Resources */,
 				EDCB54FA23DE793800D3CA2C /* FilterPengajuanLemburTabController.xib in Resources */,
 				EDB12C7A23E317560097CD34 /* DetailPersetujuanLemburController.xib in Resources */,
 				EDBF21AD22FE6C7D003F5DAF /* DetailCutiController.xib in Resources */,
@@ -2098,6 +2116,7 @@
 				EDEDA23023D0B2C20085E2EA /* KebijakanPeraturanController.swift in Sources */,
 				ED57FE4722F8F645007B62A0 /* TanggalCutiCell.swift in Sources */,
 				ED61BF0722F696AA00776C25 /* InteractivePopRecognizer.swift in Sources */,
+				ED4C0122243D8C8F00A1EB0A /* CheckVersion.swift in Sources */,
 				EDBF21C12301086A003F5DAF /* CustomTextField.swift in Sources */,
 				EDB12C6923E27E870097CD34 /* PersetujuanLemburTabCell.swift in Sources */,
 				ED87339223176DAE004D9F9F /* ListEmpFilter.swift in Sources */,
@@ -2106,6 +2125,7 @@
 				ED3038CB22ED639E005BCF87 /* BeritaCell.swift in Sources */,
 				EDBF21A522FE5502003F5DAF /* StatusActionCell.swift in Sources */,
 				EDB12C7423E291170097CD34 /* PersetujuanTabRealisasiLemburController.swift in Sources */,
+				ED4C011F243D856700A1EB0A /* DialogCheckUpdate.swift in Sources */,
 				ED52153322F51DA7001C6A50 /* MenuLainyaCell.swift in Sources */,
 				EDEDA22C23D0B0C30085E2EA /* Policy.swift in Sources */,
 				EDEDA22A23D0B0400085E2EA /* PolicyCategory.swift in Sources */,
@@ -2416,7 +2436,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiDebug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -2424,7 +2444,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = eSIKAP;
 				PROVISIONING_PROFILE_SPECIFIER = ApsDevelopment;
@@ -2441,7 +2461,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -2449,7 +2469,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = eSIKAP;
 				PROVISIONING_PROFILE_SPECIFIER = ApsProduction;

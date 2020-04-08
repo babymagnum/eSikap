@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="roboto_bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogCheckUpdate" customModule="eSIKAP" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonUpdate" destination="U4G-Oq-hF7" id="0BP-MF-Nr8"/>
+                <outlet property="labelContent" destination="OeF-Be-4fE" id="Sxm-Mg-bcE"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewDialog" destination="f4R-J0-cmd" id="DeF-fZ-5f7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CK-xl-9J2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4R-J0-cmd">
+                            <rect key="frame" x="21" y="222" width="333" height="223"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4G-Oq-hF7" customClass="CustomButton" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="18" y="169" width="297" height="39"/>
+                                    <color key="backgroundColor" red="0.25882352939999997" green="0.64705882349999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="39" id="M7y-pN-7Fa"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="11" maxX="0.0" maxY="11"/>
+                                    <state key="normal" title="UPDATE">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="buttonUpdateClick:" destination="-1" eventType="touchUpInside" id="QcE-cd-xvx"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mohon Update Aplikasi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeF-Be-4fE" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
+                                    <rect key="frame" x="18" y="101.5" width="297" height="15"/>
+                                    <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="15"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exception" translatesAutoresizingMaskIntoConstraints="NO" id="XoD-7W-TAe">
+                                    <rect key="frame" x="133" y="15" width="67" height="66.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="XoD-7W-TAe" secondAttribute="height" multiplier="1:1" id="2PU-0A-i9F"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="OeF-Be-4fE" firstAttribute="top" secondItem="XoD-7W-TAe" secondAttribute="bottom" constant="20" id="9ET-uK-nho"/>
+                                <constraint firstAttribute="trailing" secondItem="U4G-Oq-hF7" secondAttribute="trailing" constant="18" id="CVy-Fm-uof"/>
+                                <constraint firstItem="OeF-Be-4fE" firstAttribute="leading" secondItem="f4R-J0-cmd" secondAttribute="leading" constant="18" id="JZI-GS-mVS"/>
+                                <constraint firstItem="XoD-7W-TAe" firstAttribute="top" secondItem="f4R-J0-cmd" secondAttribute="top" constant="15" id="LrZ-Ll-BeB"/>
+                                <constraint firstAttribute="bottom" secondItem="U4G-Oq-hF7" secondAttribute="bottom" constant="15" id="TIL-r2-gk5"/>
+                                <constraint firstAttribute="height" constant="223" id="gjJ-VM-2H5"/>
+                                <constraint firstItem="U4G-Oq-hF7" firstAttribute="top" secondItem="OeF-Be-4fE" secondAttribute="bottom" constant="52.5" id="kAw-iU-slS"/>
+                                <constraint firstItem="XoD-7W-TAe" firstAttribute="centerX" secondItem="f4R-J0-cmd" secondAttribute="centerX" id="kHd-yl-BYf"/>
+                                <constraint firstAttribute="trailing" secondItem="OeF-Be-4fE" secondAttribute="trailing" constant="18" id="nAj-a1-Jyh"/>
+                                <constraint firstItem="U4G-Oq-hF7" firstAttribute="leading" secondItem="f4R-J0-cmd" secondAttribute="leading" constant="18" id="rph-Ma-EeB"/>
+                                <constraint firstItem="XoD-7W-TAe" firstAttribute="width" secondItem="f4R-J0-cmd" secondAttribute="width" multiplier="0.2" id="yS8-Rq-5DM"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="f4R-J0-cmd" firstAttribute="leading" secondItem="3CK-xl-9J2" secondAttribute="leading" constant="21" id="Ldz-mn-lpb"/>
+                        <constraint firstAttribute="trailing" secondItem="f4R-J0-cmd" secondAttribute="trailing" constant="21" id="fK9-eo-SOb"/>
+                        <constraint firstItem="f4R-J0-cmd" firstAttribute="centerY" secondItem="3CK-xl-9J2" secondAttribute="centerY" id="iQE-uD-UFM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="3CK-xl-9J2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AGR-vu-pXI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3CK-xl-9J2" secondAttribute="trailing" id="BUy-eP-0Yg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3CK-xl-9J2" secondAttribute="bottom" id="KKE-0Z-7Ti"/>
+                <constraint firstItem="3CK-xl-9J2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="P0O-yA-7Eh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="132" y="154"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="exception" width="57" height="57"/>
+    </resources>
+</document>
