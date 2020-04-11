@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Bold.ttf">
+        <array key="roboto_bold.ttf">
             <string>Roboto-Bold</string>
         </array>
     </customFonts>
@@ -68,18 +68,21 @@
                                 <constraint firstAttribute="trailing" secondItem="LqO-2S-Pdu" secondAttribute="trailing" constant="20" id="628-jD-kFD"/>
                                 <constraint firstAttribute="trailing" secondItem="W4G-d4-uoJ" secondAttribute="trailing" constant="20" id="6Co-tj-hXQ"/>
                                 <constraint firstItem="W4G-d4-uoJ" firstAttribute="top" secondItem="LqO-2S-Pdu" secondAttribute="bottom" constant="39" id="7Ji-V5-cih"/>
-                                <constraint firstAttribute="height" constant="300" id="EWx-JP-2WO"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="10000" id="EWx-JP-2WO"/>
                                 <constraint firstItem="j8N-6B-GIl" firstAttribute="top" secondItem="110-nr-7lu" secondAttribute="top" constant="62" id="RUi-39-fNl"/>
                                 <constraint firstItem="j8N-6B-GIl" firstAttribute="centerX" secondItem="110-nr-7lu" secondAttribute="centerX" id="VxB-fH-TMZ"/>
                                 <constraint firstItem="LqO-2S-Pdu" firstAttribute="leading" secondItem="110-nr-7lu" secondAttribute="leading" constant="20" id="hUa-jU-Sds"/>
                                 <constraint firstItem="W4G-d4-uoJ" firstAttribute="leading" secondItem="110-nr-7lu" secondAttribute="leading" constant="20" id="pDT-Ji-Dta"/>
                                 <constraint firstItem="j8N-6B-GIl" firstAttribute="width" secondItem="110-nr-7lu" secondAttribute="width" multiplier="0.22" id="qsV-XM-zJL"/>
+                                <constraint firstAttribute="bottom" secondItem="W4G-d4-uoJ" secondAttribute="bottom" constant="18" id="tWp-BS-RiN"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="110-nr-7lu" secondAttribute="bottom" constant="30" id="1fG-6h-d5Y"/>
                         <constraint firstItem="110-nr-7lu" firstAttribute="centerY" secondItem="w20-fE-7yV" secondAttribute="centerY" id="AsU-J0-oOR"/>
+                        <constraint firstItem="110-nr-7lu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="w20-fE-7yV" secondAttribute="top" constant="30" id="CWl-6C-oas"/>
                         <constraint firstAttribute="trailing" secondItem="110-nr-7lu" secondAttribute="trailing" constant="21" id="bTB-KN-TFX"/>
                         <constraint firstItem="110-nr-7lu" firstAttribute="leading" secondItem="w20-fE-7yV" secondAttribute="leading" constant="21" id="c0F-yI-fnv"/>
                     </constraints>

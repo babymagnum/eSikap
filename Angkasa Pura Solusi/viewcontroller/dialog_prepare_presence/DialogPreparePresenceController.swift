@@ -37,13 +37,6 @@ class DialogPreparePresenceController: UIViewController {
         if let image = image {
             imageX.image = UIImage(named: image)
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            UIView.animate(withDuration: 0.2) {
-                self.viewContainerHeight.constant = self.imageX.frame.height + self.labelDescription.getHeight(width: self.labelDescription.frame.width) + self.buttonOke.frame.height + 62.1 + 47 + 39 + 23
-                self.view.layoutIfNeeded()
-            }
-        }
     }
 
     @IBAction func buttonOkeClick(_ sender: Any) {
