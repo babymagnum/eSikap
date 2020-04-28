@@ -34,6 +34,7 @@
 		ED14CA7D231E17D600D5C7F0 /* NotifikasiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA7B231E17D600D5C7F0 /* NotifikasiCell.swift */; };
 		ED14CA7E231E17D600D5C7F0 /* NotifikasiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED14CA7C231E17D600D5C7F0 /* NotifikasiCell.xib */; };
 		ED14CA80231E198B00D5C7F0 /* ListNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED14CA7F231E198B00D5C7F0 /* ListNotification.swift */; };
+		ED1544532457DC0E00D49876 /* CustomMargin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1544522457DC0E00D49876 /* CustomMargin.swift */; };
 		ED19672723DD19EB00C64DAE /* MenuServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED19672623DD19EB00C64DAE /* MenuServer.swift */; };
 		ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */; };
 		ED3038C822ED638D005BCF87 /* MenuUtamaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */; };
@@ -342,6 +343,7 @@
 		ED14CA7B231E17D600D5C7F0 /* NotifikasiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiCell.swift; sourceTree = "<group>"; };
 		ED14CA7C231E17D600D5C7F0 /* NotifikasiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifikasiCell.xib; sourceTree = "<group>"; };
 		ED14CA7F231E198B00D5C7F0 /* ListNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNotification.swift; sourceTree = "<group>"; };
+		ED1544522457DC0E00D49876 /* CustomMargin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMargin.swift; sourceTree = "<group>"; };
 		ED19672623DD19EB00C64DAE /* MenuServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuServer.swift; sourceTree = "<group>"; };
 		ED3038C522ED638D005BCF87 /* MenuUtamaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuUtamaCell.swift; sourceTree = "<group>"; };
 		ED3038C622ED638D005BCF87 /* MenuUtamaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuUtamaCell.xib; sourceTree = "<group>"; };
@@ -1416,6 +1418,7 @@
 				ED139BB72302EC9000B854BC /* CustomTextView.swift */,
 				ED139BB92302ED0700B854BC /* CustomDropDownField.swift */,
 				ED1004B42318AE93009F5D4C /* ImagePickerManager.swift */,
+				ED1544522457DC0E00D49876 /* CustomMargin.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -2199,6 +2202,7 @@
 				ED73D0B423DA8AE1002A1A3A /* LampiranPeminjamanRuangCell.swift in Sources */,
 				ED61BF0522F6837500776C25 /* Presensi.swift in Sources */,
 				ED139BBA2302ED0700B854BC /* CustomDropDownField.swift in Sources */,
+				ED1544532457DC0E00D49876 /* CustomMargin.swift in Sources */,
 				ED3038C722ED638D005BCF87 /* MenuUtamaCell.swift in Sources */,
 				EDD5891323CF5B6B00A3EE7B /* HistoryPeminjamanMobilCell.swift in Sources */,
 				EDC19E97231EC28D00690B59 /* LeaveTypeFilter.swift in Sources */,
@@ -2436,7 +2440,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiDebug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -2444,7 +2448,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = eSIKAP;
 				PROVISIONING_PROFILE_SPECIFIER = ApsDevelopment;
@@ -2461,7 +2465,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Angkasa Pura Solusi/Angkasa Pura SolusiRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 3XYXM8BK8J;
 				INFOPLIST_FILE = "Angkasa Pura Solusi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -2469,7 +2473,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apsolusi.ess;
 				PRODUCT_NAME = eSIKAP;
 				PROVISIONING_PROFILE_SPECIFIER = ApsProduction;

@@ -201,10 +201,9 @@ class BerandaController: BaseViewController, UICollectionViewDelegate {
                 if item.count == 0 { return }
                 
                 let content = item[0]
-                let cleanContent = content.content?.removingRegexMatches(pattern: "<[^>]+>", replaceWith: "").removingRegexMatches(pattern: "&[^;]+;", replaceWith: "").removingRegexMatches(pattern: "&[^;]+", replaceWith: "")
                 
                 let vc = DialogFirstController()
-                vc.resources = (image: content.img, title: content.title, description: cleanContent) as? (image: String, title: String, description: String)
+                vc.resources = (image: content.img, title: content.title, description: content.content)
                 let popupVc = PopupViewController(contentController: vc, popupWidth: UIScreen.main.bounds.width, popupHeight: UIScreen.main.bounds.height)
                 popupVc.shadowEnabled = false
                 self.present(popupVc, animated: true)

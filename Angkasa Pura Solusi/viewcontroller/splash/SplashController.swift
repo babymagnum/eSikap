@@ -19,7 +19,7 @@ class SplashController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        preference.saveBool(value: true, key: staticLet.IS_RELEASE)
+        preference.saveBool(value: false, key: staticLet.IS_RELEASE)
         
         preference.saveBool(value: false, key: staticLet.IS_SHOW_FIRST_DIALOG)
         

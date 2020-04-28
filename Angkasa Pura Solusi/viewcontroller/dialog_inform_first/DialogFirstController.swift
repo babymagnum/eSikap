@@ -8,17 +8,19 @@
 
 import UIKit
 import Foundation
+import WebKit
 
-class DialogFirstController: BaseViewController {
+class DialogFirstController: BaseViewController, WKNavigationDelegate {
 
     @IBOutlet weak var viewRoot: UIView!
     @IBOutlet weak var viewContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var imageAnnouncement: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
-    @IBOutlet weak var labelDescription: UILabel!
+    @IBOutlet weak var webview: WKWebView!
+    @IBOutlet weak var webviewHeight: NSLayoutConstraint!
     
-    var resources: (image: String, title: String, description: String)?
+    var resources: (image: String?, title: String?, description: String?)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,23 +35,20 @@ class DialogFirstController: BaseViewController {
         viewContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewContainerClick)))
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        UIView.animate(withDuration: 0.2) {
-            self.viewContainerHeight.constant = self.viewContainer.getHeight() + 12
-            self.view.layoutIfNeeded()
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.webviewHeight.constant = self.webview.scrollView.contentSize.height
         }
     }
     
     private func initView() {
+        webview.navigationDelegate = self
         viewContainer.layer.cornerRadius = 4
         
-        if let data = resources {
-            imageAnnouncement.loadUrl(data.image)
-            labelTitle.text = data.title
-            labelDescription.text = data.description
-        }
+        imageAnnouncement.loadUrl(resources.image ?? "")
+        labelTitle.text = resources.title
+        let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>"
+        self.webview.loadHTMLString("\(headerString) \(resources.description ?? "")", baseURL: nil)
     }
     
     private func cancel() {

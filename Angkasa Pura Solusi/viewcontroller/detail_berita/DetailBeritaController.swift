@@ -10,16 +10,15 @@ import UIKit
 import WebKit
 import SVProgressHUD
 
-class DetailBeritaController: BaseViewController {
+class DetailBeritaController: BaseViewController, WKNavigationDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var buttonBackTopMargin: NSLayoutConstraint!
     @IBOutlet weak var viewTopMargin: NSLayoutConstraint!
     @IBOutlet weak var imageBerita: UIImageView!
-    @IBOutlet weak var labelTitleBerita: UILabel!
-    @IBOutlet weak var labelDateBerita: UILabel!
-    @IBOutlet weak var labelDescriptionBerita: UILabel!
     @IBOutlet weak var buttonBack: UIButton!
+    @IBOutlet weak var webview: WKWebView!
+    @IBOutlet weak var webviewHeight: NSLayoutConstraint!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -42,6 +41,8 @@ class DetailBeritaController: BaseViewController {
     }
     
     private func initView() {
+        webview.navigationDelegate = self
+        webview.scrollView.isScrollEnabled = false
         function.changeStatusBar(hexCode: 0x42a5f5, view: self.view, opacity: 1.0)
         buttonBack.layer.cornerRadius = buttonBack.frame.height / 2
         scrollView.addSubview(refreshControl)
@@ -52,11 +53,16 @@ class DetailBeritaController: BaseViewController {
         guard let news = news else { return }
         
         imageBerita.loadUrl(news.img!)
-        labelTitleBerita.text = news.title
-        labelDateBerita.text = news.date
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.webviewHeight.constant = self.webview.scrollView.contentSize.height
+            self.scrollView.resizeScrollViewContentSize()
+        }
+    }
     
     private func getDetailNews() {
         SVProgressHUD.show()
@@ -79,13 +85,8 @@ class DetailBeritaController: BaseViewController {
                 
                 guard let item = itemDetailNews else { return }
                 
-                let regex = "<[^>]+>" // remove <> tag
-                let nextRegex = "&[^;]+;" // remove &;
-                let advanceRegex = "&[^ ]+ " // remove leftover &
-                let cleanContent = item.content?.replacingOccurrences(of: regex, with: "", options: .regularExpression, range: nil)
-                let nextContent = cleanContent?.replacingOccurrences(of: nextRegex, with: "", options: .regularExpression, range: nil)
-                
-                self.labelDescriptionBerita.text = nextContent?.replacingOccurrences(of: advanceRegex, with: "", options: .regularExpression, range: nil)
+                let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>"
+                self.webview.loadHTMLString("\(headerString) \(item.content ?? "")", baseURL: nil)
                 
                 self.scrollView.resizeScrollViewContentSize()
             }
