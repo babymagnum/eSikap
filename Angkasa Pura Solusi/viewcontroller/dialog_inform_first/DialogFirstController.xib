@@ -49,7 +49,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyT-h0-7cW" customClass="CustomLabel" customModule="eSIKAP" customModuleProvider="target">
-                                    <rect key="frame" x="87.5" y="262" width="158.5" height="30.5"/>
+                                    <rect key="frame" x="87" y="262" width="159" height="30.5"/>
                                     <string key="text">Speeda Application Testing
 Challenge</string>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>

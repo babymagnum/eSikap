@@ -36,7 +36,9 @@ class HomeController: UITabBarController {
         
         getNotificationList()
         
-        //checkingNotifForeground()
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     private func checkRedirect() {

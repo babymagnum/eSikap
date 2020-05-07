@@ -19,6 +19,8 @@ class DetailBeritaController: BaseViewController, WKNavigationDelegate {
     @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var webview: WKWebView!
     @IBOutlet weak var webviewHeight: NSLayoutConstraint!
+    @IBOutlet weak var labelTitleBerita: CustomLabel!
+    @IBOutlet weak var labelDateBerita: CustomLabel!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -40,6 +42,12 @@ class DetailBeritaController: BaseViewController, WKNavigationDelegate {
         getDetailNews()
     }
     
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.webviewHeight.constant = self.webview.scrollView.contentSize.height
+        }
+    }
+    
     private func initView() {
         webview.navigationDelegate = self
         webview.scrollView.isScrollEnabled = false
@@ -56,13 +64,6 @@ class DetailBeritaController: BaseViewController, WKNavigationDelegate {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            self.webviewHeight.constant = self.webview.scrollView.contentSize.height
-            self.scrollView.resizeScrollViewContentSize()
-        }
-    }
     
     private func getDetailNews() {
         SVProgressHUD.show()
@@ -85,8 +86,29 @@ class DetailBeritaController: BaseViewController, WKNavigationDelegate {
                 
                 guard let item = itemDetailNews else { return }
                 
+                self.labelTitleBerita.text = item.title
+                self.labelDateBerita.text = item.date
+                
+                let fontSetting = """
+                <style>
+                @font-face
+                {
+                    font-family: 'Roboto';
+                    font-weight: normal;
+                    src: url(roboto_regular.ttf);
+                }
+                @font-face
+                {
+                    font-family: 'Roboto';
+                    font-weight: 400;
+                    src: url(roboto_medium.ttf);
+                }
+                </style>
+                <span style="font-family: 'Roboto'; font-weight: normal; font-size: \(11 + self.function.dynamicCustomDevice()); color: #707070">\(item.content ?? "")</span>
+                """
+                
                 let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>"
-                self.webview.loadHTMLString("\(headerString) \(item.content ?? "")", baseURL: nil)
+                self.webview.loadHTMLString("\(headerString) \(fontSetting)", baseURL: Bundle.main.bundleURL)
                 
                 self.scrollView.resizeScrollViewContentSize()
             }

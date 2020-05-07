@@ -44,11 +44,24 @@ class DialogFirstController: BaseViewController, WKNavigationDelegate {
     private func initView() {
         webview.navigationDelegate = self
         viewContainer.layer.cornerRadius = 4
-        
         imageAnnouncement.loadUrl(resources.image ?? "")
         labelTitle.text = resources.title
+        
+        let fontSetting = """
+        <style>
+        @font-face
+        {
+            font-family: 'Roboto';
+            font-weight: 400;
+            src: url(roboto_medium.ttf);
+        }
+        </style>
+        <span style="font-family: 'Roboto'; font-weight: 400; font-size: \(12 + function.dynamicCustomDevice()); color: #333333">\(resources.description ?? "")</span>
+        """
+        
         let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>"
-        self.webview.loadHTMLString("\(headerString) \(resources.description ?? "")", baseURL: nil)
+        
+        webview.loadHTMLString("\(headerString) \(fontSetting)", baseURL: Bundle.main.bundleURL)
     }
     
     private func cancel() {
