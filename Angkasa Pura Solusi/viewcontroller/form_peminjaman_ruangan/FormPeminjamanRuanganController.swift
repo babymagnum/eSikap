@@ -340,6 +340,8 @@ extension FormPeminjamanRuanganController: BottomSheetDatePickerProtocol, Search
             } else {
                 fieldTanggalSelesai.text = formatedDate
             }
+            
+            fieldWaktuSelesai.text = ""
         }
     }
     
@@ -357,8 +359,16 @@ extension FormPeminjamanRuanganController: BottomSheetDatePickerProtocol, Search
             let waktuMulai = fieldWaktuMulai.text?.replacingOccurrences(of: ":", with: "") ?? ""
             let waktuSelesai = pickedTime.replacingOccurrences(of: ":", with: "")
             
+            let tanggalSelesai = function.stringToDate(fieldTanggalSelesai.text ?? function.getCurrentDate(pattern: "dd-MM-yyyy"), "dd-MM-yyyy")
+            let tanggalMulai = function.stringToDate(fieldTanggalMulai.text ?? function.getCurrentDate(pattern: "dd-MM-yyyy"), "dd-MM-yyyy")
+            
             if Int(waktuSelesai) ?? 0 < Int(waktuMulai) ?? 0 {
-                self.view.makeToast("Waktu selesai tidak boleh lebih kecil dari waktu mulai.")
+                if tanggalSelesai == tanggalMulai{
+                    self.view.makeToast("waktu selesai tidak boleh lebih kecil dari waktu mulai.")
+                    fieldWaktuSelesai.text = ""
+                }else{
+                    fieldWaktuSelesai.text = pickedTime
+                }
             } else {
                 fieldWaktuSelesai.text = pickedTime
             }
